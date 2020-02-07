@@ -4,15 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>메인페이지</title>
+<title>Insert title here</title>
 </head>
 <body>
-<div id="container">
-<form action="login.do" method="post">
-	<input type="submit" value="로그인">
-	
-</form>
 
-</div>
 </body>
 </html>
