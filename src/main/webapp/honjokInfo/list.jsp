@@ -10,7 +10,35 @@
 </head>
 <body>
 
+<table>
+
+<thead>
+
+	<tr>
+		<th>글번호</th>
+		<th>제목</th>
+		<th>작성자</th>
+		<th>작성일</th>
+		<th>조회수</th>
+		<th>좋아요</th>
+	</tr>
+
+</thead>
 
 
+<tbody>
+<c:forEach var="CommunityVO" items="${CommunityVOList }">
+	<tr>
+		<td>${CommunityVO.com_seq }</td>
+		<td>${CommunityVO.title }</td>
+		<td>${CommunityVO.id }</td>
+		<td>${CommunityVO.regdate }</td>
+		<td>${CommunityVO.hit }</td>
+		<td>${CommunityVO.likes }</td>
+	</tr>
+</c:forEach>
+</tbody>
+
+</table>
 </body>
 </html>
