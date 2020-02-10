@@ -25,8 +25,21 @@
 		</tr>
 		<tr>
 			<th><label>이메일</label></th>
-			<td><input type="text" name="email"></td>
-		</tr>
+			<td>
+				  <input type='text' name="email">@
+	          	  <input type='text' name="emailDns">
+	              <select name="emailaddr">
+	                 <option value="">직접입력</option>
+	                 <option value="daum.net">daum.net</option>
+	                 <option value="empal.com">empal.com</option>
+	                 <option value="gmail.com">gmail.com</option>
+	                 <option value="hanmail.net">hanmail.net</option>
+	                 <option value="msn.com">msn.com</option>
+	                 <option value="naver.com">naver.com</option>
+	                 <option value="nate.com">nate.com</option>
+	             </select>
+             </td>
+        </tr>
 		<tr>
 			<th><label>우편번호</label></th>
 			<td><input type="text" name="adrCode"></td>
