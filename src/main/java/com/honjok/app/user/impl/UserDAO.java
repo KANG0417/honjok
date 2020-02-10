@@ -4,7 +4,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.honjok.app.UserVO;
+import com.honjok.app.vo.UserVO;
+
 
 @Repository("UserDAO")
 public class UserDAO {
