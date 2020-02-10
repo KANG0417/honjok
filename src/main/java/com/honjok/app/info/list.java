@@ -4,18 +4,22 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.honjok.comm.CommunityVO;
+
 
 @Controller
 public class list {
-	public list() {
-		System.out.println("생성자 생성");
-	}
 	
-	@RequestMapping(value="list.do", method=RequestMethod.GET)
-	public void lists() {
-		System.out.println("잘넘어옴s ");
+	@RequestMapping(value="insert.do")
+	public void lists(CommunityVO community) {
+		
+		System.out.println(community);
+		
+		System.out.println("성공~");
+		
 	}
 	
 	
 
 }
+
