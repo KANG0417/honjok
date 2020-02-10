@@ -3,5 +3,15 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="UserDAO">
-
+	<insert id="insertUser" parameterType="user">
+		INSERT INTO USERS
+		(SEQ, NAME, ID, PASSWORD, EMAIL, 
+		 ADR_CODE, ADR1, ADR2, PHONE, REGDATE, 
+		 GENDER, BIRTH, NICK_NAME
+		)
+		VALUES ((SELECT NVL(MAX(SEQ), 0) + 1 FROM USERS), #{name},#{id},#{password},#{email}
+				#{adrCode}, #{adr1}, #{adr2}, #{phone}, SYSDATE,
+				#{gender}, #{birth}, #{nickName}
+		)
+	</insert>
 </mapper>
