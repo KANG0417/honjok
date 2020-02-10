@@ -1,4 +1,4 @@
-package com.honjok.app;
+package com.honjok.comm;
 
 public class CommInteriorVO {
 	private ;
