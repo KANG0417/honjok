@@ -1,5 +1,7 @@
 package com.honjok.app.info;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +24,15 @@ public class honjokinfoServiceImpl implements honjokinfoService {
 		      Mapper.inserthonjokinfo(com);
 		      System.out.println("implement  후");
 		
+	}
+
+
+
+	@Override
+	public List<CommunityVO> selectAll() {
+		
+		 List<CommunityVO> list =Mapper.selectAll();
+		return list;
 	}
 	   
    

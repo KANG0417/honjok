@@ -5,7 +5,8 @@
 <mapper namespace="honjokInfoMapper">
 
    <insert id="insert" parameterType="CommunityVO">
-      insert INTO community(COM_SEQ,
+      insert INTO community(
+      COM_SEQ,
       TITLE,
       ID,
       CONTENT,
@@ -13,8 +14,12 @@
       HIT,
       LIKES,
       TYPE)
-      values('2','2','2','2','2','2','2','2')
+      values(COMMMUNITY_SEQ.NEXTVAL, #{title}, #{id}, #{content}, SYSDATE, '0', '0', '1')
    </insert>
+   
+   <select id="selectAll" resultType="CommunityVO">
+  	 select * from COMMUNITY where type='1'
+   </select>
 
 
    <!-- <select id="getBoardList" parameterType="board" resultType="board"> 
