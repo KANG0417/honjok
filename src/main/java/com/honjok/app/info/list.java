@@ -13,7 +13,7 @@ public class list {
 	
 	@RequestMapping(value="list.do", method=RequestMethod.GET)
 	public void lists() {
-		System.out.println("잘넘어옴");
+		System.out.println("잘넘어옴s ");
 	}
 	
 	

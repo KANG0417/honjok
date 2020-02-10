@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class login {
 
 /*	@Autowired
-	private UserService userService;
+	private UserService userService ;
 */
 	//요청방식 POST에 대한 처리
 	@RequestMapping(value="/login.do", method=RequestMethod.POST)
 	public String login(/*UserVO vo*/) {
-		System.out.println(">>> 로그인 처리 - login()");
+		System.out.println(">>> 로그인 처리 - login()11dsa");
 	/*	System.out.println("전달받은 vo : " + vo);*/
 		
 		//일부러 예외발생
