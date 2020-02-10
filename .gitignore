@@ -3,3 +3,8 @@
 .settings/
 target/
 bin/
+/.metadata/
+
+/.metadata/
+Servers/Pivotal tc Server Developer Edition v4.0-config/catalina.policy
+Servers/Pivotal tc Server Developer Edition v4.0-config/catalina.properties
