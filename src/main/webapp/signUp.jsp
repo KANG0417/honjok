@@ -14,11 +14,17 @@
 	<table>
 		<tr>
 			<th><label>아이디</label></th>
-			<td><input type="text" name="id" placeholder="아이디를 입력해주세요" required></td>
+			<td>
+				<input type="text" name="id" placeholder="아이디를 입력해주세요" required>
+				<div class="checkFont" id="idCheck"></div>
+			</td>
 		</tr>
 		<tr>
 			<th><label>패스워드</label></th>
-			<td><input type="text" name="password" placeholder="비밀번호를 입력해주세요" required></td>
+			<td>
+				<input type="text" name="password" placeholder="비밀번호를 입력해주세요" required>
+				<div class="checkFont" id="idCheck"></div>
+			</td>
 		</tr>
 		<tr>
 			<th><label>닉네임</label></th>
