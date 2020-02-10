@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <title>회원가입</title>
 </head>
 <body>
@@ -13,11 +14,11 @@
 	<table>
 		<tr>
 			<th><label>아이디</label></th>
-			<td><input type="text" name="id"></td>
+			<td><input type="text" name="id" placeholder="아이디를 입력해주세요" required></td>
 		</tr>
 		<tr>
 			<th><label>패스워드</label></th>
-			<td><input type="text" name="password"></td>
+			<td><input type="text" name="password" placeholder="비밀번호를 입력해주세요" required></td>
 		</tr>
 		<tr>
 			<th><label>닉네임</label></th>
@@ -31,10 +32,8 @@
 	              <select name="emailaddr">
 	                 <option value="">직접입력</option>
 	                 <option value="daum.net">daum.net</option>
-	                 <option value="empal.com">empal.com</option>
 	                 <option value="gmail.com">gmail.com</option>
 	                 <option value="hanmail.net">hanmail.net</option>
-	                 <option value="msn.com">msn.com</option>
 	                 <option value="naver.com">naver.com</option>
 	                 <option value="nate.com">nate.com</option>
 	             </select>
