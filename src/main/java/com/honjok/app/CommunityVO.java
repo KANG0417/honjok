@@ -1,4 +1,4 @@
-package com.honjok.app.comm;
+package com.honjok.app;
 
 import java.sql.Date;
 
