@@ -9,10 +9,15 @@
 <body>
 <div id="container">
 <form action="login.do" method="post">
+
 	<input type="submit" value="로그인">
-	
+	<table>
+	<tr>
+		<th>로그인</th>
+		<th>로그아웃</th>
+	</tr>
+	</table>
 </form>
-sdsad
 </div>
 </body>
 </html>

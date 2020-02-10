@@ -1,4 +1,4 @@
-package com.honjok.app.honjok.info;
+package com.honjok.app.info;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,7 +13,7 @@ public class list {
 	
 	@RequestMapping(value="list.do", method=RequestMethod.GET)
 	public void lists() {
-		System.out.println("잘넘어옴");
+		System.out.println("잘넘어옴s ");
 	}
 	
 	
