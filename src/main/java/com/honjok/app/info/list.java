@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.honjok.comm.CommunityVO;
+import com.honjok.app.comm.CommunityVO;
 
 
 @Controller
