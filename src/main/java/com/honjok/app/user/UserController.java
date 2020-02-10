@@ -1,39 +1,58 @@
-package com.honjok.view.user;
+package com.honjok.app.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.honjok.app.vo.UserVO;
+
+
+
 @Controller
-public class login {
+public class UserController {
 
 /*	@Autowired
 	private UserService userService ;
 */
+	@Autowired
+	private UserService userService;
+	
+	
 	//요청방식 POST에 대한 처리
-	@RequestMapping(value="/login.do", method=RequestMethod.POST)
-	public String login(/*UserVO vo*/) {
-		System.out.println(">>> 로그인 처리 - login()11dsa");
+	//@RequestMapping(value="/login.do", method=RequestMethod.POST)
+	//public String login(/*UserVO vo*/) {
+		//System.out.println(">>> 로그인 처리 - login()11dsa");
 	/*	System.out.println("전달받은 vo : " + vo);*/
 		
 		//일부러 예외발생
-	/*	if (vo.getId() == null || vo.getId().equals("")) {
+	/*if (vo.getId() == null || vo.getId().equals("")) {
 			throw new IllegalArgumentException(
 					"아이디는 반드시 입력해야 합니다.");
 		}
 		
-		//UserVO user = userDAO.getUser(vo);
+		UserVO user = userDAO.getUser(vo);
 		UserVO user = userService.getUser(vo);
 		System.out.println("> user : " + user);
 		if (user != null) {
 			return "getBoardList.do";
 		} else {
 			return "login.jsp";
-		}*/
+		}
 	 
 		return "login.jsp";
+	}*/
+		
+	@RequestMapping(value="/signUp.do", method=RequestMethod.POST)
+		public String signUp(UserVO vo) {
+		System.out.println("전송");
+		userService.insertUser(vo);
+		System.out.println("전송2");
+		return "index.jsp";
 	}
+	
+	
+	
 	
 	//@ModelAttribute : 모델의 속성값으로 지정(속성명 별도지정)
 	//  별도 명칭 부여 안하면 <데이터 타입>의 첫글자 소문자로 작성된 명치 사용됨
@@ -55,4 +74,9 @@ public class login {
 		session.invalidate();
 		return "login.jsp";
 	}*/
+	
+	
+	
+	
+	
 }
