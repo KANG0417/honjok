@@ -1,6 +1,8 @@
 package com.honjok.app;
 
-	public class UserVO {
+import java.util.Date;
+
+public class UserVO {
 		private String name;
 		private String id;
 		private String password;
