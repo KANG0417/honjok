@@ -26,17 +26,18 @@ public class list {
       
       System.out.println("실행됐나요?");
      
-      return "/select.do";
+      return "/honjokInfo/select.do";
       
     
    }
    
    @RequestMapping("/select.do")
-   public String select() {
+   public String select(Model model) {
 	   
-	   System.out.println();
+	   System.out.println("글자나오나요/");
 	   List<CommunityVO> list = service.selectAll();
-	   return "/honjokinfo/list.jsp";
+	   model.addAttribute("CommunityVOList",list);
+	   return "/honjokInfo/list.jsp";
    }
    
    
