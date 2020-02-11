@@ -30,7 +30,7 @@
 <c:forEach var="CommunityVO" items="${CommunityVOList }">
 	<tr>
 		<td>${CommunityVO.com_seq }</td>
-		<td>${CommunityVO.title }</td>
+		<td><a href="get.do?com_seq=${CommunityVO.com_seq }">${CommunityVO.title }</a></td>
 		<td>${CommunityVO.id }</td>
 		<td>${CommunityVO.regdate }</td>
 		<td>${CommunityVO.hit }</td>

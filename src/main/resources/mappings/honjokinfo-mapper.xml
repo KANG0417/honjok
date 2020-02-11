@@ -20,6 +20,11 @@
    <select id="selectAll" resultType="CommunityVO">
   	 select * from COMMUNITY where type='1'
    </select>
+   
+   
+   <select id="select" resultType="CommunityVO" parameterType="String">
+   	 select * from COMMUNITY where com_seq = #{com_seq}
+   </select>
 
 
    <!-- <select id="getBoardList" parameterType="board" resultType="board"> 

@@ -34,6 +34,15 @@ public class honjokinfoServiceImpl implements honjokinfoService {
 		 List<CommunityVO> list =Mapper.selectAll();
 		return list;
 	}
+
+
+
+	@Override
+	public CommunityVO select(String com_seq) {
+		
+		CommunityVO communityvo = Mapper.select(com_seq);
+		return communityvo;
+	}
 	   
    
    

@@ -30,4 +30,11 @@ public List<CommunityVO> selectAll() {
 	System.out.println(list);
 	return list;
 }
+
+public CommunityVO select(String com_seq) {
+	System.out.println("select실행");
+	CommunityVO communityvo = mybatis.selectOne("honjokInfoMapper.select", com_seq);
+	System.out.println(communityvo);
+	return communityvo;
+}
 }
