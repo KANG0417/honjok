@@ -43,6 +43,21 @@ public class honjokinfoServiceImpl implements honjokinfoService {
 		CommunityVO communityvo = Mapper.select(com_seq);
 		return communityvo;
 	}
+
+
+
+	@Override
+	public void delete(String com_seq) {
+		Mapper.delete(com_seq);
+	}
+
+
+
+	@Override
+	public void uptate(CommunityVO com) {
+		Mapper.uptate(com);
+		
+	}
 	   
    
    

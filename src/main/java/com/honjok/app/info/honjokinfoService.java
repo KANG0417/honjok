@@ -12,6 +12,11 @@ public interface honjokinfoService {
    public List<CommunityVO> selectAll();
 
    public CommunityVO select(String com_seq);
+
+   public void delete(String com_seq);
+
+   public void uptate(CommunityVO com);
     
+   
    
 }

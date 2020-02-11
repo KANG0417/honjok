@@ -11,34 +11,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
     <title>간단한 지도 표시하기</title>
     <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=n7ip984x7q"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote-lite.min.js"></script>
 </head>
 <body>
-	<h1>제목 : ${CommunityVO.title }</h1>
-	<p>작성자: ${CommunityVO.id }</p>
-	<p>내용 ${CommunityVO.content }</p>
-	
+	 <h1>혼족정보게시판</h1>
+   	
+      <form action="update.do" method="POST">
+      <input type="hidden" name="com_seq" value="${com.com_seq }">
+      <input type="hidden" name="hit" value="${com.hit }">
+      <input type="hidden" name="likes" value="${com.likes }">
+      <input type="hidden" name="regdate" value="${com.regdate }">
+	         제목<input type="text" name="title" value="${com.title }"><br>
+	         작성자<input type="text" name="id" value="${com.id }"><br>
+	         내용<textarea id="summernote" name="content" >${com.content }</textarea><br>            
 <div id="map" style="width:50%;height:400px;"></div>
-
-
-<form class="update" action="update.jsp">
-	<c:set value="${CommunityVO }" var="com" scope="session"></c:set>
-	<input type="submit" value="수정">
-</form>
-<form action="delete.do">
-	<input type="hidden" name="com_seq" value="${CommunityVO.com_seq }">
-	<input type="submit" value="삭제">
-</form>
-<form action="select.do">
+       <input type="submit" value="저장">
+      </form><form action="select.do">
 	<input type="submit" value="목록으로">
 </form>
+      
+	
+<c:remove var="com" />
+<hr>
 
-
-
-
-
-
-
-<!-- 네이버 지도 시작 -->
+<!-- 에디터시작  -->
+<script>
+      $('#summernote').summernote({
+        placeholder: 'Hello stand alone ui',
+        tabsize: 2,
+        height: 120,
+        toolbar: [
+          ['style', ['style']],
+          ['font', ['bold', 'underline', 'clear']],
+          ['color', ['color']],
+          ['para', ['ul', 'ol', 'paragraph']],
+          ['table', ['table']],
+          ['insert', ['link', 'picture', 'video']],
+          ['view', ['fullscreen', 'codeview', 'help']]
+        ]
+      });
+    </script>
+    
+ <!-- 에디터 끝  -->
+ 
+ <!-- 네이버 지도 시작 -->
 <script>
 var HOME_PATH = window.HOME_PATH || '.';
 var cityhall = new naver.maps.LatLng(37.5666805, 126.9784147),
@@ -86,8 +104,5 @@ naver.maps.Event.addListener(marker, "click", function(e) {
 </script>
 <!-- 네이버 지도 끝 -->
 
-
-
 </body>
-
 </html>

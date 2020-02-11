@@ -51,6 +51,23 @@ public class list {
 	   return "/honjokInfo/get.jsp";
    }
    
+   @RequestMapping("/delete.do")
+   public String delete(String com_seq ,Model model) {
+	   System.out.println("알려줘" + com_seq );
+	   service.delete(com_seq);
+	   return "/honjokInfo/select.do";
+   }
    
+   @RequestMapping("/update.do")
+   public String update(CommunityVO com) {
+	
+	   	System.out.println("넘어온 데이터 : "+ com);
+	   
+	   	service.uptate(com);
+	   
+	   return "/honjokInfo/select.do";
+	   
+   }
+  
 
 }
