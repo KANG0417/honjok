@@ -36,8 +36,19 @@ public class list {
 	   
 	   System.out.println("글자나오나요/");
 	   List<CommunityVO> list = service.selectAll();
+	   
 	   model.addAttribute("CommunityVOList",list);
+	   
 	   return "/honjokInfo/list.jsp";
+   }
+   
+   @RequestMapping("/get.do")
+   public String select(String com_seq ,Model model) {
+	   System.out.println("알려줘" + com_seq);
+	   
+	   CommunityVO comunity = service.select(com_seq);
+	   model.addAttribute("CommunityVO",comunity);
+	   return "/honjokInfo/get.jsp";
    }
    
    
