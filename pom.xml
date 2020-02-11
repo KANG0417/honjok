@@ -21,8 +21,15 @@
 			<url>http://www.datanucleus.org/downloads/maven2</url>
 		</repository>	
 	</repositories>	
-	
+
 	<dependencies>
+		<!-- 라이브러리 추가 -->
+		<dependency>
+   			<groupId>com.fasterxml.jackson.core</groupId>
+   			<artifactId>jackson-databind</artifactId>
+   			<version>2.9.2</version>
+		</dependency>
+		
 		<!-- 스프링-마이바티스 연동 라이브러리 설정(부터) -->
 		<!-- MyBatis 라이브러리 등록 -->
 		<dependency>
