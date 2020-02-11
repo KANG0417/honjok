@@ -3,24 +3,7 @@ package com.honjok.app.vo;
 import java.sql.Date;
 
 public class CommunityVO {
-	private String title, id, content, type;
-	private int com_seq, hit, likes;
-	private Date regdate;
-	
-	public CommunityVO() {}
-
-	public CommunityVO(String title, String id, String content, String type, int com_seq, int hit, int likes,
-			Date regdate) {
-		super();
-		this.title = title;
-		this.id = id;
-		this.content = content;
-		this.type = type;
-		this.com_seq = com_seq;
-		this.hit = hit;
-		this.likes = likes;
-		this.regdate = regdate;
-	}
+	private String title, id, content, type,com_seq, hit, likes,regdate;
 
 	public String getTitle() {
 		return title;
@@ -54,35 +37,35 @@ public class CommunityVO {
 		this.type = type;
 	}
 
-	public int getCom_seq() {
+	public String getCom_seq() {
 		return com_seq;
 	}
 
-	public void setCom_seq(int com_seq) {
+	public void setCom_seq(String com_seq) {
 		this.com_seq = com_seq;
 	}
 
-	public int getHit() {
+	public String getHit() {
 		return hit;
 	}
 
-	public void setHit(int hit) {
+	public void setHit(String hit) {
 		this.hit = hit;
 	}
 
-	public int getLikes() {
+	public String getLikes() {
 		return likes;
 	}
 
-	public void setLikes(int likes) {
+	public void setLikes(String likes) {
 		this.likes = likes;
 	}
 
-	public Date getRegdate() {
+	public String getRegdate() {
 		return regdate;
 	}
 
-	public void setRegdate(Date regdate) {
+	public void setRegdate(String regdate) {
 		this.regdate = regdate;
 	}
 
@@ -91,4 +74,7 @@ public class CommunityVO {
 		return "CommunityVO [title=" + title + ", id=" + id + ", content=" + content + ", type=" + type + ", com_seq="
 				+ com_seq + ", hit=" + hit + ", likes=" + likes + ", regdate=" + regdate + "]";
 	}
+	
+	
+	
 }

@@ -11,16 +11,10 @@
    <h1>혼족정보게시판</h1>
       <form action="insert.do" method="POST">
       
-         <label>제목:</label>
-         번호<input type="text" name="com_seq">
-         제목<input type="text" name="title">
-         아이디<input type="text" name="id">
-         내용<input type="text" name="content">
-         작성일<input type="text" name="regdate">
-         조회수<input type="text" name="hit">
-         좋아요<input type="text" name="likes">
-         타입<input type="text" name="type">
-            
+       
+         제목<input type="text" name="title"><br>
+         아이디<input type="text" name="id"><br>
+         내용<input type="text" name="content"><br>            
          <input type="submit">
       </form>
 

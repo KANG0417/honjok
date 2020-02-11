@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cookMapper">
+   <insert id="insert" parameterType="CookVO">
+      insert INTO comm_cook(type, COM_SEQ, REGDATE, TYPE)
+      values(#{type}, #{}, #{content}, SYSDATE, #{hit}, #{likes}, #{type})
+   </insert>
+<!-- 작성중.. 헷갈ㄹ려 -->
+	<insert id="insert" parameterType="CommunityVO">
+	INSERT INTO COMMUNITY (COM_SEQ, TITLE, ID, CONTENT, REGDATE, HIT, LIKES, TYPE)
+	  		VALUES ((SELECT NVL(MAX(SEQ), 0) + 1 FROM COMMUNITY), 
+	  			#{title}, #{id}, #{content}, SYSDATE, #{hit}, #{likes}, #{type})
+  	</insert>		
+</mapper>
