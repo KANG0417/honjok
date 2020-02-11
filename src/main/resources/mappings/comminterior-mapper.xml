@@ -2,14 +2,40 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  <mapper namespace="commDAO">
-  <insert id="insertAll" parameterType="String">
+  <mapper namespace="commInteriorDAO">
+  <resultMap type="CommunityVO" id="CommunityVO">
+  	<result column="COM_SEQ" property="com_seq"/>
+    <result column="TITLE" property="title"/>
+    <result column="ID" property="id"/>
+    <result column="CONTENT" property="content"/>
+    <result column="REGDATE" property="regdate"/>
+    <result column="HIT" property="hit"/>
+    <result column="LIKES" property="likes"/>
+    <result column="TYPE" property="type"/>
+  </resultMap>
+  <resultMap type="CommInteriorVO" id="CommInteriorVO">
+     <result column="COM_SEQ" property="com_seq"/>
+     <result column="TYPE" property="type"/>
+     <result column="FILE_IMAGE" property="file_image"/>
+  	<collection property="CommunityVO" resultMap="CommunityVO" />
+  </resultMap>
+  
+  <insert id="CommInteriorVO" parameterType="CommInteriorVO">
   		INSERT INTO COMMUNITY (COM_SEQ, TITLE, ID, CONTENT, REGDATE, HIT, LIKES, TYPE)
-  		VALUES ((SELECT NVL(MAX(SEQ), 0) + 1 FROM COMMUNITY), 
+  		VALUES ((COMMMUNITY_SEQ.NEXTVAL) + 1,
   			#{title}, #{id}, #{content}, SYSDATE, #{hit}, #{likes}, #{type})
-  		INSERT INTO COMM_INTERIOR (COM_SEQ, FILE_IMAGE, P_NUM)
-  		VALUES (#{type}, (SELECT NVL(MAX(SEQ), 0) + 1 FROM COMM_INTERIOR), 
-  			#{file_image}, #{p_num})
+  		INSERT INTO COMM_INTERIOR (TYPE, COM_SEQ, FILE_IMAGE)
+  		VALUES (#{type}, (COMMMUNITY_SEQ.NEXTVAL) + 1,
+  			#{file_image})
   </insert>
   
+<!-- 	<update id="update" parameterType="">
+	  		UPDATE
+	 </update> -->
+  
+  <select id="CommInteriorVO" resultType="CommInteriorVO">
+		SELECT *
+		FROM COMMUNITY C, COMM_INTERIOR I
+		WHERE C.COM_SEQ = I.COM_SEQ;
+  </select>
   </mapper>
