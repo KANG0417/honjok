@@ -7,7 +7,7 @@ import com.honjok.app.vo.CookVO;
 public interface CookService {
 	void insertCook(CookVO CVO);
 	  public void createCook(CookVO cvo);
-
+//ㅋㅋ 왜안되냐
 	   public List<CookVO> selectAll();
 
 	   public CookVO select(String com_seq);
