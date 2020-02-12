@@ -11,9 +11,13 @@ public class UserDAO {
 	@Autowired
 	private SqlSessionTemplate mybatis;
 	
+	
 	public void insertUser(UserVO vo) {
-		System.out.println("회원가입 vo를 데이터베이스로 전송중");
-		mybatis.insert("user.insertUser", vo);
-		System.out.println("회원가입 vo를 데이터베이스로 전송중22");
+		mybatis.insert("UserDAO.insertUser", vo);
+	}
+	public int userIdCheck(String Id) {
+		int set = mybatis.selectOne("UserDAO.userIdCheck", Id);
+		System.out.println("set : " + set);
+		return set;
 	}
 }
