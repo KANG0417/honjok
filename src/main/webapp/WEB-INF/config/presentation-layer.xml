@@ -17,7 +17,8 @@
 		<property name="maxUploadSize" value="10000000"/>
 	</bean>
 	
-	<!-- 예외처리를 위한 설정 -->
+	<!-- 예외처리를 위한 설정 
+	
 	<bean id="exceptionResolver"
 		class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
 		<property name="defaultErrorView" 
@@ -33,6 +34,7 @@
 			</props>
 		</property>
 	</bean>
+	-->
 	
 	<!-- XML 데이터 처리를 위한 설정 -->
 	<mvc:annotation-driven />

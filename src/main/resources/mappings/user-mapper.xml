@@ -9,9 +9,12 @@
 		 ADR_CODE, ADR1, ADR2, PHONE, REGDATE, 
 		 GENDER, BIRTH, NICK_NAME
 		)
-		VALUES ((SELECT NVL(MAX(SEQ), 0) + 1 FROM USERS), #{name},#{id},#{password},#{email}
+		VALUES ('3', #{name}, #{id}, #{password}, #{email},
 				#{adrCode}, #{adr1}, #{adr2}, #{phone}, SYSDATE,
 				#{gender}, #{birth}, #{nickName}
 		)
 	</insert>
+	<select id="userIdCheck" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM USERS WHERE ID = #{id}
+	</select>
 </mapper>
