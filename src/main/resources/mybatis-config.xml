@@ -15,7 +15,6 @@
  <mappers>
     <mapper resource="mappings/user-mapper.xml"/>
 	  <mapper resource="mappings/honjokinfo-mapper.xml"/>
-	  <mapper resource="mappings/comminterior-mapper.xml"/>
  </mappers>
 </configuration>
 
