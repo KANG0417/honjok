@@ -10,6 +10,13 @@
 </head>
 <body>
 
+
+
+
+  		 model.addAttribute("pageNum")
+	   model.addAttribute("section")
+	   model.addAttribute("CommunityVOList")
+	   model.addAttribute("countList")
 <table>
 
 <thead>
@@ -26,22 +33,76 @@
 </thead>
 
 
+
+
 <tbody>
-<c:forEach var="CommunityVO" items="${CommunityVOList }">
-	<tr>
-		<td>${CommunityVO.com_seq }</td>
-		<td><a href="get.do?com_seq=${CommunityVO.com_seq }">${CommunityVO.title }</a></td>
-		<td>${CommunityVO.id }</td>
-		<td>${CommunityVO.regdate }</td>
-		<td>${CommunityVO.hit }</td>
-		<td>${CommunityVO.likes }</td>
-	</tr>
-</c:forEach>
-</tbody>
-
-
-
+<c:choose>
+  <c:when test="${CommunityVOList == null }" >
+    <tr>
+      <td colspan="6">
+         <p align="center">
+            <b><span style="font-size:9pt;">등록된 글이 없습니다.</span></b>
+        </p>
+      </td>  
+    </tr>
+  </c:when>
+	<c:when test="${CommunityVOList != null }">
+	<c:forEach var="CommunityVO" items="${CommunityVOList }" varStatus="articleNum">
+		<tr>
+			<td>${CommunityVO.com_seq }</td>
+			<td><a href="get.do?com_seq=${CommunityVO.com_seq }">${CommunityVO.title }</a></td>
+			<td>${CommunityVO.id }</td>
+			<td>${CommunityVO.regdate }</td>
+			<td>${CommunityVO.hit }</td>
+			<td>${CommunityVO.likes }</td>
+		</tr>
+	</c:forEach>
+	</c:when>
+</c:choose>
+</tbody>	
 </table>
+	<c:if test="${countList != null}">
+		<c:choose>
+			<c:when test="${countList > 100 }">
+				<c:forEach var="page" begin="1" end="10" step="1">
+				
+					<c:if test="${section > 1 && page == 1}">
+						<a href="select.do?section=${section-1}&pageNum=${(section-1)*10 }">이전</a>
+					</c:if>
+					
+						<a href="select.do?section=${section}&pageNum=${page}">${(section-1)*10 +page } </a>
+					
+					<c:if test="${page >= 10 }">
+						<a href="select.do?section=${section+1}&pageNum=${section}">다음</a>
+					</c:if>
+					
+				</c:forEach>
+			</c:when>
+			
+			<c:when test="${countList == 100 }">
+				<c:forEach var="page" begin="1" end="10" step="1">
+					<a href="#">${page }</a>
+				</c:forEach>
+			</c:when>
+			
+				<c:when test="${countList > 100 }">
+				<c:forEach var="page" begin="1" end="${countList/10 +1 }" step="1">
+					<c:choose>
+						<c:when test="${page==pageNum }">
+							<a href="select.do?section=${section}&pageNum=${page}">${page }></a>
+						</c:when>
+						<c:otherwise>
+							<a href="select.do?section=${section}&pageNum=${page}">${page }></a>
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
+			</c:when>
+			
+		</c:choose>
+	</c:if>
+<hr>
+	${section }
+	${pageNum }
 <form action="insert.jsp">
 	<input type="submit" value="글쓰기">
 </form>
