@@ -14,12 +14,35 @@
 		HIT,
 		LIKES,
 		TYPE)
-		values(COMMMUNITY_SEQ.NEXTVAL, #{title}, #{id}, #{content}, SYSDATE, '0', '0', '1')
+		values(COMMMUNITY_SEQ.NEXTVAL, #{title}, #{id}, #{content}, SYSDATE,
+		'0', '0', '1')
 	</insert>
 
-	<select id="selectAll" resultType="CommunityVO">
-		SELECT * FROM COMMUNITY WHERE TYPE='1'
+	<select id="selectAll" resultType="CommunityVO" parameterType="Map">
+		SELECT * FROM ( SELECT ROWNUM
+		AS
+		RECNUM,COM_SEQ,
+		TITLE,
+		ID,
+		CONTENT,
+		REGDATE,
+		HIT,
+		LIKES,
+		TYPE FROM(SELECT COM_SEQ,
+		TITLE,
+		ID,
+		CONTENT,
+		REGDATE,
+		HIT,
+		LIKES,TYPE FROM COMMUNITY))WHERE type = '1'
+		and RECNUM BETWEEN (#{section}-1)* 100 + (#{pageNum}-1)* 10 + 1 
+		AND (#{section} - 1)*100+#{pageNum}*10
 	</select>
+	
+	<select id="selectAllCount" resultType="Integer">
+		select count(*)from community
+	</select>
+	
 
 
 	<select id="select" resultType="CommunityVO"
@@ -32,12 +55,14 @@
 		= #{com_seq}
 	</delete>
 
-	<update id="uptate" parameterType="CommunityVO" >
-		UPDATE COMMUNITY SET
+	<update id="uptate" parameterType="CommunityVO">
+		UPDATE COMMUNITY
+		SET
 		TITLE = #{title},
 		ID =#{id},
 		CONTENT = #{content},
-		REGDATE =  #{regdate},
+		REGDATE =
+		#{regdate},
 		HIT = #{hit},
 		LIKES= #{likes}
 		WHERE com_seq = #{com_seq}

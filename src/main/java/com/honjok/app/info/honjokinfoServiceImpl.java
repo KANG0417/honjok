@@ -1,6 +1,7 @@
 package com.honjok.app.info;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,11 +30,20 @@ public class honjokinfoServiceImpl implements honjokinfoService {
 
 
 	@Override
-	public List<CommunityVO> selectAll() {
+	public List<CommunityVO> selectAll(Map<String, Integer> pagingMap) {
 		
-		 List<CommunityVO> list =Mapper.selectAll();
+		 List<CommunityVO> list = Mapper.selectAll(pagingMap);
+		 
 		return list;
 	}
+	
+	@Override
+	public int selectAllCount() {
+		
+		return Mapper.selectAllCount();
+	}
+	
+
 
 
 
@@ -58,7 +68,9 @@ public class honjokinfoServiceImpl implements honjokinfoService {
 		Mapper.uptate(com);
 		
 	}
-	   
+
+
+
    
    
 }

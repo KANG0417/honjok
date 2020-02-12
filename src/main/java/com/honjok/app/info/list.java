@@ -1,14 +1,16 @@
 package com.honjok.app.info;
 
+import java.util.HashMap;
 import java.util.List;
-
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Required;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.honjok.app.vo.CommunityVO;
-
 
 @Controller
 @RequestMapping(value = "/honjokInfo") 
@@ -32,14 +34,42 @@ public class list {
    }
    
    @RequestMapping("/select.do")
-   public String select(Model model) {
+   public String select(Model model, 
+		   @RequestParam(required = false) String section , 
+		   @RequestParam(required = false) String pageNum) {
+	   
+	  System.out.println(section);
+	  String section_ = section;
+	  String pageNum_ = pageNum;
+	  
+  if(section == null) {
+		  section_  =((section == null)?  "1" : section);
+		  pageNum_  = ((pageNum == null)?  "1" : pageNum);
+	  }
+	  
+	  System.out.println(section_);
+	  System.out.println(pageNum_);
+	  
+	   Map<String,Integer> pagingMap = new HashMap<String, Integer>();
+	   
+	   pagingMap.put("section", Integer.parseInt(section_));
+	   pagingMap.put("pageNum", Integer.parseInt(pageNum_));
 	   
 	   System.out.println("글자나오나요/");
-	   List<CommunityVO> list = service.selectAll();
+	   List<CommunityVO> list = service.selectAll(pagingMap);
 	   
+	   int countList = service.selectAllCount();	
+	   
+	   
+	   System.out.println(countList);
+	   
+	   model.addAttribute("pageNum", pageNum_);
+	   model.addAttribute("section", section_);
 	   model.addAttribute("CommunityVOList",list);
-	   
+	   model.addAttribute("countList", countList);
+	  
 	   return "/honjokInfo/list.jsp";
+	   
    }
    
    @RequestMapping("/get.do")
