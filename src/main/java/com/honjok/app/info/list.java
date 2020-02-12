@@ -60,7 +60,6 @@ public class list {
 	   
 	   int countList = service.selectAllCount();	
 	   
-	   
 	   System.out.println(countList);
 	   
 	   model.addAttribute("pageNum", pageNum_);
