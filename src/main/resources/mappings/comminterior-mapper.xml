@@ -17,15 +17,15 @@
      <result column="COM_SEQ" property="com_seq"/>
      <result column="TYPE" property="type"/>
      <result column="FILE_IMAGE" property="file_image"/>
-  	<collection property="CommunityVO" resultMap="CommunityVO" />
+  	<collection property="comm" resultMap="CommunityVO" />
   </resultMap>
   
-  <insert id="CommInteriorVO" parameterType="CommInteriorVO">
+  <insert id="insertComm" parameterType="CommInteriorVO">
   		INSERT INTO COMMUNITY (COM_SEQ, TITLE, ID, CONTENT, REGDATE, HIT, LIKES, TYPE)
   		VALUES ((COMMMUNITY_SEQ.NEXTVAL) + 1,
-  			#{title}, #{id}, #{content}, SYSDATE, #{hit}, #{likes}, #{type})
+  			#{title}, #{id}, #{content}, SYSDATE, #{hit}, #{likes}, 2)
   		INSERT INTO COMM_INTERIOR (TYPE, COM_SEQ, FILE_IMAGE)
-  		VALUES (#{type}, (COMMMUNITY_SEQ.NEXTVAL) + 1,
+  		VALUES (2, (COMMMUNITY_SEQ.NEXTVAL) + 1,
   			#{file_image})
   </insert>
   
@@ -33,9 +33,10 @@
 	  		UPDATE
 	 </update> -->
   
-  <select id="CommInteriorVO" resultType="CommInteriorVO">
+  <select id="InteriorAll" resultMap="CommInteriorVO">
 		SELECT *
 		FROM COMMUNITY C, COMM_INTERIOR I
-		WHERE C.COM_SEQ = I.COM_SEQ;
+		WHERE C.COM_SEQ = I.COM_SEQ
   </select>
+ 
   </mapper>
