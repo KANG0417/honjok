@@ -56,22 +56,21 @@
 	<c:if test="${countList != null}">
 		<c:choose>
 			<c:when test="${countList > 100 }">
-			<if test="">
-				<c:forEach var="page" begin="1" end="${countList/10 +1 }" step="1">
+			<c:set var="endPage" value="${countList/100 }"></c:set>
+				<c:forEach var="page" begin="1" end="${endPage+1 }" step="1">
 				
 					<c:if test="${section > 1 && page == 1}">
 						<a href="select.do?section=${section-1}&pageNum=${(section-1)*10 }">이전</a>
 					</c:if>
-					<c:if test="${page <= 10 }">
+					
 						<a href="select.do?section=${section}&pageNum=${page}">${(section-1)*10 +page } </a>
-					</c:if>
+				
 					<c:if test="${page == 10 }">
 						<a href="select.do?section=${section+1}&pageNum=${section}">다음</a>
 					</c:if>
-					
 				</c:forEach>
-				</if>
 			</c:when>
+		
 			
 			<c:when test="${countList == 100 }">
 				<c:forEach var="page" begin="1" end="10" step="1">
