@@ -53,7 +53,7 @@
 		</tr>
 	</table>
 	</form>
-	<p><a href="getBoardList.do">글 목록 가기</a></p>
+	<p><a href="getInteriorList.do">글 목록 가기</a></p>
 </div>
 </body>
 </html>

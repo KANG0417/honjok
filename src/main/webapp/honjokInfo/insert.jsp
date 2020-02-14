@@ -9,6 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote-lite.min.js"></script>
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=69f7448811fd57d29b7398b4045f65df&libraries=services"></script>
+
 <title>혼족정보 게시판</title>
    <style>
     .map_wrap {position:relative;width:100%;height:350px;}
@@ -23,9 +24,13 @@
    <h1>혼족정보게시판</h1>
    
       <form action="insert.do" method="POST">
-         제목<input type="text" name="title"><br>
-         아이디<input type="text" name="id"><br>
-         내용<textarea id="summernote" name="content"></textarea><br>            
+	         작성자<input type="text" name="id"><br>
+	         닉네임<input type="text" name="nickname"><br>
+	         상호명<input type="text" name="title"><br>
+	         전화번호<input type="text" name="title"><br>
+	         대표메뉴<input type="text" name="title"><br>
+	         소개 제목<input type="text" name="title"><br>
+     <textarea id="summernote" name="content"> 소개글</textarea><br>            
          <input type="submit">
       </form>
       

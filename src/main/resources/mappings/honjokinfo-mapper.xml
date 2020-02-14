@@ -20,8 +20,8 @@
 
 	<select id="selectAll" resultType="CommunityVO" parameterType="Map">
 		SELECT * FROM ( SELECT ROWNUM
-		AS
-		RECNUM,COM_SEQ,
+		AS RECNUM,
+        COM_SEQ,
 		TITLE,
 		ID,
 		CONTENT,
@@ -34,9 +34,9 @@
 		CONTENT,
 		REGDATE,
 		HIT,
-		LIKES,TYPE FROM COMMUNITY))WHERE type = '1'
-		and RECNUM BETWEEN (#{section}-1)* 100 + (#{pageNum}-1)* 10 + 1 
-		AND (#{section} - 1)*100+#{pageNum}*10
+		LIKES,TYPE FROM COMMUNITY WHERE type = '1'))
+        where RECNUM BETWEEN (#{section}-1)* 60 + (#{pageNum}-1)* 6 + 1 
+		AND (#{section} - 1)*60 + #{pageNum}*6
 	</select>
 	
 	<select id="selectAllCount" resultType="Integer">

@@ -35,83 +35,106 @@
 			<th class="hit">조회수</th>
 		</tr>
 	</thead>
-	
-	<tbody>
-		<c:choose>
-		<c:when test="${empty interiorList }">
-			<tr>
-				<td colspan="5">
-					<h2>현재 등록된 게시글이 없습니다.</h2>
-				</td>
-			</tr>
-		</c:when>
-		<c:otherwise>
-	<c:forEach var="interiorvo" items="${interiorList }">
-		<tr>
-			<td class="center">${interiorvo.com_seq }</td>
-			<td>
-			 	<a href="getInterior.do?seq=${interiorvo.com_seq }">
-					${interiorvo.comm.title }
-				</a>
-			</td>
-			<td>${interiorvo.comm.id }</td>
-			<td>${interiorvo.comm.regdate }</td>
-			<td class="center">${interiovo.comm.hit }</td>
-			<td><input type="hidden" value="${type }"></td>
-		</tr>
-	</c:forEach>
-		</c:otherwise>
-		</c:choose>
-	</tbody>
-	
-	<tfoot>
-		<tr>
-			<td colspan="5">
-				<ol class="paging">
-				<%--[이전으로]에 대한 사용여부 처리 --%>
-				<c:choose>
-					<%--사용불가(disable) : 첫번째 블록인 경우 --%>
-					<c:when test="${paging.beginPage == 1}">
-						<li class="disable">이전으로</li>
-					</c:when>
-					<c:otherwise>
-						<li>
-							<a href="getInterior.do?cPage=${paging.beginPage - 1}&type=getInterior&selValue=${selValue }">이전으로</a>
-						</li>
-					</c:otherwise>
-				</c:choose>
-				
-				<%-- 블록내에 표시할 페이지 표시(시작페이지~끝페이지) --%>
-				<c:forEach var="k" begin="${paging.beginPage }" end="${paging.endPage }">
-				<c:choose>
-					<c:when test="${k == paging.nowPage}">
-						<li class="now">${k }</li>
-					</c:when>
-					<c:otherwise>
-						<li>
-							<a href="getInterior.do?cPage=${k}&type=getInterior&selValue=${selValue }">${k}</a>
-						</li> 
-					</c:otherwise>
-				</c:choose>
-				</c:forEach>
-				
-				<%--[다음으로]에 대한 사용여부 처리 --%>
-				<c:choose>
-					<%--사용불가(disable) : 
-						endPage가 전체페이지 수보다  크거나 같으면 --%>
-					<c:when test="${paging.endPage >= paging.totalPage }">
-						<li class="disable">다음으로</li>
-					</c:when>
-					<c:otherwise>
-						<li><a href="getInterior.do?cPage=${paging.endPage + 1}&type=getInterior&selValue=${selValue }">다음으로</a></li>
-					</c:otherwise>
-				</c:choose>
-				</ol>	
-			</td>
-			
-		</tr>
-	</table>
-	<a href="insertInteriorboard.jsp"><input type="button" value="글쓰기"></a>
-</div>
+<tbody>
+<c:choose>
+  <c:when test="${interiorList == null }" >
+    <tr>
+      <td colspan="6">
+         <p align="center">
+            <b><span style="font-size:9pt;">등록된 글이 없습니다.</span></b>
+        </p>
+      </td>  
+    </tr>
+  </c:when>
+<%--    <c:when test="${interiorList != null }">
+   <c:forEach var="interiorvo" items="${interiorList }" varStatus="articleNum">
+      <tr>
+         <td>${interiorvo.com_seq }</td>
+         <td><a href="get.do?com_seq=${interiorvo.com_seq }">${interiorvo.comm.title }</a></td>
+         <td>${interiorvo.comm.id }</td>
+         <td>${interiorvo.comm.regdate }</td>
+         <td>${interiorvo.comm.hit }</td>
+         <td>${interiorvo.comm.likes }</td>
+      </tr>
+   </c:forEach>
+   </c:when>
+</c:choose>
+</tbody>   
+</table>
+   <c:if test="${interiorList != null}">
+      <c:choose>
+         <c:when test="${interiorList > 100 }">
+         <c:set var="endPage" value="${countList/100 + 1 }" scope="page"></c:set>
+         <p>엔드페이지계산${endPage-(endPage%1) }</p>
+         
+         <p> ${section }</p>
+         <p>${(interiorList % 100 / 10) + (1-(countList % 100 / 10)%1)%1 }</p>
+         
+         <c:if test="${endPage-(endPage%1) != section}">
+            <c:forEach var="page" begin="1" end="10" step="1">
+            
+               <c:if test="${section > 1 && page == 1}">
+                  <a href="select.do?section=${section-1}&pageNum=${(section-1)*10 }">이전</a>
+               </c:if>
+               
+                  <a href="select.do?section=${section}&pageNum=${page}">${(section-1)*10 +page } </a>
+            
+               <c:if test="${page == 10 }">
+                  <c:if test="${section ==1 }">
+                     <a href="select.do?section=${section+1}&pageNum=${section }">다음</a>
+                  </c:if>
+                  <c:if test="${section != 1 }">
+                     <a href="select.do?section=${section+1}&pageNum=${section - 1}">다음</a>
+                  </c:if>
+               </c:if>
+            </c:forEach>
+            </c:if>
+            
+         <c:if test="${endPage-(endPage%1) == section}">
+            <c:forEach var="page" begin="1" end="${(countList % 100 / 10) + (1-(countList % 100 / 10)%1)%1}" step="1">
+            
+               <c:if test="${section > 1 && page == 1}">
+                  <a href="select.do?section=${section-1}&pageNum=${(section-1)*10 }">이전</a>
+               </c:if>
+               
+                  <a href="select.do?section=${section}&pageNum=${page}">${(section-1)*10 +page } </a>
+            
+               <c:if test="${page == 10 }">
+                  <a href="select.do?section=${section+1}&pageNum=${section - 1}">다음</a>
+               </c:if>
+            </c:forEach>
+            </c:if>
+         
+         </c:when>
+      
+         
+         <c:when test="${countList == 100 }">
+            <c:forEach var="page" begin="1" end="10" step="1">
+               <a href="#">${page }</a>
+            </c:forEach>
+         </c:when>
+         
+            <c:when test="${countList < 100 }">
+            <c:forEach var="page" begin="1" end="${countList/10 + 1 }" step="1">
+               <c:choose>
+                  <c:when test="${page == pageNum }">
+                     <a href="select.do?section=${section}&pageNum=${page}">${page }</a>
+                  </c:when>
+                  <c:otherwise>
+                     <a href="select.do?section=${section}&pageNum=${page}">${page }</a>
+                  </c:otherwise>
+               </c:choose>
+            </c:forEach>
+         </c:when>
+         
+      </c:choose>
+   </c:if>
+<hr>
+<c:remove var="endPage"/> 
+   ${section }
+   ${pageNum } --%>
+<form action="insertInteriorb.do">
+   <input type="submit" value="글쓰기">
+</form>
 </body>
 </html>

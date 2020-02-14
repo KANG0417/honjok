@@ -5,7 +5,7 @@ import java.util.List;
 import com.honjok.app.vo.CommInteriorVO;
 
 public interface InteriorService {
-	static void insertComm() {
+	static void insertComm(CommInteriorVO intervo) {
 		
 	}
 	
