@@ -86,7 +86,7 @@
             <c:forEach var="page" begin="1" end="${(countList % 100 / 10) + (1-(countList % 100 / 10)%1)%1}" step="1">
             
                <c:if test="${section > 1 && page == 1}">
-                  <a href="select.do?section=${section-1}&pageNum=${(section-1)*10-10 }">이전</a>
+                  <a href="select.do?section=${section-1}&pageNum=${(section-1)*10 }">이전</a>
                </c:if>
                
                   <a href="select.do?section=${section}&pageNum=${page}">${(section-1)*10 +page } </a>
