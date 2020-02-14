@@ -9,6 +9,8 @@
 
 	<context:component-scan base-package="com.honjok.app" />
 	
+	<mvc:resources mapping="/resources/**" location="/resources/" />
+	
 	<!-- 파일업로드 관련 설정 -->
 	<!-- multipartResolver 명칭은 대소문자 구분해서 동일하게 작성
 		 Resolver 명칭이 있는 객체명은 대체로 정해져 있음  -->
@@ -16,6 +18,7 @@
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="maxUploadSize" value="10000000"/>
 	</bean>
+	
 	
 	<!-- 예외처리를 위한 설정 
 	
