@@ -3,7 +3,18 @@ package com.honjok.app.vo;
 import java.sql.Date;
 
 public class CommunityVO {
-	private String title, id, content, type,com_seq, hit, likes,regdate;
+	private String title, id, content, type,com_seq, hit, likes,regdate, nickname;
+
+	
+	
+	
+	public String getNickname() {
+		return nickname;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
 
 	public String getTitle() {
 		return title;
