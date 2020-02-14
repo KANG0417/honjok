@@ -13,13 +13,15 @@
     <result column="LIKES" property="likes"/>
     <result column="TYPE" property="type"/>
   </resultMap>
-   <insert id="insert" parameterType="CookVO">
-     insert INTO comm_cook(type, COM_SEQ, REGDATE, TYPE)
-     values('3',(COMMMUNITY_SEQ.NEXTVAL) + 1,
-      #{content}, SYSDATE, '0', '0')
+   <insert id="insertCook" parameterType="CookVO">
+    insert INTO comm_cook(type, COM_SEQ, IMAGE, P_NUM, COOKTIME)
+    VALUES('3',(COMMMUNITY_SEQ.NEXTVAL) + 1, #{image} , #{p_num}, #{cooktime)
+    INSERT INTO COMMUNITY (COM_SEQ, TITLE, ID, CONTENT, REGDATE, HIT, LIKES, TYPE)
+	VALUES ((COMMMUNITY_SEQ.NEXTVAL) + 1,
+	#{title}, #{id}, #{content}, SYSDATE, #{hit}, #{likes}, 3)
   	</insert>
 	<!-- 작성중.. 헷갈ㄹ려 -->
-	<select id="CommInteriorVO" resultType="CommInteriorVO">
+	<select id="selectAll" resultType="CookVO">
 		SELECT *
 		FROM COMMUNITY C, COMM_COOK CO
 		WHERE C.COM_SEQ = CO.COM_SEQ;
