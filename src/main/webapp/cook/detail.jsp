@@ -8,5 +8,9 @@
 </head>
 <body>
 
+	${vo.title}
+	${vo.id}
+	${vo.com_seq}
+	${vo.regdate}
 </body>
 </html>
