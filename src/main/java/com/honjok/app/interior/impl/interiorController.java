@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.honjok.app.vo.CommInteriorVO;
+import com.honjok.app.vo.CommunityVO;
 
 @Controller
 public class interiorController {
@@ -42,6 +43,8 @@ public class interiorController {
 			throws IllegalStateException, IOException {
 		System.out.println(">>> 글 등록 처리 - insertBoard()");
 		
+		System.out.println("간장:"+intervo);
+		
 		/* *** 파일 업로드 처리 ********
 		 * MultipartFile 인터페이스 주요 메소드 
 		 * String getOriginalFilename() : 업로드한 파일명 찾기
@@ -56,7 +59,7 @@ public class interiorController {
 			uploadFile.transferTo(new File("c:/MyStudy/temp/" + fileName));
 		}*/
 		
-		InteriorService.insertComm(intervo);
-		return "InBoardList.jsp";
+	//	InteriorService.insertComm(intervo);
+		return "getInteriorList.do";
 	}
 }

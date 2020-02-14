@@ -31,7 +31,6 @@ public class CommInteriorDAOMybatis {
 	//게시글 하나 조회
 	public CommInteriorVO getInteriorSelect(String com_seq) {
 		System.out.println("===> MyBatis로 getInteriorSelect() 실행");
-		int seq = Integer.parseInt(com_seq);
-		return mybatis.selectOne("commInteriorDAO.getInteriorOne", seq);
+		return mybatis.selectOne("commInteriorDAO.getInteriorOne", com_seq);
 	}
 }

@@ -21,7 +21,7 @@
   	<collection property="comm" resultMap="CommunityVO" />
   </resultMap>
   
-  <insert id="insertComm" parameterType="CommInteriorVO">
+  <insert id="insertComm" parameterMap="CommInteriorVO">
   		INSERT INTO COMMUNITY (COM_SEQ, TITLE, ID, CONTENT, REGDATE, HIT, LIKES, TYPE)
   		VALUES ((COMMMUNITY_SEQ.NEXTVAL) + 1,
   			#{title}, #{id}, #{content}, SYSDATE, #{hit}, #{likes}, 2)
