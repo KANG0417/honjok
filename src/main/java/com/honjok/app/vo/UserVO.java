@@ -10,13 +10,22 @@ public class UserVO {
 		private String adrCode;
 		private String adr1;
 		private String adr2;
-		private int phone;
+		private String phone;
 		private Date regdate;
 		private String gender;
 		private int birth;
 		private int type;
+		private int age;
 		private String nickName;
 		
+		
+		
+		public int getAge() {
+			return age;
+		}
+		public void setAge(int age) {
+			this.age = age;
+		}
 		public String getName() {
 			return name;
 		}
@@ -59,10 +68,10 @@ public class UserVO {
 		public void setAdr2(String adr2) {
 			this.adr2 = adr2;
 		}
-		public int getPhone() {
+		public String getPhone() {
 			return phone;
 		}
-		public void setPhone(int phone) {
+		public void setPhone(String phone) {
 			this.phone = phone;
 		}
 		public Date getRegdate() {

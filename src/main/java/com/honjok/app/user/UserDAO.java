@@ -30,5 +30,10 @@ public class UserDAO {
 		System.out.println("set : " + set3);
 		return set3;	
 	}
+	public int phoneCheck(String phone) {
+		int set4 = mybatis.selectOne("UserDAO.phoneCheck", phone);
+		System.out.println("set : " + set4);
+		return set4;	
+	}
 	
 }

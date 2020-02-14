@@ -37,6 +37,12 @@ public class UserServiceImpl implements UserService {
 		return result3;
 	}
 
+	@Override
+	public int phoneCheck(String phone) {
+		int result4 = UserDAO.phoneCheck(phone); 
+		return result4;
+	}
+
 
 
 
