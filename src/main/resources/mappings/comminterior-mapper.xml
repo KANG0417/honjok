@@ -26,7 +26,7 @@
   		VALUES ((COMMMUNITY_SEQ.NEXTVAL) + 1,
   			#{title}, #{id}, #{content}, SYSDATE, #{hit}, #{likes}, 2)
   		INSERT INTO COMM_INTERIOR (TYPE, COM_SEQ, FILE_IMAGE)
-  		VALUES (2, (COMMMUNITY_SEQ.NEXTVAL) + 1,
+  		VALUES (2, (select NVL(MAX(com_seq),0)from community),
   			#{file_image})
   </insert>
   

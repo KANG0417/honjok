@@ -38,7 +38,7 @@ public class interiorController {
 	}
 	
 	@RequestMapping("/insertInteriorb.do")
-	public String insertComm() 
+	public String insertComm(CommInteriorVO intervo) 
 			throws IllegalStateException, IOException {
 		System.out.println(">>> 글 등록 처리 - insertBoard()");
 		
@@ -56,7 +56,7 @@ public class interiorController {
 			uploadFile.transferTo(new File("c:/MyStudy/temp/" + fileName));
 		}*/
 		
-		InteriorService.insertComm();
-		return "InBoardInsert.jsp";
+		InteriorService.insertComm(intervo);
+		return "InBoardList.jsp.jsp";
 	}
 }
