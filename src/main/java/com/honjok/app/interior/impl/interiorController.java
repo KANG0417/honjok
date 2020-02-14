@@ -57,6 +57,6 @@ public class interiorController {
 		}*/
 		
 		InteriorService.insertComm(intervo);
-		return "InBoardList.jsp.jsp";
+		return "InBoardList.jsp";
 	}
 }

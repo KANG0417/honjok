@@ -37,7 +37,7 @@
 	</thead>
 <tbody>
 <c:choose>
-  <c:when test="${CommunityVOList == null }" >
+  <c:when test="${interiorList == null }" >
     <tr>
       <td colspan="6">
          <p align="center">
@@ -46,29 +46,29 @@
       </td>  
     </tr>
   </c:when>
-   <c:when test="${CommunityVOList != null }">
-   <c:forEach var="CommunityVO" items="${CommunityVOList }" varStatus="articleNum">
+<%--    <c:when test="${interiorList != null }">
+   <c:forEach var="interiorvo" items="${interiorList }" varStatus="articleNum">
       <tr>
-         <td>${CommunityVO.com_seq }</td>
-         <td><a href="get.do?com_seq=${CommunityVO.com_seq }">${CommunityVO.title }</a></td>
-         <td>${CommunityVO.id }</td>
-         <td>${CommunityVO.regdate }</td>
-         <td>${CommunityVO.hit }</td>
-         <td>${CommunityVO.likes }</td>
+         <td>${interiorvo.com_seq }</td>
+         <td><a href="get.do?com_seq=${interiorvo.com_seq }">${interiorvo.comm.title }</a></td>
+         <td>${interiorvo.comm.id }</td>
+         <td>${interiorvo.comm.regdate }</td>
+         <td>${interiorvo.comm.hit }</td>
+         <td>${interiorvo.comm.likes }</td>
       </tr>
    </c:forEach>
    </c:when>
 </c:choose>
 </tbody>   
 </table>
-   <c:if test="${countList != null}">
+   <c:if test="${interiorList != null}">
       <c:choose>
-         <c:when test="${countList > 100 }">
+         <c:when test="${interiorList > 100 }">
          <c:set var="endPage" value="${countList/100 + 1 }" scope="page"></c:set>
          <p>엔드페이지계산${endPage-(endPage%1) }</p>
          
          <p> ${section }</p>
-         <p>${(countList % 100 / 10) + (1-(countList % 100 / 10)%1)%1 }</p>
+         <p>${(interiorList % 100 / 10) + (1-(countList % 100 / 10)%1)%1 }</p>
          
          <c:if test="${endPage-(endPage%1) != section}">
             <c:forEach var="page" begin="1" end="10" step="1">
@@ -132,7 +132,7 @@
 <hr>
 <c:remove var="endPage"/> 
    ${section }
-   ${pageNum }
+   ${pageNum } --%>
 <form action="insertInteriorb.do">
    <input type="submit" value="글쓰기">
 </form>
