@@ -19,7 +19,9 @@ public class UserController {
 
 		
 	@RequestMapping(value="/signUp.do", method=RequestMethod.POST)
-		public String signUp(UserVO vo) {
+	public String signUp(UserVO vo, @RequestParam("email1") String email1, @RequestParam("email2") String email2) {
+		String email = email1 +"@"+ email2;
+		vo.setEmail(email);
 		System.out.println(vo);
 		userService.insertUser(vo);
 		return "index.jsp";
@@ -29,6 +31,20 @@ public class UserController {
 	public int idCheck(@RequestParam("id") String id) {
 		System.out.println("Id : "+ id);
 		return userService.userIdCheck(id);
+	}
+	
+	@RequestMapping(value = "/userEmailCheck.do", method = RequestMethod.GET)
+	@ResponseBody
+	public int emailCheck(@RequestParam("email") String email) {
+		System.out.println("email");
+		return userService.emailCheck(email);
+	}
+	
+	@RequestMapping(value = "/userNickCheck.do", method = RequestMethod.GET)
+	@ResponseBody
+	public int nickCheck(@RequestParam("nick") String nick) {
+		System.out.println("email");
+		return userService.emailCheck(nick);
 	}
 	
 }

@@ -17,4 +17,10 @@
 	<select id="userIdCheck" parameterType="String" resultType="int">
 		SELECT COUNT(*) FROM USERS WHERE ID = #{id}
 	</select>
+	<select id="emailCheck" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM USERS WHERE EMAIL = #{email}
+	</select>
+	<select id="nickCheck" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM USERS WHERE NICK_NAME = #{nickName}
+	</select>
 </mapper>

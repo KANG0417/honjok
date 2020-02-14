@@ -25,6 +25,19 @@ public class UserServiceImpl implements UserService {
 		return result;
 	}
 
+	@Override
+	public int emailCheck(String email) {
+		int result2 = UserDAO.emailCheck(email); 
+		return result2;
+	}
+
+	@Override
+	public int nickCheck(String nick) {
+		int result3 = UserDAO.nickCheck(nick); 
+		return result3;
+	}
+
+
 
 
 
