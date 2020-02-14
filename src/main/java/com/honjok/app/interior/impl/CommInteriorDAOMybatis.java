@@ -16,7 +16,7 @@ public class CommInteriorDAOMybatis {
 	private SqlSessionTemplate mybatis;
 	
 	//글 입력(기본)
-	public void insertComm() {
+	public void insertComm(CommInteriorVO intervo) {
 		System.out.println("===> MyBatis로 insertInterior() 실행");
 		mybatis.insert("commInteriorDAO.insertComm");
 	}
