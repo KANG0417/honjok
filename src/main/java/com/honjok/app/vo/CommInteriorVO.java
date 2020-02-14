@@ -3,7 +3,7 @@ package com.honjok.app.vo;
 public class CommInteriorVO {
 	private String type, file_image;
 	private int com_seq, p_num;
-	private CommunityVO com;
+	private CommunityVO comm;
 	
 	public CommInteriorVO() {
 	}
@@ -46,6 +46,14 @@ public class CommInteriorVO {
 
 	public void setP_num(int p_num) {
 		this.p_num = p_num;
+	}
+
+	public CommunityVO getComm() {
+		return comm;
+	}
+
+	public void setComm(CommunityVO comm) {
+		this.comm = comm;
 	}
 
 	@Override
