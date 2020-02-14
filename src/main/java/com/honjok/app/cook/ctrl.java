@@ -14,50 +14,19 @@
 //import com.honjok.app.vo.CookVO;
 //
 //@Controller
-//@RequestMapping(value = "/cook") 
 //public class ctrl {
-//   
+//
 //   @Autowired
 //   CookService service; 
-//
-//   @RequestMapping("/insert.do")
-//   public String lists(CookVO cvo) {
-//      
-//      System.out.println(cvo);
-//      service.insertCook(cvo);
-//      
-//      return "/cook/select.do";
-//   }
-//   public String select(Model model, 
-//		   @RequestParam(required = false) String section , 
-//		   @RequestParam(required = false) String pageNum) {
-//	   
-//	  System.out.println(section);
-//	  String section_ = section;
-//	  String pageNum_ = pageNum;
-//	  
-//  if(section == null) {
-//		  section_  =((section == null)?  "1" : section);
-//		  pageNum_  = ((pageNum == null)?  "1" : pageNum);
-//	  }
-//	   Map<String,Integer> pagingMap = new HashMap<String, Integer>();
-//	   
-//	   pagingMap.put("section", Integer.parseInt(section_));
-//	   pagingMap.put("pageNum", Integer.parseInt(pageNum_));
-//	   
-//	   List<CookVO> list = service.selectAll(pagingMap);
-//	   
-//	   int countList = service.selectAllCount();	
-//	   
-//	   model.addAttribute("pageNum", pageNum_);
-//	   model.addAttribute("section", section_);
-//	   model.addAttribute("CommunityVOList",list);
-//	   model.addAttribute("countList", countList);
-//	  
-//	   return "/cook/list.jsp";
-//   }
 //   
-//   @RequestMapping("/get.do")
+//   @RequestMapping("/getCookList.do")
+//   public List<CookVO> getCookList(){
+//	   
+//	   return mybatis.selectList("");
+//   }
+//
+//   
+//   @RequestMapping("/getDetatil.do")
 //   public String select(String com_seq ,Model model) {
 //	   
 //	   CookVO cvo = service.select(com_seq);
