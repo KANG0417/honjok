@@ -7,4 +7,5 @@ public interface UserService {
  int userIdCheck(String Id);
  int emailCheck(String email);
  int nickCheck(String nick);
+ int phoneCheck(String phone);
 }

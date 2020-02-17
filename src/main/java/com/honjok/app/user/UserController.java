@@ -43,8 +43,15 @@ public class UserController {
 	@RequestMapping(value = "/userNickCheck.do", method = RequestMethod.GET)
 	@ResponseBody
 	public int nickCheck(@RequestParam("nick") String nick) {
-		System.out.println("email");
+		System.out.println("nick");
 		return userService.emailCheck(nick);
+	}
+	
+	@RequestMapping(value = "/userPhoneCheck.do", method = RequestMethod.GET)
+	@ResponseBody
+	public int phoneCheck(@RequestParam("phone") String phone) {
+		System.out.println("nick");
+		return userService.emailCheck(phone);
 	}
 	
 }

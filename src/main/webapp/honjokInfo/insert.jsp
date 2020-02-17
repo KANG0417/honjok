@@ -1,42 +1,99 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote-lite.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote-lite.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+	integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+	crossorigin="anonymous"></script>
+<link
+	href="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote-lite.min.css"
+	rel="stylesheet">
+<script
+	src="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote-lite.min.js"></script>
 
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=69f7448811fd57d29b7398b4045f65df&libraries=services"></script>
+<script type="text/javascript"
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=69f7448811fd57d29b7398b4045f65df&libraries=services"></script>
 
 <title>혼족정보 게시판</title>
-   <style>
-    .map_wrap {position:relative;width:100%;height:350px;}
-    .title {font-weight:bold;display:block;}
-    .hAddr {position:absolute;left:10px;top:10px;border-radius: 2px;background:#fff;background:rgba(255,255,255,0.8);z-index:1;padding:5px;}
-    #centerAddr {display:block;margin-top:2px;font-weight: normal;}
-    .bAddr {padding:5px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
+<style>
+.map_wrap {
+	position: relative;
+	width: 100%;
+	height: 350px;
+}
+
+.title {
+	font-weight: bold;
+	display: block;
+}
+
+.hAddr {
+	position: absolute;
+	left: 10px;
+	top: 10px;
+	border-radius: 2px;
+	background: #fff;
+	background: rgba(255, 255, 255, 0.8);
+	z-index: 1;
+	padding: 5px;
+}
+
+#centerAddr {
+	display: block;
+	margin-top: 2px;
+	font-weight: normal;
+}
+
+.bAddr {
+	padding: 5px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
 </style>
 </head>
 <body>
 
-   <h1>혼족정보게시판</h1>
-   
-      <form action="insert.do" method="POST">
-	         작성자<input type="text" name="id"><br>
-	         닉네임<input type="text" name="nickname"><br>
-	         상호명<input type="text" name="title"><br>
-	         전화번호<input type="text" name="title"><br>
-	         대표메뉴<input type="text" name="title"><br>
-	         소개 제목<input type="text" name="title"><br>
-     <textarea id="summernote" name="content"> 소개글</textarea><br>            
-         <input type="submit">
-      </form>
-      
-   <div id="map" style="width:100%;height:350px;"></div>   
-      
-  <script>
+	<h1>혼족정보게시판</h1>
+
+	<form action="insert.do" method="POST">
+		작성자<input type="text" name="id"><br> 닉네임<input
+			type="text" name="nickname"><br> 음식점 이름<input
+			type="text" name="title"><br> 주소: <input class="adr"
+			type="text" name="adr" value="지도를 클릭해주세요">
+
+		<div id="map" style="width: 50%; height: 250px;"></div>
+			<img style="display: none;" id="preview" src="#"
+			width="200" height="200"> 
+		<br> 대표 화면<input  type="file" name="file_image"
+			onchange="readURL(this);"> <br> 소개 제목<input type="text"
+			name="title"><br>
+
+		<textarea id="summernote" name="content"> 소개글
+     	     	
+    		 </textarea>
+		<br> <input type="submit">
+	</form>
+
+
+
+	<script type="text/javascript">
+    		function readURL(input){
+    			$('#preview').show();
+    			if(input.files && input.files[0]){
+    			var reader = new FileReader();
+    			reader.onload = function(e) {
+    				 $('#preview').attr('src',e.target.result);
+    		}
+    			reader.readAsDataURL(input.files[0]);
+    		}	
+    		}
+    </script>
+
+	<!-- 썸머노트  -->
+	<script>
       $('#summernote').summernote({
         placeholder: 'Hello stand alone ui',
         tabsize: 2,
@@ -52,8 +109,10 @@
         ]
       });
     </script>
-    
-    <script>
+
+
+	<!-- 다음지도  -->
+	<script>
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = {
         center: new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
@@ -79,6 +138,7 @@ kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
             var detailAddr = !!result[0].road_address ? '<div>도로명주소 : ' + result[0].road_address.address_name + '</div>' : '';
             detailAddr += '<div>지번 주소 : ' + result[0].address.address_name + '</div>';
             
+            
             var content = '<div class="bAddr">' +
                             '<span class="title">법정동 주소정보</span>' + 
                             detailAddr + 
@@ -91,6 +151,10 @@ kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
             // 인포윈도우에 클릭한 위치에 대한 법정동 상세 주소정보를 표시합니다
             infowindow.setContent(content);
             infowindow.open(map, marker);
+            
+            /* 주소값 데이터 넣기  */
+            document.querySelector('.adr').value = result[0].address.address_name;
+            
         }   
     });
 });
@@ -126,6 +190,7 @@ function displayCenterInfo(result, status) {
 }
 
 </script>
+	<!-- 다음지도 끝  -->
 
 </body>
 </html>

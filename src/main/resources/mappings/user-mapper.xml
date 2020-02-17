@@ -7,20 +7,28 @@
 		INSERT INTO USERS
 		(SEQ, NAME, ID, PASSWORD, EMAIL, 
 		 ADR_CODE, ADR1, ADR2, PHONE, REGDATE, 
-		 GENDER, BIRTH, NICK_NAME
+		 GENDER, BIRTH, NICK_NAME, AGE
 		)
-		VALUES ('3', #{name}, #{id}, #{password}, #{email},
+		VALUES ('4', #{name}, #{id}, #{password}, #{email},
 				#{adrCode}, #{adr1}, #{adr2}, #{phone}, SYSDATE,
-				#{gender}, #{birth}, #{nickName}
+				#{gender}, #{birth}, #{nickName},#{age}
 		)
 	</insert>
+	
 	<select id="userIdCheck" parameterType="String" resultType="int">
 		SELECT COUNT(*) FROM USERS WHERE ID = #{id}
 	</select>
+	
 	<select id="emailCheck" parameterType="String" resultType="int">
 		SELECT COUNT(*) FROM USERS WHERE EMAIL = #{email}
 	</select>
+	
 	<select id="nickCheck" parameterType="String" resultType="int">
 		SELECT COUNT(*) FROM USERS WHERE NICK_NAME = #{nickName}
 	</select>
+	
+	<select id="phoneCheck" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM USERS WHERE PHONE = #{phone}
+	</select>
+	
 </mapper>
