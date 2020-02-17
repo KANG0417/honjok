@@ -9,7 +9,7 @@
 		 ADR_CODE, ADR1, ADR2, PHONE, REGDATE, 
 		 GENDER, BIRTH, NICK_NAME, AGE
 		)
-		VALUES ('4', #{name}, #{id}, #{password}, #{email},
+		VALUES  ((SELECT NVL(MAX(SEQ),0)+1 FROM USERS), #{name}, #{id}, #{password}, #{email},
 				#{adrCode}, #{adr1}, #{adr2}, #{phone}, SYSDATE,
 				#{gender}, #{birth}, #{nickName},#{age}
 		)
@@ -30,5 +30,15 @@
 	<select id="phoneCheck" parameterType="String" resultType="int">
 		SELECT COUNT(*) FROM USERS WHERE PHONE = #{phone}
 	</select>
+	
+	
+	<update id="getKey" parameterType="Map">
+		UPDATE USERS SET USERKEY = #{userKey} WHERE ID = #{userId}
+	</update>
+	
+	<update id="alterUserKey" parameterType="Map">
+		UPDATE USERS SET USERKEY = 'Y'  WHERE ID = #{userId} AND USERKEY = #{userKey}
+	</update>
+	
 	
 </mapper>

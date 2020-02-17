@@ -1,5 +1,7 @@
 package com.honjok.app.user;
 
+import java.util.HashMap;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -15,6 +17,8 @@ public class UserDAO {
 	public void insertUser(UserVO vo) {
 		mybatis.insert("UserDAO.insertUser", vo);
 	}
+	
+	
 	public int userIdCheck(String Id) {
 		int set = mybatis.selectOne("UserDAO.userIdCheck", Id);
 		System.out.println("set : " + set);
@@ -34,6 +38,21 @@ public class UserDAO {
 		int set4 = mybatis.selectOne("UserDAO.phoneCheck", phone);
 		System.out.println("set : " + set4);
 		return set4;	
+	}
+	
+	public int getkey(String userId, String userKey) {
+		HashMap<String, String> Map = new HashMap<>();
+		Map.put("userId", userId);
+		Map.put("userKey", userKey);
+		System.out.println(Map);
+		return mybatis.update("UserDAO.getKey", Map);
+	}
+	
+	public int alterUserKey(String userId, String userKey) {
+		HashMap<String, String> Map = new HashMap<>();
+		Map.put("userId", userId);
+		Map.put("userKey", userKey);
+		return mybatis.update("UserDAO.alterUserKey", Map);
 	}
 	
 }
