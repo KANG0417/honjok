@@ -7,17 +7,18 @@ import com.honjok.app.vo.CookVO;
 
 public interface CookService {
 	
-	  public void insertCook(CookVO cvo);
+  public void insertCook(CookVO cvo);
 
-	  public List<CookVO> selectAll(Map<String, Integer> pagingMap);
+  public List<CookVO> selectAll();
+  CookVO getBoardList(CookVO cvo);
+	  
+  public CookVO select(String com_seq);
 
-	   public CookVO select(String com_seq);
+  public void delete(String com_seq);
 
-	   public void delete(String com_seq);
-
-	   public void update(CookVO com);
-	   
-	   public int selectAllCount();
+  public void update(CookVO com);
+   
+  public int selectAllCount();
 	    
 	   
 }
