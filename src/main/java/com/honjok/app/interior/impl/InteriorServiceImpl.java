@@ -20,7 +20,7 @@ public class InteriorServiceImpl implements InteriorService {
 	}
 	
 	@Override
-	public List<CommInteriorVO> getBoardList(CommInteriorVO cvo) {
+	public CommInteriorVO getBoardList(CommInteriorVO cvo) {
 		return commDAO.getInteriorOne(cvo);
 	}
 }

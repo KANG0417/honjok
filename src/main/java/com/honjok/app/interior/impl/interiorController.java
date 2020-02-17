@@ -3,6 +3,11 @@ package com.honjok.app.interior.impl;
 import java.io.IOException;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
 import com.honjok.app.vo.CommInteriorVO;
 import com.honjok.app.vo.CommunityVO;
 
@@ -24,10 +29,10 @@ public class interiorController {
 	@RequestMapping("/getInterior.do")
 	public String getinteriorSelect(Model model, CommInteriorVO cvo) {
 		System.out.println("===>인테리어게시판 하나 조회");
-		System.out.println(cvo);
-		List<CommInteriorVO> CommInterior = interiorService.getBoardList(cvo);
+		CommInteriorVO CommInterior = interiorService.getBoardList(cvo);
+		System.out.println(CommInterior);
 		model.addAttribute("interiorSelect", CommInterior);
-		return "InBoardDetail.jsp";
+		return "interior/InBoardDetail.jsp";
 	}
 	
 	@RequestMapping("/insertInteriorb.do")

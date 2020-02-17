@@ -18,13 +18,12 @@ public class CommInteriorDAOMybatis {
 	public List<CommInteriorVO> BoardAllList() {
 		List<CommInteriorVO> cvo = mybatis.selectList("commInteriorDAO.InteriorAll");
 		System.out.println("===> MyBatis로 BoardAllList() 실행");
-		System.out.println(cvo);
 		return cvo;
 	}
 	
 	//글 상세 조회
-	public List<CommInteriorVO> getInteriorOne(String com_seq) {
+	public CommInteriorVO getInteriorOne(CommInteriorVO cvo) {
 		System.out.println("===> MyBatis로 getInteriorOne() 실행");
-		return mybatis.selectOne("commInteriorDAO.getInteriorOne", com_seq);
+		return mybatis.selectOne("commInteriorDAO.getInteriorOne", cvo);
 	}
 }

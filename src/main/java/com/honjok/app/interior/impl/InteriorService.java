@@ -7,6 +7,6 @@ import com.honjok.app.vo.CommunityVO;
 
 public interface InteriorService {
 	List<CommInteriorVO> BoardAllList();
-	List<CommInteriorVO> getBoardList(CommInteriorVO cvo);
+	CommInteriorVO getBoardList(CommInteriorVO cvo);
 
 }

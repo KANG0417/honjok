@@ -52,7 +52,7 @@
       <tr>
          <td>${interiorvo.com_seq }</td>
          <td><a href="getInterior.do?com_seq=${interiorvo.com_seq }">${interiorvo.title }</a></td>
-         <td>${interiorvo.id }</td>
+         <td>${interiorvo.nickname }</td>
          <td>${interiorvo.regdate }</td>
          <td>${interiorvo.hit }</td>
          <td>${interiorvo.likes }</td>

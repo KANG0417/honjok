@@ -25,9 +25,8 @@
 <body>
 <div id="container">
 	<h1>글 상세</h1>
-<%-- 	<form action="updateBoard.do" method="post">
-		<input type="hidden" name="seq" value="${interiorvo.com_seq }"> --%>
-		<%-- <c:forEach var="interiorvo" items="${interiorSelect }"> --%>
+	<form action="updateBoard.do" method="post">
+		<input type="hidden" name="seq" value="${interiorvo.com_seq }">
 	<table>
 		<tr>
 			<th>제목</th>
@@ -37,7 +36,7 @@
 		</tr>
 		<tr>
 			<th>작성자</th>
-			<td>${interiorSelect.id }</td>
+			<td>${interiorSelect.nickname }</td>
 		</tr>
 		<tr>
 			<th>내용</th>
@@ -58,11 +57,16 @@
 			<td>${interiorSelect.likes }</td>
 		</tr>
 		<tr>
+			<th>파일이미지</th>
+			<td>${interiorSelect.file_image }</td>
+		</tr>
+		<tr>
 			<td colspan="2" class="center">
 				<input type="submit" value="글 수정">
 			</td>
 		</tr>
 	</table>
+	</form>
 <%--  	</c:forEach> --%>
 	<p>
 		<%-- <a href="insertInteriorb.jsp">글등록</a>
