@@ -117,6 +117,8 @@ public class list {
    public String update(CommunityVO com) {
    
          System.out.println("com값: "+ com);
+         String a = com.getContent();
+         com.setContent(a.replaceAll("\r\n", "<br>"));
       
          service.uptate(com);
       
