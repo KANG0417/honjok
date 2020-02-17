@@ -42,6 +42,7 @@ public class UserServiceImpl implements UserService {
 		int result4 = UserDAO.phoneCheck(phone); 
 		return result4;
 	}
+	
 
 
 

@@ -8,4 +8,6 @@ public interface UserService {
  int emailCheck(String email);
  int nickCheck(String nick);
  int phoneCheck(String phone);
+ 
+ 
 }
