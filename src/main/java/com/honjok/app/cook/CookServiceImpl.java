@@ -39,12 +39,7 @@ public class CookServiceImpl implements CookService{
 		
 	}
 
-	@Override
-	public void update(CookVO ckvo) {
-		// TODO Auto-generated method stub
-		CookMapper.update(ckvo);
-	}
-
+	
 
 	@Override
 	public List<CookVO> selectAll() {
@@ -63,6 +58,13 @@ public class CookServiceImpl implements CookService{
 	public int selectAllCount() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+
+	@Override
+	public void update(CookVO com) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 
