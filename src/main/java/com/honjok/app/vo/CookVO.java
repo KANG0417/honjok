@@ -1,9 +1,44 @@
 package com.honjok.app.vo;
 
 public class CookVO {
-	private String type, com_seq, image, p_num, cooktime;
-	private String title, id, content, hit, likes,regdate;
-	private CommunityVO comm;
+	private String type,
+	image,
+	p_num,
+	cooktime,
+	com_seq,
+	title,
+	id,
+	content,
+	regdate,
+	hit,
+	likes,
+	nickname;
+
+	public CookVO() {}
+
+	public CookVO(String type, String image, String p_num, String cooktime, String com_seq, String title, String id,
+			String content, String regdate, String hit, String likes, String nickname) {
+		super();
+		this.type = type;
+		this.image = image;
+		this.p_num = p_num;
+		this.cooktime = cooktime;
+		this.com_seq = com_seq;
+		this.title = title;
+		this.id = id;
+		this.content = content;
+		this.regdate = regdate;
+		this.hit = hit;
+		this.likes = likes;
+		this.nickname = nickname;
+	}
+
+	@Override
+	public String toString() {
+		return "CookVO [type=" + type + ", image=" + image + ", p_num=" + p_num + ", cooktime=" + cooktime
+				+ ", com_seq=" + com_seq + ", title=" + title + ", id=" + id + ", content=" + content + ", regdate="
+				+ regdate + ", hit=" + hit + ", likes=" + likes + ", nickname=" + nickname + "]";
+	}
 
 	public String getType() {
 		return type;
@@ -11,14 +46,6 @@ public class CookVO {
 
 	public void setType(String type) {
 		this.type = type;
-	}
-
-	public String getCom_seq() {
-		return com_seq;
-	}
-
-	public void setCom_seq(String com_seq) {
-		this.com_seq = com_seq;
 	}
 
 	public String getImage() {
@@ -45,6 +72,14 @@ public class CookVO {
 		this.cooktime = cooktime;
 	}
 
+	public String getCom_seq() {
+		return com_seq;
+	}
+
+	public void setCom_seq(String com_seq) {
+		this.com_seq = com_seq;
+	}
+
 	public String getTitle() {
 		return title;
 	}
@@ -69,6 +104,14 @@ public class CookVO {
 		this.content = content;
 	}
 
+	public String getRegdate() {
+		return regdate;
+	}
+
+	public void setRegdate(String regdate) {
+		this.regdate = regdate;
+	}
+
 	public String getHit() {
 		return hit;
 	}
@@ -85,54 +128,16 @@ public class CookVO {
 		this.likes = likes;
 	}
 
-	public String getRegdate() {
-		return regdate;
+	public String getNickname() {
+		return nickname;
 	}
 
-	public void setRegdate(String regdate) {
-		this.regdate = regdate;
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
 	}
-
-	public void setComm(CommunityVO comm) {
-		this.comm = comm;
-	}
-
-	public CommunityVO getComm() {
-		return comm;
-	}
-
-	public CookVO(String type, String com_seq, String image, String p_num, String time, CommunityVO comm) {
-		
-	}
-
-	public CookVO() {
-		
-	}
+	
 
 	
 	
-	public CookVO(String type, String com_seq, String image, String p_num, String cooktime, String title, String id,
-			String content, String hit, String likes, String regdate, CommunityVO comm) {
-		super();
-		this.type = type;
-		this.com_seq = com_seq;
-		this.image = image;
-		this.p_num = p_num;
-		this.cooktime = cooktime;
-		this.title = title;
-		this.id = id;
-		this.content = content;
-		this.hit = hit;
-		this.likes = likes;
-		this.regdate = regdate;
-		this.comm = comm;
-	}
-
-	@Override
-	public String toString() {
-		return "CookVO [type=" + type + ", com_seq=" + com_seq + ", image=" + image + ", p_num=" + p_num + ", time="
-				+ cooktime + ", title=" + title + ", id=" + id + ", content=" + content + ", hit=" + hit + ", likes="
-				+ likes + ", regdate=" + regdate + ", comm=" + comm + "]";
-	}
 
 }

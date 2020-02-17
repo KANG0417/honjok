@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.honjok.app.vo.CommInfoVO;
 import com.honjok.app.vo.CommunityVO;
 
 @Controller
@@ -20,9 +21,10 @@ public class list {
    honjokinfoService service; 
 
    @RequestMapping("/insert.do")
-   public String lists(CommunityVO com) {
+   public String lists(CommunityVO com, CommInfoVO comI) {
       
       System.out.println(com);
+      System.out.println(comI);
       
       service.inserthonjokinfo(com);
       

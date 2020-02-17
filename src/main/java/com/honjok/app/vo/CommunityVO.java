@@ -8,13 +8,13 @@ public class CommunityVO {
 	
 	
 	
-	public String getNickname() {
+/*	public String getNickname() {
 		return nickname;
 	}
 
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
-	}
+	}*/
 
 	public String getTitle() {
 		return title;

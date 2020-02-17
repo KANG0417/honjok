@@ -8,5 +8,11 @@
 </head>
 <body>
 
+	<form action="getDetatil.do">
+		<input type="text" name="com_seq">
+		<input type="submit">
+	</form>
+
+<a href="getDetatil.do?com_seq=61">가져와</a>
 </body>
 </html>

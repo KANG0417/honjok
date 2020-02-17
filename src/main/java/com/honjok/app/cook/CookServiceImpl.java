@@ -4,32 +4,33 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import com.honjok.app.vo.CommunityVO;
 import com.honjok.app.vo.CookVO;
 
+
+@Service
 public class CookServiceImpl implements CookService{
 	
 	@Autowired
-	private CookMapper Mapper;
+	private CookMapper CookMapper;
+	
+	
 	
 	@Override
 	public void insertCook(CookVO cvo) {
 		System.out.println("전");
-		Mapper.insertCook(cvo);
+		CookMapper.insertCook(cvo);
 		System.out.println("후");
 	}
 
-	@Override
-	public List<CookVO> selectAll(Map<String, Integer> pagingMap) {
-		List<CookVO> list = Mapper.selectAll(pagingMap);
-		return list;
-	}
 
 	@Override
 	public CookVO select(String com_seq) {
 		// TODO Auto-generated method stub
-		CookVO cvo = Mapper.select(com_seq);
-		return cvo;
+		CookVO ckvo = CookMapper.select(com_seq);
+		return ckvo;
 	}
 
 	@Override
@@ -38,18 +39,33 @@ public class CookServiceImpl implements CookService{
 		
 	}
 
+	
+
 	@Override
-	public void update(CookVO cvo) {
-		// TODO Auto-generated method stub
-		Mapper.update(cvo);
+	public List<CookVO> selectAll() {
+		return null;
 	}
+
+
+	@Override
+	public CookVO getBoardList(CookVO ckvo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 	@Override
 	public int selectAllCount() {
 		// TODO Auto-generated method stub
-		return Mapper.selectAllCount();
+		return 0;
 	}
 
+
+	@Override
+	public void update(CookVO com) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 
 }

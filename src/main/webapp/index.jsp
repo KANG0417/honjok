@@ -13,7 +13,7 @@
 	<hr>
 	<p><a href="signUp.jsp">회원가입</a></p>
 	<p><a href="login.do">전체 목록 보기</a></p>
-	<p><a href="getInteriorList.do">인테리어</a></p>
+	<p><a href="interior/interiorAllList.do">인테리어</a></p>
 </div>
 
 </body>

@@ -25,33 +25,40 @@
 <body>
 <div id="container">
 	<h1>글 상세</h1>
-<%-- 	<form action="updateBoard.do" method="post">
-		<input type="hidden" name="seq" value="${interiorvo.com_seq }"> --%>
-		<%-- <c:forEach var="interiorvo" items="${interiorSelect }"> --%>
+	<form action="updateBoard.do" method="post">
+		<input type="hidden" name="seq" value="${interiorvo.com_seq }">
 	<table>
 		<tr>
 			<th>제목</th>
 			<td>
-				${interiorSelect.comm.title }
+				${interiorSelect.title }
 			</td>
 		</tr>
 		<tr>
 			<th>작성자</th>
-			<td>${interiorSelect.comm.id }</td>
+			<td>${interiorSelect.nickname }</td>
 		</tr>
 		<tr>
 			<th>내용</th>
 			<td>
-				${interiorSelect.comm.content }
+				${interiorSelect.content }
 			</td>
 		</tr>
 		<tr>
 			<th>등록일</th>
-			<td>${interiorSelect.comm.regdate }</td>
+			<td>${interiorSelect.regdate }</td>
 		</tr>
 		<tr>
 			<th>조회수</th>
-			<td>${interiorSelect.comm.hit }</td>
+			<td>${interiorSelect.hit }</td>
+		</tr>
+		<tr>
+			<th>좋아요</th>
+			<td>${interiorSelect.likes }</td>
+		</tr>
+		<tr>
+			<th>파일이미지</th>
+			<td>${interiorSelect.file_image }</td>
 		</tr>
 		<tr>
 			<td colspan="2" class="center">
@@ -59,11 +66,12 @@
 			</td>
 		</tr>
 	</table>
+	</form>
 <%--  	</c:forEach> --%>
 	<p>
 		<%-- <a href="insertInteriorb.jsp">글등록</a>
 		<a href="deleteBoard.do?seq=${board.getSeq() }">글삭제</a> --%>
-		<a href="getInteriorList.do">글목록</a>
+		<a href="InteriorAllList.do">글목록</a>
 	</p>
 </div>
 

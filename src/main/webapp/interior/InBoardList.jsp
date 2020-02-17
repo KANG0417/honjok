@@ -33,10 +33,11 @@
 			<th class="writer">글쓴이</th>
 			<th class="regdate">날짜</th>
 			<th class="hit">조회수</th>
+			<th class="likes">좋아요</th>
 		</tr>
 	</thead>
 <tbody>
-<c:choose>
+<%--  <c:choose>
   <c:when test="${interiorList == null }" >
     <tr>
       <td colspan="6">
@@ -46,22 +47,22 @@
       </td>  
     </tr>
   </c:when>
-<%--    <c:when test="${interiorList != null }">
-   <c:forEach var="interiorvo" items="${interiorList }" varStatus="articleNum">
+  <c:when test="${interiorList != null }"> --%>
+   <c:forEach var="interiorvo" items="${interiorList }">
       <tr>
          <td>${interiorvo.com_seq }</td>
-         <td><a href="get.do?com_seq=${interiorvo.com_seq }">${interiorvo.comm.title }</a></td>
-         <td>${interiorvo.comm.id }</td>
-         <td>${interiorvo.comm.regdate }</td>
-         <td>${interiorvo.comm.hit }</td>
-         <td>${interiorvo.comm.likes }</td>
+         <td><a href="getInterior.do?com_seq=${interiorvo.com_seq }">${interiorvo.title }</a></td>
+         <td>${interiorvo.nickname }</td>
+         <td>${interiorvo.regdate }</td>
+         <td>${interiorvo.hit }</td>
+         <td>${interiorvo.likes }</td>
       </tr>
-   </c:forEach>
-   </c:when>
-</c:choose>
+    </c:forEach>
+ <%--  </c:when>
+</c:choose> --%>
 </tbody>   
 </table>
-   <c:if test="${interiorList != null}">
+ <%--   <c:if test="${interiorList != null}">
       <c:choose>
          <c:when test="${interiorList > 100 }">
          <c:set var="endPage" value="${countList/100 + 1 }" scope="page"></c:set>
@@ -132,8 +133,8 @@
 <hr>
 <c:remove var="endPage"/> 
    ${section }
-   ${pageNum } --%>
-<form action="insertInteriorb.do">
+   ${pageNum }  --%>
+<form action="InBoardInsert.jsp">
    <input type="submit" value="글쓰기">
 </form>
 </body>
