@@ -14,18 +14,58 @@ import com.honjok.app.vo.CookVO;
 public class CookServiceImpl implements CookService{
 	
 	@Autowired
-	private CookMapper Mapper;
+	private CookMapper CookMapper;
 	
 	
 	
 	@Override
-	public CommunityVO select(String com_seq) {
+	public void insertCook(CookVO cvo) {
+		System.out.println("전");
+		CookMapper.insertCook(cvo);
+		System.out.println("후");
+	}
+
+
+	@Override
+	public CookVO select(String com_seq) {
 		// TODO Auto-generated method stub
-		CommunityVO cvo = Mapper.select(com_seq);
-		return cvo;
+		CookVO ckvo = CookMapper.select(com_seq);
+		return ckvo;
+	}
+
+	@Override
+	public void delete(String com_seq) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	
+
+	@Override
+	public List<CookVO> selectAll() {
+		return null;
+	}
+
+
+	@Override
+	public CookVO getBoardList(CookVO ckvo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public int selectAllCount() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
+	@Override
+	public void update(CookVO com) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 
 }
