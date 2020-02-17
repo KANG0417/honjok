@@ -34,9 +34,9 @@
 		CONTENT,
 		REGDATE,
 		HIT,
-		LIKES,TYPE FROM COMMUNITY WHERE type = '1'))
+		LIKES,TYPE FROM COMMUNITY WHERE type = '1' order by com_seq DESC))
         where RECNUM BETWEEN (#{section}-1)* 60 + (#{pageNum}-1)* 6 + 1 
-		AND (#{section} - 1)*60 + #{pageNum}*6
+		AND (#{section} - 1)*60 + #{pageNum}*6 order by com_seq DESC
 	</select>
 	
 	<select id="selectAllCount" resultType="Integer">
@@ -64,7 +64,8 @@
 		REGDATE =
 		#{regdate},
 		HIT = #{hit},
-		LIKES= #{likes}
+		LIKES= #{likes},
+		NICKNAME = #{nickname, jdbcType=VARCHAR}
 		WHERE com_seq = #{com_seq}
 	</update>
 
