@@ -3,49 +3,27 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="commInteriorDAO">
-  <resultMap type="CommunityVO" id="CommunityVO">
-  	<result column="COM_SEQ" property="com_seq"/>
-    <result column="TITLE" property="title"/>
-    <result column="ID" property="id"/>
-    <result column="CONTENT" property="content"/>
-    <result column="REGDATE" property="regdate"/>
-    <result column="HIT" property="hit"/>
-    <result column="LIKES" property="likes"/>
-    <result column="TYPE" property="type"/>
-  </resultMap>
-  <resultMap type="CommInteriorVO" id="CommInteriorVO">
-     <result column="COM_SEQ" property="com_seq"/>
-     <result column="TYPE" property="type"/>
-     <result column="FILE_IMAGE" property="file_image"/>
-     
-  	<collection property="comm" resultMap="CommunityVO" />
-  </resultMap>
-  
-  <insert id="insertComm" parameterMap="CommInteriorVO">
-  		INSERT INTO COMMUNITY (COM_SEQ, TITLE, ID, CONTENT, REGDATE, HIT, LIKES, TYPE)
+  <insert id="insertComm" parameterType="CommInteriorVO">
+  		INSERT INTO COMMUNITY (COM_SEQ, TITLE, ID, NICKNAME, CONTENT, REGDATE, HIT, LIKES, TYPE)
   		VALUES ((COMMMUNITY_SEQ.NEXTVAL) + 1,
-  			#{title}, #{id}, #{content}, SYSDATE, #{hit}, #{likes}, 2)
+  			#{title}, #{id}, #{nickname}, #{content}, SYSDATE, 0, 0, 2)
   		INSERT INTO COMM_INTERIOR (TYPE, COM_SEQ, FILE_IMAGE)
   		VALUES (2, (select NVL(MAX(com_seq),0)from community),
   			#{file_image})
   </insert>
-  
-<!-- 	<update id="update" parameterType="">
+<!--  	<update id="update" parameterType="CommInteriorVO">
 	  		UPDATE
-	 </update> -->
+	</update> -->
   
-  <select id="InteriorAll" resultMap="CommInteriorVO">
-		SELECT *
-		FROM COMMUNITY C, COMM_INTERIOR I
-		WHERE C.TYPE = I.TYPE
-  </select>
-  
-	<select id="getInteriorOne" parameterType="Integer" resultMap="CommInteriorVO">
-		SELECT *
+	<select id="InteriorAll" resultType="CommInteriorVO">
+		SELECT C.COM_SEQ, C.TITLE, C.NICKNAME, C.CONTENT, C.REGDATE, C.HIT, C.LIKES, C.TYPE, I.FILE_IMAGE
 		FROM COMMUNITY C, COMM_INTERIOR I
 		WHERE C.COM_SEQ = I.COM_SEQ
 	</select>
   
-  
- 
+	<select id="getInteriorOne" resultType="CommInteriorVO">
+		SELECT C.COM_SEQ, C.TITLE, C.NICKNAME, C.CONTENT, C.REGDATE, C.HIT, C.LIKES, C.TYPE, I.FILE_IMAGE
+		FROM COMMUNITY C, COMM_INTERIOR I
+		WHERE C.COM_SEQ = I.COM_SEQ
+	</select>
   </mapper>

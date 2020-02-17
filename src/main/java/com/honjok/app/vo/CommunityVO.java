@@ -3,7 +3,7 @@ package com.honjok.app.vo;
 import java.sql.Date;
 
 public class CommunityVO {
-	private String title, id, content, type,com_seq, hit, likes,regdate/*, nickname*/;
+	private String title, id, content, type,com_seq, hit, likes,regdate, nickname;
 
 	
 	

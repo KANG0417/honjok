@@ -33,6 +33,7 @@
 			<th class="writer">글쓴이</th>
 			<th class="regdate">날짜</th>
 			<th class="hit">조회수</th>
+			<th class="likes">좋아요</th>
 		</tr>
 	</thead>
 <tbody>
@@ -50,11 +51,11 @@
    <c:forEach var="interiorvo" items="${interiorList }">
       <tr>
          <td>${interiorvo.com_seq }</td>
-         <td><a href="getInterior.do?com_seq=${interiorvo.com_seq }">${interiorvo.comm.title }</a></td>
-         <td>${interiorvo.comm.id }</td>
-         <td>${interiorvo.comm.regdate }</td>
-         <td>${interiorvo.comm.hit }</td>
-         <td>${interiorvo.comm.likes }</td>
+         <td><a href="getInterior.do?com_seq=${interiorvo.com_seq }">${interiorvo.title }</a></td>
+         <td>${interiorvo.id }</td>
+         <td>${interiorvo.regdate }</td>
+         <td>${interiorvo.hit }</td>
+         <td>${interiorvo.likes }</td>
       </tr>
     </c:forEach>
  <%--  </c:when>
@@ -133,7 +134,7 @@
 <c:remove var="endPage"/> 
    ${section }
    ${pageNum }  --%>
-<form action="InBoardInsert.jsp">
+<form action="interior/InBoardInsert.jsp">
    <input type="submit" value="글쓰기">
 </form>
 </body>

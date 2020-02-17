@@ -1,19 +1,23 @@
 package com.honjok.app.vo;
 
 public class CommInteriorVO {
-	private String type, file_image;
-	private int com_seq, p_num;
-	private CommunityVO comm;
+	private String type, file_image, id, title, content, com_seq, hit, likes,regdate, nickname;
 	
-	public CommInteriorVO() {
-	}
+	public CommInteriorVO() {}
 
-	public CommInteriorVO(String type, String file_image, int com_seq, int p_num) {
+	public CommInteriorVO(String type, String id, String file_image, String title, String content, String com_seq,
+			String hit, String likes, String regdate, String nickname) {
 		super();
 		this.type = type;
+		this.id = id;
 		this.file_image = file_image;
+		this.title = title;
+		this.content = content;
 		this.com_seq = com_seq;
-		this.p_num = p_num;
+		this.hit = hit;
+		this.likes = likes;
+		this.regdate = regdate;
+		this.nickname = nickname;
 	}
 
 	public String getType() {
@@ -32,33 +36,74 @@ public class CommInteriorVO {
 		this.file_image = file_image;
 	}
 
-	public int getCom_seq() {
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	public String getCom_seq() {
 		return com_seq;
 	}
 
-	public void setCom_seq(int com_seq) {
+	public void setCom_seq(String com_seq) {
 		this.com_seq = com_seq;
 	}
 
-	public int getP_num() {
-		return p_num;
+	public String getHit() {
+		return hit;
 	}
 
-	public void setP_num(int p_num) {
-		this.p_num = p_num;
+	public void setHit(String hit) {
+		this.hit = hit;
 	}
 
-	public CommunityVO getComm() {
-		return comm;
+	public String getLikes() {
+		return likes;
 	}
 
-	public void setComm(CommunityVO comm) {
-		this.comm = comm;
+	public void setLikes(String likes) {
+		this.likes = likes;
+	}
+
+	public String getRegdate() {
+		return regdate;
+	}
+
+	public void setRegdate(String regdate) {
+		this.regdate = regdate;
+	}
+
+	public String getNickname() {
+		return nickname;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	@Override
 	public String toString() {
-		return "CommInteriorVO [type=" + type + ", file_image=" + file_image + ", com_seq=" + com_seq + ", p_num="
-				+ p_num + "]";
+		return "CommInteriorVO [type=" + type + ", file_image=" + file_image + ", title=" + title + ", id=" + id +
+				", content=" + content + ", com_seq=" + com_seq + ", hit=" + hit + ", likes=" + likes + ", regdate="
+				+ regdate + ", nickname=" + nickname + "]";
 	}
 }
