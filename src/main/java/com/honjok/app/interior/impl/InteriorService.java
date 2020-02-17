@@ -8,8 +8,6 @@ import com.honjok.app.vo.CommunityVO;
 public interface InteriorService {
 	List<CommInteriorVO> BoardAllList();
 	CommInteriorVO getBoardList(CommInteriorVO cvo);
-	static void insertBoard(CommInteriorVO cvo) {
-
-	}
+	public void insertBoard(CommInteriorVO cvo);
 
 }

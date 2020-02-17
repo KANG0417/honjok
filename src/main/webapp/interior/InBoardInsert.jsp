@@ -26,7 +26,7 @@
 <div id="container">
 	<h1>글등록</h1>
 
-	<form action="insertInteriorb.do" method="post">
+	<form action="insertInteriorB.do" method="post">
 	<table>
 		<tr>
 			<th width="70">제목</th>
@@ -61,7 +61,7 @@
 	</table>
 <!-- 	<input type="hidden" name="com_seq"> -->
 	</form>
-	<p><a href="getInteriorList.do">글 목록 가기</a></p>
+	<p><a href="interiorAllList.do">글 목록 가기</a></p>
 </div>
 </body>
 </html>

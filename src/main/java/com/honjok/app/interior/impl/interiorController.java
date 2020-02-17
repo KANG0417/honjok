@@ -10,21 +10,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.honjok.app.vo.CommInteriorVO;
-import com.honjok.app.vo.CommunityVO;
 
 @Controller
+@RequestMapping("/interior")
 public class interiorController {
 	
 	@Autowired
 	private InteriorService interiorService;
 	
-	@RequestMapping("/InteriorAllList.do")
+	@RequestMapping("/interiorAllList.do")
 	public String interiorAllList(Model model) {
 		System.out.println("===>인테리어게시판 전체 조회");
 		List<CommInteriorVO> CommInteriorList = interiorService.BoardAllList();
 		model.addAttribute("interiorList", CommInteriorList);
 		System.out.println(CommInteriorList.toString());
-		return "interior/InBoardList.jsp";
+		return "InBoardList.jsp";
 	}
 	
 	@RequestMapping("/getInterior.do")
@@ -33,11 +33,11 @@ public class interiorController {
 		CommInteriorVO CommInterior = interiorService.getBoardList(cvo);
 		System.out.println(CommInterior);
 		model.addAttribute("interiorSelect", CommInterior);
-		return "interior/InBoardDetail.jsp";
+		return "InBoardDetail.jsp";
 	}
 	
-	@RequestMapping("/insertInteriorb.do")
-	public String insertBoard(CommunityVO vo, CommInteriorVO cvo) {
+	@RequestMapping("/insertInteriorB.do")
+	public String insertBoard(CommInteriorVO cvo) {
 		System.out.println(">>> 글 등록 처리 - insertBoard()");
 	/*	 *** 파일 업로드 처리 ********
 		 * MultipartFile 인터페이스 주요 메소드 
@@ -53,8 +53,8 @@ public class interiorController {
 			uploadFile.transferTo(new File("c:/MyStudy/temp/" + fileName));
 		}
 		*/
-		InteriorService.insertBoard(cvo);
-		System.out.println(vo.toString() + cvo.toString());
-		return "getInteriorList.do";
+		interiorService.insertBoard(cvo);
+		System.out.println(cvo.toString());
+		return "interiorAllList.do";
 	}
 }

@@ -4,9 +4,9 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="commInteriorDAO">
   	<insert id="insertComm" parameterType="CommInteriorVO">
-  		INSERT INTO COMMUNITY (COM_SEQ, TITLE, ID, NICKNAME, CONTENT, REGDATE, HIT, LIKES, TYPE)
+  		INSERT INTO COMMUNITY (COM_SEQ, TITLE, NICKNAME, CONTENT, REGDATE, HIT, LIKES, TYPE)
   		VALUES ((COMMMUNITY_SEQ.NEXTVAL) + 1,
-  			#{title}, #{id}, #{nickname}, #{content}, SYSDATE, 0, 0, 2)
+  			#{title}, #{nickname}, #{content}, SYSDATE, 0, 0, 2)
   		INSERT INTO COMM_INTERIOR (TYPE, COM_SEQ, FILE_IMAGE)
   		VALUES (2, (select NVL(MAX(com_seq),0)from community),
   			#{file_image})

@@ -24,5 +24,7 @@ public class InteriorServiceImpl implements InteriorService {
 		return commDAO.getInteriorOne(cvo);
 	}
 	
-	public insert
+	public void insertBoard(CommInteriorVO cvo) {
+		commDAO.insertBoard(cvo);
+	}
 }

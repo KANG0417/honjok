@@ -134,7 +134,7 @@
 <c:remove var="endPage"/> 
    ${section }
    ${pageNum }  --%>
-<form action="interior/InBoardInsert.jsp">
+<form action="InBoardInsert.jsp">
    <input type="submit" value="글쓰기">
 </form>
 </body>
