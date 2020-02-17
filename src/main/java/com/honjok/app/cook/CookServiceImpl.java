@@ -43,13 +43,12 @@ public class CookServiceImpl implements CookService{
 
 	@Override
 	public List<CookVO> selectAll() {
-		return null;
+		return CookMapper.selectAll();
 	}
 
 
 	@Override
 	public CookVO getBoardList(CookVO ckvo) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

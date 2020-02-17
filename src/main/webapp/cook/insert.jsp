@@ -11,7 +11,7 @@
 <div id="container">
 	<h1>글등록</h1>
 
-	<form action="insertInteriorB.do" method="post">
+	<form action="InsertCook.do" method="post">
 	<table>
 		<tr>
 			<th width="70">제목</th>
