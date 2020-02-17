@@ -4,13 +4,19 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import com.honjok.app.vo.CommunityVO;
 import com.honjok.app.vo.CookVO;
 
+
+@Service
 public class CookServiceImpl implements CookService{
 	
 	@Autowired
 	private CookMapper CookMapper;
+	
+	
 	
 	@Override
 	public void insertCook(CookVO cvo) {

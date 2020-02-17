@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.honjok.app.vo.CommunityVO;
 import com.honjok.app.vo.CookVO;
 
 @Repository("cookmapper")
@@ -46,9 +47,4 @@ public class CookMapper {
 		
 	}
 
-	public void update(CookVO cvo) {
-		System.out.println("update");
-		mybatis.update("cookmapper.update",cvo);
-		
-	}
 }

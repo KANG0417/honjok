@@ -37,7 +37,7 @@
 		<tr>
 			<th>작성자</th>
 			<td>
-				<input type="text" name="id">
+				<input type="text" name="nickname">
 			</td>
 		</tr>
 		<tr>
@@ -46,13 +46,13 @@
 				<textarea name="content" rows="10" cols="40"></textarea>
 			</td>					
 		</tr>
-<!-- 		<tr>
+		<tr>
 			<th>파일이미지</th>
 			<td>
-				<input type="" name="fileimage">
+				<input type="text" name="file_image">
 			</td>					
 		</tr>
-		 -->
+		
 		<tr>
 			<td colspan="2" class="center">
 				<input type="submit" value="새글 등록">

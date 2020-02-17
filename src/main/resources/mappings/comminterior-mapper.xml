@@ -12,12 +12,12 @@
   			#{file_image})
   	</insert>
   	
-  	<update id="update" parameterType="CommInteriorVO">
-	  		UPDATE
-	</update>
+<!--   	<update id="update" parameterType="CommInteriorVO">
+	  		UPDATE 
+	</update> -->
   
 	<select id="InteriorAll" resultType="CommInteriorVO">
-		SELECT C.COM_SEQ, C.TITLE, C.ID, C.NICKNAME, C.CONTENT, C.REGDATE, C.HIT, C.LIKES, C.TYPE, I.FILE_IMAGE
+		SELECT C.COM_SEQ, C.TITLE, C.NICKNAME, C.CONTENT, C.REGDATE, C.HIT, C.LIKES, C.TYPE, I.FILE_IMAGE
 		FROM COMMUNITY C, COMM_INTERIOR I
 		WHERE C.COM_SEQ = I.COM_SEQ
 	</select>
