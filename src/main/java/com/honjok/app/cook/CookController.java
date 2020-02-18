@@ -35,7 +35,7 @@ public class CookController {
 		CookVO Cook = cookservice.getBoardList(ckvo);
 		System.out.println(Cook);
 		model.addAttribute("cookSelect", Cook);
-		return "cook/CookDetail.jsp";
+		return "CookDetail.jsp";
 	}
    
    @RequestMapping("/InsertCook.do")
