@@ -1,11 +1,11 @@
 package com.honjok.app.vo;
 
 public class CommInteriorVO {
-	private String type, file_image, id, title, content, com_seq, hit, likes,regdate, nickname;
-	
+	private String file_image, id, title, content, com_seq, hit, likes,regdate, nickname;
+	private int type;
 	public CommInteriorVO() {}
 
-	public CommInteriorVO(String type, String id, String file_image, String title, String content, String com_seq,
+	public CommInteriorVO(int type, String id, String file_image, String title, String content, String com_seq,
 			String hit, String likes, String regdate, String nickname) {
 		super();
 		this.type = type;
@@ -20,11 +20,11 @@ public class CommInteriorVO {
 		this.nickname = nickname;
 	}
 
-	public String getType() {
+	public int getType() {
 		return type;
 	}
 
-	public void setType(String type) {
+	public void setType(int type) {
 		this.type = type;
 	}
 

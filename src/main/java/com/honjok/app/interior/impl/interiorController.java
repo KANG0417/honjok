@@ -12,7 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.honjok.app.vo.CommInteriorVO;
 
 @Controller
-@RequestMapping("/interior")
+@RequestMapping
 public class interiorController {
 	
 	@Autowired
@@ -54,12 +54,9 @@ public class interiorController {
 			uploadFile.transferTo(new File("c:/MyStudy/temp/" + fileName));
 		}
 		*/
-		if (result == 1) {
+		System.out.println(cvo.toString());
 			interiorService.insertBoard(cvo);
 			System.out.println(cvo);
-		}
-		
-		System.out.println(cvo.toString());
 		return "interiorAllList.do";
 	}
 }

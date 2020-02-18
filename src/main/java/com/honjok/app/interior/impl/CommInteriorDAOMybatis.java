@@ -32,6 +32,5 @@ public class CommInteriorDAOMybatis {
 	public void insertBoard(CommInteriorVO cvo) {
 		System.out.println("===> MyBatis로 insertBoard() 실행");
 		mybatis.insert("commInteriorDAO.insertComm", cvo);
-		mybatis.insert("commInteriorDAO.insertComm2", cvo);
 	}
 }
