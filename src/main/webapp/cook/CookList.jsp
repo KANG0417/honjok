@@ -33,7 +33,6 @@
 			<th class="regdate">날짜</th>
 			<th class="hit">조회수</th>
 			<th class="likes">좋아요</th>
-			<th class="p_num">상품번호</th>
 		</tr>
 	</thead>
 <tbody>
@@ -46,7 +45,6 @@
          <td>${cookvo.regdate }</td>
          <td>${cookvo.hit }</td>
          <td>${cookvo.likes }</td>
-         <td>${cookvo.p_num }</td>
       </tr>
     </c:forEach>
 

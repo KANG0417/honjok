@@ -58,7 +58,7 @@
 		</tr>
 		<tr>
 			<th>파일이미지</th>
-			<td>${cookSelect.file_image }</td>
+			<td>${cookSelect.image }</td>
 		</tr>
 		<tr>
 			<td colspan="2" class="center">
@@ -69,9 +69,9 @@
 	</form>
 <%--  	</c:forEach> --%>
 	<p>
-		<%-- <a href="insertInteriorb.jsp">글등록</a>
-		<a href="deleteBoard.do?seq=${board.getSeq() }">글삭제</a> --%>
-		<a href="${contextPage.request.contextPath}/app/interior/interiorAllList.do">글목록</a>
+		 <a href="insert.jsp">글등록</a>
+		<%--<a href="deleteBoard.do?seq=${board.getSeq() }">글삭제</a> --%>
+		<a href="${contextPage.request.contextPath}/app/cook/CookAll.do">글목록</a>
 	</p>
 </div>
 

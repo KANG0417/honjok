@@ -39,10 +39,9 @@ public class CookController {
 	}
    
    @RequestMapping("/InsertCook.do")
-   public String insert(CookVO ckvo, CommunityVO com) {
+   public String insert(CookVO ckvo) {
 	   	
 	   System.out.println(ckvo);
-	   System.out.println(com);
 		  cookservice.insertCook(ckvo);
 		  System.out.println("게시물 등록이 완료되었습니다.");
 		  System.out.println(ckvo.toString());
