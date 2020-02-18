@@ -34,9 +34,16 @@
 		<tr>
 			<th>파일이미지</th>
 			<td>
-				<input type="text" name="image">
+				<input type="file" name="image">
 			</td>					
 		</tr>
+		<tr>
+			<th>조리시간</th>
+			<td>
+				<input type="text" name="cooktime">
+			</td>					
+		</tr>
+		
 		
 		<tr>
 			<td colspan="2" class="center">
