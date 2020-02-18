@@ -56,6 +56,14 @@
    <form action="insert.do" method="POST">
       <input type="hidden" name="id" value="soh445">
       <input type="hidden" name="nickname" value="환탁">
+      <select name="menu">
+      	<option value='' selected>메뉴선택</option>
+      	<option value='한식'>한식</option>
+      	<option value='양식'>양식</option>
+      	<option value='중식'>중식</option>
+      	<option value='일식'>일식</option>
+      	<option value='분식'>분식</option>
+      </select>
       
       <!-- 대표이미지 삭제  -->
   <!-- <br> 대표 화면<input  type="file" name="file_image" onchange="readURL(this);">   <img style="display: none;" id="preview" src="#"
@@ -66,8 +74,10 @@
                      내용을 입력해주세요 
            	첫번쨰로 업로드하신 사진이 대표 이미지가 됩니다.
              </textarea>
+               위치정보(클릭해주세요)
           <div id="map" style="width: 50%; height: 250px;"  ></div>
       <br> <input type="submit" id="ss">
+   
   	  <input class="adr" type="hidden" name="adr" value="지도를 클릭해주세요">
       
       
@@ -149,7 +159,7 @@ CKEDITOR.replace('editor1', {
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = {
         center: new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
-        level: 1 // 지도의 확대 레벨
+        level: 5 // 지도의 확대 레벨
     };  
 
 // 지도를 생성합니다    

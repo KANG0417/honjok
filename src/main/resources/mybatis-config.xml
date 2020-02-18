@@ -9,6 +9,7 @@
 		<typeAlias alias="CommunityVO" type="com.honjok.app.vo.CommunityVO"/>
 		<typeAlias alias="CommInteriorVO" type="com.honjok.app.vo.CommInteriorVO"/>
 		<typeAlias alias="cook" type="com.honjok.app.vo.CookVO"/>
+		<typeAlias alias="CommInfoVO" type="com.honjok.app.vo.CommInfoVO"/>
 	</typeAliases>
   
   <!-- SQL 작성파일인 매퍼 파일 위치 지정 -->
@@ -17,6 +18,7 @@
 	<mapper resource="mappings/honjokinfo-mapper.xml"/>
 	<mapper resource="mappings/comminterior-mapper.xml"/>
 	<mapper resource="mappings/cook-mapper.xml"/>
+	
  </mappers>
 </configuration>
 
