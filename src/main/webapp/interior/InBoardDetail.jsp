@@ -69,8 +69,7 @@
 	</form>
 <%--  	</c:forEach> --%>
 	<p>
-		<%-- <a href="insertInteriorb.jsp">글등록</a>
-		<a href="deleteBoard.do?seq=${board.getSeq() }">글삭제</a> --%>
+		<a href="deleteBoard.do?seq=${board.getSeq() }">글삭제</a>
 		<a href="${contextPage.request.contextPath}/app/interior/interiorAllList.do">글목록</a>
 	</p>
 </div>
