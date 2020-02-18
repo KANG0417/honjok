@@ -41,7 +41,7 @@
    <c:forEach var="cookvo" items="${cookList }">
       <tr>
          <td>${cookvo.com_seq }</td>
-         <td><a href="getInterior.do?com_seq=${interiorvo.com_seq }">${interiorvo.title }</a></td>
+         <td><a href="CookDetail.do?com_seq=${cookvo.com_seq }">${cookvo.title }</a></td>
          <td>${cookvo.nickname }</td>
          <td>${cookvo.regdate }</td>
          <td>${cookvo.hit }</td>
