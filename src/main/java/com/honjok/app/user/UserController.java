@@ -1,6 +1,8 @@
 package com.honjok.app.user;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,51 +26,76 @@ public class UserController {
 	private UserService userService;
 
 
-		
+	//회원가입 컨트롤러
 	@RequestMapping(value="/signUp.do", method=RequestMethod.POST)
 	public String signUp(UserVO vo, @RequestParam("email1") String email1, @RequestParam("email2") String email2 
 			, HttpServletRequest request) {
 		String email = email1 +"@"+ email2;
 		System.out.println("비밀번호 암호화 전 확인 : " + vo.getPassword());
+		//비밀번호 암호화
 		String encrypassword = UserSha256.encrypt(vo.getPassword());
 		vo.setPassword(encrypassword);
 		System.out.println("비밀번호 암호화  후 확인 : " + vo.getPassword());
 		vo.setEmail(email);
+		//회원가입
 		userService.insertUser(vo);
+		//이메일 보내기
 		mailsender.mailSendWithUserKey(vo.getEmail(), vo.getId(), request);
 		return "index.jsp";
 	}
+	//아이디 중복체크
 	@RequestMapping(value = "/userIdCheck.do", method = RequestMethod.GET)
 	@ResponseBody
 	public int idCheck(@RequestParam("id") String id) {
 		System.out.println("Id : "+ id);
 		return userService.userIdCheck(id);
 	}
-	
+	//이메일 중복 체크
 	@RequestMapping(value = "/userEmailCheck.do", method = RequestMethod.GET)
 	@ResponseBody
 	public int emailCheck(@RequestParam("email") String email) {
 		System.out.println("email");
 		return userService.emailCheck(email);
 	}
-	
+	//닉네임 중복 체크
 	@RequestMapping(value = "/userNickCheck.do", method = RequestMethod.GET)
 	@ResponseBody
 	public int nickCheck(@RequestParam("nick") String nick) {
 		System.out.println("nick");
 		return userService.emailCheck(nick);
 	}
-	
+	//핸드폰 중복체크
 	@RequestMapping(value = "/userPhoneCheck.do", method = RequestMethod.GET)
 	@ResponseBody
 	public int phoneCheck(@RequestParam("phone") String phone) {
 		System.out.println("nick");
 		return userService.emailCheck(phone);
 	}
+	//이메일 인증 후 Key값 변경
 	@RequestMapping(value = "/userKeyAlter.do", method = RequestMethod.GET)
 	public String keyAlterConfirm(@RequestParam("userId") String userId, @RequestParam("userKey") String key) {
 
 		mailsender.alterUserKeyService(userId, key); // mailsender의 경우 @Autowired
+
+		return "EmailCheck.jsp";
+	}
+	
+	@RequestMapping(value = "/login.do", method = RequestMethod.GET)
+	@ResponseBody
+	public int login(UserVO vo, HttpSession httpSession, HttpServletRequest request,
+						HttpServletResponse response) {
+		
+		//아이디 기억하기 name값 가져오기
+		String userCheck = request.getParameter("rememberUserId");
+		
+		// 비밀번호 암호화
+		String userPassword = vo.getPassword();
+		vo.setPassword(UserSha256.encrypt(userPassword));
+		
+		//암호화확인 
+		System.out.println("userPassword : " + vo.getPassword());
+		
+		int result = login
 
 		return "EmailCheck.jsp";
 	}

@@ -12,7 +12,7 @@
 	<h1>인덱스 페이지</h1>
 	<hr>
 	<p><a href="signUp.jsp">회원가입</a></p>
-	<p><a href="login.do">전체 목록 보기</a></p>
+	<p><a href="login.jsp">로그인</a></p>
 	<p><a href="interior/interiorAllList.do">인테리어</a></p>
 </div>
 

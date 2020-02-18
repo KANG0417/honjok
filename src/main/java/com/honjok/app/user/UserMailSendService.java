@@ -13,7 +13,9 @@ import javax.servlet.http.HttpServletRequest;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.stereotype.Service;;
+import org.springframework.stereotype.Service;
+
+import com.honjok.app.vo.UserVO;;
 
 
 @Service("UserMailSendService")
@@ -56,6 +58,8 @@ public class UserMailSendService {
 	}
 	public void mailSendWithUserKey(String email, String userId, HttpServletRequest request) {
 		String key = getKey(false,20);
+		UserVO vo = new UserVO();
+		vo.setUserKey(key);
 		UserDAO.getkey(userId, key);
 		MimeMessage mail = mailSender.createMimeMessage();
 		String htmlStr = "<h2>안녕하세요 [혼족]입니다</h2><br><br>" 

@@ -31,6 +31,10 @@
 		SELECT COUNT(*) FROM USERS WHERE PHONE = #{phone}
 	</select>
 	
+	<select id="loginCheck" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM USERS WHERE PHONE = #{phone}
+	</select>
+	
 	
 	<update id="getKey" parameterType="Map">
 		UPDATE USERS SET USERKEY = #{userKey} WHERE ID = #{userId}
