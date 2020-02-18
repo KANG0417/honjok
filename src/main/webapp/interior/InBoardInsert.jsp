@@ -61,7 +61,7 @@
 	</table>
  	<input type="hidden" name="com_seq">
 	</form>
-	<p><a href="interior/interiorAllList.do">글 목록 가기</a></p>
+	<p><a href="interiorAllList.do">글 목록 가기</a></p>
 </div>
 </body>
 </html>

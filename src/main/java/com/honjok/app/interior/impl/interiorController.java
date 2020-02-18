@@ -12,7 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.honjok.app.vo.CommInteriorVO;
 
 @Controller
-@RequestMapping
+@RequestMapping("/interior")
 public class interiorController {
 	
 	@Autowired

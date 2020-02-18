@@ -68,8 +68,8 @@
 	</table>
 	</form>
 <%--  	</c:forEach> --%>
-	<p>0
-		<a href="deleteBoard.do?seq=${board.getSeq() }">글삭제</a> --%>
+	<p>
+		<a href="deleteBoard.do?seq=${board.getSeq() }">글삭제</a>
 		<a href="${contextPage.request.contextPath}/app/interior/interiorAllList.do">글목록</a>
 	</p>
 </div>
