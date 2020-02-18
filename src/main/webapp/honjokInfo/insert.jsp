@@ -1,118 +1,151 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-	integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-	crossorigin="anonymous"></script>
-<link
-	href="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote-lite.min.css"
-	rel="stylesheet">
-<script
-	src="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote-lite.min.js"></script>
+   integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+   crossorigin="anonymous"></script>
+
+<script src="https://cdn.ckeditor.com/4.13.1/standard-all/ckeditor.js"></script>
 
 <script type="text/javascript"
-	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=69f7448811fd57d29b7398b4045f65df&libraries=services"></script>
+   src="//dapi.kakao.com/v2/maps/sdk.js?appkey=69f7448811fd57d29b7398b4045f65df&libraries=services"></script>
 
 <title>혼족정보 게시판</title>
 <style>
 .map_wrap {
-	position: relative;
-	width: 100%;
-	height: 350px;
+   position: relative;
+   width: 100%;
+   height: 350px;
 }
 
 .title {
-	font-weight: bold;
-	display: block;
+   font-weight: bold;
+   display: block;
 }
 
 .hAddr {
-	position: absolute;
-	left: 10px;
-	top: 10px;
-	border-radius: 2px;
-	background: #fff;
-	background: rgba(255, 255, 255, 0.8);
-	z-index: 1;
-	padding: 5px;
+   position: absolute;
+   left: 10px;
+   top: 10px;
+   border-radius: 2px;
+   background: #fff;
+   background: rgba(255, 255, 255, 0.8);
+   z-index: 1;
+   padding: 5px;
 }
 
 #centerAddr {
-	display: block;
-	margin-top: 2px;
-	font-weight: normal;
+   display: block;
+   margin-top: 2px;
+   font-weight: normal;
 }
 
 .bAddr {
-	padding: 5px;
-	text-overflow: ellipsis;
-	overflow: hidden;
-	white-space: nowrap;
+   padding: 5px;
+   text-overflow: ellipsis;
+   overflow: hidden;
+   white-space: nowrap;
 }
 </style>
 </head>
 <body>
+   <h1>혼족정보게시판</h1>
+   <form action="insert.do" method="POST">
+      <input type="hidden" name="id" value="soh445">
+      <input type="hidden" name="nickname" value="환탁">
+      
+      <!-- 대표이미지 삭제  -->
+  <!-- <br> 대표 화면<input  type="file" name="file_image" onchange="readURL(this);">   <img style="display: none;" id="preview" src="#"
+         width="200" height="200"> 
+          <br>  -->
+         제목<input type="text" name="title"><br>
+             <textarea name="content" id="editor1" rows="10" cols="80" >
+                     내용을 입력해주세요 
+           	첫번쨰로 업로드하신 사진이 대표 이미지가 됩니다.
+             </textarea>
+          <div id="map" style="width: 50%; height: 250px;"  ></div>
+      <br> <input type="submit" id="ss">
+  	  <input class="adr" type="hidden" name="adr" value="지도를 클릭해주세요">
+      
+      
+   </form>
+         <button id="getdata">Print data</button>
+ 
+   <script>
+   
+   
+   $('#getdata').click(function() {
+  	 var editor = CKEDITOR.instances['editor1'];
 
-	<h1>혼족정보게시판</h1>
-
-	<form action="insert.do" method="POST">
-		작성자<input type="text" name="id"><br> 닉네임<input
-			type="text" name="nickname"><br> 음식점 이름<input
-			type="text" name="title"><br> 주소: <input class="adr"
-			type="text" name="adr" value="지도를 클릭해주세요">
-
-		<div id="map" style="width: 50%; height: 250px;"></div>
-			<img style="display: none;" id="preview" src="#"
-			width="200" height="200"> 
-		<br> 대표 화면<input  type="file" name="file_image"
-			onchange="readURL(this);"> <br> 소개 제목<input type="text"
-			name="title"><br>
-
-		<textarea id="summernote" name="content"> 소개글
-     	     	
-    		 </textarea>
-		<br> <input type="submit">
-	</form>
+       var value = editor.getData();
+       alert(value);
+       // send your ajax request with value
+       // profit!
+   });   
+   </script> 
 
 
 
-	<script type="text/javascript">
-    		function readURL(input){
-    			$('#preview').show();
-    			if(input.files && input.files[0]){
-    			var reader = new FileReader();
-    			reader.onload = function(e) {
-    				 $('#preview').attr('src',e.target.result);
-    		}
-    			reader.readAsDataURL(input.files[0]);
-    		}	
-    		}
+<script type="text/javascript">
+
+CKEDITOR.replace('editor1', {
+    extraPlugins: 'image2,uploadimage',
+
+
+    // Configure your file manager integration. This example uses CKFinder 3 for PHP.
+    filebrowserBrowseUrl: '/apps/ckfinder/3.4.5/ckfinder.html',
+    filebrowserImageBrowseUrl: '/apps/ckfinder/3.4.5/ckfinder.html?type=Images',
+    filebrowserUploadUrl: '/fileupload.do',
+    filebrowserImageUploadUrl: 'fileupload.do',
+
+    // Upload dropped or pasted images to the CKFinder connector (note that the response type is set to JSON).
+    uploadUrl: 'fileupload.do',
+
+    // Reduce the list of block elements listed in the Format drop-down to the most commonly used.
+    format_tags: 'p;h1;h2;h3;pre',
+    // Simplify the Image and Link dialog windows. The "Advanced" tab is not needed in most cases.
+    removeDialogTabs: 'image:advanced;link:advanced',
+
+    height: 450
+  });
+/* $(function(){
+   CKEDITOR.replace('editor1',{
+      height: 400,
+      filebrowserUploadUrl: 'fileupload.do'
+      
+   });
+   
+   
+}); */
+
+
+</script>
+
+
+<!-- 미리보기 -->
+   <script type="text/javascript">
+          function readURL(input){
+             $('#preview').show();
+            
+             if(input.files && input.files[0]){
+             var reader = new FileReader();
+             reader.onload = function(e) {
+            	 var ss = $('#preview').attr('src',e.target.result);
+                 var editor = CKEDITOR.instances['editor1'];
+                 editor.insertHtml('<img src="'+ e.target.result + '">');
+          }
+             reader.readAsDataURL(input.files[0]);
+          }   
+          }
     </script>
 
-	<!-- 썸머노트  -->
-	<script>
-      $('#summernote').summernote({
-        placeholder: 'Hello stand alone ui',
-        tabsize: 2,
-        height: 120,
-        toolbar: [
-          ['style', ['style']],
-          ['font', ['bold', 'underline', 'clear']],
-          ['color', ['color']],
-          ['para', ['ul', 'ol', 'paragraph']],
-          ['table', ['table']],
-          ['insert', ['link', 'picture', 'video']],
-          ['view', ['fullscreen', 'codeview', 'help']]
-        ]
-      });
-    </script>
 
 
-	<!-- 다음지도  -->
-	<script>
+   <!-- 다음지도  -->
+   <script>
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = {
         center: new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
@@ -154,7 +187,11 @@ kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
             
             /* 주소값 데이터 넣기  */
             document.querySelector('.adr').value = result[0].address.address_name;
+
             
+            /* 대표이미지 주소값 넣기   */
+            /* var editor = CKEDITOR.instances['editor1'];
+            editor.insertHtml(result[0].address.address_name); */
         }   
     });
 });
@@ -190,7 +227,7 @@ function displayCenterInfo(result, status) {
 }
 
 </script>
-	<!-- 다음지도 끝  -->
+   <!-- 다음지도 끝  -->
 
 </body>
 </html>

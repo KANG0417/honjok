@@ -3,26 +3,17 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cookMapper">
-  <resultMap type="CommunityVO" id="CommunityVO">
-  	<result column="COM_SEQ" property="com_seq"/>
-    <result column="TITLE" property="title"/>
-    <result column="ID" property="id"/>
-    <result column="CONTENT" property="content"/>
-    <result column="REGDATE" property="regdate"/>
-    <result column="HIT" property="hit"/>
-    <result column="LIKES" property="likes"/>
-    <result column="TYPE" property="type"/>
-  </resultMap>
-<!--    <insert id="insertCook" parameterType="CookVO"> -->
-<!--     insert INTO comm_cook(type, COM_SEQ, IMAGE, P_NUM, COOKTIME) -->
-<!--     VALUES('3',(COMMMUNITY_SEQ.NEXTVAL) + 1, #{image} , #{p_num}, #{cooktime) -->
-<!--     INSERT INTO COMMUNITY (COM_SEQ, TITLE, ID, CONTENT, REGDATE, HIT, LIKES, TYPE) -->
-<!-- 	VALUES ((COMMMUNITY_SEQ.NEXTVAL) + 1, -->
-<!-- 	#{title}, #{id}, #{content}, SYSDATE, #{hit}, #{likes}, 3) -->
-<!--   	</insert> -->
-	<!-- 작성중.. 헷갈ㄹ려 -->
+ 
+   <insert id="insertCook" parameterType="cook">
+    INSERT INTO COMMUNITY (COM_SEQ, TITLE, NICKNAME, CONTENT, REGDATE, HIT, LIKES, TYPE)
+  		VALUES ((COMMMUNITY_SEQ.NEXTVAL) + 1,
+  			#{title}, #{nickname}, #{content}, SYSDATE, 0, 0, 3)
+            
+  		INSERT INTO COMM_COOK (TYPE,COM_SEQ,IMAGE,P_NUM,COOKTIME)
+  		VALUES (3, (select NVL(MAX(com_seq),0)from community),#{image},#{p_num},#{cooktime})
+  	</insert>
 	
-	<select id="selectOne" parameterType="String" resultType="CommunityVO">
+	<select id="selectOne" parameterType="String" resultType="cook">
 		   SELECT * FROM COMMUNITY WHERE COM_SEQ = #{com_seq}
 	</select>
 	<select id="selectAll" resultType="cook">

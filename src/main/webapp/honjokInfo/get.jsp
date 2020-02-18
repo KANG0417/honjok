@@ -10,81 +10,71 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
     <title>간단한 지도 표시하기</title>
-    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=n7ip984x7q"></script>
+    <!-- 다음 지도  -->
+    <script type="text/javascript"
+   src="//dapi.kakao.com/v2/maps/sdk.js?appkey=69f7448811fd57d29b7398b4045f65df&libraries=services"></script>
 </head>
 <body>
-	<h1>제목 : ${CommunityVO.title }</h1>
-	<p>작성자: ${CommunityVO.id }</p>
-	<p>내용 ${CommunityVO.content }</p>
-	
-<div id="map" style="width:50%;height:400px;"></div>
-
+   <h1>제목 : ${CommunityVO.title }</h1>
+   <p>작성자: ${CommunityVO.id }</p>
+   <p>${CommunityVO.content }</p>
+   
+<div id="map" style="width:100%;height:350px;"></div>
 
 <form class="update" action="update.jsp">
-	<c:set value="${CommunityVO }" var="com" scope="session"></c:set>
-	<input type="submit" value="수정">
+   <c:set value="${CommunityVO }" var="com" scope="session"></c:set>
+   <input type="submit" value="수정">
 </form>
 <form action="delete.do">
-	<input type="hidden" name="com_seq" value="${CommunityVO.com_seq }">
-	<input type="submit" value="삭제">
+   <input type="hidden" name="com_seq" value="${CommunityVO.com_seq }">
+   <input type="submit" value="삭제">
 </form>
 <form action="select.do">
-	<input type="submit" value="목록으로">
+   <input type="submit" value="목록으로">
 </form>
 
 
 
-
-
-
-
-<!-- 네이버 지도 시작 -->
+   
 <script>
-var HOME_PATH = window.HOME_PATH || '.';
-var cityhall = new naver.maps.LatLng(37.5666805, 126.9784147),
-    map = new naver.maps.Map('map', {
-        center: cityhall,
-        zoom: 16
-    }),
-    marker = new naver.maps.Marker({
-        map: map,
-        position: cityhall
-    });
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+    mapOption = {
+        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+        level: 3 // 지도의 확대 레벨
+    };  
 
-var contentString = [
-        '<div class="iw_inner">',
-        '   <h3>서울특별시청</h3>',
-        '   <p>서울특별시 중구 태평로1가 31 | 서울특별시 중구 세종대로 110 서울특별시청<br />',
-        '       <img src="'+ HOME_PATH +'/img/example/hi-seoul.jpg" width="55" height="55" alt="서울시청" class="thumb" /><br />',
-        '       02-120 | 공공,사회기관 &gt; 특별,광역시청<br />',
-        '       <a href="http://www.seoul.go.kr" target="_blank">www.seoul.go.kr/</a>',
-        '   </p>',
-        '</div>'
-    ].join('');
+// 지도를 생성합니다    
+var map = new kakao.maps.Map(mapContainer, mapOption); 
 
-var infowindow = new naver.maps.InfoWindow({
-    content: contentString,
-    maxWidth: 140,
-    backgroundColor: "#eee",
-    borderColor: "#2db400",
-    borderWidth: 5,
-    anchorSize: new naver.maps.Size(30, 30),
-    anchorSkew: true,
-    anchorColor: "#eee",
-    pixelOffset: new naver.maps.Point(20, -20)
-});
+// 주소-좌표 변환 객체를 생성합니다
+var geocoder = new kakao.maps.services.Geocoder();
 
-naver.maps.Event.addListener(marker, "click", function(e) {
-    if (infowindow.getMap()) {
-        infowindow.close();
-    } else {
+// 주소로 좌표를 검색합니다
+geocoder.addressSearch('서울 중구 을지로1가 8', function(result, status) {
+
+    // 정상적으로 검색이 완료됐으면 
+     if (status === kakao.maps.services.Status.OK) {
+
+        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+        // 결과값으로 받은 위치를 마커로 표시합니다
+        var marker = new kakao.maps.Marker({
+            map: map,
+            position: coords
+        });
+
+        // 인포윈도우로 장소에 대한 설명을 표시합니다
+        var infowindow = new kakao.maps.InfoWindow({
+            content: '<div style="width:150px;text-align:center;padding:6px 0;">우리회사</div>'
+        });
         infowindow.open(map, marker);
-    }
-    alert(e.coord.lat() + ', ' + e.coord.lng());
-});
 
+        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+        map.setCenter(coords);
+    } 
+});    
 </script>
-<!-- 네이버 지도 끝 -->
+
 
 
 

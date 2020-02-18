@@ -17,7 +17,7 @@
 		border: 1px solid black;
 		margin: 0 auto;
 	}
-	th { background-color: orange; }
+	th { background-color: skyblue; }
 	.center { text-align: center; }
 	.border-none, .border-none td { border: none; }
 </style>
@@ -53,7 +53,7 @@
 </tbody>   
 </table>
 
-<form action="cook/insert.jsp">
+<form action="insert.jsp">
    <input type="submit" value="글쓰기">
 </form>
 </body>

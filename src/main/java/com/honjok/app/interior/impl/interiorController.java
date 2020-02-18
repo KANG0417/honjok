@@ -36,6 +36,7 @@ public class interiorController {
 		return "InBoardDetail.jsp";
 	}
 	
+	int result = 0;
 	@RequestMapping("/insertInteriorB.do")
 	public String insertBoard(CommInteriorVO cvo) {
 		System.out.println(">>> 글 등록 처리 - insertBoard()");
@@ -53,7 +54,11 @@ public class interiorController {
 			uploadFile.transferTo(new File("c:/MyStudy/temp/" + fileName));
 		}
 		*/
-		interiorService.insertBoard(cvo);
+		if (result == 1) {
+			interiorService.insertBoard(cvo);
+			System.out.println(cvo);
+		}
+		
 		System.out.println(cvo.toString());
 		return "interiorAllList.do";
 	}
