@@ -30,7 +30,7 @@ public class CookMapper {
 	public List<CookVO> selectAll() {
 		
 		System.out.println("selectAll 전체조회");
-		List<CookVO> list =mybatis.selectList("CookController.selectAll");
+		List<CookVO> list =mybatis.selectList("cookMapper.selectAll");
 		
 		System.out.println(list);
 		return list;

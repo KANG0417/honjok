@@ -55,4 +55,12 @@ public class UserDAO {
 		return mybatis.update("UserDAO.alterUserKey", Map);
 	}
 	
+	public UserVO loginCheck(String userId) {
+		UserVO vo = mybatis.selectOne("UserDAO.loginCheck", userId);
+		System.out.println(" Vo : = " + vo);
+		return vo;	
+	}
+	
+	
+	
 }

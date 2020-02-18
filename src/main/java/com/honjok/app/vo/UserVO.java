@@ -17,9 +17,15 @@ public class UserVO {
 		private int type;
 		private int age;
 		private String nickName;
+		private String userKey;
 		
 		
-		
+		public String getUserKey() {
+			return userKey;
+		}
+		public void setUserKey(String userKey) {
+			this.userKey = userKey;
+		}
 		public int getAge() {
 			return age;
 		}

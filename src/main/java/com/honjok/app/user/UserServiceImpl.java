@@ -2,6 +2,9 @@ package com.honjok.app.user;
 
 import com.honjok.app.vo.UserVO;
 
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -41,6 +44,21 @@ public class UserServiceImpl implements UserService {
 	public int phoneCheck(String phone) {
 		int result4 = UserDAO.phoneCheck(phone); 
 		return result4;
+	}
+
+	@Override
+	public int userLoginService(UserVO vo, HttpSession httpSession, String userCheck,
+			HttpServletResponse response) {
+		System.out.println("로그인vo 값 확인" + vo);
+		String userId = vo.getId();
+		String userPassword = vo.getPassword();
+		vo = UserDAO.loginCheck(userId);
+		
+		System.out.println("UserLoginService // 로그인 객체 확인 vo : " + vo);
+		
+		int result = 0;
+		
+		return 0;
 	}
 	
 

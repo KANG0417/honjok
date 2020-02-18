@@ -19,6 +19,6 @@
 	<select id="selectAll" resultType="cook">
 		SELECT *
 		FROM COMMUNITY C, COMM_COOK CO
-		WHERE C.COM_SEQ = CO.COM_SEQ;
+		WHERE C.COM_SEQ = CO.COM_SEQ
 	</select>
 </mapper>
