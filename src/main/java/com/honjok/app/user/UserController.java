@@ -80,13 +80,16 @@ public class UserController {
 		return "EmailCheck.jsp";
 	}
 	
-	@RequestMapping(value = "/login.do", method = RequestMethod.GET)
+	//로그인 과정
+	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
 	@ResponseBody
 	public int login(UserVO vo, HttpSession httpSession, HttpServletRequest request,
 						HttpServletResponse response) {
 		
 		//아이디 기억하기 name값 가져오기
 		String userCheck = request.getParameter("rememberUserId");
+		//암호화 비밀번호 확인
+		System.out.println(vo.getPassword());
 		
 		// 비밀번호 암호화
 		String userPassword = vo.getPassword();
@@ -95,9 +98,10 @@ public class UserController {
 		//암호화확인 
 		System.out.println("userPassword : " + vo.getPassword());
 		
-		int result = login
+		int result = userService.userLoginService(vo, httpSession, userCheck, response);
+		System.out.println(result);
 
-		return "EmailCheck.jsp";
+		return result;
 	}
 	
 	

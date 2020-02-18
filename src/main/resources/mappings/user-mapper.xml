@@ -31,8 +31,8 @@
 		SELECT COUNT(*) FROM USERS WHERE PHONE = #{phone}
 	</select>
 	
-	<select id="loginCheck" parameterType="String" resultType="int">
-		SELECT COUNT(*) FROM USERS WHERE PHONE = #{phone}
+	<select id="loginCheck" parameterType="user" resultType="user">
+		SELECT * FROM USERS WHERE ID = #{userId}
 	</select>
 	
 	

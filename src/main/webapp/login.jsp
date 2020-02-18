@@ -50,25 +50,23 @@
 		var password = $('#inputPassword').val();
 		var rememberUs = $('#rememberUs').is(':checked');
 			$.ajax({
-			type="post",
-			url : 
+			type : "post",
+			url : 'login.do',
 			data : {
-				userId : id,
-				UserPassword : password,
+				id : id,
+				password : password,
 				rememberUserId : rememberUs
 			},
 					success : function(data){
 					
 					if(data == 0){
 						$('#spanLoginCheck').text('로그인 정보를 정확히 입력해주세요')
-						
+						$('#spanLoginCheck').css('color', 'red');
 					}else if (data == -2){
 						$('#spanLoginCheck').text('이메일을 인증 해주셔야합니다')
-					
-					}else if (data == -3){
-						location.href='#'+id+
+						$('#spanLoginCheck').css('color', 'red');
 					}else{
-						location.href="main.jsp"
+						location.href="index.jsp"
 					}
 					
 				}
