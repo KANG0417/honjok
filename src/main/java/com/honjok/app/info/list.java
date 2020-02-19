@@ -47,11 +47,14 @@ public class list {
       System.out.println(com);
       System.out.println(comI);
       
+      
+      //content 공백 처리 
       String a = com.getContent();
-     com.setContent(a.replaceAll("\r\n", "<br>"));
+     com.setContent(a.replaceAll("\r\n", ""));
       
       
-      service.inserthonjokinfo(com);
+      service.insertCommunity(com);
+      service.insertCommInfo(comI);
       
     
      
@@ -82,12 +85,18 @@ public class list {
       pagingMap.put("section", Integer.parseInt(section_));
       pagingMap.put("pageNum", Integer.parseInt(pageNum_));
       
+      
+      //community 조회 
       List<CommunityVO> list = service.selectAll(pagingMap);
+ 
+      //페이징 처리위해 전체 조회
+      int countList = service.selectAllCount();
+      System.out.println("총게시글수"+countList);
       
-      int countList = service.selectAllCount();   
+      //comminfo 조회   
+      	List<CommInfoVO> infoList = service.selectInfo(pagingMap);
       
-      System.out.println(countList);
-      
+      model.addAttribute("infoList",infoList);
       model.addAttribute("pageNum", pageNum_);
       model.addAttribute("section", section_);
       model.addAttribute("CommunityVOList",list);
@@ -117,8 +126,9 @@ public class list {
    public String update(CommunityVO com) {
    
          System.out.println("com값: "+ com);
+         
          String a = com.getContent();
-         com.setContent(a.replaceAll("\r\n", "<br>"));
+         com.setContent(a.replaceAll("\r\n", ""));
       
          service.uptate(com);
       
@@ -156,9 +166,6 @@ public class list {
                        String fileUrl = req.getContextPath() + "/img/" + fileName;
                        System.out.println(req.getContextPath() + "/img/" + fileName);
                        
-                       // json �뜲�씠�꽣濡� �벑濡�
-                       // {"uploaded" : 1, "fileName" : "test.jpg", "url" : "/img/test.jpg"}
-                       // �씠�윴 �삎�깭濡� 由ы꽩�씠 �굹媛��빞�븿.
                        json.addProperty("uploaded", 1);
                        json.addProperty("fileName", fileName);
                        json.addProperty("url", fileUrl);

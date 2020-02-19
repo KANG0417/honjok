@@ -12,6 +12,11 @@
 	<h1>글등록</h1>
 
 	<form action="InsertCook.do" method="post">
+
+	<select name="category">
+	<option value="간단요리">간단요리</option>
+	</select>
+	
 	<table>
 		<tr>
 			<th width="70">제목</th>
@@ -22,7 +27,7 @@
 		<tr>
 			<th>작성자</th>
 			<td>
-				<input type="text" name="nickname">
+				<input type="text" name="nickname" >
 			</td>
 		</tr>
 		<tr>
@@ -54,5 +59,12 @@
 	</form>
 	<p><a href="CookAll.do">글 목록 가기</a></p>
 </div>
+
+
+
+
+
+</script>
+
 </body>
 </html>

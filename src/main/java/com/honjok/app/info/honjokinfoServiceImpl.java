@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.honjok.app.vo.CommInfoVO;
 import com.honjok.app.vo.CommunityVO;
 
 
@@ -19,13 +20,21 @@ public class honjokinfoServiceImpl implements honjokinfoService {
 
 
 	@Override
-	public void inserthonjokinfo(CommunityVO com) {
+	public void insertCommunity(CommunityVO com) {
 		   System.out.println(com);
 		      System.out.println("implement  전");
-		      Mapper.inserthonjokinfo(com);
+		      Mapper.insertCommunity(com);
 		      System.out.println("implement  후");
 		
 	}
+	
+	
+	@Override
+	public void insertCommInfo(CommInfoVO comI) {
+			Mapper.insertCommInfo(comI);
+			
+	}
+
 
 
 
@@ -34,6 +43,14 @@ public class honjokinfoServiceImpl implements honjokinfoService {
 		
 		 List<CommunityVO> list = Mapper.selectAll(pagingMap);
 		 
+		return list;
+	}
+	
+	
+	
+	@Override
+	public List<CommInfoVO> selectInfo(Map<String, Integer> pagingMap) {
+		List<CommInfoVO> list = Mapper.selectInfo(pagingMap);
 		return list;
 	}
 	
@@ -69,6 +86,12 @@ public class honjokinfoServiceImpl implements honjokinfoService {
 		
 	}
 
+
+	
+
+
+
+	
 
 
    

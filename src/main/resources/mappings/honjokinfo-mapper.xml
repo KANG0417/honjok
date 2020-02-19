@@ -4,6 +4,8 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="honjokInfoMapper">
 
+
+
 	<insert id="insert" parameterType="CommunityVO">
 		INSERT INTO COMMUNITY(
 		COM_SEQ,
@@ -13,10 +15,23 @@
 		REGDATE,
 		HIT,
 		LIKES,
-		TYPE)
+		TYPE,
+		NICKNAME
+		)
 		values(COMMMUNITY_SEQ.NEXTVAL, #{title}, #{id}, #{content}, SYSDATE,
-		'0', '0', '1')
+		'0', '0', '1', #{nickname})
 	</insert>
+	
+	<insert id="insertCommInfo" parameterType="CommInfoVO">
+		insert into comm_info 
+		values((select NVL(MAX(com_seq),0)from community),0,#{adr},#{menu})
+	</insert>
+	
+	<!-- insert end -->
+
+
+
+
 
 	<select id="selectAll" resultType="CommunityVO" parameterType="Map">
 		SELECT * FROM ( SELECT ROWNUM
@@ -34,6 +49,7 @@
 		CONTENT,
 		REGDATE,
 		HIT,
+		NICKNAME,
 		LIKES,TYPE FROM COMMUNITY WHERE type = '1' order by com_seq DESC))
         where RECNUM BETWEEN (#{section}-1)* 60 + (#{pageNum}-1)* 6 + 1 
 		AND (#{section} - 1)*60 + #{pageNum}*6 order by com_seq DESC
@@ -49,6 +65,22 @@
 		parameterType="String">
 		SELECT * FROM COMMUNITY WHERE COM_SEQ = #{com_seq}
 	</select>
+	
+	
+	<select id="selectCommInfoVO" resultType="CommInfoVO" parameterType="Map">
+	SELECT * FROM (SELECT ROWNUM
+		AS RECNUM,
+        COM_SEQ,
+		SUM_STAR,
+		ADR,
+		MENU FROM(SELECT * FROM COMM_INFO order by com_seq DESC))
+        where RECNUM BETWEEN (#{section}-1)* 60 + (#{pageNum}-1)* 6 + 1 
+		AND (#{section} - 1)*60 + #{pageNum}*6 order by com_seq DESC
+	</select>
+	
+	
+	
+	<!-- select end -->
 
 	<delete id="delete" parameterType="String">
 		DELETE COMMUNITY WHERE COM_SEQ
@@ -59,13 +91,8 @@
 		UPDATE COMMUNITY
 		SET
 		TITLE = #{title},
-		ID =#{id},
 		CONTENT = #{content},
-		REGDATE =
-		#{regdate},
-		HIT = #{hit},
-		LIKES= #{likes},
-		NICKNAME = #{nickname, jdbcType=VARCHAR}
+		REGDATE = SYSDATE
 		WHERE com_seq = #{com_seq}
 	</update>
 

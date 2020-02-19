@@ -60,8 +60,8 @@
 								console.log(firstimg);
 								var image = document.createElement("IMG");
 								image.src = firstimg;
-								image.height = 400;
-								image.width = 400;
+								image.height = 300;
+								image.width = 300;
 								console.log(image);
 								$('.main-img${articleNum.index}').html(image);
 								
@@ -75,6 +75,8 @@
 								작성자: ${CommunityVO.id } 작성일: ${CommunityVO.regdate } 작성자:
 								${CommunityVO.id } 조회수: ${CommunityVO.hit } 좋아요:
 								${CommunityVO.likes }
+								종합별점수 : ${infoList[articleNum.index].sum_star}
+								주소 : ${infoList[articleNum.index].adr}
 							</div>
 
 						</div>
@@ -146,7 +148,7 @@
 					</c:when>
 
 					<c:when test="${countList < 100 }">
-						<c:forEach var="page" begin="1" end="${countList/10 + 1 }"
+						<c:forEach var="page" begin="1" end="${countList/60 + 1 }"
 							step="1">
 							<c:choose>
 								<c:when test="${page == pageNum }">

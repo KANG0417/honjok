@@ -33,16 +33,15 @@ public class CookController {
 	public String cookDetail(Model model, CookVO ckvo) {
 		System.out.println("Cook게시판 하나 조회입니다.");
 		CookVO Cook = cookservice.getBoardList(ckvo);
-		System.out.println(Cook);
 		model.addAttribute("cookSelect", Cook);
-		return "cook/CookDetail.jsp";
+		System.out.println(Cook);
+		return "CookDetail.jsp";
 	}
    
    @RequestMapping("/InsertCook.do")
-   public String insert(CookVO ckvo, CommunityVO com) {
+   public String insert(CookVO ckvo) {
 	   	
 	   System.out.println(ckvo);
-	   System.out.println(com);
 		  cookservice.insertCook(ckvo);
 		  System.out.println("게시물 등록이 완료되었습니다.");
 		  System.out.println(ckvo.toString());

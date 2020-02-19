@@ -23,7 +23,8 @@
       <input type="hidden" name="hit" value="${com.hit }">
       <input type="hidden" name="likes" value="${com.likes }">
       <input type="hidden" name="regdate" value="${com.regdate }">
-      <input type="hidden" name="id" value="${com.id }"><br>
+
+    
 	         제목<input type="text" name="title" value="${com.title }"><br>
 	         내용<textarea name="content" id="editor1" rows="10" cols="80" >${com.content }</textarea><br>
 	        <input class="adr" type="hidden" name="adr" value="지도를 클릭해주세요">            

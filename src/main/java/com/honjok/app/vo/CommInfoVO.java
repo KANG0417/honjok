@@ -1,76 +1,43 @@
 package com.honjok.app.vo;
 
 public class CommInfoVO {
-	String 
-	info_seq,
-	file_image,
-	sum_star,
-	adr;
+	String com_seq, sum_star, adr, menu;
 
-
-	public String getInfo_seq() {
-		return info_seq;
+	public String getCom_seq() {
+		return com_seq;
 	}
 
-
-
-
-	public void setInfo_seq(String info_seq) {
-		this.info_seq = info_seq;
+	public void setCom_seq(String com_seq) {
+		this.com_seq = com_seq;
 	}
-
-
-
-
-	public String getFile_image() {
-		return file_image;
-	}
-
-
-
-
-	public void setFile_image(String file_image) {
-		this.file_image = file_image;
-	}
-
-
-
 
 	public String getSum_star() {
 		return sum_star;
 	}
 
-
-
-
 	public void setSum_star(String sum_star) {
 		this.sum_star = sum_star;
 	}
-
-
-
 
 	public String getAdr() {
 		return adr;
 	}
 
-
-
-
 	public void setAdr(String adr) {
 		this.adr = adr;
 	}
 
+	public String getMenu() {
+		return menu;
+	}
 
-
+	public void setMenu(String menu) {
+		this.menu = menu;
+	}
 
 	@Override
 	public String toString() {
-		return "CommInfoVO [info_seq=" + info_seq + ", file_image=" + file_image + ", sum_star="
-				+ sum_star + ", adr=" + adr + "]";
+		return "CommInfoVO [com_seq=" + com_seq + ", sum_star=" + sum_star + ", adr=" + adr + ", menu=" + menu + "]";
 	}
-	
-
-	
 
 }
