@@ -9,5 +9,6 @@ public interface InteriorService {
 	List<CommInteriorVO> BoardAllList();
 	CommInteriorVO getBoardList(CommInteriorVO cvo);
 	public void insertBoard(CommInteriorVO cvo);
+	public void updateBoard(CommInteriorVO cvo);
 
 }

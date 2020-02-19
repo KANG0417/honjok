@@ -2,13 +2,11 @@ package com.honjok.app.vo;
 
 public class CommInteriorVO {
 	private String file_image, id, title, content, com_seq, hit, likes,regdate, nickname;
-	private int type;
 	public CommInteriorVO() {}
 
 	public CommInteriorVO(int type, String id, String file_image, String title, String content, String com_seq,
 			String hit, String likes, String regdate, String nickname) {
 		super();
-		this.type = type;
 		this.id = id;
 		this.file_image = file_image;
 		this.title = title;
@@ -18,14 +16,6 @@ public class CommInteriorVO {
 		this.likes = likes;
 		this.regdate = regdate;
 		this.nickname = nickname;
-	}
-
-	public int getType() {
-		return type;
-	}
-
-	public void setType(int type) {
-		this.type = type;
 	}
 
 	public String getFile_image() {
@@ -102,7 +92,7 @@ public class CommInteriorVO {
 
 	@Override
 	public String toString() {
-		return "CommInteriorVO [type=" + type + ", file_image=" + file_image + ", title=" + title + ", id=" + id +
+		return "CommInteriorVO [file_image=" + file_image + ", title=" + title + ", id=" + id +
 				", content=" + content + ", com_seq=" + com_seq + ", hit=" + hit + ", likes=" + likes + ", regdate="
 				+ regdate + ", nickname=" + nickname + "]";
 	}
