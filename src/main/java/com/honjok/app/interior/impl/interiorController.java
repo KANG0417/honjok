@@ -61,8 +61,8 @@ public class interiorController {
 		return "interiorAllList.do";
 	}
 	
-	@RequestMapping("/updateInterior")
+	/*@RequestMapping("/updateInterior")
 	public String updateBoard(CommInteriorVO cvo) {
 		
-	}
+	}*/
 }
