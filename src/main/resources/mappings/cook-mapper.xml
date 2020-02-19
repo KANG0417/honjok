@@ -6,26 +6,25 @@
  
    <insert id="insertCook" parameterType="cook">
     	insert into comm_cook
-		VALUES(cook_sequence.NEXTVAL,#{title},#{content}
+		VALUES((cook_sequence.NEXTVAL)+1,#{title},#{content}
 		,sysdate, #{category}, #{image},#{cooktime},0,0,'ID',#{nickname})
   	</insert>
 	
 	<select id="selectOne" parameterType="String" resultType="cook">
-		   SELECT * FROM COMMUNITY WHERE COM_SEQ = #{com_seq}
+		   SELECT * FROM COMM_COOK WHERE COM_SEQ = #{com_seq}
 	</select>
 	<select id="selectAll" resultType="cook">
 		SELECT *
-		FROM COMM_COOK CO
+		FROM COMM_COOK
 	</select>
 	
 	<update id="update" parameterType="cook">
-		UPDATE COMMUNITY
+		UPDATE COMM_COOK
 		SET
 		TITLE = #{title},
 		ID =#{id},
 		CONTENT = #{content},
-		REGDATE =
-		#{regdate},
+		REGDATE = #{regdate},
 		HIT = #{hit},
 		LIKES= #{likes},
 		NICKNAME = #{nickname, jdbcType=VARCHAR}

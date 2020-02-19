@@ -13,7 +13,7 @@ public interface CookService {
   public List<CookVO> selectAll();
   CookVO getBoardList(CookVO cvo);
 	  
-  public CookVO select(CookVO	ckvo);
+  public CookVO selectOne(CookVO	ckvo);
 
   public void delete(String com_seq);
 

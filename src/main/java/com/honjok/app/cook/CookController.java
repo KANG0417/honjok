@@ -30,10 +30,10 @@ public class CookController {
    }
    
    @RequestMapping("/CookDetail.do")
-	public String cookDetail(Model model, CookVO ckvo) {
+	public String cookDetail(Model model, CookVO cvo) {
 		System.out.println("Cook게시판 하나 조회입니다.");
-		CookVO Cook = cookservice.getBoardList(ckvo);
-		model.addAttribute("cookSelect", Cook);
+		CookVO Cook = cookservice.selectOne(cvo);
+		model.addAttribute("cookDetail", Cook);
 		System.out.println(Cook);
 		return "CookDetail.jsp";
 	}
