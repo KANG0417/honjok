@@ -43,6 +43,7 @@ public class UserController {
 		mailsender.mailSendWithUserKey(vo.getEmail(), vo.getId(), request);
 		return "index.jsp";
 	}
+	
 	//아이디 중복체크
 	@RequestMapping(value = "/userIdCheck.do", method = RequestMethod.GET)
 	@ResponseBody
@@ -50,6 +51,7 @@ public class UserController {
 		System.out.println("Id : "+ id);
 		return userService.userIdCheck(id);
 	}
+	
 	//이메일 중복 체크
 	@RequestMapping(value = "/userEmailCheck.do", method = RequestMethod.GET)
 	@ResponseBody
@@ -64,6 +66,7 @@ public class UserController {
 		System.out.println("nick");
 		return userService.emailCheck(nick);
 	}
+	
 	//핸드폰 중복체크
 	@RequestMapping(value = "/userPhoneCheck.do", method = RequestMethod.GET)
 	@ResponseBody
@@ -71,6 +74,7 @@ public class UserController {
 		System.out.println("nick");
 		return userService.emailCheck(phone);
 	}
+	
 	//이메일 인증 후 Key값 변경
 	@RequestMapping(value = "/userKeyAlter.do", method = RequestMethod.GET)
 	public String keyAlterConfirm(@RequestParam("userId") String userId, @RequestParam("userKey") String key) {
