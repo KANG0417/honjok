@@ -21,12 +21,21 @@
 	.center { text-align: center; }
 	.border-none, .border-none td { border: none; }
 </style>
+<script>
+function fn_update(){
+    
+    var form = document.getElementById("viewForm");
+    
+    form.action = "<c:url value='/board/updateboard.do'/>";
+    form.submit();
+}
+</script>
 </head>
 <body>
 <div id="container">
 	<h1>글 상세</h1>
-	<form action="InBoardUpdate.jsp" method="post">
-		<input type="hidden" name="seq" value="${interiorvo.com_seq }">
+	<%-- <form action="InBoardUpdate.jsp" method="post">
+		<input type="hidden" name="seq" value="${interiorvo.com_seq }"> --%>
 	<table>
 		<tr>
 			<th>제목</th>
@@ -62,13 +71,13 @@
 		</tr>
 		<tr>
 			<td colspan="2" class="center">
-				<input type="submit" value="글 수정">
+				<input type="button" value="글 수정" onclick="fn_update()">
 			</td>
 		</tr>
 	</table>
-	</form>
-<%--  	</c:forEach> --%>
-	<p>
+<%-- 	</form>
+ 	</c:forEach>
+ --%>	<p>
 		<a href="deleteBoard.do?seq=${board.getSeq() }">글삭제</a>
 		<a href="${contextPage.request.contextPath}/app/interior/interiorAllList.do">글목록</a>
 	</p>

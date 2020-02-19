@@ -62,12 +62,16 @@ public class interiorController {
 		return "interiorAllList.do";
 	}
 	
-	@RequestMapping("/updateInterior")
+	@RequestMapping("/updateInterior.do")
 	public String updateBoard(@ModelAttribute("board") CommInteriorVO cvo) {
 		System.out.println(">>> 글 수정 처리 - updateBoard()");
 		System.out.println("> board vo : " + cvo);
-		
-		interiorService.updateBoard(cvo);
-		return "interiorAllList.do";
-	}
+
+        try{
+            interiorService.updateBoard(cvo);
+        } catch (Exception e){
+            e.printStackTrace();
+        }        
+        return "interiorAllList.do";
+    }
 }

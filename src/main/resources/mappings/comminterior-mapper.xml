@@ -35,6 +35,7 @@
 		SELECT C.COM_SEQ, C.TITLE, C.NICKNAME, C.CONTENT, C.REGDATE, C.HIT, C.LIKES, I.FILE_IMAGE
 		FROM COMMUNITY C, COMM_INTERIOR I
 		WHERE C.COM_SEQ = I.COM_SEQ
+		ORDER BY C.COM_SEQ , I.COM_SEQ
 	</select>
   
 	<select id="getInteriorOne" parameterType="CommInteriorVO" resultType="CommInteriorVO">
@@ -42,5 +43,6 @@
 		FROM COMMUNITY C, COMM_INTERIOR I
 		WHERE C.COM_SEQ = I.COM_SEQ
 		AND C.COM_SEQ = #{com_seq}
+		ORDER BY C.COM_SEQ , I.COM_SEQ
 	</select>
   </mapper>

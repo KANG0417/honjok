@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -24,16 +25,17 @@
 <body>
 <div id="container">
 	<h1>글 상세</h1>
-	<form action="InBoardUpdate.jsp" method="post">
+	<form action="/updateInterior.do" method="post">
 		<input type="hidden" name="seq" value="${interiorvo.com_seq }">
 	<table>
+ 	<c:forEach var="interiorvo" items="${interiorSelect}">
 		<tr>
 			<th>제목</th>
 			<td>
-				${interiorSelect.title }
+				<input type="text" name="title" value="${interiorvo.title }">
 			</td>
 		</tr>
-		<tr>
+		<%-- <tr>
 			<th>작성자</th>
 			<td>${interiorSelect.nickname }</td>
 		</tr>
@@ -58,15 +60,15 @@
 		<tr>
 			<th>파일이미지</th>
 			<td>${interiorSelect.file_image }</td>
-		</tr>
+		</tr> --%>
 		<tr>
 			<td colspan="2" class="center">
 				<input type="submit" value="글 수정">
 			</td>
 		</tr>
+	</c:forEach>
 	</table>
 	</form>
-<%--  	</c:forEach> --%>
 	<p>
 		<a href="deleteBoard.do?seq=${board.getSeq() }">글삭제</a>
 		<a href="${contextPage.request.contextPath}/app/interior/interiorAllList.do">글목록</a>
