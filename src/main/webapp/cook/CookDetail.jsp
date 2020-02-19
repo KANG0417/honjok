@@ -31,34 +31,34 @@
 		<tr>
 			<th>제목</th>
 			<td>
-				${cookvo.title }
+				${cookSelect.title }
 			</td>
 		</tr>
 		<tr>
 			<th>작성자</th>
-			<td>${cookvo.nickname }</td>
+			<td>${cookSelect.nickname }</td>
 		</tr>
 		<tr>
 			<th>내용</th>
 			<td>
-				${cookvo.content }
+				${cookSelect.content }
 			</td>
 		</tr>
 		<tr>
 			<th>등록일</th>
-			<td>${cookvo.regdate }</td>
+			<td>${cookSelect.regdate }</td>
 		</tr>
 		<tr>
 			<th>조회수</th>
-			<td>${cookvo.hit }</td>
+			<td>${cookSelect.hit }</td>
 		</tr>
 		<tr>
 			<th>좋아요</th>
-			<td>${cookvo.likes }</td>
+			<td>${cookSelect.likes }</td>
 		</tr>
 		<tr>
 			<th>파일이미지</th>
-			<td>${cookvo.image }</td>
+			<td>${cookSelect.image }</td>
 		</tr>
 		<tr>
 			<td colspan="2" class="center">

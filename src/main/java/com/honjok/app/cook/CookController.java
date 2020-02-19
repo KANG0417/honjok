@@ -33,8 +33,8 @@ public class CookController {
 	public String cookDetail(Model model, CookVO ckvo) {
 		System.out.println("Cook게시판 하나 조회입니다.");
 		CookVO Cook = cookservice.getBoardList(ckvo);
-		System.out.println(Cook);
 		model.addAttribute("cookSelect", Cook);
+		System.out.println(Cook);
 		return "CookDetail.jsp";
 	}
    

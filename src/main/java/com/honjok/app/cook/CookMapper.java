@@ -36,11 +36,11 @@ public class CookMapper {
 		return list;
 	}
 	//게시물 한개 조회
-	public CookVO select(String com_seq) {
+	public CookVO select(CookVO ckvo) {
 		System.out.println("select 한 건");
-		CookVO cvo = mybatis.selectOne("cookmapper.select", com_seq);
-		System.out.println(cvo);
-		return cvo;
+		CookVO cvo = mybatis.selectOne("cookmapper.select", ckvo);
+		System.out.println(ckvo);
+		return ckvo;
 	
 	}
 	public void delete(String com_seq) {

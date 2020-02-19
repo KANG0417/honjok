@@ -27,10 +27,10 @@ public class CookServiceImpl implements CookService{
 
 
 	@Override
-	public CookVO select(String com_seq) {
+	public CookVO select(CookVO ckvo) {
 		// TODO Auto-generated method stub
-		CookVO ckvo = CookMapper.select(com_seq);
-		return ckvo;
+		CookVO cvo = CookMapper.select(ckvo);
+		return cvo;
 	}
 
 	@Override
