@@ -25,7 +25,7 @@
   		SET (#{title}, #{content}, SYSDATE)
   		WHERE COM_SEQ = #{com_seq};
   		UPDATE COMM_INTERIOR (FILE_IMAGE)
-  		SET (#{file_image});
+  		SET (#{file_image})
   		WHERE COM_SEQ = #{com_seq};
   		END
   		}
