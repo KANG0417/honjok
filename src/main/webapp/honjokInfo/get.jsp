@@ -15,9 +15,22 @@
    src="//dapi.kakao.com/v2/maps/sdk.js?appkey=69f7448811fd57d29b7398b4045f65df&libraries=services"></script>
 </head>
 <body>
+   <h1>글번호 : ${CommInfoVO.com_seq }</h1>
    <h1>제목 : ${CommInfoVO.title }</h1>
    <p>작성자: ${CommInfoVO.id }</p>
-   <p>${CommInfoVO.content }</p>
+   <p>별점:${CommInfoVO.sum_star }</p>
+   <p>매장위치:${CommInfoVO.adr }</p>
+   <p>메뉴${CommInfoVO.menu }</p>
+   <p>내용:${CommInfoVO.content }</p>
+   <p>ID:${CommInfoVO.id }</p>
+   <p>타입:${CommInfoVO.type }</p>
+   <p>조회수:${CommInfoVO.hit }</p>
+   <p>좋아요;${CommInfoVO.likes }</p>
+   <p>작성일:${CommInfoVO.regdate }</p>
+   <p>닉네임:${CommInfoVO.nickname }</p>
+   <p>매장번호:${CommInfoVO.tel }</p>
+   <p>매장위치:${CommInfoVO.place_name }</p>
+   <p>매장 업종:${CommInfoVO.category_name }</p>
    
 <div id="map" style="width:100%;height:350px;"></div>
 

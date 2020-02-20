@@ -87,11 +87,17 @@
 #pagination a {display:inline-block;margin-right:10px;}
 #pagination .on {font-weight: bold; cursor: default;color:#777;}
 
+
+
 </style>
+
+   <!--  <script type = "text/javascript">
+        window.parent.CKEDITOR.tools.callFunction('${CKEditorFuncNum}','${filePath}', '업로드완료');
+    </script> -->
 </head>
+
 <body>
    <h1>혼족정보게시판</h1>
-   
    
    
    
@@ -119,8 +125,10 @@
                위치정보(클릭해주세요)
       <br>
    
-  	  <input class="adr" type="hidden" name="adr" value="지도를 클릭해주세요">
-      
+  	  <input class="adr" type="hidden" name="adr" value="위치를 등록해주세요">
+      <input class="tel" type="hidden" name="tel" value="전화번호 등록해주세요">
+      <input class="place_name" type="hidden" name="place_name" value="매장이름 등록해주세요">
+      <input class="category_name" type="hidden" name="category_name" value="업종을 등록해주세요">
       
    </form>
    
@@ -149,24 +157,11 @@
        <input type="submit" id="ss" form="insert">
          
          
-         
- 
-   <script>
-   
-   
-   $('#getdata').click(function() {
-  	 var editor = CKEDITOR.instances['editor1'];
-
-       var value = editor.getData();
-       alert(value);
-       // send your ajax request with value
-       // profit!
-   });   
-   </script> 
 
 
 
-<script type="text/javascript">
+
+ <script type="text/javascript">
 
 CKEDITOR.replace('editor1', {
     extraPlugins: 'image2,uploadimage',
@@ -188,21 +183,11 @@ CKEDITOR.replace('editor1', {
 
     height: 450
   });
-/* $(function(){
-   CKEDITOR.replace('editor1',{
-      height: 400,
-      filebrowserUploadUrl: 'fileupload.do'
-      
-   });
-   
-   
-}); */
+  
+</script> 
 
 
-</script>
-
-
-<!-- 미리보기 -->
+<!--  미리보기 
    <script type="text/javascript">
           function readURL(input){
              $('#preview').show();
@@ -218,7 +203,7 @@ CKEDITOR.replace('editor1', {
           }   
           }
     </script>
-
+ -->
 
 
    <!-- 다음지도  --><script>
@@ -310,16 +295,18 @@ function displayPlaces(places) {
         // 마커와 검색결과 항목에 mouseover 했을때
         // 해당 장소에 인포윈도우에 장소명을 표시합니다
         // mouseout 했을 때는 인포윈도우를 닫습니다
-        (function(marker, title) {
+        (function(marker, title, tel, place_name,category_name ) {
             kakao.maps.event.addListener(marker, 'click', function() {
             	
             	$("img[src='http://localhost:8080/app/honjokInfo/insert.jsp']").remove();
             	$("img[src='http://t1.daumcdn.net/mapjsapi/images/marker.png']").remove();
             	
             
-                displayInfowindow(marker, title );
-                var ss = places[0].address_name;
-                document.querySelector('.adr').value = title;
+                displayInfowindow(marker, title ,tel, place_name, category_name  );
+                document.querySelector('.adr').value = place_name;
+                document.querySelector('.tel').value = tel;
+                document.querySelector('.place_name').value = title;
+                document.querySelector('.category_name').value = category_name;
 			   
             });
 
@@ -327,15 +314,19 @@ function displayPlaces(places) {
             itemEl.onclick =  function () {
             	$("img[src='http://localhost:8080/app/honjokInfo/insert.jsp']").remove();
             	$("img[src='http://t1.daumcdn.net/mapjsapi/images/marker.png']").remove();
-                displayInfowindow(marker, title);
-                document.querySelector('.adr').value = title;
+            	
+                displayInfowindow(marker, title, tel,  place_name,category_name);
+                document.querySelector('.adr').value = place_name;
+                document.querySelector('.tel').value = tel;
+                document.querySelector('.place_name').value = title;
+                document.querySelector('.category_name').value = category_name;
             };
 
         /*     itemEl.onmouseout =  function () {
               
             }; */
             
-        })(marker, places[i].road_address_name);
+        })(marker, places[i].place_name,places[i].phone, places[i].road_address_name,places[i].category_name);
 
         fragment.appendChild(itemEl);
     }

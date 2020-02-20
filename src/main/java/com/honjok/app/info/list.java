@@ -85,16 +85,22 @@ public class list {
       pagingMap.put("section", Integer.parseInt(section_));
       pagingMap.put("pageNum", Integer.parseInt(pageNum_));
       
+    
+      
       
       //community 조회 
       List<CommunityVO> list = service.selectAll(pagingMap);
  
+      
+      //comminfo 조회   
+      List<CommInfoVO> infoList = service.selectInfo(pagingMap);
+      
+    	
       //페이징 처리위해 전체 조회
       int countList = service.selectAllCount();
       System.out.println("총게시글수"+countList);
       
-      //comminfo 조회   
-      	List<CommInfoVO> infoList = service.selectInfo(pagingMap);
+    
       
       model.addAttribute("infoList",infoList);
       model.addAttribute("pageNum", pageNum_);
@@ -106,6 +112,8 @@ public class list {
       
    }
    
+   
+   
    @RequestMapping("/get.do")
    public String select(String com_seq ,Model model) {
       System.out.println("com_seq값" + com_seq);
@@ -114,6 +122,9 @@ public class list {
       model.addAttribute("CommInfoVO",CommInfoVO);
       return "/honjokInfo/get.jsp";
    }
+   
+   
+   
    
    @RequestMapping("/delete.do")
    public String delete(String com_seq ,Model model) {

@@ -6,11 +6,13 @@
 
 
 
+	<!-- 글등록 -->
 	<insert id="insert" parameterType="CommInfoVO">
 		{call
 		declare
 		begin
-		INSERT INTO COMMUNITY(
+		INSERT INTO
+		COMMUNITY(
 		COM_SEQ,
 		TITLE,
 		ID,
@@ -21,11 +23,13 @@
 		TYPE,
 		NICKNAME
 		)
-		values((SELECT NVL(MAX(com_seq), 0) + 1 FROM COMMUNITY),
-		#{title}, #{id}, #{content}, SYSDATE,
+		values((SELECT NVL(MAX(com_seq)+1, 0) FROM COMMUNITY),
+		#{title}, #{id},
+		#{content}, SYSDATE,
 		'0', '0', '1', #{nickname});
 		INSERT INTO COMM_INFO
-		VALUES((select NVL(MAX(com_seq),0) FROM COMMUNITY),0,#{adr},#{menu});
+		VALUES((SELECT NVL(MAX(com_seq), 0) FROM COMMUNITY)
+		,0,#{adr},#{menu},#{tel},#{place_name},#{category_name});
 		END
 		}
 	</insert>
@@ -33,10 +37,7 @@
 
 	<!-- insert end -->
 
-
-
-
-
+	<!-- 커뮤니티 페이징 처리후 -->
 	<select id="selectAll" resultType="CommunityVO"
 		parameterType="Map">
 		SELECT * FROM ( SELECT ROWNUM
@@ -57,9 +58,33 @@
 		NICKNAME,
 		LIKES,TYPE FROM COMMUNITY WHERE type =
 		'1' order by com_seq DESC))
-		where RECNUM BETWEEN (#{section}-1)* 60 + (#{pageNum}-1)* 6 + 1
-		AND (#{section} - 1)*60 + #{pageNum}*6 order by com_seq DESC
+		where RECNUM BETWEEN (#{section}-1)* 60 +
+		(#{pageNum}-1)* 6 + 1
+		AND (#{section} - 1)*60 + #{pageNum}*6 order by
+		com_seq DESC
 	</select>
+
+	<!-- 커뮤니티 인포 페이징 처리후 -->
+	<select id="selectCommInfoVO" resultType="CommInfoVO"
+		parameterType="Map">
+		SELECT * FROM (SELECT ROWNUM
+		AS RECNUM,
+		COM_SEQ,
+		SUM_STAR,
+		ADR,
+		MENU,
+		tel,
+		place_name,
+		category_name
+		FROM(SELECT * FROM COMM_INFO order by com_seq DESC))
+		where RECNUM BETWEEN
+		(#{section}-1)* 60 + (#{pageNum}-1)* 6 + 1
+		AND (#{section} - 1)*60 +
+		#{pageNum}*6 order by com_seq DESC
+	</select>
+
+
+
 
 	<select id="selectAllCount" resultType="Integer">
 		select count(*)from
@@ -68,32 +93,36 @@
 
 
 
+
+
+	<!-- 테이블 하나 가져오기 커퓨니티+info테이블 -->
 	<select id="select" resultType="CommInfoVO"
 		parameterType="String">
-		select C.* ,I.* from COMMUNITY  C, COMM_INFO I
-		WHERE C.COM_SEQ = i.com_seq AND i.com_seq = #{com_seq}
+		select C.* ,I.* from COMMUNITY C, COMM_INFO I
+		WHERE
+		C.COM_SEQ = i.com_seq AND i.com_seq = #{com_seq}
 	</select>
 
 
-	<select id="selectCommInfoVO" resultType="CommInfoVO"
-		parameterType="Map">
-		SELECT * FROM (SELECT ROWNUM
-		AS RECNUM,
-		COM_SEQ,
-		SUM_STAR,
-		ADR,
-		MENU FROM(SELECT * FROM COMM_INFO order by com_seq DESC))
-		where RECNUM BETWEEN (#{section}-1)* 60 + (#{pageNum}-1)* 6 + 1
-		AND (#{section} - 1)*60 + #{pageNum}*6 order by com_seq DESC
-	</select>
+
 
 
 
 	<!-- select end -->
 
+
+	<!-- 글삭제 -->
 	<delete id="delete" parameterType="String">
-		DELETE COMMUNITY WHERE COM_SEQ
-		= #{com_seq}
+		{call
+		declare
+		begin
+
+		DELETE COMM_INFO WHERE COM_SEQ = #{com_seq};
+		DELETE COMMUNITY WHERE COM_SEQ =
+		#{com_seq};
+
+		end
+		}
 	</delete>
 
 	<update id="uptate" parameterType="CommunityVO">

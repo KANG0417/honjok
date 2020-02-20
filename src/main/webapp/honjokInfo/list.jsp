@@ -62,23 +62,35 @@
 								image.src = firstimg;
 								image.height = 300;
 								image.width = 300;
+								image.alt = "이미지가없습니다.";
 								console.log(image);
 								$('.main-img${articleNum.index}').html(image);
 								
 							
 								</script>
 							</a>
+							
+							
+							
 							<div class="text w-100 text-center">
 								<h3>
 									<a href="get.do?com_seq=${CommunityVO.com_seq }">${CommunityVO.title }</a>
 								</h3>
-								작성자: ${CommunityVO.id } 작성일: ${CommunityVO.regdate } 작성자:
-								${CommunityVO.id } 조회수: ${CommunityVO.hit } 좋아요:
-								${CommunityVO.likes }
-								종합별점수 : ${infoList[articleNum.index].sum_star}
-								주소 : ${infoList[articleNum.index].adr}
+								
+								
 							</div>
-
+						
+								작성자: ${CommunityVO.id } <br>
+								작성일: ${CommunityVO.regdate }<br> 
+								작성자닉네임: ${CommunityVO.nickname }<br>
+								조회수: ${CommunityVO.hit } <br>
+								좋아요: ${CommunityVO.likes }<br>
+								종합별점수 : ${infoList[articleNum.index].sum_star}<br>
+								매장이름: ${infoList[articleNum.index].title}<br>
+								매장위치 : ${infoList[articleNum.index].adr}<br>
+								매장업종 : ${infoList[articleNum.index].category_name}<br>
+								매장전화번호: ${infoList[articleNum.index].tel}<br>
+						
 						</div>
 						 	 
 					</c:forEach>
