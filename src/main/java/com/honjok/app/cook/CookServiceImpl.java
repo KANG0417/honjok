@@ -30,7 +30,7 @@ public class CookServiceImpl implements CookService{
 	@Override
 	public void delete(String com_seq) {
 		// TODO Auto-generated method stub
-		
+		CookMapper.delete(com_seq);
 	}
 
 	
@@ -56,7 +56,7 @@ public class CookServiceImpl implements CookService{
 
 	@Override
 	public void update(CookVO com) {
-		// TODO Auto-generated method stub
+		 CookMapper.update(com);
 		
 	}
 

@@ -10,5 +10,6 @@ public interface InteriorService {
 	CommInteriorVO getBoardList(CommInteriorVO cvo);
 	public void insertBoard(CommInteriorVO cvo);
 	public void updateBoard(CommInteriorVO cvo);
+	public void deleteBoard(CommInteriorVO cvo);
 
 }

@@ -35,4 +35,9 @@ public class InteriorServiceImpl implements InteriorService {
 	public void updateBoard(CommInteriorVO cvo) {
 		commDAO.updateBoard(cvo);
 	}
+
+	@Override
+	public void deleteBoard(CommInteriorVO cvo) {
+		commDAO.deleteBoard(cvo);
+	}
 }

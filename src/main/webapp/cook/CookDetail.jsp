@@ -21,12 +21,16 @@
 	.center { text-align: center; }
 	.border-none, .border-none td { border: none; }
 </style>
+<script>
+	function fn_delete(){
+		var 
+	}
+</script>
 </head>
 <body>
 <div id="container">
 	<h1>글 상세</h1>
-	<form action="updateBoard.do" method="post">
-		<input type="hidden" name="seq" value="${cookvo.com_seq }">
+		<input type="hidden" name="com_seq" value="${cookDetail.com_seq }">
 	<table>
 		<tr>
 			<th>제목</th>
@@ -60,19 +64,21 @@
 			<th>파일이미지</th>
 			<td>${cookDetail.image }</td>
 		</tr>
-		<tr>
-			<td colspan="2" class="center">
-				<input type="submit" value="글 수정">
-			</td>
-		</tr>
+		
+		
 	</table>
-	</form>
-<%--  	</c:forEach> --%>
 	<p>
 		 <a href="insert.jsp">글등록</a>
-		<%--<a href="deleteBoard.do?seq=${board.getSeq() }">글삭제</a> --%>
 		<a href="${contextPage.request.contextPath}/app/cook/CookAll.do">글목록</a>
-	</p>
+		<form class="update" action="update.jsp">
+		   <c:set value="${cookDetail}" var="ckvo" scope="session"></c:set>
+		   <input type="submit" value="수정">
+		</form>
+		
+		<form action="delete.do">
+		   <input type="hidden" name="com_seq" value="${cookDetail.com_seq }">
+		   <input type="submit" value="삭제">
+		</form>
 </div>
 
 </body>

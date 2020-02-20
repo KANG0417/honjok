@@ -12,7 +12,8 @@
   		VALUES ((COMMMUNITY_SEQ.NEXTVAL) + 1, #{title}, #{nickname},
   			#{content}, SYSDATE, 0, 0, 2);
   		INSERT INTO COMM_INTERIOR (COM_SEQ, FILE_IMAGE)
-  		VALUES ((select NVL(MAX(com_seq),0)from community), #{file_image});
+  		VALUES ((select NVL(MAX(com_seq)
+  		,0)from community), #{file_image});
   		END
   		}
   	</insert>
@@ -22,10 +23,24 @@
   		declare
   		begin
   		UPDATE COMMUNITY
-  		SET (#{title}, #{content}, SYSDATE)
+  		SET TITLE = #{title}, CONTENT = #{content}, REGDATE = SYSDATE
   		WHERE COM_SEQ = #{com_seq};
-  		UPDATE COMM_INTERIOR (FILE_IMAGE)
-  		SET (#{file_image})
+  		UPDATE COMM_INTERIOR
+  		SET FILE_IMAGE = #{file_image}
+  		WHERE COM_SEQ = #{com_seq};
+  		END
+  		}
+	</update>
+	
+   	<update id="deleteComm" parameterType="CommInteriorVO">
+  		{ call
+  		declare
+  		begin
+  		UPDATE COMMUNITY
+  		SET TITLE = #{title}, CONTENT = #{content}, REGDATE = SYSDATE
+  		WHERE COM_SEQ = #{com_seq};
+  		UPDATE COMM_INTERIOR
+  		SET FILE_IMAGE = #{file_image}
   		WHERE COM_SEQ = #{com_seq};
   		END
   		}

@@ -44,14 +44,14 @@ public class CookMapper {
 	}
 	public void delete(String com_seq) {
 		System.out.println("delete 실행");
-		mybatis.delete("cookmapper.delete",com_seq);
+		mybatis.delete("cookMapper.delete",com_seq);
 		
 		
 	}
 
 	public void update(CookVO cvo) {
 		System.out.println("update");
-		mybatis.update("cookmapper.update",cvo);
+		mybatis.update("cookMapper.update",cvo);
 		
 	}
 }

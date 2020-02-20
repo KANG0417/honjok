@@ -11,7 +11,6 @@
 		<typeAlias alias="cook" type="com.honjok.app.vo.CookVO"/>
 		<typeAlias alias="CommInfoVO" type="com.honjok.app.vo.CommInfoVO"/>
 	</typeAliases>
-  
   <!-- SQL 작성파일인 매퍼 파일 위치 지정 -->
  <mappers>
     <mapper resource="mappings/user-mapper.xml"/>
@@ -20,6 +19,7 @@
 	<mapper resource="mappings/cook-mapper.xml"/>
 	
  </mappers>
+ 
 </configuration>
 
 
