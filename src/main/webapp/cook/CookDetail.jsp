@@ -69,10 +69,11 @@
 		   <c:set value="${cookDetail}" var="ckvo" scope="session"></c:set>
 		   <input type="submit" value="수정">
 		</form>
-		<%-- <form action="delete.do">
-		  <input type="hidden" name="com_seq" value="${CookVO.com_seq }">
-		  <input type="submit" value="삭제">
-		</form> --%>
+		
+		<form action="delete.do">
+		   <input type="hidden" name="com_seq" value="${CookVO.com_seq }">
+		   <input type="submit" value="삭제">
+		</form>
 </div>
 
 </body>
