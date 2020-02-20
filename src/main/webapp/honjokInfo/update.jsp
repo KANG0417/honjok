@@ -33,9 +33,9 @@
       </form><form action="select.do">
 	<input type="submit" value="목록으로">
 </form>
-      
-	
+
 <c:remove var="com" />
+
 <hr>
 
 <!-- 에디터시작  -->

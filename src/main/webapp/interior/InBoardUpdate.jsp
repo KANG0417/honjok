@@ -25,17 +25,57 @@
 <body>
 <div id="container">
 	<h1>글 상세</h1>
-	<form action="/updateInterior.do" method="post">
-		<input type="hidden" name="seq" value="${interiorvo.com_seq }">
-	<table>
+	<form action="updateInterior.do" method="post">
+		<input type="hidden" name="com_seq" value="${interiorvo.com_seq }">
+		<table>
+		<tr>
+			<th>제목</th>
+			<td>
+				<input type="text" name="title" value="${inter.title }">
+			</td>
+		</tr>
+		<tr>
+			<th>작성자</th>
+			<td>
+			<input type="text" name="title" value="${inter.nickname }">
+			</td>
+		</tr>
+		<tr>
+			<th>내용</th>
+			<td>
+				${inter.content }
+			</td>
+		</tr>
+		<tr>
+			<th>등록일</th>
+			<td>${inter.regdate }</td>
+		</tr>
+		<tr>
+			<th>조회수</th>
+			<td>${inter.hit }</td>
+		</tr>
+		<tr>
+			<th>좋아요</th>
+			<td>${inter.likes }</td>
+		</tr>
+		<tr>
+			<th>파일이미지</th>
+			<td>${inter.file_image }</td>
+		</tr>
+		<tr>
+			<td colspan="2" class="center">
+				<input type="button" value="글 수정" onclick="fn_update()">
+			</td>
+		</tr>
 	</table>
 	</form>
+	<c:remove var="com" />
 	<p>
 		<a href="deleteBoard.do?seq=${board.getSeq() }">글삭제</a>
 		<a href="${contextPage.request.contextPath}/app/interior/interiorAllList.do">글목록</a>
 	</p>
 </div>
-<script>
+<!-- <script>
 function update_form(b_no){
   $.ajax({
     url: "./update_form.jsp",
@@ -62,6 +102,6 @@ function update_form(b_no){
       console.log(msg);              
     }
   });
-</script>
+</script> -->
 </body>
 </html>

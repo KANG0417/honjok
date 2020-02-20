@@ -129,7 +129,7 @@ public class interiorController {
 	   }
 	
 	@RequestMapping("/updateInterior.do")
-	public String updateBoard(@ModelAttribute("board") CommInteriorVO cvo) {
+	public String updateBoard(/*@ModelAttribute("board")*/ CommInteriorVO cvo) {
 		System.out.println(">>> 글 수정 처리 - updateBoard()");
 		System.out.println("> board vo : " + cvo);
 
@@ -138,7 +138,7 @@ public class interiorController {
         } catch (Exception e){
             e.printStackTrace();
         }        
-        return "interiorAllList.do";
+        return "interiorAllList.do?";
     }
 	
 	@RequestMapping("/deleteBoard.do")
@@ -146,6 +146,6 @@ public class interiorController {
 		System.out.println(">>> 글 삭제 처리 - deleteBoard()");
 		
 		interiorService.deleteBoard(cvo);
-		return "getBoardList.do";
+		return "getInterior.do";
 	}
 }
