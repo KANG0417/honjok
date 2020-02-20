@@ -25,8 +25,7 @@
 <body>
 <div id="container">
 	<h1>글 상세</h1>
-	<form action="update.do" method="post">
-		<input type="hidden" name="seq" value="${cookvo.com_seq }">
+		<input type="hidden" name="com_seq" value="${cookvo.com_seq }">
 	<table>
 		<tr>
 			<th>제목</th>
@@ -60,20 +59,20 @@
 			<th>파일이미지</th>
 			<td>${cookDetail.image }</td>
 		</tr>
-		<tr>
-			<form class="update" action="update.jsp">
-			   <c:set value="${CookVO }" var="com" scope="session"></c:set>
-			   <input type="submit" value="수정">
-</form>
-		</tr>
+		
+		
 	</table>
-	</form>
-<%--  	</c:forEach> --%>
 	<p>
 		 <a href="insert.jsp">글등록</a>
-		<%--<a href="deleteBoard.do?seq=${board.getSeq() }">글삭제</a> --%>
 		<a href="${contextPage.request.contextPath}/app/cook/CookAll.do">글목록</a>
-	</p>
+		<form class="update" action="update.jsp">
+		   <c:set value="${cookDetail}" var="ckvo" scope="session"></c:set>
+		   <input type="submit" value="수정">
+		</form>
+		<%-- <form action="delete.do">
+		  <input type="hidden" name="com_seq" value="${CookVO.com_seq }">
+		  <input type="submit" value="삭제">
+		</form> --%>
 </div>
 
 </body>
