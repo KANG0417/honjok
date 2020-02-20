@@ -58,7 +58,7 @@ public class interiorController {
 		 * String getOriginalFilename() : 업로드한 파일명 찾기
 		 * void transferTo(File destFile) : 업로드한 파일을 destFile에 저장
 		 * boolean isEmpty() : 업로드한 파일의 존재여부(없으면 true 리턴)*/
-		 
+	/*	 
 		MultipartFile uploadFile = getUploadFile();
 		System.out.println("uploadFile : " + uploadFile);
 		
@@ -66,7 +66,7 @@ public class interiorController {
 			String fileName = uploadFile.getOriginalFilename();
 			uploadFile.transferTo(new File("c:/MyStudy/temp/" + fileName));
 		}
-		
+		*/
 
 			interiorService.insertBoard(cvo);
 /*			interiorService.insertBoard2(cvo);*/
@@ -75,6 +75,7 @@ public class interiorController {
 		return "interiorAllList.do";
 	}
 	
+
 	@RequestMapping(value="fileupload.do", method=RequestMethod.POST)
 	   @ResponseBody
 	   public String fileUpload(HttpServletRequest req, HttpServletResponse resp, 
