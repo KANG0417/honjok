@@ -92,7 +92,6 @@
 			   <c:set value="${interiorSelect }" var="inter" scope="session"></c:set>
 			   <input type="submit" value="수정">
 				</form>
-			<input type="button" value="수정 취소" onclick="fn_moReturn()">
 	<p>
 		<input type="button" onclick="fn_delete()" value="글 삭제">
 		<a href="${contextPage.request.contextPath}/app/interior/interiorAllList.do">글목록</a>

@@ -22,10 +22,10 @@
   		declare
   		begin
   		UPDATE COMMUNITY
-  		SET (#{title}, #{content}, SYSDATE)
+  		SET TITLE = #{title}, CONTENT = #{content}, REGDATE = SYSDATE
   		WHERE COM_SEQ = #{com_seq};
-  		UPDATE COMM_INTERIOR (FILE_IMAGE)
-  		SET (#{file_image})
+  		UPDATE COMM_INTERIOR
+  		SET FILE_IMAGE = #{file_image}
   		WHERE COM_SEQ = #{com_seq};
   		END
   		}

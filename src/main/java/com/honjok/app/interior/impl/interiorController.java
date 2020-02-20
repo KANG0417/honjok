@@ -43,6 +43,7 @@ public class interiorController {
 	
 	@RequestMapping("/getInterior.do")
 	public String getinteriorSelect(Model model, CommInteriorVO cvo) {
+		System.out.println(cvo + "값");
 		System.out.println("===>인테리어게시판 하나 조회");
 		CommInteriorVO CommInterior = interiorService.getBoardList(cvo);
 		System.out.println(CommInterior);
@@ -132,13 +133,12 @@ public class interiorController {
 	public String updateBoard(/*@ModelAttribute("board")*/ CommInteriorVO cvo) {
 		System.out.println(">>> 글 수정 처리 - updateBoard()");
 		System.out.println("> board vo : " + cvo);
-
-        try{
+		
+		System.out.println("getCom_seq: "+cvo.getCom_seq());
+		
             interiorService.updateBoard(cvo);
-        } catch (Exception e){
-            e.printStackTrace();
-        }        
-        return "interiorAllList.do?";
+            	
+        return "getInterior.do";
     }
 	
 	@RequestMapping("/deleteBoard.do")

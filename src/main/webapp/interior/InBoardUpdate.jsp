@@ -26,7 +26,7 @@
 <div id="container">
 	<h1>글 상세</h1>
 	<form action="updateInterior.do" method="post">
-		<input type="hidden" name="com_seq" value="${interiorvo.com_seq }">
+		<input type="hidden" name="com_seq" value="${inter.com_seq }">
 		<table>
 		<tr>
 			<th>제목</th>
@@ -37,13 +37,13 @@
 		<tr>
 			<th>작성자</th>
 			<td>
-			<input type="text" name="title" value="${inter.nickname }">
+			${inter.nickname }
 			</td>
 		</tr>
 		<tr>
 			<th>내용</th>
 			<td>
-				${inter.content }
+				<textarea name="content">${inter.content }</textarea>
 			</td>
 		</tr>
 		<tr>
@@ -60,11 +60,11 @@
 		</tr>
 		<tr>
 			<th>파일이미지</th>
-			<td>${inter.file_image }</td>
+			<td><input type="text" name="file_image" value="${inter.file_image }"></td>
 		</tr>
 		<tr>
 			<td colspan="2" class="center">
-				<input type="button" value="글 수정" onclick="fn_update()">
+				<input type="submit" value="글 수정">
 			</td>
 		</tr>
 	</table>
