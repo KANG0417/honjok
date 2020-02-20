@@ -21,11 +21,16 @@
 	.center { text-align: center; }
 	.border-none, .border-none td { border: none; }
 </style>
+<script>
+	function fn_delete(){
+		var 
+	}
+</script>
 </head>
 <body>
 <div id="container">
 	<h1>글 상세</h1>
-		<input type="hidden" name="com_seq" value="${cookvo.com_seq }">
+		<input type="hidden" name="com_seq" value="${cookDetail.com_seq }">
 	<table>
 		<tr>
 			<th>제목</th>
@@ -71,7 +76,7 @@
 		</form>
 		
 		<form action="delete.do">
-		   <input type="hidden" name="com_seq" value="${CookVO.com_seq }">
+		   <input type="hidden" name="com_seq" value="${cookDetail.com_seq }">
 		   <input type="submit" value="삭제">
 		</form>
 </div>

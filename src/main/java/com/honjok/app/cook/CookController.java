@@ -129,8 +129,10 @@ public class CookController {
    }
    @RequestMapping("/delete.do")
 	public String delete(String com_seq ,Model model) {
+		System.out.println(com_seq);
 		System.out.println(" 글 삭제");
 		cookservice.delete(com_seq);
+		
 		return "/cook/CookAll.do";
 	}
 
