@@ -15,18 +15,18 @@
    src="//dapi.kakao.com/v2/maps/sdk.js?appkey=69f7448811fd57d29b7398b4045f65df&libraries=services"></script>
 </head>
 <body>
-   <h1>제목 : ${CommunityVO.title }</h1>
-   <p>작성자: ${CommunityVO.id }</p>
-   <p>${CommunityVO.content }</p>
+   <h1>제목 : ${CommInfoVO.title }</h1>
+   <p>작성자: ${CommInfoVO.id }</p>
+   <p>${CommInfoVO.content }</p>
    
 <div id="map" style="width:100%;height:350px;"></div>
 
 <form class="update" action="update.jsp">
-   <c:set value="${CommunityVO }" var="com" scope="session"></c:set>
+   <c:set value="${CommInfoVO }" var="com" scope="session"></c:set>
    <input type="submit" value="수정">
 </form>
 <form action="delete.do">
-   <input type="hidden" name="com_seq" value="${CommunityVO.com_seq }">
+   <input type="hidden" name="com_seq" value="${CommInfoVO.com_seq }">
    <input type="submit" value="삭제">
 </form>
 <form action="select.do">
@@ -50,7 +50,7 @@ var map = new kakao.maps.Map(mapContainer, mapOption);
 var geocoder = new kakao.maps.services.Geocoder();
 
 // 주소로 좌표를 검색합니다
-geocoder.addressSearch('서울 중구 을지로1가 8', function(result, status) {
+geocoder.addressSearch('${CommInfoVO.adr}', function(result, status) {
 
     // 정상적으로 검색이 완료됐으면 
      if (status === kakao.maps.services.Status.OK) {
@@ -65,7 +65,7 @@ geocoder.addressSearch('서울 중구 을지로1가 8', function(result, status)
 
         // 인포윈도우로 장소에 대한 설명을 표시합니다
         var infowindow = new kakao.maps.InfoWindow({
-            content: '<div style="width:150px;text-align:center;padding:6px 0;">우리회사</div>'
+            content: '<div style="width:150px;text-align:center;padding:6px 0;">${CommInfoVO.title }</div>'
         });
         infowindow.open(map, marker);
 

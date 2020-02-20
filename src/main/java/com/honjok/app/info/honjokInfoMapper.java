@@ -16,21 +16,14 @@ public class honjokInfoMapper {
 	@Autowired
 	private SqlSessionTemplate mybatis;
 
-	public void insertCommunity(CommunityVO com) {
+	public void insertCommInfoVO(CommInfoVO comI) {
 
 		System.out.println("mybatis 전");
-		System.out.println(com);
-		mybatis.insert("honjokInfoMapper.insert", com);
+		mybatis.insert("honjokInfoMapper.insert", comI);
+		System.out.println(comI);
 		System.out.println("mybatis 후");
 
 	}
-	
-
-	public void insertCommInfo(CommInfoVO comI) {
-		mybatis.insert("honjokInfoMapper.insertCommInfo",comI);
-		
-	}
-	
 	
 
 	public List<CommunityVO> selectAll(Map<String, Integer> pagingMap) {
@@ -52,11 +45,12 @@ public class honjokInfoMapper {
 		return mybatis.selectOne("honjokInfoMapper.selectAllCount");
 	}
 
-	public CommunityVO select(String com_seq) {
+	public CommInfoVO select(String com_seq) {
 
 		System.out.println("select실행");
-		CommunityVO communityvo = mybatis.selectOne("honjokInfoMapper.select", com_seq);
-		return communityvo;
+		CommInfoVO CommInfoVO = mybatis.selectOne("honjokInfoMapper.select", com_seq);
+		System.out.println(CommInfoVO);
+		return CommInfoVO;
 
 	}
 

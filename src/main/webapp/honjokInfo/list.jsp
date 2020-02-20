@@ -121,7 +121,7 @@
 
 						<c:if test="${endPage-(endPage%1) == section}">
 							<c:forEach var="page" begin="1"
-								end="${(countList % 60 / 10) + (1-(countList % 60 / 10)%1)%1}"
+								end="10"
 								step="1">
 
 								<c:if test="${section > 1 && page == 1}">
@@ -141,14 +141,14 @@
 					</c:when>
 
 
-					<c:when test="${countList == 100 }">
+					<c:when test="${countList == 60 }">
 						<c:forEach var="page" begin="1" end="10" step="1">
 							<a href="#">${page }</a>
 						</c:forEach>
 					</c:when>
 
-					<c:when test="${countList < 100 }">
-						<c:forEach var="page" begin="1" end="${countList/60 + 1 }"
+					<c:when test="${countList < 60 }">
+						<c:forEach var="page" begin="1" end="${countList/6 +1  }"
 							step="1">
 							<c:choose>
 								<c:when test="${page == pageNum }">

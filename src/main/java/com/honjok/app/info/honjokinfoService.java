@@ -8,11 +8,9 @@ import com.honjok.app.vo.CommunityVO;
 
 public interface honjokinfoService {
    
-   public void insertCommunity(CommunityVO com);
-
    public List<CommunityVO> selectAll(Map<String, Integer> pagingMap);
 
-   public CommunityVO select(String com_seq);
+   public CommInfoVO select(String com_seq);
 
    public void delete(String com_seq);
 
@@ -20,7 +18,7 @@ public interface honjokinfoService {
 
    public int selectAllCount();
   
-   public void insertCommInfo(CommInfoVO comI);
+   public void insertCommInfoVO(CommInfoVO comI);
     
    public List<CommInfoVO> selectInfo(Map<String, Integer> pagingMap);
    

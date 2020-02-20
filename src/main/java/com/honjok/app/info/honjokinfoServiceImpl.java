@@ -18,22 +18,16 @@ public class honjokinfoServiceImpl implements honjokinfoService {
    private honjokInfoMapper Mapper;
 
 
-
 	@Override
-	public void insertCommunity(CommunityVO com) {
-		   System.out.println(com);
+	public void insertCommInfoVO(CommInfoVO comI) {
+		   System.out.println(comI);
 		      System.out.println("implement  전");
-		      Mapper.insertCommunity(com);
+		      Mapper.insertCommInfoVO(comI);
 		      System.out.println("implement  후");
 		
 	}
 	
-	
-	@Override
-	public void insertCommInfo(CommInfoVO comI) {
-			Mapper.insertCommInfo(comI);
-			
-	}
+
 
 
 
@@ -65,10 +59,10 @@ public class honjokinfoServiceImpl implements honjokinfoService {
 
 
 	@Override
-	public CommunityVO select(String com_seq) {
+	public CommInfoVO select(String com_seq) {
 		
-		CommunityVO communityvo = Mapper.select(com_seq);
-		return communityvo;
+		CommInfoVO CommInfoVO = Mapper.select(com_seq);
+		return CommInfoVO;
 	}
 
 
@@ -86,6 +80,12 @@ public class honjokinfoServiceImpl implements honjokinfoService {
 		
 	}
 
+
+
+
+
+
+	
 
 	
 

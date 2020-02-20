@@ -42,19 +42,19 @@ public class list {
    honjokinfoService service; 
 
    @RequestMapping("/insert.do")
-   public String lists(CommunityVO com, CommInfoVO comI) {
+   public String lists(CommInfoVO comI) {
       
-      System.out.println(com);
+     // System.out.println(com);
       System.out.println(comI);
       
       
       //content 공백 처리 
-      String a = com.getContent();
-     com.setContent(a.replaceAll("\r\n", ""));
+      String a = comI.getContent();
+      comI.setContent(a.replaceAll("\r\n", ""));
       
       
-      service.insertCommunity(com);
-      service.insertCommInfo(comI);
+      //service.insertCommunity(com);
+      service.insertCommInfoVO(comI);
       
     
      
@@ -110,8 +110,8 @@ public class list {
    public String select(String com_seq ,Model model) {
       System.out.println("com_seq값" + com_seq);
       
-      CommunityVO comunity = service.select(com_seq);
-      model.addAttribute("CommunityVO",comunity);
+      CommInfoVO CommInfoVO = service.select(com_seq);
+      model.addAttribute("CommInfoVO",CommInfoVO);
       return "/honjokInfo/get.jsp";
    }
    
