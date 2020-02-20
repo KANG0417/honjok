@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -30,19 +31,31 @@ public class CookController {
    }
    
    @RequestMapping("/CookDetail.do")
-	public String cookDetail(Model model, CookVO ckvo) {
+	public String cookDetail(Model model, CookVO cvo) {
 		System.out.println("Cook게시판 하나 조회입니다.");
-		CookVO Cook = cookservice.getBoardList(ckvo);
+		CookVO Cook = cookservice.selectOne(cvo);
+		model.addAttribute("cookDetail", Cook);
 		System.out.println(Cook);
-		model.addAttribute("cookSelect", Cook);
-		return "cook/CookDetail.jsp";
+		return "CookDetail.jsp";
 	}
    
    @RequestMapping("/InsertCook.do")
-   public String lists(CookVO ckvo) {
-      cookservice.insertCook(ckvo);
-      return "/cook/insert.do";
+   public String insert(CookVO ckvo) {
+	   	
+	   System.out.println(ckvo);
+		  cookservice.insertCook(ckvo);
+		  System.out.println("게시물 등록이 완료되었습니다.");
+		  System.out.println(ckvo.toString());
+		  return "/cook/CookAll.do";
    }
-  
    
+   @RequestMapping("/update.do")   
+   public String updateBoard(@ModelAttribute("board") CookVO cvo) {
+		System.out.println(">>> 글 수정 처리 - update()");
+		System.out.println("> board vo : " + cvo);
+
+         cookservice.update(cvo);
+           
+       return "/cook/update.jsp";
+   }
 }

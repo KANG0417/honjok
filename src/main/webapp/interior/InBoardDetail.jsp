@@ -21,12 +21,39 @@
 	.center { text-align: center; }
 	.border-none, .border-none td { border: none; }
 </style>
+<script>
+/* function fn_update(){
+    
+    var form = document.getElementById("viewForm");
+    
+    form.action = "<c:url value='board/updateInterior.do'/>";
+    form.submit();
+} */
+	function fn_delete() {
+		var frmDel = document.frm;
+		/* //비밀번호 일치여부 확인
+		if (frmDel.pwd.value == "${bvo.pwd}") {
+			//비밀번호 일치하는 경우  */
+			var isDelete = confirm("정말 삭제 할까요?");
+			if (isDelete) {
+				frmDel.submit();
+			} else {
+				history.back();
+			}
+/* 		} else {
+			//비밀번호 불일치
+			alert("비밀번호가 일치하지 않습니다.");
+			frmDel.pwd.value = "";
+			frmDel.pwd.focus();
+			return;
+		} */
+}
+</script>
 </head>
 <body>
 <div id="container">
 	<h1>글 상세</h1>
-	<form action="updateBoard.do" method="post">
-		<input type="hidden" name="seq" value="${interiorvo.com_seq }">
+		<input type="hidden" name="com_seq" value="${interiorvo.com_seq }">
 	<table>
 		<tr>
 			<th>제목</th>
@@ -60,16 +87,14 @@
 			<th>파일이미지</th>
 			<td>${interiorSelect.file_image }</td>
 		</tr>
-		<tr>
-			<td colspan="2" class="center">
-				<input type="submit" value="글 수정">
-			</td>
-		</tr>
 	</table>
-	</form>
-<%--  	</c:forEach> --%>
+			  <form class="update" action="InBoardUpdate.jsp">
+			   <c:set value="${interiorSelect }" var="inter" scope="session"></c:set>
+			   <input type="submit" value="수정">
+				</form>
+			<input type="button" value="수정 취소" onclick="fn_moReturn()">
 	<p>
-		<a href="deleteBoard.do?seq=${board.getSeq() }">글삭제</a>
+		<input type="button" onclick="fn_delete()" value="글 삭제">
 		<a href="${contextPage.request.contextPath}/app/interior/interiorAllList.do">글목록</a>
 	</p>
 </div>

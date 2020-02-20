@@ -13,11 +13,11 @@ public interface CookService {
   public List<CookVO> selectAll();
   CookVO getBoardList(CookVO cvo);
 	  
-  public CookVO select(String com_seq);
+  public CookVO selectOne(CookVO	cvo);
 
   public void delete(String com_seq);
 
-  public void update(CookVO com);
+  public void update(CookVO cvo);
    
   public int selectAllCount();
 	    

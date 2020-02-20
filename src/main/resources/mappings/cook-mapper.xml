@@ -5,20 +5,30 @@
 <mapper namespace="cookMapper">
  
    <insert id="insertCook" parameterType="cook">
-    INSERT INTO COMMUNITY (COM_SEQ, TITLE, NICKNAME, CONTENT, REGDATE, HIT, LIKES, TYPE)
-  		VALUES ((COMMMUNITY_SEQ.NEXTVAL) + 1,
-  			#{title}, #{nickname}, #{content}, SYSDATE, 0, 0, 3)
-            
-  		INSERT INTO COMM_COOK (TYPE,COM_SEQ,IMAGE,P_NUM,COOKTIME)
-  		VALUES (3, (select NVL(MAX(com_seq),0)from community),#{image},#{p_num},#{cooktime})
+    	insert into comm_cook
+		VALUES((cook_sequence.NEXTVAL)+1,#{title},#{content}
+		,sysdate, #{category}, #{image},#{cooktime},0,0,'ID',#{nickname})
   	</insert>
 	
 	<select id="selectOne" parameterType="String" resultType="cook">
-		   SELECT * FROM COMMUNITY WHERE COM_SEQ = #{com_seq}
+		   SELECT * FROM COMM_COOK WHERE COM_SEQ = #{com_seq}
 	</select>
 	<select id="selectAll" resultType="cook">
 		SELECT *
-		FROM COMMUNITY C, COMM_COOK CO
-		WHERE C.COM_SEQ = CO.COM_SEQ
+		FROM COMM_COOK
 	</select>
+	
+	<update id="update" parameterType="cook">
+		UPDATE COMM_COOK
+		SET
+		TITLE = #{title},
+		ID =#{id},
+		CONTENT = #{content},
+		REGDATE = #{regdate},
+		HIT = #{hit},
+		LIKES= #{likes},
+		NICKNAME = #{nickname, jdbcType=VARCHAR}
+		WHERE com_seq = #{com_seq}
+	</update>
+	
 </mapper>

@@ -26,12 +26,6 @@ public class CookServiceImpl implements CookService{
 	}
 
 
-	@Override
-	public CookVO select(String com_seq) {
-		// TODO Auto-generated method stub
-		CookVO ckvo = CookMapper.select(com_seq);
-		return ckvo;
-	}
 
 	@Override
 	public void delete(String com_seq) {
@@ -64,6 +58,14 @@ public class CookServiceImpl implements CookService{
 	public void update(CookVO com) {
 		// TODO Auto-generated method stub
 		
+	}
+
+
+
+	@Override
+	public CookVO selectOne(CookVO ckvo) {
+		
+		return CookMapper.select(ckvo);
 	}
 	
 

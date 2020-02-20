@@ -4,7 +4,12 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="honjokInfoMapper">
 
-	<insert id="insert" parameterType="CommunityVO">
+
+
+	<insert id="insert" parameterType="CommInfoVO">
+		{call
+		declare
+		begin
 		INSERT INTO COMMUNITY(
 		COM_SEQ,
 		TITLE,
@@ -13,15 +18,30 @@
 		REGDATE,
 		HIT,
 		LIKES,
-		TYPE)
-		values(COMMMUNITY_SEQ.NEXTVAL, #{title}, #{id}, #{content}, SYSDATE,
-		'0', '0', '1')
+		TYPE,
+		NICKNAME
+		)
+		values((SELECT NVL(MAX(com_seq), 0) + 1 FROM COMMUNITY),
+		#{title}, #{id}, #{content}, SYSDATE,
+		'0', '0', '1', #{nickname});
+		INSERT INTO COMM_INFO
+		VALUES((select NVL(MAX(com_seq),0) FROM COMMUNITY),0,#{adr},#{menu});
+		END
+		}
 	</insert>
 
-	<select id="selectAll" resultType="CommunityVO" parameterType="Map">
+
+	<!-- insert end -->
+
+
+
+
+
+	<select id="selectAll" resultType="CommunityVO"
+		parameterType="Map">
 		SELECT * FROM ( SELECT ROWNUM
 		AS RECNUM,
-        COM_SEQ,
+		COM_SEQ,
 		TITLE,
 		ID,
 		CONTENT,
@@ -34,21 +54,42 @@
 		CONTENT,
 		REGDATE,
 		HIT,
-		LIKES,TYPE FROM COMMUNITY WHERE type = '1' order by com_seq DESC))
-        where RECNUM BETWEEN (#{section}-1)* 60 + (#{pageNum}-1)* 6 + 1 
+		NICKNAME,
+		LIKES,TYPE FROM COMMUNITY WHERE type =
+		'1' order by com_seq DESC))
+		where RECNUM BETWEEN (#{section}-1)* 60 + (#{pageNum}-1)* 6 + 1
 		AND (#{section} - 1)*60 + #{pageNum}*6 order by com_seq DESC
 	</select>
-	
+
 	<select id="selectAllCount" resultType="Integer">
-		select count(*)from community
+		select count(*)from
+		community where type = '1'
 	</select>
-	
 
 
-	<select id="select" resultType="CommunityVO"
+
+	<select id="select" resultType="CommInfoVO"
 		parameterType="String">
-		SELECT * FROM COMMUNITY WHERE COM_SEQ = #{com_seq}
+		select C.* ,I.* from COMMUNITY  C, COMM_INFO I
+		WHERE C.COM_SEQ = i.com_seq AND i.com_seq = #{com_seq}
 	</select>
+
+
+	<select id="selectCommInfoVO" resultType="CommInfoVO"
+		parameterType="Map">
+		SELECT * FROM (SELECT ROWNUM
+		AS RECNUM,
+		COM_SEQ,
+		SUM_STAR,
+		ADR,
+		MENU FROM(SELECT * FROM COMM_INFO order by com_seq DESC))
+		where RECNUM BETWEEN (#{section}-1)* 60 + (#{pageNum}-1)* 6 + 1
+		AND (#{section} - 1)*60 + #{pageNum}*6 order by com_seq DESC
+	</select>
+
+
+
+	<!-- select end -->
 
 	<delete id="delete" parameterType="String">
 		DELETE COMMUNITY WHERE COM_SEQ
@@ -58,15 +99,12 @@
 	<update id="uptate" parameterType="CommunityVO">
 		UPDATE COMMUNITY
 		SET
-		TITLE = #{title},
-		ID =#{id},
+		TITLE =
+		#{title},
 		CONTENT = #{content},
-		REGDATE =
-		#{regdate},
-		HIT = #{hit},
-		LIKES= #{likes},
-		NICKNAME = #{nickname, jdbcType=VARCHAR}
-		WHERE com_seq = #{com_seq}
+		REGDATE = SYSDATE
+		WHERE com_seq =
+		#{com_seq}
 	</update>
 
 

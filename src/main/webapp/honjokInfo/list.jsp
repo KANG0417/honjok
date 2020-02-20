@@ -60,8 +60,8 @@
 								console.log(firstimg);
 								var image = document.createElement("IMG");
 								image.src = firstimg;
-								image.height = 400;
-								image.width = 400;
+								image.height = 300;
+								image.width = 300;
 								console.log(image);
 								$('.main-img${articleNum.index}').html(image);
 								
@@ -75,6 +75,8 @@
 								작성자: ${CommunityVO.id } 작성일: ${CommunityVO.regdate } 작성자:
 								${CommunityVO.id } 조회수: ${CommunityVO.hit } 좋아요:
 								${CommunityVO.likes }
+								종합별점수 : ${infoList[articleNum.index].sum_star}
+								주소 : ${infoList[articleNum.index].adr}
 							</div>
 
 						</div>
@@ -119,7 +121,7 @@
 
 						<c:if test="${endPage-(endPage%1) == section}">
 							<c:forEach var="page" begin="1"
-								end="${(countList % 60 / 10) + (1-(countList % 60 / 10)%1)%1}"
+								end="10"
 								step="1">
 
 								<c:if test="${section > 1 && page == 1}">
@@ -139,14 +141,14 @@
 					</c:when>
 
 
-					<c:when test="${countList == 100 }">
+					<c:when test="${countList == 60 }">
 						<c:forEach var="page" begin="1" end="10" step="1">
 							<a href="#">${page }</a>
 						</c:forEach>
 					</c:when>
 
-					<c:when test="${countList < 100 }">
-						<c:forEach var="page" begin="1" end="${countList/10 + 1 }"
+					<c:when test="${countList < 60 }">
+						<c:forEach var="page" begin="1" end="${countList/6 +1  }"
 							step="1">
 							<c:choose>
 								<c:when test="${page == pageNum }">
