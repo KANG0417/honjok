@@ -301,6 +301,8 @@ function displayPlaces(places) {
             	$("img[src='http://localhost:8080/app/honjokInfo/insert.jsp']").remove();
             	$("img[src='http://t1.daumcdn.net/mapjsapi/images/marker.png']").remove();
             	
+               	$("img[src='http://i1.daumcdn.net/dmaps/apis/transparent.gif']").remove();
+            	$("img[src='http://t1.daumcdn.net/mapjsapi/images/2x/marker.png']").remove();
             
                 displayInfowindow(marker, title ,tel, place_name, category_name  );
                 document.querySelector('.adr').value = place_name;
@@ -314,6 +316,8 @@ function displayPlaces(places) {
             itemEl.onclick =  function () {
             	$("img[src='http://localhost:8080/app/honjokInfo/insert.jsp']").remove();
             	$("img[src='http://t1.daumcdn.net/mapjsapi/images/marker.png']").remove();
+               	$("img[src='http://i1.daumcdn.net/dmaps/apis/transparent.gif']").remove();
+            	$("img[src='http://t1.daumcdn.net/mapjsapi/images/2x/marker.png']").remove();
             	
                 displayInfowindow(marker, title, tel,  place_name,category_name);
                 document.querySelector('.adr').value = place_name;
@@ -464,6 +468,9 @@ kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
         if (status === kakao.maps.services.Status.OK) {
         	$("img[src='http://localhost:8080/app/honjokInfo/insert.jsp']").remove();
         	$("img[src='http://t1.daumcdn.net/mapjsapi/images/marker.png']").remove();
+        	$("img[src='http://i1.daumcdn.net/dmaps/apis/transparent.gif']").remove();
+        	$("img[src='http://t1.daumcdn.net/mapjsapi/images/2x/marker.png']").remove();
+        	
         	marker = new kakao.maps.Marker();
             var detailAddr = !!result[0].road_address ? '<div>도로명주소 : ' + result[0].road_address.address_name + '</div>' : '';
             detailAddr += '<div>지번 주소 : ' + result[0].address.address_name + '</div>';

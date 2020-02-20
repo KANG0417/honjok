@@ -125,15 +125,26 @@
 		}
 	</delete>
 
-	<update id="uptate" parameterType="CommunityVO">
+	<update id="uptate" parameterType="CommInfoVO">
+	{call
+		declare
+		begin
 		UPDATE COMMUNITY
 		SET
-		TITLE =
-		#{title},
+		TITLE = #{title},
 		CONTENT = #{content},
 		REGDATE = SYSDATE
-		WHERE com_seq =
-		#{com_seq}
+		WHERE com_seq = #{com_seq};
+		UPDATE COMM_INFO
+		SET 
+		ADR = #{adr},
+		MENU = #{menu},
+		TEL = #{tel},
+		PLACE_NAME = #{place_name},
+		CATEGORY_NAME = #{category_name}
+		WHERE com_seq = #{com_seq};
+		END
+		}
 	</update>
 
 

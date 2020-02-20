@@ -61,9 +61,9 @@ public class honjokInfoMapper {
 
 	}
 
-	public void uptate(CommunityVO com) {
+	public void uptate(CommInfoVO comI) {
 		System.out.println("uptate");
-		mybatis.update("honjokInfoMapper.uptate", com);
+		mybatis.update("honjokInfoMapper.uptate", comI);
 
 	}
 

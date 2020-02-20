@@ -134,14 +134,14 @@ public class list {
    }
    
    @RequestMapping("/update.do")
-   public String update(CommunityVO com) {
+   public String update(CommInfoVO comI) {
    
-         System.out.println("com값: "+ com);
+         System.out.println("com값: "+ comI);
          
-         String a = com.getContent();
-         com.setContent(a.replaceAll("\r\n", ""));
+         String a = comI.getContent();
+         comI.setContent(a.replaceAll("\r\n", ""));
       
-         service.uptate(com);
+         service.uptate(comI);
       
       return "/honjokInfo/select.do";
       

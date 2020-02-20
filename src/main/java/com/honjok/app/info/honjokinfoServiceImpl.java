@@ -75,8 +75,8 @@ public class honjokinfoServiceImpl implements honjokinfoService {
 
 
 	@Override
-	public void uptate(CommunityVO com) {
-		Mapper.uptate(com);
+	public void uptate(CommInfoVO comI) {
+		Mapper.uptate(comI);
 		
 	}
 

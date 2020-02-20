@@ -14,7 +14,7 @@ public interface honjokinfoService {
 
    public void delete(String com_seq);
 
-   public void uptate(CommunityVO com);
+   public void uptate(CommInfoVO comI);
 
    public int selectAllCount();
   
