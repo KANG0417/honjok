@@ -30,6 +30,10 @@
   		END
   		}
 	</update>
+	
+   	<update id="deleteComm" parameterType="CommInteriorVO">
+  		
+	</update>
   
 	<select id="InteriorAll" resultType="CommInteriorVO">
 		SELECT C.COM_SEQ, C.TITLE, C.NICKNAME, C.CONTENT, C.REGDATE, C.HIT, C.LIKES, I.FILE_IMAGE

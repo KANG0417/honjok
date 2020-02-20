@@ -26,7 +26,7 @@ function fn_update(){
     
     var form = document.getElementById("viewForm");
     
-    form.action = "<c:url value='/board/updateboard.do'/>";
+    form.action = "<c:url value='board/updateInterior.do'/>";
     form.submit();
 }
 </script>

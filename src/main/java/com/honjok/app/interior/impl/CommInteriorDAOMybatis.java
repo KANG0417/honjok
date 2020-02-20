@@ -39,4 +39,9 @@ public class CommInteriorDAOMybatis {
 		System.out.println("cvo");
 		mybatis.update("commInteriorDAO.updateComm", cvo);
 	}
+
+	public void deleteBoard(CommInteriorVO cvo) {
+		System.out.println("cvo");
+		mybatis.delete("commInteriorDAO.deleteComm", cvo);
+	}
 }

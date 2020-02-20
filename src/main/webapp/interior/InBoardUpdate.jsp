@@ -28,45 +28,6 @@
 	<form action="/updateInterior.do" method="post">
 		<input type="hidden" name="seq" value="${interiorvo.com_seq }">
 	<table>
- 	<c:forEach var="interiorvo" items="${interiorSelect}">
-		<tr>
-			<th>제목</th>
-			<td>
-				<input type="text" name="title" value="${interiorvo.title }">
-			</td>
-		</tr>
-		<%-- <tr>
-			<th>작성자</th>
-			<td>${interiorSelect.nickname }</td>
-		</tr>
-		<tr>
-			<th>내용</th>
-			<td>
-				${interiorSelect.content }
-			</td>
-		</tr>
-		<tr>
-			<th>등록일</th>
-			<td>${interiorSelect.regdate }</td>
-		</tr>
-		<tr>
-			<th>조회수</th>
-			<td>${interiorSelect.hit }</td>
-		</tr>
-		<tr>
-			<th>좋아요</th>
-			<td>${interiorSelect.likes }</td>
-		</tr>
-		<tr>
-			<th>파일이미지</th>
-			<td>${interiorSelect.file_image }</td>
-		</tr> --%>
-		<tr>
-			<td colspan="2" class="center">
-				<input type="submit" value="글 수정">
-			</td>
-		</tr>
-	</c:forEach>
 	</table>
 	</form>
 	<p>
@@ -74,6 +35,33 @@
 		<a href="${contextPage.request.contextPath}/app/interior/interiorAllList.do">글목록</a>
 	</p>
 </div>
-
+<script>
+function update_form(b_no){
+  $.ajax({
+    url: "./update_form.jsp",
+    type: "POST",
+    cache: false,
+    dataType: "json",
+    data: "b_no=" + b_no,
+    success: function(data){
+      $('#b_no').val(data.b_no);
+      $('#b_type').val(data.b_type);  
+      $('#b_title').val(data.b_title);          
+      $('#b_content').val(data.b_content);
+      $('#b_file').val(data.b_file);
+      $('#b_user').val(data.b_user);
+      
+      $('#btn_proc').html('저장'); 
+      $('#btn_proc').off('click'); 
+      $('#btn_proc').on('click', update_proc);      
+    },
+    
+    error: function (request, status, error){        
+        var msg = "ERROR : " + request.status + "<br>"
+      msg +=  + "내용 : " + request.responseText + "<br>" + error;
+      console.log(msg);              
+    }
+  });
+</script>
 </body>
 </html>
