@@ -26,48 +26,46 @@
 <body>
 <div id="container">
 	<h1>글 상세</h1>
-	<form action="/updateInterior.do" method="post">
-		<input type="hidden" name="seq" value="${cook.com_seq }">
+	<form action="update.do" method="post">
+		<input type="hidden" name="com_seq" value="${ckvo.com_seq }">
 	<table>
- 	<c:forEach var="cook" items="${cookDetail}">
 		<tr>
 			<th>제목</th>
 			<td>
-				<input type="text" name="title" value="${cookvo.title }">
+				<input type="text" name="title" value="${ckvo.title }">
 			</td>
 		</tr>
 		<tr>
 			<th>작성자</th>
-			<td>${selectOne.nickname }</td>
+			<td><input type="text" name="nickname" value=${ckvo.nickname }></td>
 		</tr>
 		<tr>
 			<th>내용</th>
 			<td>
-				${selectOne.content }
+				<textarea  name="content" >${ckvo.content }</textarea> 
 			</td>
 		</tr>
 		<tr>
 			<th>등록일</th>
-			<td>${selectOne.regdate }</td>
+			<td><input type="text" name="regdate" value=${ckvo.regdate }></td>
 		</tr>
 		<tr>
 			<th>조회수</th>
-			<td>${selectOne.hit }</td>
+			<td><input type="text" name="hit" value=${ckvo.hit }></td>
 		</tr>
 		<tr>
 			<th>좋아요</th>
-			<td>${selectOne.likes }</td>
+			<td><input type="text" name="likes" value=${ckvo.likes }></td>
 		</tr>
 		<tr>
-			<th>파일이미지</th>
-			<td>${selectOne.image }</td>
+			<th>파일</th>
+			<td><input type="file" name="image" value=${ckvo.image }></td>
 		</tr> 
 		<tr>
 			<td colspan="2" class="center">
 				<input type="submit" value="글 수정">
 			</td>
 		</tr>
-	</c:forEach>
 	</table>
 	</form>
 	<p>
