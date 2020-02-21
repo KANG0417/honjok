@@ -41,7 +41,7 @@
       <tr>
          <td>${cookvo.com_seq }</td>
          <td><a href="CookDetail.do?com_seq=${cookvo.com_seq }">${cookvo.title }</a></td>
-         <td>${cookvo.nickname }</td>
+         <td>${cookvo.nick_name }</td>
          <td>${cookvo.regdate }</td>
          <td>${cookvo.hit }</td>
          <td>${cookvo.likes }</td>

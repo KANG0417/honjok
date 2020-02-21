@@ -40,7 +40,7 @@
 		</tr>
 		<tr>
 			<th>작성자</th>
-			<td>${cookDetail.nickname }</td>
+			<td>${cookDetail.nick_name }</td>
 		</tr>
 		<tr>
 			<th>내용</th>
