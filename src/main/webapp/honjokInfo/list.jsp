@@ -160,7 +160,7 @@
 					</c:when>
 
 					<c:when test="${countList < 60 }">
-						<c:forEach var="page" begin="1" end="${countList/6 +1  }"
+						<c:forEach var="page" begin="1" end="${countList/6 + 0.9  }"
 							step="1">
 							<c:choose>
 								<c:when test="${page == pageNum }">
