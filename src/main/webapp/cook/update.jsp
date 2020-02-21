@@ -37,7 +37,7 @@
 		</tr>
 		<tr>
 			<th>작성자</th>
-			<td><input type="text" name="nickname" value=${ckvo.nickname }></td>
+			<td><input type="text" name="nick_name" value=${ckvo.nick_name }></td>
 		</tr>
 		<tr>
 			<th>내용</th>
