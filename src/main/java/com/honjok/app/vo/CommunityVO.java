@@ -12,8 +12,8 @@ public class CommunityVO {
 		return nick_name;
 	}
 
-	public void setNickname(String nickname) {
-		this.nick_name = nickname;
+	public void setNickname(String nic_kname) {
+		this.nick_name = nic_kname;
 	}
 
 	public String getTitle() {
