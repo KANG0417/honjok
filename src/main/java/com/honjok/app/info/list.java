@@ -161,25 +161,46 @@ public class list {
                try{
                   String fileName = file.getName();
                   byte[] bytes = file.getBytes();
+                  
+                  //경로설정 
                   String uploadPath = req.getServletContext().getRealPath("/img");
-                  System.out.println(req.getServletContext().getRealPath("/img"));
+                  System.out.println(req.getServletContext());
+                  
+                  
+                  //파일저장 
                   File uploadFile = new File(uploadPath);
+                  
+                  
+                  //디렉토리 없다면 생성 
                   if(!uploadFile.exists()){
                      uploadFile.mkdirs();
                   }
+                
+                  //이름에 유일한 식별자 생성
                   fileName = UUID.randomUUID().toString();
                   uploadPath = uploadPath + "/" + fileName;
+                  //파일 저장
                   out = new FileOutputStream(new File(uploadPath));
                        out.write(bytes);
                        
                        printWriter = resp.getWriter();
                        resp.setContentType("text/html");
                        String fileUrl = req.getContextPath() + "/img/" + fileName;
+                       
                        System.out.println(req.getContextPath() + "/img/" + fileName);
                        
+                       
+                       // json 데이터로 등록
+                       // {"uploaded" : 1, "fileName" : "test.jpg", "url" : "/img/test.jpg"}
+                       // 이런 형태로 리턴이 나가야함.
+
                        json.addProperty("uploaded", 1);
                        json.addProperty("fileName", fileName);
                        json.addProperty("url", fileUrl);
+                       
+                       System.out.println(fileUrl);
+                       System.out.println(fileName);
+                       
                        
                        printWriter.println(json);
                    }catch(IOException e){

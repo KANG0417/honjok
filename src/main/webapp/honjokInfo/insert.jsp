@@ -91,14 +91,11 @@
 
 </style>
 
-   <!--  <script type = "text/javascript">
-        window.parent.CKEDITOR.tools.callFunction('${CKEditorFuncNum}','${filePath}', '업로드완료');
-    </script> -->
 </head>
 
 <body>
    <h1>혼족정보게시판</h1>
-   
+   이미지<img alt="" src="//C:/Users/bitcamp/Documents/GitHub/honjok/src/main/webapp/resources/img/71305aae-b263-4aa6-9f2e-306f760992ab" />
    
    
    <form id="insert" action="insert.do" method="POST">
@@ -165,21 +162,10 @@
 
 CKEDITOR.replace('editor1', {
     extraPlugins: 'image2,uploadimage',
-
-
-    // Configure your file manager integration. This example uses CKFinder 3 for PHP.
-    filebrowserBrowseUrl: '/apps/ckfinder/3.4.5/ckfinder.html',
-    filebrowserImageBrowseUrl: '/apps/ckfinder/3.4.5/ckfinder.html?type=Images',
-    filebrowserUploadUrl: '/fileupload.do',
     filebrowserImageUploadUrl: 'fileupload.do',
-
     // Upload dropped or pasted images to the CKFinder connector (note that the response type is set to JSON).
     uploadUrl: 'fileupload.do',
 
-    // Reduce the list of block elements listed in the Format drop-down to the most commonly used.
-    format_tags: 'p;h1;h2;h3;pre',
-    // Simplify the Image and Link dialog windows. The "Advanced" tab is not needed in most cases.
-    removeDialogTabs: 'image:advanced;link:advanced',
 
     height: 450
   });
