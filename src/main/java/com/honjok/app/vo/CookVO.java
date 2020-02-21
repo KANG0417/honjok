@@ -101,8 +101,8 @@ public class CookVO {
 		return nick_name;
 	}
 
-	public void setNickname(String nickname) {
-		this.nick_name = nickname;
+	public void setNickname(String nick_name) {
+		this.nick_name = nick_name;
 	}
 
 	@Override

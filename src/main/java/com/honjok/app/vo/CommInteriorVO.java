@@ -1,11 +1,11 @@
 package com.honjok.app.vo;
 
 public class CommInteriorVO {
-	private String file_image, id, title, content, com_seq, hit, likes,regdate, nickname;
+	private String file_image, id, title, content, com_seq, hit, likes,regdate, nick_name;
 	public CommInteriorVO() {}
 
 	public CommInteriorVO(int type, String id, String file_image, String title, String content, String com_seq,
-			String hit, String likes, String regdate, String nickname) {
+			String hit, String likes, String regdate, String nick_name) {
 		super();
 		this.id = id;
 		this.file_image = file_image;
@@ -15,7 +15,7 @@ public class CommInteriorVO {
 		this.hit = hit;
 		this.likes = likes;
 		this.regdate = regdate;
-		this.nickname = nickname;
+		this.nick_name = nick_name;
 	}
 
 	public String getFile_image() {
@@ -74,12 +74,12 @@ public class CommInteriorVO {
 		this.regdate = regdate;
 	}
 
-	public String getNickname() {
-		return nickname;
+	public String getNick_name() {
+		return nick_name;
 	}
 
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
+	public void setNickname(String nick_name) {
+		this.nick_name = nick_name;
 	}
 
 	public String getId() {
@@ -94,6 +94,6 @@ public class CommInteriorVO {
 	public String toString() {
 		return "CommInteriorVO [file_image=" + file_image + ", title=" + title + ", id=" + id +
 				", content=" + content + ", com_seq=" + com_seq + ", hit=" + hit + ", likes=" + likes + ", regdate="
-				+ regdate + ", nickname=" + nickname + "]";
+				+ regdate + ", nick_name=" + nick_name + "]";
 	}
 }
