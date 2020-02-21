@@ -82,7 +82,7 @@
 						
 								작성자: ${CommunityVO.id } <br>
 								작성일: ${CommunityVO.regdate }<br> 
-								작성자닉네임: ${CommunityVO.nickname }<br>
+								작성자닉네임: ${CommunityVO.nick_name }<br>
 								조회수: ${CommunityVO.hit } <br>
 								좋아요: ${CommunityVO.likes }<br>
 								종합별점수 : ${infoList[articleNum.index].sum_star}<br>

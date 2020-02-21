@@ -103,7 +103,7 @@
    
    <form id="insert" action="insert.do" method="POST">
       <input type="hidden" name="id" value="soh445">
-      <input type="hidden" name="nickname" value="환탁">
+      <input type="hidden" name="nick_name" value="환탁">
       <select name="menu">
       	<option value='' selected>메뉴선택</option>
       	<option value='한식'>한식</option>

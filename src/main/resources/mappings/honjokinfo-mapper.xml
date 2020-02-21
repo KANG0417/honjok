@@ -21,12 +21,12 @@
 		HIT,
 		LIKES,
 		TYPE,
-		NICKNAME
+		NICK_NAME
 		)
 		values((SELECT NVL(MAX(com_seq)+1, 0) FROM COMMUNITY),
 		#{title}, #{id},
 		#{content}, SYSDATE,
-		'0', '0', '1', #{nickname});
+		'0', '0', '1', #{nick_name});
 		INSERT INTO COMM_INFO
 		VALUES((SELECT NVL(MAX(com_seq), 0) FROM COMMUNITY)
 		,0,#{adr},#{menu},#{tel},#{place_name},#{category_name});
@@ -55,7 +55,7 @@
 		CONTENT,
 		REGDATE,
 		HIT,
-		NICKNAME,
+		NICK_NAME,
 		LIKES,TYPE FROM COMMUNITY WHERE type =
 		'1' order by com_seq DESC))
 		where RECNUM BETWEEN (#{section}-1)* 60 +

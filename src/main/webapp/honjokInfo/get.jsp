@@ -27,7 +27,7 @@
    <p>조회수:${CommInfoVO.hit }</p>
    <p>좋아요;${CommInfoVO.likes }</p>
    <p>작성일:${CommInfoVO.regdate }</p>
-   <p>닉네임:${CommInfoVO.nickname }</p>
+   <p>닉네임:${CommInfoVO.nick_name }</p>
    <p>매장번호:${CommInfoVO.tel }</p>
    <p>매장위치:${CommInfoVO.place_name }</p>
    <p>매장 업종:${CommInfoVO.category_name }</p>

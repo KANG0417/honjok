@@ -1,7 +1,7 @@
 package com.honjok.app.vo;
 
 public class CommInfoVO {
-	String com_seq, sum_star, adr, menu, title, id, content, type, hit, likes, regdate, nickname, tel, place_name,
+	String com_seq, sum_star, adr, menu, title, id, content, type, hit, likes, regdate, nick_name, tel, place_name,
 			category_name;
 
 	public String getCom_seq() {
@@ -93,11 +93,11 @@ public class CommInfoVO {
 	}
 
 	public String getNickname() {
-		return nickname;
+		return nick_name;
 	}
 
 	public void setNickname(String nickname) {
-		this.nickname = nickname;
+		this.nick_name = nickname;
 	}
 
 	public String getTel() {
@@ -128,7 +128,7 @@ public class CommInfoVO {
 	public String toString() {
 		return "CommInfoVO [com_seq=" + com_seq + ", sum_star=" + sum_star + ", adr=" + adr + ", menu=" + menu
 				+ ", title=" + title + ", id=" + id + ", content=" + content + ", type=" + type + ", hit=" + hit
-				+ ", likes=" + likes + ", regdate=" + regdate + ", nickname=" + nickname + ", tel=" + tel
+				+ ", likes=" + likes + ", regdate=" + regdate + ", nick_name=" + nick_name + ", tel=" + tel
 				+ ", place_name=" + place_name + ", category_name=" + category_name + "]";
 	}
 
