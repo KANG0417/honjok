@@ -235,6 +235,14 @@
 	cursor: default;
 	color: #777;
 }
+
+
+
+
+/* 파일업로드 추가시 보여주기  */
+.preview{
+	display:none;
+}
 </style>
 
 
@@ -244,19 +252,18 @@
 	var cnt = 1;
 	function fn_addFile() {
 		if (cnt <= 3) {
-			$("#d_file").append("<br>" + "<input  type='file' name='file" + cnt+ "' value='" + cnt+ "' onchange='readURL(this)' />");
-			$("#d_file").append("<br>" + "<img  class='preview"+cnt+"'value='1' src=''/>");
+			$("#d_file").append("<br>"+"<input  type='file' name='file" + cnt+ "' value='" + cnt+ "' onchange='readURL(this)' />");
+			$("#d_file").append("<img  class='preview' src='' width='100' height='100' />"+ "<br>");
 			cnt++;
 		}
 	}
 	function readURL(input) {
-		var ss =  input.nextSibling.value;
-		var aa = $(ss).attr('src');
-		alert(aa);
 		if (input.files && input.files[0]) {
+		var image = input.nextElementSibling;
+		$(image).show();
 			var reader = new FileReader();
 			reader.onload = function(e) {
-				$('.preview2').attr('src', e.target.result);
+				$(image).attr('src', e.target.result);
 			}
 			reader.readAsDataURL(input.files[0]);
 		}
@@ -332,15 +339,18 @@
 
 	<!-- 에디터  -->
 	<script type="text/javascript">
-		CKEDITOR.replace('editor1', {
-			extraPlugins : 'image2,uploadimage',
+	 	CKEDITOR.replace('editor1', {
+			extraPlugins : 'image2',
 			filebrowserImageUploadUrl : 'fileupload.do',
 			// Upload dropped or pasted images to the CKFinder connector (note that the response type is set to JSON).
 			uploadUrl : 'fileupload.do',
 
 			height : 450
-		});
+		}); 
+		
+	
 	</script>
+	
 
 
 

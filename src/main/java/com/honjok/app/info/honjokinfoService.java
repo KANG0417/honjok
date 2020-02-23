@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.honjok.app.vo.CommInfoVO;
 import com.honjok.app.vo.CommunityVO;
+import com.honjok.app.vo.UploadVO;
 
 public interface honjokinfoService {
    
@@ -21,5 +22,9 @@ public interface honjokinfoService {
    public void insertCommInfoVO(CommInfoVO comI);
     
    public List<CommInfoVO> selectInfo(Map<String, Integer> pagingMap);
+
+   public void FileUpload(UploadVO uploadvo);
+
+   public List<UploadVO[]> getFileName(String comseq);
    
 }

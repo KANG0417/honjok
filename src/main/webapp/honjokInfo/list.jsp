@@ -28,8 +28,9 @@
 
 	<div class="container">
 		<div class="row justify-content-center mb-5 pb-3">
-			<h2>혼밥 정보</h2>
+			<h2>혼밥의 모든것</h2>
 		</div>
+		<hr>
 
 		<c:choose>
 			<c:when test="${CommunityVOList == null }">
@@ -37,62 +38,61 @@
 					<b><span style="font-size: 9pt;">등록된 글이 없습니다.</span></b>
 				</p>
 			</c:when>
-
-
-
-			<c:when test="${CommunityVOList != null }">
-
-
-				<div class="row">
 			
+			
+			
+			<c:when test="${CommunityVOList != null }">
+					<div style="width:100%; height:100px;">
+						이번주 베스트 가게는 ~ 
+						<img style="width:100%; height:100%;" src="/app/resources/img/no.jpg">
+					</div>
+				<div class="row">
+
 					<c:forEach var="CommunityVO" items="${CommunityVOList }"
 						varStatus="articleNum">
-					
-					 
 
 						<div class="col-md-4" id="select">
-							<a class="main-img${articleNum.index}" href="get.do?com_seq=${CommunityVO.com_seq }"
-									class="img w-100 mb-3"> 
-								<script>
-								var contentimg = '${CommunityVO.content}';
-								var firstimg = $(contentimg).find(
+							<a class="main-img${articleNum.index}"
+								href="get.do?com_seq=${CommunityVO.com_seq }"
+								class="img w-100 mb-3"> <script>
+									var contentimg = '${CommunityVO.content}';
+									var firstimg = $(contentimg).find(
 											'img:first').attr('src');
-								console.log(firstimg);
-								var image = document.createElement("IMG");
-								image.src = firstimg;
-								image.height = 300;
-								image.width = 300;
-								image.alt = "이미지가없습니다.";
-								console.log(image);
-								$('.main-img${articleNum.index}').html(image);
-								
-							
+									console.log(firstimg);
+									var image = document.createElement("IMG");
+									image.src = firstimg;
+									image.height = 300;
+									image.width = 300;
+									image.alt = "이미지가없습니다.";
+									console.log(image);
+									$('.main-img${articleNum.index}').html(
+											image);
 								</script>
 							</a>
-							
-							
-							
+
+
+
 							<div class="text w-100 text-center">
 								<h3>
 									<a href="get.do?com_seq=${CommunityVO.com_seq }">${CommunityVO.title }</a>
 								</h3>
-								
-								
+
+
+
+
 							</div>
-						
-								작성자: ${CommunityVO.id } <br>
-								작성일: ${CommunityVO.regdate }<br> 
-								작성자닉네임: ${CommunityVO.nick_name }<br>
-								조회수: ${CommunityVO.hit } <br>
-								좋아요: ${CommunityVO.likes }<br>
-								종합별점수 : ${infoList[articleNum.index].sum_star}<br>
-								매장이름: ${infoList[articleNum.index].title}<br>
-								매장위치 : ${infoList[articleNum.index].adr}<br>
-								매장업종 : ${infoList[articleNum.index].category_name}<br>
-								매장전화번호: ${infoList[articleNum.index].tel}<br>
-						
+
+							작성자: ${CommunityVO.id } <br> 작성일: ${CommunityVO.regdate }<br>
+							작성자닉네임: ${CommunityVO.nick_name }<br> 조회수: ${CommunityVO.hit }
+							<br> 좋아요: ${CommunityVO.likes }<br> 종합별점수 :
+							${infoList[articleNum.index].sum_star}<br> 매장이름:
+							${infoList[articleNum.index].title}<br> 매장위치 :
+							${infoList[articleNum.index].adr}<br> 매장업종 :
+							${infoList[articleNum.index].category_name}<br> 매장전화번호:
+							${infoList[articleNum.index].tel}<br>
+
 						</div>
-						 	 
+
 					</c:forEach>
 
 				</div>
@@ -105,8 +105,8 @@
 		<div class="center">
 			<c:if test="${countList != null}">
 				<c:choose>
-					<c:when test="${countList > 60 }">
-						<c:set var="endPage" value="${countList/60 + 1 }" scope="page"></c:set>
+					<c:when test="${countList > 90 }">
+						<c:set var="endPage" value="${countList/90 + 1 }" scope="page"></c:set>
 
 						<c:if test="${endPage-(endPage%1) != section}">
 							<c:forEach var="page" begin="1" end="10" step="1">
@@ -132,9 +132,7 @@
 						</c:if>
 
 						<c:if test="${endPage-(endPage%1) == section}">
-							<c:forEach var="page" begin="1"
-								end="10"
-								step="1">
+							<c:forEach var="page" begin="1" end="10" step="1">
 
 								<c:if test="${section > 1 && page == 1}">
 									<a
@@ -153,14 +151,14 @@
 					</c:when>
 
 
-					<c:when test="${countList == 60 }">
+					<c:when test="${countList == 90 }">
 						<c:forEach var="page" begin="1" end="10" step="1">
 							<a href="#">${page }</a>
 						</c:forEach>
 					</c:when>
 
-					<c:when test="${countList < 60 }">
-						<c:forEach var="page" begin="1" end="${countList/6 + 0.9  }"
+					<c:when test="${countList < 90 }">
+						<c:forEach var="page" begin="1" end="${countList/9 + 0.9  }"
 							step="1">
 							<c:choose>
 								<c:when test="${page == pageNum }">

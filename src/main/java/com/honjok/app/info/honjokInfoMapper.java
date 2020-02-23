@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.honjok.app.vo.CommInfoVO;
 import com.honjok.app.vo.CommunityVO;
+import com.honjok.app.vo.UploadVO;
 
 @Repository("honjokInfomapper")
 public class honjokInfoMapper {
@@ -25,6 +26,12 @@ public class honjokInfoMapper {
 
 	}
 	
+	
+	public void insertFileUpload(UploadVO uploadvo) {
+		mybatis.insert("honjokInfoMapper.menuUplodat",uploadvo);
+	}	
+
+	
 
 	public List<CommunityVO> selectAll(Map<String, Integer> pagingMap) {
 
@@ -40,6 +47,12 @@ public class honjokInfoMapper {
 		List<CommInfoVO> list = mybatis.selectList("honjokInfoMapper.selectCommInfoVO",pagingMap);
 		return list;
 	}
+	
+	public List<UploadVO[]> getFileName(String comseq) {
+		return mybatis.selectList("honjokInfoMapper.getFileName",comseq);
+	}
+	
+	
 
 	public int selectAllCount() {
 		return mybatis.selectOne("honjokInfoMapper.selectAllCount");
@@ -67,6 +80,11 @@ public class honjokInfoMapper {
 
 	}
 
+
+
+
+
+	
 
 
 
