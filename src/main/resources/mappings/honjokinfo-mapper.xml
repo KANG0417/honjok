@@ -23,7 +23,7 @@
 		TYPE,
 		NICK_NAME
 		)
-		values((SELECT NVL(MAX(com_seq)+1, 0) FROM COMMUNITY),
+		values((COMMMUNITY_SEQ.NEXTVAL) + 1,
 		#{title}, #{id},
 		#{content}, SYSDATE,
 		'0', '0', '1', #{nick_name});
