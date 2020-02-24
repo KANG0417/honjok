@@ -38,7 +38,7 @@ public class list {
 	@Autowired
 	honjokinfoService service;
 
-	private static final String CURR_IMAGE_REPO_PATH = "C:/Users/sin/Documents/GitHub/honjok/src/main/webapp/resources/img/menu";
+	private static final String CURR_IMAGE_REPO_PATH = "C:/Users/bitcamp/Documents/GitHub/honjok/src/main/webapp/resources/img/menu";
 
 	@RequestMapping("/insert.do")
 	public String lists(CommInfoVO comI, MultipartHttpServletRequest multiFile) throws IOException {
@@ -82,6 +82,9 @@ public class list {
 					}
 				}
 
+				//파일 이름 변겅 	 
+				originalFileName = UUID.randomUUID().toString();
+				System.out.println(originalFileName);
 				mFile.transferTo(new File(CURR_IMAGE_REPO_PATH + "\\" + originalFileName));
 				UploadVO uploadvo = new UploadVO();
 				uploadvo.setUp_img_name(originalFileName);
@@ -205,12 +208,11 @@ public class list {
 						fileName = UUID.randomUUID().toString();
 						uploadPath = uploadPath + "/" + fileName;
 						// 파일 저장
+						out = new FileOutputStream(new File("C:/Users/bitcamp/Documents/GitHub/honjok/src/main/webapp/resources/img" + fileName));
+						out.write(bytes);
 						out = new FileOutputStream(new File(uploadPath));
 						out.write(bytes);
 
-						out = new FileOutputStream(new File(
-								"C:/Users/sin/Documents/GitHub/honjok/src/main/webapp/resources/img/" + fileName));
-						out.write(bytes);
 
 						printWriter = resp.getWriter();
 						resp.setContentType("text/html");

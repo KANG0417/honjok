@@ -31,23 +31,28 @@
 			<h2>혼밥의 모든것</h2>
 		</div>
 		<hr>
+		
 
+		
 		<c:choose>
 			<c:when test="${CommunityVOList == null }">
 				<p align="center">
 					<b><span style="font-size: 9pt;">등록된 글이 없습니다.</span></b>
 				</p>
 			</c:when>
-			
-			
-			
-			<c:when test="${CommunityVOList != null }">
-					<div style="width:100%; height:100px;">
-						이번주 베스트 가게는 ~ 
-						<img style="width:100%; height:100%;" src="/app/resources/img/no.jpg">
-					</div>
-				<div class="row">
 
+
+
+			<c:when test="${CommunityVOList != null }">
+
+
+
+
+				<div class="row">
+					<div class="row" style="width: 100%; height: 300px;  margin-bottom:100px;">
+						이번주 베스트 가게는 ~ <img style="width: 100%; height: 100%;"
+							src="/app/resources/img/no.jpg">
+					</div>
 					<c:forEach var="CommunityVO" items="${CommunityVOList }"
 						varStatus="articleNum">
 
