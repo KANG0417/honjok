@@ -57,10 +57,33 @@
 	</delete>
   
 	<select id="interiorAll" resultType="CommInteriorVO">
-		SELECT C.COM_SEQ, C.TITLE, C.NICK_NAME, C.CONTENT, C.REGDATE, C.HIT, C.LIKES, I.FILE_IMAGE, I.SHOW
+		SELECT C.COM_SEQ, C.TITLE, C.NICK_NAME, C.CONTENT, C.REGDATE, C.HIT, C.LIKES, I.FILE_IMAGE
+		FROM ( SELECT ROWNUM
+		AS RECNUM,
+		C.COM_SEQ,
+		C.TITLE,
+		C.NICK_NAME,
+		C.CONTENT,
+		TO_CHAR(C.REGDATE, 'yyyy-mm-dd'),
+		C.HIT,
+		C.LIKES,
+		I.FILE_IMAGE,
+		C.TYPE
+		FROM(SELECT C.COM_SEQ,
+		C.TITLE,
+		C.ID,
+		C.CONTENT,
+		TO_CHAR(C.REGDATE, 'yyyy-mm-dd'),
+		C.HIT,
+		C.NICK_NAME,
+		C.LIKES,
+		C.TYPE
 		FROM COMMUNITY C, COMM_INTERIOR I
-		WHERE C.COM_SEQ = I.COM_SEQ
-		ORDER BY C.COM_SEQ , I.COM_SEQ
+		WHERE TYPE = '2' ORDER BY C.COM_SEQ DESC))
+		WHERE RECNUM BETWEEN (#{section}-1)* 90 +
+		(#{pageNum}-1)* 9 + 1
+		AND (#{section} - 1)*90 + #{pageNum}*9 ORDER BY
+		C.COM_SEQ DESC
 	</select>
   
 	<select id="getInteriorOne" parameterType="CommInteriorVO" resultType="CommInteriorVO">

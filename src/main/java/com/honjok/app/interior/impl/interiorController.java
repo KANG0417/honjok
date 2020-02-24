@@ -5,7 +5,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,12 +20,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.google.gson.JsonObject;
+import com.honjok.app.vo.CommInfoVO;
 import com.honjok.app.vo.CommInteriorVO;
+import com.honjok.app.vo.CommunityVO;
 
 @Controller
 @RequestMapping("/interior")
@@ -33,12 +38,51 @@ public class interiorController {
 	private InteriorService interiorService;
 	
 	@RequestMapping("/interiorAllList.do")
-	public String interiorAllList(Model model) {
+	/*public String interiorAllList(Model model) {
 		System.out.println("===>인테리어게시판 전체 조회");
 		List<CommInteriorVO> CommInteriorList = interiorService.BoardAllList();
 		model.addAttribute("interiorList", CommInteriorList);
 		System.out.println(CommInteriorList.toString());
-		return "InBoardList.jsp";
+		return "InBoardList.jsp";*/
+		public String interiorAllList(Model model, @RequestParam(required = false) String section,
+				@RequestParam(required = false) String pageNum) {
+
+			System.out.println(section);
+			String section_ = section;
+			String pageNum_ = pageNum;
+
+			if (section == null) {
+				section_ = ((section == null) ? "1" : section);
+				pageNum_ = ((pageNum == null) ? "1" : pageNum);
+			}
+
+			System.out.println(section_);
+			System.out.println(pageNum_);
+
+			Map<String, Integer> pagingMap = new HashMap<String, Integer>();
+
+			pagingMap.put("section", Integer.parseInt(section_));
+			pagingMap.put("pageNum", Integer.parseInt(pageNum_));
+
+			// community 조회
+			List<CommInteriorVO> list = service.selectAll(pagingMap);
+
+			// comminfo 조회
+			List<CommInteriorVO> infoList = service.selectInfo(pagingMap);
+
+			// 페이징 처리위해 전체 조회
+			int countList = service.selectAllCount();
+			System.out.println("총게시글수" + countList);
+
+			model.addAttribute("infoList", infoList);
+			model.addAttribute("pageNum", pageNum_);
+			model.addAttribute("section", section_);
+			model.addAttribute("CommunityVOList", list);
+			model.addAttribute("countList", countList);
+
+			return "/honjokInfo/list.jsp";
+
+		}
 	}
 	
 	@RequestMapping("/getInterior.do")
