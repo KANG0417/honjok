@@ -22,6 +22,8 @@
 	  	{ call
   		declare
   		begin
+  		ㅇㄴㄹ
+  		'ㅇㄴ마ㅣ어ㅏㅣㄴㅇ라ㅣㅓ3ㅣㅣ;ㅏㄷㄱ;
   		UPDATE COMMUNITY
   		SET TITLE = #{title}, CONTENT = #{content}, REGDATE = SYSDATE
   		WHERE COM_SEQ = #{com_seq};
