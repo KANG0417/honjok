@@ -16,7 +16,7 @@ public class CommInteriorDAOMybatis {
 	
 	//전체 데이터 조회
 	public List<CommInteriorVO> BoardAllList() {
-		List<CommInteriorVO> cvo = mybatis.selectList("commInteriorDAO.InteriorAll");
+		List<CommInteriorVO> cvo = mybatis.selectList("commInteriorDAO.interiorAll");
 		System.out.println("===> MyBatis로 BoardAllList() 실행");
 		System.out.println(cvo);
 		return cvo;
@@ -40,6 +40,7 @@ public class CommInteriorDAOMybatis {
 		mybatis.update("commInteriorDAO.updateComm", cvo);
 	}
 
+	//글 삭제
 	public void deleteBoard(CommInteriorVO cvo) {
 		System.out.println("cvo");
 		mybatis.delete("commInteriorDAO.deleteComm", cvo);

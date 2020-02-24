@@ -141,11 +141,11 @@ public class interiorController {
         return "getInterior.do";
     }
 	
-	@RequestMapping("/deleteBoard.do")
+	@RequestMapping("/deleteArticle.do")
 	public String deleteBoard(CommInteriorVO cvo) {
 		System.out.println(">>> 글 삭제 처리 - deleteBoard()");
-		
+		System.out.println("cvo data : " + cvo.getCom_seq());
 		interiorService.deleteBoard(cvo);
-		return "getInterior.do";
+		return "interiorAllList.do";
 	}
 }

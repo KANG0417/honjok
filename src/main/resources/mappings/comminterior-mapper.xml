@@ -8,12 +8,12 @@
   		declare
   		begin
   		INSERT INTO COMMUNITY
-  		(COM_SEQ, TITLE, NICKNAME, CONTENT, REGDATE, HIT, LIKES, TYPE)
+  		(COM_SEQ, TITLE, NICK_NAME, CONTENT, REGDATE, HIT, LIKES, TYPE)
   		VALUES ((COMMMUNITY_SEQ.NEXTVAL) + 1, #{title}, #{nickname},
   			#{content}, SYSDATE, 0, 0, 2);
-  		INSERT INTO COMM_INTERIOR (COM_SEQ, FILE_IMAGE)
+  		INSERT INTO COMM_INTERIOR (COM_SEQ, FILE_IMAGE,SHOW)
   		VALUES ((select NVL(MAX(com_seq)
-  		,0)from community), #{file_image});
+  		,0)from community), #{file_image}, 'y');
   		END
   		}
   	</insert>
@@ -32,29 +32,39 @@
   		}
 	</update>
 	
-   	<update id="deleteComm" parameterType="CommInteriorVO">
+   	<!-- <update id="deleteArticle" parameterType="CommInteriorVO">
   		{ call
   		declare
+  		DELETE
+  		FROM COMMUNITY C, COMM_INTERIOR I
+  		WHERE COM_SEQ
+  		DELETE
+  		FROM COMMU
+  		END
+  		}
+	</update> -->
+	
+	<delete id="deleteComm" parameterType="CommInteriorVO">
+		{ call
+  		declare
   		begin
-  		UPDATE COMMUNITY
-  		SET TITLE = #{title}, CONTENT = #{content}, REGDATE = SYSDATE
+  		DELETE FROM COMMUNITY
   		WHERE COM_SEQ = #{com_seq};
-  		UPDATE COMM_INTERIOR
-  		SET FILE_IMAGE = #{file_image}
+  		DELETE FROM COMM_INTERIOR
   		WHERE COM_SEQ = #{com_seq};
   		END
   		}
-	</update>
+	</delete>
   
-	<select id="InteriorAll" resultType="CommInteriorVO">
-		SELECT C.COM_SEQ, C.TITLE, C.NICKNAME, C.CONTENT, C.REGDATE, C.HIT, C.LIKES, I.FILE_IMAGE
+	<select id="interiorAll" resultType="CommInteriorVO">
+		SELECT C.COM_SEQ, C.TITLE, C.NICK_NAME, C.CONTENT, C.REGDATE, C.HIT, C.LIKES, I.FILE_IMAGE, I.SHOW
 		FROM COMMUNITY C, COMM_INTERIOR I
 		WHERE C.COM_SEQ = I.COM_SEQ
 		ORDER BY C.COM_SEQ , I.COM_SEQ
 	</select>
   
 	<select id="getInteriorOne" parameterType="CommInteriorVO" resultType="CommInteriorVO">
-		SELECT C.COM_SEQ, C.TITLE, C.NICKNAME, C.CONTENT, C.REGDATE, C.HIT, C.LIKES, I.FILE_IMAGE
+		SELECT C.COM_SEQ, C.TITLE, C.NICK_NAME, C.CONTENT, C.REGDATE, C.HIT, C.LIKES, I.FILE_IMAGE
 		FROM COMMUNITY C, COMM_INTERIOR I
 		WHERE C.COM_SEQ = I.COM_SEQ
 		AND C.COM_SEQ = #{com_seq}

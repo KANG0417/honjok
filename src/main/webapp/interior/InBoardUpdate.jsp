@@ -37,7 +37,7 @@
 		<tr>
 			<th>작성자</th>
 			<td>
-			${inter.nickname }
+			${inter.nick_name }
 			</td>
 		</tr>
 		<tr>

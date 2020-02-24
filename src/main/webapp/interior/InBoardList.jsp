@@ -37,8 +37,7 @@
 		</tr>
 	</thead>
 <tbody>
-<%--  <c:choose>
-  <c:when test="${interiorList == null }" >
+<%--   <c:when test="${interiorList == null }" >
     <tr>
       <td colspan="6">
          <p align="center">
@@ -46,23 +45,22 @@
         </p>
       </td>  
     </tr>
-  </c:when>
-  <c:when test="${interiorList != null }"> --%>
+  </c:when> --%>
+ <%--  <c:when test="${interiorvo.show == 'y' }">--%>
    <c:forEach var="interiorvo" items="${interiorList }">
       <tr>
          <td>${interiorvo.com_seq }</td>
          <td><a href="getInterior.do?com_seq=${interiorvo.com_seq }">${interiorvo.title }</a></td>
-         <td>${interiorvo.nickname }</td>
+         <td>${interiorvo.nick_name }</td>
          <td>${interiorvo.regdate }</td>
          <td>${interiorvo.hit }</td>
          <td>${interiorvo.likes }</td>
       </tr>
-    </c:forEach>
- <%--  </c:when>
-</c:choose> --%>
-</tbody>   
+</c:forEach>
 </table>
- <%--   <c:if test="${interiorList != null}">
+<%--     </c:forEach>
+</tbody>   
+<%--    <c:if test="${interiorList != null}">
       <c:choose>
          <c:when test="${interiorList > 100 }">
          <c:set var="endPage" value="${countList/100 + 1 }" scope="page"></c:set>
@@ -134,6 +132,7 @@
 <c:remove var="endPage"/> 
    ${section }
    ${pageNum }  --%>
+   </div>
 <form action="InBoardInsert.jsp">
    <input type="submit" value="글쓰기">
 </form>
