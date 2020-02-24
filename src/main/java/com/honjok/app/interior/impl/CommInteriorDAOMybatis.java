@@ -1,6 +1,7 @@
 package com.honjok.app.interior.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +16,8 @@ public class CommInteriorDAOMybatis {
 	private SqlSessionTemplate mybatis;
 	
 	//전체 데이터 조회
-	public List<CommInteriorVO> BoardAllList() {
-		List<CommInteriorVO> cvo = mybatis.selectList("commInteriorDAO.interiorAll");
+	public List<CommInteriorVO> BoardAllList(Map<String, Integer> pagingMap) {
+		List<CommInteriorVO> cvo = mybatis.selectList("commInteriorDAO.interiorAll", pagingMap);
 		System.out.println("===> MyBatis로 BoardAllList() 실행");
 		System.out.println(cvo);
 		return cvo;
@@ -24,7 +25,7 @@ public class CommInteriorDAOMybatis {
 	
 	//글 상세 조회
 	public CommInteriorVO getInteriorOne(CommInteriorVO cvo) {
-		System.out.println("===> MyBatis로 getInteriorOne() 실행");
+	System.out.println("===> MyBatis로 getInteriorOne() 실행");
 		return mybatis.selectOne("commInteriorDAO.getInteriorOne", cvo);
 	}
 	
@@ -44,5 +45,10 @@ public class CommInteriorDAOMybatis {
 	public void deleteBoard(CommInteriorVO cvo) {
 		System.out.println("cvo");
 		mybatis.delete("commInteriorDAO.deleteComm", cvo);
+	}
+
+	//페이징 전체 갯수
+	public int selectCount() {
+		return mybatis.selectOne("commInteriorDAO.selectAllCount");
 	}
 }

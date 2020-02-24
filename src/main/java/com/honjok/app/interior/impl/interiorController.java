@@ -65,25 +65,20 @@ public class interiorController {
 			pagingMap.put("pageNum", Integer.parseInt(pageNum_));
 
 			// community 조회
-			List<CommInteriorVO> list = service.selectAll(pagingMap);
-
-			// comminfo 조회
-			List<CommInteriorVO> infoList = service.selectInfo(pagingMap);
-
+			List<CommInteriorVO> list = interiorService.BoardAllList(pagingMap);
+			System.out.println("List 확인"+list);
 			// 페이징 처리위해 전체 조회
-			int countList = service.selectAllCount();
+			int countList = interiorService.selectAllCount();
 			System.out.println("총게시글수" + countList);
 
-			model.addAttribute("infoList", infoList);
 			model.addAttribute("pageNum", pageNum_);
 			model.addAttribute("section", section_);
-			model.addAttribute("CommunityVOList", list);
+			model.addAttribute("interiorList", list);
 			model.addAttribute("countList", countList);
 
-			return "/honjokInfo/list.jsp";
+			return "InBoardList.jsp";
 
 		}
-	}
 	
 	@RequestMapping("/getInterior.do")
 	public String getinteriorSelect(Model model, CommInteriorVO cvo) {

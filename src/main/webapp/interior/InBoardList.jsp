@@ -20,30 +20,31 @@
 <body>
 	<div class="container">
 		<div class="row justify-content-center mb-5 pb-3">
-			<h2>혼밥의 모든것</h2>
+			<h2>인테리어</h2>
 		</div>
 		<hr>
 		<c:choose>
-			<c:when test="${CommunityVOList == null }">
+			<c:when test="${interiorList == null }">
 				<p align="center">
 					<b><span style="font-size: 9pt;">등록된 글이 없습니다.</span></b>
 				</p>
 			</c:when>
-			<c:when test="${CommunityVOList != null }">
+			<c:when test="${interiorList != null }">
 					<div style="width:100%; height:100px;">
-						이번주 베스트 가게는 ~ 
+						이번주 베스트 ~ 
 						<img style="width:100%; height:100%;" src="/app/resources/img/no.jpg">
 					</div>
 				<div class="row">
 
-					<c:forEach var="CommunityVO" items="${CommunityVOList }"
+					<c:forEach var="interiorvo" items="${interiorList }"
 						varStatus="articleNum">
 
 						<div class="col-md-4" id="select">
 							<a class="main-img${articleNum.index}"
-								href="get.do?com_seq=${CommunityVO.com_seq }"
-								class="img w-100 mb-3"> <script>
-									var contentimg = '${CommunityVO.content}';
+								href="getInterior.do?com_seq=${interiorvo.com_seq }"
+								class="img w-100 mb-3"> 
+								 <script>
+									var contentimg = '${interiorvo.content}';
 									var firstimg = $(contentimg).find(
 											'img:first').attr('src');
 									console.log(firstimg);
@@ -55,21 +56,17 @@
 									console.log(image);
 									$('.main-img${articleNum.index}').html(
 											image);
-								</script>
+								</script> 
 							</a>
 							<div class="text w-100 text-center">
 								<h3>
-									<a href="get.do?com_seq=${CommunityVO.com_seq }">${CommunityVO.title }</a>
+									<a href="getInterior.do?com_seq=${interiorvo.com_seq }">${interiorvo.title }</a>
 								</h3>
 							</div>
-							작성자: ${CommunityVO.id } <br> 작성일: ${CommunityVO.regdate }<br>
-							작성자닉네임: ${CommunityVO.nick_name }<br> 조회수: ${CommunityVO.hit }
-							<br> 좋아요: ${CommunityVO.likes }<br> 종합별점수 :
-							${infoList[articleNum.index].sum_star}<br> 매장이름:
-							${infoList[articleNum.index].title}<br> 매장위치 :
-							${infoList[articleNum.index].adr}<br> 매장업종 :
-							${infoList[articleNum.index].category_name}<br> 매장전화번호:
-							${infoList[articleNum.index].tel}<br>
+							작성일: ${interiorvo.regdate }<br>
+							작성자닉네임: ${interiorvo.nick_name }<br> 조회수: ${interiorvo.hit }
+							<br> 좋아요: ${interiorvo.likes }<br>
+							매장이름: ${list[articleNum.index].title}<br>
 						</div>
 
 					</c:forEach>
@@ -89,19 +86,19 @@
 
 								<c:if test="${section > 1 && page == 1}">
 									<a
-										href="select.do?section=${section-1}&pageNum=${(section-1)*10 }">이전</a>
+										href="interiorAllList.do?section=${section-1}&pageNum=${(section-1)*10 }">이전</a>
 								</c:if>
 
-								<a href="select.do?section=${section}&pageNum=${page}">${(section-1)*10 +page }
+								<a href="interiorAllList.do?section=${section}&pageNum=${page}">${(section-1)*10 +page }
 								</a>
 
 								<c:if test="${page == 10 }">
 									<c:if test="${section ==1 }">
-										<a href="select.do?section=${section+1}&pageNum=${section }">다음</a>
+										<a href="interiorAllList.do?section=${section+1}&pageNum=${section }">다음</a>
 									</c:if>
 									<c:if test="${section != 1 }">
 										<a
-											href="select.do?section=${section+1}&pageNum=${section - 1}">다음</a>
+											href="interiorAllList.do?section=${section+1}&pageNum=${section - 1}">다음</a>
 									</c:if>
 								</c:if>
 							</c:forEach>
@@ -112,14 +109,14 @@
 
 								<c:if test="${section > 1 && page == 1}">
 									<a
-										href="select.do?section=${section-1}&pageNum=${(section-1)*10-10 }">이전</a>
+										href="interiorAllList.do?section=${section-1}&pageNum=${(section-1)*10-10 }">이전</a>
 								</c:if>
 
-								<a href="select.do?section=${section}&pageNum=${page}">${(section-1)*10 +page }
+								<a href="interiorAllList.do?section=${section}&pageNum=${page}">${(section-1)*10 +page }
 								</a>
 
 								<c:if test="${page == 10 }">
-									<a href="select.do?section=${section+1}&pageNum=${section - 1}">다음</a>
+									<a href="interiorAllList.do?section=${section+1}&pageNum=${section - 1}">다음</a>
 								</c:if>
 							</c:forEach>
 						</c:if>
@@ -138,10 +135,10 @@
 							step="1">
 							<c:choose>
 								<c:when test="${page == pageNum }">
-									<a href="select.do?section=${section}&pageNum=${page}">${page }</a>
+									<a href="interiorAllList.do?section=${section}&pageNum=${page}">${page }</a>
 								</c:when>
 								<c:otherwise>
-									<a href="select.do?section=${section}&pageNum=${page}">${page }</a>
+									<a href="interiorAllList.do?section=${section}&pageNum=${page}">${page }</a>
 								</c:otherwise>
 							</c:choose>
 						</c:forEach>
@@ -156,32 +153,6 @@
 	<hr>
 
 	<c:remove var="endPage" />
-<div id="bbs">
-<table>
-	<caption>게시글 목록</caption>
-	<thead>
-		<tr class="title">
-			<th class="no">번호</th>
-			<th class="subject">제목</th>
-			<th class="writer">글쓴이</th>
-			<th class="regdate">날짜</th>
-			<th class="hit">조회수</th>
-			<th class="likes">좋아요</th>
-		</tr>
-	</thead>
-<tbody>
-   <c:forEach var="interiorvo" items="${interiorList }">
-      <tr>
-         <td>${interiorvo.com_seq }</td>
-         <td><a href="getInterior.do?com_seq=${interiorvo.com_seq }">${interiorvo.title }</a></td>
-         <td>${interiorvo.nick_name }</td>
-         <td>${interiorvo.regdate }</td>
-         <td>${interiorvo.hit }</td>
-         <td>${interiorvo.likes }</td>
-      </tr>
-</c:forEach>
-</table>
-   </div>
 <form action="InBoardInsert.jsp">
    <input type="submit" value="글쓰기">
 </form>
