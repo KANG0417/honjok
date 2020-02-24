@@ -83,8 +83,8 @@
 		category_name
 		FROM(SELECT * FROM COMM_INFO order by com_seq DESC))
 		where RECNUM BETWEEN
-		(#{section}-1)* 60 + (#{pageNum}-1)* 6 + 1
-		AND (#{section} - 1)*60 +
+		(#{section}-1)* 90 + (#{pageNum}-1)* 9 + 1
+		AND (#{section} - 1)*90 +
 		#{pageNum}*6 order by com_seq DESC
 	</select>
 
