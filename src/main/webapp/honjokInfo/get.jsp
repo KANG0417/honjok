@@ -40,6 +40,34 @@
 	
 	
 	/*  파일 미리보기 태그 만들기  */
+		$().ready(function() {
+			
+			$('#hart').click(function(){
+				var className = $(this).attr('class');
+				if(className == "far fa-heart fa-5x" ){
+					$(this).removeClass();
+					$(this).addClass("fas fa-heart fa-5x");
+				}else{
+					$(this).removeClass();
+					$(this).addClass("far fa-heart fa-5x");
+				}
+			});
+			$('#book-mark').click(function(){
+				var className = $(this).attr('class');
+				if(className == "far fa-bookmark fa-5x" ){
+					$(this).removeClass();
+					$(this).addClass("fas fa-bookmark fa-5x");
+				}else{
+					$(this).removeClass();
+					$(this).addClass("far fa-bookmark fa-5x");
+				}
+			});
+			
+
+			
+			
+			
+			
 	function readURL(input) {
 	/* 	alert("gkgk"); */
 		if (input.files && input.files[0]) {
@@ -66,6 +94,8 @@
 		var ss = $(revome).parent();
 		ss.remove();
 	}
+	
+		});
 	
 	
 </script>
@@ -209,12 +239,20 @@ input[type="file"] { /* 파일 필드 숨기기 */
 	<p>${CommInfoVO.content }</p>
 	<p>조회수:${CommInfoVO.hit }</p>
 	<p>좋아요;${CommInfoVO.likes }</p>
-	<i class="far fa-bookmark fa-5x"></i>
 	
+	<c:if  test="${session.id == null}">
+		<i id="book-mark" class="far fa-bookmark fa-5x"></i>
+	</c:if>
 	<span>찜하기</span>
-	<i class="far fa-heart fa-5x"></i>
-	<i class="fas fa-heart"></i>
+	
+	
+	
+	<c:if  test="${session.id == null}">
+		<i id="hart" class="far fa-heart fa-5x"></i>
+	</c:if>
 	<span>좋아요</span>
+	
+	
 	<a id="kakao-link-btn" href="javascript:sendLink()"> <img
 		src="//developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png" />
 	</a>

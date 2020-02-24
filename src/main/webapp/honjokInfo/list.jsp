@@ -81,10 +81,8 @@
 								<h3>
 									<a href="get.do?com_seq=${CommunityVO.com_seq }">${CommunityVO.title }</a>
 								</h3>
-
-
-
-
+								
+								
 							</div>
 
 							작성자: ${CommunityVO.id } <br> 작성일: ${CommunityVO.regdate }<br>
