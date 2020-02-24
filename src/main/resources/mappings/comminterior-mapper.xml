@@ -9,7 +9,7 @@
   		begin
   		INSERT INTO COMMUNITY
   		(COM_SEQ, TITLE, NICK_NAME, CONTENT, REGDATE, HIT, LIKES, TYPE)
-  		VALUES ((COMMMUNITY_SEQ.NEXTVAL) + 1, #{title}, #{nickname},
+  		VALUES ((COMMMUNITY_SEQ.NEXTVAL) + 1, #{title}, #{nick_name},
   			#{content}, SYSDATE, 0, 0, 2);
   		INSERT INTO COMM_INTERIOR (COM_SEQ, FILE_IMAGE,SHOW)
   		VALUES ((select NVL(MAX(com_seq)

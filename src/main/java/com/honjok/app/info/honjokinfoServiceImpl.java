@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.honjok.app.vo.CommInfoVO;
 import com.honjok.app.vo.CommunityVO;
+import com.honjok.app.vo.UploadVO;
 
 
 
@@ -27,6 +28,14 @@ public class honjokinfoServiceImpl implements honjokinfoService {
 		
 	}
 	
+	
+
+	@Override
+	public void FileUpload(UploadVO uploadvo) {
+		System.out.println(uploadvo);
+		Mapper.insertFileUpload(uploadvo);
+	}
+
 
 
 
@@ -54,6 +63,15 @@ public class honjokinfoServiceImpl implements honjokinfoService {
 		return Mapper.selectAllCount();
 	}
 	
+	
+	@Override
+	public List<UploadVO[]> getFileName(String comseq) {
+			
+		return Mapper.getFileName(comseq);
+	}
+
+
+	
 
 
 
@@ -79,6 +97,13 @@ public class honjokinfoServiceImpl implements honjokinfoService {
 		Mapper.uptate(comI);
 		
 	}
+
+
+
+
+
+
+
 
 
 

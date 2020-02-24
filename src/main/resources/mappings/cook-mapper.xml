@@ -7,7 +7,7 @@
    <insert id="insertCook" parameterType="cook">
     	insert into comm_cook
 		VALUES((cook_sequence.NEXTVAL)+1,#{title},#{content}
-		,sysdate, #{category}, #{image},#{cooktime},0,0,'ID',#{nickname})
+		,sysdate, #{category}, #{image},#{cooktime},0,0,'ID',#{nick_name})
   	</insert>
 	
 	<select id="selectOne" parameterType="String" resultType="cook">
@@ -27,7 +27,7 @@
 		REGDATE = sysdate,
 		HIT = #{hit},
 		LIKES= #{likes},
-		NICKNAME = #{nickname}
+		NICKNAME = #{nick_name}
 		WHERE com_seq = #{com_seq}
 	</update>
 	

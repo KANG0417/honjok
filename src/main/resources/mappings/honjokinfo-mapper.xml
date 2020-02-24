@@ -33,6 +33,11 @@
 		END
 		}
 	</insert>
+	
+	<insert id="menuUplodat" parameterType="UploadVO">
+			INSERT INTO UPLOAD(COM_SEQ,Up_img_name)
+		VALUES((SELECT NVL(MAX(com_seq), 0) FROM COMMUNITY),#{up_img_name})
+	</insert>
 
 
 	<!-- insert end -->
@@ -58,9 +63,9 @@
 		NICK_NAME,
 		LIKES,TYPE FROM COMMUNITY WHERE type =
 		'1' order by com_seq DESC))
-		where RECNUM BETWEEN (#{section}-1)* 60 +
-		(#{pageNum}-1)* 6 + 1
-		AND (#{section} - 1)*60 + #{pageNum}*6 order by
+		where RECNUM BETWEEN (#{section}-1)* 90 +
+		(#{pageNum}-1)* 9 + 1
+		AND (#{section} - 1)*90 + #{pageNum}*9 order by
 		com_seq DESC
 	</select>
 
@@ -101,6 +106,12 @@
 		select C.* ,I.* from COMMUNITY C, COMM_INFO I
 		WHERE
 		C.COM_SEQ = i.com_seq AND i.com_seq = #{com_seq}
+	</select>
+	
+	<!-- 파일 이이미지 가져오기 -->
+	
+	<select id="getFileName" parameterType="String" resultType="UploadVO">
+		 select * from upload where com_seq = #{com_seq}
 	</select>
 
 

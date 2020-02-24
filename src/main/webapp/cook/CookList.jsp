@@ -7,6 +7,28 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>내꺼 요리게시판임</title>
 <style>
+      #columns{
+        column-width:350px;
+        column-gap: 15px;
+      }
+      #columns figure{
+        display: inline-block;
+        border:1px solid rgba(0,0,0,0.2);
+        margin:0;
+        margin-bottom: 15px;
+        padding:10px;
+        box-shadow: 2px 2px 5px rgba(0,0,0,0.5);;
+      }
+      #columns figure img{
+        width:100%;
+      }
+      #columns figure figcaption{
+        border-top:1px solid rgba(0,0,0,0.2);
+        padding:10px;
+        margin-top:11px;
+      }
+</style>
+<style>
 	#container {
 		width: 700px;
 		margin: 0 auto;
@@ -23,6 +45,16 @@
 </style>
 </head>
 <body>
+ <div id="columns">
+      <figure>
+        <img src="//s3-us-west-2.amazonaws.com/s.cdpn.io/4273/cinderella.jpg">
+        <figcaption>Cinderella wearing European fashion of the mid-1860’s</figcaption>
+      </figure>
+ 
+      <figure>
+        <img src="//s3-us-west-2.amazonaws.com/s.cdpn.io/4273/rapunzel.jpg">
+        <figcaption>Rapunzel, clothed in 1820’s period fashion</figcaption>
+      </figure>
 <table>
 	<caption>글 목록</caption>
 	<thead>
@@ -41,7 +73,7 @@
       <tr>
          <td>${cookvo.com_seq }</td>
          <td><a href="CookDetail.do?com_seq=${cookvo.com_seq }">${cookvo.title }</a></td>
-         <td>${cookvo.nickname }</td>
+         <td>${cookvo.nick_name }</td>
          <td>${cookvo.regdate }</td>
          <td>${cookvo.hit }</td>
          <td>${cookvo.likes }</td>
