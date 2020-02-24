@@ -27,7 +27,7 @@
 		REGDATE = sysdate,
 		HIT = #{hit},
 		LIKES= #{likes},
-		NICKNAME = #{nick_name}
+		NICK_NAME = #{nick_name}
 		WHERE com_seq = #{com_seq}
 	</update>
 	

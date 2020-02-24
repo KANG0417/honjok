@@ -26,6 +26,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.google.gson.JsonObject;
+import com.honjok.app.vo.CommInfoVO;
 import com.honjok.app.vo.CommInteriorVO;
 import com.honjok.app.vo.CommunityVO;
 import com.honjok.app.vo.CookVO;
@@ -38,10 +39,36 @@ public class CookController {
    CookService cookservice; 
 
    @RequestMapping("/CookAll.do")
-   public String CookAll(Model model) {
-	   System.out.println("Cook게시판 전체 조회입니다.");
-	   List<CookVO> CookList = cookservice.selectAll();
+   public String CookAll(Model model, @RequestParam(required = false) String section,
+			@RequestParam(required = false) String pageNum) {
+	   	System.out.println(section);
+		String section_ = section;
+		String pageNum_ = pageNum;
+
+		if (section == null) {
+			section_ = ((section == null) ? "1" : section);
+			pageNum_ = ((pageNum == null) ? "1" : pageNum);
+		}
+
+		System.out.println(section_);
+		System.out.println(pageNum_);
+
+		Map<String, Integer> pagingMap = new HashMap<String, Integer>();
+
+		pagingMap.put("section", Integer.parseInt(section_));
+		pagingMap.put("pageNum", Integer.parseInt(pageNum_));
+	   
+		//cookvo 조회
+	   List<CookVO> CookList = cookservice.CookAll(pagingMap);
+	   //게시글 전체갯수
+	   int allcount = cookservice.selectAllCount();
+	   System.out.println("게시글수: "+allcount);
+	   
 	   model.addAttribute("cookList", CookList);
+	   model.addAttribute("pageNum", pageNum_);
+	   model.addAttribute("section", section_);
+	   model.addAttribute("CookVOList", CookList);
+	   model.addAttribute("allCount", allcount);
 	return "/cook/CookList.jsp";
    }
    

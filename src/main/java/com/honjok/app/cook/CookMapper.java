@@ -27,10 +27,10 @@ public class CookMapper {
 	}
 	
 	//전체조회
-	public List<CookVO> selectAll() {
+	public List<CookVO> selectAll(Map<String, Integer> pagingMap) {
 		
 		System.out.println("selectAll 전체조회");
-		List<CookVO> list =mybatis.selectList("cookMapper.selectAll");
+		List<CookVO> list =mybatis.selectList("cookMapper.selectAll", pagingMap);
 		
 		System.out.println(list);
 		return list;
