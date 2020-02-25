@@ -54,4 +54,8 @@ public class CookMapper {
 		mybatis.update("cookMapper.update",cvo);
 		
 	}
+	//조회수 증가
+	public void boardHitsUpdate(int com_seq) {
+		mybatis.update("cookMapper.boardHitsUpdate", com_seq);
+	}
 }

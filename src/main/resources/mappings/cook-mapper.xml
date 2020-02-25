@@ -63,4 +63,11 @@
 		SELECT COUNT(*)
 		FROM COMM_COOK
 	</select>
+	
+	<update id="boardHitsUpdate" parameterType="int">
+		UPDATE COMM_COOK
+		SET HIT = HIT + 1
+		WHERE COM_SEQ = #{com_seq}
+	</update>
+	
 </mapper>

@@ -22,9 +22,6 @@
 	.border-none, .border-none td { border: none; }
 </style>
 <script>
-	function fn_delete(){
-		var 
-	}
 </script>
 </head>
 <body>
