@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.honjok.app.vo.CommInfoVO;
 import com.honjok.app.vo.CommunityVO;
 import com.honjok.app.vo.UploadVO;
+import com.honjok.app.vo.commReplyVO;
 
 @Repository("honjokInfomapper")
 public class honjokInfoMapper {
@@ -78,6 +79,12 @@ public class honjokInfoMapper {
 		System.out.println("uptate");
 		mybatis.update("honjokInfoMapper.uptate", comI);
 
+	}
+
+//리뷰글 등록
+	public void inertReview(commReplyVO commreplyvo) {
+
+		mybatis.insert("honjokInfoMapper.inertReview",commreplyvo);
 	}
 
 

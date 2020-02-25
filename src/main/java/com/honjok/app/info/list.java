@@ -30,6 +30,7 @@ import com.google.gson.JsonObject;
 import com.honjok.app.vo.CommInfoVO;
 import com.honjok.app.vo.CommunityVO;
 import com.honjok.app.vo.UploadVO;
+import com.honjok.app.vo.commReplyVO;
 
 @Controller
 @RequestMapping(value = "/honjokInfo")
@@ -38,11 +39,13 @@ public class list {
 	@Autowired
 	honjokinfoService service;
 
-	private static final String CURR_IMAGE_REPO_PATH = "C:/Users/bitcamp/Documents/GitHub/honjok/src/main/webapp/resources/img/menu";
+	private static  String CURR_IMAGE_REPO_PATH = "";
 
 	@RequestMapping("/insert.do")
 	public String lists(CommInfoVO comI, MultipartHttpServletRequest multiFile) throws IOException {
-
+		
+		CURR_IMAGE_REPO_PATH = "C:/Users/bitcamp/Documents/GitHub/honjok/src/main/webapp/resources/img/menu";
+		
 		System.out.println(comI);
 
 		// content 공백 처리
@@ -72,6 +75,7 @@ public class list {
 			// 파일 이름 하나씩 저장
 			fileList.add(originalFileName);
 			System.out.println(fileList);
+			
 			File file = new File(CURR_IMAGE_REPO_PATH + "\\" + fileName);
 
 			// 첨부된파일 체크 및 경로에 파일이 없으면 그경로에 해당 하는 디랙토리 만듬
@@ -98,9 +102,53 @@ public class list {
 	}
 	
 	@RequestMapping("/reviewInsert.do")
-	public String reviewInsert() {
-		System.out.println("로로~");
-		
+	public String reviewInsert(commReplyVO commreplyvo, MultipartHttpServletRequest multiFile) throws IOException {
+		System.out.println(commreplyvo);
+		CURR_IMAGE_REPO_PATH  = "C:/Users/bitcamp/Documents/GitHub/honjok/src/main/webapp/resources/img/review";
+		// 파일업로드
+				List<String> fileList = new ArrayList<String>();
+
+				Iterator<String> fileNames = multiFile.getFileNames();
+				System.out.println("src value : " + fileNames);
+		 
+				
+				
+				while (fileNames.hasNext()) {
+					String fileName = fileNames.next();
+
+					// 첨부된 파일 이름 가져오기
+					MultipartFile mFile = multiFile.getFile(fileName);
+					System.out.println(mFile);
+
+					// 파일 실제 이름 가져오기
+					String originalFileName = mFile.getOriginalFilename();
+					System.out.println(originalFileName);
+
+					// 파일 이름 하나씩 저장
+					fileList.add(originalFileName);
+					System.out.println(fileList);
+										
+					File file = new File(CURR_IMAGE_REPO_PATH + "\\" + fileName);
+
+					// 첨부된파일 체크 및 경로에 파일이 없으면 그경로에 해당 하는 디랙토리 만듬
+					if (mFile.getSize() != 0) {
+						if (!file.exists()) {
+							if (file.getParentFile().mkdirs()) {
+								file.createNewFile();
+							}
+						}
+
+						//파일 이름 변겅 	 
+						originalFileName = UUID.randomUUID().toString();
+						System.out.println(originalFileName);
+						mFile.transferTo(new File(CURR_IMAGE_REPO_PATH + "\\" + originalFileName));
+						
+
+					}
+				}
+				
+				service.insertReview(commreplyvo);
+
 		return null;
 	}
 
