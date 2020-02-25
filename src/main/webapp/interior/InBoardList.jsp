@@ -56,7 +56,7 @@
 									console.log(image);
 									$('.main-img${articleNum.index}').html(
 											image);
-								</script> 
+								</script>
 							</a>
 							<div class="text w-100 text-center">
 								<h3>
@@ -66,7 +66,6 @@
 							작성일: ${interiorvo.regdate }<br>
 							작성자닉네임: ${interiorvo.nick_name }<br> 조회수: ${interiorvo.hit }
 							<br> 좋아요: ${interiorvo.likes }<br>
-							매장이름: ${list[articleNum.index].title}<br>
 						</div>
 
 					</c:forEach>

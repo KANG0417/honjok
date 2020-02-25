@@ -13,9 +13,32 @@
 	<select id="selectOne" parameterType="String" resultType="cook">
 		   SELECT * FROM COMM_COOK WHERE COM_SEQ = #{com_seq}
 	</select>
-	<select id="selectAll" resultType="cook">
+	<select id="selectAll" resultType="cook" parameterType="hashmap">
 		SELECT *
+		FROM (SELECT ROWNUM
+		AS RECNUM,
+		COM_SEQ,
+		TITLE,
+        CONTENT,
+		REGDATE,
+		HIT,
+		LIKES,
+        IMAGE,
+        NICK_NAME
+		FROM (SELECT COM_SEQ,
+        TITLE,
+		CONTENT,
+        REGDATE,
+		HIT,
+		NICK_NAME,
+		LIKES,
+        IMAGE
 		FROM COMM_COOK
+		ORDER BY COM_SEQ DESC))
+		WHERE RECNUM BETWEEN (#{section}-1)* 90 +
+		(#{pageNum}-1)* 9 + 1
+		AND (#{section} - 1)*90 + #{pageNum}*9 ORDER BY
+		COM_SEQ DESC
 	</select>
 	
 	<update id="update" parameterType="cook">
@@ -35,5 +58,16 @@
 		DELETE COMM_COOK WHERE COM_SEQ
 		= #{com_seq}
 	</delete>
+	
+	<select id="selectAllCount" resultType="Integer">
+		SELECT COUNT(*)
+		FROM COMM_COOK
+	</select>
+	
+	<update id="boardHitsUpdate" parameterType="int">
+		UPDATE COMM_COOK
+		SET HIT = HIT + 1
+		WHERE COM_SEQ = #{com_seq}
+	</update>
 	
 </mapper>

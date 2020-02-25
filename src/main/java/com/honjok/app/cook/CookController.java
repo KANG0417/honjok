@@ -58,8 +58,9 @@ public class CookController {
 		pagingMap.put("section", Integer.parseInt(section_));
 		pagingMap.put("pageNum", Integer.parseInt(pageNum_));
 	   
-		//cookvo 조회
+	   //cookvo 조회
 	   List<CookVO> CookList = cookservice.CookAll(pagingMap);
+	   
 	   //게시글 전체갯수
 	   int allcount = cookservice.selectAllCount();
 	   System.out.println("게시글수: "+allcount);
@@ -67,17 +68,21 @@ public class CookController {
 	   model.addAttribute("cookList", CookList);
 	   model.addAttribute("pageNum", pageNum_);
 	   model.addAttribute("section", section_);
-	   model.addAttribute("CookVOList", CookList);
 	   model.addAttribute("allCount", allcount);
 	return "/cook/CookList.jsp";
    }
    
    @RequestMapping("/CookDetail.do")
-	public String cookDetail(Model model, CookVO cvo) {
+	public String cookDetail(Model model, CookVO cvo, int com_seq) {
 		System.out.println("Cook게시판 하나 조회입니다.");
 		CookVO Cook = cookservice.selectOne(cvo);
 		model.addAttribute("cookDetail", Cook);
-		System.out.println(Cook);
+		
+		int board_hit = 0;
+        cookservice.boardHitsUpdate(com_seq);
+        model.addAttribute("Board_hit", board_hit);
+		
+		
 		return "CookDetail.jsp";
 	}
    

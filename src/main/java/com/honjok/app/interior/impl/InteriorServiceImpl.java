@@ -42,8 +42,15 @@ public class InteriorServiceImpl implements InteriorService {
 		commDAO.deleteBoard(cvo);
 	}
 
+	//페이징 전체갯수
 	@Override
 	public int selectAllCount() {
 		return commDAO.selectCount();
 	}
+	
+	//조회수
+	public void boardHitsUpdate(int com_seq) {
+		commDAO.boardHitsUpdate(com_seq);
+	}
+	
 }

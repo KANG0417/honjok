@@ -44,8 +44,7 @@ public class CookServiceImpl implements CookService{
 
 	@Override
 	public int selectAllCount() {
-		// TODO Auto-generated method stub
-		return 0;
+		return CookMapper.selectAllCount();
 	}
 
 
@@ -85,6 +84,14 @@ public class CookServiceImpl implements CookService{
 	public CookVO select(String com_seq) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+
+
+	@Override
+	public void boardHitsUpdate(int com_seq) {
+		CookMapper.boardHitsUpdate(com_seq);
+		
 	}
 	
 
