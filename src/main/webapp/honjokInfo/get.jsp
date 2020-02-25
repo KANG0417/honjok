@@ -63,40 +63,47 @@
 				}
 			});
 			
-
 			
+		
 			
-			
-			
-	function readURL(input) {
-	/* 	alert("gkgk"); */
-		if (input.files && input.files[0]) {
-				var image = $(input).val();
-			var reader = new FileReader();
-			reader.onload = function(e) {
-			$('.review-image').append('<li class="" style="float: left;" >  <div class=""> <span class=""> <input  type="file" name="file"  value="'+image+'"><img width=100px; height=100px; src='+e.target.result+' class=""> \
-				 </span>\
-			<button type="button" onclick="remove(this)">\
-				<span class="">\
-					<span class="">삭제하기\
-					</span>\
-				</span>\
-			</button> </div> \
-			</li>');
-			
-			}
-			reader.readAsDataURL(input.files[0]);
-		}
-	}
-	
-	/* 파일 미리보기 삭제 */
-	function remove(revome){
-		var ss = $(revome).parent();
-		ss.remove();
-	}
-	
 		});
 	
+	
+		/* 파일 미리보기 삭제 */
+		function remove(revome){
+			var ss = $(revome).parent();
+			ss.remove();
+		}
+		
+	/*  댓글 파일 이미지 추가 */
+		function readURL(input) {
+			/* 	alert("gkgk"); */
+				if (input.files && input.files[0]) {
+						var image = $(input).val();
+					var reader = new FileReader();
+					reader.onload = function(e) {
+					$('.review-image').append('<li class="" style="float: left;" >  <div class=""> <span class=""> <input  type="file" name="file"  value="'+image+'"><img width=100px; height=100px; src='+e.target.result+' class=""> \
+						 </span>\
+					<button type="button" onclick="remove(this)">\
+						<span class="">\
+							<span class="">삭제하기\
+							</span>\
+						</span>\
+					</button> </div> \
+					</li>');
+					
+					}
+					reader.readAsDataURL(input.files[0]);
+				}
+			}
+	
+	
+		function review(this_form){
+			
+			console.log(this_form);
+			this_form.submit();
+		}
+			
 	
 </script>
 
@@ -267,7 +274,7 @@ input[type="file"] { /* 파일 필드 숨기기 */
 	<a>좋아요순</a> 인생맛집
 
 
-	<form >
+	<form id="review" action="reviewInsert.do" method="POST" >
 
 		<div contentEditable="true"
 			style="border: 1px red solid; width: 100%; height: 100px;">
@@ -282,11 +289,11 @@ input[type="file"] { /* 파일 필드 숨기기 */
 		
 		<div>
 			<label class="fas fa-plus fa-5x " for="uploadBtn"></label>이미지추가 
-			<input id="uploadBtn" class="uploadBtn" type="file" value="" onchange="readURL(this)">
+			<input id="uploadBtn" class="uploadBtn" type="file"  onchange="readURL(this);">
 		</div>
 		
 	
-			<input type="button" value="댓글 작성 " >
+			<input type="button" value="댓글 작성 "  onclick="review(this.form)">
 	
 	</form>
 

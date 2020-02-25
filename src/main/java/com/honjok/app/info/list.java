@@ -57,7 +57,7 @@ public class list {
 
 		Iterator<String> fileNames = multiFile.getFileNames();
 		System.out.println("src value : " + fileNames);
-
+ 
 		while (fileNames.hasNext()) {
 			String fileName = fileNames.next();
 
@@ -95,6 +95,13 @@ public class list {
 
 		return "/honjokInfo/select.do";
 
+	}
+	
+	@RequestMapping("/reviewInsert.do")
+	public String reviewInsert() {
+		System.out.println("로로~");
+		
+		return null;
 	}
 
 	@RequestMapping("/select.do")
@@ -248,5 +255,5 @@ public class list {
 		}
 		return null;
 	}
-
+	
 }
