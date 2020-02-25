@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>내꺼 요리게시판임</title>
+<title>1인 레시피 게시판입니다.</title>
 <style>
       #columns{
         column-width:350px;
@@ -45,7 +45,138 @@
 </style>
 </head>
 <body>
-    
+    <div class="container">
+		<div class="row justify-content-center mb-5 pb-3">
+			<h2>밥은 먹고 다니냐?</h2>
+		</div>
+		<hr>
+		<c:choose>
+			<c:when test="${cookList == null }">
+				<p align="center">
+					<b><span style="font-size: 9pt;">등록된 글이 없습니다.</span></b>
+				</p>
+			</c:when>
+			<c:when test="${cookList != null }">
+					<div style="width:100%; height:100px;">
+						??? 배너 넣는 곳 ???
+					<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQYEkePwCOs2E2yobenuYLqcahfBCQUfmK6womDX4qqi6-jaEjL">
+					</div>
+				<div class="row">
+
+					<c:forEach var="cookvo" items="${cookList }"
+						varStatus="articleNum">
+
+						<div class="col-md-4" id="select">
+							<a class="main-img${articleNum.index}"
+								href="CookDetail.do?com_seq=${cookvo.com_seq }"
+								class="img w-100 mb-3"> 
+								 <script>
+									var contentimg = '${cookvo.content}';
+									var firstimg = $(contentimg).find(
+											'img:first').attr('src');
+									console.log(firstimg);
+									var image = document.createElement("IMG");
+									image.src = firstimg;
+									image.height = 300;
+									image.width = 300;
+									image.alt = "이미지가없습니다.";
+									console.log(image);
+									$('.main-img${articleNum.index}').html(
+											image);
+								</script> 
+							</a>
+							<div class="text w-100 text-center">
+								<h3>
+									<a href="CookDetail.do?com_seq=${cookvo.com_seq }">${cookvo.title }</a>
+								</h3>
+							</div>
+							작성일: ${cookvo.regdate }<br>
+							작성자닉네임: ${cookvo.nick_name }<br> 조회수: ${cookvo.hit }
+							<br> 좋아요: ${cookvo.likes }<br>
+						</div>
+					</c:forEach>
+				</div>
+			</c:when>
+
+		</c:choose>
+		<div class="center">
+			<c:if test="${allCount != null}">
+				<c:choose>
+					<c:when test="${allCount > 90 }">
+						<c:set var="endPage" value="${allCount/90 + 1 }" scope="page"></c:set>
+
+						<c:if test="${endPage-(endPage%1) != section}">
+							<c:forEach var="page" begin="1" end="10" step="1">
+
+								<c:if test="${section > 1 && page == 1}">
+									<a
+										href="CookAll.do?section=${section-1}&pageNum=${(section-1)*10 }">이전</a>
+								</c:if>
+
+								<a href="CookAll.do?section=${section}&pageNum=${page}">${(section-1)*10 +page }
+								</a>
+
+								<c:if test="${page == 10 }">
+									<c:if test="${section ==1 }">
+										<a href="CookAll.do?section=${section+1}&pageNum=${section }">다음</a>
+									</c:if>
+									<c:if test="${section != 1 }">
+										<a
+											href="CookAll.do?section=${section+1}&pageNum=${section - 1}">다음</a>
+									</c:if>
+								</c:if>
+							</c:forEach>
+						</c:if>
+
+						<c:if test="${endPage-(endPage%1) == section}">
+							<c:forEach var="page" begin="1" end="10" step="1">
+
+								<c:if test="${section > 1 && page == 1}">
+									<a
+										href="CookAll.do?section=${section-1}&pageNum=${(section-1)*10-10 }">이전</a>
+								</c:if>
+
+								<a href="CookAll.do?section=${section}&pageNum=${page}">${(section-1)*10 +page }
+								</a>
+
+								<c:if test="${page == 10 }">
+									<a href="interiorAllList.do?section=${section+1}&pageNum=${section - 1}">다음</a>
+								</c:if>
+							</c:forEach>
+						</c:if>
+
+					</c:when>
+
+
+					<c:when test="${allCount == 90 }">
+						<c:forEach var="page" begin="1" end="10" step="1">
+							<a href="#">${page }</a>
+						</c:forEach>
+					</c:when>
+
+					<c:when test="${allCount < 90 }">
+						<c:forEach var="page" begin="1" end="${allCount/9 + 0.9  }"
+							step="1">
+							<c:choose>
+								<c:when test="${page == pageNum }">
+									<a href="CookAll.do?section=${section}&pageNum=${page}">${page }</a>
+								</c:when>
+								<c:otherwise>
+									<a href="CookAll.do?section=${section}&pageNum=${page}">${page }</a>
+								</c:otherwise>
+							</c:choose>
+						</c:forEach>
+					</c:when>
+
+				</c:choose>
+			</c:if>
+		</div>
+
+	</div>
+
+	<hr>
+
+	<c:remove var="endPage" />
 <table>
 	<caption>글 목록</caption>
 	<thead>

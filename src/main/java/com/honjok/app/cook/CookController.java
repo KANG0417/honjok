@@ -67,7 +67,6 @@ public class CookController {
 	   model.addAttribute("cookList", CookList);
 	   model.addAttribute("pageNum", pageNum_);
 	   model.addAttribute("section", section_);
-	   model.addAttribute("CookVOList", CookList);
 	   model.addAttribute("allCount", allcount);
 	return "/cook/CookList.jsp";
    }
