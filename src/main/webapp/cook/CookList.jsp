@@ -45,16 +45,7 @@
 </style>
 </head>
 <body>
- <div id="columns">
-      <figure>
-        <img src="//s3-us-west-2.amazonaws.com/s.cdpn.io/4273/cinderella.jpg">
-        <figcaption>Cinderella wearing European fashion of the mid-1860’s</figcaption>
-      </figure>
- 
-      <figure>
-        <img src="//s3-us-west-2.amazonaws.com/s.cdpn.io/4273/rapunzel.jpg">
-        <figcaption>Rapunzel, clothed in 1820’s period fashion</figcaption>
-      </figure>
+    
 <table>
 	<caption>글 목록</caption>
 	<thead>
