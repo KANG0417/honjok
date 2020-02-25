@@ -2,7 +2,7 @@ package com.honjok.app.vo;
 
 public class commReplyVO {
 
-String id,lev,step,content,regdate,nick_name;
+String id,lev,step,content,regdate,nick_name,idx;
 
 public String getId() {
 	return id;
@@ -52,15 +52,19 @@ public void setNick_name(String nick_name) {
 	this.nick_name = nick_name;
 }
 
+public String getIdx() {
+	return idx;
+}
+
+public void setIdx(String idx) {
+	this.idx = idx;
+}
+
 @Override
 public String toString() {
 	return "commReplyVO [id=" + id + ", lev=" + lev + ", step=" + step + ", content=" + content + ", regdate=" + regdate
-			+ ", nick_name=" + nick_name + "]";
+			+ ", nick_name=" + nick_name + ", idx=" + idx + "]";
 }
-	
-
-
-
 
 	
 	

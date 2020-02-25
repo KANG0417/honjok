@@ -69,40 +69,38 @@
 		});
 	
 	
-		/* 파일 미리보기 삭제 */
+		var cnt = 1;
+		function fn_addFile() {
+			if (cnt <= 3) {
+				$("#d_file").append("<div><input  type='file' name='file" + cnt+ "' value='" + cnt+ "' onchange='readURL(this)' /> <img  class='preview' src='' width='100' height='100' />"+ "<button type='button' onclick='remove(this)' >삭제</button> </div>");
+			}
+			cnt++;
+		}
+		 
 		function remove(revome){
-			var ss = $(revome).parent();
-			ss.remove();
+			var img = $(revome).parent();
+			 $(img).remove();
+			cnt--;
 		}
 		
 	/*  댓글 파일 이미지 추가 */
-		function readURL(input) {
-			/* 	alert("gkgk"); */
-				if (input.files && input.files[0]) {
-						var image = $(input).val();
-					var reader = new FileReader();
-					reader.onload = function(e) {
-					$('.review-image').append('<li class="" style="float: left;" >  <div class=""> <span class=""> <input  type="file" name="file"  value="'+image+'"><img width=100px; height=100px; src='+e.target.result+' class=""> \
-						 </span>\
-					<button type="button" onclick="remove(this)">\
-						<span class="">\
-							<span class="">삭제하기\
-							</span>\
-						</span>\
-					</button> </div> \
-					</li>');
-					
-					}
-					reader.readAsDataURL(input.files[0]);
+	function readURL(input) {
+			if (input.files && input.files[0]) {
+			var image = input.nextElementSibling;
+			$(image).show();
+				var reader = new FileReader();
+				reader.onload = function(e) {
+					$(image).attr('src', e.target.result);
 				}
+				reader.readAsDataURL(input.files[0]);
 			}
+		}
 	
-	
-		function review(this_form){
+		/* function review(this_form){
 			
 			console.log(this_form);
-			this_form.submit();
-		}
+		this_form.submit();
+		} */
 			
 	
 </script>
@@ -197,16 +195,7 @@
 </script>
 
 <style>
-input[type="file"] { /* 파일 필드 숨기기 */
-	position: absolute;
-	width: 1px;
-	height: 1px;
-	padding: 0;
-	margin: -1px;
-	overflow: hidden;
-	clip: rect(0, 0, 0, 0);
-	border: 0;
-}
+
 </style>
 
 <body>
@@ -272,33 +261,23 @@ input[type="file"] { /* 파일 필드 숨기기 */
 	<a>전체</a>
 	<a>최신순</a>
 	<a>좋아요순</a> 인생맛집
-
-
-	<form id="review" action="reviewInsert.do" method="POST" >
-
-		<div contentEditable="true"
-			style="border: 1px red solid; width: 100%; height: 100px;">
-			안녕하세요 
-		</div>
-		
-	<div>
-			<ul class="review-image" style="list-style-type : none;  display: inline-block;">
-		
-			</ul>
-	</div>
-		
-		<div>
-			<label class="fas fa-plus fa-5x " for="uploadBtn"></label>이미지추가 
-			<input id="uploadBtn" class="uploadBtn" type="file"  onchange="readURL(this);">
-		</div>
-		
 	
-			<input type="button" value="댓글 작성 "  onclick="review(this.form)">
+	
+	
+<form id="Review" action="reviewInsert.do" method="POST"
+		enctype="multipart/form-data">
+	<input type="hidden" name="id" value="soh445">
+	<input type="hidden" name="nick_name" value="튤립">
+	
+	<textarea id="content" name="content"rows="10" cols="80">
+		안녕하세요
+	</textarea>
+	
+		<div id="d_file"></div>
+		<br> <button class="fas fa-plus fa-5x " type="button" onClick="fn_addFile()"></button><br>
 	
 	</form>
-
-
-
+	<input type="submit" form="Review" value="제출">
 
 <div>
 	<form class="update" action="update.jsp">
