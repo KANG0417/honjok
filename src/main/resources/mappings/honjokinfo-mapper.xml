@@ -34,11 +34,16 @@
 		}
 	</insert>
 	
+	<!-- 메뉴사진 업로드  -->
 	<insert id="menuUplodat" parameterType="UploadVO">
-			INSERT INTO UPLOAD(COM_SEQ,Up_img_name)
-		VALUES((SELECT NVL(MAX(com_seq), 0) FROM COMMUNITY),#{up_img_name})
+			INSERT INTO UPLOAD(COM_SEQ,Up_img_name,type)
+		VALUES((SELECT NVL(MAX(com_seq), 0) FROM COMMUNITY),#{up_img_name},'1')
 	</insert>
-
+	
+	<!-- 리뷰 insert -->
+	<insert id="inertReview" parameterType="commReplyVO">
+	
+	</insert>
 
 	<!-- insert end -->
 
@@ -111,8 +116,10 @@
 	<!-- 파일 이이미지 가져오기 -->
 	
 	<select id="getFileName" parameterType="String" resultType="UploadVO">
-		 select * from upload where com_seq = #{com_seq}
+		 select * from upload where com_seq = #{com_seq} and type = '1'
 	</select>
+	
+	
 
 
 

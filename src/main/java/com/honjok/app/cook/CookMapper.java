@@ -23,14 +23,14 @@ public class CookMapper {
 	}
 	//페이징 처리를위한 게시물 개수 카운트
 	public int selectAllCount() {
-		return mybatis.selectOne("cookmapper.selectAllCount");
+		return mybatis.selectOne("cookMapper.selectAllCount");
 	}
 	
 	//전체조회
-	public List<CookVO> selectAll() {
+	public List<CookVO> selectAll(Map<String, Integer> pagingMap) {
 		
 		System.out.println("selectAll 전체조회");
-		List<CookVO> list =mybatis.selectList("cookMapper.selectAll");
+		List<CookVO> list = mybatis.selectList("cookMapper.selectAll", pagingMap);
 		
 		System.out.println(list);
 		return list;

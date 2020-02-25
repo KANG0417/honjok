@@ -97,11 +97,11 @@ public class CookVO {
 		this.id = id;
 	}
 
-	public String getNickname() {
+	public String getNick_name() {
 		return nick_name;
 	}
 
-	public void setNickname(String nick_name) {
+	public void setNick_name(String nick_name) {
 		this.nick_name = nick_name;
 	}
 

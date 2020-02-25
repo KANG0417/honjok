@@ -3,6 +3,7 @@ package com.honjok.app.cook;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,12 +34,6 @@ public class CookServiceImpl implements CookService{
 		CookMapper.delete(com_seq);
 	}
 
-	
-
-	@Override
-	public List<CookVO> selectAll() {
-		return CookMapper.selectAll();
-	}
 
 
 	@Override
@@ -49,8 +44,7 @@ public class CookServiceImpl implements CookService{
 
 	@Override
 	public int selectAllCount() {
-		// TODO Auto-generated method stub
-		return 0;
+		return CookMapper.selectAllCount();
 	}
 
 
@@ -66,6 +60,30 @@ public class CookServiceImpl implements CookService{
 	public CookVO selectOne(CookVO ckvo) {
 		
 		return CookMapper.select(ckvo);
+	}
+
+
+
+	@Override
+	public List<CookVO> CookAll(Map<String, Integer> pagingMap) {
+		List<CookVO> list = CookMapper.selectAll(pagingMap);
+		return list;
+	}
+
+
+
+	@Override
+	public List<CookVO> selectInfo(Map<String, Integer> pagingMap) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+	@Override
+	public CookVO select(String com_seq) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 
