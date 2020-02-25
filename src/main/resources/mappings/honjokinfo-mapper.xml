@@ -111,7 +111,7 @@
 	<!-- 파일 이이미지 가져오기 -->
 	
 	<select id="getFileName" parameterType="String" resultType="UploadVO">
-		 select * from upload where com_seq = #{com_seq}
+		 select * from upload where com_seq = #{com_seq} and type = '1'
 	</select>
 
 
