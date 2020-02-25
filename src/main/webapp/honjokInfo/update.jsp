@@ -13,10 +13,7 @@
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
 <title>간단한 지도 표시하기</title>
 
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-	integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-	crossorigin="anonymous"></script>
-
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=69f7448811fd57d29b7398b4045f65df&libraries=services"></script>
 

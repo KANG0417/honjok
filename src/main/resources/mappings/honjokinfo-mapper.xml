@@ -42,7 +42,8 @@
 	
 	<!-- 리뷰 insert -->
 	<insert id="inertReview" parameterType="commReplyVO">
-	
+		INSERT INTO COMM_REPLY
+		VALUES(#{id},0,0,#{content},sysdate,#{nick_name},#{com_seq})
 	</insert>
 
 	<!-- insert end -->

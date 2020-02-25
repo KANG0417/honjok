@@ -14,9 +14,7 @@
 <!-- 다음 지도  -->
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=69f7448811fd57d29b7398b4045f65df&libraries=services"></script>
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-	integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-	crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://kit.fontawesome.com/73d0df04d6.js"
 	crossorigin="anonymous"></script>
 </head>
@@ -95,6 +93,26 @@
 				reader.readAsDataURL(input.files[0]);
 			}
 		}
+	
+	
+	function insertReview(e){
+		var queryString = $(e).serialize();
+		alert(queryString);
+		$.ajax({
+			type:'post',
+			enctype: 'multipart/form-data',
+			url: "reviewInsert.do",
+			data: queryString,
+			success : function(json){
+				alert("성공");	
+			},
+			error: function(error){
+				alert("실패");
+			}
+			
+		});
+
+	}
 	
 		/* function review(this_form){
 			
@@ -202,8 +220,8 @@
 
 
 
-	<%-- <h1>제목 : ${CommInfoVO.title }</h1> 
 	 <h1>글번호 : ${CommInfoVO.com_seq }</h1>
+	<%-- <h1>제목 : ${CommInfoVO.title }</h1> 
 	<p>작성자: ${CommInfoVO.id }</p> 
 	<p>별점:${CommInfoVO.sum_star }</p>
 	<p>메뉴${CommInfoVO.menu }</p>
@@ -264,11 +282,10 @@
 	
 	
 	
-<form id="Review" action="reviewInsert.do" method="POST"
-		enctype="multipart/form-data">
+<form id="Review" method="POST" enctype="multipart/form-data">
 	<input type="hidden" name="id" value="soh445">
 	<input type="hidden" name="nick_name" value="튤립">
-	
+	<input type="hidden" name="com_seq" value="${CommInfoVO.com_seq }">
 	<textarea id="content" name="content"rows="10" cols="80">
 		안녕하세요
 	</textarea>
@@ -276,8 +293,8 @@
 		<div id="d_file"></div>
 		<br> <button class="fas fa-plus fa-5x " type="button" onClick="fn_addFile()"></button><br>
 	
+	<input type="button"  onclick="insertReview(this.form)">
 	</form>
-	<input type="submit" form="Review" value="제출">
 
 <div>
 	<form class="update" action="update.jsp">
@@ -285,7 +302,7 @@
 		<input type="submit" value="수정">
 	</form>
 	<form action="delete.do">
-		<input type="hidden" name="com_seq" value="${CommInfoVO.com_seq }">
+		<input type="hidden" name="com_seq" value="${CommInfoVO.com_seq}">
 		<input type="submit" value="삭제">
 	</form>
 	<form action="select.do">
