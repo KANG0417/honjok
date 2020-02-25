@@ -17,8 +17,8 @@ public class CommInteriorDAOMybatis {
 	
 	//전체 데이터 조회
 	public List<CommInteriorVO> BoardAllList(Map<String, Integer> pagingMap) {
-		List<CommInteriorVO> cvo = mybatis.selectList("commInteriorDAO.interiorAll", pagingMap);
 		System.out.println("===> MyBatis로 BoardAllList() 실행");
+		List<CommInteriorVO> cvo = mybatis.selectList("commInteriorDAO.interiorAll", pagingMap);
 		System.out.println(cvo);
 		return cvo;
 	}
@@ -50,5 +50,10 @@ public class CommInteriorDAOMybatis {
 	//페이징 전체 갯수
 	public int selectCount() {
 		return mybatis.selectOne("commInteriorDAO.selectAllCount");
+	}
+
+	//조회수 증가
+	public void boardHitsUpdate(int com_seq) {
+		mybatis.update("commInteriorDAO.boardHitsUpdate", com_seq);
 	}
 }
