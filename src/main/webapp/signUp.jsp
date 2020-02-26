@@ -169,7 +169,6 @@ function sample6_execDaumPostcode() {
 				</tr>
 			</table>
 		</form>
-
 	</div>
 </body>
 <script>

@@ -1,12 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<title>È¸¿ø°¡ÀÔ</title>
+<title>íšŒì›ê°€ì…</title>
 </head>
 <body>
 <c:if test="${not empty cookie.userCheck}">
@@ -14,15 +14,15 @@
 </c:if>
 <div class="container">
 	<div class="formGroup">
-		<label for="inputId">¾ÆÀÌµğ</label>
+		<label for="inputId">ì•„ì´ë””</label>
 		<div>
-		<input type="text" id="inputId" name="userId" value="${cookie.userCheck.value}" placeholder="¾ÆÀÌµğ">
+		<input type="text" id="inputId" name="userId" value="${cookie.userCheck.value}" placeholder="ì•„ì´ë””">
 		</div>	
 	</div>
 	<div class="formGroup">
-		<label for="inputPassword">ºñ¹Ğ¹øÈ£</label>
+		<label for="inputPassword">ë¹„ë°€ë²ˆí˜¸</label>
 		<div>
-		<input type="password" id="inputPassword" name="userPassword" placeholder="ºñ¹Ğ¹øÈ£">
+		<input type="password" id="inputPassword" name="userPassword" placeholder="ë¹„ë°€ë²ˆí˜¸">
 		</div>
 	</div>
 	<div class="formGroup">
@@ -30,17 +30,17 @@
 	</div>
 	<div class="formGroup">
 		<label>
-			<input type="checkbox" id="rememberUs" name="rememberUserId" ${checked}>¾ÆÀÌµğ ±â¾ïÇÏ±â 
+			<input type="checkbox" id="rememberUs" name="rememberUserId" ${checked}>ì•„ì´ë”” ê¸°ì–µí•˜ê¸° 
 		</label>
 		<div class="search">
 			<a href=""></a>
 		</div>
 		<div>
-			<button id="loginBtn" type="button" class="btn btn-primary btn-block">·Î±×ÀÎ</button>
+			<button id="loginBtn" type="button" class="btn btn-primary btn-block">ë¡œê·¸ì¸</button>
 		</div>	
 	</div>
 	<div class="formGroup">
-		<a class="btn" href="signUp.jsp">È¸¿ø°¡ÀÔ</a>
+		<a class="btn" href="signUp.jsp">íšŒì›ê°€ì…</a>
 	</div>
 </div>
 </body>
@@ -60,10 +60,10 @@
 					success : function(data){
 					
 					if(data == 0){
-						$('#spanLoginCheck').text('·Î±×ÀÎ Á¤º¸¸¦ Á¤È®È÷ ÀÔ·ÂÇØÁÖ¼¼¿ä')
+						$('#spanLoginCheck').text('ë¡œê·¸ì¸ ì •ë³´ë¥¼ ì •í™•íˆ ì…ë ¥í•´ì£¼ì„¸ìš”')
 						$('#spanLoginCheck').css('color', 'red');
 					}else if (data == -2){
-						$('#spanLoginCheck').text('ÀÌ¸ŞÀÏÀ» ÀÎÁõ ÇØÁÖ¼Å¾ßÇÕ´Ï´Ù')
+						$('#spanLoginCheck').text('ì´ë©”ì¼ì„ ì¸ì¦ í•´ì£¼ì…”ì•¼í•©ë‹ˆë‹¤')
 						$('#spanLoginCheck').css('color', 'red');
 					}else{
 						location.href="index.jsp"
