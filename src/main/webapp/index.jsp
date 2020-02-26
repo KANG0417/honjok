@@ -10,9 +10,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>인덱스 페이지</title>
+<title></title>
 </head>
 <body>
+
+<div class="jumbotron text-center">
+ 
+  <h2>대환장 프로젝트 </h2>
+  <p>頑張れ人間よ!</p> 
+</div>
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
   <a class="navbar-brand" href="index.jsp">Navbar</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -36,16 +42,7 @@
   </div>  
 </nav>
 
-<div id="container">
-	<h1>인덱스 페이지</h1>
-	<hr>
-	
-	<p><a href="signUp.jsp">회원가입</a></p>
-	<p><a href="login.jsp">로그인</a></p>
-	<p><a href="interior/interiorAllList.do">인테리어</a></p>
-	<p><a href="cook/CookAll.do">요리...게시판.....</a></p>
-	<p><a href="admin/productReg.jsp">상품등록</a></p>
-</div>
+
 
 </body>
 </html>
