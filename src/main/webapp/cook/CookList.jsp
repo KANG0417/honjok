@@ -50,8 +50,38 @@
 </style>
 </head>
 <body>
+<div id="demo" class="carousel slide" data-ride="carousel">
+
+  <!-- Indicators -->
+  <ul class="carousel-indicators">
+    <li data-target="#demo" data-slide-to="0" class="active"></li>
+    <li data-target="#demo" data-slide-to="1"></li>
+    <li data-target="#demo" data-slide-to="2"></li>
+  </ul>
+  
+  <!-- The slideshow -->
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="la.jpg" alt="Los Angeles" width="1100" height="500">
+    </div>
+    <div class="carousel-item">
+      <img src="chicago.jpg" alt="Chicago" width="1100" height="500">
+    </div>
+    <div class="carousel-item">
+      <img src="ny.jpg" alt="New York" width="1100" height="500">
+    </div>
+  </div>
+  
+  <!-- Left and right controls -->
+  <a class="carousel-control-prev" href="#demo" data-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </a>
+  <a class="carousel-control-next" href="#demo" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </a>
+</div>
 <div class="jumbotron text-center">
-  <h1>1인 레시피 게시판입니다.</h1>
+ 
   <h2>Recipes for you eating alone</h2>
   <p>お前のためのレシピ</p> 
 </div>
@@ -88,7 +118,6 @@
 			</c:when>
 			<c:when test="${cookList != null }">
 					
-					</div>
 				<div class="row">
 
 					<c:forEach var="cookvo" items="${cookList }"
@@ -127,6 +156,7 @@
 			</c:when>
 
 		</c:choose>
+		
 		<div class="center">
 			<c:if test="${allCount != null}">
 				<c:choose>
@@ -168,7 +198,7 @@
 								</a>
 
 								<c:if test="${page == 10 }">
-									<a href="interiorAllList.do?section=${section+1}&pageNum=${section - 1}">다음</a>
+									<a href="CookAll.do?section=${section+1}&pageNum=${section - 1}">다음</a>
 								</c:if>
 							</c:forEach>
 						</c:if>
@@ -200,9 +230,9 @@
 			</c:if>
 		</div>
 
-	</div>
 
 	<hr>
+	<div class="spinner-border text-danger"></div>
 
 	<c:remove var="endPage" />
 <table>
