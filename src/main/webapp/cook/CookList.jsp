@@ -4,6 +4,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>1인 레시피 게시판입니다.</title>
 <style>
@@ -45,10 +50,11 @@
 </style>
 </head>
 <body>
-    <div class="container">
-		<div class="row justify-content-center mb-5 pb-3">
-			<h2>밥은 먹고 다니냐?</h2>
-		</div>
+<div class="jumbotron text-center">
+  <h1>Recipes for you eating alone</h1>
+  <p>Resize this responsive page to see the effect!</p> 
+</div>
+    
 		<hr>
 		<c:choose>
 			<c:when test="${cookList == null }">
@@ -57,9 +63,7 @@
 				</p>
 			</c:when>
 			<c:when test="${cookList != null }">
-					<div style="width:100%; height:100px;">
-						??? 배너 넣는 곳 ???
-					<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQYEkePwCOs2E2yobenuYLqcahfBCQUfmK6womDX4qqi6-jaEjL">
+					
 					</div>
 				<div class="row">
 
