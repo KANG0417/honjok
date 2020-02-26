@@ -20,7 +20,7 @@
   <p>頑張れ人間よ!</p> 
 </div>
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-  <a class="navbar-brand" href="index.jsp">Navbar</a>
+  <a class="navbar-brand" href="index.jsp">Home</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
     <span class="navbar-toggler-icon"></span>
   </button>
