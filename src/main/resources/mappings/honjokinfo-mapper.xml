@@ -93,9 +93,6 @@
 		#{pageNum}*6 order by com_seq DESC
 	</select>
 
-
-
-
 	<select id="selectAllCount" resultType="Integer">
 		select count(*)from
 		community where type = '1'
