@@ -16,6 +16,7 @@
 	<p><a href="login.jsp">로그인</a></p>
 	<p><a href="interior/interiorAllList.do">인테리어</a></p>
 	<p><a href="cook/CookAll.do">요리...게시판.....</a></p>
+	<p><a href="admin/productReg.jsp">상품등록</a></p>
 </div>
 
 </body>

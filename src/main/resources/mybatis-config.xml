@@ -6,6 +6,7 @@
 	<typeAliases>
 		<!--<typeAlias alias="board" type="com.honjok.app"/>-->
 		<typeAlias alias="user" type="com.honjok.app.vo.UserVO"/>
+		<typeAlias alias="admin" type="com.honjok.app.vo.AdminVO"/>
 		<typeAlias alias="CommunityVO" type="com.honjok.app.vo.CommunityVO"/>
 		<typeAlias alias="CommInteriorVO" type="com.honjok.app.vo.CommInteriorVO"/>
 		<typeAlias alias="cook" type="com.honjok.app.vo.CookVO"/>
@@ -22,7 +23,7 @@
 	<mapper resource="mappings/honjokinfo-mapper.xml"/>
 	<mapper resource="mappings/comminterior-mapper.xml"/>
 	<mapper resource="mappings/cook-mapper.xml"/>
-	
+	<mapper resource="mappings/admin-mapper.xml"/>
  </mappers>
  
 </configuration>
