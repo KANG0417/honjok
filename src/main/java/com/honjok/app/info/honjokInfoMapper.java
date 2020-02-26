@@ -9,6 +9,8 @@ import org.springframework.stereotype.Repository;
 
 import com.honjok.app.vo.CommInfoVO;
 import com.honjok.app.vo.CommunityVO;
+import com.honjok.app.vo.UploadVO;
+import com.honjok.app.vo.commReplyVO;
 
 @Repository("honjokInfomapper")
 public class honjokInfoMapper {
@@ -25,6 +27,12 @@ public class honjokInfoMapper {
 
 	}
 	
+	
+	public void insertFileUpload(UploadVO uploadvo) {
+		mybatis.insert("honjokInfoMapper.menuUplodat",uploadvo);
+	}	
+
+	
 
 	public List<CommunityVO> selectAll(Map<String, Integer> pagingMap) {
 
@@ -40,6 +48,12 @@ public class honjokInfoMapper {
 		List<CommInfoVO> list = mybatis.selectList("honjokInfoMapper.selectCommInfoVO",pagingMap);
 		return list;
 	}
+	
+	public List<UploadVO[]> getFileName(String comseq) {
+		return mybatis.selectList("honjokInfoMapper.getFileName",comseq);
+	}
+	
+	
 
 	public int selectAllCount() {
 		return mybatis.selectOne("honjokInfoMapper.selectAllCount");
@@ -61,12 +75,23 @@ public class honjokInfoMapper {
 
 	}
 
-	public void uptate(CommunityVO com) {
+	public void uptate(CommInfoVO comI) {
 		System.out.println("uptate");
-		mybatis.update("honjokInfoMapper.uptate", com);
+		mybatis.update("honjokInfoMapper.uptate", comI);
 
 	}
 
+//리뷰글 등록
+	public void inertReview(commReplyVO commreplyvo) {
+		System.out.println(commreplyvo);
+		mybatis.insert("honjokInfoMapper.inertReview", commreplyvo);
+	}
+
+
+
+
+
+	
 
 
 

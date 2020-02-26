@@ -12,7 +12,7 @@ public class CookVO {
 	likes,
 	hit,
 	id,
-	nickname
+	nick_name
 	;
 
 	public CookVO() {}
@@ -97,19 +97,19 @@ public class CookVO {
 		this.id = id;
 	}
 
-	public String getNickname() {
-		return nickname;
+	public String getNick_name() {
+		return nick_name;
 	}
 
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
+	public void setNick_name(String nick_name) {
+		this.nick_name = nick_name;
 	}
 
 	@Override
 	public String toString() {
 		return "CookVO [com_seq=" + com_seq + ", title=" + title + ", content=" + content + ", regdate=" + regdate
 				+ ", category=" + category + ", image=" + image + ", cooktime=" + cooktime + ", likes=" + likes
-				+ ", hit=" + hit + ", id=" + id + ", nickname=" + nickname + "]";
+				+ ", hit=" + hit + ", id=" + id + ", nick_name=" + nick_name + "]";
 	}
 	
 	

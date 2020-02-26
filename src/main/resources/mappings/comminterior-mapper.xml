@@ -8,11 +8,12 @@
   		declare
   		begin
   		INSERT INTO COMMUNITY
-  		(COM_SEQ, TITLE, NICKNAME, CONTENT, REGDATE, HIT, LIKES, TYPE)
-  		VALUES ((COMMMUNITY_SEQ.NEXTVAL) + 1, #{title}, #{nickname},
+  		(COM_SEQ, TITLE, NICK_NAME, CONTENT, REGDATE, HIT, LIKES, TYPE)
+  		VALUES ((COMMMUNITY_SEQ.NEXTVAL) + 1, #{title}, #{nick_name},
   			#{content}, SYSDATE, 0, 0, 2);
   		INSERT INTO COMM_INTERIOR (COM_SEQ, FILE_IMAGE)
-  		VALUES ((select NVL(MAX(com_seq),0)from community), #{file_image});
+  		VALUES ((select NVL(MAX(com_seq)
+  		,0)from community), #{file_image});
   		END
   		}
   	</insert>
@@ -22,28 +23,82 @@
   		declare
   		begin
   		UPDATE COMMUNITY
-  		SET (#{title}, #{content}, SYSDATE)
+  		SET TITLE = #{title}, CONTENT = #{content}, REGDATE = SYSDATE
   		WHERE COM_SEQ = #{com_seq};
-  		UPDATE COMM_INTERIOR (FILE_IMAGE)
-  		SET (#{file_image})
+  		UPDATE COMM_INTERIOR
+  		SET FILE_IMAGE = #{file_image}
   		WHERE COM_SEQ = #{com_seq};
   		END
   		}
 	</update>
 	
-   	<update id="deleteComm" parameterType="CommInteriorVO">
-  		
+	<update id="boardHitsUpdate" parameterType="int">
+		UPDATE COMMUNITY
+		SET HIT = HIT + 1
+		WHERE COM_SEQ = #{com_seq}
 	</update>
-  
-	<select id="InteriorAll" resultType="CommInteriorVO">
-		SELECT C.COM_SEQ, C.TITLE, C.NICKNAME, C.CONTENT, C.REGDATE, C.HIT, C.LIKES, I.FILE_IMAGE
+	
+   	<!-- <update id="deleteArticle" parameterType="CommInteriorVO">
+  		{ call
+  		declare
+  		DELETE
+  		FROM COMMUNITY C, COMM_INTERIOR I
+  		WHERE COM_SEQ
+  		DELETE
+  		FROM COMMU
+  		END
+  		}
+	</update> -->
+	
+	<delete id="deleteComm" parameterType="CommInteriorVO">
+		{ call
+  		declare
+  		begin
+  		DELETE FROM COMMUNITY
+  		WHERE COM_SEQ = #{com_seq};
+  		DELETE FROM COMM_INTERIOR
+  		WHERE COM_SEQ = #{com_seq};
+  		END
+  		}
+	</delete>
+	
+    <select id="selectAllCount" resultType="Integer">
+		SELECT COUNT(*)
 		FROM COMMUNITY C, COMM_INTERIOR I
 		WHERE C.COM_SEQ = I.COM_SEQ
-		ORDER BY C.COM_SEQ , I.COM_SEQ
+		AND TYPE = '2'
+	</select>
+	
+	<select id="interiorAll" resultType="CommInteriorVO" parameterType="hashmap">
+		SELECT *
+		FROM ( SELECT ROWNUM
+		AS RECNUM,
+		COM_SEQ,
+		TITLE,
+		NICK_NAME,
+		CONTENT,
+		TO_CHAR(SYSDATE, 'yyyy-mm-dd') as regdate,
+		HIT,
+		LIKES,
+        FILE_IMAGE
+		FROM(SELECT C.COM_SEQ,
+		C.TITLE,
+		C.CONTENT,
+		TO_CHAR(C.REGDATE, 'yyyy-mm-dd') as regdate,
+		C.HIT,
+		C.NICK_NAME,
+		C.LIKES,
+        I.FILE_IMAGE
+		FROM COMMUNITY C, COMM_INTERIOR I
+		WHERE C.COM_SEQ = I.COM_SEQ AND TYPE = '2' ORDER BY C.COM_SEQ DESC))
+		WHERE RECNUM BETWEEN (#{section}-1)* 90 +
+		(#{pageNum}-1)* 9 + 1
+		AND (#{section} - 1)*90 + #{pageNum}*9 ORDER BY
+		COM_SEQ DESC
 	</select>
   
 	<select id="getInteriorOne" parameterType="CommInteriorVO" resultType="CommInteriorVO">
-		SELECT C.COM_SEQ, C.TITLE, C.NICKNAME, C.CONTENT, C.REGDATE, C.HIT, C.LIKES, I.FILE_IMAGE
+		SELECT C.COM_SEQ, C.TITLE, C.NICK_NAME, C.CONTENT, TO_CHAR(C.REGDATE, 'yyyy-mm-dd hh24:mi:ss'), C.HIT, C.LIKES, I.FILE_IMAGE
 		FROM COMMUNITY C, COMM_INTERIOR I
 		WHERE C.COM_SEQ = I.COM_SEQ
 		AND C.COM_SEQ = #{com_seq}

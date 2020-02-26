@@ -1,12 +1,12 @@
 package com.honjok.app.interior.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.honjok.app.vo.CommInteriorVO;
-import com.honjok.app.vo.CommunityVO;
 
 @Service("InteriorService")
 public class InteriorServiceImpl implements InteriorService {
@@ -16,8 +16,8 @@ public class InteriorServiceImpl implements InteriorService {
 	
 	//전체조회
 	@Override
-	public List<CommInteriorVO> BoardAllList() {
-		return commDAO.BoardAllList();
+	public List<CommInteriorVO> BoardAllList(Map<String, Integer> pagingMap) {
+		return commDAO.BoardAllList(pagingMap);
 	}
 	
 	//하나조회
@@ -36,8 +36,21 @@ public class InteriorServiceImpl implements InteriorService {
 		commDAO.updateBoard(cvo);
 	}
 
+	//글삭제
 	@Override
 	public void deleteBoard(CommInteriorVO cvo) {
 		commDAO.deleteBoard(cvo);
 	}
+
+	//페이징 전체갯수
+	@Override
+	public int selectAllCount() {
+		return commDAO.selectCount();
+	}
+	
+	//조회수
+	public void boardHitsUpdate(int com_seq) {
+		commDAO.boardHitsUpdate(com_seq);
+	}
+	
 }

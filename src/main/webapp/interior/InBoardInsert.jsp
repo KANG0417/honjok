@@ -41,7 +41,7 @@
 		<tr>
 			<th>작성자</th>
 			<td>
-				<input type="text" name="nickname">
+				<input type="text" name="nick_name">
 			</td>
 		</tr>
 		<tr>

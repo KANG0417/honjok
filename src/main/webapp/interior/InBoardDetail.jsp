@@ -24,7 +24,6 @@
 <script>
 /* function fn_update(){
     
-    var form = document.getElementById("viewForm");
     
     form.action = "<c:url value='board/updateInterior.do'/>";
     form.submit();
@@ -36,7 +35,10 @@
 			//비밀번호 일치하는 경우  */
 			var isDelete = confirm("정말 삭제 할까요?");
 			if (isDelete) {
-				frmDel.submit();
+/*				frmDel.submit(); 
+				location.href="deleteArticle.do?com_seq="+seq; */
+				document.getElementById('deleteform').submit();
+ 
 			} else {
 				history.back();
 			}
@@ -53,7 +55,7 @@
 <body>
 <div id="container">
 	<h1>글 상세</h1>
-		<input type="hidden" name="com_seq" value="${interiorvo.com_seq }">
+		<input type="hidden" name="com_seq" id="com_seq" value="${interiorvo.com_seq }">
 	<table>
 		<tr>
 			<th>제목</th>
@@ -63,7 +65,7 @@
 		</tr>
 		<tr>
 			<th>작성자</th>
-			<td>${interiorSelect.nickname }</td>
+			<td>${interiorSelect.nick_name }</td>
 		</tr>
 		<tr>
 			<th>내용</th>
@@ -87,14 +89,20 @@
 			<th>파일이미지</th>
 			<td>${interiorSelect.file_image }</td>
 		</tr>
+		<tr>
+			<th>망할</th>
+			<td>${interiorSelect.com_seq }</td>
+		</tr>
 	</table>
 			  <form class="update" action="InBoardUpdate.jsp">
 			   <c:set value="${interiorSelect }" var="inter" scope="session"></c:set>
 			   <input type="submit" value="수정">
 				</form>
-			<input type="button" value="수정 취소" onclick="fn_moReturn()">
 	<p>
-		<input type="button" onclick="fn_delete()" value="글 삭제">
+		<form action="deleteArticle.do?com_seq=${interiorSelect.com_seq }" id="deleteform">
+			<input type="button" onclick="fn_delete()" value="글 삭제">
+			<input type="hidden" name="com_seq" id="com_seq" value="${interiorSelect.com_seq }">
+		</form>
 		<a href="${contextPage.request.contextPath}/app/interior/interiorAllList.do">글목록</a>
 	</p>
 </div>

@@ -5,6 +5,8 @@ import java.util.Map;
 
 import com.honjok.app.vo.CommInfoVO;
 import com.honjok.app.vo.CommunityVO;
+import com.honjok.app.vo.UploadVO;
+import com.honjok.app.vo.commReplyVO;
 
 public interface honjokinfoService {
    
@@ -14,12 +16,18 @@ public interface honjokinfoService {
 
    public void delete(String com_seq);
 
-   public void uptate(CommunityVO com);
+   public void uptate(CommInfoVO comI);
 
    public int selectAllCount();
   
    public void insertCommInfoVO(CommInfoVO comI);
     
    public List<CommInfoVO> selectInfo(Map<String, Integer> pagingMap);
+
+   public void FileUpload(UploadVO uploadvo);
+
+   public List<UploadVO[]> getFileName(String comseq);
+
+   public void insertReview(commReplyVO commreplyvo);
    
 }
