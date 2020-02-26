@@ -102,7 +102,7 @@ public class list {
 	}
 	
 	@RequestMapping("/reviewInsert.do")
-	public String reviewInsert(commReplyVO commreplyvo, MultipartHttpServletRequest multiFile) throws IOException {
+	public void reviewInsert(commReplyVO commreplyvo, MultipartHttpServletRequest multiFile) throws IOException {
 		System.out.println(commreplyvo);
 		CURR_IMAGE_REPO_PATH  = "C:/Users/bitcamp/Documents/GitHub/honjok/src/main/webapp/resources/img/review";
 		// 파일업로드
@@ -149,7 +149,6 @@ public class list {
 				
 				service.insertReview(commreplyvo);
 
-		return null;
 	}
 
 	@RequestMapping("/select.do")

@@ -27,6 +27,8 @@ public interface CookService {
   public void update(CookVO cvo);
    
   public int selectAllCount();
+  
+  void boardHitsUpdate(int com_seq);
 	    
 	   
 }

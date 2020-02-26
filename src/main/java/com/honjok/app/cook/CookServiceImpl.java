@@ -85,6 +85,14 @@ public class CookServiceImpl implements CookService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
+
+	@Override
+	public void boardHitsUpdate(int com_seq) {
+		CookMapper.boardHitsUpdate(com_seq);
+		
+	}
 	
 
 }

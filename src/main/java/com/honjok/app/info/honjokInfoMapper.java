@@ -83,8 +83,8 @@ public class honjokInfoMapper {
 
 //리뷰글 등록
 	public void inertReview(commReplyVO commreplyvo) {
-
-		mybatis.insert("honjokInfoMapper.inertReview",commreplyvo);
+		System.out.println(commreplyvo);
+		mybatis.insert("honjokInfoMapper.inertReview", commreplyvo);
 	}
 
 
