@@ -4,9 +4,30 @@
 <html>
 <head>
 <meta charset=UTF-8">
+<!--   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> -->
+<!--   <script src="https://cdn.ckeditor.com/4.13.1/standard-all/ckeditor.js"></script> -->
+<!-- include libraries(jQuery, bootstrap) -->
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
+<!-- include summernote css/js-->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-bs4.js"></script>
+<!-- include summernote-ko-KR -->
+<script src="/resources/js/summernote-ko-KR.js"></script>
+
 <title>글쓰는 페이지</title>
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  <script src="https://cdn.ckeditor.com/4.13.1/standard-all/ckeditor.js"></script>
+<script>
+$(document).ready(function() {
+	  $('#summernote').summernote({
+ 	    	placeholder: 'content',
+	        minHeight: 370,
+	        maxHeight: null,
+	        focus: true, 
+	        lang : 'ko-KR'
+	  });
+	});
+</script>
 
  </head>
 <body>
@@ -42,8 +63,19 @@
 		<tr>
 			<th>내용</th>
 			<td>
-				<textarea id="editor1" name="content" rows="10" cols="40"></textarea>
-			</td>					
+<!-- 				<textarea id="editor1" name="content" rows="10" cols="40"></textarea> -->
+				<h2 style="text-align: center;">글 작성</h2><br><br><br>
+<!-- 				썸머노트 -->
+				<div style="width: 60%; margin: auto;">
+					<form method="post" action="/write">
+						<input type="text" name="writer" style="width: 20%;" placeholder="작성자"/><br>
+						<input type="text" name="title" style="width: 40%;" placeholder="제목"/>
+						<br><br> 
+						<textarea id="summernote" name="content"></textarea>
+						<input id="subBtn" type="button" value="글 작성" style="float: right;" onclick="goWrite(this.form)"/>
+					</form>
+				</div>
+							</td>					
 		</tr>
 		<tr>
 			<th>파일이미지</th>
