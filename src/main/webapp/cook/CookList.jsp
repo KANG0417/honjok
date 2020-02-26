@@ -51,9 +51,33 @@
 </head>
 <body>
 <div class="jumbotron text-center">
-  <h1>Recipes for you eating alone</h1>
-  <p>Resize this responsive page to see the effect!</p> 
+  <h1>1인 레시피 게시판입니다.</h1>
+  <h2>Recipes for you eating alone</h2>
+  <p>お前のためのレシピ</p> 
 </div>
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <a class="navbar-brand" href="index.jsp">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="signUp.jsp">회원가입</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="login.jsp">로그인</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="${contextPage.request.contextPath }/app/interior/interiorAllList.do">인테리어</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="cook/CookAll.do">레시피</a>
+      </li>    
+    </ul>
+  </div>  
+</nav>
     
 		<hr>
 		<c:choose>
