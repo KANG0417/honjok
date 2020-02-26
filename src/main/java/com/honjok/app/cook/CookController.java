@@ -108,57 +108,7 @@ public class CookController {
        return "/cook/CookDetail.do";
    }
    
-   @RequestMapping(value="fileupload.do", method=RequestMethod.POST)
-   @ResponseBody
-   public String fileUpload(HttpServletRequest req, HttpServletResponse resp, 
-                MultipartHttpServletRequest multiFile) throws Exception {
-      JsonObject json = new JsonObject();
-      PrintWriter printWriter = null;
-      OutputStream out = null;
-      MultipartFile file = multiFile.getFile("upload");
-      if(file != null){
-         if(file.getSize() > 0 && StringUtils.isNotBlank(file.getName())){
-            if(file.getContentType().toLowerCase().startsWith("image/")){
-               try{
-                  String fileName = file.getName();
-                  byte[] bytes = file.getBytes();
-                  String uploadPath = req.getServletContext().getRealPath("/img");
-                  System.out.println(req.getServletContext().getRealPath("/img"));
-                  File uploadFile = new File("C:/Users/bitcamp/Documents/GitHub/honjok/src/main/webapp/resources/img/");
-                  if(!uploadFile.exists()){
-                     uploadFile.mkdirs();
-                  }
-                  fileName = UUID.randomUUID().toString();
-                  uploadPath = uploadPath + "/" + fileName;
-                  out = new FileOutputStream(new File(uploadPath));
-                       out.write(bytes);
-                       
-                       printWriter = resp.getWriter();
-                       resp.setContentType("text/html");
-                       String fileUrl = req.getContextPath() + "/img/" + fileName;
-                       System.out.println(req.getContextPath() + "/img/" + fileName);
-                       
-                       json.addProperty("uploaded", 1);
-                       json.addProperty("fileName", fileName);
-                       json.addProperty("url", fileUrl);
-                       
-                       printWriter.println(json);
-                   }catch(IOException e){
-                       e.printStackTrace();
-                   }finally{
-                       if(out != null){
-                           out.close();
-                       }
-                       if(printWriter != null){
-                           printWriter.close();
-                       }      
-                       
-               }
-            }
-         }
-      }
-      return null;
-   }
+   
    @RequestMapping("/delete.do")
 	public String delete(String com_seq ,Model model) {
 		System.out.println(com_seq);
