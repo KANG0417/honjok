@@ -1,8 +1,11 @@
 package com.honjok.app.vo;
 
+import java.util.List;
+
 public class commReplyVO {
 
-String id,lev,step,content,regdate,nick_name,com_seq;
+private String id,lev,step,content,regdate,nick_name,com_seq,idx;
+private List<replyUploadVO> replyuploadvo;
 
 public String getId() {
 	return id;
@@ -58,13 +61,37 @@ public String getCom_seq() {
 
 public void setCom_seq(String com_seq) {
 	this.com_seq = com_seq;
+	
+}
+
+public String getIdx() {
+	return idx;
+}
+
+public void setIdx(String idx) {
+	this.idx = idx;
+}
+
+
+public List<replyUploadVO> getReplyuploadvo() {
+	return replyuploadvo;
+}
+
+public void setReplyuploadvo(List<replyUploadVO> replyuploadvo) {
+	this.replyuploadvo = replyuploadvo;
 }
 
 @Override
 public String toString() {
 	return "commReplyVO [id=" + id + ", lev=" + lev + ", step=" + step + ", content=" + content + ", regdate=" + regdate
-			+ ", nick_name=" + nick_name + ", com_seq=" + com_seq + "]";
+			+ ", nick_name=" + nick_name + ", com_seq=" + com_seq + ", idx=" + idx + ", replyuploadvo=" + replyuploadvo
+			+ "]";
 }
+
+
+
+
+
 
 
 

@@ -4,12 +4,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <title>1인 레시피 게시판입니다.</title>
 <style>
       #columns{
@@ -44,16 +44,49 @@
 		border: 1px solid black;
 		margin: 0 auto;
 	}
-	th { background-color: skyblue; }
+	th { background-color: white; }
 	.center { text-align: center; }
 	.border-none, .border-none td { border: none; }
+	
 </style>
+
 </head>
 <body>
+
 <div class="jumbotron text-center">
-  <h1>Recipes for you eating alone</h1>
-  <p>Resize this responsive page to see the effect!</p> 
+ 
+  <h2>Recipes for you eating alone</h2>
+  <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo">혼밥이란? (클릭!)</button>
+  <div id="demo" class="collapse">
+  	Honbap: Eating Alone Is a New Norm
+    Honbap is a portmanteau of the Korean words for “alone” and “meal” <br>
+	Barbeque is one of the most social of Korean eating experiences, usually enjoyed in groups, <br>
+	to the point that meat restaurants generally won't serve solo diners.
+  </div>
 </div>
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <a class="navbar-brand" href="${contextPage.request.contextPath }/app/index.jsp">HOME</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="signUp.jsp">회원가입</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="login.jsp">로그인</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="${contextPage.request.contextPath }/app/interior/interiorAllList.do">인테리어</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="${contextPage.request.contextPath }/app/cook/CookAll.do">레시피</a>
+      </li>    
+    </ul>
+  </div>  
+</nav>
     
 		<hr>
 		<c:choose>
@@ -64,7 +97,6 @@
 			</c:when>
 			<c:when test="${cookList != null }">
 					
-					</div>
 				<div class="row">
 
 					<c:forEach var="cookvo" items="${cookList }"
@@ -103,6 +135,7 @@
 			</c:when>
 
 		</c:choose>
+		
 		<div class="center">
 			<c:if test="${allCount != null}">
 				<c:choose>
@@ -144,7 +177,7 @@
 								</a>
 
 								<c:if test="${page == 10 }">
-									<a href="interiorAllList.do?section=${section+1}&pageNum=${section - 1}">다음</a>
+									<a href="CookAll.do?section=${section+1}&pageNum=${section - 1}">다음</a>
 								</c:if>
 							</c:forEach>
 						</c:if>
@@ -176,9 +209,9 @@
 			</c:if>
 		</div>
 
-	</div>
 
 	<hr>
+	<div class="spinner-border text-danger"></div>
 
 	<c:remove var="endPage" />
 <table>

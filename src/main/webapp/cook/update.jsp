@@ -68,10 +68,7 @@
 		</tr>
 	</table>
 	</form>
-	<p>
-		<%-- <a href="deleteBoard.do?seq=${board.getSeq() }">글삭제</a> --%>
-		<a href="${contextPage.request.contextPath}/app/cook/cookAll.do">글목록</a>
-	</p>
+
 </div>
 
 </body>

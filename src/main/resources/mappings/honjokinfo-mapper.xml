@@ -43,7 +43,13 @@
 	<!-- 리뷰 insert -->
 	<insert id="inertReview" parameterType="commReplyVO">
 		INSERT INTO COMM_REPLY
-		VALUES(#{id},0,0,#{content},sysdate,#{nick_name},#{com_seq})
+		VALUES(#{id},0,COMM_REPLY_SEQ.NEXTVAL,#{content},sysdate,#{nick_name},#{com_seq})
+	</insert>
+	
+	<!-- 리뷰 이미지 insert  -->
+	<insert id="insertReviewImage" parameterType="replyUploadVO">
+	INSERT INTO REPLY_UPLOAD(COM_SEQ,PARENT_NUMBER,UP_IMG_NAME,IDX)
+	VALUES(#{com_seq},(SELECT NVL(MAX(idx), 0) FROM COMM_REPLY),#{up_img_name},REPLY_UPLOAD_SEQ.NEXTVAL)
 	</insert>
 
 	<!-- insert end -->
@@ -94,15 +100,10 @@
 		#{pageNum}*6 order by com_seq DESC
 	</select>
 
-
-
-
 	<select id="selectAllCount" resultType="Integer">
 		select count(*)from
 		community where type = '1'
 	</select>
-
-
 
 
 
@@ -120,8 +121,17 @@
 		 select * from upload where com_seq = #{com_seq} and type = '1'
 	</select>
 	
+	<!-- 댓글 가져오기  -->
+	<select id="getReview" parameterType="String" resultType="commReplyVO">
+	select * from comm_reply where com_seq = #{com_seq} order by
+		idx DESC
+	</select>
 	
-
+	
+	<!-- 댓글 이미지 가져오기  -->
+	<select id="getReviewImg" parameterType="String" resultType="replyUploadVO">
+		select * from reply_upload where parent_number = #{idx} 
+	</select>
 
 
 

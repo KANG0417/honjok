@@ -21,6 +21,9 @@
 	.center { text-align: center; }
 	.border-none, .border-none td { border: none; }
 </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 <script>
 /* function fn_update(){
     
@@ -49,8 +52,44 @@
 			frmDel.pwd.focus();
 			return;
 		} */
+		
+		function CopyUrlToClipboard()
+
+		{	var obShareUrl = document.getElementById("ShareUrl");
+			obShareUrl.value = window.document.location.href;  // 현재 URL 을 세팅해 줍니다.
+			obShareUrl.select();  // 해당 값이 선택되도록 select() 합니다
+			document.execCommand("copy"); // 클립보드에 복사합니다.
+
+			obShareUrl.blur(); // 선택된 것을 다시 선택안된것으로 바꿈니다.
+
+			alert("URL이 클립보드에 복사되었습니다"); 
+
+		}
+
 }
-</script>
+</script>		
+		<script>
+	    $('a[href="#ex7"]').click(function(event) {
+	      event.preventDefault();
+	 
+	      var obShareUrl = document.getElementById("ShareUrl");
+		  obShareUrl.value = window.document.location.href;
+	      $(this).modal({
+	        fadeDuration: 250
+	      });
+	    });
+	    
+	    function CopyUrlToClipboard()
+	    {	var obShareUrl = document.getElementById("ShareUrl");
+
+	    	obShareUrl.value = window.document.location.href;  // 현재 URL 을 세팅해 줍니다.
+	    	obShareUrl.select();  // 해당 값이 선택되도록 select() 합니다
+	    	document.execCommand("copy"); // 클립보드에 복사합니다.
+	    	obShareUrl.blur(); // 선택된 것을 다시 선택안된것으로 바꿈니다.
+	    	/* alert("URL이 클립보드에 복사되었습니다");  */
+
+	    }
+	</script>
 </head>
 <body>
 <div id="container">
@@ -82,29 +121,27 @@
 			<td>${interiorSelect.hit }</td>
 		</tr>
 		<tr>
-			<th>좋아요</th>
-			<td>${interiorSelect.likes }</td>
-		</tr>
-		<tr>
 			<th>파일이미지</th>
 			<td>${interiorSelect.file_image }</td>
 		</tr>
-		<tr>
-			<th>망할</th>
-			<td>${interiorSelect.com_seq }</td>
-		</tr>
 	</table>
+			<p>좋아요 ${interiorSelect.likes }</p>
+				<div id="ex1" class="modal">
+				<p><input type="text" id = "ShareUrl">
+				<span class="btn-type1"><button OnClick="javascript:CopyUrlToClipboard()">URL 복사</button></span>
+				</p>
+				</div>
+			<p><a href="#ex1" rel="modal:open">공유하기</a></p>
+
 			  <form class="update" action="InBoardUpdate.jsp">
 			   <c:set value="${interiorSelect }" var="inter" scope="session"></c:set>
 			   <input type="submit" value="수정">
 				</form>
-	<p>
 		<form action="deleteArticle.do?com_seq=${interiorSelect.com_seq }" id="deleteform">
 			<input type="button" onclick="fn_delete()" value="글 삭제">
 			<input type="hidden" name="com_seq" id="com_seq" value="${interiorSelect.com_seq }">
 		</form>
 		<a href="${contextPage.request.contextPath}/app/interior/interiorAllList.do">글목록</a>
-	</p>
 </div>
 
 </body>

@@ -10,6 +10,7 @@ import com.honjok.app.vo.CommInfoVO;
 import com.honjok.app.vo.CommunityVO;
 import com.honjok.app.vo.UploadVO;
 import com.honjok.app.vo.commReplyVO;
+import com.honjok.app.vo.replyUploadVO;
 
 
 
@@ -26,6 +27,13 @@ public class honjokinfoServiceImpl implements honjokinfoService {
    @Override
 	public void insertReview(commReplyVO commreplyvo) {
 		Mapper.inertReview(commreplyvo);
+	}
+   
+   //댓글 이미지 업로드
+	@Override
+	public void reviewUpload(replyUploadVO replyuploadvo) {
+		System.out.println("reviewUpload 실행");
+		Mapper.insertReviewImage(replyuploadvo);
 	}
 
    
@@ -83,16 +91,29 @@ public class honjokinfoServiceImpl implements honjokinfoService {
 	}
 
 
-	
 
-
-
-	//info테이블 select
+	//info테이블 조회
 	@Override
 	public CommInfoVO select(String com_seq) {
 		
 		CommInfoVO CommInfoVO = Mapper.select(com_seq);
 		return CommInfoVO;
+	}
+	
+	//리뷰데이터 조회
+	@Override
+	public List<commReplyVO> getReview(String com_seq) {
+			List<commReplyVO> getReview = Mapper.getReview(com_seq);
+		return getReview;
+	}
+	
+	//리뷰 이미지 조회 
+	@Override
+	public List<replyUploadVO> getReviewImg(String idx) {
+
+		List<replyUploadVO> getReviewImt = Mapper.getReviewImg(idx);
+			
+		return getReviewImt;
 	}
 
 
@@ -109,6 +130,13 @@ public class honjokinfoServiceImpl implements honjokinfoService {
 		Mapper.uptate(comI);
 		
 	}
+
+	
+
+
+
+
+
 
 
 
