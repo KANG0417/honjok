@@ -222,14 +222,20 @@ public class list {
 		
 		
 		
-		//리뷰 이미지 가져오기 
-		List<UploadVO[]> ReviewImgList =service.getReviewImg(com_seq); 
+		
+		for(commReplyVO commreplyvo :reply) {
+			String idx = commreplyvo.getIdx();
+			System.out.println(idx);
+			commreplyvo.setReplyuploadvo(service.getReviewImg(idx));
+		}
+		
+		
+		System.out.println(reply);
 		
 		
 
 		
 		model.addAttribute("reply",reply);
-		model.addAttribute("ReviewImgList",ReviewImgList);
 		model.addAttribute("UploadList", UploadList);
 		model.addAttribute("CommInfoVO", CommInfoVO);
 		

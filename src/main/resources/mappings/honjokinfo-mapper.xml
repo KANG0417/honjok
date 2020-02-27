@@ -49,7 +49,7 @@
 	<!-- 리뷰 이미지 insert  -->
 	<insert id="insertReviewImage" parameterType="replyUploadVO">
 	INSERT INTO REPLY_UPLOAD(COM_SEQ,PARENT_NUMBER,UP_IMG_NAME,IDX)
-	VALUES(#{com.seq},(SELECT NVL(MAX(com_seq), 0) FROM upload),#{up_img_name},REPLY_UPLOAD_SEQ.NEXTVAL)
+	VALUES(#{com_seq},(SELECT NVL(MAX(idx), 0) FROM COMM_REPLY),#{up_img_name},REPLY_UPLOAD_SEQ.NEXTVAL)
 	</insert>
 
 	<!-- insert end -->
@@ -124,14 +124,16 @@
 		 select * from upload where com_seq = #{com_seq} and type = '1'
 	</select>
 	
+	<!-- 댓글 가져오기  -->
 	<select id="getReview" parameterType="String" resultType="commReplyVO">
-	select * from comm_reply where com_seq = #{com_seq}
+	select * from comm_reply where com_seq = #{com_seq} order by
+		idx DESC
 	</select>
 	
 	
-	
-	<select id="getReviewImg" parameterType="String" resultType="UploadVO">
-		select * from upload where com_seq = #{com_seq}
+	<!-- 댓글 이미지 가져오기  -->
+	<select id="getReviewImg" parameterType="String" resultType="replyUploadVO">
+		select * from reply_upload where parent_number = #{idx} 
 	</select>
 
 

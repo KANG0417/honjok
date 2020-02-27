@@ -297,10 +297,13 @@ eplyr<%@ page language="java" contentType="text/html; charset=UTF-8"
 		<c:forEach varStatus="Num" var="reply" items="${reply }">
 		<tr>
 			<td>${reply.com_seq }</td>
+			<td>${reply.idx }</td>
 			<td>${reply.id }</td>
 			<td>${reply.nick_name }</td>
 			<td>${reply.content }</td>
-			<td></td>		 
+			<c:forEach var="replyimg" items="${reply.replyuploadvo }">
+				<td><img width="100" height="100" src="/app/resources/img/review/${replyimg.up_img_name}"></td>		 
+			</c:forEach>
 		</tr>
 		</c:forEach>
 	

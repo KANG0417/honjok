@@ -35,6 +35,6 @@ public interface honjokinfoService {
 
    public List<commReplyVO> getReview(String com_seq);
 
-   public List<UploadVO[]> getReviewImg(String com_seq);
+   public List<replyUploadVO> getReviewImg(String idx);
    
 }

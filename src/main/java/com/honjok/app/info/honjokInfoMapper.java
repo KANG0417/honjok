@@ -43,6 +43,7 @@ public class honjokInfoMapper {
 
 	//리뷰 이미지등록
 		public void insertReviewImage(replyUploadVO replyuploadvo) {
+			System.out.println("insertReviewImage까지 실행");
 			mybatis.insert("honjokInfoMapper.insertReviewImage" , replyuploadvo);
 			
 		}
@@ -93,11 +94,11 @@ public class honjokInfoMapper {
 
 	
 	//리뷰이미지 조회
-		public List<UploadVO[]> getReviewImg(String com_seq) {
+		public List<replyUploadVO> getReviewImg(String idx) {
 			
-			List<UploadVO[]>  getReviewImg = mybatis.selectList("honjokInfoMapper.getReviewImg", com_seq);
+			List<replyUploadVO>  getReviewImg = mybatis.selectList("honjokInfoMapper.getReviewImg", idx);
 			
-			
+			System.out.println("뭐지"+getReviewImg);
 			return getReviewImg;
 		}
 	

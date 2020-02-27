@@ -32,6 +32,7 @@ public class honjokinfoServiceImpl implements honjokinfoService {
    //댓글 이미지 업로드
 	@Override
 	public void reviewUpload(replyUploadVO replyuploadvo) {
+		System.out.println("reviewUpload 실행");
 		Mapper.insertReviewImage(replyuploadvo);
 	}
 
@@ -108,9 +109,9 @@ public class honjokinfoServiceImpl implements honjokinfoService {
 	
 	//리뷰 이미지 조회 
 	@Override
-	public List<UploadVO[]> getReviewImg(String com_seq) {
+	public List<replyUploadVO> getReviewImg(String idx) {
 
-		List<UploadVO[]> getReviewImt = Mapper.getReviewImg(com_seq);
+		List<replyUploadVO> getReviewImt = Mapper.getReviewImg(idx);
 			
 		return getReviewImt;
 	}

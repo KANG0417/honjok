@@ -38,6 +38,9 @@
       <li class="nav-item">
         <a class="nav-link" href="${contextPage.request.contextPath }/app/cook/CookAll.do">레시피</a>
       </li>    
+      <li class="nav-item">
+        <a class="nav-link" href="${contextPage.request.contextPath }/app/honjokInfo/select.do">혼밥정보</a>
+      </li>    
     </ul>
   </div>  
 </nav>
