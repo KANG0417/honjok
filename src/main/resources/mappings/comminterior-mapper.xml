@@ -106,4 +106,16 @@
 		AND C.COM_SEQ = #{com_seq}
 		ORDER BY C.COM_SEQ , I.COM_SEQ
 	</select>
+	
+	  <update id="like_check" parameterType="HashMap">
+	    UPDATE liketo
+	    SET like_check = like_check + 1 
+	    WHERE mno = #{mno} AND boardno = #{boardno}
+	  </update>
+	  
+	  <update id="like_check_cancel" parameterType="HashMap">
+	    UPDATE liketo
+	    SET like_check = 0
+	    WHERE mno = #{mno} AND boardno = #{boardno}
+	  </update>
   </mapper>
