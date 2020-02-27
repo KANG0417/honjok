@@ -38,14 +38,7 @@
 					<b><span style="font-size: 9pt;">등록된 글이 없습니다.</span></b>
 				</p>
 			</c:when>
-
-
-
 			<c:when test="${CommunityVOList != null }">
-
-
-
-
 				<div class="row">
 					<div class="row" style="width: 100%; height: 300px;  margin-bottom:100px;">
 						이번주 베스트 가게는 ~ <img style="width: 100%; height: 100%;"

@@ -15,11 +15,48 @@
 <!-- 이 css와 js는 로컬에 있는 것들을 링크시킨 것이다. -->
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.js"></script>
+<style>
+	
+
+	.filebox input[type="file"] {
+	    position: absolute;
+	    width: 1px;
+	    height: 1px;
+	    padding: 0;
+	    margin: -1px;
+	    overflow: hidden;
+	    clip:rect(0,0,0,0);
+	    border: 0;
+	}
+	
+	.filebox label {
+	    display: inline-block;
+	    padding: .5em .75em;
+	    color: #999;
+	    font-size: inherit;
+	    line-height: normal;
+	    vertical-align: middle;
+	    background-color: #fdfdfd;
+	    cursor: pointer;
+	    border: 1px solid #ebebeb;
+	    border-bottom-color: #e2e2e2;
+	    border-radius: .25em;
+	}
+	
+	.filebox.bs3-primary label {
+	  color: #fff;
+	  background-color: #337ab7;
+	    border-color: #2e6da4;
+	}
+
+
+
+</style>
 <title>Insert title here</title>
 </head>
 <body>
 	<div id="container">
-		<form action = "productWrite.do" method="POST">
+		<form  action = "productWrite.do" method="POST" enctype="multipart/form-data" >
 		<table width=750 border="1px" align=center>
 			<tr>
 				<td style="width: 25%;">
@@ -166,10 +203,14 @@
 			</tr>
 			<tr>
 				<th>
-					<label>상품 이미지 등록</label>
+					<label>대표 이미지</label>	
 				</th>
 				<td>
-					<input type="text" name="image" id="image"/>
+					<img id="previewImg" src="/app/resources/img/default_image.png" width="150px;" height="150px;"/>
+					<div class="filebox bs3-primary">
+						<label for="thumnail">업로드</label>
+						<input type="file" name="thumnail" id="thumnail"accept="image/jpeg,image/gif,image/png" onchange="preview(this)"/>
+					</div>
 				</td>
 			</tr>
 			<tr>
@@ -182,7 +223,7 @@
 			</tr>
 			<tr>
 				<td colspan="2" class="center">
-					<input type="submit"id="submit" value="등록">
+					<input type="submit" value="등록"/>
 				</td>
 			</tr>
 		</table>
@@ -336,7 +377,6 @@
 			success : function(data){
 				console.log(data);
 				$(editor).summernote('editor.insertImage', '/app/resources/img/'+data);
-	/* 			$(editor).summernote('editor.insertImage', '../shop/storage/mint/product/'+data); */
 			},
 			error : function(err){
 				console.log(err);
@@ -344,6 +384,21 @@
 		});
 	}
 	
+	//파일업로드 미리보기
+	function preview(input){
+			if (input.files && input.files[0]){
+				var reader = new FileReader();//파일을 읽기 위한 FileReader객체 생성
+				reader.onload = function (e) { //파일 읽어들이기를 성공했을때 호출되는 이벤트 핸들러
+					$('#previewImg').attr('src', e.target.result).width(150).height(150); ; 
+				//이미지 Tag의 SRC속성에 읽어들인 File내용을 지정 
+				//(아래 코드에서 읽어들인 dataURL형식) 
+				} 
+				//File내용을 읽어 dataURL형식의 문자열로 저장
+				reader.readAsDataURL(input.files[0]); 
+			}//file 양식으로 이미지를 선택(값이 변경) 되었을때 처리하는 코드 
+		}
 	
+
+
 </script>
 </html>

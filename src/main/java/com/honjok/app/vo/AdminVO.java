@@ -13,13 +13,45 @@ public class AdminVO {
 	private String promotion;
 	private String brandName;
 	private String description;
+	private String thumnailImg;
 	private int stock;
 	private int price;
-	private int discountRate;
-	private int salePrice;
+	private String discountRate;
+	private String salePrice;	
 	private int shippingfee;
 	
 	
+	
+	
+	
+	
+	
+	@Override
+	public String toString() {
+		return "AdminVO [upperCategory=" + upperCategory + ", subCategory=" + subCategory + ", subCategory2="
+				+ subCategory2 + ", pName=" + pName + ", promotion=" + promotion + ", brandName=" + brandName
+				+ ", description=" + description + ", thumnailImg=" + thumnailImg + ", stock=" + stock + ", price="
+				+ price + ", discountRate=" + discountRate + ", salePrice=" + salePrice + ", shippingfee=" + shippingfee
+				+ "]";
+	}
+	public String getThumnailImg() {
+		return thumnailImg;
+	}
+	public void setThumnailImg(String thumnailImg) {
+		this.thumnailImg = thumnailImg;
+	}
+	public String getDiscountRate() {
+		return discountRate;
+	}
+	public void setDiscountRate(String discountRate) {
+		this.discountRate = discountRate;
+	}
+	public String getSalePrice() {
+		return salePrice;
+	}
+	public void setSalePrice(String salePrice) {
+		this.salePrice = salePrice;
+	}
 	public void setUpperCategory(String upperCategory) {
 		this.upperCategory = upperCategory;
 	}
@@ -29,7 +61,6 @@ public class AdminVO {
 	public void setSubCategory2(String subCategory2) {
 		this.subCategory2 = subCategory2;
 	}
-
 	public void setPromotion(String promotion) {
 		this.promotion = promotion;
 	}
@@ -44,12 +75,6 @@ public class AdminVO {
 	}
 	public void setPrice(int price) {
 		this.price = price;
-	}
-	public void setDiscountRate(int discountRate) {
-		this.discountRate = discountRate;
-	}
-	public void setSalePrice(int salePrice) {
-		this.salePrice = salePrice;
 	}
 	public void setShippingfee(int shippingfee) {
 		this.shippingfee = shippingfee;
@@ -66,6 +91,7 @@ public class AdminVO {
 	public String getSubCategory2() {
 		return subCategory2;
 	}
+
 
 	public String getPromotion() {
 		return promotion;
@@ -86,22 +112,11 @@ public class AdminVO {
 	public int getPrice() {
 		return price;
 	}
-	public int getDiscountRate() {
-		return discountRate;
-	}
-	public int getSalePrice() {
-		return salePrice;
-	}
+
 	public int getShippingfee() {
 		return shippingfee;
 	}
-	@Override
-	public String toString() {
-		return "AdminVO [upperCategory=" + upperCategory + ", subCategory=" + subCategory + ", subCategory2="
-				+ subCategory2 + ", pName=" + pName + ", promotion=" + promotion + ", brandName=" + brandName
-				+ ", description=" + description + ", stock=" + stock + ", price=" + price + ", discountRate="
-				+ discountRate + ", salePrice=" + salePrice + ", shippingfee=" + shippingfee + "]";
-	}
+	
 	
 	
 

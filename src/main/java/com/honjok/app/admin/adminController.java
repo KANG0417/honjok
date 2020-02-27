@@ -28,7 +28,7 @@ public class adminController {
 	private adminService adminService;
 	
 	
-	
+	//썸머노트 상세입력 시 이미지 업로드 AJAX 컨트롤러
 	@RequestMapping(value = "/admin/imageUpload.do", method = RequestMethod.POST, produces = "application/text; charset=utf-8")
 	@ResponseBody
 	public String handleFileUpload(@RequestParam("uploadFile") MultipartFile multiPartFile) {
@@ -46,9 +46,18 @@ public class adminController {
 		return fileName;
 	}
 	
-	
+	//상품등록 시 INSERT시키는 컨트롤러
 	@RequestMapping(value="/admin/productWrite.do", method=RequestMethod.POST)
-	public String signUp(AdminVO vo, HttpServletRequest request) {
+	public String signUp(AdminVO vo, HttpServletRequest request, @RequestParam MultipartFile thumnail) {
+		System.out.println("thumnail");
+		String filePath = "C:/Users/bitcamp/Documents/GitHub/honjok/src/main/webapp/resources/img/";
+		try {
+			FileCopyUtils.copy(thumnail.getInputStream(),
+					new FileOutputStream(new File(filePath, thumnail.getOriginalFilename()))); // spring저장소에서 storage로 복사
+		} catch (IOException e) {
+			e.printStackTrace();
+		}	
+		vo.setThumnailImg(thumnail.getOriginalFilename());
 		adminService.insertProduct(vo);
 		System.out.println("vo :" + vo);
 		return "honjok/index.jsp";
