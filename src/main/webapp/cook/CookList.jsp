@@ -44,46 +44,25 @@
 		border: 1px solid black;
 		margin: 0 auto;
 	}
-	th { background-color: skyblue; }
+	th { background-color: white; }
 	.center { text-align: center; }
 	.border-none, .border-none td { border: none; }
+	
 </style>
+
 </head>
 <body>
-<div id="demo" class="carousel slide" data-ride="carousel">
 
-  <!-- Indicators -->
-  <ul class="carousel-indicators">
-    <li data-target="#demo" data-slide-to="0" class="active"></li>
-    <li data-target="#demo" data-slide-to="1"></li>
-    <li data-target="#demo" data-slide-to="2"></li>
-  </ul>
-  
-  <!-- The slideshow -->
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="la.jpg" alt="Los Angeles" width="1100" height="500">
-    </div>
-    <div class="carousel-item">
-      <img src="chicago.jpg" alt="Chicago" width="1100" height="500">
-    </div>
-    <div class="carousel-item">
-      <img src="ny.jpg" alt="New York" width="1100" height="500">
-    </div>
-  </div>
-  
-  <!-- Left and right controls -->
-  <a class="carousel-control-prev" href="#demo" data-slide="prev">
-    <span class="carousel-control-prev-icon"></span>
-  </a>
-  <a class="carousel-control-next" href="#demo" data-slide="next">
-    <span class="carousel-control-next-icon"></span>
-  </a>
-</div>
 <div class="jumbotron text-center">
  
   <h2>Recipes for you eating alone</h2>
-  <p>お前のためのレシピ</p> 
+  <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo">혼밥이란? (클릭!)</button>
+  <div id="demo" class="collapse">
+  	Honbap: Eating Alone Is a New Norm
+    Honbap is a portmanteau of the Korean words for “alone” and “meal” <br>
+	Barbeque is one of the most social of Korean eating experiences, usually enjoyed in groups, <br>
+	to the point that meat restaurants generally won't serve solo diners.
+  </div>
 </div>
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
