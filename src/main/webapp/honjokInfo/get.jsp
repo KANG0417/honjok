@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+eplyr<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
@@ -94,20 +94,25 @@
 			}
 		}
 	
-	
 	function insertReview(e){
-		var queryString = $(e).serialize();
-		alert(queryString);
+		var form = $("#Review")[0];
+		
+		
+		
+		var data = new FormData(form);
+
+		
 		$.ajax({
 			type:'post',
 			enctype: 'multipart/form-data',
 			url: "reviewInsert.do",
-			data: queryString,
+			data: data,
+			processData: false,
+			contentType: false,
 			success : function(json){
-				alert("성공");	
-			},
-			error: function(error){
-				alert("실패");
+					console.log("성공");	
+			},error : function(jqXHR, textStatus, errorThrown) {
+				alert("오류가 발생하였습니다.");
 			}
 			
 		});
@@ -279,12 +284,33 @@
 	<a>전체</a>
 	<a>최신순</a>
 	<a>좋아요순</a> 인생맛집
+	<table border="1">
+	
+		<tr>
+			<th>글번호</th>
+			<th>아이디</th>
+			<th>닉네임 </th>
+			<th>내용</th>
+			<th>첨부이미지</th>
+		</tr>
+		
+		<c:forEach varStatus="Num" var="reply" items="${reply }">
+		<tr>
+			<td>${reply.com_seq }</td>
+			<td>${reply.id }</td>
+			<td>${reply.nick_name }</td>
+			<td>${reply.content }</td>
+			<td></td>		 
+		</tr>
+		</c:forEach>
+	
+	</table>
 	
 	
 	
-<form id="Review" method="POST" enctype="multipart/form-data">
+<form id="Review" method="post" enctype="multipart/form-data">
 	<input type="hidden" name="id" value="soh445">
-	<input type="hidden" name="nick_name" value="튤립">
+	<input type="hidden" name="nick_name" value="ss">
 	<input type="hidden" name="com_seq" value="${CommInfoVO.com_seq }">
 	<textarea id="content" name="content"rows="10" cols="80">
 		안녕하세요

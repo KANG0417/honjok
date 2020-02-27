@@ -343,7 +343,6 @@
 			filebrowserImageUploadUrl : 'fileupload.do',
 			// Upload dropped or pasted images to the CKFinder connector (note that the response type is set to JSON).
 			uploadUrl : 'fileupload.do',
-
 			height : 450
 		}); 
 		

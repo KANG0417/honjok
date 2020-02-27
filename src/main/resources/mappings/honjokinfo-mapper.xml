@@ -43,7 +43,13 @@
 	<!-- 리뷰 insert -->
 	<insert id="inertReview" parameterType="commReplyVO">
 		INSERT INTO COMM_REPLY
-		VALUES(#{id},0,0,#{content},sysdate,#{nick_name},#{com_seq})
+		VALUES(#{id},0,COMM_REPLY_SEQ.NEXTVAL,#{content},sysdate,#{nick_name},#{com_seq})
+	</insert>
+	
+	<!-- 리뷰 이미지 insert  -->
+	<insert id="insertReviewImage" parameterType="replyUploadVO">
+	INSERT INTO REPLY_UPLOAD(COM_SEQ,PARENT_NUMBER,UP_IMG_NAME,IDX)
+	VALUES(#{com.seq},(SELECT NVL(MAX(com_seq), 0) FROM upload),#{up_img_name},REPLY_UPLOAD_SEQ.NEXTVAL)
 	</insert>
 
 	<!-- insert end -->
@@ -101,8 +107,6 @@
 
 
 
-
-
 	<!-- 테이블 하나 가져오기 커퓨니티+info테이블 -->
 	<select id="select" resultType="CommInfoVO"
 		parameterType="String">
@@ -117,8 +121,15 @@
 		 select * from upload where com_seq = #{com_seq} and type = '1'
 	</select>
 	
+	<select id="getReview" parameterType="String" resultType="commReplyVO">
+	select * from comm_reply where com_seq = #{com_seq}
+	</select>
 	
-
+	
+	
+	<select id="getReviewImg" parameterType="String" resultType="UploadVO">
+		select * from upload where com_seq = #{com_seq}
+	</select>
 
 
 

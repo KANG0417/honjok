@@ -31,6 +31,7 @@ import com.honjok.app.vo.CommInfoVO;
 import com.honjok.app.vo.CommunityVO;
 import com.honjok.app.vo.UploadVO;
 import com.honjok.app.vo.commReplyVO;
+import com.honjok.app.vo.replyUploadVO;
 
 @Controller
 @RequestMapping(value = "/honjokInfo")
@@ -102,8 +103,10 @@ public class list {
 	}
 	
 	@RequestMapping("/reviewInsert.do")
-	public void reviewInsert(commReplyVO commreplyvo, MultipartHttpServletRequest multiFile) throws IOException {
+	@ResponseBody
+	public String reviewInsert(commReplyVO commreplyvo, MultipartHttpServletRequest multiFile) throws IOException {
 		System.out.println(commreplyvo);
+
 		CURR_IMAGE_REPO_PATH  = "C:/Users/bitcamp/Documents/GitHub/honjok/src/main/webapp/resources/img/review";
 		// 파일업로드
 				List<String> fileList = new ArrayList<String>();
@@ -111,6 +114,8 @@ public class list {
 				Iterator<String> fileNames = multiFile.getFileNames();
 				System.out.println("src value : " + fileNames);
 		 
+				//리뷰 데이터 저장
+				service.insertReview(commreplyvo);
 				
 				
 				while (fileNames.hasNext()) {
@@ -143,12 +148,19 @@ public class list {
 						System.out.println(originalFileName);
 						mFile.transferTo(new File(CURR_IMAGE_REPO_PATH + "\\" + originalFileName));
 						
+						replyUploadVO replyupload = new replyUploadVO();
+						replyupload.setCom_seq(commreplyvo.getCom_seq());
+						replyupload.setUp_img_name(originalFileName);
+						
+						System.out.println(replyupload);
+
+						service.reviewUpload(replyupload);
 
 					}
 				}
+			
 				
-				service.insertReview(commreplyvo);
-
+				return "ss";
 	}
 
 	@RequestMapping("/select.do")
@@ -196,17 +208,36 @@ public class list {
 	public String select(String com_seq, Model model) {
 		System.out.println("com_seq값" + com_seq);
 
-		CommInfoVO CommInfoVO = service.select(com_seq);
 		// 업로드파일 가져오기
+		CommInfoVO CommInfoVO = service.select(com_seq);
+		
 		List<UploadVO[]> UploadList = new ArrayList<UploadVO[]>();
-
-		System.out.println(com_seq);
+		//메뉴사진 가져오기
 		UploadList.addAll(service.getFileName(com_seq));
-
 		System.out.println("uploadList" + UploadList);
+		
+		
+		//리뷰 데이터 가져오기
+		List<commReplyVO> reply = service.getReview(com_seq);
+		
+		
+		
+		//리뷰 이미지 가져오기 
+		List<UploadVO[]> ReviewImgList =service.getReviewImg(com_seq); 
+		
+		
 
+		
+		model.addAttribute("reply",reply);
+		model.addAttribute("ReviewImgList",ReviewImgList);
 		model.addAttribute("UploadList", UploadList);
 		model.addAttribute("CommInfoVO", CommInfoVO);
+		
+		
+		
+		
+		
+		
 		return "/honjokInfo/get.jsp";
 	}
 
@@ -246,8 +277,8 @@ public class list {
 						String fileName = file.getName();
 						byte[] bytes = file.getBytes();
 
-						// 경로설정
-						String uploadPath = req.getServletContext().getRealPath("/img");
+						// 경로설정                     
+						String uploadPath = "C:/Users/bitcamp/Documents/GitHub/honjok/src/main/webapp/resources/img";
 						System.out.println(uploadPath);
 
 						// 파일저장
@@ -262,15 +293,13 @@ public class list {
 						fileName = UUID.randomUUID().toString();
 						uploadPath = uploadPath + "/" + fileName;
 						// 파일 저장
-						out = new FileOutputStream(new File("C:/Users/bitcamp/Documents/GitHub/honjok/src/main/webapp/resources/img" + fileName));
-						out.write(bytes);
 						out = new FileOutputStream(new File(uploadPath));
 						out.write(bytes);
 
 
 						printWriter = resp.getWriter();
 						resp.setContentType("text/html");
-						String fileUrl = req.getContextPath() + "/img/" + fileName;
+						String fileUrl = "/app/resources/img/" + fileName;
 
 						System.out.println(req.getContextPath() + "/img/" + fileName);
 
