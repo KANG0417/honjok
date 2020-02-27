@@ -40,7 +40,10 @@
       </li>    
       <li class="nav-item">
         <a class="nav-link" href="${contextPage.request.contextPath }/app/honjokInfo/select.do">혼밥정보</a>
-      </li>    
+      </li>
+        <li class="nav-item">
+        <a class="nav-link" href="/app/admin/productReg.jsp">상품등록</a>
+      </li>     
     </ul>
   </div>  
 </nav>
