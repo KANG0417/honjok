@@ -37,27 +37,55 @@ eplyr<%@ page language="java" contentType="text/html; charset=UTF-8"
 	$('body').html(image);
 	
 	
+	
 	/*  파일 미리보기 태그 만들기  */
 		$().ready(function() {
 			
 			$('#hart').click(function(){
+				if("${sessionScope.userSession.id}" != ""){
 				var className = $(this).attr('class');
 				if(className == "far fa-heart fa-5x" ){
 					$(this).removeClass();
 					$(this).addClass("fas fa-heart fa-5x");
+					$.ajax({
+						type:'post',
+						enctype: 'multipar/form-data',
+						url:"likes.do",
+						success:function(json){
+							console.log("성공");
+						},error: function(jqXHR, textStatus, errorThrown) {
+							alert("오류가 발생하였습니다.");
+						}
+					});
 				}else{
 					$(this).removeClass();
 					$(this).addClass("far fa-heart fa-5x");
 				}
+			}else{
+				var result = confirm("로그인이 필요한 서비스입니다. 로그인 하시겠습니까?")
+				if(result){
+					location.href = "/app/login.jsp";
+				}
+			}
+				
+				
 			});
 			$('#book-mark').click(function(){
+				if("${sessionScope.userSession.id}" != ""){
 				var className = $(this).attr('class');
 				if(className == "far fa-bookmark fa-5x" ){
-					$(this).removeClass();
-					$(this).addClass("fas fa-bookmark fa-5x");
+						$(this).removeClass();
+						$(this).addClass("fas fa-bookmark fa-5x");
+					}else{
+						$(this).removeClass();
+						$(this).addClass("far fa-bookmark fa-5x");
+					}
+					
 				}else{
-					$(this).removeClass();
-					$(this).addClass("far fa-bookmark fa-5x");
+					var result = confirm("로그인이 필요한 서비스입니다. 로그인 하시겠습니까?")
+					if(result){
+						location.href = "/app/login.jsp";
+					}
 				}
 			});
 			
@@ -218,14 +246,13 @@ eplyr<%@ page language="java" contentType="text/html; charset=UTF-8"
 </script>
 
 <style>
-
 </style>
 
 <body>
 
 
 
-	 <h1>글번호 : ${CommInfoVO.com_seq }</h1>
+	<h1>글번호 : ${CommInfoVO.com_seq }</h1>
 	<%-- <h1>제목 : ${CommInfoVO.title }</h1> 
 	<p>작성자: ${CommInfoVO.id }</p> 
 	<p>별점:${CommInfoVO.sum_star }</p>
@@ -257,21 +284,19 @@ eplyr<%@ page language="java" contentType="text/html; charset=UTF-8"
 	<hr>
 	<p>${CommInfoVO.content }</p>
 	<p>조회수:${CommInfoVO.hit }</p>
-	<p>좋아요;${CommInfoVO.likes }</p>
-	
-	<c:if  test="${session.id == null}">
-		<i id="book-mark" class="far fa-bookmark fa-5x"></i>
-	</c:if>
+	<p>좋아요:${CommInfoVO.likes }</p>
+
+
+	<i id="book-mark" class="far fa-bookmark fa-5x"></i>
+
 	<span>찜하기</span>
-	
-	
-	
-	<c:if  test="${session.id == null}">
-		<i id="hart" class="far fa-heart fa-5x"></i>
-	</c:if>
+
+
+	<i id="hart" class="far fa-heart fa-5x"></i>
+
 	<span>좋아요</span>
-	
-	
+
+
 	<a id="kakao-link-btn" href="javascript:sendLink()"> <img
 		src="//developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png" />
 	</a>
@@ -285,59 +310,61 @@ eplyr<%@ page language="java" contentType="text/html; charset=UTF-8"
 	<a>최신순</a>
 	<a>좋아요순</a> 인생맛집
 	<table border="1">
-	
+
 		<tr>
 			<th>글번호</th>
 			<th>아이디</th>
-			<th>닉네임 </th>
+			<th>닉네임</th>
 			<th>내용</th>
 			<th>첨부이미지</th>
 		</tr>
-		
+
 		<c:forEach varStatus="Num" var="reply" items="${reply }">
-		<tr>
-			<td>${reply.com_seq }</td>
-			<td>${reply.idx }</td>
-			<td>${reply.id }</td>
-			<td>${reply.nick_name }</td>
-			<td>${reply.content }</td>
-			<c:forEach var="replyimg" items="${reply.replyuploadvo }">
-				<td><img width="100" height="100" src="/app/resources/img/review/${replyimg.up_img_name}"></td>		 
-			</c:forEach>
-		</tr>
+			<tr>
+				<td>${reply.com_seq }</td>
+				<td>${reply.idx }</td>
+				<td>${reply.id }</td>
+				<td>${reply.nick_name }</td>
+				<td>${reply.content }</td>
+				<c:forEach var="replyimg" items="${reply.replyuploadvo }">
+					<td><img width="100" height="100"
+						src="/app/resources/img/review/${replyimg.up_img_name}"></td>
+				</c:forEach>
+			</tr>
 		</c:forEach>
-	
+
 	</table>
-	
-	
-	
-<form id="Review" method="post" enctype="multipart/form-data">
-	<input type="hidden" name="id" value="soh445">
-	<input type="hidden" name="nick_name" value="ss">
-	<input type="hidden" name="com_seq" value="${CommInfoVO.com_seq }">
-	<textarea id="content" name="content"rows="10" cols="80">
+
+
+
+	<form id="Review" method="post" enctype="multipart/form-data">
+		<input type="hidden" name="id" value="soh445"> <input
+			type="hidden" name="nick_name" value="ss"> <input
+			type="hidden" name="com_seq" value="${CommInfoVO.com_seq }">
+		<textarea id="content" name="content" rows="10" cols="80">
 		안녕하세요
 	</textarea>
-	
+
 		<div id="d_file"></div>
-		<br> <button class="fas fa-plus fa-5x " type="button" onClick="fn_addFile()"></button><br>
-	
-	<input type="button"  onclick="insertReview(this.form)">
+		<br>
+		<button class="fas fa-plus fa-5x " type="button"
+			onClick="fn_addFile()"></button>
+		<br> <input type="button" onclick="insertReview(this.form)">
 	</form>
 
-<div>
-	<form class="update" action="update.jsp">
-		<c:set value="${CommInfoVO }" var="com" scope="session"></c:set>
-		<input type="submit" value="수정">
-	</form>
-	<form action="delete.do">
-		<input type="hidden" name="com_seq" value="${CommInfoVO.com_seq}">
-		<input type="submit" value="삭제">
-	</form>
-	<form action="select.do">
-		<input type="submit" value="목록으로">
-	</form>
-</div>
+	<div>
+		<form class="update" action="update.jsp">
+			<c:set value="${CommInfoVO }" var="com" scope="session"></c:set>
+			<input type="submit" value="수정">
+		</form>
+		<form action="delete.do">
+			<input type="hidden" name="com_seq" value="${CommInfoVO.com_seq}">
+			<input type="submit" value="삭제">
+		</form>
+		<form action="select.do">
+			<input type="submit" value="목록으로">
+		</form>
+	</div>
 
 
 

@@ -246,6 +246,16 @@ public class list {
 		
 		return "/honjokInfo/get.jsp";
 	}
+	
+	@RequestMapping("likes.do")
+	public Map likes() {
+		
+		System.out.println("좋아요 업데이트 시작 ");
+		
+		
+		
+		return null;
+	}
 
 	@RequestMapping("/delete.do")
 	public String delete(String com_seq, Model model) {
