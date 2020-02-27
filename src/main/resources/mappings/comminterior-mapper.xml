@@ -62,6 +62,8 @@
   		}
 	</delete>
 	
+
+	
     <select id="selectAllCount" resultType="Integer">
 		SELECT COUNT(*)
 		FROM COMMUNITY C, COMM_INTERIOR I
