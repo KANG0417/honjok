@@ -42,15 +42,17 @@ eplyr<%@ page language="java" contentType="text/html; charset=UTF-8"
 		$().ready(function() {
 			
 			$('#hart').click(function(){
+				
 				if("${sessionScope.userSession.id}" != ""){
 				var className = $(this).attr('class');
 				if(className == "far fa-heart fa-5x" ){
 					$(this).removeClass();
 					$(this).addClass("fas fa-heart fa-5x");
+					var com_seq = '${CommInfoVO.com_seq}';
 					$.ajax({
 						type:'post',
-						enctype: 'multipar/form-data',
-						url:"likes.do",
+						url:"likesUp.do",
+						data :{com_seq :com_seq},
 						success:function(json){
 							console.log("성공");
 						},error: function(jqXHR, textStatus, errorThrown) {
@@ -284,7 +286,7 @@ eplyr<%@ page language="java" contentType="text/html; charset=UTF-8"
 	<hr>
 	<p>${CommInfoVO.content }</p>
 	<p>조회수:${CommInfoVO.hit }</p>
-	<p>좋아요:${CommInfoVO.likes }</p>
+	<p>좋아요:${CommInfoVO.likes}</p>
 
 
 	<i id="book-mark" class="far fa-bookmark fa-5x"></i>

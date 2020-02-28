@@ -55,6 +55,10 @@ public class honjokinfoServiceImpl implements honjokinfoService {
 		Mapper.insertFileUpload(uploadvo);
 	}
 
+	
+
+
+	//insert끝
 
 
 
@@ -124,10 +128,19 @@ public class honjokinfoServiceImpl implements honjokinfoService {
 	}
 
 
+	
+	
 	// community 업데이트 
 	@Override
 	public void uptate(CommInfoVO comI) {
 		Mapper.uptate(comI);
+		
+	}
+
+	//likes업데이트
+	@Override
+	public void inserLikesUp(String com_seq) {
+		Mapper.insertLikesUP(com_seq);
 		
 	}
 

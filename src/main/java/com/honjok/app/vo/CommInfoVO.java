@@ -1,23 +1,23 @@
 package com.honjok.app.vo;
 
 public class CommInfoVO {
-	String com_seq, sum_star, adr, menu, title, id, content, type, hit, likes, regdate, nick_name , tel, place_name,
-			category_name;
+	private	String comSeq, sumStar, adr, menu, title, id, content, type, hit, likes, regdate, nickName , tel, placeName,
+			categoryName;
 
-	public String getCom_seq() {
-		return com_seq;
+	public String getComSeq() {
+		return comSeq;
 	}
 
-	public void setCom_seq(String com_seq) {
-		this.com_seq = com_seq;
+	public void setComSeq(String comSeq) {
+		this.comSeq = comSeq;
 	}
 
-	public String getSum_star() {
-		return sum_star;
+	public String getSumStar() {
+		return sumStar;
 	}
 
-	public void setSum_star(String sum_star) {
-		this.sum_star = sum_star;
+	public void setSumStar(String sumStar) {
+		this.sumStar = sumStar;
 	}
 
 	public String getAdr() {
@@ -92,12 +92,12 @@ public class CommInfoVO {
 		this.regdate = regdate;
 	}
 
-	public String getNick_name() {
-		return nick_name;
+	public String getNickName() {
+		return nickName;
 	}
 
-	public void setNick_name(String nick_name) {
-		this.nick_name = nick_name;
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
 	}
 
 	public String getTel() {
@@ -108,32 +108,33 @@ public class CommInfoVO {
 		this.tel = tel;
 	}
 
-	public String getPlace_name() {
-		return place_name;
+	public String getPlaceName() {
+		return placeName;
 	}
 
-	public void setPlace_name(String place_name) {
-		this.place_name = place_name;
+	public void setPlaceName(String placeName) {
+		this.placeName = placeName;
 	}
 
-	public String getCategory_name() {
-		return category_name;
+	public String getCategoryName() {
+		return categoryName;
 	}
 
-	public void setCategory_name(String category_name) {
-		this.category_name = category_name;
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
 	}
 
-	
-	
 	@Override
 	public String toString() {
-		return "CommInfoVO [com_seq=" + com_seq + ", sum_star=" + sum_star + ", adr=" + adr + ", menu=" + menu
-				+ ", title=" + title + ", id=" + id + ", content=" + content + ", type=" + type + ", hit=" + hit
-				+ ", likes=" + likes + ", regdate=" + regdate + ", nick_name=" + nick_name + ", tel=" + tel
-				+ ", place_name=" + place_name + ", category_name=" + category_name + "]";
+		return "CommInfoVO [comSeq=" + comSeq + ", sumStar=" + sumStar + ", adr=" + adr + ", menu=" + menu + ", title="
+				+ title + ", id=" + id + ", content=" + content + ", type=" + type + ", hit=" + hit + ", likes=" + likes
+				+ ", regdate=" + regdate + ", nickName=" + nickName + ", tel=" + tel + ", placeName=" + placeName
+				+ ", categoryName=" + categoryName + "]";
 	}
 
+	
+	
+	
 	
 	
 }

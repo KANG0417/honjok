@@ -1,36 +1,33 @@
 package com.honjok.app.vo;
 
 public class replyUploadVO {
-String com_seq,
-parent_number,
-up_img_name,
-idx;
+	private String comSeq,
+		parentNumber,
+		upImgName,
+		idx;
 
-
-
-
-public String getCom_seq() {
-	return com_seq;
+public String getComSeq() {
+	return comSeq;
 }
 
-public void setCom_seq(String com_seq) {
-	this.com_seq = com_seq;
+public void setComSeq(String comSeq) {
+	this.comSeq = comSeq;
 }
 
-public String getParent_number() {
-	return parent_number;
+public String getParentNumber() {
+	return parentNumber;
 }
 
-public void setParent_number(String parent_number) {
-	this.parent_number = parent_number;
+public void setParentNumber(String parentNumber) {
+	this.parentNumber = parentNumber;
 }
 
-public String getUp_img_name() {
-	return up_img_name;
+public String getUpImgName() {
+	return upImgName;
 }
 
-public void setUp_img_name(String up_img_name) {
-	this.up_img_name = up_img_name;
+public void setUpImgName(String upImgName) {
+	this.upImgName = upImgName;
 }
 
 public String getIdx() {
@@ -41,12 +38,12 @@ public void setIdx(String idx) {
 	this.idx = idx;
 }
 
-
 @Override
 public String toString() {
-	return "replyUpload [com_seq=" + com_seq + ", parent_number=" + parent_number + ", up_img_name=" + up_img_name
-			+ ", idx=" + idx + "]";
+	return "replyUploadVO [comSeq=" + comSeq + ", parentNumber=" + parentNumber + ", upImgName=" + upImgName + ", idx="
+			+ idx + "]";
 }
+
 
 
 

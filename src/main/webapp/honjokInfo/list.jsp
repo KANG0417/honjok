@@ -72,7 +72,7 @@
 								<h3>
 									<a href="get.do?com_seq=${CommunityVO.com_seq }">${CommunityVO.title }</a>
 								</h3>
-							\	
+							
 								
 							</div>
 
