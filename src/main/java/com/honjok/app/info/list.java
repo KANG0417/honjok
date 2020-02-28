@@ -41,13 +41,13 @@ public class list {
 	@Autowired
 	honjokinfoService service;
 
-	private static  String CURR_IMAGE_REPO_PATH = "";
+	private static String CURR_IMAGE_REPO_PATH = "";
 
 	@RequestMapping("/insert.do")
 	public String lists(CommInfoVO comI, MultipartHttpServletRequest multiFile) throws IOException {
-		
+
 		CURR_IMAGE_REPO_PATH = "C:/Users/bitcamp/Documents/GitHub/honjok/src/main/webapp/resources/img/menu";
-		
+
 		System.out.println(comI);
 
 		// content 공백 처리
@@ -62,7 +62,7 @@ public class list {
 
 		Iterator<String> fileNames = multiFile.getFileNames();
 		System.out.println("src value : " + fileNames);
- 
+
 		while (fileNames.hasNext()) {
 			String fileName = fileNames.next();
 
@@ -77,7 +77,7 @@ public class list {
 			// 파일 이름 하나씩 저장
 			fileList.add(originalFileName);
 			System.out.println(fileList);
-			
+
 			File file = new File(CURR_IMAGE_REPO_PATH + "\\" + fileName);
 
 			// 첨부된파일 체크 및 경로에 파일이 없으면 그경로에 해당 하는 디랙토리 만듬
@@ -88,12 +88,12 @@ public class list {
 					}
 				}
 
-				//파일 이름 변겅 	 
+				// 파일 이름 변겅
 				originalFileName = UUID.randomUUID().toString();
 				System.out.println(originalFileName);
 				mFile.transferTo(new File(CURR_IMAGE_REPO_PATH + "\\" + originalFileName));
 				UploadVO uploadvo = new UploadVO();
-				uploadvo.setUp_img_name(originalFileName);
+				uploadvo.setUpImgName(originalFileName);
 
 				service.FileUpload(uploadvo);
 			}
@@ -102,66 +102,64 @@ public class list {
 		return "/honjokInfo/select.do";
 
 	}
-	
+
 	@RequestMapping("/reviewInsert.do")
 	@ResponseBody
 	public String reviewInsert(commReplyVO commreplyvo, MultipartHttpServletRequest multiFile) throws IOException {
 		System.out.println(commreplyvo);
 
-		CURR_IMAGE_REPO_PATH  = "C:/Users/bitcamp/Documents/GitHub/honjok/src/main/webapp/resources/img/review";
+		CURR_IMAGE_REPO_PATH = "C:/Users/bitcamp/Documents/GitHub/honjok/src/main/webapp/resources/img/review";
 		// 파일업로드
-				List<String> fileList = new ArrayList<String>();
+		List<String> fileList = new ArrayList<String>();
 
-				Iterator<String> fileNames = multiFile.getFileNames();
-				System.out.println("src value : " + fileNames);
-		 
-				//리뷰 데이터 저장
-				service.insertReview(commreplyvo);
-				
-				
-				while (fileNames.hasNext()) {
-					String fileName = fileNames.next();
+		Iterator<String> fileNames = multiFile.getFileNames();
+		System.out.println("src value : " + fileNames);
 
-					// 첨부된 파일 이름 가져오기
-					MultipartFile mFile = multiFile.getFile(fileName);
-					System.out.println(mFile);
+		// 리뷰 데이터 저장
+		service.insertReview(commreplyvo);
 
-					// 파일 실제 이름 가져오기
-					String originalFileName = mFile.getOriginalFilename();
-					System.out.println(originalFileName);
+		while (fileNames.hasNext()) {
+			String fileName = fileNames.next();
 
-					// 파일 이름 하나씩 저장
-					fileList.add(originalFileName);
-					System.out.println(fileList);
-										
-					File file = new File(CURR_IMAGE_REPO_PATH + "\\" + fileName);
+			// 첨부된 파일 이름 가져오기
+			MultipartFile mFile = multiFile.getFile(fileName);
+			System.out.println(mFile);
 
-					// 첨부된파일 체크 및 경로에 파일이 없으면 그경로에 해당 하는 디랙토리 만듬
-					if (mFile.getSize() != 0) {
-						if (!file.exists()) {
-							if (file.getParentFile().mkdirs()) {
-								file.createNewFile();
-							}
-						}
+			// 파일 실제 이름 가져오기
+			String originalFileName = mFile.getOriginalFilename();
+			System.out.println(originalFileName);
 
-						//파일 이름 변겅 	 
-						originalFileName = UUID.randomUUID().toString();
-						System.out.println(originalFileName);
-						mFile.transferTo(new File(CURR_IMAGE_REPO_PATH + "\\" + originalFileName));
-						
-						replyUploadVO replyupload = new replyUploadVO();
-						replyupload.setCom_seq(commreplyvo.getCom_seq());
-						replyupload.setUp_img_name(originalFileName);
-						
-						System.out.println(replyupload);
+			// 파일 이름 하나씩 저장
+			fileList.add(originalFileName);
+			System.out.println(fileList);
 
-						service.reviewUpload(replyupload);
+			File file = new File(CURR_IMAGE_REPO_PATH + "\\" + fileName);
 
+			// 첨부된파일 체크 및 경로에 파일이 없으면 그경로에 해당 하는 디랙토리 만듬
+			if (mFile.getSize() != 0) {
+				if (!file.exists()) {
+					if (file.getParentFile().mkdirs()) {
+						file.createNewFile();
 					}
 				}
-			
-				
-				return "ss";
+
+				// 파일 이름 변겅
+				originalFileName = UUID.randomUUID().toString();
+				System.out.println(originalFileName);
+				mFile.transferTo(new File(CURR_IMAGE_REPO_PATH + "\\" + originalFileName));
+
+				replyUploadVO replyupload = new replyUploadVO();
+				replyupload.setComSeq(commreplyvo.getComSeq());
+				replyupload.setUpImgName(originalFileName);
+
+				System.out.println(replyupload);
+
+				service.reviewUpload(replyupload);
+
+			}
+		}
+
+		return "ss";
 	}
 
 	@RequestMapping("/select.do")
@@ -211,58 +209,46 @@ public class list {
 
 		// 업로드파일 가져오기
 		CommInfoVO CommInfoVO = service.select(com_seq);
-		
+
 		List<UploadVO[]> UploadList = new ArrayList<UploadVO[]>();
-		//메뉴사진 가져오기
+		// 메뉴사진 가져오기
 		UploadList.addAll(service.getFileName(com_seq));
 		System.out.println("uploadList" + UploadList);
-		
-		
-		//리뷰 데이터 가져오기
+
+		// 리뷰 데이터 가져오기
 		List<commReplyVO> reply = service.getReview(com_seq);
-		
-		
-		
-		
-		for(commReplyVO commreplyvo :reply) {
+
+		for (commReplyVO commreplyvo : reply) {
 			String idx = commreplyvo.getIdx();
 			System.out.println(idx);
 			commreplyvo.setReplyuploadvo(service.getReviewImg(idx));
 		}
-		
-		
-		System.out.println(reply);
-		
-		
 
-		model.addAttribute("reply",reply);
+		System.out.println(reply);
+
+		model.addAttribute("reply", reply);
 		model.addAttribute("UploadList", UploadList);
 		model.addAttribute("CommInfoVO", CommInfoVO);
-		
-		
-		
-		
-		
-		
+
 		return "/honjokInfo/get.jsp";
 	}
-	
+
 	@RequestMapping("/likesUp.do")
 	@ResponseBody
 	public void likes(String com_seq) {
 		System.out.println(com_seq);
-		
+
 		System.out.println("좋아요 업데이트 시작 ");
-		
-		String com =  com_seq;
+
+		String com = com_seq;
 		service.inserLikesUp(com);
-		
+
 	}
 
 	@RequestMapping("/delete.do")
 	public String delete(String com_seq, Model model) {
 		System.out.println(" com_seq값" + com_seq);
-	
+
 		service.delete(com_seq);
 		return "/honjokInfo/select.do";
 	}
@@ -296,7 +282,7 @@ public class list {
 						String fileName = file.getName();
 						byte[] bytes = file.getBytes();
 
-						// 경로설정                     
+						// 경로설정
 						String uploadPath = "C:/Users/bitcamp/Documents/GitHub/honjok/src/main/webapp/resources/img";
 						System.out.println(uploadPath);
 
@@ -314,7 +300,6 @@ public class list {
 						// 파일 저장
 						out = new FileOutputStream(new File(uploadPath));
 						out.write(bytes);
-
 
 						printWriter = resp.getWriter();
 						resp.setContentType("text/html");
@@ -350,5 +335,5 @@ public class list {
 		}
 		return null;
 	}
-	
+
 }

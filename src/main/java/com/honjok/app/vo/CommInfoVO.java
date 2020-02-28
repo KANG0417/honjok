@@ -1,7 +1,7 @@
 package com.honjok.app.vo;
 
 public class CommInfoVO {
-	String comSeq, sumStar, adr, menu, title, id, content, type, hit, likes, regdate, nickName , tel, placeName,
+	private	String comSeq, sumStar, adr, menu, title, id, content, type, hit, likes, regdate, nickName , tel, placeName,
 			categoryName;
 
 	public String getComSeq() {

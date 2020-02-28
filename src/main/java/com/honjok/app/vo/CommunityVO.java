@@ -1,6 +1,5 @@
 package com.honjok.app.vo;
 
-import java.sql.Date;
 
 public class CommunityVO {
 	private String title, id, content, type,comSeq, hit, likesNo, regdate, nickName;
