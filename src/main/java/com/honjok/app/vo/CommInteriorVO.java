@@ -3,32 +3,32 @@ package com.honjok.app.vo;
 import java.sql.Date;
 
 public class CommInteriorVO {
-	private String file_image, id, title, content, com_seq, hit, likes, nick_name, show;
+	private String fileImage, id, title, content, comSeq, hit, likes, nickName, show;
 	private Date regdate;
 	
 	public CommInteriorVO() {}
 
-	public CommInteriorVO(int type, String id, String file_image, String title, String content, String com_seq,
-			String hit, String likes, Date regdate, String nick_name, String show) {
+	public CommInteriorVO(int type, String id, String fileImage, String title, String content, String comSeq,
+			String hit, String likes, Date regdate, String nickName, String show) {
 		super();
 		this.id = id;
-		this.file_image = file_image;
+		this.fileImage = fileImage;
 		this.title = title;
 		this.content = content;
-		this.com_seq = com_seq;
+		this.comSeq = comSeq;
 		this.hit = hit;
 		this.likes = likes;
 		this.regdate = regdate;
-		this.nick_name = nick_name;
+		this.nickName = nickName;
 		this.show = show;
 	}
 
 	public String getFile_image() {
-		return file_image;
+		return fileImage;
 	}
 
-	public void setFile_image(String file_image) {
-		this.file_image = file_image;
+	public void setFile_image(String fileImage) {
+		this.fileImage = fileImage;
 	}
 
 	public String getTitle() {
@@ -47,12 +47,12 @@ public class CommInteriorVO {
 		this.content = content;
 	}
 
-	public String getCom_seq() {
-		return com_seq;
+	public String getcomSeq() {
+		return comSeq;
 	}
 
-	public void setCom_seq(String com_seq) {
-		this.com_seq = com_seq;
+	public void setcomSeq(String comSeq) {
+		this.comSeq = comSeq;
 	}
 
 	public String getHit() {
@@ -79,12 +79,12 @@ public class CommInteriorVO {
 		this.regdate = regdate;
 	}
 
-	public String getNick_name() {
-		return nick_name;
+	public String getnickName() {
+		return nickName;
 	}
 
-	public void setNick_name(String nick_name) {
-		this.nick_name = nick_name;
+	public void setnickName(String nickName) {
+		this.nickName = nickName;
 	}
 	
 	public String getShow() {
@@ -95,10 +95,9 @@ public class CommInteriorVO {
 		this.show = show;
 	}
 
-	@Override
 	public String toString() {
-		return "CommInteriorVO [file_image=" + file_image + ", title=" + title + ", id=" + id +
-				", content=" + content + ", com_seq=" + com_seq + ", hit=" + hit + ", likes=" + likes + ", regdate="
-				+ regdate + ", nick_name=" + nick_name + ", show" + show + "]";
+		return "CommInteriorVO [fileImage=" + fileImage + ", title=" + title + ", id=" + id +
+				", content=" + content + ", comSeq=" + comSeq + ", hit=" + hit + ", likes=" + likes + ", regdate="
+				+ regdate + ", nickName=" + nickName + ", show" + show + "]";
 	}
 }

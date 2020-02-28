@@ -26,7 +26,7 @@
 <div id="container">
 	<h1>글 상세</h1>
 	<form action="updateInterior.do" method="post">
-		<input type="hidden" name="com_seq" value="${inter.com_seq }">
+		<input type="hidden" name="com_seq" value="${inter.comSeq }">
 		<table>
 		<tr>
 			<th>제목</th>
@@ -56,11 +56,11 @@
 		</tr>
 		<tr>
 			<th>좋아요</th>
-			<td>${inter.likes }</td>
+			<td>${inter.likesNo }</td>
 		</tr>
 		<tr>
 			<th>파일이미지</th>
-			<td><input type="text" name="file_image" value="${inter.file_image }"></td>
+			<td><input type="text" name="file_image" value="${inter.fileImage }"></td>
 		</tr>
 		<tr>
 			<td colspan="2" class="center">
