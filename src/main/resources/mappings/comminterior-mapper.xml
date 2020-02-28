@@ -8,7 +8,7 @@
   		declare
   		begin
   		INSERT INTO COMMUNITY
-  		(COM_SEQ, TITLE, NICK_NAME, CONTENT, REGDATE, HIT, LIKES, TYPE)
+  		(COM_SEQ, TITLE, NICK_NAME, CONTENT, REGDATE, HIT, LIKES_NO, TYPE)
   		VALUES ((COMMMUNITY_SEQ.NEXTVAL) + 1, #{title}, #{nick_name},
   			#{content}, SYSDATE, 0, 0, 2);
   		INSERT INTO COMM_INTERIOR (COM_SEQ, FILE_IMAGE)
@@ -81,7 +81,7 @@
 		CONTENT,
 		TO_CHAR(SYSDATE, 'yyyy-mm-dd') as regdate,
 		HIT,
-		LIKES,
+		LIKES_NO,
         FILE_IMAGE
 		FROM(SELECT C.COM_SEQ,
 		C.TITLE,
@@ -89,7 +89,7 @@
 		TO_CHAR(C.REGDATE, 'yyyy-mm-dd') as regdate,
 		C.HIT,
 		C.NICK_NAME,
-		C.LIKES,
+		C.LIKES_NO,
         I.FILE_IMAGE
 		FROM COMMUNITY C, COMM_INTERIOR I
 		WHERE C.COM_SEQ = I.COM_SEQ AND TYPE = '2' ORDER BY C.COM_SEQ DESC))
@@ -100,7 +100,7 @@
 	</select>
   
 	<select id="getInteriorOne" parameterType="CommInteriorVO" resultType="CommInteriorVO">
-		SELECT C.COM_SEQ, C.TITLE, C.NICK_NAME, C.CONTENT, TO_CHAR(C.REGDATE, 'yyyy-mm-dd hh24:mi:ss'), C.HIT, C.LIKES, I.FILE_IMAGE
+		SELECT C.COM_SEQ, C.TITLE, C.NICK_NAME, C.CONTENT, TO_CHAR(C.REGDATE, 'yyyy-mm-dd hh24:mi:ss'), C.HIT, C.LIKES_NO, I.FILE_IMAGE
 		FROM COMMUNITY C, COMM_INTERIOR I
 		WHERE C.COM_SEQ = I.COM_SEQ
 		AND C.COM_SEQ = #{com_seq}
@@ -108,14 +108,14 @@
 	</select>
 	
 	  <update id="like_check" parameterType="HashMap">
-	    UPDATE liketo
-	    SET like_check = like_check + 1 
-	    WHERE mno = #{mno} AND boardno = #{boardno}
+	    UPDATE COMMUNITY
+	    SET likes_check = likes_check + 1 
+	    WHERE ID = #{id} AND COM_SEQ = #{com_seq}
 	  </update>
 	  
 	  <update id="like_check_cancel" parameterType="HashMap">
-	    UPDATE liketo
-	    SET like_check = 0
-	    WHERE mno = #{mno} AND boardno = #{boardno}
+	    UPDATE COMMUNITY
+	    SET likes_check = 0
+	    WHERE ID = #{id} AND COM_SEQ = #{com_seq}
 	  </update>
   </mapper>
