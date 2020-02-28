@@ -1,105 +1,105 @@
 package com.honjok.app.vo;
 
 public class UploadVO {
-	private String com_seq,
-	up_file_num,
-	up_origin_file,
-	up_img_name,
-	up_down_cnt,
-	file_url,
-	thum_url,
-	up_file_row_size,
-	up_file_col_size,
-	up_file_type,
-	up_file_date,
+	private String comSeq,
+	upFileNum,
+	upOriginRile,
+	upImgName,
+	upDownCnt,
+	fileUrl,
+	thumUrl,
+	upFileRowSize,
+	upFileColSize,
+	upFileType,
+	upFileDate,
 	type;
 
-	public String getCom_seq() {
-		return com_seq;
+	public String getComSeq() {
+		return comSeq;
 	}
 
-	public void setCom_seq(String com_seq) {
-		this.com_seq = com_seq;
+	public void setComSeq(String comSeq) {
+		this.comSeq = comSeq;
 	}
 
-	public String getUp_file_num() {
-		return up_file_num;
+	public String getUpFileNum() {
+		return upFileNum;
 	}
 
-	public void setUp_file_num(String up_file_num) {
-		this.up_file_num = up_file_num;
+	public void setUpFileNum(String upFileNum) {
+		this.upFileNum = upFileNum;
 	}
 
-	public String getUp_origin_file() {
-		return up_origin_file;
+	public String getUpOriginRile() {
+		return upOriginRile;
 	}
 
-	public void setUp_origin_file(String up_origin_file) {
-		this.up_origin_file = up_origin_file;
+	public void setUpOriginRile(String upOriginRile) {
+		this.upOriginRile = upOriginRile;
 	}
 
-	public String getUp_img_name() {
-		return up_img_name;
+	public String getUpImgName() {
+		return upImgName;
 	}
 
-	public void setUp_img_name(String up_img_name) {
-		this.up_img_name = up_img_name;
+	public void setUpImgName(String upImgName) {
+		this.upImgName = upImgName;
 	}
 
-	public String getUp_down_cnt() {
-		return up_down_cnt;
+	public String getUpDownCnt() {
+		return upDownCnt;
 	}
 
-	public void setUp_down_cnt(String up_down_cnt) {
-		this.up_down_cnt = up_down_cnt;
+	public void setUpDownCnt(String upDownCnt) {
+		this.upDownCnt = upDownCnt;
 	}
 
-	public String getFile_url() {
-		return file_url;
+	public String getFileUrl() {
+		return fileUrl;
 	}
 
-	public void setFile_url(String file_url) {
-		this.file_url = file_url;
+	public void setFileUrl(String fileUrl) {
+		this.fileUrl = fileUrl;
 	}
 
-	public String getThum_url() {
-		return thum_url;
+	public String getThumUrl() {
+		return thumUrl;
 	}
 
-	public void setThum_url(String thum_url) {
-		this.thum_url = thum_url;
+	public void setThumUrl(String thumUrl) {
+		this.thumUrl = thumUrl;
 	}
 
-	public String getUp_file_row_size() {
-		return up_file_row_size;
+	public String getUpFileRowSize() {
+		return upFileRowSize;
 	}
 
-	public void setUp_file_row_size(String up_file_row_size) {
-		this.up_file_row_size = up_file_row_size;
+	public void setUpFileRowSize(String upFileRowSize) {
+		this.upFileRowSize = upFileRowSize;
 	}
 
-	public String getUp_file_col_size() {
-		return up_file_col_size;
+	public String getUpFileColSize() {
+		return upFileColSize;
 	}
 
-	public void setUp_file_col_size(String up_file_col_size) {
-		this.up_file_col_size = up_file_col_size;
+	public void setUpFileColSize(String upFileColSize) {
+		this.upFileColSize = upFileColSize;
 	}
 
-	public String getUp_file_type() {
-		return up_file_type;
+	public String getUpFileType() {
+		return upFileType;
 	}
 
-	public void setUp_file_type(String up_file_type) {
-		this.up_file_type = up_file_type;
+	public void setUpFileType(String upFileType) {
+		this.upFileType = upFileType;
 	}
 
-	public String getUp_file_date() {
-		return up_file_date;
+	public String getUpFileDate() {
+		return upFileDate;
 	}
 
-	public void setUp_file_date(String up_file_date) {
-		this.up_file_date = up_file_date;
+	public void setUpFileDate(String upFileDate) {
+		this.upFileDate = upFileDate;
 	}
 
 	public String getType() {
@@ -112,12 +112,13 @@ public class UploadVO {
 
 	@Override
 	public String toString() {
-		return "UploadVO [com_seq=" + com_seq + ", up_file_num=" + up_file_num + ", up_origin_file=" + up_origin_file
-				+ ", up_img_name=" + up_img_name + ", up_down_cnt=" + up_down_cnt + ", file_url=" + file_url
-				+ ", thum_url=" + thum_url + ", up_file_row_size=" + up_file_row_size + ", up_file_col_size="
-				+ up_file_col_size + ", up_file_type=" + up_file_type + ", up_file_date=" + up_file_date + ", type="
-				+ type + "]";
+		return "UploadVO [comSeq=" + comSeq + ", upFileNum=" + upFileNum + ", upOriginRile=" + upOriginRile
+				+ ", upImgName=" + upImgName + ", upDownCnt=" + upDownCnt + ", fileUrl=" + fileUrl + ", thumUrl="
+				+ thumUrl + ", upFileRowSize=" + upFileRowSize + ", upFileColSize=" + upFileColSize + ", upFileType="
+				+ upFileType + ", upFileDate=" + upFileDate + ", type=" + type + "]";
 	}
+
+	
 	
 	
 	

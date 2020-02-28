@@ -48,6 +48,7 @@ public class honjokInfoMapper {
 			
 		}
 		
+	
 		
 		//inset끝
 	
@@ -112,12 +113,24 @@ public class honjokInfoMapper {
 		mybatis.delete("honjokInfoMapper.delete", com_seq);
 
 	}
+	
+	
+	
+	
+	
 
 	public void uptate(CommInfoVO comI) {
 		System.out.println("uptate");
 		mybatis.update("honjokInfoMapper.uptate", comI);
 
 	}
+
+	//좋아요 업데이트 
+			public void insertLikesUP(String com_seq) {
+				System.out.println("좋아요 업데이트 Mapper");
+				mybatis.update("honjokInfoMapper.likesUp", com_seq);
+				
+			}
 
 	
 

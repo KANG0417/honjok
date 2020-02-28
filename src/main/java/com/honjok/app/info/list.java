@@ -19,6 +19,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -234,7 +235,6 @@ public class list {
 		
 		
 
-		
 		model.addAttribute("reply",reply);
 		model.addAttribute("UploadList", UploadList);
 		model.addAttribute("CommInfoVO", CommInfoVO);
@@ -247,19 +247,22 @@ public class list {
 		return "/honjokInfo/get.jsp";
 	}
 	
-	@RequestMapping("likes.do")
-	public Map likes() {
+	@RequestMapping("/likesUp.do")
+	@ResponseBody
+	public void likes(String com_seq) {
+		System.out.println(com_seq);
 		
 		System.out.println("좋아요 업데이트 시작 ");
 		
+		String com =  com_seq;
+		service.inserLikesUp(com);
 		
-		
-		return null;
 	}
 
 	@RequestMapping("/delete.do")
 	public String delete(String com_seq, Model model) {
 		System.out.println(" com_seq값" + com_seq);
+	
 		service.delete(com_seq);
 		return "/honjokInfo/select.do";
 	}

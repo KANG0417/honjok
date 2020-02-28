@@ -3,15 +3,7 @@ package com.honjok.app.vo;
 import java.sql.Date;
 
 public class CommunityVO {
-	private String title, id, content, type,com_seq, hit, likes_no, regdate, nick_name;
-	
-	public String getNickname() {
-		return nick_name;
-	}
-
-	public void setNickname(String nic_kname) {
-		this.nick_name = nic_kname;
-	}
+	private String title, id, content, type,comSeq, hit, likesNo, regdate, nickName;
 
 	public String getTitle() {
 		return title;
@@ -45,12 +37,12 @@ public class CommunityVO {
 		this.type = type;
 	}
 
-	public String getCom_seq() {
-		return com_seq;
+	public String getComSeq() {
+		return comSeq;
 	}
 
-	public void setCom_seq(String com_seq) {
-		this.com_seq = com_seq;
+	public void setComSeq(String comSeq) {
+		this.comSeq = comSeq;
 	}
 
 	public String getHit() {
@@ -61,12 +53,12 @@ public class CommunityVO {
 		this.hit = hit;
 	}
 
-	public String getLikes_no() {
-		return likes_no;
+	public String getLikesNo() {
+		return likesNo;
 	}
 
-	public void setLikes(String likes_no) {
-		this.likes_no = likes_no;
+	public void setLikesNo(String likesNo) {
+		this.likesNo = likesNo;
 	}
 
 	public String getRegdate() {
@@ -77,19 +69,23 @@ public class CommunityVO {
 		this.regdate = regdate;
 	}
 
-	public String getNick_name() {
-		return nick_name;
+	public String getNickName() {
+		return nickName;
 	}
 
-	public void setNick_name(String nick_name) {
-		this.nick_name = nick_name;
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
 	}
 
 	
 	@Override
 	public String toString() {
-		return "CommunityVO [title=" + title + ", id=" + id + ", content=" + content + ", type=" + type + ", com_seq="
-				+ com_seq + ", hit=" + hit + ", likes_no=" + likes_no + ", regdate=" + regdate + ", nick_name=" + nick_name
+		return "CommunityVO [title=" + title + ", id=" + id + ", content=" + content + ", type=" + type + ", comSeq="
+				+ comSeq + ", hit=" + hit + ", likesNo=" + likesNo + ", regdate=" + regdate + ", nickName=" + nickName
 				+ "]";
 	}
+	
+	
+	
+	
 }

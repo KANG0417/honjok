@@ -153,6 +153,10 @@
 		end
 		}
 	</delete>
+	
+
+<!-- 업데이트 시작  -->
+
 
 	<update id="uptate" parameterType="CommInfoVO">
 	{call
@@ -176,6 +180,11 @@
 		}
 	</update>
 
+
+	<update id="likesUp" parameterType="String">
+		update COMMUNITY set  likes = (select likes + 1 from COMMUNITY WHERE COM_SEQ = #{com_seq}) WHERE COM_SEQ = #{com_seq}
+	</update>
+<!-- 업데이트 끝 -->
 
 	<!-- <select id="getBoardList" parameterType="board" resultType="board"> 
 		SELECT * FROM BOARD WHERE 1=1 <if test="searchCondition == 'TITLE' "> AND 
