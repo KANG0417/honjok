@@ -9,11 +9,11 @@
   		begin
   		INSERT INTO COMMUNITY
   		(COM_SEQ, TITLE, NICK_NAME, CONTENT, REGDATE, HIT, LIKES_NO, TYPE)
-  		VALUES ((COMMMUNITY_SEQ.NEXTVAL) + 1, #{title}, #{nick_name},
+  		VALUES ((COMMMUNITY_SEQ.NEXTVAL) + 1, #{title}, #{nickName},
   			#{content}, SYSDATE, 0, 0, 2);
   		INSERT INTO COMM_INTERIOR (COM_SEQ, FILE_IMAGE)
   		VALUES ((select NVL(MAX(com_seq)
-  		,0)from community), #{file_image});
+  		,0)from community), #{fileImage});
   		END
   		}
   	</insert>
@@ -24,10 +24,10 @@
   		begin
   		UPDATE COMMUNITY
   		SET TITLE = #{title}, CONTENT = #{content}, REGDATE = SYSDATE
-  		WHERE COM_SEQ = #{com_seq};
+  		WHERE COM_SEQ = #{comSeq};
   		UPDATE COMM_INTERIOR
-  		SET FILE_IMAGE = #{file_image}
-  		WHERE COM_SEQ = #{com_seq};
+  		SET FILE_IMAGE = #{fileImage}
+  		WHERE COM_SEQ = #{comSeq};
   		END
   		}
 	</update>
@@ -35,7 +35,7 @@
 	<update id="boardHitsUpdate" parameterType="int">
 		UPDATE COMMUNITY
 		SET HIT = HIT + 1
-		WHERE COM_SEQ = #{com_seq}
+		WHERE COM_SEQ = #{comSeq}
 	</update>
 	
    	<!-- <update id="deleteArticle" parameterType="CommInteriorVO">
@@ -55,9 +55,9 @@
   		declare
   		begin
   		DELETE FROM COMMUNITY
-  		WHERE COM_SEQ = #{com_seq};
+  		WHERE COM_SEQ = #{comSeq};
   		DELETE FROM COMM_INTERIOR
-  		WHERE COM_SEQ = #{com_seq};
+  		WHERE COM_SEQ = #{comSeq};
   		END
   		}
 	</delete>
@@ -81,7 +81,7 @@
 		CONTENT,
 		TO_CHAR(SYSDATE, 'yyyy-mm-dd') as regdate,
 		HIT,
-		LIKES_NO,
+		LIKES,
         FILE_IMAGE
 		FROM(SELECT C.COM_SEQ,
 		C.TITLE,
@@ -89,7 +89,7 @@
 		TO_CHAR(C.REGDATE, 'yyyy-mm-dd') as regdate,
 		C.HIT,
 		C.NICK_NAME,
-		C.LIKES_NO,
+		C.LIKES,
         I.FILE_IMAGE
 		FROM COMMUNITY C, COMM_INTERIOR I
 		WHERE C.COM_SEQ = I.COM_SEQ AND TYPE = '2' ORDER BY C.COM_SEQ DESC))
@@ -100,22 +100,22 @@
 	</select>
   
 	<select id="getInteriorOne" parameterType="CommInteriorVO" resultType="CommInteriorVO">
-		SELECT C.COM_SEQ, C.TITLE, C.NICK_NAME, C.CONTENT, TO_CHAR(C.REGDATE, 'yyyy-mm-dd hh24:mi:ss'), C.HIT, C.LIKES_NO, I.FILE_IMAGE
+		SELECT C.COM_SEQ, C.TITLE, C.NICK_NAME, C.CONTENT, TO_CHAR(C.REGDATE, 'yyyy-mm-dd hh24:mi:ss'), C.HIT, C.LIKES, I.FILE_IMAGE
 		FROM COMMUNITY C, COMM_INTERIOR I
 		WHERE C.COM_SEQ = I.COM_SEQ
-		AND C.COM_SEQ = #{com_seq}
+		AND C.COM_SEQ = #{comSeq}
 		ORDER BY C.COM_SEQ , I.COM_SEQ
 	</select>
 	
 	  <update id="like_check" parameterType="HashMap">
 	    UPDATE COMMUNITY
 	    SET likes_check = likes_check + 1 
-	    WHERE ID = #{id} AND COM_SEQ = #{com_seq}
+	    WHERE ID = #{id} AND COM_SEQ = #{comSeq}
 	  </update>
 	  
 	  <update id="like_check_cancel" parameterType="HashMap">
 	    UPDATE COMMUNITY
 	    SET likes_check = 0
-	    WHERE ID = #{id} AND COM_SEQ = #{com_seq}
+	    WHERE ID = #{id} AND COM_SEQ = #{comSeq}
 	  </update>
   </mapper>
