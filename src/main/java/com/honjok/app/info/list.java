@@ -14,6 +14,7 @@ import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,7 @@ import com.google.gson.JsonObject;
 import com.honjok.app.vo.CommInfoVO;
 import com.honjok.app.vo.CommunityVO;
 import com.honjok.app.vo.UploadVO;
+import com.honjok.app.vo.UserVO;
 import com.honjok.app.vo.commReplyVO;
 import com.honjok.app.vo.replyUploadVO;
 
@@ -204,7 +206,7 @@ public class list {
 	}
 
 	@RequestMapping("/get.do")
-	public String select(String comSeq, Model model) {
+	public String select(String comSeq, Model model,HttpServletRequest request) {
 		System.out.println("comSeq값" + comSeq);
 
 		// 업로드파일 가져오기
@@ -225,6 +227,14 @@ public class list {
 		}
 
 		System.out.println(reply);
+		HttpSession session = request.getSession();
+		UserVO uservo = (UserVO) session.getAttribute("userSession");
+		if(uservo == null) {
+			
+			//	uservo.getId();
+						
+		}
+		
 
 		model.addAttribute("reply", reply);
 		model.addAttribute("UploadList", UploadList);
@@ -235,13 +245,20 @@ public class list {
 
 	@RequestMapping("/likesUp.do")
 	@ResponseBody
-	public void likes(String comSeq) {
+	public void likes(String comSeq,String id) {
 		System.out.println(comSeq);
 
 		System.out.println("좋아요 업데이트 시작 ");
-
-		String com = comSeq;
-		service.inserLikesUp(com);
+		
+		
+		Map<String,String> map = new HashMap<String, String>(); 
+		map.put("comSeq", comSeq);
+		map.put("id", id);
+		
+		System.out.println(map);
+		//커뮤니티 like+1
+		service.inserLikesUp(comSeq);
+		service.inserLikesId(map);
 
 	}
 

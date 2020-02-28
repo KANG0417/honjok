@@ -132,6 +132,10 @@ public class honjokInfoMapper {
 				
 			}
 
+			public void inserLikesId(Map<String, String> map) {
+				mybatis.insert("honjokInfoMapper.inserLikesId",map);
+			}
+
 	
 
 

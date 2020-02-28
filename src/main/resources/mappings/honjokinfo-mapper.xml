@@ -51,6 +51,11 @@
 	INSERT INTO REPLY_UPLOAD(COM_SEQ,PARENT_NUMBER,UP_IMG_NAME,IDX)
 	VALUES(#{comSeq},(SELECT NVL(MAX(idx), 0) FROM COMM_REPLY),#{upImgName},REPLY_UPLOAD_SEQ.NEXTVAL)
 	</insert>
+	
+	<insert id="inserLikesId" parameterType="Map">
+		insert into Likes 
+    	VALUES(#{id},1,#{comSeq})
+	</insert>
 
 	<!-- insert end -->
 

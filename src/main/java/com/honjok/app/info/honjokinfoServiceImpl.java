@@ -56,6 +56,12 @@ public class honjokinfoServiceImpl implements honjokinfoService {
 	}
 
 	
+	//좋아요 ID저장
+	@Override
+	public void inserLikesId(Map<String, String> map) {
+		Mapper.inserLikesId(map);
+		
+	}
 
 
 	//insert끝
@@ -143,6 +149,11 @@ public class honjokinfoServiceImpl implements honjokinfoService {
 		Mapper.insertLikesUP(comSeq);
 		
 	}
+
+
+
+
+
 
 	
 

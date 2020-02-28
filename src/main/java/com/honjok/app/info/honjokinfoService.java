@@ -38,5 +38,8 @@ public interface honjokinfoService {
    public List<replyUploadVO> getReviewImg(String idx);
 
    public void inserLikesUp(String comSeq);
+
+
+   public void inserLikesId(Map<String, String> map);
    
 }

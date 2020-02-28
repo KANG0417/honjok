@@ -260,9 +260,9 @@
 		</select><br>
 			<input class="adr" type="text"name="adr" value="${com.adr }"">
 			 <input class="tel" type="text" name="tel" value="${com.tel }""> 
-			 <input class="place_name" type="text" name="placeName"value="${com.place_name }"> 
-			 <input class="category_name" type="text" name="categoryName" value="${com.category_name }">
-		 <input type="hidden" name="comSeq" value="${com.com_seq }">
+			 <input class="place_name" type="text" name="placeName"value="${com.placeName }"> 
+			 <input class="category_name" type="text" name="categoryName" value="${com.categoryName }">
+		 <input type="hidden" name="comSeq" value="${com.comSeq }">
 		<input type="hidden" name="hit" value="${com.hit }"> <input
 			type="hidden" name="likes" value="${com.likes }"> <input
 			type="hidden" name="regdate" value="${com.regdate }">
@@ -284,7 +284,7 @@
 			<div class="option">
 				<div>
 					<form onsubmit="searchPlaces(); return false;">
-						키워드 : <input type="text" value="${com.place_name }" id="keyword"
+						키워드 : <input type="text" value="${com.placeName }" id="keyword"
 							size="15">
 						<button type="submit">검색하기</button>
 					</form>

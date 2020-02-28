@@ -49,10 +49,13 @@ eplyr<%@ page language="java" contentType="text/html; charset=UTF-8"
 					$(this).removeClass();
 					$(this).addClass("fas fa-heart fa-5x");
 					var comSeq = '${CommInfoVO.comSeq}';
+					var id = '${sessionScope.userSession.id}';
 					$.ajax({
 						type:'post',
 						url:"likesUp.do",
-						data :{comSeq :comSeq},
+						data :{comSeq :comSeq,
+								id:id
+							},
 						success:function(json){
 							console.log("성공");
 						},error: function(jqXHR, textStatus, errorThrown) {
