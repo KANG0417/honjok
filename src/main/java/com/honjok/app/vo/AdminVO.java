@@ -1,9 +1,6 @@
 package com.honjok.app.vo;
 
-/**
- * @author bitcamp
- *
- */
+
 public class AdminVO {
 	
 	private String upperCategory;
@@ -21,10 +18,7 @@ public class AdminVO {
 	private int shippingfee;
 	
 	
-	
-	
-	
-	
+
 	
 	@Override
 	public String toString() {

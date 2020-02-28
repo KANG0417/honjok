@@ -25,38 +25,32 @@
 
 <div class="container">
 	<div class="row justify-content-center mb-5 pb-3">
-		<h2>혼밥의 모든것</h2>
+		<h2>메인페이지</h2>
 	</div>
 		<hr>
-		<div class="row">
-
+			<h3>${userSession.id}님 안녕하세요!<a href="logout.do">Log-out</a></h3>
+				<div class="row">
+					<div class="row"style="width: 100%; height: 300px; margin-bottom: 100px;">
 			
-			<div class="row"style="width: 100%; height: 300px; margin-bottom: 100px;">
-			
-			
-			
-			</div>
+					</div>
 
 			<div class="col-md-4" id="select">
-				<a>dasdsa</a>
-				<a>dasdsa</a>
-				<a>dasdsa</a>
-				<a>dasdsa</a>
-				<a>dasdsa</a>
-				<a>dasdsa</a>
-				<a>dasdsa</a>
-				<a>dasdsa</a>
-				<a>dasdsa</a>
-				<a>dasdsa</a>
-				<a>dasdsa</a>
-
-
-		
-
-
-
+				<table>
+					<c:forEach var="main" items="${mainList}">
+						<tr>
+							<td class="center"> 카테고리 : ${main.upperCategory}</td>
+							<td>카테고리1: ${main.subCategory}</td>
+							<td>카테고리2: ${main.subCategory2}</td>
+							<td>가격: ${main.price}</td>
+							<td class="center">가격: ${main.price}</td>
+							<td>
+								<a href ="#">				
+									<img id="previewImg" src="/app/resources/img/${main.thumnailImg}" width="150px;" height="150px;"/>
+								</a>
+							</td>
+						</tr>
+					</c:forEach>
+				</table>
 			</div>
-
-
-		</div>
-	</div>
+	  </div>
+</div>

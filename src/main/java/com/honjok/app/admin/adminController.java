@@ -60,7 +60,7 @@ public class adminController {
 		vo.setThumnailImg(thumnail.getOriginalFilename());
 		adminService.insertProduct(vo);
 		System.out.println("vo :" + vo);
-		return "honjok/index.jsp";
+		return "/app/index.jsp";
 
     }
 }

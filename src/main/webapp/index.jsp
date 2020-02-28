@@ -33,7 +33,7 @@
         <a class="nav-link" href="login.jsp">로그인</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="${contextPage.request.contextPath }/app/interior/interiorAllList.do">인테리어</a>
+        <a class="nav-link" href="/app/interior/interiorAllList.do">인테리어</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="${contextPage.request.contextPath }/app/cook/CookAll.do">레시피</a>
