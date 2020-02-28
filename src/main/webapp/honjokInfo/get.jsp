@@ -48,11 +48,11 @@ eplyr<%@ page language="java" contentType="text/html; charset=UTF-8"
 				if(className == "far fa-heart fa-5x" ){
 					$(this).removeClass();
 					$(this).addClass("fas fa-heart fa-5x");
-					var com_seq = '${CommInfoVO.com_seq}';
+					var comSeq = '${CommInfoVO.comSeq}';
 					$.ajax({
 						type:'post',
 						url:"likesUp.do",
-						data :{com_seq :com_seq},
+						data :{comSeq :comSeq},
 						success:function(json){
 							console.log("성공");
 						},error: function(jqXHR, textStatus, errorThrown) {
@@ -187,8 +187,8 @@ eplyr<%@ page language="java" contentType="text/html; charset=UTF-8"
 					buttons : [ {
 						title : '웹으로 보기',
 						link : {
-							mobileWebUrl : 'http://localhost:8080/app/honjokInfo/get.do?com_seq=387',
-							webUrl : 'http://localhost:8080/app/honjokInfo/get.do?com_seq=387'
+							mobileWebUrl : 'http://localhost:8080/app/honjokInfo/get.do?comSeq=387',
+							webUrl : 'http://localhost:8080/app/honjokInfo/get.do?comSeq=387'
 						}
 					} ]
 				});
@@ -236,7 +236,7 @@ eplyr<%@ page language="java" contentType="text/html; charset=UTF-8"
 												// 인포윈도우로 장소에 대한 설명을 표시합니다
 												var infowindow = new kakao.maps.InfoWindow(
 														{
-															content : '<div style="width:150px;text-align:center;padding:6px 0;">${CommInfoVO.place_name }</div>'
+															content : '<div style="width:150px;text-align:center;padding:6px 0;">${CommInfoVO.placeName }</div>'
 														});
 												infowindow.open(map, marker);
 
@@ -254,30 +254,30 @@ eplyr<%@ page language="java" contentType="text/html; charset=UTF-8"
 
 
 
-	<h1>글번호 : ${CommInfoVO.com_seq }</h1>
+	<h1>글번호 : ${CommInfoVO.comSeq }</h1>
 	<%-- <h1>제목 : ${CommInfoVO.title }</h1> 
 	<p>작성자: ${CommInfoVO.id }</p> 
-	<p>별점:${CommInfoVO.sum_star }</p>
+	<p>별점:${CommInfoVO.sumStar }</p>
 	<p>메뉴${CommInfoVO.menu }</p>
 		<p>ID:${CommInfoVO.id }</p>
 	<p>타입:${CommInfoVO.type }</p>
 	<p>작성일:${CommInfoVO.regdate }</p>
 	--%>
 
-	<p>닉네임:${CommInfoVO.nick_name }님의 혼밥리뷰</p>
+	<p>닉네임:${CommInfoVO.nickName }님의 혼밥리뷰</p>
 
 
 
 	<p>메장 대표메뉴</p>
 	<c:forEach var="Upload" items="${UploadList }">
 		<img width="100" height="100"
-			src="/app/resources/img/menu/${Upload.up_img_name }">
+			src="/app/resources/img/menu/${Upload.upImgName }">
 	</c:forEach>
 
 	<hr>
-	<p>매장이름:${CommInfoVO.place_name }</p>
+	<p>매장이름:${CommInfoVO.placeName }</p>
 	<p>매장위치:${CommInfoVO.adr }</p>
-	<p>매장 업종:${CommInfoVO.category_name }</p>
+	<p>매장 업종:${CommInfoVO.categoryName }</p>
 	<p>매장번호:${CommInfoVO.tel }</p>
 	<hr>
 
@@ -323,14 +323,14 @@ eplyr<%@ page language="java" contentType="text/html; charset=UTF-8"
 
 		<c:forEach varStatus="Num" var="reply" items="${reply }">
 			<tr>
-				<td>${reply.com_seq }</td>
+				<td>${reply.comSeq }</td>
 				<td>${reply.idx }</td>
 				<td>${reply.id }</td>
-				<td>${reply.nick_name }</td>
+				<td>${reply.nickName }</td>
 				<td>${reply.content }</td>
 				<c:forEach var="replyimg" items="${reply.replyuploadvo }">
 					<td><img width="100" height="100"
-						src="/app/resources/img/review/${replyimg.up_img_name}"></td>
+						src="/app/resources/img/review/${replyimg.upImgName}"></td>
 				</c:forEach>
 			</tr>
 		</c:forEach>
@@ -341,8 +341,8 @@ eplyr<%@ page language="java" contentType="text/html; charset=UTF-8"
 
 	<form id="Review" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="id" value="soh445"> <input
-			type="hidden" name="nick_name" value="ss"> <input
-			type="hidden" name="com_seq" value="${CommInfoVO.com_seq }">
+			type="hidden" name="nickName" value="ss"> <input
+			type="hidden" name="comSeq" value="${CommInfoVO.comSeq }">
 		<textarea id="content" name="content" rows="10" cols="80">
 		안녕하세요
 	</textarea>
@@ -360,7 +360,7 @@ eplyr<%@ page language="java" contentType="text/html; charset=UTF-8"
 			<input type="submit" value="수정">
 		</form>
 		<form action="delete.do">
-			<input type="hidden" name="com_seq" value="${CommInfoVO.com_seq}">
+			<input type="hidden" name="comSeq" value="${CommInfoVO.comSeq}">
 			<input type="submit" value="삭제">
 		</form>
 		<form action="select.do">

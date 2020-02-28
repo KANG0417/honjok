@@ -26,10 +26,10 @@
 		values((COMMMUNITY_SEQ.NEXTVAL) + 1,
 		#{title}, #{id},
 		#{content}, SYSDATE,
-		'0', '0', '1', #{nick_name});
+		'0', '0', '1', #{nickName});
 		INSERT INTO COMM_INFO
 		VALUES((SELECT NVL(MAX(com_seq), 0) FROM COMMUNITY)
-		,0,#{adr},#{menu},#{tel},#{place_name},#{category_name});
+		,0,#{adr},#{menu},#{tel},#{placeName},#{categoryName});
 		END
 		}
 	</insert>
@@ -37,19 +37,19 @@
 	<!-- 메뉴사진 업로드  -->
 	<insert id="menuUplodat" parameterType="UploadVO">
 			INSERT INTO UPLOAD(COM_SEQ,Up_img_name,type)
-		VALUES((SELECT NVL(MAX(com_seq), 0) FROM COMMUNITY),#{up_img_name},'1')
+		VALUES((SELECT NVL(MAX(comSeq), 0) FROM COMMUNITY),#{upImgName},'1')
 	</insert>
 	
 	<!-- 리뷰 insert -->
 	<insert id="inertReview" parameterType="commReplyVO">
 		INSERT INTO COMM_REPLY
-		VALUES(#{id},0,COMM_REPLY_SEQ.NEXTVAL,#{content},sysdate,#{nick_name},#{com_seq})
+		VALUES(#{id},0,COMM_REPLY_SEQ.NEXTVAL,#{content},sysdate,#{nickName},#{comSeq})
 	</insert>
 	
 	<!-- 리뷰 이미지 insert  -->
 	<insert id="insertReviewImage" parameterType="replyUploadVO">
 	INSERT INTO REPLY_UPLOAD(COM_SEQ,PARENT_NUMBER,UP_IMG_NAME,IDX)
-	VALUES(#{com_seq},(SELECT NVL(MAX(idx), 0) FROM COMM_REPLY),#{up_img_name},REPLY_UPLOAD_SEQ.NEXTVAL)
+	VALUES(#{comSeq},(SELECT NVL(MAX(idx), 0) FROM COMM_REPLY),#{upImgName},REPLY_UPLOAD_SEQ.NEXTVAL)
 	</insert>
 
 	<!-- insert end -->
@@ -112,18 +112,18 @@
 		parameterType="String">
 		select C.* ,I.* from COMMUNITY C, COMM_INFO I
 		WHERE
-		C.COM_SEQ = i.com_seq AND i.com_seq = #{com_seq}
+		C.COM_SEQ = i.com_seq AND i.com_seq = #{comSeq}
 	</select>
 	
 	<!-- 파일 이이미지 가져오기 -->
 	
 	<select id="getFileName" parameterType="String" resultType="UploadVO">
-		 select * from upload where com_seq = #{com_seq} and type = '1'
+		 select * from upload where com_seq = #{comSeq} and type = '1'
 	</select>
 	
 	<!-- 댓글 가져오기  -->
 	<select id="getReview" parameterType="String" resultType="commReplyVO">
-	select * from comm_reply where com_seq = #{com_seq} order by
+	select * from comm_reply where com_seq = #{comSeq} order by
 		idx DESC
 	</select>
 	
@@ -146,9 +146,9 @@
 		declare
 		begin
 
-		DELETE COMM_INFO WHERE COM_SEQ = #{com_seq};
+		DELETE COMM_INFO WHERE COM_SEQ = #{comSeq};
 		DELETE COMMUNITY WHERE COM_SEQ =
-		#{com_seq};
+		#{comSeq};
 
 		end
 		}
@@ -167,22 +167,22 @@
 		TITLE = #{title},
 		CONTENT = #{content},
 		REGDATE = SYSDATE
-		WHERE com_seq = #{com_seq};
+		WHERE com_seq = #{comSeq};
 		UPDATE COMM_INFO
 		SET 
 		ADR = #{adr},
 		MENU = #{menu},
 		TEL = #{tel},
-		PLACE_NAME = #{place_name},
-		CATEGORY_NAME = #{category_name}
-		WHERE com_seq = #{com_seq};
+		PLACE_NAME = #{placeName},
+		CATEGORY_NAME = #{categoryName}
+		WHERE com_seq = #{comSeq};
 		END
 		}
 	</update>
 
 
 	<update id="likesUp" parameterType="String">
-		update COMMUNITY set  likes = (select likes + 1 from COMMUNITY WHERE COM_SEQ = #{com_seq}) WHERE COM_SEQ = #{com_seq}
+		update COMMUNITY set  likes = (select likes + 1 from COMMUNITY WHERE COM_SEQ = #{comSeq}) WHERE COM_SEQ = #{comSeq}
 	</update>
 <!-- 업데이트 끝 -->
 

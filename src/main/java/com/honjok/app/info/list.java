@@ -204,19 +204,19 @@ public class list {
 	}
 
 	@RequestMapping("/get.do")
-	public String select(String com_seq, Model model) {
-		System.out.println("com_seq값" + com_seq);
+	public String select(String comSeq, Model model) {
+		System.out.println("comSeq값" + comSeq);
 
 		// 업로드파일 가져오기
-		CommInfoVO CommInfoVO = service.select(com_seq);
+		CommInfoVO CommInfoVO = service.select(comSeq);
 
 		List<UploadVO[]> UploadList = new ArrayList<UploadVO[]>();
 		// 메뉴사진 가져오기
-		UploadList.addAll(service.getFileName(com_seq));
+		UploadList.addAll(service.getFileName(comSeq));
 		System.out.println("uploadList" + UploadList);
 
 		// 리뷰 데이터 가져오기
-		List<commReplyVO> reply = service.getReview(com_seq);
+		List<commReplyVO> reply = service.getReview(comSeq);
 
 		for (commReplyVO commreplyvo : reply) {
 			String idx = commreplyvo.getIdx();
@@ -235,21 +235,21 @@ public class list {
 
 	@RequestMapping("/likesUp.do")
 	@ResponseBody
-	public void likes(String com_seq) {
-		System.out.println(com_seq);
+	public void likes(String comSeq) {
+		System.out.println(comSeq);
 
 		System.out.println("좋아요 업데이트 시작 ");
 
-		String com = com_seq;
+		String com = comSeq;
 		service.inserLikesUp(com);
 
 	}
 
 	@RequestMapping("/delete.do")
-	public String delete(String com_seq, Model model) {
-		System.out.println(" com_seq값" + com_seq);
+	public String delete(String comSeq, Model model) {
+		System.out.println(" comSeq값" + comSeq);
 
-		service.delete(com_seq);
+		service.delete(comSeq);
 		return "/honjokInfo/select.do";
 	}
 

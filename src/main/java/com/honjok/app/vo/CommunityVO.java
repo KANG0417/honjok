@@ -2,7 +2,7 @@ package com.honjok.app.vo;
 
 
 public class CommunityVO {
-	private String title, id, content, type,comSeq, hit, likesNo, regdate, nickName;
+	private String title, id, content, type,comSeq, hit, likes, regdate, nickName;
 
 	public String getTitle() {
 		return title;
@@ -52,12 +52,14 @@ public class CommunityVO {
 		this.hit = hit;
 	}
 
-	public String getLikesNo() {
-		return likesNo;
+	
+
+	public String getLikes() {
+		return likes;
 	}
 
-	public void setLikesNo(String likesNo) {
-		this.likesNo = likesNo;
+	public void setLikes(String likes) {
+		this.likes = likes;
 	}
 
 	public String getRegdate() {
@@ -76,13 +78,13 @@ public class CommunityVO {
 		this.nickName = nickName;
 	}
 
-	
 	@Override
 	public String toString() {
 		return "CommunityVO [title=" + title + ", id=" + id + ", content=" + content + ", type=" + type + ", comSeq="
-				+ comSeq + ", hit=" + hit + ", likesNo=" + likesNo + ", regdate=" + regdate + ", nickName=" + nickName
+				+ comSeq + ", hit=" + hit + ", likes=" + likes + ", regdate=" + regdate + ", nickName=" + nickName
 				+ "]";
 	}
+
 	
 	
 	
