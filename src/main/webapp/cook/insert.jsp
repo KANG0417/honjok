@@ -60,7 +60,7 @@
 <!-- 				썸머노트 -->
 				<div style="width: 60%; margin: auto;">
 					
-						<input type="text" name="nickName" style="width: 20%;" placeholder="작성자"/><br>
+						<input type="text" name="nick_name" style="width: 20%;" placeholder="작성자"/><br>
 						<input type="text" name="title" style="width: 40%;" placeholder="제목"/>
 						<br><br> 
 						<textarea id="description" name="content"></textarea>

@@ -22,28 +22,13 @@
 	.border-none, .border-none td { border: none; }
 </style>
 <script>
-function fn_delete() {
-	var frmDel = document.frm;
-	/* //비밀번호 일치여부 확인
-	if (frmDel.pwd.value == "${bvo.pwd}") {
-		//비밀번호 일치하는 경우  */
-		var isDelete = confirm("정말 삭제 할까요?");
-		if (isDelete) {
-/*				frmDel.submit(); 
-			location.href="deleteArticle.do?com_seq="+seq; */
-			document.getElementById('deleteform').submit();
-
-		} else {
-			history.back();
-		}
-}
 </script>
 </head>
 <body>
-
 <div id="container">
 	<h1>글 상세</h1>
-		<input type="hidden" name="comSeq" value="${cookDetail.comSeq }">
+		<input type="hidden" name="com_seq" value="${cookDetail.com_seq }">
+	<table>
 		<tr>
 			<th>제목</th>
 			<td>
@@ -52,7 +37,7 @@ function fn_delete() {
 		</tr>
 		<tr>
 			<th>작성자</th>
-			<td>${cookDetail.nickName }</td>
+			<td>${cookDetail.nick_name }</td>
 		</tr>
 		<tr>
 			<th>내용</th>
@@ -78,6 +63,7 @@ function fn_delete() {
 		</tr>
 		
 		
+	</table>
 	<p>
 		 <a href="insert.jsp">글등록</a>
 		<a href="${contextPage.request.contextPath}/app/cook/CookAll.do">글목록</a>
@@ -86,15 +72,10 @@ function fn_delete() {
 		   <input type="submit" value="수정">
 		</form>
 		
-		<form action="delete.do?com_seq=${cookDetail.comSeq}" id="deleteform">
-		   <input type="submit" onclick="fn_delete()" value="삭제">
-		   <input type="hidden" name="comSeq" id="comSeq" value="${cookDetail.comSeq }">
+		<form action="delete.do">
+		   <input type="hidden" name="com_seq" value="${cookDetail.com_seq }">
+		   <input type="submit" value="삭제">
 		</form>
-		
-<%-- 		<form action="deleteArticle.do?com_seq=${interiorSelect.comSeq }" id="deleteform"> --%>
-<!-- 			<input type="button" onclick="fn_delete()" value="글 삭제"> -->
-<%-- 			<input type="hidden" name="com_seq" id="com_seq" value="${interiorSelect.comSeq }"> --%>
-<!-- 		</form> -->
 </div>
 
 </body>

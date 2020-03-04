@@ -29,9 +29,9 @@ public class CookServiceImpl implements CookService{
 
 
 	@Override
-	public void delete(String comSeq) {
+	public void delete(String com_seq) {
 		// TODO Auto-generated method stub
-		CookMapper.delete(comSeq);
+		CookMapper.delete(com_seq);
 	}
 
 
@@ -81,7 +81,7 @@ public class CookServiceImpl implements CookService{
 
 
 	@Override
-	public CookVO select(String comSeq) {
+	public CookVO select(String com_seq) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -89,8 +89,8 @@ public class CookServiceImpl implements CookService{
 
 
 	@Override
-	public void boardHitsUpdate(int comSeq) {
-		CookMapper.boardHitsUpdate(comSeq);
+	public void boardHitsUpdate(int com_seq) {
+		CookMapper.boardHitsUpdate(com_seq);
 		
 	}
 	

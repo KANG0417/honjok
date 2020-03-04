@@ -28,7 +28,7 @@
 		#{content}, SYSDATE,
 		'0', '0', '1', #{nickName});
 		INSERT INTO COMM_INFO
-		VALUES((SELECT NVL(MAX(comSeq), 0) FROM COMMUNITY)
+		VALUES((SELECT NVL(MAX(com_seq), 0) FROM COMMUNITY)
 		,0,#{adr},#{menu},#{tel},#{placeName},#{categoryName});
 		END
 		}
@@ -36,7 +36,7 @@
 	
 	<!-- 메뉴사진 업로드  -->
 	<insert id="menuUplodat" parameterType="UploadVO">
-			INSERT INTO UPLOAD(COMSEQ,Up_img_name,type)
+			INSERT INTO UPLOAD(COM_SEQ,Up_img_name,type)
 		VALUES((SELECT NVL(MAX(comSeq), 0) FROM COMMUNITY),#{upImgName},'1')
 	</insert>
 	
@@ -79,11 +79,11 @@
 		HIT,
 		NICK_NAME,
 		LIKES,TYPE FROM COMMUNITY WHERE type =
-		'1' order by comSeq DESC))
+		'1' order by com_seq DESC))
 		where RECNUM BETWEEN (#{section}-1)* 90 +
 		(#{pageNum}-1)* 9 + 1
 		AND (#{section} - 1)*90 + #{pageNum}*9 order by
-		comSeq DESC
+		com_seq DESC
 	</select>
 
 	<!-- 커뮤니티 인포 페이징 처리후 -->

@@ -56,7 +56,7 @@
 <div class="jumbotron text-center">
  
   <h2>Recipes for you eating alone</h2>
-  <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo">What does this word mean '혼밥'? (Click!)</button>
+  <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo">혼밥이란? (클릭!)</button>
   <div id="demo" class="collapse">
   	Honbap: Eating Alone Is a New Norm
     Honbap is a portmanteau of the Korean words for “alone” and “meal” <br>
@@ -104,7 +104,7 @@
 
 						<div class="col-md-4" id="select">
 							<a class="main-img${articleNum.index}"
-								href="CookDetail.do?comSeq=${cookvo.comSeq }"
+								href="CookDetail.do?com_seq=${cookvo.com_seq }"
 								class="img w-100 mb-3"> 
 								 <script>
 									var contentimg = '${cookvo.content}';
@@ -123,11 +123,11 @@
 							</a>
 							<div class="text w-100 text-center">
 								<h3>
-									<a href="CookDetail.do?comSeq=${cookvo.comSeq }">${cookvo.title }</a>
+									<a href="CookDetail.do?com_seq=${cookvo.com_seq }">${cookvo.title }</a>
 								</h3>
 							</div>
 							작성일: ${cookvo.regdate }<br>
-							작성자닉네임: ${cookvo.nickName }<br> 조회수: ${cookvo.hit }
+							작성자닉네임: ${cookvo.nick_name }<br> 조회수: ${cookvo.hit }
 							<br> 좋아요: ${cookvo.likes }<br>
 						</div>
 					</c:forEach>
@@ -230,9 +230,9 @@
 
    <c:forEach var="cookvo" items="${cookList }">
       <tr>
-         <td>${cookvo.comSeq }</td>
-         <td><a href="CookDetail.do?comSeq=${cookvo.comSeq }">${cookvo.title }</a></td>
-         <td>${cookvo.nickName }</td>
+         <td>${cookvo.com_seq }</td>
+         <td><a href="CookDetail.do?com_seq=${cookvo.com_seq }">${cookvo.title }</a></td>
+         <td>${cookvo.nick_name }</td>
          <td>${cookvo.regdate }</td>
          <td>${cookvo.hit }</td>
          <td>${cookvo.likes }</td>

@@ -73,13 +73,13 @@ public class CookController {
    }
    
    @RequestMapping("/CookDetail.do")
-	public String cookDetail(Model model, CookVO cvo, int comSeq) {
+	public String cookDetail(Model model, CookVO cvo, int com_seq) {
 		System.out.println("Cook게시판 하나 조회입니다.");
 		CookVO Cook = cookservice.selectOne(cvo);
 		model.addAttribute("cookDetail", Cook);
 		
 		int board_hit = 0;
-        cookservice.boardHitsUpdate(comSeq);
+        cookservice.boardHitsUpdate(com_seq);
         model.addAttribute("Board_hit", board_hit);
 		
 		
@@ -102,16 +102,18 @@ public class CookController {
 		System.out.println("> board vo : " + cvo);
 
          cookservice.update(cvo);
+         
+         
+         
        return "/cook/CookDetail.do";
    }
    
    
    @RequestMapping("/delete.do")
-	public String delete(String comSeq ,Model model) throws Exception {
-		System.out.println(comSeq);
+	public String delete(String com_seq ,Model model) {
+		System.out.println(com_seq);
 		System.out.println(" 글 삭제");
-		cookservice.delete(comSeq);
-		System.out.println("msg 삭제가...음..완료");
+		cookservice.delete(com_seq);
 		
 		return "/cook/CookAll.do";
 	}
