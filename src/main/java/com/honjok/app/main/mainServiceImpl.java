@@ -18,5 +18,10 @@ public class mainServiceImpl implements mainService{
 		return mainDAO.selectMainList();
 
 	}
+
+	@Override
+	public AdminVO getMain(AdminVO vo) {
+		return mainDAO.selectMain(vo);
+	}
 }
 
