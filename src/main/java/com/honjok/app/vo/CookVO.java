@@ -2,7 +2,7 @@ package com.honjok.app.vo;
 
 public class CookVO {
 	private String 
-	com_seq,
+	comSeq,
 	title,
 	content,
 	regdate,
@@ -12,17 +12,15 @@ public class CookVO {
 	likes,
 	hit,
 	id,
-	nick_name
+	nickName
 	;
 
-	public CookVO() {}
-	
-	public String getCom_seq() {
-		return com_seq;
+	public String getComSeq() {
+		return comSeq;
 	}
 
-	public void setCom_seq(String com_seq) {
-		this.com_seq = com_seq;
+	public void setComSeq(String comSeq) {
+		this.comSeq = comSeq;
 	}
 
 	public String getTitle() {
@@ -97,22 +95,21 @@ public class CookVO {
 		this.id = id;
 	}
 
-	public String getNick_name() {
-		return nick_name;
+	public String getNickName() {
+		return nickName;
 	}
 
-	public void setNick_name(String nick_name) {
-		this.nick_name = nick_name;
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
 	}
 
 	@Override
 	public String toString() {
-		return "CookVO [com_seq=" + com_seq + ", title=" + title + ", content=" + content + ", regdate=" + regdate
+		return "CookVO [comSeq=" + comSeq + ", title=" + title + ", content=" + content + ", regdate=" + regdate
 				+ ", category=" + category + ", image=" + image + ", cooktime=" + cooktime + ", likes=" + likes
-				+ ", hit=" + hit + ", id=" + id + ", nick_name=" + nick_name + "]";
+				+ ", hit=" + hit + ", id=" + id + ", nickName=" + nickName + "]";
 	}
-	
-	
-	
+
+	public CookVO() {}
 
 }
