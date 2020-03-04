@@ -42,9 +42,9 @@ public class CookMapper {
 		return mybatis.selectOne("cookMapper.selectOne", cvo);
 	
 	}
-	public void delete(String com_seq) {
+	public void delete(String comSeq) {
 		System.out.println("delete 실행");
-		mybatis.delete("cookMapper.delete",com_seq);
+		mybatis.delete("cookMapper.delete",comSeq);
 		
 		
 	}
@@ -55,7 +55,7 @@ public class CookMapper {
 		
 	}
 	//조회수 증가
-	public void boardHitsUpdate(int com_seq) {
-		mybatis.update("cookMapper.boardHitsUpdate", com_seq);
+	public void boardHitsUpdate(int comSeq) {
+		mybatis.update("cookMapper.boardHitsUpdate", comSeq);
 	}
 }
