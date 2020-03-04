@@ -29,9 +29,9 @@
 			<h2>혼밥의 모든것</h2>
 		</div>
 		<hr>
-		
 
-		
+
+
 		<c:choose>
 			<c:when test="${CommunityVOList == null }">
 				<p align="center">
@@ -40,7 +40,8 @@
 			</c:when>
 			<c:when test="${CommunityVOList != null }">
 				<div class="row">
-					<div class="row" style="width: 100%; height: 300px;  margin-bottom:100px;">
+					<div class="row"
+						style="width: 100%; height: 300px; margin-bottom: 100px;">
 						이번주 베스트 가게는 ~ <img style="width: 100%; height: 100%;"
 							src="/app/resources/img/no.jpg">
 					</div>
@@ -49,7 +50,7 @@
 
 						<div class="col-md-4" id="select">
 							<a class="main-img${articleNum.index}"
-								href="get.do?com_seq=${CommunityVO.com_seq }"
+								href="get.do?comSeq=${CommunityVO.comSeq }"
 								class="img w-100 mb-3"> <script>
 									var contentimg = '${CommunityVO.content}';
 									var firstimg = $(contentimg).find(
@@ -70,19 +71,19 @@
 
 							<div class="text w-100 text-center">
 								<h3>
-									<a href="get.do?com_seq=${CommunityVO.com_seq }">${CommunityVO.title }</a>
+									<a href="get.do?comSeq=${CommunityVO.comSeq }">${CommunityVO.title }</a>
 								</h3>
-							
-								
+
+
 							</div>
 
 							작성자: ${CommunityVO.id } <br> 작성일: ${CommunityVO.regdate }<br>
-							작성자닉네임: ${CommunityVO.nick_name }<br> 조회수: ${CommunityVO.hit }
+							작성자닉네임: ${CommunityVO.nickName }<br> 조회수: ${CommunityVO.hit }
 							<br> 좋아요: ${CommunityVO.likes }<br> 종합별점수 :
-							${infoList[articleNum.index].sum_star}<br> 매장이름:
+							${infoList[articleNum.index].sumStar}<br> 매장이름:
 							${infoList[articleNum.index].title}<br> 매장위치 :
 							${infoList[articleNum.index].adr}<br> 매장업종 :
-							${infoList[articleNum.index].category_name}<br> 매장전화번호:
+							${infoList[articleNum.index].categoryName}<br> 매장전화번호:
 							${infoList[articleNum.index].tel}<br>
 
 						</div>

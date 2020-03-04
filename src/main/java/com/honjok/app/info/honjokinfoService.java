@@ -13,9 +13,9 @@ public interface honjokinfoService {
    
    public List<CommunityVO> selectAll(Map<String, Integer> pagingMap);
 
-   public CommInfoVO select(String com_seq);
+   public CommInfoVO select(String comSeq);
 
-   public void delete(String com_seq);
+   public void delete(String comSeq);
 
    public void uptate(CommInfoVO comI);
 
@@ -33,10 +33,13 @@ public interface honjokinfoService {
 
    public void reviewUpload(replyUploadVO replyuploadvo);
 
-   public List<commReplyVO> getReview(String com_seq);
+   public List<commReplyVO> getReview(String comSeq);
 
    public List<replyUploadVO> getReviewImg(String idx);
 
-   public void inserLikesUp(String com_seq);
+   public void inserLikesUp(String comSeq);
+
+
+   public void inserLikesId(Map<String, String> map);
    
 }

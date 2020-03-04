@@ -68,8 +68,8 @@ public class honjokInfoMapper {
 		return list;
 	}
 	
-	public List<UploadVO[]> getFileName(String comseq) {
-		return mybatis.selectList("honjokInfoMapper.getFileName",comseq);
+	public List<UploadVO[]> getFileName(String comSeq) {
+		return mybatis.selectList("honjokInfoMapper.getFileName",comSeq);
 	}
 	
 	
@@ -78,18 +78,18 @@ public class honjokInfoMapper {
 		return mybatis.selectOne("honjokInfoMapper.selectAllCount");
 	}
 
-	public CommInfoVO select(String com_seq) {
+	public CommInfoVO select(String comSeq) {
 
 		System.out.println("select실행");
-		CommInfoVO CommInfoVO = mybatis.selectOne("honjokInfoMapper.select", com_seq);
+		CommInfoVO CommInfoVO = mybatis.selectOne("honjokInfoMapper.select", comSeq);
 		System.out.println(CommInfoVO);
 		return CommInfoVO;
 
 	}
 	
 	//리뷰 조회
-	public List<commReplyVO> getReview(String com_seq) {
-		List<commReplyVO> getReview = mybatis.selectList("honjokInfoMapper.getReview", com_seq);
+	public List<commReplyVO> getReview(String comSeq) {
+		List<commReplyVO> getReview = mybatis.selectList("honjokInfoMapper.getReview", comSeq);
 		return getReview;
 	}
 
@@ -107,10 +107,10 @@ public class honjokInfoMapper {
 	//select 끝
 	
 
-	public void delete(String com_seq) {
+	public void delete(String comSeq) {
 
 		System.out.println("delete 실행");
-		mybatis.delete("honjokInfoMapper.delete", com_seq);
+		mybatis.delete("honjokInfoMapper.delete", comSeq);
 
 	}
 	
@@ -126,10 +126,14 @@ public class honjokInfoMapper {
 	}
 
 	//좋아요 업데이트 
-			public void insertLikesUP(String com_seq) {
+			public void insertLikesUP(String comSeq) {
 				System.out.println("좋아요 업데이트 Mapper");
-				mybatis.update("honjokInfoMapper.likesUp", com_seq);
+				mybatis.update("honjokInfoMapper.likesUp", comSeq);
 				
+			}
+
+			public void inserLikesId(Map<String, String> map) {
+				mybatis.insert("honjokInfoMapper.inserLikesId",map);
 			}
 
 	

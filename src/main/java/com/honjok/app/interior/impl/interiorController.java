@@ -82,7 +82,7 @@ public class interiorController {
 		}
 	
 	@RequestMapping("/getInterior.do")
-	public String getinteriorSelect(Model model, CommInteriorVO cvo, int com_seq) {
+	public String getinteriorSelect(Model model, CommInteriorVO cvo, int comSeq) {
 		System.out.println(cvo + "값");
 		System.out.println("===>인테리어게시판 하나 조회");
 		CommInteriorVO CommInterior = interiorService.getBoardList(cvo);
@@ -90,7 +90,7 @@ public class interiorController {
 		model.addAttribute("interiorSelect", CommInterior);
 		    
 			int board_hit = 0;
-	        interiorService.boardHitsUpdate(com_seq);
+	        interiorService.boardHitsUpdate(comSeq);
 	        model.addAttribute("Board_hit", board_hit);
 		            	
 		return "InBoardDetail.jsp";
@@ -175,10 +175,10 @@ public class interiorController {
 	   }
 	
 	@RequestMapping("/updateInterior.do")
-	public String updateBoard(Model model, CommInteriorVO cvo, int com_seq) {
+	public String updateBoard(Model model, CommInteriorVO cvo, int comSeq) {
 		System.out.println(">>> 글 수정 처리 - updateBoard()");
 		System.out.println("> board vo : " + cvo);
-		System.out.println("getCom_seq: "+ cvo.getCom_seq());
+		System.out.println("getCom_seq: "+ cvo.getcomSeq());
 		
         interiorService.updateBoard(cvo);
 
@@ -188,7 +188,7 @@ public class interiorController {
 	@RequestMapping("/deleteArticle.do")
 	public String deleteBoard(CommInteriorVO cvo) {
 		System.out.println(">>> 글 삭제 처리 - deleteBoard()");
-		System.out.println("cvo data : " + cvo.getCom_seq());
+		System.out.println("cvo data : " + cvo.getcomSeq());
 		interiorService.deleteBoard(cvo);
 		return "interiorAllList.do";
 	}

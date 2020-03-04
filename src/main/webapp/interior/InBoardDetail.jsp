@@ -94,7 +94,7 @@
 <body>
 <div id="container">
 	<h1>글 상세</h1>
-		<input type="hidden" name="com_seq" id="com_seq" value="${interiorvo.com_seq }">
+		<input type="hidden" name="comSeq" id="comSeq" value="${interiorvo.comSeq }">
 	<table>
 		<tr>
 			<th>제목</th>
@@ -104,7 +104,7 @@
 		</tr>
 		<tr>
 			<th>작성자</th>
-			<td>${interiorSelect.nick_name }</td>
+			<td>${interiorSelect.nickName }</td>
 		</tr>
 		<tr>
 			<th>내용</th>
@@ -122,10 +122,19 @@
 		</tr>
 		<tr>
 			<th>파일이미지</th>
-			<td>${interiorSelect.file_image }</td>
+			<td>${interiorSelect.fileImage }</td>
 		</tr>
 	</table>
-			<p>좋아요 ${interiorSelect.likes }</p>
+			<c:choose>
+				  <c:when test="${id ne null}">
+				    <a href='javascript: like_func();'>♡<img src='' id='like_img'></a>
+				  </c:when>
+				  <c:otherwise>
+				    <a href='javascript: login_need();'>♥<img src=''></a>
+				  </c:otherwise>
+			</c:choose>
+			<p>좋아요 ${interiorSelect.likesNo }</p>
+			
 				<div id="ex1" class="modal">
 				<p><input type="text" id = "ShareUrl">
 				<span class="btn-type1"><button OnClick="javascript:CopyUrlToClipboard()">URL 복사</button></span>
@@ -137,9 +146,9 @@
 			   <c:set value="${interiorSelect }" var="inter" scope="session"></c:set>
 			   <input type="submit" value="수정">
 				</form>
-		<form action="deleteArticle.do?com_seq=${interiorSelect.com_seq }" id="deleteform">
+		<form action="deleteArticle.do?com_seq=${interiorSelect.comSeq }" id="deleteform">
 			<input type="button" onclick="fn_delete()" value="글 삭제">
-			<input type="hidden" name="com_seq" id="com_seq" value="${interiorSelect.com_seq }">
+			<input type="hidden" name="com_seq" id="com_seq" value="${interiorSelect.comSeq }">
 		</form>
 		<a href="${contextPage.request.contextPath}/app/interior/interiorAllList.do">글목록</a>
 </div>

@@ -278,7 +278,7 @@
 	<form id="insert" action="insert.do" method="POST"
 		enctype="multipart/form-data">
 		<input type="hidden" name="id" value="soh445"> <input
-			type="hidden" name="nick_name" value="환탁"> <select
+			type="hidden" name="nickName" value="환탁"> <select
 			name="menu">
 			<option value='' selected>메뉴선택</option>
 			<option value='한식'>한식</option>
@@ -300,8 +300,8 @@
 		위치정보(클릭해주세요) <br> <input class="adr" type="hidden" name="adr"
 			value="위치를 등록해주세요"> <input class="tel" type="hidden"
 			name="tel" value="전화번호 등록해주세요"> <input class="place_name"
-			type="hidden" name="place_name" value="매장이름 등록해주세요"> <input
-			class="category_name" type="hidden" name="category_name"
+			type="hidden" name="placeName" value="매장이름 등록해주세요"> <input
+			class="category_name" type="hidden" name="categoryName"
 			value="업종을 등록해주세요">
 
 	</form>

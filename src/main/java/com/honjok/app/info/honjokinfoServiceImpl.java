@@ -56,6 +56,12 @@ public class honjokinfoServiceImpl implements honjokinfoService {
 	}
 
 	
+	//좋아요 ID저장
+	@Override
+	public void inserLikesId(Map<String, String> map) {
+		Mapper.inserLikesId(map);
+		
+	}
 
 
 	//insert끝
@@ -89,25 +95,25 @@ public class honjokinfoServiceImpl implements honjokinfoService {
 	
 	// 메뉴 사진 select
 	@Override
-	public List<UploadVO[]> getFileName(String comseq) {
+	public List<UploadVO[]> getFileName(String comSeq) {
 			
-		return Mapper.getFileName(comseq);
+		return Mapper.getFileName(comSeq);
 	}
 
 
 
 	//info테이블 조회
 	@Override
-	public CommInfoVO select(String com_seq) {
+	public CommInfoVO select(String comSeq) {
 		
-		CommInfoVO CommInfoVO = Mapper.select(com_seq);
+		CommInfoVO CommInfoVO = Mapper.select(comSeq);
 		return CommInfoVO;
 	}
 	
 	//리뷰데이터 조회
 	@Override
-	public List<commReplyVO> getReview(String com_seq) {
-			List<commReplyVO> getReview = Mapper.getReview(com_seq);
+	public List<commReplyVO> getReview(String comSeq) {
+			List<commReplyVO> getReview = Mapper.getReview(comSeq);
 		return getReview;
 	}
 	
@@ -123,8 +129,8 @@ public class honjokinfoServiceImpl implements honjokinfoService {
 
 	// community 삭제
 	@Override
-	public void delete(String com_seq) {
-		Mapper.delete(com_seq);
+	public void delete(String comSeq) {
+		Mapper.delete(comSeq);
 	}
 
 
@@ -139,10 +145,15 @@ public class honjokinfoServiceImpl implements honjokinfoService {
 
 	//likes업데이트
 	@Override
-	public void inserLikesUp(String com_seq) {
-		Mapper.insertLikesUP(com_seq);
+	public void inserLikesUp(String comSeq) {
+		Mapper.insertLikesUP(comSeq);
 		
 	}
+
+
+
+
+
 
 	
 

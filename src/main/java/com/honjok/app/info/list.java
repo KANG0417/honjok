@@ -14,6 +14,7 @@ import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,7 @@ import com.google.gson.JsonObject;
 import com.honjok.app.vo.CommInfoVO;
 import com.honjok.app.vo.CommunityVO;
 import com.honjok.app.vo.UploadVO;
+import com.honjok.app.vo.UserVO;
 import com.honjok.app.vo.commReplyVO;
 import com.honjok.app.vo.replyUploadVO;
 
@@ -204,19 +206,19 @@ public class list {
 	}
 
 	@RequestMapping("/get.do")
-	public String select(String com_seq, Model model) {
-		System.out.println("com_seq값" + com_seq);
+	public String select(String comSeq, Model model,HttpServletRequest request) {
+		System.out.println("comSeq값" + comSeq);
 
 		// 업로드파일 가져오기
-		CommInfoVO CommInfoVO = service.select(com_seq);
+		CommInfoVO CommInfoVO = service.select(comSeq);
 
 		List<UploadVO[]> UploadList = new ArrayList<UploadVO[]>();
 		// 메뉴사진 가져오기
-		UploadList.addAll(service.getFileName(com_seq));
+		UploadList.addAll(service.getFileName(comSeq));
 		System.out.println("uploadList" + UploadList);
 
 		// 리뷰 데이터 가져오기
-		List<commReplyVO> reply = service.getReview(com_seq);
+		List<commReplyVO> reply = service.getReview(comSeq);
 
 		for (commReplyVO commreplyvo : reply) {
 			String idx = commreplyvo.getIdx();
@@ -225,6 +227,14 @@ public class list {
 		}
 
 		System.out.println(reply);
+		HttpSession session = request.getSession();
+		UserVO uservo = (UserVO) session.getAttribute("userSession");
+		if(uservo == null) {
+			
+			//	uservo.getId();
+						
+		}
+		
 
 		model.addAttribute("reply", reply);
 		model.addAttribute("UploadList", UploadList);
@@ -235,21 +245,28 @@ public class list {
 
 	@RequestMapping("/likesUp.do")
 	@ResponseBody
-	public void likes(String com_seq) {
-		System.out.println(com_seq);
+	public void likes(String comSeq,String id) {
+		System.out.println(comSeq);
 
 		System.out.println("좋아요 업데이트 시작 ");
-
-		String com = com_seq;
-		service.inserLikesUp(com);
+		
+		
+		Map<String,String> map = new HashMap<String, String>(); 
+		map.put("comSeq", comSeq);
+		map.put("id", id);
+		
+		System.out.println(map);
+		//커뮤니티 like+1
+		service.inserLikesUp(comSeq);
+		service.inserLikesId(map);
 
 	}
 
 	@RequestMapping("/delete.do")
-	public String delete(String com_seq, Model model) {
-		System.out.println(" com_seq값" + com_seq);
+	public String delete(String comSeq, Model model) {
+		System.out.println(" comSeq값" + comSeq);
 
-		service.delete(com_seq);
+		service.delete(comSeq);
 		return "/honjokInfo/select.do";
 	}
 
