@@ -104,7 +104,7 @@
 
 						<div class="col-md-4" id="select">
 							<a class="main-img${articleNum.index}"
-								href="CookDetail.do?com_seq=${cookvo.com_seq }"
+								href="CookDetail.do?comSeq=${cookvo.comSeq }"
 								class="img w-100 mb-3"> 
 								 <script>
 									var contentimg = '${cookvo.content}';
