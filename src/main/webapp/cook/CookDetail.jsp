@@ -85,7 +85,7 @@ function fn_delete() {
 		   <input type="submit" value="수정">
 		</form>
 		
-		<form action="delete.do?com_seq=${cookDetail.comSeq}" id="deleteform">
+		<form action="delete.do?comSeq=${cookDetail.comSeq}" id="deleteform">
 		   <input type="submit" onclick="fn_delete()" value="삭제">
 		   <input type="hidden" name="comSeq" id="comSeq" value="${cookDetail.comSeq }">
 		</form>

@@ -27,7 +27,7 @@
 <div id="container">
 	<h1>글 상세</h1>
 	<form action="update.do" method="post">
-		<input type="hidden" name="com_seq" value="${ckvo.com_seq }">
+		<input type="hidden" name="comSeq" value="${ckvo.comSeq }">
 	<table>
 		<tr>
 			<th>제목</th>
@@ -37,7 +37,7 @@
 		</tr>
 		<tr>
 			<th>작성자</th>
-			<td><input type="text" name="nick_name" value=${ckvo.nick_name }></td>
+			<td><input type="text" name="nickName" value=${ckvo.nickName }></td>
 		</tr>
 		<tr>
 			<th>내용</th>
