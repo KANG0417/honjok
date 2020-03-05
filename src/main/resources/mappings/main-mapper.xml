@@ -7,5 +7,10 @@
   	<select id="selectMainList" resultType="admin">
   		SELECT * FROM PRODUCT
   	</select>
+  	
+    <select id="selectMainDetail" parameterType="int" resultType="admin">
+		   SELECT * FROM PRODUCT WHERE P_NUM = #{pNum}
+	</select>	   
+	
   </mapper>
   	

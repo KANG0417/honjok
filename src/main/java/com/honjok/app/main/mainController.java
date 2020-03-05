@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.honjok.app.vo.AdminVO;
+import com.honjok.app.vo.CommInteriorVO;
 
 
 @Controller
@@ -39,6 +40,14 @@ public class mainController {
 		System.out.println(mainList);
 		return "index2.jsp";
 	}
+	
+	@RequestMapping("/getMain.do")
+	public String getinteriorSelect(Model model, AdminVO vo) {
+		AdminVO mainVO = mainService.getMain(vo);
+		model.addAttribute("mainDetail", mainVO);        	
+		return "mainDetail.jsp";
+	}
+	
 	
 	
 	

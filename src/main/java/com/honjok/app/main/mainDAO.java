@@ -15,10 +15,13 @@ public class mainDAO {
 	private SqlSessionTemplate mybatis;
 	
 	public List<AdminVO> selectMainList(){
-		List<AdminVO> list = mybatis.selectList("selectMainList");
+		List<AdminVO> list = mybatis.selectList("mainDAO.selectMainList");
 		return list;
 	}
 	
+	public AdminVO selectMain(AdminVO vo) {
+			return mybatis.selectOne("mainDAO.selectMainDetail", vo);
+		}
 	
 
 
