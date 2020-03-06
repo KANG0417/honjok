@@ -7,11 +7,11 @@
    <insert id="insertCook" parameterType="cook">
     	insert into comm_cook
 		VALUES((cook_sequence.NEXTVAL)+1,#{title},#{content}
-		,sysdate, #{category}, #{image},#{cooktime},0,0,'ID',#{nick_name})
+		,sysdate, #{category}, #{image},#{cooktime},0,0,'ID',#{nickName})
   	</insert>
 	
 	<select id="selectOne" parameterType="String" resultType="cook">
-		   SELECT * FROM COMM_COOK WHERE COM_SEQ = #{com_seq}
+		   SELECT * FROM COMM_COOK WHERE COM_SEQ = #{comSeq}
 	</select>
 	<select id="selectAll" resultType="cook" parameterType="hashmap">
 		SELECT *
@@ -50,13 +50,13 @@
 		REGDATE = sysdate,
 		HIT = #{hit},
 		LIKES= #{likes},
-		NICK_NAME = #{nick_name}
-		WHERE com_seq = #{com_seq}
+		NICK_NAME = #{nickName}
+		WHERE com_seq = #{comSeq}
 	</update>
 	
 	<delete id="delete" parameterType="String">
 		DELETE COMM_COOK WHERE COM_SEQ
-		= #{com_seq}
+		= #{comSeq}
 	</delete>
 	
 	<select id="selectAllCount" resultType="Integer">
@@ -67,7 +67,7 @@
 	<update id="boardHitsUpdate" parameterType="int">
 		UPDATE COMM_COOK
 		SET HIT = HIT + 1
-		WHERE COM_SEQ = #{com_seq}
+		WHERE COM_SEQ = #{comSeq}
 	</update>
 	
 </mapper>

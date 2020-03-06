@@ -73,13 +73,13 @@ public class CookController {
    }
    
    @RequestMapping("/CookDetail.do")
-	public String cookDetail(Model model, CookVO cvo, int com_seq) {
+	public String cookDetail(Model model, CookVO cvo, int comSeq) {
 		System.out.println("Cook게시판 하나 조회입니다.");
 		CookVO Cook = cookservice.selectOne(cvo);
 		model.addAttribute("cookDetail", Cook);
 		
 		int board_hit = 0;
-        cookservice.boardHitsUpdate(com_seq);
+        cookservice.boardHitsUpdate(comSeq);
         model.addAttribute("Board_hit", board_hit);
 		
 		
@@ -110,10 +110,10 @@ public class CookController {
    
    
    @RequestMapping("/delete.do")
-	public String delete(String com_seq ,Model model) {
-		System.out.println(com_seq);
+	public String delete(String comSeq ,Model model) {
+		System.out.println(comSeq);
 		System.out.println(" 글 삭제");
-		cookservice.delete(com_seq);
+		cookservice.delete(comSeq);
 		
 		return "/cook/CookAll.do";
 	}
