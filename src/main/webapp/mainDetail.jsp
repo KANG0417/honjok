@@ -36,6 +36,26 @@
             <span class=total></span>
             <span class=won>원</span>
       </div>
+      <div>구매하기</div>
+      <div>장바구니</div>
+      <div class="notice-modal hidden">
+	    <div class="notice-modal__overlay"></div>
+	    <div class="notice-modal__content">
+	        <div class="notice-modal__header">
+	            <span class="notice-modal__tit">알림메시지</span>
+	            <button class="notice-modal__close-btn"></button>
+	        </div>
+	        <div class="notice-modal__message">
+	            <span></span>
+	        </div>
+	        <div class="notice-modal__footer">
+	            <button class="notice-modal__yes-btn">
+	                확인
+	            </button>
+	        </div>
+	    </div>
+</div>
+     
 </div>        
 </body>
 <script>
@@ -69,7 +89,67 @@
         qty.value = qtyCount;
         total.innerText =  goodsPrice * qtyCount;
         
-    })
+    });
+    
+    
+    function(){
+    const saveBtn = document.querySelector(".btn-save"),
+    	  modal = document.querySelect(".notice-modal"),
+    	  overlay = modal.querySelector(".notice-modal__overlay"),
+    	  closeBtn = modal.querySelector(".notice-modal__close-btn"),
+    	  yesBtn = modal.querySelector(".notice-modal__yes-btn");
+    
+    function closeModal(){
+        modal.classList.add("hidden")
+    }
+
+
+    function openModal(){
+    	$('.notice-modal__message').html("");
+    	if($("#sessionId").val() == ""){
+    		$('.notice-modal__message').text("로그인 하신 후 장바구니 등록을 해주세요.")
+    	}else{
+    		//장바구니 등록하는 당시에 재고보다 장바구니에 넣을 물품이 더 클 경우 방지 
+			$.ajax({
+        		type : "post",
+        		url : "/mintProject/shop/goods/addCartList",
+        		data : {'productCode' : $('#productCode').val(),
+        			    'ctCount' : $('.qty').val(),
+        			    'stock' : $('#stock').val()
+        				},
+        		dataType : "json",
+        		success : function(data){
+        			if(data.gubun=='1'){
+        				$('.notice-modal__message').text("이미 동일한 상품이 장바구니에 존재합니다.");
+        			}else if(data.gubun=='2'){
+        				console.log($('#thumbImg').prop('src'));
+        				$('.notice-modal__message').append($('<img>',{
+        					src : $('#thumbImg').prop('src'),
+        					height : "70px",
+        					width : "70px"
+        				})).append("&emsp;장바구니에 담겼습니다.");
+        				
+        				$('.gnb__cart-count').text(data.memCart);
+        			}else if(data.gubun=='3'){
+        				$('.notice-modal__message').text("재고보다 장바구니에 등록할 갯수가 부족합니다.");
+        			}
+        		},
+        		error : function(error){
+        			
+        		}
+        		
+        	});
+    	}
+    	 modal.classList.remove("hidden");
+    }
+    saveBtn.addEventListener("click",openModal);
+    overlay.addEventListener("click",closeModal);
+    closeBtn.addEventListener("click",closeModal);
+    yesBtn.addEventListener("click",closeModal);
+
+})();
+    
+    
 
 </script>
 </html>
