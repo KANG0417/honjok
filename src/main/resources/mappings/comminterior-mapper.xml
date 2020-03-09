@@ -5,7 +5,7 @@
   <mapper namespace="commInteriorDAO">
   		
   		<!-- 게시판 글쓰기 입력 -->
-	 	<insert id="insertComm" parameterType="CommInteriorVO">
+	 	<insert id="insertComm" parameterType="commInteriorVO">
 	 		{ call
 	 		declare
 	 		begin
@@ -20,7 +20,7 @@
 	 	</insert>
 	 	
 	  	<!-- 게시판 글 수정 -->
-	  	<update id="updateComm" parameterType="CommInteriorVO">
+	  	<update id="updateComm" parameterType="commInteriorVO">
 		  	{ call
 		 		declare
 		 		begin
@@ -54,7 +54,7 @@
 		</update> -->
 	
 		<!-- 게시판 글 삭제 -->
-		<delete id="deleteComm" parameterType="CommInteriorVO">
+		<delete id="deleteComm" parameterType="commInteriorVO">
 			{ call
 		 		declare
 		 		begin
@@ -75,7 +75,7 @@
 		</select>
 		
 		<!-- 게시판 전체 목록 조회 -->
-		<select id="interiorAll" resultType="CommInteriorVO" parameterType="hashmap">
+		<select id="interiorAll" resultType="commInteriorVO" parameterType="hashmap">
 			SELECT *
 			FROM ( SELECT ROWNUM
 			AS RECNUM,
@@ -104,7 +104,7 @@
 		</select>
   
   		<!-- 게시판 번호로 조회 -->
-		<select id="getInteriorOne" parameterType="CommInteriorVO" resultType="CommInteriorVO">
+		<select id="getInteriorOne" parameterType="commInteriorVO" resultType="commInteriorVO">
 			SELECT C.COM_SEQ, C.TITLE, C.NICK_NAME, C.CONTENT, C.REGDATE, C.HIT, C.LIKES, I.FILE_IMAGE
 			FROM COMMUNITY C, COMM_INTERIOR I
 			WHERE C.COM_SEQ = I.COM_SEQ
