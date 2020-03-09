@@ -113,14 +113,14 @@
 		</select>
 	
 		<!-- 좋아요 누름 -->
-		<insert id="likesCheck" parameterType="com.honjok.app.vo.LikesVO">
+		<insert id="likesCheck" parameterType="likesVO">
 	 		INSERT INTO LIKES
 	 			(ID, COM_SEQ, LIKES)
 	 		VALUES (#{id}, #{comSeq}, 1)
 		</insert>
 	  
 	  	<!-- 좋아요 취소 -->
-	 	<update id="likesCancel" parameterType="com.honjok.app.vo.LikesVO">
+	 	<update id="likesCancel" parameterType="likesVO">
 		 	UPDATE LIKES
 		 	SET LIKES = 0
 		 	WHERE COM_SEQ = #{comSeq} AND ID = #{id}
