@@ -48,9 +48,13 @@ public class InteriorServiceImpl implements InteriorService {
 		return commDAO.selectCount();
 	}
 	
-	//조회수
-	public void boardHitsUpdate(int com_seq) {
-		commDAO.boardHitsUpdate(com_seq);
+	//조회수 증가
+	public void boardHitsUpdate(int comSeq) {
+		commDAO.boardHitsUpdate(comSeq);
 	}
 	
+	//좋아요 조회
+	public int likesCount(LikesVO lvo) {
+		
+	}
 }

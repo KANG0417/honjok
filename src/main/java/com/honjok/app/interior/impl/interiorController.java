@@ -29,6 +29,7 @@ import com.google.gson.JsonObject;
 import com.honjok.app.vo.CommInfoVO;
 import com.honjok.app.vo.CommInteriorVO;
 import com.honjok.app.vo.CommunityVO;
+import com.honjok.app.vo.LikesVO;
 
 @Controller
 @RequestMapping("/interior")
@@ -67,6 +68,7 @@ public class interiorController {
 			// community 조회
 			List<CommInteriorVO> list = interiorService.BoardAllList(pagingMap);
 			System.out.println("List 확인"+list);
+			
 			// 페이징 처리위해 전체 조회
 			int countList = interiorService.selectAllCount();
 			System.out.println("총게시글수" + countList);
@@ -120,7 +122,6 @@ public class interiorController {
 			System.out.println(cvo);
 		return "interiorAllList.do";
 	}
-	
 
 	@RequestMapping(value="fileupload.do", method=RequestMethod.POST)
 	   @ResponseBody
@@ -175,10 +176,10 @@ public class interiorController {
 	   }
 	
 	@RequestMapping("/updateInterior.do")
-	public String updateBoard(Model model, CommInteriorVO cvo, int comSeq) {
+	public String updateBoard(Model model, CommInteriorVO cvo) {
 		System.out.println(">>> 글 수정 처리 - updateBoard()");
 		System.out.println("> board vo : " + cvo);
-		System.out.println("getCom_seq: "+ cvo.getcomSeq());
+		System.out.println("getComSeq: "+ cvo.getcomSeq());
 		
         interiorService.updateBoard(cvo);
 

@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.honjok.app.vo.CommInteriorVO;
 import com.honjok.app.vo.CommunityVO;
+import com.honjok.app.vo.LikesVO;
 
 public interface InteriorService {
 	List<CommInteriorVO> BoardAllList(Map<String, Integer> pagingMap);
@@ -13,6 +14,7 @@ public interface InteriorService {
 	public void updateBoard(CommInteriorVO cvo);
 	public void deleteBoard(CommInteriorVO cvo);
 	public int selectAllCount();
-	void boardHitsUpdate(int com_seq);
+	void boardHitsUpdate(int comSeq);
+	public int likesCount(LikesVO lvo);
 
 }

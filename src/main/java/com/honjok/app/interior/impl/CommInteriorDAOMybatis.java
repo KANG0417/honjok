@@ -53,7 +53,7 @@ public class CommInteriorDAOMybatis {
 	}
 
 	//조회수 증가
-	public void boardHitsUpdate(int com_seq) {
-		mybatis.update("commInteriorDAO.boardHitsUpdate", com_seq);
+	public void boardHitsUpdate(int comSeq) {
+		mybatis.update("commInteriorDAO.boardHitsUpdate", comSeq);
 	}
 }

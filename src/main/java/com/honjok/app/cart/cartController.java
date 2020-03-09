@@ -37,7 +37,7 @@ public class cartController {
 				mav.addObject("gubun", 3);
 				mav.setViewName("jsonView");
 			}
-		}else {
+		}/*else {
 			if(cnt > 0) {
 				mav.addObject("gubun", 1);
 				mav.setViewName("jsonView");
@@ -52,7 +52,7 @@ public class cartController {
 				mav.addObject("gubun", 2);
 				mav.setViewName("jsonView");
 			}
-		}
+		}*/
 		return mav;
 	}
 
