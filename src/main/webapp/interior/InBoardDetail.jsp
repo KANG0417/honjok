@@ -21,7 +21,7 @@
 	.center { text-align: center; }
 	.border-none, .border-none td { border: none; }
 	
-	/* /* body{background: #333;} */ */
+	body{background: #333;}
 	
 	.like-container{filter: url('#filter');}
 	.like-cnt{  
