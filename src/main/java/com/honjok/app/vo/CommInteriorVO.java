@@ -1,15 +1,14 @@
 package com.honjok.app.vo;
 
-import java.sql.Date;
 
 public class CommInteriorVO {
-	private String fileImage, id, title, content, comSeq, hit, likes, nickName, show;
-	private Date regdate;
+	private String fileImage, id, title, content, comSeq, hit, likes, nickName, show, regdate;
+	private int type;
 	
 	public CommInteriorVO() {}
 
 	public CommInteriorVO(int type, String id, String fileImage, String title, String content, String comSeq,
-			String hit, String likes, Date regdate, String nickName, String show) {
+			String hit, String likes, String regdate, String nickName, String show) {
 		super();
 		this.id = id;
 		this.fileImage = fileImage;
@@ -71,11 +70,11 @@ public class CommInteriorVO {
 		this.likes = likes;
 	}
 
-	public Date getRegdate() {
+	public String getRegdate() {
 		return regdate;
 	}
 
-	public void setRegdate(Date regdate) {
+	public void setRegdate(String regdate) {
 		this.regdate = regdate;
 	}
 
@@ -93,6 +92,14 @@ public class CommInteriorVO {
 
 	public void setShow(String show) {
 		this.show = show;
+	}
+
+	public int getType() {
+		return type;
+	}
+
+	public void setType(int type) {
+		this.type = type;
 	}
 
 	public String toString() {
