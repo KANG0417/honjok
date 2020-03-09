@@ -23,11 +23,11 @@ public class CommInteriorVO {
 		this.show = show;
 	}
 
-	public String getFile_image() {
+	public String getFileImage() {
 		return fileImage;
 	}
 
-	public void setFile_image(String fileImage) {
+	public void setFileImage(String fileImage) {
 		this.fileImage = fileImage;
 	}
 

@@ -15,6 +15,6 @@ public interface InteriorService {
 	public void deleteBoard(CommInteriorVO cvo);
 	public int selectAllCount();
 	void boardHitsUpdate(int comSeq);
-	public int likesCount(LikesVO lvo);
+	public int likesCount(int comSeq);
 
 }

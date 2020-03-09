@@ -38,66 +38,65 @@ public class interiorController {
 	@Autowired
 	private InteriorService interiorService;
 	
+	//인테리어 게시판 전체 목록 조회
 	@RequestMapping("/interiorAllList.do")
-	/*public String interiorAllList(Model model) {
-		System.out.println("===>인테리어게시판 전체 조회");
-		List<CommInteriorVO> CommInteriorList = interiorService.BoardAllList();
-		model.addAttribute("interiorList", CommInteriorList);
-		System.out.println(CommInteriorList.toString());
-		return "InBoardList.jsp";*/
-		public String interiorAllList(Model model, @RequestParam(required = false) String section,
-				@RequestParam(required = false) String pageNum) {
+	public String interiorAllList(Model model, @RequestParam(required = false) String section,
+			@RequestParam(required = false) String pageNum) {
 
-			System.out.println(section);
-			String section_ = section;
-			String pageNum_ = pageNum;
+		System.out.println(section);
+		String section_ = section;
+		String pageNum_ = pageNum;
 
-			if (section == null) {
-				section_ = ((section == null) ? "1" : section);
-				pageNum_ = ((pageNum == null) ? "1" : pageNum);
-			}
-
-			System.out.println(section_);
-			System.out.println(pageNum_);
-
-			Map<String, Integer> pagingMap = new HashMap<String, Integer>();
-
-			pagingMap.put("section", Integer.parseInt(section_));
-			pagingMap.put("pageNum", Integer.parseInt(pageNum_));
-
-			// community 조회
-			List<CommInteriorVO> list = interiorService.BoardAllList(pagingMap);
-			System.out.println("List 확인"+list);
-			
-			// 페이징 처리위해 전체 조회
-			int countList = interiorService.selectAllCount();
-			System.out.println("총게시글수" + countList);
-
-			model.addAttribute("pageNum", pageNum_);
-			model.addAttribute("section", section_);
-			model.addAttribute("interiorList", list);
-			model.addAttribute("countList", countList);
-
-			System.out.println();
-			return "InBoardList.jsp";
-
+		if (section == null) {
+			section_ = ((section == null) ? "1" : section);
+			pageNum_ = ((pageNum == null) ? "1" : pageNum);
 		}
+
+		System.out.println(section_);
+		System.out.println(pageNum_);
+
+		Map<String, Integer> pagingMap = new HashMap<String, Integer>();
+
+		pagingMap.put("section", Integer.parseInt(section_));
+		pagingMap.put("pageNum", Integer.parseInt(pageNum_));
+
+		// community 조회
+		List<CommInteriorVO> list = interiorService.BoardAllList(pagingMap);
+		System.out.println("List 확인" + list);
+		
+		// 페이징 처리위해 전체 조회
+		int countList = interiorService.selectAllCount();
+		System.out.println("총게시글수: " + countList);
+
+		model.addAttribute("pageNum", pageNum_);
+		model.addAttribute("section", section_);
+		model.addAttribute("interiorList", list);
+		model.addAttribute("countList", countList);
+
+		System.out.println();
+		return "InBoardList.jsp";
+
+	}
 	
+	//인테리어 게시물 한개 조회
 	@RequestMapping("/getInterior.do")
 	public String getinteriorSelect(Model model, CommInteriorVO cvo, int comSeq) {
-		System.out.println(cvo + "값");
-		System.out.println("===>인테리어게시판 하나 조회");
+		System.out.println("===> 인테리어게시판 게시물 하나 조회");
 		CommInteriorVO CommInterior = interiorService.getBoardList(cvo);
 		System.out.println(CommInterior);
 		model.addAttribute("interiorSelect", CommInterior);
 		    
 			int board_hit = 0;
 	        interiorService.boardHitsUpdate(comSeq);
-	        model.addAttribute("Board_hit", board_hit);
-		            	
+	        /*model.addAttribute("Board_hit", board_hit);*/
+		    
+	    int likes = interiorService.likesCount(comSeq);
+	    model.addAttribute("likesCount", likes);
+	    
 		return "InBoardDetail.jsp";
 	}
 	
+	//게시물 입력
 	@RequestMapping("/insertInteriorB.do")
 	public String insertBoard(CommInteriorVO cvo) {
 		System.out.println(">>> 글 등록 처리 - insertBoard()");
@@ -123,6 +122,7 @@ public class interiorController {
 		return "interiorAllList.do";
 	}
 
+	//다중파일업로드
 	@RequestMapping(value="fileupload.do", method=RequestMethod.POST)
 	   @ResponseBody
 	   public String fileUpload(HttpServletRequest req, HttpServletResponse resp, 
@@ -175,6 +175,7 @@ public class interiorController {
 	      return null;
 	   }
 	
+	//게시물 수정
 	@RequestMapping("/updateInterior.do")
 	public String updateBoard(Model model, CommInteriorVO cvo) {
 		System.out.println(">>> 글 수정 처리 - updateBoard()");
@@ -186,6 +187,7 @@ public class interiorController {
         return "getInterior.do";
     }
 	
+	//게시물 삭제
 	@RequestMapping("/deleteArticle.do")
 	public String deleteBoard(CommInteriorVO cvo) {
 		System.out.println(">>> 글 삭제 처리 - deleteBoard()");

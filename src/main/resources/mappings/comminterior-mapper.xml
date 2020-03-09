@@ -10,7 +10,7 @@
   		declare
   		begin
   		INSERT INTO COMMUNITY
-  		(COM_SEQ, TITLE, NICK_NAME, CONTENT, REGDATE, HIT, LIKES_NO, TYPE)
+  		(COM_SEQ, TITLE, NICK_NAME, CONTENT, REGDATE, HIT, LIKES, TYPE)
   		VALUES ((COMMMUNITY_SEQ.NEXTVAL) + 1, #{title}, #{nickName},
   			#{content}, SYSDATE, 0, 0, 2);
   		INSERT INTO COMM_INTERIOR (COM_SEQ, FILE_IMAGE)
@@ -114,15 +114,15 @@
 	</select>
 	
 	<!-- 좋아요 증가 -->
-	<update id="likeCheck" parameterType="">
-	    INSERT INTO LIKES
-	    VALUES ()
+	<update id="likeCheck" parameterType="likesVO">
+	    INSERT INTO LIKES (ID, COM_SEQ, LIKES)
+	    VALUES (#{id}, #{comSeq}, 1)
 	</update>
 	
 	<!-- 좋아요 취소 -->  
-	<update id="likeCancel" parameterType="HashMap">
-	    UPDATE COMMUNITY
-	    SET likes_check = 0
+	<update id="likeCancel" parameterType="likesVO">
+	    UPDATE LIKES
+	    SET LIKES = 0
 	    WHERE ID = #{id} AND COM_SEQ = #{comSeq}
 	</update>
 	

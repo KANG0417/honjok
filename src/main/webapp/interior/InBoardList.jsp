@@ -60,7 +60,7 @@
 							</a>
 							<div class="text w-100 text-center">
 								<h3>
-									<a href="getInterior.do?com_seq=${interiorvo.comSeq }">${interiorvo.title }</a>
+									<a href="getInterior.do?comSeq=${interiorvo.comSeq }">${interiorvo.title }</a>
 								</h3>
 							</div>
 							작성일: ${interiorvo.regdate }<br>

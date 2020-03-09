@@ -21,7 +21,7 @@
 	.center { text-align: center; }
 	.border-none, .border-none td { border: none; }
 	
-	body{background: #333;}
+	/* /* body{background: #333;} */ */
 	
 	.like-container{filter: url('#filter');}
 	.like-cnt{  
@@ -42,7 +42,7 @@
 	
 	.gp-header{font-family: georgia; font-size: 40px; color: #ddca7e; font-style: italic; text-align: center; margin-top: 31px;}
 	.gp-footer{position: fixed; color: #fff; bottom: 10px; left: 50%; font-family: georgia; font-style: italic; transform: translateX(-50%);}
-	.gp-footer .soc_icons{display: inline-block; color: #ddca7e; margin: 0px 0px;}
+	.gp-footer .soc_icons{display: inline-block; color: #ddca7e; margin: 0px 0px; background: #333;}
 	
 	::-moz-selection { background: transparent;}
 	::selection {background: transparent;}
@@ -212,7 +212,7 @@
 				</form>
 		<form action="deleteArticle.do?com_seq=${interiorSelect.comSeq }" id="deleteform">
 			<input type="button" onclick="fn_delete()" value="글 삭제">
-			<input type="hidden" name="com_seq" id="com_seq" value="${interiorSelect.comSeq }">
+			<input type="hidden" name="comSeq" id="comSeq" value="${interiorSelect.comSeq }">
 		</form>
 		<a href="${contextPage.request.contextPath}/app/interior/interiorAllList.do">글목록</a>
 </div>

@@ -26,7 +26,7 @@
 <div id="container">
 	<h1>글 상세</h1>
 	<form action="updateInterior.do" method="post">
-		<input type="hidden" name="com_seq" value="${inter.comSeq }">
+		<input type="hidden" name="comSeq" value="${inter.comSeq }">
 		<table>
 		<tr>
 			<th>제목</th>
@@ -37,7 +37,7 @@
 		<tr>
 			<th>작성자</th>
 			<td>
-			${inter.nick_name }
+			${inter.nickName }
 			</td>
 		</tr>
 		<tr>

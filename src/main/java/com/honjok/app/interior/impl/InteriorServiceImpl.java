@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.honjok.app.vo.CommInteriorVO;
+import com.honjok.app.vo.LikesVO;
 
 @Service("InteriorService")
 public class InteriorServiceImpl implements InteriorService {
@@ -54,7 +55,7 @@ public class InteriorServiceImpl implements InteriorService {
 	}
 	
 	//좋아요 조회
-	public int likesCount(LikesVO lvo) {
-		
+	public int likesCount(int comSeq) {
+		return commDAO.likesCount(comSeq);
 	}
 }

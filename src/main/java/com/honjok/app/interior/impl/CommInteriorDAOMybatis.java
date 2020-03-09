@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.honjok.app.vo.CommInteriorVO;
+import com.honjok.app.vo.LikesVO;
 
 @Repository("commDAOMybatis")
 public class CommInteriorDAOMybatis {
@@ -55,5 +56,10 @@ public class CommInteriorDAOMybatis {
 	//조회수 증가
 	public void boardHitsUpdate(int comSeq) {
 		mybatis.update("commInteriorDAO.boardHitsUpdate", comSeq);
+	}
+
+	//한 개의 게시물 좋아요 조회
+	public int likesCount(int comSeq) {
+		return mybatis.selectOne("likesCount", comSeq);
 	}
 }
