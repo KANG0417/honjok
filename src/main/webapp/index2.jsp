@@ -30,27 +30,16 @@
 		<hr>
 			<h3>${userSession.id}님 안녕하세요!<a href="logout.do">Log-out</a></h3>
 				<div class="row">
-					<div class="row"style="width: 100%; height: 300px; margin-bottom: 100px;">
-			
-					</div>
-
-			<div class="col-md-4" id="select">
-				<table>
-					<c:forEach var="main" items="${mainList}">
-						<tr>
-							<td class="center"> 카테고리 : ${main.upperCategory}</td>
-							<td>카테고리1: ${main.subCategory}</td>
-							<td>카테고리2: ${main.subCategory2}</td>
-							<td>가격: ${main.price}</td>
-							<td class="center">가격: ${main.price}</td>
-							<td>
-								<a href ="#">				
-									<img id="previewImg" src="/app/resources/img/${main.thumnailImg}" width="150px;" height="150px;"/>
-								</a>
-							</td>
-						</tr>
-					</c:forEach>
-				</table>
-			</div>
-	  </div>
+<div class="col-md-4" >
+	<c:forEach var="main" items="${mainList}">
+				<a href ="getMain.do?pNum=${main.pNum}">				
+					<img id="previewImg" src="/app/resources/img/${main.thumnailImg}" width="150px;" height="150px;"/>
+				</a> 
+				 <p>${main.upperCategory}>${main.subCategory}>${main.subCategory2}</p>
+				 <p>${main.pName} </p>
+				 <p>${main.discountRate} </p>
+				 <p>${main.salePrice} </p>
+	</c:forEach>
+</div>
+</div>
 </div>
