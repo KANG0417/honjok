@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -13,7 +15,7 @@
 	<input type="hidden" id="subCategory" value="${mainDetail.subCategory}">
 	<input type="hidden" id="subCategory2" value="${mainDetail.subCategory2}">
 	<input type="hidden" id="sessionId" value="${userSession.id }">
-	<input type="hidden" id="stock" value="${mainDetail.stock }">
+	<input type="hidden" id="stock" value="${mainDetail.stock}">
 	
 	<div>${mainDetail.upperCategory}</div>
 		<span>>${mainDetail.subCategory}</span>
@@ -36,27 +38,34 @@
             <span class=total></span>
             <span class=won>원</span>
       </div>
-      <div>구매하기</div>
-      <div>장바구니</div>
-      <div class="notice-modal hidden">
-	    <div class="notice-modal__overlay"></div>
-	    <div class="notice-modal__content">
-	        <div class="notice-modal__header">
-	            <span class="notice-modal__tit">알림메시지</span>
-	            <button class="notice-modal__close-btn"></button>
-	        </div>
-	        <div class="notice-modal__message">
-	            <span></span>
-	        </div>
-	        <div class="notice-modal__footer">
-	            <button class="notice-modal__yes-btn">
-	                확인
-	            </button>
-	        </div>
-	    </div>
+      	     <div class="goods-total__btns">
+                <div class="g-btn btn-always">구매하기</div>
+                <c:if test="${mainDetail.stock <= 0}">
+                	<div class="g-btn btn-save btn-save--off">장바구니 담기</div>
+                </c:if>
+                <c:if test="${mainDetail.stock != 0}">
+                	<div class="g-btn btn-save">장바구니 담기</div>
+                </c:if>
+            </div>
 </div>
-     
-</div>        
+      
+ <div class="notice-modal hidden">
+ <div class="notice-modal__overlay"></div>
+ <div class="notice-modal__content">
+     <div class="notice-modal__header">
+         <span class="notice-modal__tit">알림메시지</span>
+         <button class="notice-modal__close-btn"></button>
+     </div>
+     <div class="notice-modal__message">
+         <span></span>
+     </div>
+     <div class="notice-modal__footer">
+         <button class="notice-modal__yes-btn">
+             확인
+         </button>
+     </div>
+</div>  
+</div>   
 </body>
 <script>
 
@@ -91,8 +100,7 @@
         
     });
     
-    
-    function(){
+
     const saveBtn = document.querySelector(".btn-save"),
     	  modal = document.querySelect(".notice-modal"),
     	  overlay = modal.querySelector(".notice-modal__overlay"),
@@ -103,8 +111,7 @@
         modal.classList.add("hidden")
     }
 
-
-    function openModal(){
+   function openModal(){
     	$('.notice-modal__message').html("");
     	if($("#sessionId").val() == ""){
     		$('.notice-modal__message').text("로그인 하신 후 장바구니 등록을 해주세요.")
@@ -112,9 +119,10 @@
     		//장바구니 등록하는 당시에 재고보다 장바구니에 넣을 물품이 더 클 경우 방지 
 			$.ajax({
         		type : "post",
-        		url : "/mintProject/shop/goods/addCartList",
-        		data : {'productCode' : $('#productCode').val(),
-        			    'ctCount' : $('.qty').val(),
+        		url : "addCartList.do",
+        		data : {
+        				'pNum' : $('#pNum').val(),
+        			    'pCnt' : $('.qty').val(),
         			    'stock' : $('#stock').val()
         				},
         		dataType : "json",
@@ -122,9 +130,9 @@
         			if(data.gubun=='1'){
         				$('.notice-modal__message').text("이미 동일한 상품이 장바구니에 존재합니다.");
         			}else if(data.gubun=='2'){
-        				console.log($('#thumbImg').prop('src'));
+        				console.log($('#detailImg').prop('src'));
         				$('.notice-modal__message').append($('<img>',{
-        					src : $('#thumbImg').prop('src'),
+        					src : $('#detailImg').prop('src'),
         					height : "70px",
         					width : "70px"
         				})).append("&emsp;장바구니에 담겼습니다.");
@@ -142,12 +150,13 @@
     	}
     	 modal.classList.remove("hidden");
     }
+   
     saveBtn.addEventListener("click",openModal);
     overlay.addEventListener("click",closeModal);
     closeBtn.addEventListener("click",closeModal);
     yesBtn.addEventListener("click",closeModal);
 
-})();
+
     
     
 
