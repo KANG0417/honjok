@@ -47,7 +47,7 @@ public class list {
 	@RequestMapping("/insert.do")
 	public String lists(CommInfoVO comI, MultipartHttpServletRequest multiFile) throws IOException {
 
-		CURR_IMAGE_REPO_PATH = "C:/Users/sin/Documents/GitHub/honjok/src/main/webapp/resources/img/menu";
+		CURR_IMAGE_REPO_PATH = "C:/Users/bitcamp/Documents/GitHub/honjok/src/main/webapp/resources/img/menu";
 							
 		System.out.println(comI);
 
@@ -141,7 +141,7 @@ public class list {
 		
 		List<String> list = new ArrayList<String>();
 
-		CURR_IMAGE_REPO_PATH = "C:/Users/sin/Documents/GitHub/honjok/src/main/webapp/resources/img/review";
+		CURR_IMAGE_REPO_PATH = "C:/Users/bitcamp/Documents/GitHub/honjok/src/main/webapp/resources/img/review";
 		// 파일업로드
 		List<MultipartFile> fileList = multiFile.getFiles("file");
 		Iterator<String> fileNames = multiFile.getFileNames();
@@ -193,7 +193,7 @@ public class list {
 		System.out.println("데이터");
 		System.out.println(fileName);
 		
-		String path = "C:/Users/sin/Documents/GitHub/honjok/src/main/webapp/resources/img/review/"+fileName;
+		String path = "C:/Users/bitcamp/Documents/GitHub/honjok/src/main/webapp/resources/img/review/"+fileName;
 		System.out.println(path);
 		
 		File file = new File(path);
@@ -240,7 +240,7 @@ public class list {
 		// 페이징 처리위해 전체 조회
 		int countList = service.selectAllCount();
 		System.out.println("총게시글수" + countList);
-		
+
 		//베스트5  조회
 		List<CommunityVO> bset5_List = service.selectBest5();
 		
@@ -252,7 +252,7 @@ public class list {
 		model.addAttribute("CommunityVOList", list);
 		model.addAttribute("countList", countList);
 
-		return "/honj0okInfo/list.jsp";
+		return "/honjokInfo/list.jsp";
 
 	}
 
@@ -371,7 +371,7 @@ public class list {
 						byte[] bytes = file.getBytes();
 
 						// 경로설정
-						String uploadPath = "C:/Users/sin/Documents/GitHub/honjok/src/main/webapp/resources/img";
+						String uploadPath = "C:/Users/bitcamp/Documents/GitHub/honjok/src/main/webapp/resources/img";
 						System.out.println(uploadPath);
 
 						// 파일저장

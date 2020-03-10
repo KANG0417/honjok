@@ -319,14 +319,17 @@
 						<div class="comment" style="display: block;">
 							<div class="comment-img" style="display: flex;">
 								<c:forEach var="replyimg" items="${reply.replyuploadvo}">
-									<img width="50" height="50"
+									<img width="100" height="100"
 										src="/app/resources/img/review/${replyimg.upImgName}">
 								</c:forEach>
 							</div>
-							<div class="comment_contents" style="width:80%; height:50px; overflow:hidden;word-wrap:break-word;"> ${reply.content }</div>
-							<div style="width:80%; height:50px;">
-								<button style="float:left;" type="button">답글</button>
+							<div style="display: flex; flex-direction:row;">
+								<div class="comment_contents" style="width:95%;height:50px; overflow:hidden;word-wrap:break-word;"> ${reply.content }</div>
+								<div style="width:5%; height:50px;">
+									<button style="" type="button">답글</button>
+								</div>
 							</div>
+							
 						</div>
 			</c:forEach>
 					</div>
@@ -334,10 +337,11 @@
 			<%-- ${reply.comSeq } ${reply.idx } ${reply.id }  --%>
 		
 
-
+			<div style="border:1px solid red">
 				<form id="reply" method="post">
-					<textarea class="content" name="content" rows="3" cols="56"
-						style="margin-top: 0px; margin-bottom: 0px; height: 56px;"></textarea>
+					<textarea class="content" name="content" 
+						style=" width:90%; margin-top: 0px; margin-bottom: 0px; height: 56px; border: none;"></textarea>
+			
 					<input type="hidden" name="id" value="soh445"> <input
 						type="hidden" name="nickName" value="ss"> <input
 						type="hidden" name="comSeq" value="${CommInfoVO.comSeq }">
@@ -349,13 +353,16 @@
 					<div class="">
 						<div class="preview_area" style="display: block;">
 							<div class="view_area" style="display: flex;">
+							
 							</div>
 						</div>
 					</div>
+					
 					<label for="image"></label> <input multiple="multiple" type="file"
 						name="file" id="image" />
-
 				</form>
+				
+</div>
 
 
 				<div>
@@ -468,14 +475,14 @@
 						$('.view_area').html('');
 						if($file_ != null && $file_ !=""){
 							for(var i in $file_){
-								fileString += "<img width='50' height='50' src='/app/resources/img/review/"+$file_[i]+"' />";
+								fileString += "<img width='100' height='100' src='/app/resources/img/review/"+$file_[i]+"' />";
 								
 							}
 							
 						}
 						console.log(fileString);
 						
-						$('.comment_item_list').append('<div class="id_admin" style="width: 100%; display: block;"> <span>'+objParams.nickName+'</span></div><div class="comment" style="display: block;"><div class="comment-img" style="display: flex;">'+fileString+'</div><div class="comment_contents"style="width: 80%; height: 50px; overflow: hidden; word-wrap: break-word;">'+objParams.content+'</div><div style="width: 80%; height: 50px;"><button style="float: left;" type="button">답글</button></div></div>');
+						$('.comment_item_list').append('<div class="id_admin" style="width: 100%; display: block;"> <span>'+objParams.nickName+'</span></div><div class="comment" style="display: block;"><div class="comment-img" style="display: flex;">'+fileString+'</div><div style="display: flex; flex-direction:row;"><div class="comment_contents"style="width:95%;height:50px; overflow:hidden;word-wrap:break-word;">'+objParams.content+'</div><div style="width:5%; height:50px;"><button type="button">답글</button></div></div></div>');
 						
 						
 						
@@ -551,7 +558,7 @@
 											success : function(json) {
 												for ( var i in json) {
 													$('.view_area')
-															.append("<div><img style='width:50px; height:50px;' src=/app/resources/img/review/"+json[i]+"><button type='button' onclick='imgDel(this);'>삭제하기</button></div>")
+															.append("<div><img style='width:100px; height:100px;' src=/app/resources/img/review/"+json[i]+"><button type='button' onclick='imgDel(this);'>삭제하기</button></div>")
 												}
 												//alert("업로드 성공");	
 											},
