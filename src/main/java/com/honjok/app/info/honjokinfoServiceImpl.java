@@ -21,13 +21,12 @@ public class honjokinfoServiceImpl implements honjokinfoService {
    private honjokInfoMapper Mapper;
 
    
-   
-   
    //댓글 insert
    @Override
 	public void insertReview(commReplyVO commreplyvo) {
-		Mapper.inertReview(commreplyvo);
+		Mapper.insertReview(commreplyvo);
 	}
+   
    
    //댓글 이미지 업로드
 	@Override
@@ -63,18 +62,15 @@ public class honjokinfoServiceImpl implements honjokinfoService {
 		
 	}
 
-
 	//insert끝
-
-
-
+	
+	//select시작
 
 	//페이징 처리 갯수 selectAll
 	@Override
 	public List<CommunityVO> selectAll(Map<String, Integer> pagingMap) {
 		
 		 List<CommunityVO> list = Mapper.selectAll(pagingMap);
-		 
 		return list;
 	}
 	
@@ -125,16 +121,22 @@ public class honjokinfoServiceImpl implements honjokinfoService {
 			
 		return getReviewImt;
 	}
-
-
-	// community 삭제
+	
+	//베스트 5 조회
 	@Override
-	public void delete(String comSeq) {
-		Mapper.delete(comSeq);
+	public List<CommunityVO> selectBest5() {
+		 List<CommunityVO> selectBest5 = Mapper.selectBest5();
+		 
+		return selectBest5;
 	}
 
 
+
 	
+	//select 끝
+	
+	
+	//update 시작
 	
 	// community 업데이트 
 	@Override
@@ -149,8 +151,44 @@ public class honjokinfoServiceImpl implements honjokinfoService {
 		Mapper.insertLikesUP(comSeq);
 		
 	}
+	
+	
+	@Override
+	public void updateLikesDown(String comSeq) {
+		Mapper.updateLikesDown(comSeq);
+	}
+	
+	@Override
+	public void updateReview(Map<String, String> map) {
+		Mapper.updateReview(map);
+	}
+	
+	//update 끝
+	
+	
+	
+
+	// community 삭제
+		@Override
+		public void delete(String comSeq) {
+			Mapper.delete(comSeq);
+		}
+
+		//리뷰 업로드 삭제 
+		@Override
+		public void delReviewUpload(String fileName) {
+			Mapper.delReviewUpload(fileName);
+		}
 
 
+		
+
+	
+
+	
+
+	
+		
 
 
 

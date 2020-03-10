@@ -155,10 +155,5 @@
     overlay.addEventListener("click",closeModal);
     closeBtn.addEventListener("click",closeModal);
     yesBtn.addEventListener("click",closeModal);
-
-
-    
-    
-
 </script>
 </html>

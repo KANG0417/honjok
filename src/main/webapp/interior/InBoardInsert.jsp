@@ -41,7 +41,7 @@
 		<tr>
 			<th>작성자</th>
 			<td>
-				<input type="text" name="nick_name">
+				<input type="text" name="nickName">
 			</td>
 		</tr>
 		<tr>
@@ -53,7 +53,7 @@
 		<tr>
 			<th>파일이미지</th>
 			<td>
-				<input type="text" name="file_image">
+				<input type="text" name="fileImage">
 			</td>					
 		</tr>
 		
@@ -63,7 +63,7 @@
 			</td>
 		</tr>
 	</table>
- 	<input type="hidden" name="com_seq">
+ 	<input type="hidden" name="comSeq">
 	</form>
 	<p><a href="interiorAllList.do">글 목록 가기</a></p>
 </div>

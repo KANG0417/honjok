@@ -36,9 +36,9 @@ public class honjokInfoMapper {
 	
 	
 	//리뷰글 등록
-		public void inertReview(commReplyVO commreplyvo) {
+		public void insertReview(commReplyVO commreplyvo) {
 			System.out.println(commreplyvo);
-			mybatis.insert("honjokInfoMapper.inertReview", commreplyvo);
+			mybatis.insert("honjokInfoMapper.insertReview", commreplyvo);
 		}
 
 	//리뷰 이미지등록
@@ -80,7 +80,7 @@ public class honjokInfoMapper {
 
 	public CommInfoVO select(String comSeq) {
 
-		System.out.println("select실행");
+		System.out.println("select실행" + comSeq);
 		CommInfoVO CommInfoVO = mybatis.selectOne("honjokInfoMapper.select", comSeq);
 		System.out.println(CommInfoVO);
 		return CommInfoVO;
@@ -107,25 +107,22 @@ public class honjokInfoMapper {
 	//select 끝
 	
 
-	public void delete(String comSeq) {
 
-		System.out.println("delete 실행");
-		mybatis.delete("honjokInfoMapper.delete", comSeq);
-
-	}
 	
 	
 	
 	
 	
 
+	
+
+	//좋아요 업데이트 
+	//update
 	public void uptate(CommInfoVO comI) {
 		System.out.println("uptate");
 		mybatis.update("honjokInfoMapper.uptate", comI);
 
 	}
-
-	//좋아요 업데이트 
 			public void insertLikesUP(String comSeq) {
 				System.out.println("좋아요 업데이트 Mapper");
 				mybatis.update("honjokInfoMapper.likesUp", comSeq);
@@ -135,11 +132,41 @@ public class honjokInfoMapper {
 			public void inserLikesId(Map<String, String> map) {
 				mybatis.insert("honjokInfoMapper.inserLikesId",map);
 			}
+			
+			public void updateLikesDown(String comSeq) {
+				mybatis.update("honjokInfoMapper.updateLikesDown",comSeq);
+			}
+			
+			
+			public void updateReview(Map<String, String> map) {
+				mybatis.update("honjokInfoMapper.updateReview",map);
+			}
 
-	
 
+			
+	//update 끝
+			
+	//delete 시작
+			//리뷰 업로드 파일 삭제
+			public void delReviewUpload(String fileName) {
+				mybatis.delete("honjokInfoMapper.delReviewUpload",fileName);
+			}
 
+			public void delete(String comSeq) {
+				
+				System.out.println("delete 실행");
+				mybatis.delete("honjokInfoMapper.delete", comSeq);
 
+			}
+
+			public List<CommunityVO> selectBest5() {
+				System.out.println("베스트게시물 5개 조회");
+				List<CommunityVO> selectBest5 =mybatis.selectList("honjokInfoMapper.selectBest5");
+				return selectBest5;
+			}
+
+			
+	//delete 끝
 
 
 

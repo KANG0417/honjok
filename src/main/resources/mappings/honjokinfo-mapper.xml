@@ -34,22 +34,25 @@
 		}
 	</insert>
 	
+	
 	<!-- 메뉴사진 업로드  -->
 	<insert id="menuUplodat" parameterType="UploadVO">
 			INSERT INTO UPLOAD(COM_SEQ,Up_img_name,type)
-		VALUES((SELECT NVL(MAX(comSeq), 0) FROM COMMUNITY),#{upImgName},'1')
+		VALUES((SELECT NVL(MAX(com_seq), 0) FROM COMMUNITY),#{upImgName},'1')
 	</insert>
 	
+	
+	
 	<!-- 리뷰 insert -->
-	<insert id="inertReview" parameterType="commReplyVO">
+	<insert id="insertReview" parameterType="commReplyVO">
 		INSERT INTO COMM_REPLY
 		VALUES(#{id},0,COMM_REPLY_SEQ.NEXTVAL,#{content},sysdate,#{nickName},#{comSeq})
 	</insert>
 	
 	<!-- 리뷰 이미지 insert  -->
 	<insert id="insertReviewImage" parameterType="replyUploadVO">
-	INSERT INTO REPLY_UPLOAD(COM_SEQ,PARENT_NUMBER,UP_IMG_NAME,IDX)
-	VALUES(#{comSeq},(SELECT NVL(MAX(idx), 0) FROM COMM_REPLY),#{upImgName},REPLY_UPLOAD_SEQ.NEXTVAL)
+		INSERT INTO REPLY_UPLOAD(COM_SEQ,PARENT_NUMBER,UP_IMG_NAME,IDX)
+		VALUES(null,null,#{upImgName},REPLY_UPLOAD_SEQ.NEXTVAL)
 	</insert>
 	
 	<insert id="inserLikesId" parameterType="Map">
@@ -71,6 +74,7 @@
 		REGDATE,
 		HIT,
 		LIKES,
+		NICK_NAME,
 		TYPE FROM(SELECT COM_SEQ,
 		TITLE,
 		ID,
@@ -116,8 +120,7 @@
 	<select id="select" resultType="CommInfoVO"
 		parameterType="String">
 		select C.* ,I.* from COMMUNITY C, COMM_INFO I
-		WHERE
-		C.COM_SEQ = i.com_seq AND i.com_seq = #{comSeq}
+		WHERE C.COM_SEQ = i.com_seq AND i.com_seq = #{comSeq}
 	</select>
 	
 	<!-- 파일 이이미지 가져오기 -->
@@ -138,27 +141,16 @@
 		select * from reply_upload where parent_number = #{idx} 
 	</select>
 
-
-
+	
+	
+	<!-- 베스트 게시물 5개 가져오기 -->
+	<select id="selectBest5" resultType="CommunityVO">
+		select * from (select * from community where type = '1' order by likes desc)community where ROWNUM BETWEEN 1 and 5
+	</select>
 
 
 	<!-- select end -->
 
-
-	<!-- 글삭제 -->
-	<delete id="delete" parameterType="String">
-		{call
-		declare
-		begin
-
-		DELETE COMM_INFO WHERE COM_SEQ = #{comSeq};
-		DELETE COMMUNITY WHERE COM_SEQ =
-		#{comSeq};
-
-		end
-		}
-	</delete>
-	
 
 <!-- 업데이트 시작  -->
 
@@ -189,7 +181,40 @@
 	<update id="likesUp" parameterType="String">
 		update COMMUNITY set  likes = (select likes + 1 from COMMUNITY WHERE COM_SEQ = #{comSeq}) WHERE COM_SEQ = #{comSeq}
 	</update>
+	
+	<update id="updateLikesDown" parameterType="String">
+		update COMMUNITY set  likes = (select likes - 1 from COMMUNITY WHERE COM_SEQ = #{comSeq}) WHERE COM_SEQ = #{comSeq}
+	</update>
+
+	<update id="updateReview" parameterType="Map">
+		update reply_upload set
+		parent_number = (SELECT NVL(MAX(idx), 0) FROM COMM_REPLY)
+		, com_seq = #{comSeq} where up_img_name = #{file}
+	</update>
 <!-- 업데이트 끝 -->
+
+<!-- DEl 시작 -->
+
+	<!-- 글삭제 -->
+	<delete id="delete" parameterType="String">
+		{call
+		declare
+		begin
+
+		DELETE COMM_INFO WHERE COM_SEQ = #{comSeq};
+		DELETE COMMUNITY WHERE COM_SEQ =
+		#{comSeq};
+
+		end
+		}
+	</delete>
+	
+	
+	<delete id="delReviewUpload" parameterType="String">
+		DELETE reply_upload WHERE up_img_name = #{fileName}
+	</delete>
+<!-- DEL 끝 -->
+
 
 	<!-- <select id="getBoardList" parameterType="board" resultType="board"> 
 		SELECT * FROM BOARD WHERE 1=1 <if test="searchCondition == 'TITLE' "> AND 
