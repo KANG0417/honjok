@@ -16,6 +16,7 @@ public class AdminVO {
 	private String discountRate;
 	private String salePrice;	
 	private int shippingfee;
+	private int pNum;
 	
 	
 
@@ -109,6 +110,12 @@ public class AdminVO {
 
 	public int getShippingfee() {
 		return shippingfee;
+	}
+	public int getpNum() {
+		return pNum;
+	}
+	public void setpNum(int pNum) {
+		this.pNum = pNum;
 	}
 	
 	

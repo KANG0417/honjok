@@ -41,7 +41,7 @@
 
 						<div class="col-md-4" id="select">
 							<a class="main-img${articleNum.index}"
-								href="getInterior.do?com_seq=${interiorvo.comSeq }"
+								href="getInterior.do?comSeq=${interiorvo.comSeq }"
 								class="img w-100 mb-3"> 
 								 <script>
 									var contentimg = '${interiorvo.content}';
@@ -60,12 +60,12 @@
 							</a>
 							<div class="text w-100 text-center">
 								<h3>
-									<a href="getInterior.do?com_seq=${interiorvo.comSeq }">${interiorvo.title }</a>
+									<a href="getInterior.do?comSeq=${interiorvo.comSeq }">${interiorvo.title }</a>
 								</h3>
 							</div>
 							작성일: ${interiorvo.regdate }<br>
 							작성자닉네임: ${interiorvo.nickName }<br> 조회수: ${interiorvo.hit }
-							<br> 좋아요: ${interiorvo.likes }<br>
+							<br> 좋아요: ${likesCount }<br>
 						</div>
 
 					</c:forEach>

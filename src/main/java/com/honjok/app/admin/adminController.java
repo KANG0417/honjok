@@ -1,4 +1,4 @@
-package com.honjok.app.admin;
+/*package com.honjok.app.admin;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -34,7 +34,7 @@ public class adminController {
 	public String handleFileUpload(@RequestParam("uploadFile") MultipartFile multiPartFile) {
 		System.out.println("이쪽으로 넘어왔음");
 		String filePath = "C:/Users/bitcamp/Documents/GitHub/honjok/src/main/webapp/resources/img/"; // 원하는위치 (storage로 잡아주세요)
-		/*"C:/Users/bitcamp/Documents/GitHub/honjok/src/main/webapp/resources/img/"*/
+		"C:/Users/bitcamp/Documents/GitHub/honjok/src/main/webapp/resources/img/"
 		String fileName = multiPartFile.getOriginalFilename();
 		File file = new File(filePath, fileName);
 		try {
@@ -63,4 +63,4 @@ public class adminController {
 		return "/app/index.jsp";
 
     }
-}
+}*/

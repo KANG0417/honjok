@@ -1,4 +1,4 @@
-package com.honjok.app.interior.impl;
+package com.honjok.app.interior;
 
 import java.util.List;
 import java.util.Map;
@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.honjok.app.vo.CommInteriorVO;
+import com.honjok.app.vo.LikesVO;
 
 @Repository("commDAOMybatis")
 public class CommInteriorDAOMybatis {
@@ -19,7 +20,7 @@ public class CommInteriorDAOMybatis {
 	public List<CommInteriorVO> BoardAllList(Map<String, Integer> pagingMap) {
 		System.out.println("===> MyBatis로 BoardAllList() 실행");
 		List<CommInteriorVO> cvo = mybatis.selectList("commInteriorDAO.interiorAll", pagingMap);
-		System.out.println(cvo);
+		System.out.println("전체 목록조회: " + cvo);
 		return cvo;
 	}
 	
@@ -37,23 +38,45 @@ public class CommInteriorDAOMybatis {
 	
 	//글 수정
 	public void updateBoard(CommInteriorVO cvo) {
-		System.out.println("cvo");
+		System.out.println("===> MyBatis로 updateBoard() 실행");
 		mybatis.update("commInteriorDAO.updateComm", cvo);
 	}
 
 	//글 삭제
 	public void deleteBoard(CommInteriorVO cvo) {
-		System.out.println("cvo");
+		System.out.println("===> MyBatis로 deleteBoard() 실행");
 		mybatis.delete("commInteriorDAO.deleteComm", cvo);
 	}
 
-	//페이징 전체 갯수
+	//게시물 전체 갯수
 	public int selectCount() {
+		System.out.println("===> MyBatis로 selectCount() 실행");
 		return mybatis.selectOne("commInteriorDAO.selectAllCount");
 	}
 
 	//조회수 증가
-	public void boardHitsUpdate(int com_seq) {
-		mybatis.update("commInteriorDAO.boardHitsUpdate", com_seq);
+	public void boardHitsUpdate(int comSeq) {
+		System.out.println("===> MyBatis로 boardHitsUpdate() 실행");
+		System.out.println("comSeq 조회 : " + comSeq);
+		mybatis.update("commInteriorDAO.boardHitsUpdate", comSeq);
+	}
+	
+	//좋아요 증가
+	public void insertLikes(LikesVO livo) {
+		System.out.println("===> MyBatis로 InsertLikes() 실행");
+		mybatis.insert("commInteriorDAO.likesCheck", livo);
+	}
+	
+	//좋아요 취소
+	public void updateLikes(LikesVO livo) {
+		System.out.println("===> MyBatis로 updateLikes() 실행");
+		mybatis.update("commInteriorDAO.likesCancel", livo);
+	}
+	
+	//해당 게시물 좋아요 갯수
+	public int selectLikes(int comSeq) {
+		System.out.println("===> MyBatis로 selectLikes() 실행");
+		
+		return mybatis.selectOne("commInteriorDAO.likesCount",comSeq);
 	}
 }

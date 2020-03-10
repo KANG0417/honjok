@@ -11,7 +11,13 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
 <title>1인 레시피 게시판입니다.</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
+	/* Make the image fully responsive */
+	  .carousel-inner img {
+	    width: 100%;
+	    height: 100%;
+	  }
       #columns{
         column-width:350px;
         column-gap: 15px;
@@ -39,12 +45,11 @@
 		margin: 0 auto;
 	}
 	h1, h3, p { text-align: center; }
-	table { border-collapse: collapse; }
-	table, th, td {
-		border: 1px solid black;
-		margin: 0 auto;
-	}
-	th { background-color: white; }
+ 	table { border-collapse: collapse; } 
+ 	table, th, td { 
+ 		margin: 0 auto; 
+ 	} 
+	th { background-color: yellow; }
 	.center { text-align: center; }
 	.border-none, .border-none td { border: none; }
 	
@@ -53,23 +58,48 @@
 </head>
 <body>
 
-<div class="jumbotron text-center">
- 
-  <h2>Recipes for you eating alone</h2>
-  <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo">혼밥이란? (클릭!)</button>
-  <div id="demo" class="collapse">
-  	Honbap: Eating Alone Is a New Norm
-    Honbap is a portmanteau of the Korean words for “alone” and “meal” <br>
-	Barbeque is one of the most social of Korean eating experiences, usually enjoyed in groups, <br>
-	to the point that meat restaurants generally won't serve solo diners.
+<div class="container mt-3">
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+
+  <!-- Indicators -->
+  <ul class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+  </ul>
+  
+  <!-- The slideshow -->
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="${contextPage.request.contextPath}/app/resources/img/cook.jpg" alt="Los Angeles" width="1100" height="500">
+    </div>
+    <div class="carousel-item">
+      <img src="${contextPage.request.contextPath}/app/resources/img/cook.jpg" alt="Chicago" width="1100" height="500">
+    </div>
+    <div class="carousel-item">
+      <img src="${contextPage.request.contextPath}/app/resources/img/cook.jpg" alt="New York" width="1100" height="500">
+    </div>
   </div>
+  
+  <!-- Left and right controls -->
+  <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </a>
+  <a class="carousel-control-next" href="#myCarousel" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </a>
+  
 </div>
 
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-  <a class="navbar-brand" href="${contextPage.request.contextPath }/app/index.jsp">HOME</a>
+</div>
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+  <a class="navbar-brand" href="index.jsp">Home</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
     <span class="navbar-toggler-icon"></span>
   </button>
+  
   <div class="collapse navbar-collapse" id="collapsibleNavbar">
     <ul class="navbar-nav">
       <li class="nav-item">
@@ -84,6 +114,12 @@
       <li class="nav-item">
         <a class="nav-link" href="${contextPage.request.contextPath }/app/cook/CookAll.do">레시피</a>
       </li>    
+      <li class="nav-item">
+        <a class="nav-link" href="${contextPage.request.contextPath }/app/honjokInfo/select.do">혼밥정보</a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link" href="/app/admin/productReg.jsp">상품등록</a>
+      </li>     
     </ul>
   </div>  
 </nav>
@@ -102,9 +138,9 @@
 					<c:forEach var="cookvo" items="${cookList }"
 						varStatus="articleNum">
 
-						<div class="col-md-4" id="select">
+						<div class="col-md-2" id="select">
 							<a class="main-img${articleNum.index}"
-								href="CookDetail.do?com_seq=${cookvo.com_seq }"
+								href="CookDetail.do?comSeq=${cookvo.comSeq }"
 								class="img w-100 mb-3"> 
 								 <script>
 									var contentimg = '${cookvo.content}';
@@ -123,12 +159,10 @@
 							</a>
 							<div class="text w-100 text-center">
 								<h3>
-									<a href="CookDetail.do?com_seq=${cookvo.com_seq }">${cookvo.title }</a>
+									<a href="CookDetail.do?comSeq=${cookvo.comSeq }">${cookvo.title }</a>
 								</h3>
+								 <h6>좋아요: ${cookvo.likes }</h6>
 							</div>
-							작성일: ${cookvo.regdate }<br>
-							작성자닉네임: ${cookvo.nick_name }<br> 조회수: ${cookvo.hit }
-							<br> 좋아요: ${cookvo.likes }<br>
 						</div>
 					</c:forEach>
 				</div>
@@ -211,39 +245,57 @@
 
 
 	<hr>
-	<div class="spinner-border text-danger"></div>
 
 	<c:remove var="endPage" />
 <table>
-	<caption>글 목록</caption>
 	<thead>
-		<tr class="title">
-			<th class="no">번호</th>
-			<th class="subject">제목</th>
-			<th class="writer">글쓴이</th>
-			<th class="regdate">날짜</th>
-			<th class="hit">조회수</th>
-			<th class="likes">좋아요</th>
-		</tr>
+	
+<!-- 		<tr class="title"> -->
+<!-- 			<th class="ndo">번d호</th> -->
+<!-- 			<th class="sudbject">제d목</th> -->
+<!-- 			<th class="wrditer">글쓴d이</th> -->
+<!-- 			<th class="redgdate">날d짜</th> -->
+<!-- 			<th class="hidt">조d회수</th> -->
+<!-- 			<th class="likdes">좋d아요</th> -->
+<!-- 		</tr> -->
 	</thead>
-<tbody>
 
-   <c:forEach var="cookvo" items="${cookList }">
+
+   
+<div class="container">
+  <hr>
+  <h3>레시피 목록 </h3>
+<!--   <p>혼밥 레시피는 늘어나는 1~2인 가구 및 간편식 라이프스타일에 맞춘 브랜드로<br> 조리 편의성과 소용량 제품을 원하는 고객 니즈를 반영했다.</p> -->
+  <hr>
+</div>
+
+ <table class="table">
       <tr>
-         <td>${cookvo.com_seq }</td>
-         <td><a href="CookDetail.do?com_seq=${cookvo.com_seq }">${cookvo.title }</a></td>
-         <td>${cookvo.nick_name }</td>
+        <th>글번호</th>
+        <th>제목</th>
+        <th>글쓴이</th>
+        <th>등록일</th>
+        <th>조회수</th>
+        <th>좋아요</th>
+      </tr>
+     
+    <c:forEach var="cookvo" items="${cookList }">
+    <tbody>
+     <tr class="table-warning">
+         <td>${cookvo.comSeq }</td>
+         <td><a href="CookDetail.do?comSeq=${cookvo.comSeq }">${cookvo.title }</a></td>
+         <td>${cookvo.nickName }</td>
          <td>${cookvo.regdate }</td>
          <td>${cookvo.hit }</td>
          <td>${cookvo.likes }</td>
       </tr>
-    </c:forEach>
+       </c:forEach>  
+      </tbody>
+     	<form action="insert.jsp">
+  		 <input type="submit" value="글쓰기">
+		</form>
 
-</tbody>   
 </table>
 
-<form action="insert.jsp">
-   <input type="submit" value="글쓰기">
-</form>
 </body>
 </html>

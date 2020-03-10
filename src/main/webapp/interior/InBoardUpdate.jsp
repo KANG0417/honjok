@@ -37,7 +37,7 @@
 		<tr>
 			<th>작성자</th>
 			<td>
-			${inter.nick_name }
+			${inter.nickName }
 			</td>
 		</tr>
 		<tr>
@@ -56,7 +56,7 @@
 		</tr>
 		<tr>
 			<th>좋아요</th>
-			<td>${inter.likesNo }</td>
+			<td>${inter.likes }</td>
 		</tr>
 		<tr>
 			<th>파일이미지</th>

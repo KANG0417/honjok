@@ -29,6 +29,4 @@ public interface CookService {
   public int selectAllCount();
   
   void boardHitsUpdate(int com_seq);
-	    
-	   
 }

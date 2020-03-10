@@ -10,20 +10,21 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title></title>
+<title>원마켓</title>
 </head>
 <body>
-
 <div class="jumbotron text-center">
  
   <h2>대환장 프로젝트 </h2>
   <p>頑張れ人間よ!</p> 
 </div>
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
   <a class="navbar-brand" href="index.jsp">Home</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
     <span class="navbar-toggler-icon"></span>
   </button>
+  
   <div class="collapse navbar-collapse" id="collapsibleNavbar">
     <ul class="navbar-nav">
       <li class="nav-item">
@@ -47,8 +48,6 @@
     </ul>
   </div>  
 </nav>
-
-
 
 </body>
 </html>
