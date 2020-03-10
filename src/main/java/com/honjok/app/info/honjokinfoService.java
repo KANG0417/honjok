@@ -39,7 +39,14 @@ public interface honjokinfoService {
 
    public void inserLikesUp(String comSeq);
 
-
    public void inserLikesId(Map<String, String> map);
+
+   public void delReviewUpload(String fileName);
+
+   public void updateLikesDown(String comSeq);
+
+   public void updateReview(Map<String, String> map);
+ 
+   public List<CommunityVO> selectBest5();
    
 }
