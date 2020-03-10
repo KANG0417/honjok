@@ -1,5 +1,6 @@
 package com.honjok.app.cart;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.honjok.app.admin.adminDAO;
+import com.honjok.app.vo.UserVO;
 
 @Controller
 public class cartController {
@@ -25,39 +26,55 @@ public class cartController {
 	
 	@RequestMapping(value="/addCartList.do", method=RequestMethod.POST)
 	@ResponseBody
-	public String addCartList(@RequestParam Map<String,String>map,HttpSession session,Model model) {
+	public Map addCartList(@RequestParam Map<String,String>map,HttpSession session,Model model) {
 		System.out.println("addCartList map : " + map);
+		
 		
 		//카드 담을때 같은 상품이 있나 확인
 		//아이디 추가_20191202
-		String memId = (String) session.getAttribute("userSession.id");
-		map.put("memId", memId);
+		UserVO vo = (UserVO)session.getAttribute("userSession");
+		String memId = vo.getId();
+		map.put("memId",memId);
+		//String memId = (String)session.getAttribute("userSession.id");
+		System.out.println("Id체크" + map);
 		
 		int cnt  = cartService.getSameCart(map);
+		System.out.println(cnt);
 		
+		
+		Map<String,Integer>map2 = new HashMap<String,Integer>();
 		//gubun3 은 재고보다 장바구니에 넣을 수량이 적을 시 return
 		if(Integer.parseInt(map.get("stock")) <  Integer.parseInt(map.get("pCnt"))) {
 			if(cnt > 0) {
-				model.addAttribute("gubun",1);
+				map2.put("gubun",1);
+				return map2;
 			}else {
-				model.addAttribute("gubun",3);
+				map2.put("gubun",3);
+				return map2;
 			}
-		}else {
+		}else{
 			if(cnt > 0) {
-				model.addAttribute("gubun",1);
+				map2.put("gubun",1);
+				return map2;
 			}else {
-				String id = (String)session.getAttribute("userSession.id");
+				UserVO vo2 = (UserVO)session.getAttribute("userSession");
+				String id = vo2.getId();
 				map.put("id", id);
+				System.out.println("id체크" + id);
 				
 				int count = cartService.addCartProduct(map);
-				session.setAttribute("memCart", count);
+				System.out.println(count);
+				//session.setAttribute("memCart", count);
 				
-				model.addAttribute("memCart", session.getAttribute("memCart"));
-				model.addAttribute("gubun",2);
+				//model.addAttribute("memCart", session.getAttribute("memCart"));
+				map2.put("gubun",2);
 				
+				System.out.println(map2);
+				//={gubun:2}
 			}
 		}
-		return "jsonView";
+		return map2;
+		}
 	}
 
-}
+

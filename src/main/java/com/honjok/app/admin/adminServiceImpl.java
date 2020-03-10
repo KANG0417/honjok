@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.honjok.app.vo.AdminVO;
 
-/*@Service("adminService")
+@Service("adminService")
 public class adminServiceImpl implements adminService {
 	
 
@@ -20,4 +20,3 @@ public class adminServiceImpl implements adminService {
 	}
 
 }
-*/

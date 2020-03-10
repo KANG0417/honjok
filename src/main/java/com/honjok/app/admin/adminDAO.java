@@ -8,7 +8,7 @@ import com.honjok.app.vo.AdminVO;
 
 @Repository("adminDAO")
 public class adminDAO {
-	/*	
+	
 	@Autowired
 	private SqlSessionTemplate mybatis;
 	
@@ -16,5 +16,5 @@ public class adminDAO {
 		System.out.println("vo : " + vo);
 		mybatis.insert("adminDAO.insertProduct", vo);
 	}
-	*/
+	
 }

@@ -14,10 +14,13 @@ public class cartDAO {
 	
 	
 	public int getSameCart(Map<String, String> map) {
+		System.out.println("CartDAO에서 SAMEmap값:" + map);
 		return mybatis.selectOne("cartDAO.getSameCart", map);
 	}
 	
 	public int addCartProduct(Map<String, String> map) {
+		System.out.println("CartDAO에서 ADDmap값:" + map);
+		mybatis.insert("cartDAO.addCartProduct", map);
 		return mybatis.selectOne("cartDAO.getCartCount",map);
 	}
 	

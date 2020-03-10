@@ -39,6 +39,21 @@
   		 	<version>2.9.2</version>
 		</dependency>
 		
+		<!-- https://mvnrepository.com/artifact/net.sf.json-lib/json-lib -->
+		<dependency>
+		    <groupId>net.sf.json-lib</groupId>
+		    <artifactId>json-lib</artifactId>
+		    <version>2.4</version>
+		    <classifier>jdk15</classifier> <!-- classifier 필요! -->
+		</dependency>
+		<dependency> 
+    		<groupId>org.codehaus.jackson</groupId> 
+    		<artifactId>jackson-mapper-asl</artifactId> 
+   			<version>1.6.4</version> 
+		</dependency>
+
+
+				
 		<!-- 이메일 전송 -->
 		<dependency>
 			<groupId>javax.mail</groupId>
