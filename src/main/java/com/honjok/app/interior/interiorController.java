@@ -85,17 +85,20 @@ public class interiorController {
 	
 		//게시물 상세 조회 페이지
 		@RequestMapping("/getInterior.do")
-		public String getinteriorSelect(Model model, CommInteriorVO cvo, int comSeq) {			
+		public String getinteriorSelect(Model model, CommInteriorVO cvo, int comSeq, LikesVO livo) {			
 			CommInteriorVO CommInterior = interiorService.getBoardList(cvo);
 			model.addAttribute("interiorSelect", CommInterior);
 			System.out.println("===> 게시물 상세 조회: " + CommInterior);
-
-			System.out.println(cvo.getcomSeq());
+			
 			//게시물 조회수 증가
 			int board_hit = 0;
 	        interiorService.boardHitsUpdate(comSeq);
 	/*        model.addAttribute("Board_Hit", board_hit);*/
 		    
+	        //게시물 좋아요 증가
+	        interiorService.insertLikes(livo);
+	        model.addAttribute("likes", livo);
+	        
 	        //게시물 좋아요 조회
 	        int likeCount = interiorService.selectLikes(comSeq);
 	        model.addAttribute("likesCount" + likeCount);
