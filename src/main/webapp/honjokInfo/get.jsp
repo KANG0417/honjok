@@ -40,6 +40,8 @@
 	$()
 			.ready(
 					function() {
+						var cnt = 1;
+						var reply = 0;
 						var contentimg = '${CommInfoVO.content}';
 						var firstimg = $(contentimg).find('img:first').attr(
 								'src');
@@ -168,6 +170,30 @@
 												}
 											}
 										});
+
+						$('.comment_item_list button').click(function() {
+							console.log(this)
+							console.log(this.innerText);
+							console.log(this.value);
+							if(this.innerText == "답글"){
+								var form = document.querySelectorAll('#reply');
+								console.log(form.length);
+								if(form.length == 2){
+									$( "button:contains('답글취소')" ).text('답글');
+									$(form)[0].remove();
+								}
+		                        var reply =  document.querySelector('#reply').cloneNode(true);
+		                       	var puls = $(this).parent().parent();
+		                       	$(puls).after(reply);
+								console.log(reply);
+								this.innerText = "답글취소";
+							}else{
+								this.innerText = "답글";
+								var form = document.querySelector('#reply');
+								$(form).remove();
+							}
+							//clone();						
+						});
 
 					});
 </script>
@@ -304,17 +330,17 @@
 					src="//developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png" />
 				</a> <span>공유하기</span>
 			</div>
-			
-			
+
+
 			<div class="card">
 
 				<h2>혼밥리뷰</h2>
 				<a>전체</a> <a>최신순</a> <a>좋아요순</a> 인생맛집
 
-					<div class="comment_item_list">
-				<c:forEach varStatus="Num" var="reply" items="${reply }">
-						<div class="id_admin" style="width:100%;display: block;">
-							<span> ${reply.nickName }</span> 
+				<div class="comment_item_list">
+					<c:forEach varStatus="Num" var="reply" items="${reply }">
+						<div class="id_admin" style="width: 100%; display: block;">
+							<span> ${reply.nickName }</span>
 						</div>
 						<div class="comment" style="display: block;">
 							<div class="comment-img" style="display: flex;">
@@ -323,46 +349,46 @@
 										src="/app/resources/img/review/${replyimg.upImgName}">
 								</c:forEach>
 							</div>
-							<div style="display: flex; flex-direction:row;">
-								<div class="comment_contents" style="width:95%;height:50px; overflow:hidden;word-wrap:break-word;"> ${reply.content }</div>
-								<div style="width:5%; height:50px;">
-									<button style="" type="button">답글</button>
+							<div style="display: flex; flex-direction: row;">
+								<div class="comment_contents"
+									style="width: 95%; height: 50px; overflow: hidden; word-wrap: break-word;">
+									${reply.content }</div>
+								<div style="width: 5%; height: 50px;">
+									<button style="" type="button" value="${reply.idx}">답글</button>
 								</div>
 							</div>
-							
+
 						</div>
-			</c:forEach>
-					</div>
+					</c:forEach>
+				</div>
 
-			<%-- ${reply.comSeq } ${reply.idx } ${reply.id }  --%>
-		
+				<%-- ${reply.comSeq } ${reply.idx } ${reply.id }  --%>
 
-			<div style="border:1px solid red">
-				<form id="reply" method="post">
-					<textarea class="content" name="content" 
-						style=" width:90%; margin-top: 0px; margin-bottom: 0px; height: 56px; border: none;"></textarea>
-			
-					<input type="hidden" name="id" value="soh445"> <input
-						type="hidden" name="nickName" value="ss"> <input
-						type="hidden" name="comSeq" value="${CommInfoVO.comSeq }">
-					<input type="button" onclick="insertReview(this.form)"
-						value="댓글 작성">
-				</form>
 
-				<form id="Review" method="post" enctype="multipart/form-data">
-					<div class="">
-						<div class="preview_area" style="display: block;">
-							<div class="view_area" style="display: flex;">
-							
+				<div class="" style="border: 1px solid red">
+					<form id="reply" method="post">
+						<textarea class="content" name="content"
+							style="width: 90%; margin-top: 0px; margin-bottom: 0px; height: 56px;"></textarea>
+
+						<input type="hidden" name="id" value="${sessionScope.userSession.id }"> <input
+							type="hidden" name="nickName" value="${sessionScope.userSession.nickName }"> <input
+							type="hidden" name="comSeq" value="${CommInfoVO.comSeq }">
+						<input  type="button" onclick="insertReview(this.form)"
+							value="댓글 작성">
+					</form>
+
+					<form id="Review" method="post" enctype="multipart/form-data">
+						<div class="">
+							<div class="preview_area" style="display: block;">
+								<div class="view_area" style="display: flex;"></div>
 							</div>
 						</div>
-					</div>
-					
-					<label for="image"></label> <input multiple="multiple" type="file"
-						name="file" id="image" />
-				</form>
-				
-</div>
+
+						<label for="image"></label> <input multiple="multiple" type="file"
+							name="file" id="image" />
+					</form>
+
+				</div>
 
 
 				<div>
@@ -439,7 +465,7 @@
 
 			if ("${sessionScope.userSession.id}" != "") {
 
-				var form = $("#reply")[0];
+				var form = e.form;
 				var data = new FormData(form);
 				var imgs = document.querySelectorAll('.view_area img');
 				console.log(imgs);
@@ -464,33 +490,40 @@
 					"nickName" : '${sessionScope.userSession.nickName}'
 				};
 
-				$.ajax({
-					type : 'post',
-					url : "reviewInsert.do",
-					data : objParams,
-					success : function(e) {
-						console.log(e);
-						var fileString = "";
-						$('.content').val('');
-						$('.view_area').html('');
-						if($file_ != null && $file_ !=""){
-							for(var i in $file_){
-								fileString += "<img width='100' height='100' src='/app/resources/img/review/"+$file_[i]+"' />";
-								
+				$
+						.ajax({
+							type : 'post',
+							url : "reviewInsert.do",
+							data : objParams,
+							success : function(e) {
+								console.log(e);
+								var fileString = "";
+								$('.content').val('');
+								$('.view_area').html('');
+								if ($file_ != null && $file_ != "") {
+									for ( var i in $file_) {
+										fileString += "<img width='100' height='100' src='/app/resources/img/review/"+$file_[i]+"' />";
+
+									}
+
+								}
+								console.log(fileString);
+
+								$('.comment_item_list')
+										.append(
+												'<div class="id_admin" style="width: 100%; display: block;"> <span>'
+														+ objParams.nickName
+														+ '</span></div><div class="comment" style="display: block;"><div class="comment-img" style="display: flex;">'
+														+ fileString
+														+ '</div><div style="display: flex; flex-direction:row;"><div class="comment_contents"style="width:95%;height:50px; overflow:hidden;word-wrap:break-word;">'
+														+ objParams.content
+														+ '</div><div style="width:5%; height:50px;"><button type="button">답글</button></div></div></div>');
+
+							},
+							error : function(jqXHR, textStatus, errorThrown) {
+								alert("오류가 발생하였습니다.");
 							}
-							
-						}
-						console.log(fileString);
-						
-						$('.comment_item_list').append('<div class="id_admin" style="width: 100%; display: block;"> <span>'+objParams.nickName+'</span></div><div class="comment" style="display: block;"><div class="comment-img" style="display: flex;">'+fileString+'</div><div style="display: flex; flex-direction:row;"><div class="comment_contents"style="width:95%;height:50px; overflow:hidden;word-wrap:break-word;">'+objParams.content+'</div><div style="width:5%; height:50px;"><button type="button">답글</button></div></div></div>');
-						
-						
-						
-					},
-					error : function(jqXHR, textStatus, errorThrown) {
-						alert("오류가 발생하였습니다.");
-					}
-				});
+						});
 
 			} else {
 				var result = confirm("로그인이 필요한 서비스입니다. 로그인 하시겠습니까?")
@@ -535,51 +568,55 @@
 				.on(
 						'change',
 						function() {
-							
+
 							if ("${sessionScope.userSession.id}" != "") {
-							ext = $(this).val().split('.').pop().toLowerCase(); //확장자
+								ext = $(this).val().split('.').pop()
+										.toLowerCase(); //확장자
 
-							//배열에 추출한 확장자가 존재하는지 체크
-							if ($.inArray(ext, [ 'gif', 'png', 'jpg', 'jpeg' ]) == -1) {
-								resetFormElement($(this)); //폼 초기화
-								window
-										.alert('이미지 파일이 아닙니다! (gif, png, jpg, jpeg 만 업로드 가능)');
-							} else {
-								var form = $("#Review")[0];
-								var data = new FormData(form);
-								$
-										.ajax({
-											type : 'post',
-											enctype : 'multipart/form-data',
-											url : "reviewUpload.do",
-											data : data,
-											processData : false,
-											contentType : false,
-											success : function(json) {
-												for ( var i in json) {
-													$('.view_area')
-															.append("<div><img style='width:100px; height:100px;' src=/app/resources/img/review/"+json[i]+"><button type='button' onclick='imgDel(this);'>삭제하기</button></div>")
+								//배열에 추출한 확장자가 존재하는지 체크
+								if ($.inArray(ext, [ 'gif', 'png', 'jpg',
+										'jpeg' ]) == -1) {
+									resetFormElement($(this)); //폼 초기화
+									window
+											.alert('이미지 파일이 아닙니다! (gif, png, jpg, jpeg 만 업로드 가능)');
+								} else {
+									var form = $("#Review")[0];
+									var data = new FormData(form);
+									$
+											.ajax({
+												type : 'post',
+												enctype : 'multipart/form-data',
+												url : "reviewUpload.do",
+												data : data,
+												processData : false,
+												contentType : false,
+												success : function(json) {
+													for ( var i in json) {
+														$('.view_area')
+																.append(
+																		"<div><img style='width:50px; height:50px;' src=/app/resources/img/review/"+json[i]+"><button type='button' onclick='imgDel(this);'>삭제하기</button></div>")
+													}
+													//alert("업로드 성공");	
+												},
+												error : function(jqXHR,
+														textStatus, errorThrown) {
+													alert("오류가 발생하였습니다.");
 												}
-												//alert("업로드 성공");	
-											},
-											error : function(jqXHR, textStatus,
-													errorThrown) {
-												alert("오류가 발생하였습니다.");
-											}
 
-										});
+											});
+								}
+
+							} else {
+								var result = confirm("로그인이 필요한 서비스입니다. 로그인 하시겠습니까?")
+								if (result) {
+									window
+											.open(
+													'/app/loginModal.jsp',
+													'pop01',
+													'top=10, left=10, width=500, height=600, status=no, menubar=no, toolbar=no, resizable=no');
+								}
 							}
-						
-						} else {
-							var result = confirm("로그인이 필요한 서비스입니다. 로그인 하시겠습니까?")
-							if (result) {
-								window
-										.open(
-												'/app/loginModal.jsp',
-												'pop01',
-												'top=10, left=10, width=500, height=600, status=no, menubar=no, toolbar=no, resizable=no');
-							}
-						}});
+						});
 
 		function resetFormElement(e) {
 			e.wrap('<form>').closest('form').get(0).reset();
