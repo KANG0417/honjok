@@ -108,30 +108,30 @@ public class list {
 	
 	  @RequestMapping("/reviewInsert.do")
 	  @ResponseBody
-	  public String reviewInsert(@RequestParam(value="file[]",required=false ) List<String> fileList,
+	  public int reviewInsert(@RequestParam(value="file[]",required=false ) List<String> fileList,
 			  @RequestParam(value="content") String content,
 			  @RequestParam(value="comSeq")String comSeq,
 			  @RequestParam(value="id")String id,
 			  @RequestParam(value="nickName")String nickName,commReplyVO commreplyvo){
 			
-		  	//리플 작성
-		  	service.insertReview(commreplyvo);
-		  	System.out.println(content);
-		  	System.out.println(id);
-		  	System.out.println(nickName);
-		  	System.out.println(commreplyvo);
+			  	System.out.println(commreplyvo);
+			  	//리플 작성
+			  	service.insertReview(commreplyvo);
+			  	System.out.println(content);
+			  	System.out.println(id);
+			  	System.out.println(nickName);
 		  	
-		  	if(fileList != null) {
-	  		Map<String,String> map = new HashMap<String,String>();
-	  		for(String file :fileList) {
-	  		 map.put("file", file);
-	  		 map.put("comSeq", comSeq);
-	  		 service.updateReview(map);
-	  			}
-		  	}
-		  	
-		  	String ss ="ss";
-		  return ss;
+			  	if(fileList != null) {
+		  		Map<String,String> map = new HashMap<String,String>();
+		  		for(String file :fileList) {
+		  		 map.put("file", file);
+		  		 map.put("comSeq", comSeq);
+		  		 service.updateReview(map);
+		  			}
+			  	}
+			  		int  idx = service.idxSelect(); 
+			  	
+			    return idx;
 	  }
 	 
 

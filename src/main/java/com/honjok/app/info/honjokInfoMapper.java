@@ -103,6 +103,14 @@ public class honjokInfoMapper {
 			return getReviewImg;
 		}
 	
+		public int idxSelect() {
+			
+			int idx = mybatis.selectOne("honjokInfoMapper.idxSelect");
+				
+			return idx;
+		}
+		
+		
 	
 	//select 끝
 	
@@ -164,6 +172,8 @@ public class honjokInfoMapper {
 				List<CommunityVO> selectBest5 =mybatis.selectList("honjokInfoMapper.selectBest5");
 				return selectBest5;
 			}
+
+			
 
 			
 	//delete 끝
