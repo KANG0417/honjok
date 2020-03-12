@@ -29,6 +29,23 @@
 	</div>
 		<hr>
 			<h3>${userSession.id}님 안녕하세요!<a href="logout.do">Log-out</a></h3>
+	<ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="${contextPage.request.contextPath }/app/interior/interiorAllList.do">인테리어</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="${contextPage.request.contextPath }/app/cook/CookAll.do">레시피</a>
+      </li>    
+      <li class="nav-item">
+        <a class="nav-link" href="${contextPage.request.contextPath }/app/honjokInfo/select.do">혼밥정보</a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link" href="/app/admin/productReg.jsp">상품등록</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/app/mypage/myPage.jsp">마이페이지</a>
+      	</li>
+    </ul>
 				<div class="row">
 <div class="col-md-4" >
 	<c:forEach var="main" items="${mainList}">

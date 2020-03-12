@@ -37,7 +37,9 @@
 	}
 	
 	#ss {
-		border: 1px solid black;
+		border: 1px solid #929fd8;
+		padding: 20px;
+		margin: 50px;
 		float: left;
 	}
 </style>
@@ -78,7 +80,7 @@
         <a class="nav-link" href="signUp.jsp">회원가입</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="login.jsp">로그인</a>
+        <a class="nav-link" href="login.jsp">${userSession.id}님 안녕하세요!</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="${contextPage.request.contextPath }/app/interior/interiorAllList.do">인테리어</a>
@@ -121,37 +123,37 @@
 	</div>
 	
 	</div>	
-<form>	
+<form action="/app/login.do" method="post">	
 	<div id="ss" style="width : 79%; margin: 20px; padding:-15px;">
 		<p>회원정보를 수정하시려면 비밀번호를 입력해주세요</p>
 		<input type="password">
 		<c:if test="${userSession.password == null }">
-		<input type="button" value="확인" onclick="update(str)">
+		<input type="button" value="확인" onclick="update()">
 		</c:if>
 		<c:if test="${userSession.password != null }">
-		<input type="button" value="확인" onclick="update_()">
+		<input type="submit" value="확인" onclick="update_()">
 		</c:if>
 	</div>
 	
-	<input type="hidden" name="password" id="password"
-	placeholder="비밀번호를 입력해주세요" required>
+	<input type="hidden" name="userId" id="userId">
+	<input type="hidden" name="password" id="password">
 	<div class="checkFont" id="passwordCheck"></div>
 </form>	
 </div>
 <script>
-	$('#del').on("click",function(){
+	/* $('#del').on("click",function(){
 		$('#ss').html("");
 		$('#ss').append('<div>회원탈퇴</div>');	
-	})
+	}) */
 	
-	var empJ = /\s/g; //공백체크 정규표현식
-	var pwJ = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
-	function update(str) { 
-		if (pwJ.test($('#password').val())) {
-			$('#passwordCheck').text("");
-	            alert("비밀번호를 다시 입력해주세요"); 
-	        } else { 
-	        } 
+	/* var empJ = /\s/g; //공백체크 정규표현식
+	var pwJ = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/; */
+	function update() { 
+	         alert("비밀번호를 다시 입력해주세요"); 
+	    }
+	
+	function update_() { 
+	         alert(""); 
 	    }
 </script>
 </body>
