@@ -346,9 +346,10 @@
 							</c:when>
 
 							<c:when test="${reply.level > 1}">
+							<div style="margin-left: 20px">
 								<div class="id_admin" style="width: 100%; display: block;">
-									<div>●답변</div>
-									<span> ${reply.nickName }</span>
+									<span>┗ 답변</span>
+									<span style="margin-left: 20px"> 작성자 : ${reply.nickName }</span>
 								</div>
 								<div class="comment" style="display: block;">
 									<div class="comment-img" style="display: flex;">
@@ -359,12 +360,13 @@
 									</div>
 									<div style="display: flex; flex-direction: row;">
 										<div class="comment_contents"
-											style="width: 95%; height: 50px; overflow: hidden; word-wrap: break-word;">
+											style="width: 95%; height: 50px; overflow: hidden; word-wrap: break-word; margin-left: 20px;">
 											${reply.content }</div>
 										<div style="width: 5%; height: 50px;">
 											<button style="" type="button" value="${reply.idx}">답글</button>
 										</div>
 									</div>
+								</div>
 								</div>
 							</c:when>
 						</c:choose>
@@ -570,13 +572,15 @@
 								} else {
 									$(replyTarget)
 											.after(
-													'<div class="id_admin" style="width: 100%; display: block;"><div>●답변</div> <span>'
+													'<div style="margin-left: 20px"> <div class="id_admin" style="width: 100%; display: block;"><span>┗ 답변</span> <span style="margin-left: 20px;"> 작성자 :  '
 															+ objParams.nickName
 															+ '</span></div><div class="comment" style="display: block;"><div class="comment-img" style="display: flex;">'
 															+ fileString
-															+ '</div><div style="display: flex; flex-direction:row;"><div class="comment_contents"style="width:95%;height:50px; overflow:hidden;word-wrap:break-word;">'
+															+ '</div><div style="display: flex; flex-direction:row;"><div class="comment_contents"style="width:95%;height:50px; overflow:hidden;word-wrap:break-word; margin-left: 20px">'
 															+ objParams.content
-															+ '</div><div style="width:5%; height:50px;"><button style="" type="button" value="'+idx+'">답글</button></div></div></div>');
+															+ '</div><div style="width:5%; height:50px;"><button style="" type="button" value="'+idx+'">답글</button></div></div></div></div>');
+									$("button:contains('답글취소')").text('답글');
+									$('#reply').remove();
 								}
 							},
 							error : function(jqXHR, textStatus, errorThrown) {

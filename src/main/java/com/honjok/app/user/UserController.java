@@ -41,7 +41,7 @@ public class UserController {
 		userService.insertUser(vo);
 		//이메일 보내기
 		mailsender.mailSendWithUserKey(vo.getEmail(), vo.getId(), request);
-		return "index.jsp";
+		return "index2.jsp";
 	}
 	
 	//아이디 중복체크
