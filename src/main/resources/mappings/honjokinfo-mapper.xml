@@ -46,7 +46,7 @@
 	<!-- 리뷰 insert -->
 	<insert id="insertReview" parameterType="commReplyVO">
 		INSERT INTO COMM_REPLY
-		VALUES(#{id},0,COMM_REPLY_SEQ.NEXTVAL,#{content},sysdate,#{nickName},#{comSeq})
+		VALUES(#{id},#{lev},COMM_REPLY_SEQ.NEXTVAL,#{content},sysdate,#{nickName},#{comSeq})
 	</insert>
 	
 	
@@ -132,8 +132,8 @@
 	
 	<!-- 댓글 가져오기  -->
 	<select id="getReview" parameterType="String" resultType="commReplyVO">
-	select * from comm_reply where com_seq = #{comSeq} order by
-		idx DESC
+		select level, idx, lev, id, content, regdate, nick_name, com_seq from comm_reply where com_seq = #{comSeq} start with lev = 0
+		connect by prior idx = lev order siblings by idx
 	</select>
 	
 	
@@ -147,6 +147,10 @@
 	<!-- 베스트 게시물 5개 가져오기 -->
 	<select id="selectBest5" resultType="CommunityVO">
 		select * from (select * from community where type = '1' order by likes desc)community where ROWNUM BETWEEN 1 and 5
+	</select>
+	
+	<select id="idxSelect" resultType="Integer">
+		select MAX(idx) from comm_reply
 	</select>
 
 

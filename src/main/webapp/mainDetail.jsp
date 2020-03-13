@@ -80,7 +80,9 @@
       
     const goodsPrice = (parseInt(price.innerHTML));
   
-    
+    if(qtyCount == 1){
+    	qtyCount = price
+    }
    
     
   	plusBtn.addEventListener("click",function(){
@@ -156,6 +158,10 @@
     overlay.addEventListener("click",closeModal);
     closeBtn.addEventListener("click",closeModal);
     yesBtn.addEventListener("click",closeModal);
+    
+    
+    
+    
     
 </script>
 <style>
