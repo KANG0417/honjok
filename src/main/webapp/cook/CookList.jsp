@@ -73,6 +73,10 @@
   <div class="carousel-inner">
     <div class="carousel-item active">
       <img src="${contextPage.request.contextPath}/app/resources/img/cook.jpg" alt="Los Angeles" width="1100" height="500">
+      <div class="carousel-caption">
+        <h3>혼밥하세요</h3>
+        <p>밥은 혼자 먹어야 맛있어!</p>
+      </div> 
     </div>
     <div class="carousel-item">
       <img src="${contextPage.request.contextPath}/app/resources/img/cook.jpg" alt="Chicago" width="1100" height="500">
