@@ -13,7 +13,7 @@ import com.honjok.app.vo.LikesVO;
 public class InteriorServiceImpl implements InteriorService {
 
 	@Autowired
-	private CommInteriorDAOMybatis commDAO;
+	private CommInteriorDAO commDAO;
 	
 	//게시물 전체조회
 	@Override

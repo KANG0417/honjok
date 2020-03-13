@@ -19,6 +19,13 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://kit.fontawesome.com/73d0df04d6.js"
 	crossorigin="anonymous"></script>
+
+<style>
+.card-2 img {
+	width: 80%;
+	height: 500px;
+}
+</style>
 </head>
 
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
@@ -40,6 +47,8 @@
 	$()
 			.ready(
 					function() {
+						var cnt = 1;
+						var reply = 0;
 						var contentimg = '${CommInfoVO.content}';
 						var firstimg = $(contentimg).find('img:first').attr(
 								'src');
@@ -278,7 +287,7 @@
 
 		<div class="left-column">
 			<div class="card"></div>
-			<div class="card card-1">
+			<div class="card card-1" style="">
 				<p>${CommInfoVO.nickName }님의혼밥리뷰</p>
 				<h2>${CommInfoVO.title }</h2>
 				<h5>#해시테그 #해시태그 #해시태그</h5>
@@ -304,65 +313,102 @@
 					src="//developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png" />
 				</a> <span>공유하기</span>
 			</div>
-			
-			
+
+
 			<div class="card">
 
 				<h2>혼밥리뷰</h2>
 				<a>전체</a> <a>최신순</a> <a>좋아요순</a> 인생맛집
 
-					<div class="comment_item_list">
-				<c:forEach varStatus="Num" var="reply" items="${reply }">
-						<div class="id_admin" style="width:100%;display: block;">
-							<span> ${reply.nickName }</span> 
-						</div>
-						<div class="comment" style="display: block;">
-							<div class="comment-img" style="display: flex;">
-								<c:forEach var="replyimg" items="${reply.replyuploadvo}">
-									<img width="100" height="100"
-										src="/app/resources/img/review/${replyimg.upImgName}">
-								</c:forEach>
-							</div>
-							<div style="display: flex; flex-direction:row;">
-								<div class="comment_contents" style="width:95%;height:50px; overflow:hidden;word-wrap:break-word;"> ${reply.content }</div>
-								<div style="width:5%; height:50px;">
-									<button style="" type="button">답글</button>
+				<div class="comment_item_list">
+					<c:forEach varStatus="Num" var="reply" items="${reply }">
+						<c:choose>
+							<c:when test="${ reply.level == 1}">
+								<div class="id_admin" style="width: 100%; display: block;">
+									<span> ${reply.nickName }</span>
 								</div>
-							</div>
-							
-						</div>
-			</c:forEach>
-					</div>
+								<div class="comment" style="display: block;">
+									<div class="comment-img" style="display: flex;">
+										<c:forEach var="replyimg" items="${reply.replyuploadvo}">
+											<img width="100" height="100"
+												src="/app/resources/img/review/${replyimg.upImgName}">
+										</c:forEach>
+									</div>
+									<div style="display: flex; flex-direction: row;">
+										<div class="comment_contents"
+											style="width: 95%; height: 50px; overflow: hidden; word-wrap: break-word;">
+											${reply.content }</div>
+										<div style="width: 5%; height: 50px;">
+											<button style="" type="button" value="${reply.idx}">답글</button>
+										</div>
+									</div>
+								</div>
+							</c:when>
 
-			<%-- ${reply.comSeq } ${reply.idx } ${reply.id }  --%>
-		
+							<c:when test="${reply.level > 1}">
+							<div style="margin-left: 20px">
+								<div class="id_admin" style="width: 100%; display: block;">
+									<span>┗ 답변</span>
+									<span style="margin-left: 20px"> 작성자 : ${reply.nickName }</span>
+								</div>
+								<div class="comment" style="display: block;">
+									<div class="comment-img" style="display: flex;">
+										<c:forEach var="replyimg" items="${reply.replyuploadvo}">
+											<img width="100" height="100"
+												src="/app/resources/img/review/${replyimg.upImgName}">
+										</c:forEach>
+									</div>
+									<div style="display: flex; flex-direction: row;">
+										<div class="comment_contents"
+											style="width: 95%; height: 50px; overflow: hidden; word-wrap: break-word; margin-left: 20px;">
+											${reply.content }</div>
+										<div style="width: 5%; height: 50px;">
+											<button style="" type="button" value="${reply.idx}">답글</button>
+										</div>
+									</div>
+								</div>
+								</div>
+							</c:when>
+						</c:choose>
+					</c:forEach>
 
-			<div style="border:1px solid red">
-				<form id="reply" method="post">
-					<textarea class="content" name="content" 
-						style=" width:90%; margin-top: 0px; margin-bottom: 0px; height: 56px; border: none;"></textarea>
-			
-					<input type="hidden" name="id" value="soh445"> <input
-						type="hidden" name="nickName" value="ss"> <input
-						type="hidden" name="comSeq" value="${CommInfoVO.comSeq }">
-					<input type="button" onclick="insertReview(this.form)"
-						value="댓글 작성">
-				</form>
+
+				</div>
+
+
+				<div class="" style="border: 1px solid red">
+					<form id="reply" method="post">
+						<textarea class="content" name="content"
+							style="width: 90%; margin-top: 0px; margin-bottom: 0px; height: 56px;"></textarea>
+
+						<input type="hidden" name="id"
+							value="${sessionScope.userSession.id }"> <input
+							type="hidden" name="nickName"
+							value="${sessionScope.userSession.nickName }"> <input
+							type="hidden" name="comSeq" value="${CommInfoVO.comSeq }">
+						<input type="hidden" name="comSeq" value="${CommInfoVO.comSeq }">
+						<input class="lev" type="hidden" name="lev" value="0"> <input
+							type="button" onclick="insertReview(this.form)" value="댓글 작성">
+					</form>
+
+				</div>
 
 				<form id="Review" method="post" enctype="multipart/form-data">
 					<div class="">
 						<div class="preview_area" style="display: block;">
-							<div class="view_area" style="display: flex;">
-							
-							</div>
+							<div class="view_area" style="display: flex;"></div>
 						</div>
 					</div>
-					
+
 					<label for="image"></label> <input multiple="multiple" type="file"
 						name="file" id="image" />
 				</form>
-				
-</div>
+
+
+				<%-- ${reply.comSeq } ${reply.idx } ${reply.id }  --%>
+
+
+
 
 
 				<div>
@@ -435,17 +481,45 @@
 
 
 	<script>
+		$(document).on('click', '.comment_item_list button', function() {
+			console.log(this)
+			console.log(this.innerText);
+			console.log(this.value);
+			if (this.innerText == "답글") {
+				var form = document.querySelectorAll('#reply');
+				console.log(form.length);
+				if (form.length == 2) {
+					$("button:contains('답글취소')").text('답글');
+					$(form)[0].remove();
+				}
+				var reply = document.querySelector('#reply').cloneNode(true);
+				$(reply).find('input[name=lev]').val(this.value);
+				var puls = $(this).parent().parent();
+				$(puls).after(reply);
+				console.log(reply);
+				this.innerText = "답글취소";
+			} else {
+				this.innerText = "답글";
+				var form = document.querySelector('#reply');
+				$(form).remove();
+			}
+			//clone();						
+		});
+
 		function insertReview(e) {
 
 			if ("${sessionScope.userSession.id}" != "") {
 
-				var form = $("#reply")[0];
+				var form = e.form;
 				var data = new FormData(form);
 				var imgs = document.querySelectorAll('.view_area img');
 				console.log(imgs);
 				var img = '';
 				var files = '';
 				var $file_ = [];
+				var reply = $(e).find('input[name=lev]').val();
+
+				console.log(reply);
 
 				for ( var i in imgs) {
 					console.log(i);
@@ -457,40 +531,62 @@
 				}
 
 				var objParams = {
-					"content" : $('.content').val(),
+					"content" : $(e).find('.content').val(),
 					"file" : $file_,
 					"comSeq" : '${CommInfoVO.comSeq}',
 					"id" : '${sessionScope.userSession.id}',
-					"nickName" : '${sessionScope.userSession.nickName}'
+					"nickName" : '${sessionScope.userSession.nickName}',
+					"lev" : reply
 				};
 
-				$.ajax({
-					type : 'post',
-					url : "reviewInsert.do",
-					data : objParams,
-					success : function(e) {
-						console.log(e);
-						var fileString = "";
-						$('.content').val('');
-						$('.view_area').html('');
-						if($file_ != null && $file_ !=""){
-							for(var i in $file_){
-								fileString += "<img width='100' height='100' src='/app/resources/img/review/"+$file_[i]+"' />";
-								
+				$
+						.ajax({
+							type : 'post',
+							url : "reviewInsert.do",
+							data : objParams,
+							success : function(idx) {
+								var fileString = "";
+								$('.content').val('');
+								$('.view_area').html('');
+								if ($file_ != null && $file_ != "") {
+									for ( var i in $file_) {
+										fileString += "<img width='100' height='100' src='/app/resources/img/review/"+$file_[i]+"' />";
+
+									}
+
+								}
+								console.log(fileString);
+								console.log(objParams.lev);
+								var replyTarget = $(e).parent();
+
+								if (objParams.lev == 0) {
+									$(".comment_item_list")
+											.append(
+													'<div class="id_admin" style="width: 100%; display: block;"> <span>'
+															+ objParams.nickName
+															+ '</span></div><div class="comment" style="display: block;"><div class="comment-img" style="display: flex;">'
+															+ fileString
+															+ '</div><div style="display: flex; flex-direction:row;"><div class="comment_contents"style="width:95%;height:50px; overflow:hidden;word-wrap:break-word;">'
+															+ objParams.content
+															+ '</div><div style="width:5%; height:50px;"><button style="" type="button" value="'+idx+'">답글</button></div></div></div>');
+								} else {
+									$(replyTarget)
+											.after(
+													'<div style="margin-left: 20px"> <div class="id_admin" style="width: 100%; display: block;"><span>┗ 답변</span> <span style="margin-left: 20px;"> 작성자 :  '
+															+ objParams.nickName
+															+ '</span></div><div class="comment" style="display: block;"><div class="comment-img" style="display: flex;">'
+															+ fileString
+															+ '</div><div style="display: flex; flex-direction:row;"><div class="comment_contents"style="width:95%;height:50px; overflow:hidden;word-wrap:break-word; margin-left: 20px">'
+															+ objParams.content
+															+ '</div><div style="width:5%; height:50px;"><button style="" type="button" value="'+idx+'">답글</button></div></div></div></div>');
+									$("button:contains('답글취소')").text('답글');
+									$('#reply').remove();
+								}
+							},
+							error : function(jqXHR, textStatus, errorThrown) {
+								alert("오류가 발생하였습니다.");
 							}
-							
-						}
-						console.log(fileString);
-						
-						$('.comment_item_list').append('<div class="id_admin" style="width: 100%; display: block;"> <span>'+objParams.nickName+'</span></div><div class="comment" style="display: block;"><div class="comment-img" style="display: flex;">'+fileString+'</div><div style="display: flex; flex-direction:row;"><div class="comment_contents"style="width:95%;height:50px; overflow:hidden;word-wrap:break-word;">'+objParams.content+'</div><div style="width:5%; height:50px;"><button type="button">답글</button></div></div></div>');
-						
-						
-						
-					},
-					error : function(jqXHR, textStatus, errorThrown) {
-						alert("오류가 발생하였습니다.");
-					}
-				});
+						});
 
 			} else {
 				var result = confirm("로그인이 필요한 서비스입니다. 로그인 하시겠습니까?")
@@ -535,51 +631,55 @@
 				.on(
 						'change',
 						function() {
-							
+
 							if ("${sessionScope.userSession.id}" != "") {
-							ext = $(this).val().split('.').pop().toLowerCase(); //확장자
+								ext = $(this).val().split('.').pop()
+										.toLowerCase(); //확장자
 
-							//배열에 추출한 확장자가 존재하는지 체크
-							if ($.inArray(ext, [ 'gif', 'png', 'jpg', 'jpeg' ]) == -1) {
-								resetFormElement($(this)); //폼 초기화
-								window
-										.alert('이미지 파일이 아닙니다! (gif, png, jpg, jpeg 만 업로드 가능)');
-							} else {
-								var form = $("#Review")[0];
-								var data = new FormData(form);
-								$
-										.ajax({
-											type : 'post',
-											enctype : 'multipart/form-data',
-											url : "reviewUpload.do",
-											data : data,
-											processData : false,
-											contentType : false,
-											success : function(json) {
-												for ( var i in json) {
-													$('.view_area')
-															.append("<div><img style='width:100px; height:100px;' src=/app/resources/img/review/"+json[i]+"><button type='button' onclick='imgDel(this);'>삭제하기</button></div>")
+								//배열에 추출한 확장자가 존재하는지 체크
+								if ($.inArray(ext, [ 'gif', 'png', 'jpg',
+										'jpeg' ]) == -1) {
+									resetFormElement($(this)); //폼 초기화
+									window
+											.alert('이미지 파일이 아닙니다! (gif, png, jpg, jpeg 만 업로드 가능)');
+								} else {
+									var form = $("#Review")[0];
+									var data = new FormData(form);
+									$
+											.ajax({
+												type : 'post',
+												enctype : 'multipart/form-data',
+												url : "reviewUpload.do",
+												data : data,
+												processData : false,
+												contentType : false,
+												success : function(json) {
+													for ( var i in json) {
+														$('.view_area')
+																.append(
+																		"<div><img style='width:50px; height:50px;' src=/app/resources/img/review/"+json[i]+"><button type='button' onclick='imgDel(this);'>삭제하기</button></div>")
+													}
+													//alert("업로드 성공");	
+												},
+												error : function(jqXHR,
+														textStatus, errorThrown) {
+													alert("오류가 발생하였습니다.");
 												}
-												//alert("업로드 성공");	
-											},
-											error : function(jqXHR, textStatus,
-													errorThrown) {
-												alert("오류가 발생하였습니다.");
-											}
 
-										});
+											});
+								}
+
+							} else {
+								var result = confirm("로그인이 필요한 서비스입니다. 로그인 하시겠습니까?")
+								if (result) {
+									window
+											.open(
+													'/app/loginModal.jsp',
+													'pop01',
+													'top=10, left=10, width=500, height=600, status=no, menubar=no, toolbar=no, resizable=no');
+								}
 							}
-						
-						} else {
-							var result = confirm("로그인이 필요한 서비스입니다. 로그인 하시겠습니까?")
-							if (result) {
-								window
-										.open(
-												'/app/loginModal.jsp',
-												'pop01',
-												'top=10, left=10, width=500, height=600, status=no, menubar=no, toolbar=no, resizable=no');
-							}
-						}});
+						});
 
 		function resetFormElement(e) {
 			e.wrap('<form>').closest('form').get(0).reset();
