@@ -15,7 +15,7 @@
 		)
 	</insert>
 	
-	<select id="oneUser" parameterType="String">
+	<select id="oneUser" parameterType="String" resultType="user">
 		SELECT *
 		FROM USERS
 		WHERE ID = #{id}

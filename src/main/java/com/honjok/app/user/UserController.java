@@ -92,6 +92,7 @@ public class UserController {
 		
 		//아이디 기억하기 name값 가져오기
 		String userCheck = request.getParameter("rememberUserId");
+		
 		//암호화 비밀번호 확인
 		System.out.println(vo.getPassword());
 		
@@ -107,6 +108,4 @@ public class UserController {
 
 		return result;
 	}
-	
-	
 }

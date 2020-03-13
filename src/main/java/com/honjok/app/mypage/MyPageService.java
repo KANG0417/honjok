@@ -1,5 +1,8 @@
 package com.honjok.app.mypage;
 
-public interface MyPageService {
+import com.honjok.app.vo.UserVO;
 
+public interface MyPageService {
+	public void selectOne(UserVO uvo);
+	
 }

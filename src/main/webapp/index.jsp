@@ -16,7 +16,7 @@
 <div class="jumbotron text-center">
  
   <h2>대환장 프로젝트 </h2>
-  <p>頑張れ人間よ!</p> 
+<!--   <p>頑張れ人間よ!</p>  -->
 </div>
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">

@@ -123,15 +123,15 @@
 	</div>
 	
 	</div>	
-<form action="/app/login.do" method="post">	
+<form action="/app/selectMypage.do" method="post">	
 	<div id="ss" style="width : 79%; margin: 20px; padding:-15px;">
+		<c:if test="${userSession.password == null }">
 		<p>회원정보를 수정하시려면 비밀번호를 입력해주세요</p>
 		<input type="password">
-		<c:if test="${userSession.password == null }">
-		<input type="button" value="확인" onclick="update()">
+		<input type="button" value="확인" onclick="userUpdateCh()">
 		</c:if>
 		<c:if test="${userSession.password != null }">
-		<input type="submit" value="확인" onclick="update_()">
+		<input type="submit" value="확인" onclick="userUpdate()">
 		</c:if>
 	</div>
 	
@@ -148,11 +148,11 @@
 	
 	/* var empJ = /\s/g; //공백체크 정규표현식
 	var pwJ = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/; */
-	function update() { 
+	function userUpdateCh() { 
 	         alert("비밀번호를 다시 입력해주세요"); 
 	    }
 	
-	function update_() { 
+	function update() { 
 	         alert(""); 
 	    }
 </script>
