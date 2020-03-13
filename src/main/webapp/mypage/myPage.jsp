@@ -36,7 +36,21 @@
 		
 	}
 	
-	#ss {
+	#intro {
+		border: 1px solid #929fd8;
+		padding: 20px;
+		margin: 50px;
+		float: left;
+	}
+	
+	#intro {
+		border: 1px solid #929fd8;
+		padding: 20px;
+		margin: 50px;
+		float: left;
+	}
+	
+	#intro {
 		border: 1px solid #929fd8;
 		padding: 20px;
 		margin: 50px;
@@ -44,24 +58,6 @@
 	}
 </style>
 <script>
-	function fun() {
-		$.ajax({
-			url:"",
-			type:"",
-			dataType:"",
-			data : {userid: userid} ,
-			success:function(data){
-								
-				data.id 
-				append("<div>"+data.id+"</div>");
-				$('#ss').htl
-				
-			},
-			error:function (request,status,error) {
-				
-			}
-		});
-	}
 	
 </script>
 </head>
@@ -91,9 +87,9 @@
       <li class="nav-item">
         <a class="nav-link" href="${contextPage.request.contextPath }/app/honjokInfo/select.do">혼밥정보</a>
       </li>
-        <li class="nav-item">
-        <a class="nav-link" href="/app/admin/productReg.jsp">상품등록</a>
-      </li>     
+      <li class="nav-item">
+        <a class="nav-link" href="${contextPage.request.contextPath }/app/mypage/myPage.jsp">마이페이지</a>
+      </li>
     </ul>
   	</div>
   	
@@ -103,7 +99,7 @@
 	<div style="width : 20%;">
 	<ol id="memberInfo">
 	<li><p>회원 정보</p></li>
-	<li class="mem1"><p><a href="" onclick="fun()">회원정보수정</a></p></li>
+	<li class="mem1"><p><a href="${contextPage.request.contextPath }/app/mypage/myPage.jsp" onclick="fun()">회원정보수정</a></p></li>
 	<li><p><a id="del" href="#">회원탈퇴</a></p>
 	<li><p><a href="#">주문내역</a></p>
 	<li><p><a href="#">장바구니</a></p>
@@ -124,15 +120,19 @@
 	
 	</div>	
 <form action="" method="post">	
-	<div id="ss" style="width : 79%; margin: 20px; padding:-15px;">
-		<c:if test="${userSession.password == null }">
-		<p>회원정보를 수정하시려면 비밀번호를 입력해주세요</p>
-		<input type="password">
-		<input type="button" value="확인" onclick="userUpdateCh()">
-		</c:if>
-		<c:if test="${userSession.password != null }">
-		<input type="submit" value="확인" onclick="userUpdate()">
-		</c:if>
+	<div id="intro" style="width : 79%; margin: 20px; padding:-15px;">
+		<div id="orderBox">
+			<h3>주문내역</h3>
+		</div>
+		<div id=memberBox>
+			<h3>회원정보</h3>
+		</div>
+		<div id=wishBox>
+			<h3>관심상품</h3>
+		</div>
+		<div id=commBox>
+			<h3>커뮤니티</h3>
+		</div>
 	</div>
 	
 	<input type="hidden" name="userId" id="userId">
@@ -153,7 +153,7 @@
 	    }
 	
 	function update() { 
-	         alert(""); 
+	         alert("");
 	    }
 </script>
 </body>

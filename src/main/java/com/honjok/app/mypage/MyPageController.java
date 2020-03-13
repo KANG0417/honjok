@@ -11,19 +11,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.honjok.app.vo.UserVO;
 
 @Controller
-/*@RequestMapping("/mypage")*/
+@RequestMapping("/mypage")
 public class MyPageController {
 	
 	@Autowired
 	private MyPageService mypages;
 	
-	/*@RequestMapping("/selectMypage.do")
+	@RequestMapping("/selectMypage.do")
 	//회원정보 id로 조회
 	public String selectOne(UserVO uvo, HttpSession httpSession, HttpServletRequest request,
 			HttpServletResponse response) {
 
 		mypages.selectOne(uvo);
 		return "myPage.jsp";
-	}*/
+	}
 	
 }

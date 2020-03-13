@@ -28,7 +28,6 @@
 			<h2>메인페이지</h2>
 		</div>
 		<hr>
-<<<<<<< HEAD
 		<h3>${userSession.id}님
 			안녕하세요!<a href="logout.do">Log-out</a>	
 		</h3>
@@ -94,5 +93,3 @@ let memId ='${userSession.id}';
 	</c:forEach>
 </div>
 </div>
-</div>
->>>>>>> 672ad773ddbf781a99dce0c8a64def91a05bbdff
