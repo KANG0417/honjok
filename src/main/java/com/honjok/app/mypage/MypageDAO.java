@@ -6,15 +6,15 @@ import org.springframework.stereotype.Repository;
 
 import com.honjok.app.vo.UserVO;
 
-@Repository("mypageDAOMybatis")
+/*@Repository("mypageDAOMybatis")*/
 public class MypageDAO {
 
 	@Autowired
 	private SqlSessionTemplate mybatis;
 	
-	public UserVO getUser(UserVO uvo) {
+	/*public UserVO getUser(UserVO uvo) {
 		System.out.println("===> 유저 정보 id 조회");
 		return mybatis.selectOne("UserDAO.oneUser", uvo);
 	}
-
+*/
 }

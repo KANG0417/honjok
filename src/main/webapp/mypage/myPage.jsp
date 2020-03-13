@@ -123,7 +123,7 @@
 	</div>
 	
 	</div>	
-<form action="/app/selectMypage.do" method="post">	
+<form action="" method="post">	
 	<div id="ss" style="width : 79%; margin: 20px; padding:-15px;">
 		<c:if test="${userSession.password == null }">
 		<p>회원정보를 수정하시려면 비밀번호를 입력해주세요</p>
