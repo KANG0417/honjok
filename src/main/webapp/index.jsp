@@ -73,7 +73,7 @@ header h1 {
         <a class="nav-link" href="signUp.jsp">회원가입</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/app/login.jsp">로그인</a>
+        <a class="nav-link" href="login.jsp">로그인</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="${contextPage.request.contextPath }/app/interior/interiorAllList.do">인테리어</a>
@@ -86,10 +86,7 @@ header h1 {
       </li>
         <li class="nav-item">
         <a class="nav-link" href="/app/admin/productReg.jsp">상품등록</a>
-      </li>
-        <li class="nav-item">
-        <a class="nav-link" href="/app/mypage/myPage.jsp">마이페이지</a>
-      	</li>
+      </li>     
     </ul>
   </div>  
 </nav>

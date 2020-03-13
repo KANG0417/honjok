@@ -15,12 +15,6 @@
 		)
 	</insert>
 	
-	<select id="oneUser" parameterType="String" resultType="user">
-		SELECT *
-		FROM USERS
-		WHERE ID = #{id}
-	</select>
-
 	<select id="emailCheck" parameterType="String" resultType="int">
 		SELECT COUNT(*) FROM USERS WHERE EMAIL = #{email}
 	</select>
@@ -45,5 +39,6 @@
 	<update id="alterUserKey" parameterType="Map">
 		UPDATE USERS SET USERKEY = 'Y'  WHERE ID = #{userId} AND USERKEY = #{userKey}
 	</update>
+	
 	
 </mapper>

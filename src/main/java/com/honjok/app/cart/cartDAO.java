@@ -1,6 +1,5 @@
 package com.honjok.app.cart;
 
-import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -26,11 +25,7 @@ public class cartDAO {
 	}
 	
 	public int getCartCount(String id) {
-		return mybatis.selectOne("cartDAO.getCartCount", id);
-	}
-	
-	public List<Map<String,String>> getCartList(Map<String,String> map){
-		return mybatis.selectList("cartDAO.getCartList",map);
+		return mybatis.selectOne("cartdao.getCartCount", id);
 	}
 
 }
