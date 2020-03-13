@@ -48,7 +48,5 @@ public interface honjokinfoService {
    public void updateReview(Map<String, String> map);
  
    public List<CommunityVO> selectBest5();
-
-   public int idxSelect();
    
 }

@@ -11,7 +11,7 @@ import com.honjok.app.vo.CommInteriorVO;
 import com.honjok.app.vo.LikesVO;
 
 @Repository("commDAOMybatis")
-public class CommInteriorDAO {
+public class CommInteriorDAOMybatis {
 
 	@Autowired
 	private SqlSessionTemplate mybatis;

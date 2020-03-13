@@ -41,7 +41,7 @@ public class UserController {
 		userService.insertUser(vo);
 		//이메일 보내기
 		mailsender.mailSendWithUserKey(vo.getEmail(), vo.getId(), request);
-		return "index2.jsp";
+		return "index.jsp";
 	}
 	
 	//아이디 중복체크
@@ -92,7 +92,6 @@ public class UserController {
 		
 		//아이디 기억하기 name값 가져오기
 		String userCheck = request.getParameter("rememberUserId");
-		
 		//암호화 비밀번호 확인
 		System.out.println(vo.getPassword());
 		
@@ -108,4 +107,6 @@ public class UserController {
 
 		return result;
 	}
+	
+	
 }

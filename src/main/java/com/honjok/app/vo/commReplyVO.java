@@ -4,7 +4,7 @@ import java.util.List;
 
 public class commReplyVO {
 
-private String level,id,lev,step,content,regdate,nickName,comSeq,idx;
+private String id,lev,step,content,regdate,nickName,comSeq,idx;
 private List<replyUploadVO> replyuploadvo;
 public String getId() {
 	return id;
@@ -60,20 +60,14 @@ public List<replyUploadVO> getReplyuploadvo() {
 public void setReplyuploadvo(List<replyUploadVO> replyuploadvo) {
 	this.replyuploadvo = replyuploadvo;
 }
-public String getLevel() {
-	return level;
-}
-public void setLevel(String level) {
-	this.level = level;
-}
+
+
 @Override
 public String toString() {
-	return "commReplyVO [level=" + level + ", id=" + id + ", lev=" + lev + ", step=" + step + ", content=" + content
-			+ ", regdate=" + regdate + ", nickName=" + nickName + ", comSeq=" + comSeq + ", idx=" + idx
-			+ ", replyuploadvo=" + replyuploadvo + "]";
+	return "commReplyVO [id=" + id + ", lev=" + lev + ", step=" + step + ", content=" + content + ", regdate=" + regdate
+			+ ", nickName=" + nickName + ", comSeq=" + comSeq + ", idx=" + idx + ", replyuploadvo=" + replyuploadvo
+			+ "]";
 }
-
-
 
 
 	

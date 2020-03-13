@@ -10,7 +10,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>원마켓</title>
+<title>삶은 null이다  . . .</title>
 <style>
 #video-background {
   position: absolute;
@@ -73,7 +73,7 @@ header h1 {
         <a class="nav-link" href="signUp.jsp">회원가입</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/app/login.jsp">로그인</a>
+        <a class="nav-link" href="login.jsp">로그인</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="${contextPage.request.contextPath }/app/interior/interiorAllList.do">인테리어</a>
@@ -86,10 +86,7 @@ header h1 {
       </li>
         <li class="nav-item">
         <a class="nav-link" href="/app/admin/productReg.jsp">상품등록</a>
-      </li>
-        <li class="nav-item">
-        <a class="nav-link" href="/app/mypage/myPage.jsp">마이페이지</a>
-      	</li>
+      </li>     
     </ul>
   </div>  
 </nav>
@@ -129,5 +126,18 @@ header h1 {
     </video>
 </header>
 <h1 class="main d-none">Travel The World</h1>
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; 혼족 : Honjok 2020<br>
+      02-3486-9600서울 서초구 강남대로 459</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>

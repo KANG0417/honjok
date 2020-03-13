@@ -129,12 +129,7 @@ public class honjokinfoServiceImpl implements honjokinfoService {
 		 
 		return selectBest5;
 	}
-	
-	@Override
-	public int idxSelect() {
-		int idx = Mapper.idxSelect();
-		return idx;
-	}
+
 
 
 	
@@ -184,9 +179,6 @@ public class honjokinfoServiceImpl implements honjokinfoService {
 		public void delReviewUpload(String fileName) {
 			Mapper.delReviewUpload(fileName);
 		}
-
-
-	
 
 
 		

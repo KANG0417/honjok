@@ -11,7 +11,7 @@
 		 P_NAME,SHIPPINGFEE, SUB_CATEGORY2, PROMOTION, DISCOUNTRATE,THUMNAIL_IMG
 		)
 		VALUES  ((SELECT NVL(MAX(P_NUM),0)+1 FROM PRODUCT), #{price}, #{salePrice},'123', #{upperCategory}, #{subCategory},
-				#{stock}, 'rkdwlgid33', #{description}, '자전거', #{brandName},
+				#{stock}, 'id', #{description}, '자전거', #{brandName},
 				#{pName}, #{shippingfee}, #{subCategory2},#{promotion}, #{discountRate},#{thumnailImg}
 		)
   	</insert>

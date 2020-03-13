@@ -58,8 +58,6 @@
 </head>
 <body>
 
-<div class="container mt-3">
-
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
 
   <!-- Indicators -->
@@ -73,6 +71,10 @@
   <div class="carousel-inner">
     <div class="carousel-item active">
       <img src="${contextPage.request.contextPath}/app/resources/img/cook.jpg" alt="Los Angeles" width="1100" height="500">
+      <div class="carousel-caption">
+        <h3>혼밥하세요</h3>
+        <p>밥은 혼자 먹어야 맛있어!</p>
+      </div> 
     </div>
     <div class="carousel-item">
       <img src="${contextPage.request.contextPath}/app/resources/img/cook.jpg" alt="Chicago" width="1100" height="500">
@@ -247,24 +249,25 @@
 	<hr>
 
 	<c:remove var="endPage" />
-<table>
-	<thead>
-	
-<!-- 		<tr class="title"> -->
-<!-- 			<th class="ndo">번d호</th> -->
-<!-- 			<th class="sudbject">제d목</th> -->
-<!-- 			<th class="wrditer">글쓴d이</th> -->
-<!-- 			<th class="redgdate">날d짜</th> -->
-<!-- 			<th class="hidt">조d회수</th> -->
-<!-- 			<th class="likdes">좋d아요</th> -->
-<!-- 		</tr> -->
-	</thead>
 
 
    
 <div class="container">
   <hr>
   <h3>레시피 목록 </h3>
+   <!-- Search Widget -->
+        <div class="card my-4">
+          <h5 class="card-header">Search</h5>
+          <div class="card-body">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Search for...">
+              <span class="input-group-btn">
+                <button class="btn btn-secondary" type="button">Go!</button>
+              </span>
+            </div>
+          </div>
+        </div>
+<div class="container mt-3">
 <!--   <p>혼밥 레시피는 늘어나는 1~2인 가구 및 간편식 라이프스타일에 맞춘 브랜드로<br> 조리 편의성과 소용량 제품을 원하는 고객 니즈를 반영했다.</p> -->
   <hr>
 </div>
@@ -288,7 +291,7 @@
          <td>${cookvo.regdate }</td>
          <td>${cookvo.hit }</td>
          <td>${cookvo.likes }</td>
-      </tr>
+     </tr>
        </c:forEach>  
       </tbody>
      	<form action="insert.jsp">
