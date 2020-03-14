@@ -145,9 +145,41 @@
 		border-bottom-color: #6482FF;
 	}
 	
+	.commBoard {
+		cursor: pointer;
+	}
+	
+	.commBoard:hover {
+		color: #DCEBFF;
+	}
+	
+	.commReply {
+		cursor: pointer;
+	}
+	
+	.commReply:hover {
+		color: #DCEBFF;
+	}
+	
+	.scrap {
+		cursor: pointer;
+	}
+	
+	.scrap:hover {
+		color: #DCEBFF;
+	}
+	
 	.question {
 		border-bottom-style: solid;
 		border-bottom-color: #6482FF;
+	}
+	
+	.qHistory {
+		cursor: pointer;
+	}
+	
+	.qHistory:hover {
+		color: #DCEBFF;
 	}
 </style>
 <script>
@@ -248,6 +280,7 @@
 	         alert("");
 	    }
 	
+	//주문내역 박스를 눌렀을때 기본페이지 주문내역으로 이동
 	$(function(){
         //이벤트를 한 번만 연결(한 번만 실행)
         $("#orderBox").one("click", function(){
@@ -255,6 +288,7 @@
         });
 	});
 	
+	//회원정보 클릭시 페이지 전환
 	$('.orderInfo').on("click",function(){
 		$('#intro').html("");
 		$('#intro').append('<div id="orderHistory">주문내역</div>');	
@@ -273,6 +307,29 @@
 	$('.memDel').on("click",function(){
 		$('#intro').html("");
 		$('#intro').append('회원탈퇴를 하시기 전에 안내사항을 꼭 확인해주세요');	
+	})
+	
+	//커뮤니티정보 클릭시 페이지 전환	
+	$('.commBoard').on("click",function(){
+		$('#intro').html("");
+		$('#intro').append('<table><thead><tr><th>내가 쓴 게시물 목록</th></tr></thead></table>').
+		append('<tbody>게시물</tbody>');
+	})
+	
+	$('.commReply').on("click",function(){
+		$('#intro').html("");
+		$('#intro').append('<table><thead><tr><th>내가 쓴 댓글 목록</th></tr></thead></table>');	
+	})
+	
+	$('.scrap').on("click",function(){
+		$('#intro').html("");
+		$('#intro').append('<table><thead><tr><th>스크랩한 게시물</th></tr></thead></table>');	
+	})
+	
+	//상품문의 클릭시 페이지 전환
+	$('.qHistory').on("click",function(){
+		$('#intro').html("");
+		$('#intro').append('상품문의');	
 	})
 </script>
 </body>
