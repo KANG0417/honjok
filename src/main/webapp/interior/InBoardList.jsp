@@ -15,13 +15,50 @@
 	crossorigin="anonymous"></script>
 <!--CSS 연결 -->
 <link href="${pageContext.request.contextPath}/resources/css/hojokinfo/style.css" rel="stylesheet">
+<style>
+	#main {
+		border: 1px solid gray;
+		padding: 50px;
+		margin: 20px;
+		text-align: center;
+	}
+</style>
 </head>
 <body>
+	<div id="main">원마켓</div>
+		<nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+	  <a class="navbar-brand" href="index.jsp">Home</a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+	 <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    	<ul class="navbar-nav">
+      	<li class="nav-item">
+        <a class="nav-link" href="signUp.jsp">회원가입</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="login.jsp">${userSession.id}님 안녕하세요!</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="${contextPage.request.contextPath }/app/interior/interiorAllList.do">인테리어</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="${contextPage.request.contextPath }/app/cook/CookAll.do">레시피</a>
+      </li>    
+      <li class="nav-item">
+        <a class="nav-link" href="${contextPage.request.contextPath }/app/honjokInfo/select.do">혼밥정보</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="${contextPage.request.contextPath }/app/mypage/myPage.jsp">마이페이지</a>
+      </li>
+    </ul>
+  	</div>	
+	</nav>
+	
 	<div class="container">
 		<div class="row justify-content-center mb-5 pb-3">
-			<h2>인테리어</h2>
 		</div>
-		<hr>
+		<br>
 		<c:choose>
 			<c:when test="${interiorList == null }">
 				<p align="center">

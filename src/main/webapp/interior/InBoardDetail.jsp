@@ -7,19 +7,33 @@
 <meta charset="UTF-8">
 <title>글상세보기</title>
 <style>
+	#main {
+		border: 1px solid gray;
+		padding: 50px;
+		margin: 20px;
+		text-align: center;
+	}
+	
 	#container {
 		width: 700px;
 		margin: 0 auto;
 	}
+	
 	h1, h3, p { text-align: center; }
+	
 	table { border-collapse: collapse; }
+	
 	table, th, td {
 		border: 1px solid black;
 		margin: 0 auto;
 	}
+	
 	th { background-color: orange; }
+	
 	.center { text-align: center; }
+	
 	.border-none, .border-none td { border: none; }
+
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
@@ -76,6 +90,7 @@
 </script>
 </head>
 <body>
+<div id="main">원마켓</div>
 <div id="container">
 	<h1>글 상세</h1>
 		<input type="hidden" name="comSeq" id="comSeq" value="${interiorvo.comSeq }">
