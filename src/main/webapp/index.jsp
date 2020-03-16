@@ -58,7 +58,7 @@ header h1 {
 </head>
 <body>
 <div class="text-center">
-  <h2>삶은 null이다? </h2>
+<!--   <h2>삶은 null이다? </h2> -->
 </div>
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
@@ -100,7 +100,7 @@ header h1 {
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#">MyPage
+            <a class="nav-link" href="/app/mypage/myPage.jsp">MyPage
               <span class="sr-only">(current)</span>
             </a>
           </li>
