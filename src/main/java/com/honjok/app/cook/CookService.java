@@ -18,15 +18,15 @@ public interface CookService {
   public CookVO getBoardList(CookVO cvo);
   
   
-  public CookVO select(String com_seq);
+  public CookVO select(String comSeq);
 	  
   public CookVO selectOne(CookVO	cvo);
 
-  public void delete(String com_seq);
+  public void delete(String comSeq);
 
   public void update(CookVO cvo);
    
   public int selectAllCount();
   
-  void boardHitsUpdate(int com_seq);
+  void boardHitsUpdate(int comSeq);
 }

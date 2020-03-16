@@ -15,12 +15,13 @@
 		)
 	</insert>
 	
-	<select id="oneUser" parameterType="String">
+	<!-- 회원 id로 게시물 목록 조회 --> 
+	<select id="getBoard" parameterType="" resultType="">
 		SELECT *
-		FROM USERS
-		WHERE ID = #{id}
+		FROM COMM_INTERIOR I, COMM_COOK C, COMM_INFO FO
+		WHERE C.ID = I.ID = FO.ID
 	</select>
-
+	
 	<select id="emailCheck" parameterType="String" resultType="int">
 		SELECT COUNT(*) FROM USERS WHERE EMAIL = #{email}
 	</select>
@@ -37,7 +38,6 @@
 		SELECT * FROM USERS WHERE ID = #{userId}
 	</select>
 	
-	
 	<update id="getKey" parameterType="Map">
 		UPDATE USERS SET USERKEY = #{userKey} WHERE ID = #{userId}
 	</update>
@@ -45,5 +45,6 @@
 	<update id="alterUserKey" parameterType="Map">
 		UPDATE USERS SET USERKEY = 'Y'  WHERE ID = #{userId} AND USERKEY = #{userKey}
 	</update>
+	
 	
 </mapper>

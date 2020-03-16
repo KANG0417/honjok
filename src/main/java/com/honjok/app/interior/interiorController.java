@@ -33,10 +33,10 @@ import com.honjok.app.vo.LikesVO;
 
 @Controller
 @RequestMapping("/interior")
-public class InteriorController {
+public class interiorController {
 	
 		@Autowired
-		private InteriorService interiors;
+		private InteriorService interiorService;
 		
 		//게시물 전체 조회 페이지
 		@RequestMapping("/interiorAllList.do")
@@ -67,11 +67,11 @@ public class InteriorController {
 				pagingMap.put("pageNum", Integer.parseInt(pageNum_));
 	
 				// community 조회
-				List<CommInteriorVO> list = interiors.BoardAllList(pagingMap);
+				List<CommInteriorVO> list = interiorService.BoardAllList(pagingMap);
 				System.out.println(">> 게시물 전체 목록: "+list);
 				
 				// 페이징 처리위해 전체 조회
-				int countList = interiors.selectAllCount();
+				int countList = interiorService.selectAllCount();
 				System.out.println(">> 총 게시글수: " + countList);
 				
 				model.addAttribute("pageNum", pageNum_);
@@ -86,21 +86,21 @@ public class InteriorController {
 		//게시물 상세 조회 페이지
 		@RequestMapping("/getInterior.do")
 		public String getinteriorSelect(Model model, CommInteriorVO cvo, int comSeq, LikesVO livo) {			
-			CommInteriorVO CommInterior = interiors.getBoardList(cvo);
+			CommInteriorVO CommInterior = interiorService.getBoardList(cvo);
 			model.addAttribute("interiorSelect", CommInterior);
 			System.out.println("===> 게시물 상세 조회: " + CommInterior);
 			
 			//게시물 조회수 증가
 			int board_hit = 0;
-	        interiors.boardHitsUpdate(comSeq);
+	        interiorService.boardHitsUpdate(comSeq);
 	/*        model.addAttribute("Board_Hit", board_hit);*/
 		    
 	        //게시물 좋아요 증가
-	        interiors.insertLikes(livo);
+	        interiorService.insertLikes(livo);
 	        model.addAttribute("likes", livo);
 	        
 	        //게시물 좋아요 조회
-	        int likeCount = interiors.selectLikes(comSeq);
+	        int likeCount = interiorService.selectLikes(comSeq);
 	        model.addAttribute("likesCount" + likeCount);
 	        System.out.println("해당 게시물 좋아요 총 갯수: " + likeCount);
 	        
@@ -110,7 +110,7 @@ public class InteriorController {
 		//게시물 입력 페이지
 		@RequestMapping("/insertInteriorB.do")
 		public String insertBoard(CommInteriorVO cvo) {
-			interiors.insertBoard(cvo);
+			interiorService.insertBoard(cvo);
 			System.out.println(">>> 글 등록 처리 - insertBoard(): " + cvo);
 			
 			return "interiorAllList.do";
@@ -172,7 +172,7 @@ public class InteriorController {
 	//게시물 수정 페이지
 	@RequestMapping("/updateInterior.do")
 	public String updateBoard(Model model, CommInteriorVO cvo) {		
-        interiors.updateBoard(cvo);
+        interiorService.updateBoard(cvo);
         System.out.println(">>> 게시물 수정 처리: " + cvo);
 
         return "getInterior.do";
@@ -182,14 +182,14 @@ public class InteriorController {
 	@RequestMapping("/deleteArticle.do")
 	public String deleteBoard(CommInteriorVO cvo) {
 		System.out.println(">>> 글 삭제 처리 - deleteBoard()");
-		interiors.deleteBoard(cvo);
+		interiorService.deleteBoard(cvo);
 		return "interiorAllList.do";
 	}
 	
 	//게시물 좋아요 증가
 	@RequestMapping("/insertLike.do")
 	public String insertLikes(LikesVO livo) {		
-		interiors.insertLikes(livo);
+		interiorService.insertLikes(livo);
 		System.out.println(">>> 좋아요 게시물 조회: " + livo);
 		
 		return "getInterior.do";
@@ -198,7 +198,7 @@ public class InteriorController {
 	//게시물 좋아요 취소
 	@RequestMapping("/updateLike.do")
 	public String updateLikes(LikesVO livo) {
-		interiors.updateLikes(livo);
+		interiorService.updateLikes(livo);
 		System.out.println(">>> 글 좋아요 취소 처리");
 		
 		return "getInterior.do";

@@ -23,52 +23,172 @@
 	}
 	
 	#community {
+		list-style: none;
 		margin: 10px;
 		padding: 10px;
 	}
 	
 	#qna {
+		list-style: none;
 		margin: 10px;
 		padding: 10px;
 	}
 	
-	.mem1 {
-		
+	.memInfo {
+		border-bottom-style: solid;
+		border-bottom-color: #6482FF;
 	}
 	
-	#ss {
-		border: 1px solid #929fd8;
-		padding: 20px;
-		margin: 50px;
+	.memUp {
+		cursor: pointer;
+	}
+	
+	.memUp:hover {
+		color: #DCEBFF;
+	}
+	
+	.memDel {
+		cursor: pointer;
+	}
+	
+	.memDel:hover {
+		color: #DCEBFF;
+	}
+	
+	#intro {
 		float: left;
+		width : 100%; margin: 20px; padding:-120px;
+	}
+	
+	#orderBox {
+		border: 1px solid #8C8CF5;
+		padding: 80px;
+		margin: 50px;
+		width: 50px;
+		float: left;
+	}
+	
+	#orderBox:hover {
+		background: #D5C2EE;
+	}
+
+	.orderInfo {
+		cursor:pointer;
+	}
+	
+	.orderInfo:hover {
+		color: #DCEBFF;
+	}
+	
+	#orderHistory {
+		border: 1px solid black;
+	}
+	
+	#memberBox {
+		border: 1px solid #8C8CF5;
+		padding: 80px;
+		margin: 50px;
+		width: 50px;
+		float: left;
+	}
+	
+	#memberBox:hover {
+		background: #D5C2EE;
+	}
+	
+	#wishBox {
+		border: 1px solid #8C8CF5;
+		padding: 80px;
+		margin: 50px;
+		width: 50px;
+		float: left;
+	}
+	
+	#wishBox:hover {
+		background: #D5C2EE;
+	}
+	
+	.wishList {
+		cursor: pointer;
+	}
+	
+	.wishList:hover {
+		color: #DCEBFF;
+	}
+	
+	#commBox {
+		border: 1px solid #8C8CF5;
+		padding: 80px;
+		margin: 50px;
+		width: 50px;
+		float: left;
+	}
+	
+	#commBox:hover {
+		background: #D5C2EE;
+	}
+	
+	#commBox {
+		border: 1px solid #8C8CF5;
+		padding: 80px;
+		margin: 50px;
+		width: 50px;
+		float: left;
+	}
+	
+	#commBox:hover {
+		background: #D5C2EE;
+	}
+	
+	.commInfo {
+		border-bottom-style: solid;
+		border-bottom-color: #6482FF;
+	}
+	
+	.commBoard {
+		cursor: pointer;
+	}
+	
+	.commBoard:hover {
+		color: #DCEBFF;
+	}
+	
+	.commReply {
+		cursor: pointer;
+	}
+	
+	.commReply:hover {
+		color: #DCEBFF;
+	}
+	
+	.scrap {
+		cursor: pointer;
+	}
+	
+	.scrap:hover {
+		color: #DCEBFF;
+	}
+	
+	.question {
+		border-bottom-style: solid;
+		border-bottom-color: #6482FF;
+	}
+	
+	.qHistory {
+		cursor: pointer;
+	}
+	
+	.qHistory:hover {
+		color: #DCEBFF;
 	}
 </style>
 <script>
-	function fun() {
-		$.ajax({
-			url:"",
-			type:"",
-			dataType:"",
-			data : {userid: userid} ,
-			success:function(data){
-								
-				data.id 
-				append("<div>"+data.id+"</div>");
-				$('#ss').htl
-				
-			},
-			error:function (request,status,error) {
-				
-			}
-		});
-	}
 	
 </script>
 </head>
 <body>
 	<div id="main">원마켓</div>
 	<br>
-
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
 	  <a class="navbar-brand" href="index.jsp">Home</a>
 	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -91,9 +211,9 @@
       <li class="nav-item">
         <a class="nav-link" href="${contextPage.request.contextPath }/app/honjokInfo/select.do">혼밥정보</a>
       </li>
-        <li class="nav-item">
-        <a class="nav-link" href="/app/admin/productReg.jsp">상품등록</a>
-      </li>     
+      <li class="nav-item">
+        <a class="nav-link" href="${contextPage.request.contextPath }/app/mypage/myPage.jsp">마이페이지</a>
+      </li>
     </ul>
   	</div>
   	
@@ -102,43 +222,45 @@
 <div style="display:flex; flex-direction: row;">
 	<div style="width : 20%;">
 	<ol id="memberInfo">
-	<li><p>회원 정보</p></li>
-	<li class="mem1"><p><a href="" onclick="fun()">회원정보수정</a></p></li>
-	<li><p><a id="del" href="#">회원탈퇴</a></p>
-	<li><p><a href="#">주문내역</a></p>
-	<li><p><a href="#">장바구니</a></p>
-	<p><a href="#">찜목록</a></p>
+	<li><h5 class="memInfo">회원 정보</h5></li>
+	<li class="orderInfo"><p>주문내역</p></li>
+	<li class="wishList"><p>찜목록</p></li>
+	<li class="memUp"><p>회원정보수정</p></li>
+	<li class="memDel"><p>회원탈퇴</p></li>
 	</ol>
 	
-	<div id="community">
-	<p>커뮤니티 정보</p>
-	<p><a href="#">내가쓴게시물</a></p>
-	<p><a href="#">내가쓴댓글</a></p>
-	<p><a href="#">스크랩</a></p>
-	</div>
+	<ol id="community">
+	<li><h5 class="commInfo">커뮤니티 정보</h5></li>
+	<li class="commBoard"><p>내가쓴게시물</p></li>
+	<li class="commReply"><p>내가쓴댓글</p></li>
+	<li class="scrap"><p>스크랩</p></li>
+	</ol>
 	
-	<div id="qna">
-	<p>상품문의</p>
-	<p><a href="#">문의내역</a></p>
-	</div>
+	<ol id="qna">
+	<li><h5 class="question">상품문의</h5></li>
+	<li class="qHistory">문의내역</li>
+	</ol>
 	
-	</div>	
-<form action="/app/login.do" method="post">	
-	<div id="ss" style="width : 79%; margin: 20px; padding:-15px;">
-		<p>회원정보를 수정하시려면 비밀번호를 입력해주세요</p>
-		<input type="password">
-		<c:if test="${userSession.password == null }">
-		<input type="button" value="확인" onclick="update()">
-		</c:if>
-		<c:if test="${userSession.password != null }">
-		<input type="submit" value="확인" onclick="update_()">
-		</c:if>
+	</div>
+
+	<div id="intro">
+		<div id="orderBox">
+			<h3>주문내역</h3>
+		</div>
+		<div id=memberBox>
+			<h3>회원정보</h3>
+		</div>
+		<div id=wishBox>
+			<h3>관심상품</h3>
+		</div>
+		<div id=commBox>
+			<h3>커뮤니티</h3>
+		</div>
 	</div>
 	
 	<input type="hidden" name="userId" id="userId">
 	<input type="hidden" name="password" id="password">
-	<div class="checkFont" id="passwordCheck"></div>
-</form>	
+	<div class="checkFont" id="passwordCheck"></div>	
 </div>
 <script>
 	/* $('#del').on("click",function(){
@@ -148,13 +270,100 @@
 	
 	/* var empJ = /\s/g; //공백체크 정규표현식
 	var pwJ = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/; */
-	function update() { 
+	function userUpdateCh() { 
 	         alert("비밀번호를 다시 입력해주세요"); 
 	    }
 	
-	function update_() { 
-	         alert(""); 
+	function update() { 
+	         alert("");
 	    }
+	
+	//주문내역 박스를 눌렀을때 기본페이지 주문내역으로 이동
+	$(function(){
+        //이벤트를 한 번만 연결(한 번만 실행)
+        $("#orderBox").one("click", function(){
+           location.href = "myPage.jsp";
+        });
+	});
+	
+	//회원정보 클릭시 페이지 전환
+	$('.orderInfo').on("click",function(){
+		$.ajax({
+			 url : ".do",
+			 type: "post",
+             dataType : "json",
+             success : function(data){
+                 
+                 $("table").html("<tr><th>번호</th><th>이름</th><th>나이</th><th>사는곳</th></tr>");
+                 
+                 var show = "";
+                 
+                 $.each(data,function(index, item){
+                     
+                     show += "<tr><td>"+(index+1)+"</td>";
+                     show += "<td>"+item.name+"</td>";
+                     show += "<td>"+item.age+"</td>";
+                     show += "<td>"+item.loc+"</td></tr>";
+                     
+                     
+                 })
+             	}
+             })
+		})
+	
+	$('.wishList').on("click",function(){
+		$('#intro').html("");
+		$('#intro').append('<table><thead><tr><th>찜목록</th></tr></thead></table>');	
+	})
+	
+	$('.memUp').on("click",function(){
+		$('#intro').html("");
+		$('#intro').append('<table><thead><tr><th>회원정보수정</th></tr></thead></table>');	
+	})
+	
+	$('.memDel').on("click",function(){
+		$('#intro').html("");
+		$('#intro').append('회원탈퇴를 하시기 전에 안내사항을 꼭 확인해주세요');	
+	})
+	
+	//커뮤니티정보 클릭시 페이지 전환	
+	$('.commBoard').on("click",function(){
+		$.ajax({
+			 url : ".do",
+			 type: "post",
+            dataType : "json",
+            success : function(data){
+                
+                $("table").html("<tr><th>번호</th><th>이름</th><th>나이</th><th>사는곳</th></tr>");
+                
+                var show = "";
+                
+                $.each(data,function(index, item){
+                    
+                    show += "<tr><td>"+(index+1)+"</td>";
+                    show += "<td>"+item.name+"</td>";
+                    show += "<td>"+item.age+"</td>";
+                    show += "<td>"+item.loc+"</td></tr>";
+                })
+            	}
+            })
+		})
+	
+	$('.commReply').on("click",function(){
+		$('#intro').html("");
+		$('#intro').append('<table><thead><tr><th>내가 쓴 댓글 목록</th></tr></thead></table>');	
+	})
+	
+	$('.scrap').on("click",function(){
+		$('#intro').html("");
+		$('#intro').append('<table><thead><tr><th>스크랩한 게시물</th></tr></thead></table>');	
+	});
+	
+	//상품문의 클릭시 페이지 전환
+	$('.qHistory').on("click",function(){
+		$('#intro').html("");
+		$('#intro').append('상품문의');	
+	})
 </script>
 </body>
 </html>
