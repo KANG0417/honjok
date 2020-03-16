@@ -333,6 +333,9 @@
 
 
 
+
+
+
     <div class="production-selling-overview container">
         <!-- 상품 태그 시작-->
 
@@ -345,33 +348,12 @@
                 <ol class="commerce-category-breadcrumb">
                     <li class="commerce-category-breadcrumb__entry">
                         <a class="link"
-                            href="/store/category?category=0&amp;affect_type= ProductSaleDetail&amp;affect_id=131836">가구</a>
-                        <svg class="icon" width="8" height="8" viewBox="0 0 8 8" fill="currentColor"
-                            preserveAspectRatio="xMidYMid meet">
-                            <!-- 아이콘 -->
-                            <path d="M4.95 4L2.12 1.19l.7-.71 3.54 3.54-3.53 3.53-.7-.7z"></path>
-                        </svg>
-                    </li>
+                            href="#">${productvo.upperCategory }</a>
+                   </li>
                     <li class="commerce-category-breadcrumb__entry">
                         <a class="link"
-                            href="/store/category?category=0_2&amp;affect_type= ProductSaleDetail&amp;affect_id=131836">침실가구</a>
-                        <svg class="icon" width="8" height="8" viewBox="0 0 8 8" fill="currentColor"
-                            preserveAspectRatio="xMidYMid meet">
-                            <path d="M4.95 4L2.12 1.19l.7-.71 3.54 3.54-3.53 3.53-.7-.7z"></path>
-                        </svg>
-                    </li>
-                    <li class="commerce-category-breadcrumb__entry">
-                        <a class="link"
-                            href="/store/category?category=0_2_1&amp;affect_type= ProductSaleDetail&amp;affect_id=131836">매트리스</a>
-                        <svg class="icon" width="8" height="8" viewBox="0 0 8 8" fill="currentColor"
-                            preserveAspectRatio="xMidYMid meet">
-                            <path d="M4.95 4L2.12 1.19l.7-.71 3.54 3.54-3.53 3.53-.7-.7z"></path>
-                        </svg>
-                    </li>
-                    <li class="commerce-category-breadcrumb__entry">
-                        <a class="link"
-                            href="/store/category?category=0_2_1_4&amp;affect_type= ProductSaleDetail&amp;affect_id=131836">토퍼</a>
-                    </li>
+                            href="#">${productvo.subCategory }</a>
+   					</li>
                 </ol>
             </nav>
 
@@ -385,15 +367,19 @@
 
                         <div>
                             <ul class="production-selling-cover-image__list">
-                                <li class="production-selling-cover-image__list__item">
-                                    <button
-                                        class="production-selling-cover-image__list__btn production-selling-cover-image__list__btn--selected"
-                                        type="button" aria-label="8개 중 1번째 항목">
-                                        <img class="image"
-                                            src="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/157898666120819018.jpg?gif=1&amp;w=72&amp;h=72&amp;c=c&amp;webp=1"
-                                            srcset="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/157898666120819018.jpg?gif=1&amp;w=144&amp;h=144&amp;c=c&amp;webp=1 1.5x,https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/157898666120819018.jpg?gif=1&amp;w=144&amp;h=144&amp;c=c&amp;webp=1 2x,https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/157898666120819018.jpg?gif=1&amp;w=240&amp;h=240&amp;c=c&amp;webp=1 3x">
-                                    </button>
-                                </li>
+
+                            <script>
+                              var contentimg = '${productvo.description}';
+                              var firstimg = $(contentimg).find('img').attr('src');
+                              console.log(firstimg.length);
+                              
+                              for(var i in firstimg){
+                              	 $('.production-selling-cover-image__list').append(' <li class="production-selling-cover-image__list__item"><button class="production-selling-cover-image__list__btn production-selling-cover-image__list__btn--selected"type="button"><img class="image" src="'+firstimg+'"></button></li>');
+                               } 
+
+                           </script>  
+                             
+                             <!-- 
                                 <li class="production-selling-cover-image__list__item"><button
                                         class="production-selling-cover-image__list__btn" type="button"
                                         aria-label="8개 중 2번째 항목">
@@ -402,54 +388,14 @@
                                             srcset="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/images/157898667308487965.jpg?gif=1&amp;w=144&amp;h=144&amp;c=c&amp;webp=1 1.5x,https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/images/157898667308487965.jpg?gif=1&amp;w=144&amp;h=144&amp;c=c&amp;webp=1 2x,https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/images/157898667308487965.jpg?gif=1&amp;w=240&amp;h=240&amp;c=c&amp;webp=1 3x">
                                     </button>
                                 </li>
-                                <li class="production-selling-cover-image__list__item">
+                               <li class="production-selling-cover-image__list__item">
                                     <button class="production-selling-cover-image__list__btn" type="button"
                                         aria-label="8개 중 3번째 항목">
                                         <img class="image"
                                             src="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/images/157830626663754284.jpg?gif=1&amp;w=72&amp;h=72&amp;c=c&amp;webp=1"
                                             srcset="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/images/157830626663754284.jpg?gif=1&amp;w=144&amp;h=144&amp;c=c&amp;webp=1 1.5x,https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/images/157830626663754284.jpg?gif=1&amp;w=144&amp;h=144&amp;c=c&amp;webp=1 2x,https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/images/157830626663754284.jpg?gif=1&amp;w=240&amp;h=240&amp;c=c&amp;webp=1 3x">
                                     </button>
-                                </li>
-                                <li class="production-selling-cover-image__list__item">
-                                    <button class="production-selling-cover-image__list__btn" type="button"
-                                        aria-label="8개 중 4번째 항목">
-                                        <img class="image"
-                                            src="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/images/157830627497372099.jpg?gif=1&amp;w=72&amp;h=72&amp;c=c&amp;webp=1"
-                                            srcset="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/images/157830627497372099.jpg?gif=1&amp;w=144&amp;h=144&amp;c=c&amp;webp=1 1.5x,https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/images/157830627497372099.jpg?gif=1&amp;w=144&amp;h=144&amp;c=c&amp;webp=1 2x,https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/images/157830627497372099.jpg?gif=1&amp;w=240&amp;h=240&amp;c=c&amp;webp=1 3x">
-                                    </button>
-                                </li>
-                                <li class="production-selling-cover-image__list__item">
-                                    <button class="production-selling-cover-image__list__btn" type="button"
-                                        aria-label="8개 중 5번째 항목">
-                                        <img class="image"
-                                            src="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/images/157830629731053307.jpg?gif=1&amp;w=72&amp;h=72&amp;c=c&amp;webp=1"
-                                            srcset="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/images/157830629731053307.jpg?gif=1&amp;w=144&amp;h=144&amp;c=c&amp;webp=1 1.5x,https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/images/157830629731053307.jpg?gif=1&amp;w=144&amp;h=144&amp;c=c&amp;webp=1 2x,https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/images/157830629731053307.jpg?gif=1&amp;w=240&amp;h=240&amp;c=c&amp;webp=1 3x">
-                                    </button>
-                                </li>
-                                <li class="production-selling-cover-image__list__item"><button
-                                        class="production-selling-cover-image__list__btn" type="button"
-                                        aria-label="8개 중 6번째 항목">
-                                        <img class="image"
-                                            src="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/images/157830630235916650.jpg?gif=1&amp;w=72&amp;h=72&amp;c=c&amp;webp=1"
-                                            srcset="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/images/157830630235916650.jpg?gif=1&amp;w=144&amp;h=144&amp;c=c&amp;webp=1 1.5x,https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/images/157830630235916650.jpg?gif=1&amp;w=144&amp;h=144&amp;c=c&amp;webp=1 2x,https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/images/157830630235916650.jpg?gif=1&amp;w=240&amp;h=240&amp;c=c&amp;webp=1 3x">
-                                    </button>
-                                </li>
-                                <li class="production-selling-cover-image__list__item"><button
-                                        class="production-selling-cover-image__list__btn" type="button"
-                                        aria-label="8개 중 7번째 항목">
-                                        <img class="image"
-                                            src="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/images/157830630822177434.jpg?gif=1&amp;w=72&amp;h=72&amp;c=c&amp;webp=1"
-                                            srcset="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/images/157830630822177434.jpg?gif=1&amp;w=144&amp;h=144&amp;c=c&amp;webp=1 1.5x,https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/images/157830630822177434.jpg?gif=1&amp;w=144&amp;h=144&amp;c=c&amp;webp=1 2x,https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/images/157830630822177434.jpg?gif=1&amp;w=240&amp;h=240&amp;c=c&amp;webp=1 3x">
-                                    </button>
-                                </li>
-                                <li class="production-selling-cover-image__list__item">
-                                    <button class="production-selling-cover-image__list__btn" type="button"
-                                        aria-label="8개 중 8번째 항목">
-                                        <img class="image"
-                                            src="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/images/157830631306804759.jpg?gif=1&amp;w=72&amp;h=72&amp;c=c&amp;webp=1"
-                                            srcset="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/images/157830631306804759.jpg?gif=1&amp;w=144&amp;h=144&amp;c=c&amp;webp=1 1.5x,https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/images/157830631306804759.jpg?gif=1&amp;w=144&amp;h=144&amp;c=c&amp;webp=1 2x,https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/images/157830631306804759.jpg?gif=1&amp;w=240&amp;h=240&amp;c=c&amp;webp=1 3x">
-                                    </button>
-                                </li>
+                                </li> -->
                             </ul>
                         </div>
 
@@ -458,39 +404,11 @@
                             <div class="carousel__list__entry production-selling-cover-image__entry" role="group"
                                 aria-roledescription="slide" aria-label="1 of 8" style="width: 100%;">
                                 <img class="production-selling-cover-image__entry__image" tabindex="0"
-                                    src="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/157898666120819018.jpg?gif=1&amp;w=720&amp;h=720&amp;c=c&amp;webp=1"
-                                    srcset="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/157898666120819018.jpg?gif=1&amp;w=1080&amp;h=1080&amp;c=c&amp;webp=1 1.5x,https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/157898666120819018.jpg?gif=1&amp;w=1440&amp;h=1440&amp;c=c&amp;webp=1 2x,https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/157898666120819018.jpg?gif=1&amp;w=2560&amp;h=2560&amp;c=c&amp;webp=1 3x">
+                                    src="/app/resources/img/${productvo.thumnailImg}">
                             </div>
                             <!-- 상품 메인  이미지 끝 -->
                         </div>
                     </div>
-
-
-                    <!--     
-    <div class="production-selling-cover-image__paginator">
-        <ul class="carousel-paginator">
-            <li>
-                <span class="carousel-paginator__page selected" data-key="1"></span>
-            </li>
-            <li>
-                <span class="carousel-paginator__page" data-key="2"></span>
-            </li>
-            <li>
-                <span class="carousel-paginator__page" data-key="3"></span>
-            </li>
-            <li>
-                <span class="carousel-paginator__page" data-key="4"></span>
-            </li>
-            <li>
-                <span class="carousel-paginator__page" data-key="5"></span></li><li><span class="carousel-paginator__page small" data-key="6"></span>
-            </li>
-            <li>
-                <span class="carousel-paginator__page tiny" data-key="7"></span>
-            </li></ul>
-        </div>
-    </div> -->
-
-
                 </div>
 
 

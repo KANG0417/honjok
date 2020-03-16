@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.honjok.app.vo.productVO;
 
 @Controller
-@RequestMapping(value = "/produt")
+@RequestMapping(value = "/Product")
 public class  ProductController {
 
 	
@@ -17,12 +17,15 @@ public class  ProductController {
 	  
 	   
 	   @RequestMapping("/Product.do")
-	   public String ProductVO(String pNUm,Model model) {
+	   public String ProductVO(String pNum,Model model) {
 	      
-		   System.out.println(pNUm);
-		   productVO  productvo=  service.ProductVO(pNUm);
+		   System.out.println(pNum);
+		   productVO  productvo=  service.ProductVO(pNum);
 		   
 	      System.out.println(productvo);
+	      
+	      model.addAttribute("productvo",productvo);
+	      
 	      return "/Product/ProductDetail.jsp";
 	
 }
