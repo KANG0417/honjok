@@ -6,6 +6,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.honjok.app.vo.CartVO;
+
 @Repository("cartDAO")
 public class cartDAO {
 	
@@ -26,6 +28,9 @@ public class cartDAO {
 	
 	public int getCartCount(String id) {
 		return mybatis.selectOne("cartdao.getCartCount", id);
+	}
+	public void cartDelete(CartVO vo) {
+		mybatis.delete("cartDAO.cartDelete",vo);
 	}
 
 }

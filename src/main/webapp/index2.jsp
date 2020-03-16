@@ -19,10 +19,6 @@
 	rel="stylesheet">
 </head>
 <body>
-
-
-
-
 	<div class="container">
 		<div class="row justify-content-center mb-5 pb-3">
 			<h2>메인페이지</h2>
@@ -61,7 +57,6 @@
 <script>
 let memId ='${userSession.id}';
 </script>
-=======
 			<h3>${userSession.id}님 안녕하세요!<a href="logout.do">Log-out</a></h3>
 	<ul class="navbar-nav">
       <li class="nav-item">

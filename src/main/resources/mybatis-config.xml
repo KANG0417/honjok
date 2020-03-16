@@ -15,6 +15,7 @@
 		<typeAlias alias="commInteriorVO" type="com.honjok.app.vo.CommInteriorVO"/>
 		<typeAlias alias="cook" type="com.honjok.app.vo.CookVO"/>
 		<typeAlias alias="CommInfoVO" type="com.honjok.app.vo.CommInfoVO"/>
+		<typeAlias alias="CartVO" type="com.honjok.app.vo.CartVO"/>
 		<typeAlias alias="UploadVO" type="com.honjok.app.vo.UploadVO"/>
 		<typeAlias alias="commReplyVO" type="com.honjok.app.vo.commReplyVO"/>
 		<typeAlias alias="replyUploadVO" type="com.honjok.app.vo.replyUploadVO"/>
