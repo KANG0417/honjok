@@ -289,9 +289,28 @@
 	
 	//회원정보 클릭시 페이지 전환
 	$('.orderInfo').on("click",function(){
-		$('#intro').html("");
-		$('#intro').append('<div id="orderHistory">주문내역</div>');	
-	})
+		$.ajax({
+			 url : "myPage.jsp",
+             dataType : "json",
+             success : function(data){
+                 
+                 $("table").html("<tr><th>번호</th><th>이름</th><th>나이</th><th>사는곳</th></tr>");
+                 
+                 var show = "";
+                 
+                 $.each(data,function(index, item){
+                     
+                     
+                     show += "<tr><td>"+(index+1)+"</td>";
+                     show += "<td>"+item.name+"</td>";
+                     show += "<td>"+item.age+"</td>";
+                     show += "<td>"+item.loc+"</td></tr>";
+                     
+                     
+                 })
+             }
+             })
+		})
 	
 	$('.wishList').on("click",function(){
 		$('#intro').html("");
@@ -323,7 +342,7 @@
 	$('.scrap').on("click",function(){
 		$('#intro').html("");
 		$('#intro').append('<table><thead><tr><th>스크랩한 게시물</th></tr></thead></table>');	
-	})
+	});
 	
 	//상품문의 클릭시 페이지 전환
 	$('.qHistory').on("click",function(){

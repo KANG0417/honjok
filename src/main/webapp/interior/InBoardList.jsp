@@ -15,6 +15,7 @@
 	crossorigin="anonymous"></script>
 <!--CSS 연결 -->
 <link href="${pageContext.request.contextPath}/resources/css/hojokinfo/style.css" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 <style>
 	#main {
 		border: 1px solid gray;
