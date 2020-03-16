@@ -287,7 +287,7 @@
 	});
 	
 	//회원정보 클릭시 페이지 전환
-	$('.orderInfo').on("click",function(){
+	/* $('.orderInfo').on("click",function(){
 		$.ajax({
 			 url : ".do",
 			 type: "post",
@@ -309,7 +309,7 @@
                  })
              	}
              })
-		})
+		}) */
 	
 	$('.wishList').on("click",function(){
 		$('#intro').html("");
