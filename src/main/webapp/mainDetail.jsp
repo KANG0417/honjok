@@ -80,8 +80,8 @@
       
     const goodsPrice = (parseInt(price.innerHTML));
   
-    if(qtyCount == 1){
-    	qtyCount = price
+    if(qtyCount == 1 ){
+    	total.innerText
     }
    
     

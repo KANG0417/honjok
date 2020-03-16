@@ -19,9 +19,13 @@
 	</select>
 	
 	<select id="getCartList" parameterType="java.util.Map" resultType="java.util.Map">
-		SELECT P_NUM, P.THUMNAIL_IMG, P.P_NAME, P.PRICE, P.STOCK, P.DISCOUNTRATE, B.P_CNT
-	    FROM PRODUCT P JOIN BASKET B USING(P_NUM) JOIN USERS U 
-	    ON U.ID = B.ID
-	    WHERE B.ID =  #{id}
+		SELECT P_NUM, P.THUMNAIL_IMG, P.P_NAME, P.PRICE,P.SALEPRICE,
+			   P.STOCK, P.DISCOUNTRATE,P.SHIPPINGFEE,B.P_CNT, U.ID
+    	FROM PRODUCT P JOIN BASKET B USING(P_NUM) JOIN USERS U 
+   	 	ON U.ID = B.ID
+   		WHERE B.ID = #{id}
 	</select>
+	<delete id="cartDelete" parameterType="CartVO">
+		DELETE BASKET WHERE P_NUM = #{pNum} AND ID = #{id}
+	</delete>
 </mapper>

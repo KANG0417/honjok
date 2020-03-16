@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
 /* 카트 */
@@ -207,7 +208,7 @@
             <tr class="cart-tb__header">
                 <th>
                     <label for=""class="check-label checked"onclick="change_Allcheckbox($(this))">
-                        <input type="checkbox"class="check-box allCheck"checked/>
+                        <input type="checkbox"class="check-box allCheck" name="allCheck"checked/>
                     </label>
                 </th>
                 <th id="thSelect">
@@ -216,27 +217,22 @@
 	                <td>
 	                	<div class="cart-goods__btns">
 	            			<button class="cart-goods__btn-del btn_delete selectBtn">선택 삭제</button>
-	     				   </div>
+	     				</div>
 	                </td>
             </tr>
             <tr>
                 <th id="thInfo">상품명</th>
                 <th id="thCount">수량</th>
                 <th id="thCost">상품금액</th>
-                <th></th>
+                <th id="shippingFee">배송비</th>
             </tr>
             <!-- DB에서 cart 데이터 불러오는 곳 -->
           <c:forEach var="list" items="${list}">
            		<tr class="viewDel">
-					<!--<input type="hidden" class="productCode" value="${PRODUCTCODE }"/>
-						<input type="hidden" class="stock" value="${STOCK }">
-						<input type="hidden" class="memlevel" value="${MEMLEVEL }">
-						<input type="hidden" name="price2" class="prd_price_fix" value="${price2 }">
-						-->
-		
 						<td class="cart-tb__check">
 						<label for="" class="check-label checked" onclick="change_checkbox($(this))">
-							<input type="checkbox" class="prdCheck ico_check" checked onchange="total_calcul()">
+							<input type="checkbox" data-pNum="${list.P_NUM}" data-id="${list.ID}"class="prdCheck ico_check" name="prdCheck"
+									checked onchange="total_calcul()"/>
 					 	</label>
 						</td>
 						<td class="cart-tb__thumb"><img src="/app/resources/img/${list.THUMNAIL_IMG}"></td>
@@ -244,18 +240,21 @@
 							<div class="cart-tb__name">${list.P_NAME}</div>
 							
 							<div class="price_Box">
-								정가: <span class="product__dc cart-tb__num price1">${list.PRICE }</span>
+								정가: <span class="product__dc cart-tb__num price1">${list.PRICE}</span>
 								할인가격: <span class="product__price cart-tb__num price2">${list.SALEPRICE}</span>
 							</div>
 						</td>
+						<td class="cart-tb__shippingFee">
+							<div class="cart-tb__num shippingFee">${list.SHIPPINGFEE}</div>
+						</td>
 						<td class="cart-tb__count">
 						 	<span class="goods-count">
-								<button class="minus" onClick="fnDn($(this))"></button>
-								<input type="text" value="${list.P_CNT }" id="${list.P_NUM}" class="qty clk_count" readonly>
-								<button type="button" class="plus up_btn" onClick="fnUp($(this))"></button>
+								<button class="minus" onClick="BtnMinus($(this));"></button>
+								<input type="text" value="${list.P_CNT}" class="qty clk_count" readonly>
+								<button type="button" id="${list.P_NUM}"data-saleprice="${list.SALEPRICE}" data-stock="${list.STOCK}" class="plus" onclick="BtnPlus($(this));"></button>
 							</span>
 						</td>
-						<td class="cart-tb__total prd_price">${price2}</td>
+						<td class="cart-tb__total prd_price">${list.SALEPRICE}</td>
 						<td>
 							<button type="button" class="btn_delete_point" onclick="seldel($(this))"><img src="https://res.kurly.com/pc/ico/1801/btn_close_24x24_514859.png" alt="삭제"></button>
 						</td>
@@ -303,5 +302,159 @@
 </div>
 </div>
 </body>
-<script type="text/javascript"src="/app/resources/js/cart.js"></script>
+<script>
+
+//페이지 들어오면 바로 실행
+total_calcul(); //장바구니 총합 계산
+chCount(); // 선택 개수 체크
+
+
+
+function total_calcul(){
+//장바구니 총 상품금액 계산 - 시작
+var prdCnt = $('.price1').length//장바구니에 담긴 개수
+var originalArr = new Array(prdCnt); //정가의 배열을 담을 객체
+var discountArr = new Array(prdCnt); // 할인가의 배열을 담을 객체
+var shippingFee = new Array(prdCnt); // 배송비의 배열을 담을 객체
+
+
+//변수초기화
+let shippingFeeTotPrice = 0;
+let originalTotPrice = 0;
+let discountTotPrice = 0;
+
+for(var i = 0; i<prdCnt; i++){
+	if($(".prdCheck").eq(i).prop("checked")){
+		originalArr[i] = $('.price1').eq(i).text() * $('.clk_count').eq(i).val();
+		discountArr[i] = $('.price2').eq(i).text() * $('.clk_count').eq(i).val();
+		shippingFee[i] = parseInt($('.shippingFee').eq(i).text());
+		
+		shippingFeeTotPrice += parseInt(shippingFee[i]);
+		originalTotPrice += originalArr[i];
+		discountTotPrice += originalArr[i] - discountArr[i];
+	}
+}
+
+$('#amountPrice').text(originalTotPrice); // 정가의 총 합 > [상품금액 div] - span 에 담기
+$('#amountSale').text(discountTotPrice);  // 할인금액 총 합 > [상품할인금액 div] - span에 담기
+$('#amountCourier').text(shippingFeeTotPrice); //배송비의 총 합 [배송비div] -span에 담기
+$('#amountTotal').text(originalTotPrice - discountTotPrice + shippingFeeTotPrice); // 최종 [결제예정금액 div]
+
+}
+
+//페이지 들어오면 바로 실행
+
+//전체 개수 구하기	
+chk_total_obj = document.getElementsByClassName('prdCheck');//상품채크박스
+chk_total_leng = chk_total_obj.length;//상품채크박스 개수
+$('.prd_total_count').text(chk_total_leng);//상품체크박스 개수 카운트
+
+
+
+	
+//클릭시 상품개수 체크	
+$('.prdCheck').on("click", function(){
+	chCount();
+});
+	
+//상품개수카운트 함수
+function chCount() {
+	chk_obj = $('.prdCheck');
+	chk_leng = chk_obj.length;
+	var checked = 0;
+	
+	for(i=0; i<chk_leng; i++){
+		if(chk_obj[i].checked){
+			checked += 1;
+		}
+	}
+	console.log(checked);
+	
+	if(checked == chk_leng) { // 모든 상품이 체크 상태일 때, 상위의 [전체선택] 체크박스 라벨의 아이콘을 체크상태로 바꿈 
+		$("input[name=allCheck]").prop("checked",true);
+	}else{
+		$("input[name=allCheck]").prop("checked",false);
+	}
+		$('.prd_count').text(checked);
+}
+//선택 상품 삭제
+$('.selectBtn').click(function(){
+ 	var confirm_val = confirm("정말 삭제하시겠습니까?");
+ 	let id = $("input[name='prdCheck']:checked").data("id");
+ 	console.log(id);
+ 	
+ 	if(confirm_val){
+ 		var checkArr = new Array();
+ 		 
+ 		 
+ 		$("input[name='prdCheck']:checked").each(function(){
+ 			checkArr.push($(this).attr("data-pNum"));
+ 		});
+ 		console.log(checkArr);
+ 		
+ 		$.ajax({
+ 			url : "cartDelete.do",
+ 			type : "post",
+ 			data : {chbox : checkArr},
+ 			success : function(result){
+ 				if(result == 1){				
+ 					console.log(id);
+ 					location.href = "getCartList.do?memId=" + id;
+ 				}else{
+ 					alert("삭제 실패");
+ 				}
+ 			}
+ 		})
+ 		
+ 	}
+});
+
+//수량 + 버튼
+function BtnPlus(btn){
+	let quan = btn.prev().val();
+	let stock = btn.data("stock");
+	let discountPrice = btn.data("saleprice");
+	quan++;
+	let discountTotPrice = discountPrice * quan;
+
+	if(stock < quan){
+		alert("선택한 수량이 남은 재고보다 많습니다.");
+	}
+	
+	btn.prev().val(quan);
+	btn.parent().parent().next().text(discountTotPrice);
+	
+}
+
+//수량 - 버튼
+
+function BtnMinus(btn){
+	let quan = btn.next().val();
+	let stock = btn.next().next().data("stock"); //상품 
+	let discountPrice = btn.next().next().data("saleprice"); //1개가격 할인가
+	quan--;
+	
+	console.log(quan);
+	console.log(stock);
+	console.log(discountPrice);
+	
+	if(quan == '0') {
+		alert('0 이하로는 설정할 수 없습니다. ');
+	}
+	
+	else if(stock < quan){
+		alert("선택한 수량이 남은 재고보다 많습니다.");
+	}
+	
+	let discountTotPrice = discountPrice * quan;
+
+	
+	btn.next().val(quan);
+	btn.parent().parent().next().text(discountTotPrice);
+	
+}
+
+
+
+</script>
 </html>

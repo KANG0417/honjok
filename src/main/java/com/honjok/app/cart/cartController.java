@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.honjok.app.vo.AdminVO;
+import com.honjok.app.vo.CartVO;
 import com.honjok.app.vo.UserVO;
 
 import net.sf.json.JSONArray;
@@ -99,6 +100,32 @@ public class cartController {
 		System.out.println(list);
 		model.addAttribute("list", list);        	
 		return "cart/cart.jsp";
+	}
+	
+	@RequestMapping(value = "/cartDelete.do", method = RequestMethod.POST)
+	@ResponseBody
+	public int cartDelete(HttpSession session, @RequestParam(value= "chbox[]") List<String> checkArr, CartVO vo) {
+		UserVO vo2 = (UserVO)session.getAttribute("userSession");
+		String id = vo2.getId();
+		System.out.println("들어왔다" + id);
+		System.out.println("들어왔다" + checkArr);
+		int result = 0;
+		String cartNum = "0";
+		
+		if(vo2 != null) {
+			vo.setId(id);
+		
+		for(String i : checkArr) {
+			cartNum = i;
+			vo.setpNum(cartNum);
+			System.out.println(cartNum);
+			cartService.cartDelete(vo);
+		}
+		result = 1;
+		
+		}
+		
+		return result;
 	}
 	
 		
