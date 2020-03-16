@@ -3,9 +3,19 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="OrderDAO">
-	<select id="oneOrder">
-		SELECT *
-		FROM ORDERS
-		WHERE ID = #{id}
+	<select id="oneOrder" parameterType="String" resultType="HashMap">
+		{ call
+ 		declare
+ 		begin
+	 		SELECT C.COM_SEQ, C.TITLE, C.NICK_NAME, C.CONTENT, C.REGDATE, C.HIT, C.LIKES, I.FILE_IMAGE
+				FROM COMMUNITY C, COMM_INTERIOR I
+				WHERE C.COM_SEQ = I.COM_SEQ
+				AND C.COM_SEQ = #{comSeq}
+				ORDER BY C.COM_SEQ , I.COM_SEQ;
+			SELECT C.* ,I.* FROM COMMUNITY C, COMM_INFO I
+			WHERE C.COM_SEQ = I.COM_SEQ AND I.COM_SEQ = #{comSeq};
+			SELECT * FROM COMM_COOK WHERE COM_SEQ = #{comSeq};
+ 		END
+	 	}
 	</select>
 </mapper>
