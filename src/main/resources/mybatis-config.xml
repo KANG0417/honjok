@@ -20,6 +20,7 @@
 		<typeAlias alias="replyUploadVO" type="com.honjok.app.vo.replyUploadVO"/>
 		<typeAlias alias="cart" type="com.honjok.app.vo.CartVO"/>
 		<typeAlias alias="likesVO" type="com.honjok.app.vo.LikesVO"/>
+		<typeAlias alias="likesVO" type="com.honjok.app.vo.productVO"/>
 	</typeAliases>
   <!-- SQL 작성파일인 매퍼 파일 위치 지정 -->
  <mappers>
@@ -30,6 +31,7 @@
 	<mapper resource="mappings/admin-mapper.xml"/>
 	<mapper resource="mappings/main-mapper.xml"/>
 	<mapper resource="mappings/cart-mapper.xml"/>
+	<mapper resource="mappings/product-mapper.xml"/>
  </mappers>
  
 </configuration>
