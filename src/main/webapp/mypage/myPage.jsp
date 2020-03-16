@@ -242,7 +242,7 @@
 	</ol>
 	
 	</div>
-<form action="" method="post">	
+
 	<div id="intro">
 		<div id="orderBox">
 			<h3>주문내역</h3>
@@ -260,8 +260,7 @@
 	
 	<input type="hidden" name="userId" id="userId">
 	<input type="hidden" name="password" id="password">
-	<div class="checkFont" id="passwordCheck"></div>
-</form>	
+	<div class="checkFont" id="passwordCheck"></div>	
 </div>
 <script>
 	/* $('#del').on("click",function(){
@@ -329,10 +328,26 @@
 	
 	//커뮤니티정보 클릭시 페이지 전환	
 	$('.commBoard').on("click",function(){
-		$('#intro').html("");
-		$('#intro').append('<table><thead><tr><th>내가 쓴 게시물 목록</th></tr></thead></table>').
-		append('<tbody>게시물</tbody>');
-	})
+		$.ajax({
+			 url : ".do",
+			 type: "post",
+            dataType : "json",
+            success : function(data){
+                
+                $("table").html("<tr><th>번호</th><th>이름</th><th>나이</th><th>사는곳</th></tr>");
+                
+                var show = "";
+                
+                $.each(data,function(index, item){
+                    
+                    show += "<tr><td>"+(index+1)+"</td>";
+                    show += "<td>"+item.name+"</td>";
+                    show += "<td>"+item.age+"</td>";
+                    show += "<td>"+item.loc+"</td></tr>";
+                })
+            	}
+            })
+		})
 	
 	$('.commReply').on("click",function(){
 		$('#intro').html("");
