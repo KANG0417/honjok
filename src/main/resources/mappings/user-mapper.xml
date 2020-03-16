@@ -16,10 +16,17 @@
 	</insert>
 	
 	<!-- 회원 id로 게시물 목록 조회 --> 
-	<select id="getBoard" parameterType="" resultType="">
+	<select id="getBoard" parameterType="String" resultType="user">
 		SELECT *
 		FROM COMM_INTERIOR I, COMM_COOK C, COMM_INFO FO
 		WHERE C.ID = I.ID = FO.ID
+	</select>
+	
+	<!-- ｉｄ로　회원정보　조회 -->
+	<select id="oneUser" parameterType="String" resultType="user">
+		SELECT *
+		FROM USERS
+		WHERE ID = #{id}
 	</select>
 	
 	<select id="emailCheck" parameterType="String" resultType="int">

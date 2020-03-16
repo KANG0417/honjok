@@ -22,21 +22,21 @@ public class MyPageController {
 	public String getUser(UserVO uvo, HttpSession httpSession, HttpServletRequest request,
 			HttpServletResponse response) {
 
-		mypages.selectOne(uvo);
+		mypages.getUser(uvo);
 		return "myPage.jsp";
 	}
 	
-	//주문내역 id로 조회
+	/*//주문내역 id로 조회
 	@RequestMapping("/selectOrder.do")
 	public String getOrder(UserVO uvo, HttpSession httpSession, HttpServletRequest request,
 			HttpServletResponse response) {
 		
 		mypages.selectOne(uvo);
 		return "myPage.jsp";
-	}
+	}*/
 	
-	/*//게시물 id로 조회
-	@RequestMapping("/selectBoard.do")
+	//게시물 id로 조회
+	/*@RequestMapping("/selectBoard.do")
 	public String getBoard() {
 		
 	}*/
