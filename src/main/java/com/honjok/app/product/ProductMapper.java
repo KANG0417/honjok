@@ -13,7 +13,7 @@ public class ProductMapper {
 	private SqlSessionTemplate mybatis;
 	
 	  public productVO ProductVO(String pNUm) {
-	    productVO ProductVO = mybatis.selectOne("ProductMapper.ListproductVO", pNUm);
+	    productVO ProductVO = mybatis.selectOne("ProductMapper.productVO", pNUm);
 	      
 	      System.out.println(ProductVO);
 	      return ProductVO;

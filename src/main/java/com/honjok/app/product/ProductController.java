@@ -5,6 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.honjok.app.vo.productVO;
+
 @Controller
 @RequestMapping(value = "/produt")
 public class  ProductController {
@@ -18,8 +20,9 @@ public class  ProductController {
 	   public String ProductVO(String pNUm,Model model) {
 	      
 		   System.out.println(pNUm);
-		   service.ProductVO(pNUm);
-	      
+		   productVO  productvo=  service.ProductVO(pNUm);
+		   
+	      System.out.println(productvo);
 	      return "/Product/ProductDetail.jsp";
 	
 }
