@@ -27,7 +27,6 @@ public class adminController {
 	@Autowired
 	private adminService adminService;
 	
-	
 	//썸머노트 상세입력 시 이미지 업로드 AJAX 컨트롤러
 	@RequestMapping(value = "/admin/imageUpload.do", method = RequestMethod.POST, produces = "application/text; charset=utf-8")
 	@ResponseBody

@@ -22,7 +22,11 @@ public class  ProductController {
 		   System.out.println(pNum);
 		   productVO  productvo=  service.ProductVO(pNum);
 		   
+		   productvo.setProductreviewvo(service.ProductreviewVOList(pNum));
+		   
 	      System.out.println(productvo);
+	      
+	      System.out.println(productvo.getProductreviewvo());
 	      
 	      model.addAttribute("productvo",productvo);
 	      

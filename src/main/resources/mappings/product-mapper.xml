@@ -7,5 +7,10 @@
 	<select id="productVO" parameterType="String" resultType="productVO">
 		select * from product where p_num = #{pNum}
 	</select>
+	
+	<select id="productReviewVO" parameterType="String" resultType="productReviewVO">
+		select * from product_review where p_num = #{pNum}
+	</select>
+	
 
 </mapper>

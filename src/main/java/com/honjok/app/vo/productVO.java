@@ -1,5 +1,7 @@
 package com.honjok.app.vo;
 
+import java.util.List;
+
 public class productVO {
 
 	private String	pNum,
@@ -19,6 +21,8 @@ public class productVO {
 	discountrate,
 	description,
 	thumnailImg;
+	
+	private List<productReviewVO> productreviewvo ;
 
 	public String getpNum() {
 		return pNum;
@@ -156,17 +160,25 @@ public class productVO {
 		this.thumnailImg = thumnailImg;
 	}
 
+	public List<productReviewVO> getProductreviewvo() {
+		return productreviewvo;
+	}
+
+	public void setProductreviewvo(List<productReviewVO> productreviewvo) {
+		this.productreviewvo = productreviewvo;
+	}
+
 	@Override
 	public String toString() {
 		return "productVO [pNum=" + pNum + ", price=" + price + ", saleprice=" + saleprice + ", password=" + password
 				+ ", upperCategory=" + upperCategory + ", subCategory=" + subCategory + ", stock=" + stock + ", id="
 				+ id + ", pModel=" + pModel + ", brandName=" + brandName + ", pName=" + pName + ", shippingfee="
 				+ shippingfee + ", subCategory2=" + subCategory2 + ", promotion=" + promotion + ", discountrate="
-				+ discountrate + ", description=" + description + ", thumnailImg=" + thumnailImg + "]";
+				+ discountrate + ", description=" + description + ", thumnailImg=" + thumnailImg + ", productreviewvo="
+				+ productreviewvo + "]";
 	}
-	
-	
-	
+
+
 	
 	
 }
