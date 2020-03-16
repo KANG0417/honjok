@@ -31,7 +31,6 @@
 		SELECT * FROM USERS WHERE ID = #{userId}
 	</select>
 	
-	
 	<update id="getKey" parameterType="Map">
 		UPDATE USERS SET USERKEY = #{userKey} WHERE ID = #{userId}
 	</update>

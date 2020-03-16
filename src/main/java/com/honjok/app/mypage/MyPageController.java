@@ -17,13 +17,23 @@ public class MyPageController {
 	@Autowired
 	private MyPageService mypages;
 	
-	@RequestMapping("/selectMypage.do")
 	//회원정보 id로 조회
-	public String selectOne(UserVO uvo, HttpSession httpSession, HttpServletRequest request,
+	@RequestMapping("/selectMypage.do")
+	public String oneUser(UserVO uvo, HttpSession httpSession, HttpServletRequest request,
 			HttpServletResponse response) {
 
 		mypages.selectOne(uvo);
 		return "myPage.jsp";
 	}
 	
+	//주문내역 id로 조회
+	@RequestMapping("/selectOrder.do")
+	public String oneOrder(UserVO uvo, HttpSession httpSession, HttpServletRequest request,
+			HttpServletResponse response) {
+		
+		mypages.selectOne(uvo);
+		return "myPage.jsp";
+	}
+	
+	//
 }

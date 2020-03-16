@@ -290,7 +290,8 @@
 	//회원정보 클릭시 페이지 전환
 	$('.orderInfo').on("click",function(){
 		$.ajax({
-			 url : "myPage.jsp",
+			 url : ".do",
+			 type: "post",
              dataType : "json",
              success : function(data){
                  
@@ -300,7 +301,6 @@
                  
                  $.each(data,function(index, item){
                      
-                     
                      show += "<tr><td>"+(index+1)+"</td>";
                      show += "<td>"+item.name+"</td>";
                      show += "<td>"+item.age+"</td>";
@@ -308,7 +308,7 @@
                      
                      
                  })
-             }
+             	}
              })
 		})
 	
