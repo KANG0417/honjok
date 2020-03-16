@@ -35,9 +35,9 @@ public class MyPageController {
 		return "myPage.jsp";
 	}
 	
-	//게시물 id로 조회
+	/*//게시물 id로 조회
 	@RequestMapping("/selectBoard.do")
 	public String getBoard() {
 		
-	}
+	}*/
 }
