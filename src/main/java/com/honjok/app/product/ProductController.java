@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.honjok.app.vo.productReviewVO;
 import com.honjok.app.vo.productVO;
 
 @Controller
@@ -33,4 +34,10 @@ public class  ProductController {
 	      return "/Product/ProductDetail.jsp";
 	
 }
+	   
+	   @RequestMapping("Review.do")
+	   public void Review(productReviewVO productreviewvo ) {
+		   System.out.println(productreviewvo);
+		   
+	   }
 }

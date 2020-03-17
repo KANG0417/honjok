@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html lang="UTF-8">
 
@@ -332,7 +334,7 @@
 
         .prodproductionuction-selling-navigation__list {
             margin-left: 50px;
-            padding: 2%;
+            padding: 20px;
         }
         .prodproductionuction-selling-navigation__list li{
             margin-right: 35px;
@@ -364,50 +366,96 @@
 <!--모달창-->
 <style>
 
-.review-modal__modal__wrap{
-     position: absolute;
-    width:50%;
-    height: 80%;
-    top:50%;
-    left:50%;
-    transform: translate(-50%, -50%);
+ .review-modal__modal__wrap{ 
+     background-color: white;
+     width: 50%;
+     margin: 5% auto  5% auto;
+     z-index: 11;
+     margin-bottom: 50px;
+} 
+.react-modal--center-div{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    width:100%;
+    height: 100vh; 
+    position: fixed; 
+    z-index: 11;
+    background-color: rgba(5, 5, 5, 0.5);
+    display: none;
+}
+
+/* 별점 */
+.rating-group {
+  display: inline-flex;
+}
+
+/* make hover effect work properly in IE */
+.rating__icon {
+  pointer-events: none;
+}
+
+/* hide radio inputs */
+.rating__input {
+ position: absolute !important;
+ left: -9999px !important;
+}
+
+/* hide 'none' input from screenreaders */
+.rating__input--none {
+  display: none
+}
+
+/* set icon padding and size */
+.rating__label {
+  cursor: pointer;
+  padding: 0 0.1em;
+  font-size: 2rem;
+}
+
+/* set default star color */
+.rating__icon--star {
+  color: orange;
+}
+
+/* if any input is checked, make its following siblings grey */
+.rating__input:checked ~ .rating__label .rating__icon--star {
+  color: #ddd;
+}
+
+/* make all stars orange on rating group hover */
+.rating-group:hover .rating__label .rating__icon--star {
+  color: orange;
+}
+
+/* make hovered input's following siblings grey on hover */
+.rating__input:hover ~ .rating__label .rating__icon--star {
+  color: #ddd;
 }
 
 </style>
+
 </head>
 
 <body>
-
-
       <!--리뷰모달 시작-->
-    
-<div class="react-modal react-modal--center review-modal__modal__wrap open open-active" style="display: none;">
-        <div class="react-modal__content-wrap">
+<div class="react-modal--center-div" >  
+<div class="react-modal react-modal--center review-modal__modal__wrap open open-active">
+        <div class="react-modal__content-wrap" style="margin: 10px;">
             <div class="react-modal__content review-modal__modal">
                 <div class="review-modal">
-                    <div class="review-modal__title">리뷰 쓰기<button type="button" class="review-modal__close"><svg
-                                class="review-modal__close__icon" width="20" height="20" viewBox="0 0 20 20"
-                                fill="currentColor" preserveAspectRatio="xMidYMid meet">
-                                <path fill-rule="nonzero"
-                                    d="M11.6 10l7.1 7.1-1.6 1.6-7.1-7.1-7.1 7.1-1.6-1.6L8.4 10 1.3 2.9l1.6-1.6L10 8.4l7.1-7.1 1.6 1.6z">
-                                </path>
-                            </svg></button></div>
-                    <div class="review-modal__point-explain"><svg class="review-modal__point-explain__icon" width="24"
-                            height="24" viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet">
-                            <path
-                                d="M12 0c6.627 0 12 5.373 12 12s-5.373 12-12 12S0 18.627 0 12 5.373 0 12 0zm1 5H9.897l-.194.01C8.746 5.11 8 5.934 8 6.938v10.569l.01.198c.097.977.905 1.74 1.887 1.74 1.047 0 1.896-.868 1.896-1.938v-2.29H13l.248.006c2.479-.01 4.752-2.186 4.752-5.115C18 7.375 15.683 5 13 5zm0 3.875l.135.011c.543.087 1.072.672 1.072 1.222 0 .755-.558 1.265-1.108 1.236l-1.306-.003V8.875H13z">
-                            </path>
-                        </svg>포토리뷰&nbsp;<span class="review-modal__point-explain__value">250P</span>,&nbsp;
-                        일반리뷰&nbsp;<span
-                            class="review-modal__point-explain__value review-modal__point-explain__value--none">0P</span>
+                    <div class="review-modal__title">리뷰 쓰기
+                        <button type="button" class="review-modal__close">취소
+                    </button></div>
+                    <div class="review-modal__point-explain">포토리뷰&nbsp;<span class="review-modal__point-explain__value">250P</span>,&nbsp;
+                        일반리뷰&nbsp;<span class="review-modal__point-explain__value review-modal__point-explain__value--none">0P</span>
                     </div>
+
                     <form class="review-modal__form">
-                        <div class="review-modal__form__product"><img class="review-modal__form__product__image"
-                                src="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/156768446548018758.jpg?gif=1&amp;w=144&amp;h=144&amp;c=c&amp;webp=1"
-                                srcset="https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/156768446548018758.jpg?gif=1&amp;w=160&amp;h=160&amp;c=c&amp;webp=1 1.5x,https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/156768446548018758.jpg?gif=1&amp;w=240&amp;h=240&amp;c=c&amp;webp=1 2x,https://image.ohou.se/i/bucketplace-v2-development/uploads/productions/156768446548018758.jpg?gif=1&amp;w=320&amp;h=320&amp;c=c&amp;webp=1 3x">
+                        <div class="review-modal__form__product">
+                            <img>메인사진
                             <div class="review-modal__form__product__contents">
-                                <div class="review-modal__form__product__contents__brand">삼삼텍스타일</div>
-                                <div class="review-modal__form__product__contents__name">[자취특가] 맞춤 차르르 차로롬커튼/쉬폰/나비주름
+                                <div class="review-modal__form__product__contents__brand">브랜드명</div>
+                                <div class="review-modal__form__product__contents__name">성
                                 </div>
                                 <div class="review-modal__form__product__contents__options"></div>
                             </div>
@@ -417,116 +465,99 @@
                             <div class="review-modal__form__star__wrap">
                                 <div class="review-modal__form__star">
                                     <div class="review-modal__form__star__label">만족도</div>
-                                    <div class="review-modal__form__star__value">
-                                        <ul class="rating-input">
-                                            <li><label class="rating-input__star" aria-label="별점 1점"><input type="radio"
-                                                        value="1"><svg class="star" fill="currentColor" width="1em"
-                                                        height="1em" preserveAspectRatio="xMidYMid meet"
-                                                        viewBox="0 0 36 36">
-                                                        <path fill-rule="evenodd"
-                                                            d="M18 30.7l-9 3.8c-1.5.7-2.6-.2-2.5-1.8l.8-9.7L1 15.6c-1-1.3-.6-2.6 1-3l9.5-2.2 5-8.3c1-1.5 2.3-1.5 3.1 0l5 8.3 9.6 2.2c1.6.4 2 1.7 1 3L28.7 23l.8 9.7c.1 1.6-1 2.5-2.5 1.8l-9-3.8z">
-                                                        </path>
-                                                    </svg></label></li>
-                                            <li><label class="rating-input__star" aria-label="별점 2점"><input type="radio"
-                                                        value="2"><svg class="star" fill="currentColor" width="1em"
-                                                        height="1em" preserveAspectRatio="xMidYMid meet"
-                                                        viewBox="0 0 36 36">
-                                                        <path fill-rule="evenodd"
-                                                            d="M18 30.7l-9 3.8c-1.5.7-2.6-.2-2.5-1.8l.8-9.7L1 15.6c-1-1.3-.6-2.6 1-3l9.5-2.2 5-8.3c1-1.5 2.3-1.5 3.1 0l5 8.3 9.6 2.2c1.6.4 2 1.7 1 3L28.7 23l.8 9.7c.1 1.6-1 2.5-2.5 1.8l-9-3.8z">
-                                                        </path>
-                                                    </svg></label></li>
-                                            <li><label class="rating-input__star" aria-label="별점 3점"><input type="radio"
-                                                        value="3"><svg class="star" fill="currentColor" width="1em"
-                                                        height="1em" preserveAspectRatio="xMidYMid meet"
-                                                        viewBox="0 0 36 36">
-                                                        <path fill-rule="evenodd"
-                                                            d="M18 30.7l-9 3.8c-1.5.7-2.6-.2-2.5-1.8l.8-9.7L1 15.6c-1-1.3-.6-2.6 1-3l9.5-2.2 5-8.3c1-1.5 2.3-1.5 3.1 0l5 8.3 9.6 2.2c1.6.4 2 1.7 1 3L28.7 23l.8 9.7c.1 1.6-1 2.5-2.5 1.8l-9-3.8z">
-                                                        </path>
-                                                    </svg></label></li>
-                                            <li><label class="rating-input__star" aria-label="별점 4점"><input type="radio"
-                                                        value="4"><svg class="star" fill="currentColor" width="1em"
-                                                        height="1em" preserveAspectRatio="xMidYMid meet"
-                                                        viewBox="0 0 36 36">
-                                                        <path fill-rule="evenodd"
-                                                            d="M18 30.7l-9 3.8c-1.5.7-2.6-.2-2.5-1.8l.8-9.7L1 15.6c-1-1.3-.6-2.6 1-3l9.5-2.2 5-8.3c1-1.5 2.3-1.5 3.1 0l5 8.3 9.6 2.2c1.6.4 2 1.7 1 3L28.7 23l.8 9.7c.1 1.6-1 2.5-2.5 1.8l-9-3.8z">
-                                                        </path>
-                                                    </svg></label></li>
-                                            <li><label class="rating-input__star" aria-label="별점 5점"><input type="radio"
-                                                        value="5"><svg class="star" fill="currentColor" width="1em"
-                                                        height="1em" preserveAspectRatio="xMidYMid meet"
-                                                        viewBox="0 0 36 36">
-                                                        <path fill-rule="evenodd"
-                                                            d="M18 30.7l-9 3.8c-1.5.7-2.6-.2-2.5-1.8l.8-9.7L1 15.6c-1-1.3-.6-2.6 1-3l9.5-2.2 5-8.3c1-1.5 2.3-1.5 3.1 0l5 8.3 9.6 2.2c1.6.4 2 1.7 1 3L28.7 23l.8 9.7c.1 1.6-1 2.5-2.5 1.8l-9-3.8z">
-                                                        </path>
-                                                    </svg></label></li>
-                                        </ul>
+                                    <div id="full-stars-example-two">
+                                        <div class="rating-group">
+                                            <input disabled checked class="rating__input--none" name="rating" id="rating3-none" value="0" type="radio">
+                                            <label aria-label="1 star" class="rating__label" for="rating3-1"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                            <input class="rating__input" id="rating3-1" value="1" type="radio">
+                                            <label aria-label="2 stars" class="rating__label" for="rating3-2"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                            <input class="rating__input" id="rating3-2" value="2" type="radio">
+                                            <label aria-label="3 stars" class="rating__label" for="rating3-3"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                            <input class="rating__input" id="rating3-3" value="3" type="radio">
+                                            <label aria-label="4 stars" class="rating__label" for="rating3-4"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                            <input class="rating__input" id="rating3-4" value="4" type="radio">
+                                            <label aria-label="5 stars" class="rating__label" for="rating3-5"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                            <input class="rating__input" id="rating3-5" value="5" type="radio">
+                                        </div>
+                                   <script>
+                                     	var ratingInput = document.querySelector(".rating-group");
+	                                     	ratingInput.onclick = function(e){
+	                                     	
+	                                     		console.log(e.target.value);
+	                                    		
+	                                     		var ratingInput = document.querySelector(".rating__input--none");
+	                                     		ratingInput.value = e.target.value;
+	                                     	};
+                                 </script> 
+
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-                        
+  								                       
                         <div class="review-modal__section" >
-                            <div class="review-modal__section__title">사진 첨부 (선택) <img
-                                    class="review-modal__form__photo-point"
-                                    src="https://image.ohou.se/i/bucketplace-v2-development/uploads/cards/snapshots/157654717079245220.png?gif=1&amp;w=240&amp;webp=1"
-                                    srcset="https://image.ohou.se/i/bucketplace-v2-development/uploads/cards/snapshots/157654717079245220.png?gif=1&amp;w=360&amp;webp=1 1.5x,https://image.ohou.se/i/bucketplace-v2-development/uploads/cards/snapshots/157654717079245220.png?gif=1&amp;w=480&amp;webp=1 2x,https://image.ohou.se/i/bucketplace-v2-development/uploads/cards/snapshots/157654717079245220.png?gif=1&amp;w=720&amp;webp=1 3x">
+                            <div class="review-modal__section__title">사진 첨부 (선택)    
                             </div>
                             <div class="review-modal__section__explain">오늘의집에 올렸던 사진에서 고르거나 새로운 사진을 첨부해주세요. (최대 1장)
                             </div>
                             <div class="select-my-card">
-                                <div class="select-my-card__content select-my-card__content--select"><img
-                                        class="select-my-card__content__image"
-                                        src="https://image.ohou.se/i/bucketplace-v2-development/uploads/cards/snapshots/158408824949207211.jpg?gif=1&amp;w=240&amp;h=240&amp;c=c&amp;webp=1"
-                                        srcset="https://image.ohou.se/i/bucketplace-v2-development/uploads/cards/snapshots/158408824949207211.jpg?gif=1&amp;w=320&amp;h=320&amp;c=c&amp;webp=1 1.5x,https://image.ohou.se/i/bucketplace-v2-development/uploads/cards/snapshots/158408824949207211.jpg?gif=1&amp;w=480&amp;h=480&amp;c=c&amp;webp=1 2x,https://image.ohou.se/i/bucketplace-v2-development/uploads/cards/snapshots/158408824949207211.jpg?gif=1&amp;w=640&amp;h=640&amp;c=c&amp;webp=1 3x">
-                                    <div class="round-checkbox-input round-checkbox-input--blue"><label
-                                            class="round-checkbox-input__label"><input
-                                                class="round-checkbox-input__input" type="checkbox"><span
-                                                class="round-checkbox-input__icon"><svg class="check" width="24"
-                                                    height="24" viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet">
-                                                    <path fill="#FFF"
-                                                        d="M9.9 14.6l7-7.3 1.5 1.4-8.4 8.7-5-4.6 1.4-1.5z"></path>
-                                                </svg></span></label></div>
+                                <div class="select-my-card__content select-my-card__content--select">
+                                    <div class="round-checkbox-input round-checkbox-input--blue">
+                                        <label class="round-checkbox-input__label">
+                                                <span class="round-checkbox-input__icon">
+                                                    </span>
+                                                </label></div>
                                 </div>
-                                <div class="select-my-card__content"><img class="select-my-card__content__image"
-                                        src="https://image.ohou.se/i/bucketplace-v2-development/uploads/cards/snapshots/158408816336062728.jpg?gif=1&amp;w=240&amp;h=240&amp;c=c&amp;webp=1"
-                                        srcset="https://image.ohou.se/i/bucketplace-v2-development/uploads/cards/snapshots/158408816336062728.jpg?gif=1&amp;w=320&amp;h=320&amp;c=c&amp;webp=1 1.5x,https://image.ohou.se/i/bucketplace-v2-development/uploads/cards/snapshots/158408816336062728.jpg?gif=1&amp;w=480&amp;h=480&amp;c=c&amp;webp=1 2x,https://image.ohou.se/i/bucketplace-v2-development/uploads/cards/snapshots/158408816336062728.jpg?gif=1&amp;w=640&amp;h=640&amp;c=c&amp;webp=1 3x">
-                                    <div class="round-checkbox-input round-checkbox-input--blue"><label
-                                            class="round-checkbox-input__label"><input
-                                                class="round-checkbox-input__input" type="checkbox"><span
-                                                class="round-checkbox-input__icon"><svg class="check" width="24"
-                                                    height="24" viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet">
-                                                    <path fill="#FFF"
-                                                        d="M9.9 14.6l7-7.3 1.5 1.4-8.4 8.7-5-4.6 1.4-1.5z"></path>
-                                                </svg></span></label></div>
+                                <div class="select-my-card__content">
+                                    <div class="round-checkbox-input round-checkbox-input--blue">
+                                        <label
+                                            class="round-checkbox-input__label">
+                                                <span class="round-checkbox-input__icon">
+                                            </span>
+                                        </label></div>
                                 </div>
-                            </div><button
-                                class="button button--color-blue-inverted button--size-50 button--shape-4 upload-button"
-                                type="button"><svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet">
-                                    <path
-                                        d="M21.1 4c.5 0 .9.4.9.9v14.2c0 .5-.4.9-.9.9H2.9a.9.9 0 01-.9-.9V4.9c0-.5.4-.9.9-.9h18.2zm-.91 1.8H3.8v10.85l5.54-6.27c.12-.17.38-.17.52 0l3.1 3.54c.06.06.08.14.06.2l-.4 1.84c-.02.14.15.23.23.12l3.16-3.43a.27.27 0 01.38 0l3.79 4.12V5.8zm-3.37 4.8a1.47 1.47 0 01-1.47-1.45c0-.81.66-1.46 1.47-1.46s1.48.65 1.48 1.46c0 .8-.66 1.45-1.48 1.45z">
-                                    </path>
-                                </svg> 사진 첨부하기</button>
+
+                            </div>
+                            <input type="file" name="file" id="file" style="display:none">
+                            <button class="button button--color-blue-inverted button--size-50 button--shape-4 upload-button"
+                                type="button" onclick="document.all.file.click()" >사진 첨부하기</button>
                         </div>
                         <div class="review-modal__section">
-                            <div class="review-modal__section__title">리뷰 작성</div><textarea
+                            <div class="review-modal__section__title">리뷰 작성</div><textarea name="content"
                                 placeholder="자세하고 솔직한 리뷰는 다른 고객에게 큰 도움이 됩니다. (최소 20자 이상)"
                                 class="form-control text-area-input review-modal__form__review-input"
-                                style="height: 56px;"></textarea>
-                            <div class="review-modal__form__review-input__length"><span
-                                    class="review-modal__form__review-input__length__value">0</span></div>
+                                style="height: 60px; width: 98%;"></textarea>
                         </div>
+
                         <div class="review-modal__section">
                             <div class="review-modal__section__title">상품을 직접 사용하고 작성한 리뷰인가요?</div>
-                            <div class="form-check checkbox-input"><label class="form-check-label"><input
-                                        class="form-check" type="checkbox"><span class="check-img"></span><span
-                                        class="review-modal__form__agree">네. 상품을 직접 사용 후 작성한 리뷰이며,&nbsp;<span
-                                            class="review-modal__form__agree__policy-button">오늘의집 리뷰 정책</span>에
-                                        동의합니다.</span></label></div>
-                        </div><button
-                            class="button button--color-blue button--size-50 button--shape-4 review-modal__form__submit"
-                            type="submit">완료</button>
+                            <div class="form-check checkbox-input"><label class="form-check-label">
+                                <input class="form-check" type="checkbox"><span class="check-img"></span>
+                                <span class="review-modal__form__agree">네. 상품을 직접 사용 후 작성한 리뷰이며,&nbsp;
+                                    <span class="review-modal__form__agree__policy-button">정책</span>에동의합니다.</span></label></div>
+                        </div>
+                        <button class="button button--color-blue button--size-50 button--shape-4 review-modal__form__submit"
+                            type="button" onclick="reviewForm(this.form)">완료</button>
                     </form>
+                    <script>
+                    	
+                    
+	                    function reviewForm(e){
+	                    	console.log(e);
+	                    	var data = $(e).serialize();
+	                    	$.ajax({
+	                    		type : 'post',
+	                    		url : "Review.do",
+	                    		data: data,
+	                    		success:function(json){
+	                    			
+	                    		},error: function(xhr, status, error){
+	                                alert(error);
+	                            }
+
+	                    	});
+	                    }
+                    </script>
                     <div class="review-modal__explain">
                         <ul>
                             <li>비구매 상품 리뷰 포인트는 심사 후 지급됩니다. (영업일 기준 2~3일 소요)</li>
@@ -539,6 +570,7 @@
                 </div>
             </div>
         </div>
+</div>
 </div>
 <!--리뷰 모달-->
 
@@ -955,6 +987,7 @@
                                 <div class="production-review-feed__list">
                                     <div class="production-review-item__container">
                                         <article class="production-review-item">
+                                            <%--   <c:forEach var="product" items="${productvo.productreviewvo }" >
                                             <div class="production-review-item__writer">
                                             
                                                 <img src=""
@@ -962,29 +995,31 @@
                                                      	
                                                 <div class="production-review-item__writer__info">
                                                     <p class="production-review-item__writer__info__name">
-                                                        	작성자
+                                                        	${product.id }
                                                     </p>
 
                                                     <button
                                                         class="production-review-item__writer__info__total-star-wrap"
                                                         type="button">
                                                         <span class="production-review-item__writer__info__total-star">
-	                                                          	준 별점 표시
+	                                                          ${product.rating }
                                                         </span>
                                                     </button>
 
-                                                    <span class="production-review-item__writer__info__date">댓글 작성일</span>
+                                                    <span class="production-review-item__writer__info__date">${product.regdate }</span>
                                                 </div>
                                             </div>
                                             
                                            <button type="button" class="production-review-item__img__btn">
                                            		
-                                           		등록한 이미지
+                                           		<img src="${product.rating }">
                                                 
                                             </button>
+                                            <div>${product.title }</div>
                                             <p class="production-review-item__description">
-													댓글 내용 
+													${product.content }
                                             </p>
+                                            </c:forEach> --%>
                                         </article>
                                     </div>
                                 </div>
@@ -1271,13 +1306,31 @@
 
     <script>
         var ReviewBtn = document.querySelector(".ReviewBtn");
+        var Review = document.querySelector(".review-modal__modal__wrap");
+        var reviewModalClose = document.querySelector(".review-modal__close");
+        var reactModalCenterDiv = document.querySelector(".react-modal--center-div")
+        var body = document.querySelector("body");
         ReviewBtn.onclick = function(){
-            var Review = document.querySelector(".review-modal__modal__wrap");
+            var scrollPosition = window.scrollY;
+            console.log(scrollPosition);
             console.log(Review);
-            Review.style.display = "block";
+            reactModalCenterDiv.style.top = scrollPosition;
+            reactModalCenterDiv.style.display= "block";
+            reactModalCenterDiv.style.overflow = "scroll";
+            body.style.overflow = "hidden";
         }
+
+      reviewModalClose.onclick = function(){
+        reactModalCenterDiv.style.display = "none";
+        body.style.overflow = "scroll";
+      }
     </script>
+
+
+	<script>
+
+</script>
 
 </body>
 </html>
-    
+      

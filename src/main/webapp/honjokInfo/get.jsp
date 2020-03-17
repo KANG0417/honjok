@@ -373,8 +373,7 @@
 						<input type="hidden" name="id" value="${sessionScope.userSession.id }"> <input
 							type="hidden" name="nickName" value="${sessionScope.userSession.nickName }"> <input
 							type="hidden" name="comSeq" value="${CommInfoVO.comSeq }">
-						<input  type="button" onclick="insertReview(this.form)"
-							value="댓글 작성">
+						<input  type="button" onclick="insertReview(this.form)" value="댓글 작성">
 					</form>
 
 					<form id="Review" method="post" enctype="multipart/form-data">
