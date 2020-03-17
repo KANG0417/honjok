@@ -467,8 +467,8 @@
                                     <div class="review-modal__form__star__label">만족도</div>
                                     <div id="full-stars-example-two">
                                         <div class="rating-group">
-                                            <input disabled checked class="rating__input--none" name="rating" id="rating3-none" value="0" type="radio">
-                                            <label aria-label="1 star" class="rating__label" for="rating3-1"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                            <input disabled checked class="rating__input--none" id="rating3-none" value="1" type="radio">
+                                            <label aria-label="1 star"   class="rating__label" for="rating3-1"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
                                             <input class="rating__input" id="rating3-1" value="1" type="radio">
                                             <label aria-label="2 stars" class="rating__label" for="rating3-2"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
                                             <input class="rating__input" id="rating3-2" value="2" type="radio">
@@ -478,15 +478,18 @@
                                             <input class="rating__input" id="rating3-4" value="4" type="radio">
                                             <label aria-label="5 stars" class="rating__label" for="rating3-5"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
                                             <input class="rating__input" id="rating3-5" value="5" type="radio">
+                               				<input type="hidden" name="rating" value="5">
                                         </div>
+                                           
                                    <script>
                                      	var ratingInput = document.querySelector(".rating-group");
 	                                     	ratingInput.onclick = function(e){
-	                                     	
-	                                     		console.log(e.target.value);
+	                                     		var ratingValue = document.querySelector("input[name='rating']");
 	                                    		
 	                                     		var ratingInput = document.querySelector(".rating__input--none");
-	                                     		ratingInput.value = e.target.value;
+	                                     		ratingValue.value = e.target.value;
+	                                     		console.log(ratingValue.value);
+	                                     		
 	                                     	};
                                  </script> 
 
@@ -518,7 +521,8 @@
                                 </div>
 
                             </div>
-                            <input type="file" name="file" id="file" style="display:none">
+                            <input multiple="multiple" type="file"
+							name="file" id="image"  style="display:none"/>
                             <button class="button button--color-blue-inverted button--size-50 button--shape-4 upload-button"
                                 type="button" onclick="document.all.file.click()" >사진 첨부하기</button>
                         </div>
@@ -540,11 +544,55 @@
                             type="button" onclick="reviewForm(this.form)">완료</button>
                     </form>
                     <script>
+                    
+                    $('#image').on('change',function() {
+    							if ("${sessionScope.userSession.id}" != "") {
+    								ext = $(this).val().split('.').pop()
+    										.toLowerCase(); //확장자
+    								//배열에 추출한 확장자가 존재하는지 체크
+    								if ($.inArray(ext, [ 'gif', 'png', 'jpg','jpeg' ]) == -1) {
+    									resetFormElement($(this)); //폼 초기화
+    									window.alert('이미지 파일이 아닙니다! (gif, png, jpg, jpeg 만 업로드 가능)');
+    								} else {
+    									var form = $("#Review")[0];
+    									var data = new FormData(form);
+    									$.ajax({type : 'post',
+    												enctype : 'multipart/form-data',
+    												url : "honjok/reviewUpload.do",
+    												data : data,
+    												processData : false,
+    												contentType : false,
+    												success : function(json) {
+    													for ( var i in json) {
+    														$('.view_area')
+    																.append(
+    																		"<div><img style='width:50px; height:50px;' src=/app/resources/img/review/"+json[i]+"><button type='button' onclick='imgDel(this);'>삭제하기</button></div>")
+    													}
+    													//alert("업로드 성공");	
+    												},
+    												error : function(jqXHR,
+    														textStatus, errorThrown) {
+    													alert("오류가 발생하였습니다.");
+    												}
+
+    											});
+    								}
+
+    							} else {
+    								var result = confirm("로그인이 필요한 서비스입니다. 로그인 하시겠습니까?")
+    								if (result) {
+    									window.open('/app/loginModal.jsp',
+    													'pop01',
+    													'top=10, left=10, width=500, height=600, status=no, menubar=no, toolbar=no, resizable=no');
+    								}
+    							}
+    						});
                     	
                     
 	                    function reviewForm(e){
 	                    	console.log(e);
 	                    	var data = $(e).serialize();
+	                    	console.log(data);
 	                    	$.ajax({
 	                    		type : 'post',
 	                    		url : "Review.do",
@@ -552,7 +600,7 @@
 	                    		success:function(json){
 	                    			
 	                    		},error: function(xhr, status, error){
-	                                alert(error);
+	                                alert("실패");
 	                            }
 
 	                    	});

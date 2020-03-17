@@ -36,8 +36,9 @@ public class  ProductController {
 }
 	   
 	   @RequestMapping("Review.do")
-	   public void Review(productReviewVO productreviewvo ) {
+	   public void Review(productReviewVO productreviewvo,String rating) {
 		   System.out.println(productreviewvo);
+		   System.out.println(rating);
 		   
 	   }
 }
