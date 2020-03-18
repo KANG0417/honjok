@@ -16,5 +16,9 @@ public class MypageDAO {
 		System.out.println("===> 유저 정보 id 조회");
 		return mybatis.selectOne("UserDAO.getBoard", uvo);
 	}
-
+	
+	/*public getBoard() {
+		return mybatis.selectOne(statement);
+	}
+*/
 }

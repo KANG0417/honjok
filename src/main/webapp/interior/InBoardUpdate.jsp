@@ -25,7 +25,7 @@
 <div id="container">
 	<h1>글 상세</h1>
 	<form action="updateInterior.do" method="post">
-		<input type="hidden" name="com_seq" value="${inter.comSeq }">
+		<input type="hidden" name="comSeq" value="${inter.comSeq }">
 		<table>
 		<tr>
 			<th>제목</th>
@@ -59,7 +59,7 @@
 		</tr>
 		<tr>
 			<th>파일이미지</th>
-			<td><input type="text" name="file_image" value="${inter.fileImage }"></td>
+			<td><input type="text" name="fileImage" value="${inter.fileImage }"></td>
 		</tr>
 		<tr>
 			<td colspan="2" class="center">
@@ -70,7 +70,7 @@
 	</form>
 	<c:remove var="com" />
 	<p>
-		<a href="deleteBoard.do?seq=${board.getSeq() }">글삭제</a>
+		<a href="deleteBoard.do?comSeq=${board.getSeq() }">글삭제</a>
 		<a href="${contextPage.request.contextPath}/app/interior/interiorAllList.do">글목록</a>
 	</p>
 </div>

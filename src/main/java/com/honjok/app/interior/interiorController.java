@@ -85,24 +85,24 @@ public class interiorController {
 	
 		//게시물 상세 조회 페이지
 		@RequestMapping("/getInterior.do")
-		public String getinteriorSelect(Model model, CommInteriorVO cvo, int comSeq, LikesVO livo) {			
-			CommInteriorVO CommInterior = interiorService.getBoardList(cvo);
-			model.addAttribute("interiorSelect", CommInterior);
-			System.out.println("===> 게시물 상세 조회: " + CommInterior);
+		public String getinteriorSelect(Model model, CommInteriorVO cvo, LikesVO livo) {			
+			System.out.println("컨트롤러 cvo: " + cvo);
+			System.out.println("컨트롤러 livo: " + livo);
+			CommInteriorVO commInterior = interiorService.getBoardList(cvo);
+			model.addAttribute("interiorSelect", commInterior);
+			
+			System.out.println("===> 게시물 상세 조회: " + commInterior);
+			System.out.println("회원아이디: " + commInterior.getId());
 			
 			//게시물 조회수 증가
 			int board_hit = 0;
-	        interiorService.boardHitsUpdate(comSeq);
+	        interiorService.boardHitsUpdate(Integer.parseInt(cvo.getcomSeq()));
 	/*        model.addAttribute("Board_Hit", board_hit);*/
-		    
-	        //게시물 좋아요 증가
-	        interiorService.insertLikes(livo);
-	        model.addAttribute("likes", livo);
 	        
 	        //게시물 좋아요 조회
-	        int likeCount = interiorService.selectLikes(comSeq);
+	    /*    int likeCount = interiorService.selectLikes(Integer.parseInt(cvo.getcomSeq()));
 	        model.addAttribute("likesCount" + likeCount);
-	        System.out.println("해당 게시물 좋아요 총 갯수: " + likeCount);
+	        System.out.println("해당 게시물 좋아요 총 갯수: " + likeCount);*/
 	        
 			return "InBoardDetail.jsp";
 		}
@@ -196,11 +196,11 @@ public class interiorController {
 	}
 	
 	//게시물 좋아요 취소
-	@RequestMapping("/updateLike.do")
+	/*@RequestMapping("/updateLike.do")
 	public String updateLikes(LikesVO livo) {
 		interiorService.updateLikes(livo);
 		System.out.println(">>> 글 좋아요 취소 처리");
 		
 		return "getInterior.do";
-	}
+	}*/
 }

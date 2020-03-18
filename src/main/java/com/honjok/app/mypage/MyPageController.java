@@ -36,8 +36,8 @@ public class MyPageController {
 	}*/
 	
 	//게시물 id로 조회
-	/*@RequestMapping("/selectBoard.do")
-	public String getBoard() {
-		
-	}*/
+	@RequestMapping("/selectBoard.do")
+	public String getBoard(String comSeq) {
+		return "myPage.jsp";
+	}
 }

@@ -190,7 +190,7 @@
 	<div id="main">원마켓</div>
 	<br>
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
-	  <a class="navbar-brand" href="index.jsp">Home</a>
+	  <a class="navbar-brand" href="${contextPage.request.contextPath }/app/index.jsp">Home</a>
 	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
 	    <span class="navbar-toggler-icon"></span>
 	  </button>
@@ -199,9 +199,15 @@
       	<li class="nav-item">
         <a class="nav-link" href="signUp.jsp">회원가입</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="login.jsp">${userSession.id}님 안녕하세요!</a>
-      </li>
+      <c:if test="${sessionScope.userSession.id == null }">
+      	<li class="nav-item">
+      	<a class="nav-link" href="${contextPage.request.contextPath }/app/login.jsp">로그인</a>
+      	</li>
+      </c:if>
+      <c:if test="${sessionScope.userSession.id != null }">
+      	<li class="nav-item">${userSession.id} 님 안녕하세요!<a href="${contextPage.request.contextPath }/app/logout.do">Log-out</a>
+        </li>
+      </c:if>
       <li class="nav-item">
         <a class="nav-link" href="${contextPage.request.contextPath }/app/interior/interiorAllList.do">인테리어</a>
       </li>
@@ -287,7 +293,7 @@
 	});
 	
 	//회원정보 클릭시 페이지 전환
-	/* $('.orderInfo').on("click",function(){
+	$('.orderInfo').on("click",function(){
 		$.ajax({
 			 url : ".do",
 			 type: "post",
@@ -309,7 +315,7 @@
                  })
              	}
              })
-		}) */
+		})
 	
 	$('.wishList').on("click",function(){
 		$('#intro').html("");
@@ -329,7 +335,7 @@
 	//커뮤니티정보 클릭시 페이지 전환	
 	$('.commBoard').on("click",function(){
 		$.ajax({
-			 url : ".do",
+			 url : "selectBoard.do",
 			 type: "post",
             dataType : "json",
             success : function(data){

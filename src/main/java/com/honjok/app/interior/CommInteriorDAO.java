@@ -11,7 +11,7 @@ import com.honjok.app.vo.CommInteriorVO;
 import com.honjok.app.vo.LikesVO;
 
 @Repository("commDAOMybatis")
-public class CommInteriorDAOMybatis {
+public class CommInteriorDAO {
 
 	@Autowired
 	private SqlSessionTemplate mybatis;
@@ -20,13 +20,13 @@ public class CommInteriorDAOMybatis {
 	public List<CommInteriorVO> BoardAllList(Map<String, Integer> pagingMap) {
 		System.out.println("===> MyBatis로 BoardAllList() 실행");
 		List<CommInteriorVO> cvo = mybatis.selectList("commInteriorDAO.interiorAll", pagingMap);
-		System.out.println("전체 목록조회: " + cvo);
+		System.out.println("전체 목록조회: " + cvo.toString());
 		return cvo;
 	}
 	
 	//글 상세 조회
 	public CommInteriorVO getInteriorOne(CommInteriorVO cvo) {
-	System.out.println("===> MyBatis로 getInteriorOne() 실행");
+		System.out.println("===> MyBatis로 getInteriorOne() 실행");
 		return mybatis.selectOne("commInteriorDAO.getInteriorOne", cvo);
 	}
 	
