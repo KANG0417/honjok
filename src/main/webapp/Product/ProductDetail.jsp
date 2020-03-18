@@ -434,6 +434,10 @@
 
 </style>
 
+<script>
+	imgName = new Array;
+</script>
+
 </head>
 
 <body>
@@ -478,7 +482,7 @@
                                             <input class="rating__input" id="rating3-4" value="4" type="radio">
                                             <label aria-label="5 stars" class="rating__label" for="rating3-5"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
                                             <input class="rating__input" id="rating3-5" value="5" type="radio">
-                               				<input type="hidden" name="rating" value="5">
+                               				<input class="review-rating" type="hidden" name="rating" value="5">
                                         </div>
                                            
                                    <script>
@@ -499,9 +503,9 @@
                         </div>
   								                       
                         <div class="review-modal__section" >
-                            <div class="review-modal__section__title">사진 첨부 (선택)    
+                            <div class="review-modal__section__img">    
                             </div>
-                            <div class="review-modal__section__explain">오늘의집에 올렸던 사진에서 고르거나 새로운 사진을 첨부해주세요. (최대 1장)
+                            <div class="review-modal__section__explain">사진을 첨부해주세요. (최대 2장 / 'gif', 'png', 'jpg','jpeg' 형식만 가능)
                             </div>
                             <div class="select-my-card">
                                 <div class="select-my-card__content select-my-card__content--select">
@@ -522,12 +526,14 @@
 
                             </div>
                             <input multiple="multiple" type="file"
-							name="file" id="image"  style="display:none"/>
+							name="file" id="image"  style="display:block"/>
                             <button class="button button--color-blue-inverted button--size-50 button--shape-4 upload-button"
                                 type="button" onclick="document.all.file.click()" >사진 첨부하기</button>
                         </div>
                         <div class="review-modal__section">
-                            <div class="review-modal__section__title">리뷰 작성</div><textarea name="content"
+                            <div class="review-modal__section__title">리뷰 작성</div>
+                            <input class="review-title" type="text" name="title" value="제목">
+                            <textarea class="review-content" name="content"
                                 placeholder="자세하고 솔직한 리뷰는 다른 고객에게 큰 도움이 됩니다. (최소 20자 이상)"
                                 class="form-control text-area-input review-modal__form__review-input"
                                 style="height: 60px; width: 98%;"></textarea>
@@ -546,64 +552,117 @@
                     <script>
                     
                     $('#image').on('change',function() {
-    							if ("${sessionScope.userSession.id}" != "") {
-    								ext = $(this).val().split('.').pop()
-    										.toLowerCase(); //확장자
+    								console.log(this.files.length);
+    								if(this.files.length > 2){
+    									alert("사진은 최대 2개 까지 가능 합니다");
+    									this.form.reset();
+    									$('.review-modal__section__img').html("");
+    									return;
+    								} 
+    								ext = $(this).val().split('.').pop().toLowerCase(); //확장자
+
     								//배열에 추출한 확장자가 존재하는지 체크
     								if ($.inArray(ext, [ 'gif', 'png', 'jpg','jpeg' ]) == -1) {
-    									resetFormElement($(this)); //폼 초기화
-    									window.alert('이미지 파일이 아닙니다! (gif, png, jpg, jpeg 만 업로드 가능)');
-    								} else {
-    									var form = $("#Review")[0];
-    									var data = new FormData(form);
-    									$.ajax({type : 'post',
-    												enctype : 'multipart/form-data',
-    												url : "honjok/reviewUpload.do",
-    												data : data,
-    												processData : false,
-    												contentType : false,
-    												success : function(json) {
-    													for ( var i in json) {
-    														$('.view_area')
-    																.append(
-    																		"<div><img style='width:50px; height:50px;' src=/app/resources/img/review/"+json[i]+"><button type='button' onclick='imgDel(this);'>삭제하기</button></div>")
-    													}
-    													//alert("업로드 성공");	
-    												},
-    												error : function(jqXHR,
-    														textStatus, errorThrown) {
-    													alert("오류가 발생하였습니다.");
-    												}
-
-    											});
+    								this.form.reset(); //폼 초기화
+    								$('.review-modal__section__img').html("");
+									window.alert('이미지 파일이 아닙니다! (gif, png, jpg, jpeg 만 업로드 가능)');
+									return;
+								} 
+    								
+    								
+    								for(var i= 0 ; i < this.files.length; i++){
+    								var imgDel = document.querySelector('#image');
+    								var j  = 0;
+    								//초기화
+    								$('.review-modal__section__img').html("");
+    								if (this.files && this.files[i]) {
+ 									var reader = new FileReader();
+    										reader.onload = function(e) {
+    										$('.review-modal__section__img').append("<img class='review-img' src='"+e.target.result+"' width='200' height='200'> <button type='button' onclick='imgDel(this);' value='"+j+"'>삭제하기</button>");
+    									
+    											console.log("imgDel.files[j].name"+imgDel.files[j].name);
+    											console.log("imgName.indexOf(imgDel.files[j].name)"+imgName.indexOf(imgDel.files[j].name));
+    										if(imgName != null && imgName != ""){
+    											console.log("널처리");
+    											if(imgName.indexOf(imgDel.files[j].name) != -1 ){
+    												console.log("-1처리")
+    											 var ss = imgName.indexOf(imgDel.files[j].name);
+    											  imgName.splice(ss, 1);
+    												console.log(imgName);
+    											 }
+    											}
+    											j++;
+    										}
+    										reader.readAsDataURL(this.files[i]);
+    									}
     								}
+    									
 
-    							} else {
-    								var result = confirm("로그인이 필요한 서비스입니다. 로그인 하시겠습니까?")
-    								if (result) {
-    									window.open('/app/loginModal.jsp',
-    													'pop01',
-    													'top=10, left=10, width=500, height=600, status=no, menubar=no, toolbar=no, resizable=no');
-    								}
-    							}
-    						});
+    							});
+                    
+                    	function imgDel(e){
+                    		
+                    		console.log(e.value);
+                    	var imgDel = document.querySelector('#image');
+                    	
+                    	
+                    	console.log(imgName.indexOf(imgDel.files[e.value].name));
+                    	if(imgName.indexOf(imgDel.files[e.value].name) == -1 ){
+	                    	imgName.push(imgDel.files[e.value].name);
+	                    	console.log(imgName);
+                    	}
+                    	var	imgTag = e.previousElementSibling;
+                    	
+                    		imgTag.remove();
+                    		e.remove();
+                    	    
+                    	}
+                    	
                     	
                     
 	                    function reviewForm(e){
-	                    	console.log(e);
-	                    	var data = $(e).serialize();
-	                    	console.log(data);
-	                    	$.ajax({
-	                    		type : 'post',
-	                    		url : "Review.do",
-	                    		data: data,
-	                    		success:function(json){
-	                    			
-	                    		},error: function(xhr, status, error){
-	                                alert("실패");
-	                            }
+	                    	var form = $(".review-modal__form")[0];
+							var data = new FormData(form)
+							console.log(data);
+							data = $(".review-modal__form").serialize();
+	                    	var objParams = {
+	                    			"title" : $('.review-title').val(),
+	                    			"content" :  $('.review-content').val(),
+	                    			"pNum" :'${productvo.pNum}' ,
+	                    			"imgName" : imgName,
+	                    			"rating": $('.review-rating').val(),
+	                    			"id" : '${sessionScope.userSession.id}',
+	            					"nickName" : '${sessionScope.userSession.nickName}',
+	            					"data" :data
+	            					
+	                    	}
+	                    	
+	                    	console.log(objParams);
+	                    	
+	                    
+							$.ajax({type : 'post',
+										/*  enctype : 'multipart/form-data',  */
+										url : "Review.do",
+										data : data,
+										/*  processData : false,
+										contentType : false,  */
+										success : function(e) {
+											
+											/* for ( var i in json) {
+												$('.view_area')
+														.append(
+																"<div><img style='width:50px; height:50px;' src=/app/resources/img/review/"+json[i]+"><button type='button' onclick='imgDel(this);'>삭제하기</button></div>")
+											} */
+											//alert("업로드 성공");
+											
+										},
+										error : function(jqXHR,
+												textStatus, errorThrown) {
+											alert("오류가 발생하였습니다.");
+										}
 
-	                    	});
+									});
+						
 	                    }
                     </script>
                     <div class="review-modal__explain">

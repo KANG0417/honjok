@@ -10,7 +10,8 @@ public class productReviewVO {
 	regdate,
 	photoImage,
 	title,
-	content;
+	content,
+	photoImage1;
 
 	public String getpNum() {
 		return pNum;
@@ -84,12 +85,21 @@ public class productReviewVO {
 		this.content = content;
 	}
 
+	public String getPhotoImage1() {
+		return photoImage1;
+	}
+
+	public void setPhotoImage1(String photoImage1) {
+		this.photoImage1 = photoImage1;
+	}
+
 	@Override
 	public String toString() {
 		return "productReviewVO [pNum=" + pNum + ", idx=" + idx + ", rating=" + rating + ", pName=" + pName + ", id="
 				+ id + ", regdate=" + regdate + ", photoImage=" + photoImage + ", title=" + title + ", content="
-				+ content + "]";
+				+ content + ", photoImage1=" + photoImage1 + "]";
 	}
+
 	
 	
 	
