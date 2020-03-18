@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html lang="UTF-8">
 
@@ -332,7 +334,7 @@
 
         .prodproductionuction-selling-navigation__list {
             margin-left: 50px;
-            padding: 2%;
+            padding: 20px;
         }
         .prodproductionuction-selling-navigation__list li{
             margin-right: 35px;
@@ -360,10 +362,265 @@
             margin-top: 60px;
         }
     </style>
+
+<!--모달창-->
+<style>
+
+ .review-modal__modal__wrap{ 
+     background-color: white;
+     width: 50%;
+     margin: 5% auto  5% auto;
+     z-index: 11;
+     margin-bottom: 50px;
+} 
+.react-modal--center-div{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    width:100%;
+    height: 100vh; 
+    position: fixed; 
+    z-index: 11;
+    background-color: rgba(5, 5, 5, 0.5);
+    display: none;
+}
+
+/* 별점 */
+.rating-group {
+  display: inline-flex;
+}
+
+/* make hover effect work properly in IE */
+.rating__icon {
+  pointer-events: none;
+}
+
+/* hide radio inputs */
+.rating__input {
+ position: absolute !important;
+ left: -9999px !important;
+}
+
+/* hide 'none' input from screenreaders */
+.rating__input--none {
+  display: none
+}
+
+/* set icon padding and size */
+.rating__label {
+  cursor: pointer;
+  padding: 0 0.1em;
+  font-size: 2rem;
+}
+
+/* set default star color */
+.rating__icon--star {
+  color: orange;
+}
+
+/* if any input is checked, make its following siblings grey */
+.rating__input:checked ~ .rating__label .rating__icon--star {
+  color: #ddd;
+}
+
+/* make all stars orange on rating group hover */
+.rating-group:hover .rating__label .rating__icon--star {
+  color: orange;
+}
+
+/* make hovered input's following siblings grey on hover */
+.rating__input:hover ~ .rating__label .rating__icon--star {
+  color: #ddd;
+}
+
+</style>
+
 </head>
 
 <body>
+      <!--리뷰모달 시작-->
+<div class="react-modal--center-div" >  
+<div class="react-modal react-modal--center review-modal__modal__wrap open open-active">
+        <div class="react-modal__content-wrap" style="margin: 10px;">
+            <div class="react-modal__content review-modal__modal">
+                <div class="review-modal">
+                    <div class="review-modal__title">리뷰 쓰기
+                        <button type="button" class="review-modal__close">취소
+                    </button></div>
+                    <div class="review-modal__point-explain">포토리뷰&nbsp;<span class="review-modal__point-explain__value">250P</span>,&nbsp;
+                        일반리뷰&nbsp;<span class="review-modal__point-explain__value review-modal__point-explain__value--none">0P</span>
+                    </div>
 
+                    <form class="review-modal__form">
+                        <div class="review-modal__form__product">
+                            <img>메인사진
+                            <div class="review-modal__form__product__contents">
+                                <div class="review-modal__form__product__contents__brand">브랜드명</div>
+                                <div class="review-modal__form__product__contents__name">성
+                                </div>
+                                <div class="review-modal__form__product__contents__options"></div>
+                            </div>
+                        </div>
+                        <div class="review-modal__section">
+                            <div class="review-modal__section__title">별점 평가</div>
+                            <div class="review-modal__form__star__wrap">
+                                <div class="review-modal__form__star">
+                                    <div class="review-modal__form__star__label">만족도</div>
+                                    <div id="full-stars-example-two">
+                                        <div class="rating-group">
+                                            <input disabled checked class="rating__input--none" id="rating3-none" value="1" type="radio">
+                                            <label aria-label="1 star"   class="rating__label" for="rating3-1"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                            <input class="rating__input" id="rating3-1" value="1" type="radio">
+                                            <label aria-label="2 stars" class="rating__label" for="rating3-2"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                            <input class="rating__input" id="rating3-2" value="2" type="radio">
+                                            <label aria-label="3 stars" class="rating__label" for="rating3-3"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                            <input class="rating__input" id="rating3-3" value="3" type="radio">
+                                            <label aria-label="4 stars" class="rating__label" for="rating3-4"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                            <input class="rating__input" id="rating3-4" value="4" type="radio">
+                                            <label aria-label="5 stars" class="rating__label" for="rating3-5"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                            <input class="rating__input" id="rating3-5" value="5" type="radio">
+                               				<input type="hidden" name="rating" value="5">
+                                        </div>
+                                           
+                                   <script>
+                                     	var ratingInput = document.querySelector(".rating-group");
+	                                     	ratingInput.onclick = function(e){
+	                                     		var ratingValue = document.querySelector("input[name='rating']");
+	                                    		
+	                                     		var ratingInput = document.querySelector(".rating__input--none");
+	                                     		ratingValue.value = e.target.value;
+	                                     		console.log(ratingValue.value);
+	                                     		
+	                                     	};
+                                 </script> 
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+  								                       
+                        <div class="review-modal__section" >
+                            <div class="review-modal__section__title">사진 첨부 (선택)    
+                            </div>
+                            <div class="review-modal__section__explain">오늘의집에 올렸던 사진에서 고르거나 새로운 사진을 첨부해주세요. (최대 1장)
+                            </div>
+                            <div class="select-my-card">
+                                <div class="select-my-card__content select-my-card__content--select">
+                                    <div class="round-checkbox-input round-checkbox-input--blue">
+                                        <label class="round-checkbox-input__label">
+                                                <span class="round-checkbox-input__icon">
+                                                    </span>
+                                                </label></div>
+                                </div>
+                                <div class="select-my-card__content">
+                                    <div class="round-checkbox-input round-checkbox-input--blue">
+                                        <label
+                                            class="round-checkbox-input__label">
+                                                <span class="round-checkbox-input__icon">
+                                            </span>
+                                        </label></div>
+                                </div>
+
+                            </div>
+                            <input multiple="multiple" type="file"
+							name="file" id="image"  style="display:none"/>
+                            <button class="button button--color-blue-inverted button--size-50 button--shape-4 upload-button"
+                                type="button" onclick="document.all.file.click()" >사진 첨부하기</button>
+                        </div>
+                        <div class="review-modal__section">
+                            <div class="review-modal__section__title">리뷰 작성</div><textarea name="content"
+                                placeholder="자세하고 솔직한 리뷰는 다른 고객에게 큰 도움이 됩니다. (최소 20자 이상)"
+                                class="form-control text-area-input review-modal__form__review-input"
+                                style="height: 60px; width: 98%;"></textarea>
+                        </div>
+
+                        <div class="review-modal__section">
+                            <div class="review-modal__section__title">상품을 직접 사용하고 작성한 리뷰인가요?</div>
+                            <div class="form-check checkbox-input"><label class="form-check-label">
+                                <input class="form-check" type="checkbox"><span class="check-img"></span>
+                                <span class="review-modal__form__agree">네. 상품을 직접 사용 후 작성한 리뷰이며,&nbsp;
+                                    <span class="review-modal__form__agree__policy-button">정책</span>에동의합니다.</span></label></div>
+                        </div>
+                        <button class="button button--color-blue button--size-50 button--shape-4 review-modal__form__submit"
+                            type="button" onclick="reviewForm(this.form)">완료</button>
+                    </form>
+                    <script>
+                    
+                    $('#image').on('change',function() {
+    							if ("${sessionScope.userSession.id}" != "") {
+    								ext = $(this).val().split('.').pop()
+    										.toLowerCase(); //확장자
+    								//배열에 추출한 확장자가 존재하는지 체크
+    								if ($.inArray(ext, [ 'gif', 'png', 'jpg','jpeg' ]) == -1) {
+    									resetFormElement($(this)); //폼 초기화
+    									window.alert('이미지 파일이 아닙니다! (gif, png, jpg, jpeg 만 업로드 가능)');
+    								} else {
+    									var form = $("#Review")[0];
+    									var data = new FormData(form);
+    									$.ajax({type : 'post',
+    												enctype : 'multipart/form-data',
+    												url : "honjok/reviewUpload.do",
+    												data : data,
+    												processData : false,
+    												contentType : false,
+    												success : function(json) {
+    													for ( var i in json) {
+    														$('.view_area')
+    																.append(
+    																		"<div><img style='width:50px; height:50px;' src=/app/resources/img/review/"+json[i]+"><button type='button' onclick='imgDel(this);'>삭제하기</button></div>")
+    													}
+    													//alert("업로드 성공");	
+    												},
+    												error : function(jqXHR,
+    														textStatus, errorThrown) {
+    													alert("오류가 발생하였습니다.");
+    												}
+
+    											});
+    								}
+
+    							} else {
+    								var result = confirm("로그인이 필요한 서비스입니다. 로그인 하시겠습니까?")
+    								if (result) {
+    									window.open('/app/loginModal.jsp',
+    													'pop01',
+    													'top=10, left=10, width=500, height=600, status=no, menubar=no, toolbar=no, resizable=no');
+    								}
+    							}
+    						});
+                    	
+                    
+	                    function reviewForm(e){
+	                    	console.log(e);
+	                    	var data = $(e).serialize();
+	                    	console.log(data);
+	                    	$.ajax({
+	                    		type : 'post',
+	                    		url : "Review.do",
+	                    		data: data,
+	                    		success:function(json){
+	                    			
+	                    		},error: function(xhr, status, error){
+	                                alert("실패");
+	                            }
+
+	                    	});
+	                    }
+                    </script>
+                    <div class="review-modal__explain">
+                        <ul>
+                            <li>비구매 상품 리뷰 포인트는 심사 후 지급됩니다. (영업일 기준 2~3일 소요)</li>
+                            <li>포인트는 최초 작성한 리뷰를 기준으로 지급됩니다.</li>
+                            <li>사진 첨부시&nbsp;<span class="review-modal__explain__warning">캡쳐, 도용, 유사상품 촬영, 동일상품 여부 식별이
+                                    불가한 경우</span>에는 등록이 거절되며 사유는 별도 안내되지 않습니다.</li>
+                            <li>상품과 무관한 내용이나 사진, 동일 문자 반복 등의 부적합한 리뷰는 사전 경고 없이 삭제 및 포인트 회수될 수 있습니다.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+</div>
+<!--리뷰 모달-->
 
 
 
@@ -749,7 +1006,7 @@
                                     <span class="count">[리뷰 갯수]</span>
                                 </h1>
                                 <div class="production-selling-section__right">
-                                    <button type="button">리뷰쓰기</button>
+                                    <button class="ReviewBtn" type="button">리뷰쓰기</button>
                                 </div>
                             </header>
 
@@ -778,6 +1035,7 @@
                                 <div class="production-review-feed__list">
                                     <div class="production-review-item__container">
                                         <article class="production-review-item">
+                                            <%--   <c:forEach var="product" items="${productvo.productreviewvo }" >
                                             <div class="production-review-item__writer">
                                             
                                                 <img src=""
@@ -785,29 +1043,31 @@
                                                      	
                                                 <div class="production-review-item__writer__info">
                                                     <p class="production-review-item__writer__info__name">
-                                                        	작성자
+                                                        	${product.id }
                                                     </p>
 
                                                     <button
                                                         class="production-review-item__writer__info__total-star-wrap"
                                                         type="button">
                                                         <span class="production-review-item__writer__info__total-star">
-	                                                          	준 별점 표시
+	                                                          ${product.rating }
                                                         </span>
                                                     </button>
 
-                                                    <span class="production-review-item__writer__info__date">댓글 작성일</span>
+                                                    <span class="production-review-item__writer__info__date">${product.regdate }</span>
                                                 </div>
                                             </div>
                                             
                                            <button type="button" class="production-review-item__img__btn">
                                            		
-                                           		등록한 이미지
+                                           		<img src="${product.rating }">
                                                 
                                             </button>
+                                            <div>${product.title }</div>
                                             <p class="production-review-item__description">
-													댓글 내용 
+													${product.content }
                                             </p>
+                                            </c:forEach> --%>
                                         </article>
                                     </div>
                                 </div>
@@ -1089,5 +1349,36 @@
     
     </div>
     <!--production-selling-overview container 끝-->
+
+  
+
+    <script>
+        var ReviewBtn = document.querySelector(".ReviewBtn");
+        var Review = document.querySelector(".review-modal__modal__wrap");
+        var reviewModalClose = document.querySelector(".review-modal__close");
+        var reactModalCenterDiv = document.querySelector(".react-modal--center-div")
+        var body = document.querySelector("body");
+        ReviewBtn.onclick = function(){
+            var scrollPosition = window.scrollY;
+            console.log(scrollPosition);
+            console.log(Review);
+            reactModalCenterDiv.style.top = scrollPosition;
+            reactModalCenterDiv.style.display= "block";
+            reactModalCenterDiv.style.overflow = "scroll";
+            body.style.overflow = "hidden";
+        }
+
+      reviewModalClose.onclick = function(){
+        reactModalCenterDiv.style.display = "none";
+        body.style.overflow = "scroll";
+      }
+    </script>
+
+
+	<script>
+
+</script>
+
 </body>
-    
+</html>
+      
