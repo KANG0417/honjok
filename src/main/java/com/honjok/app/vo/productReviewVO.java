@@ -8,10 +8,10 @@ public class productReviewVO {
 	pName,
 	id,
 	regdate,
-	photoImage,
+	photoImage1,
 	title,
 	content,
-	photoImage1;
+	photoImage2;
 
 	public String getpNum() {
 		return pNum;
@@ -61,12 +61,12 @@ public class productReviewVO {
 		this.regdate = regdate;
 	}
 
-	public String getPhotoImage() {
-		return photoImage;
+	public String getPhotoImage1() {
+		return photoImage1;
 	}
 
-	public void setPhotoImage(String photoImage) {
-		this.photoImage = photoImage;
+	public void setPhotoImage1(String photoImage1) {
+		this.photoImage1 = photoImage1;
 	}
 
 	public String getTitle() {
@@ -85,21 +85,22 @@ public class productReviewVO {
 		this.content = content;
 	}
 
-	public String getPhotoImage1() {
-		return photoImage1;
+	public String getPhotoImage2() {
+		return photoImage2;
 	}
 
-	public void setPhotoImage1(String photoImage1) {
-		this.photoImage1 = photoImage1;
+	public void setPhotoImage2(String photoImage2) {
+		this.photoImage2 = photoImage2;
 	}
 
 	@Override
 	public String toString() {
 		return "productReviewVO [pNum=" + pNum + ", idx=" + idx + ", rating=" + rating + ", pName=" + pName + ", id="
-				+ id + ", regdate=" + regdate + ", photoImage=" + photoImage + ", title=" + title + ", content="
-				+ content + ", photoImage1=" + photoImage1 + "]";
+				+ id + ", regdate=" + regdate + ", photoImage1=" + photoImage1 + ", title=" + title + ", content="
+				+ content + ", photoImage2=" + photoImage2 + "]";
 	}
 
+	
 	
 	
 	

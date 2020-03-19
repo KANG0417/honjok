@@ -455,6 +455,10 @@
                     </div>
 
                     <form class="review-modal__form">
+                    <input type="hidden" name="id" value="${sessionScope.userSession.id }"> <input
+							type="hidden" name="nickName" value="${sessionScope.userSession.nickName }"> <input
+							type="hidden" name="pNum" value="${productvo.pNum }">
+					<input type="hidden" name="imgArray" value="">
                         <div class="review-modal__form__product">
                             <img>메인사진
                             <div class="review-modal__form__product__contents">
@@ -492,7 +496,6 @@
 	                                    		
 	                                     		var ratingInput = document.querySelector(".rating__input--none");
 	                                     		ratingValue.value = e.target.value;
-	                                     		console.log(ratingValue.value);
 	                                     		
 	                                     	};
                                  </script> 
@@ -552,7 +555,6 @@
                     <script>
                     
                     $('#image').on('change',function() {
-    								console.log(this.files.length);
     								if(this.files.length > 2){
     									alert("사진은 최대 2개 까지 가능 합니다");
     									this.form.reset();
@@ -580,15 +582,20 @@
     										reader.onload = function(e) {
     										$('.review-modal__section__img').append("<img class='review-img' src='"+e.target.result+"' width='200' height='200'> <button type='button' onclick='imgDel(this);' value='"+j+"'>삭제하기</button>");
     									
-    											console.log("imgDel.files[j].name"+imgDel.files[j].name);
-    											console.log("imgName.indexOf(imgDel.files[j].name)"+imgName.indexOf(imgDel.files[j].name));
     										if(imgName != null && imgName != ""){
-    											console.log("널처리");
     											if(imgName.indexOf(imgDel.files[j].name) != -1 ){
-    												console.log("-1처리")
-    											 var ss = imgName.indexOf(imgDel.files[j].name);
+
+    												var ss = imgName.indexOf(imgDel.files[j].name);
     											  imgName.splice(ss, 1);
-    												console.log(imgName);
+    											  
+
+    											  var imgArray = $('input[name="imgArray"]');
+
+    					                    		var myArrayData1 =[];
+    					                    		myArrayData1 = imgName.toString();
+    					                    		
+    					                    		
+    					                    		$(imgArray).val(imgName);
     											 }
     											}
     											j++;
@@ -602,20 +609,25 @@
                     
                     	function imgDel(e){
                     		
-                    		console.log(e.value);
                     	var imgDel = document.querySelector('#image');
-                    	
-                    	
-                    	console.log(imgName.indexOf(imgDel.files[e.value].name));
+							
                     	if(imgName.indexOf(imgDel.files[e.value].name) == -1 ){
 	                    	imgName.push(imgDel.files[e.value].name);
-	                    	console.log(imgName);
                     	}
+                    	
+                    	
                     	var	imgTag = e.previousElementSibling;
                     	
                     		imgTag.remove();
                     		e.remove();
-                    	    
+                    		
+                    		var imgArray = $('input[name="imgArray"]');
+
+                    		var myArrayData1 =[];
+                    		myArrayData1 = imgName.toString();
+                    		
+                    		
+                    		$(imgArray).val(imgName);
                     	}
                     	
                     	
@@ -623,29 +635,13 @@
 	                    function reviewForm(e){
 	                    	var form = $(".review-modal__form")[0];
 							var data = new FormData(form)
-							console.log(data);
-							data = $(".review-modal__form").serialize();
-	                    	var objParams = {
-	                    			"title" : $('.review-title').val(),
-	                    			"content" :  $('.review-content').val(),
-	                    			"pNum" :'${productvo.pNum}' ,
-	                    			"imgName" : imgName,
-	                    			"rating": $('.review-rating').val(),
-	                    			"id" : '${sessionScope.userSession.id}',
-	            					"nickName" : '${sessionScope.userSession.nickName}',
-	            					"data" :data
-	            					
-	                    	}
-	                    	
-	                    	console.log(objParams);
-	                    	
 	                    
 							$.ajax({type : 'post',
-										/*  enctype : 'multipart/form-data',  */
+										enctype : 'multipart/form-data',  
 										url : "Review.do",
 										data : data,
-										/*  processData : false,
-										contentType : false,  */
+										processData : false,
+										contentType : false, 
 										success : function(e) {
 											
 											/* for ( var i in json) {
@@ -724,11 +720,8 @@
                             <script>
                               var contentimg = '${productvo.description}';
                               var firstimg = $(contentimg).find('img');
-                              console.log(firstimg.length);
-                              console.log($(firstimg[0]).attr('src'));
                               for(var i = 0; i < firstimg.length; i ++){
                             	 var src = $(firstimg[i]).attr('src');
-                            	  console.log(src);
                               	 $('.production-selling-cover-image__list').append(' <li class="production-selling-cover-image__list__item"><button class="production-selling-cover-image__list__btn production-selling-cover-image__list__btn--selected"type="button"><img class="image" src="'+src+'"></button></li>');
                                } 
 
@@ -1419,8 +1412,6 @@
         var body = document.querySelector("body");
         ReviewBtn.onclick = function(){
             var scrollPosition = window.scrollY;
-            console.log(scrollPosition);
-            console.log(Review);
             reactModalCenterDiv.style.top = scrollPosition;
             reactModalCenterDiv.style.display= "block";
             reactModalCenterDiv.style.overflow = "scroll";
