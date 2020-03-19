@@ -18,6 +18,13 @@ public class MyPageServiceImpl implements MyPageService {
 
 	@Override
 	public void selectOne(UserVO uvo) {
+		// TODO Auto-generated method stub
 		
 	}
+
+	//id로 회원 
+/*	@Override
+	public void selectOne(String gg) {
+		return gg;
+	}*/
 }

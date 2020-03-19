@@ -20,7 +20,7 @@ public interface InteriorService {
 	public void boardHitsUpdate(int comSeq);
 	
 	//게시물 좋아요
-	public void insertLikes(LikesVO livo);
-	public void updateLikes(LikesVO livo);
-	public int selectLikes(int comSeq);
+	public LikesVO insertLikes(LikesVO livo);
+/*	public void updateLikes(LikesVO livo);
+	public int selectLikes(int comSeq);*/
 }

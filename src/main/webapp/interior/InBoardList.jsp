@@ -37,9 +37,14 @@
       	<li class="nav-item">
         <a class="nav-link" href="signUp.jsp">회원가입</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="login.jsp">${userSession.id}님 안녕하세요!</a>
-      </li>
+      <c:if test="${sessionScope.userSession.id == null }">
+      	<li class="nav-item">
+      	<a class="nav-link" href="${contextPage.request.contextPath }/app/login.jsp">로그인</a>
+      	</li>
+      </c:if>
+      <c:if test="${sessionScope.userSession.id != null }">
+      	<li class="nav-item">${userSession.id} 님 안녕하세요!</li><a href="${contextPage.request.contextPath }/app/logout.do">Log-out</a>
+      </c:if>
       <li class="nav-item">
         <a class="nav-link" href="${contextPage.request.contextPath }/app/interior/interiorAllList.do">인테리어</a>
       </li>
@@ -189,8 +194,18 @@
 	<hr>
 
 	<c:remove var="endPage" />
-<form action="InBoardInsert.jsp">
-   <input type="submit" value="글쓰기">
-</form>
+   <input type="button" value="글쓰기" onclick="checkLogin()">
+<script>
+	function checkLogin() {
+	    var id = '${sessionScope.userSession.id}'; // 수정 ''처리
+	    // 수정 ''공백 비교
+	    if (id == '') {
+	        alert("로그인 후 글쓰기가 가능합니다.");
+	        return false;
+	    } else {
+	        location.href = 'InBoardInsert.jsp';
+	    }
+	}
+</script>
 </body>
 </html>
