@@ -35,5 +35,13 @@ public List<productReviewVO> ProductreviewVOList(String pNum) {
 		
 	return productReviewVO;
 }
+
+
+
+//리뷰글 등록
+@Override
+public void insertReview(productReviewVO productreviewvo) {
+	mapper.insertReview(productreviewvo);
+}
 }
 

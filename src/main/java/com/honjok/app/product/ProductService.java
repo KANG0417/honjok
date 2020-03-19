@@ -11,5 +11,7 @@ public interface ProductService {
 	productVO ProductVO(String pNum);
 
 	List<productReviewVO> ProductreviewVOList(String pNum);
+
+	void insertReview(productReviewVO productreviewvo);
 	
 }
