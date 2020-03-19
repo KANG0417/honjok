@@ -24,5 +24,10 @@ public class ProductMapper {
 		List<productReviewVO> productReviewVO = mybatis.selectList("ProductMapper.productReviewVO", pNum);
 		return productReviewVO;
 	}
+
+	public void insertReview(com.honjok.app.vo.productReviewVO productreviewvo) {
+		mybatis.insert("ProductMapper.insertReview",productreviewvo);
+		
+	}
 	
 }

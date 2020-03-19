@@ -12,5 +12,9 @@
 		select * from product_review where p_num = #{pNum}
 	</select>
 	
+	<insert id="insertReview" parameterType="productReviewVO">
+		insert into product_Review values(#{pNum},PRODUCT_REVIEW_SEQ.nextval,#{rating},#{pName,jdbcType=VARCHAR},#{id},sysdate,#{photoImage1},#{title},#{content},#{photoImage2})
+	</insert>
+	
 
 </mapper>

@@ -118,5 +118,7 @@ public class ProductController {
 	
 
 		}
+		
+			service.insertReview(productreviewvo);
 	}
 }
