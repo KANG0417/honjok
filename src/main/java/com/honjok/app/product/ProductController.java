@@ -159,8 +159,26 @@ public class ProductController {
 		//블록 계산하기(block) 계산하기 
 		//4. 블록의 시작 페이지, 끝페이지 구하기 (현재페이 사용)
 		int nowPage = p.getNowPage();
-		//  블록당 표시 계수 
-		int beginPage = (nowPage-1) / p.getPagePerBlock()
+		//  블록당 표시 계수 	
+		
+		//현재 블록 시작 페이지 (12 - 1) /  10 * 10 +1  
+		int beginPage = (nowPage-1) / p.getPagePerBlock() *  p.getPagePerBlock() +1;
+		
+		//현재블록의 시작 페이지 번호 
+		p.setBeginPage(beginPage);
+		
+		// 현재블록 끝번호   현재 블록의 사작 페이지 12 +   10-1  블록당 표시하는 갯수  
+		p.setEndPage(p.getBeginPage() + p.getPagePerBlock() -1);
+		
+		//   21 보다         >        전체 페이지 갯수 
+		if(p.getEndPage() > p.getTotalPage()) {
+			
+			p.setEndPage(p.getTotalPage());
+			
+		}
+		
+		
+		
 		
 		
 		
