@@ -13,5 +13,7 @@ public interface ProductService {
 	List<productReviewVO> ProductreviewVOList(String pNum);
 
 	void insertReview(productReviewVO productreviewvo);
+
+	int getTotalCount(String pNum);
 	
 }

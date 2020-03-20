@@ -43,5 +43,14 @@ public List<productReviewVO> ProductreviewVOList(String pNum) {
 public void insertReview(productReviewVO productreviewvo) {
 	mapper.insertReview(productreviewvo);
 }
+
+
+
+//리뷰 전체 게시물 수 
+@Override
+public int getTotalCount(String pNum) {
+	
+	return mapper.getTotalCount(pNum);
+}
 }
 

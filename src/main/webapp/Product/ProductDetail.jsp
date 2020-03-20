@@ -11,432 +11,10 @@
     <title>Document</title>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://kit.fontawesome.com/73d0df04d6.js" crossorigin="anonymous"></script>
-    <style>
-        html,
-        body,
-        div,
-        span,
-        applet,
-        object,
-        iframe,
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6,
-        p,
-        blockquote,
-        pre,
-        a,
-        abbr,
-        acronym,
-        address,
-        big,
-        cite,
-        code,
-        del,
-        dfn,
-        em,
-        img,
-        ins,
-        kbd,
-        q,
-        s,
-        samp,
-        small,
-        strike,
-        strong,
-        sub,
-        sup,
-        tt,
-        var,
-        b,
-        u,
-        i,
-        center,
-        dl,
-        dt,
-        dd,
-        ol,
-        ul,
-        li,
-        fieldset,
-        form,
-        label,
-        legend,
-        table,
-        caption,
-        tbody,
-        tfoot,
-        thead,
-        tr,
-        th,
-        td,
-        article,
-        aside,
-        canvas,
-        details,
-        embed,
-        figure,
-        figcaption,
-        footer,
-        header,
-        hgroup,
-        menu,
-        nav,
-        output,
-        ruby,
-        section,
-        summary,
-        time,
-        mark,
-        audio,
-        video {
-            margin: 0;
-            padding: 0;
-            border: 0;
-            font-size: 100%;
-            font: inherit;
-            vertical-align: baseline;
-        }
+   	
+   	
+  		<link href="/app/resources/css/ProductDetail/ProductDetail.css" rel="stylesheet">
 
-        /* HTML5 display-role reset for older browsers */
-        article,
-        aside,
-        details,
-        figcaption,
-        figure,
-        footer,
-        header,
-        hgroup,
-        menu,
-        nav,
-        section {
-            display: block;
-        }
-
-        body {
-            line-height: 1;
-
-        }
-
-        ol,
-        ul {
-            list-style: none;
-        }
-
-        blockquote,
-        q {
-            quotes: none;
-        }
-
-        blockquote:before,
-        blockquote:after,
-        q:before,
-        q:after {
-            content: '';
-            content: none;
-        }
-
-        table {
-            border-collapse: collapse;
-            border-spacing: 0;
-        }
-        /* css 리셋 */
-</style>
-<style>
-        /* 카테고리 정렬*/
-        .production-selling-overview__category ol li,
-        .production-selling-navigation__content ol li,
-        .production-review__paginator li,
-        .production-question-feed__paginator li {
-            display: inline;
-        }
-
-        .production-selling-navigation__content {
-            width: auto;
-        }
-
-        .production-selling-overview__cover-image-wrap,
-        .carousel__list-wrap,
-        .production-selling__detail,
-        .production-selling__detail__content {
-            display: flex;
-        }
-        
-        
-     
-
-    
-
-        /* 컬럼 중앙정렬 */
-        .production-selling-overview__container
-        {
-            margin: 0 5%;
-            border: salmon 1px solid;
-             
-        }
-        .production-selling__detail-wrap{
-            margin: 0 5%;
-            border: salmon 1px solid;
-        }
-
-    
-
-
-
-        /* 메인 이미지 크기 왼쪽 */
-        .production-selling-cover-image__entry__image {
-            width: 558.33px;
-            height: 558.33px;
-            border-radius: 5%;
-        }
-
-        .image {
-            width: 56px;
-            height: 56px;
-            border-radius: 5%;
-        }
-
-        /*버튼 이미지 초기화*/
-        .production-selling-cover-image__list button,
-        .production-selling-header__content button {
-            border: 0px;
-            outline: 0;
-            background-color: white;
-        }
-
-        /*공유 칸 부모*/
-        .production-selling-header__content {
-            position: relative;
-        }
-
-        /*스크랩 및 공유 */
-        .production-selling-header__action {
-            display: flex;
-            position: absolute;
-            right: 1%;
-        }
-
-        /*카테고리 마진 바텀*/
-        .production-selling-overview__category {
-            margin-bottom: 20px;
-        }
-
-        /* 메인 이미지 오른쪽*/
-        .production-selling-header__title__brand-wrap {
-            margin-bottom: 1rem;
-        }
-
-        .production-selling-header__title,
-        .production-selling-header__content {
-            margin-bottom: 20px;
-        }
-
-        .production-selling-header__content p {
-            padding: 1px;
-        }
-
-        .production-selling-header__price__discount span:first-child {
-            font-size: 45px;
-            color: #35c5f0;
-        }
-
-        .production-selling-header__delivery span {
-            display: block;
-            padding-bottom: 3px;
-        }
-
-        .production-selling-overview__content {
-            margin-left: 50px;
-        }
-
-        .production-selling-option-form {
-            margin-top: 30px;
-        }
-
-        .production-selling-header {
-            padding-top: 40px;
-        }
-        
-        .selling-option-select-input__option{
-        	margin-bottom: 5px;
-        }
-
-        /* 메인 이미지 오른쪽 끝*/
-
-        /*상품 css*/
-        .production-selling-description__content img{
-            width: 100%;
-        }
-        .production-selling__detail__content{
-            margin-right: 1rem;
-        }
-         .production-selling-table{
-            
-            margin:5px;
-        }
-        .production-selling-table th{
-            padding-top: 12px;
-            padding-bottom: 12px;
-            text-align: left;
-            background-color: rgb(209, 211, 209);
-            color: rgb(0, 0, 0);
-        }
-        .production-selling-table td{
-            border: 1px solid #ddd;
-             padding: 8px;
-        }
-        
-        
-
-        /*리뷰 css*/
-        .production-selling-section__header {
-            display: flex;
-
-        }
-
-        .production-selling-section__header {
-            margin-top: 100px;
-        }
-
-        .production-review-feed {
-            margin-top: 20px;
-        }
-
-        .production-selling-section__right {
-            margin-left: 10%;
-        }
-
-        /* 페이지 css*/
-        .production-selling-header__title__name {
-            font-size: 25px;
-        }
-
-        .production-review__paginator,
-        .production-question-feed__paginator {
-            text-align: center;
-        }
-
-        /*리뷰 css 끝*/
-        
-
-        /* 메인 이미지 크기 끝*/
-
-        /* 스티키 설정 */
-        .production-selling-navigation-wrap {
-            background-color: #fafafa;
-            z-index: 10;
-            position: sticky;
-            top: 0px;
-        }
-
-        .prodproductionuction-selling-navigation__list {
-            margin-left: 50px;
-            padding: 20px;
-        }
-        .prodproductionuction-selling-navigation__list li{
-            margin-right: 35px;
-            height: 100%;
-        }
-      
-        .prodproductionuction-selling-navigation__list li a {
-
-            text-align: center;
-            text-decoration: none;
-        }
-        .prodproductionuction-selling-navigation__list li a:hover{
-         
-            border-bottom: solid 3px ;
-       }
-
-        /*상품 마진*/
-        .production-selling-content {
-            margin-right: 50px;
-        }
-
-        .production-review-item__writer__info {
-            display: inline-block;
-            margin-bottom: 10px;
-            margin-top: 60px;
-        }
-    </style>
-
-<!--모달창-->
-<style>
-
- .review-modal__modal__wrap{ 
-     background-color: white;
-     width: 50%;
-     margin: 5% auto  5% auto;
-     z-index: 11;
-     margin-bottom: 50px;
-} 
-.react-modal--center-div{
-    margin-top: 50px;
-    margin-bottom: 50px;
-    width:100%;
-    height: 100vh; 
-    position: fixed; 
-    z-index: 11;
-    background-color: rgba(5, 5, 5, 0.5);
-    display: none;
-}
-
-/* 별점 */
-.rating-group {
-  display: inline-flex;
-}
-
-/* make hover effect work properly in IE */
-.rating__icon {
-  pointer-events: none;
-}
-
-/* hide radio inputs */
-.rating__input {
- position: absolute !important;
- left: -9999px !important;
-}
-
-/* hide 'none' input from screenreaders */
-.rating__input--none {
-  display: none
-}
-
-/* set icon padding and size */
-.rating__label {
-  cursor: pointer;
-  padding: 0 0.1em;
-  font-size: 2rem;
-}
-
-/* set default star color */
-.rating__icon--star {
-  color: orange;
-}
-
-/* if any input is checked, make its following siblings grey */
-.rating__input:checked ~ .rating__label .rating__icon--star {
-  color: #ddd;
-}
-
-/* make all stars orange on rating group hover */
-.rating-group:hover .rating__label .rating__icon--star {
-  color: orange;
-}
-
-/* make hovered input's following siblings grey on hover */
-.rating__input:hover ~ .rating__label .rating__icon--star {
-  color: #ddd;
-}
-
-</style>
-
-<script>
-	imgName = new Array;
-</script>
 
 </head>
 
@@ -489,17 +67,7 @@
                                				<input class="review-rating" type="hidden" name="rating" value="5">
                                         </div>
                                            
-                                   <script>
-                                     	var ratingInput = document.querySelector(".rating-group");
-	                                     	ratingInput.onclick = function(e){
-	                                     		var ratingValue = document.querySelector("input[name='rating']");
-	                                    		
-	                                     		var ratingInput = document.querySelector(".rating__input--none");
-	                                     		ratingValue.value = e.target.value;
-	                                     		
-	                                     	};
-                                 </script> 
-
+                            
                                     </div>
                                 </div>
                             </div>
@@ -553,113 +121,7 @@
                             type="button" onclick="reviewForm(this.form)">완료</button>
                     </form>
                     <script>
-                    
-                    $('#image').on('change',function() {
-    								if(this.files.length > 2){
-    									alert("사진은 최대 2개 까지 가능 합니다");
-    									this.form.reset();
-    									$('.review-modal__section__img').html("");
-    									return;
-    								} 
-    								ext = $(this).val().split('.').pop().toLowerCase(); //확장자
-
-    								//배열에 추출한 확장자가 존재하는지 체크
-    								if ($.inArray(ext, [ 'gif', 'png', 'jpg','jpeg' ]) == -1) {
-    								this.form.reset(); //폼 초기화
-    								$('.review-modal__section__img').html("");
-									window.alert('이미지 파일이 아닙니다! (gif, png, jpg, jpeg 만 업로드 가능)');
-									return;
-								} 
-    								
-    								
-    								for(var i= 0 ; i < this.files.length; i++){
-    								var imgDel = document.querySelector('#image');
-    								var j  = 0;
-    								//초기화
-    								$('.review-modal__section__img').html("");
-    								if (this.files && this.files[i]) {
- 									var reader = new FileReader();
-    										reader.onload = function(e) {
-    										$('.review-modal__section__img').append("<img class='review-img' src='"+e.target.result+"' width='200' height='200'> <button type='button' onclick='imgDel(this);' value='"+j+"'>삭제하기</button>");
-    									
-    										if(imgName != null && imgName != ""){
-    											if(imgName.indexOf(imgDel.files[j].name) != -1 ){
-
-    												var ss = imgName.indexOf(imgDel.files[j].name);
-    											  imgName.splice(ss, 1);
-    											  
-
-    											  var imgArray = $('input[name="imgArray"]');
-
-    					                    		var myArrayData1 =[];
-    					                    		myArrayData1 = imgName.toString();
-    					                    		
-    					                    		
-    					                    		$(imgArray).val(imgName);
-    											 }
-    											}
-    											j++;
-    										}
-    										reader.readAsDataURL(this.files[i]);
-    									}
-    								}
-    									
-
-    							});
-                    
-                    	function imgDel(e){
-                    		
-                    	var imgDel = document.querySelector('#image');
-							
-                    	if(imgName.indexOf(imgDel.files[e.value].name) == -1 ){
-	                    	imgName.push(imgDel.files[e.value].name);
-                    	}
-                    	
-                    	
-                    	var	imgTag = e.previousElementSibling;
-                    	
-                    		imgTag.remove();
-                    		e.remove();
-                    		
-                    		var imgArray = $('input[name="imgArray"]');
-
-                    		var myArrayData1 =[];
-                    		myArrayData1 = imgName.toString();
-                    		
-                    		
-                    		$(imgArray).val(imgName);
-                    	}
-                    	
-                    	
-                    
-	                    function reviewForm(e){
-	                    	var form = $(".review-modal__form")[0];
-							var data = new FormData(form)
-	                    
-							$.ajax({type : 'post',
-										enctype : 'multipart/form-data',  
-										url : "Review.do",
-										data : data,
-										processData : false,
-										contentType : false, 
-										success : function(e) {
-											
-											/* for ( var i in json) {
-												$('.view_area')
-														.append(
-																"<div><img style='width:50px; height:50px;' src=/app/resources/img/review/"+json[i]+"><button type='button' onclick='imgDel(this);'>삭제하기</button></div>")
-											} */
-											//alert("업로드 성공");
-											
-										},
-										error : function(jqXHR,
-												textStatus, errorThrown) {
-											alert("오류가 발생하였습니다.");
-										}
-
-									});
-						
-	                    }
+                  
                     </script>
                     <div class="review-modal__explain">
                         <ul>
@@ -717,15 +179,7 @@
                         <div>
                             <ul class="production-selling-cover-image__list">
 
-                            <script>
-                              var contentimg = '${productvo.description}';
-                              var firstimg = $(contentimg).find('img');
-                              for(var i = 0; i < firstimg.length; i ++){
-                            	 var src = $(firstimg[i]).attr('src');
-                              	 $('.production-selling-cover-image__list').append(' <li class="production-selling-cover-image__list__item"><button class="production-selling-cover-image__list__btn production-selling-cover-image__list__btn--selected"type="button"><img class="image" src="'+src+'"></button></li>');
-                               } 
-
-                           </script>  
+                         
                              
                              <!-- 
                                 <li class="production-selling-cover-image__list__item"><button
@@ -979,7 +433,7 @@
                               <!--   <div class="production-selling-description__expand-wrap">
                                     <button
                                         class="button button--color-blue button--size-60 button--shape-4 production-selling-description__expand"
-                                        type="button">펼치기
+                                        type="button">펼치기f
                                     </button>
                                 </div> -->
                                 <a class="production-selling-description__production-event"
@@ -993,6 +447,15 @@
                                     <p>
                                        ${productvo.description}
                                         <br>
+                                        <script type="text/javascript">
+                                        var contentimg = '${productvo.description}';
+										var firstimg = $(contentimg).find('img');
+										for (var i = 0; i < firstimg.length; i++) {
+											var src = $(firstimg[i]).attr('src');
+											$('.production-selling-cover-image__list').append(' <li class="production-selling-cover-image__list__item"><button class="production-selling-cover-image__list__btn production-selling-cover-image__list__btn--selected"type="button"><img class="image" src="' + src + '"></button></li>');
+										}
+										</script>
+                                        
                      <!--    <img src="https://exit.ohou.se/e328923597eb2272d6a991377ec851d5d4a225bc/ai.esmplus.com/saeromi0871/R_9Zone_/02.gif">
                         <br> -->
                                     </p>
@@ -1087,39 +550,38 @@
                                 <div class="production-review-feed__list">
                                     <div class="production-review-item__container">
                                         <article class="production-review-item">
-                                            <%--   <c:forEach var="product" items="${productvo.productreviewvo }" >
+                                              <c:forEach var="product" items="${productvo.productreviewvo }" >
                                             <div class="production-review-item__writer">
-                                            
-                                                <img src=""
-                                                    class="production-review-item__writer__img" alt="작성자 이미지">
-                                                     	
+                                                <!-- <img src=""
+                                                    class="production-review-item__writer__img" alt="작성자 이미지"> -->
                                                 <div class="production-review-item__writer__info">
                                                     <p class="production-review-item__writer__info__name">
-                                                        	${product.id }
+                                                        	작성자: ${product.id }
                                                     </p>
 
-                                                    <button
-                                                        class="production-review-item__writer__info__total-star-wrap"
-                                                        type="button">
                                                         <span class="production-review-item__writer__info__total-star">
-	                                                          ${product.rating }
+	                                                     		      	 <i class="rating__icon rating__icon--star fa fa-star"></i>                    		   
+	                                                     		     <c:forEach var="i" begin="1" end="5" step="1" >
+	                                                     		     	<c:if test="${ i < product.rating }">
+	                                                     		    	 <i class="rating__icon rating__icon--star fa fa-star"></i>                    		    	 
+	                                                     		    	</c:if>
+	                                                     		     </c:forEach>
                                                         </span>
-                                                    </button>
-
+                         
                                                     <span class="production-review-item__writer__info__date">${product.regdate }</span>
                                                 </div>
                                             </div>
-                                            
-                                           <button type="button" class="production-review-item__img__btn">
+                                          		  <div>제목 : ${product.title }"</div>
+                                          
                                            		
-                                           		<img src="${product.rating }">
+                                           		<img src="/app/resources/img/review/${product.photoImage1 }"  style="width: 120px; height: 100px">
+                                           		<img src="/app/resources/img/review/${product.photoImage2 }"  style="width: 120px; height: 100px">
                                                 
-                                            </button>
-                                            <div>${product.title }</div>
+                                                
                                             <p class="production-review-item__description">
-													${product.content }
+													내용: <br> ${product.content }
                                             </p>
-                                            </c:forEach> --%>
+                                            </c:forEach>>
                                         </article>
                                     </div>
                                 </div>
@@ -1208,33 +670,11 @@
                                            	이전
                                        </button>
                                     </li>
+                                    
                                     <li>
                                         <button class="list-paginator__page sm selected" type="button">1</button>
                                     </li>
-                                    <li>
-                                        <button class="list-paginator__page sm" type="button">2</button>
-                                    </li>
-                                    <li>
-                                        <button class="list-paginator__page sm" type="button">3</button>
-                                    </li>
-                                    <li>
-                                        <button class="list-paginator__page sm" type="button">4</button>
-                                    </li>
-                                    <li>
-                                        <button class="list-paginator__page sm" type="button">5</button>
-                                    </li>
-                                    <li>
-                                        <button class="list-paginator__page" type="button">6</button>
-                                    </li>
-                                    <li>
-                                        <button class="list-paginator__page" type="button">7</button>
-                                    </li>
-                                    <li>
-                                        <button class="list-paginator__page" type="button">8</button>
-                                    </li>
-                                    <li>
-                                        <button class="list-paginator__page" type="button">9</button>
-                                    </li>
+                                    
                                     <li>
                                         <button class="list-paginator__next" type="button">
                                          	다음
@@ -1242,6 +682,8 @@
                                     </li>
                                 </ul>
                             </div>
+                            
+                            
                         </section>
 
                         <a id="production-selling-delivery"></a>
@@ -1402,32 +844,9 @@
     </div>
     <!--production-selling-overview container 끝-->
 
+
+<script type="text/javascript" src="/app/resources/js/ProductDetail/ProductDetail.js"></script>
   
-
-    <script>
-        var ReviewBtn = document.querySelector(".ReviewBtn");
-        var Review = document.querySelector(".review-modal__modal__wrap");
-        var reviewModalClose = document.querySelector(".review-modal__close");
-        var reactModalCenterDiv = document.querySelector(".react-modal--center-div")
-        var body = document.querySelector("body");
-        ReviewBtn.onclick = function(){
-            var scrollPosition = window.scrollY;
-            reactModalCenterDiv.style.top = scrollPosition;
-            reactModalCenterDiv.style.display= "block";
-            reactModalCenterDiv.style.overflow = "scroll";
-            body.style.overflow = "hidden";
-        }
-
-      reviewModalClose.onclick = function(){
-        reactModalCenterDiv.style.display = "none";
-        body.style.overflow = "scroll";
-      }
-    </script>
-
-
-	<script>
-
-</script>
 
 </body>
 </html>

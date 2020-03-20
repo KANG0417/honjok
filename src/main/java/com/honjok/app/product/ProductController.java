@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.honjok.app.vo.productReviewPagingVO;
 import com.honjok.app.vo.productReviewVO;
 import com.honjok.app.vo.productVO;
 
@@ -104,6 +105,7 @@ public class ProductController {
 				 if(file.exists()){
 					 OriginalFilename = UUID.randomUUID().toString()+FileExtension;
 					 file.renameTo(new File(CURR_IMAGE_REPO_PATH + "\\" + OriginalFilename));
+					 
 						if (i == 0) {
 							productreviewvo.setPhotoImage1(OriginalFilename);
 						
@@ -121,4 +123,56 @@ public class ProductController {
 		
 			service.insertReview(productreviewvo);
 	}
+
+
+	@RequestMapping("ProductReview.do")
+	public void ProductReview(String cPage, String pNum) {
+		System.out.println(cPage);
+		System.out.println(pNum);
+		
+		//페이징 객체 생성
+		productReviewPagingVO p  = new productReviewPagingVO();
+		
+		
+		//1. 전체 게시물의 수 구하기 totalRecord 작성한 총 게시물
+		p.setTotalRecord(service.getTotalCount(pNum));
+		System.out.println("전체개시글수 : " + p.getTotalRecord());
+		//계산 전체 페이지 토탈 레코드에서 페이지장 표시할 개수 값 나누고 나머니 존재 할씨 1증가 
+		p.setTotalPage();
+		System.out.println("전체페이지수  : " + p.getTotalPage());
+		
+		//2.현재 페이지 구하거(default : 1)
+		if(cPage != null) {
+			p.setNowPage(Integer.parseInt(cPage));
+		}
+		
+		//3. 현재페이지의 시작번호(begin)와 끝번호(end) 구하기 
+		//현재 페이지  	   2                표시할 페이지 수 5
+		p.setEnd(p.getNowPage() * p.getNumPerPage()); //10
+		p.setBegin(p.getEnd() - p.getNumPerPage());  //10 - 5 = 5 
+		
+		
+		
+		System.out.println("시작번호begin : " + p.getBegin());
+		System.out.println("끝번호 end : " + p.getEnd());
+		
+		//블록 계산하기(block) 계산하기 
+		//4. 블록의 시작 페이지, 끝페이지 구하기 (현재페이 사용)
+		int nowPage = p.getNowPage();
+		//  블록당 표시 계수 
+		int beginPage = (nowPage-1) / p.getPagePerBlock()
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+	
+
 }

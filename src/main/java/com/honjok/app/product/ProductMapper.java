@@ -29,5 +29,11 @@ public class ProductMapper {
 		mybatis.insert("ProductMapper.insertReview",productreviewvo);
 		
 	}
+
+	//리뷰 게시물 
+	public int getTotalCount(String pNum) {
+		
+		return mybatis.selectOne("ProductMapper.getTotalCount",pNum);
+	}
 	
 }
