@@ -1,6 +1,7 @@
 package com.honjok.app.product;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -52,5 +53,18 @@ public int getTotalCount(String pNum) {
 	
 	return mapper.getTotalCount(pNum);
 }
+
+
+
+//ajax 리뷰 글 가져오기 
+@Override
+public List<productReviewVO> getreviewList(Map map) {
+
+	
+	
+	return mapper.getreviewList(map);
+}
+
+
 }
 

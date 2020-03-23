@@ -1,6 +1,7 @@
 package com.honjok.app.product;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,10 @@ public class ProductMapper {
 	public int getTotalCount(String pNum) {
 		
 		return mybatis.selectOne("ProductMapper.getTotalCount",pNum);
+	}
+
+	public List<productReviewVO> getreviewList(Map map) {
+		return mybatis.selectList("ProductMapper.getreviewList", map);
 	}
 	
 }

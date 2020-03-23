@@ -549,8 +549,8 @@
 
                                 <div class="production-review-feed__list">
                                     <div class="production-review-item__container">
-                                        <article class="production-review-item">
                                               <c:forEach var="product" items="${productvo.productreviewvo }" >
+                                        <article class="production-review-item">
                                             <div class="production-review-item__writer">
                                                 <!-- <img src=""
                                                     class="production-review-item__writer__img" alt="작성자 이미지"> -->
@@ -581,52 +581,74 @@
                                             <p class="production-review-item__description">
 													내용: <br> ${product.content }
                                             </p>
+                                            	</article>	
                                             </c:forEach>>
-                                        </article>
+                                            
+                                            
+                                 <ul class="list-paginator production-review__paginator">
+                                                                            
+                                
+                                 	<c:choose>
+                                 		<c:when test="${p.beginPage == 1 }">
+	                                		<!-- <button class="list-paginator__prev" type="button">
+	                                           	이전
+	                                       	</button> -->
+                                       </c:when>
+                                       <c:otherwise>
+                                        	<li>
+		                                       <button class="list-paginator__prev" type="button">
+		                                           	이전
+	                                       		</button>
+                                       		</li>
+                                       </c:otherwise>
+                                    </c:choose>
+                                    
+                                    
+                                 	<c:forEach var="i" begin="${p.beginPage }" end="${p.endPage }">
+                                 	<c:choose>
+                                 		<c:when test="${i == p.nowPage }">
+		                                    <li>
+		                                        <button class="list-paginator__page sm selected" type="button">${i }</button>
+		                                    </li>
+	                                    </c:when>
+	                                    <c:otherwise>
+	                                    	 <li>
+		                                        <button class="list-paginator__page sm selected" type="button">${i }</button>
+		                                    </li>
+	                                    </c:otherwise>
+	                                </c:choose>
+	                                
+                                    </c:forEach>
+                                  
+                                  <c:choose>
+                                  	<c:when test="${p.endPage >= p.totalPage }">
+	                                <!--     <li>
+	                                        <button class="list-paginator__next" type="button">
+	                                           	다음
+	                                        </button>
+	                                    </li> -->
+	                                    </c:when>
+	                                    <c:otherwise>
+	                                    <li>
+	                                        <button class="list-paginator__next" type="button">
+	                                           	다음
+	                                        </button> 
+	                                    </li>
+	                                    </c:otherwise>
+                                    </c:choose>
+                                </ul>
+                                <!--production-review-feed 끝-->
+                                
+                                            
+                                            
+                                      
                                     </div>
+
+  								
+
                                 </div>
                                 
                                 
-                                <ul class="list-paginator production-review__paginator">
-                                 	<li>
-                                		<button class="list-paginator__prev" type="button">
-                                           	이전
-                                       </button>
-                                    </li>
-                                    <li>
-                                        <button class="list-paginator__page sm selected" type="button">1</button>
-                                    </li>
-                                    <li>
-                                        <button class="list-paginator__page sm" type="button">2</button>
-                                    </li>
-                                    <li>
-                                        <button class="list-paginator__page sm" type="button">3</button>
-                                    </li>
-                                    <li>
-                                        <button class="list-paginator__page sm" type="button">4</button>
-                                    </li>
-                                    <li>
-                                        <button class="list-paginator__page sm" type="button">5</button>
-                                    </li>
-                                    <li>
-                                        <button class="list-paginator__page" type="button">6</button>
-                                    </li>
-                                    <li>
-                                        <button class="list-paginator__page" type="button">7</button>
-                                    </li>
-                                    <li>
-                                        <button class="list-paginator__page" type="button">8</button>
-                                    </li>
-                                    <li>
-                                        <button class="list-paginator__page" type="button">9</button>
-                                    </li>
-                                    <li>
-                                        <button class="list-paginator__next" type="button">
-                                           	다음
-                                        </button>
-                                    </li>
-                                </ul>
-                                <!--production-review-feed 끝-->
                             </div>
                         </section>
 
