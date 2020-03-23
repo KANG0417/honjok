@@ -22,5 +22,10 @@
 	<select id="getTotalCount" parameterType="String" resultType="Integer">
 		select COUNT(*) from product_review WHERE p_num = #{pNum}
 	</select>
+	
+	<select id="getreviewList" parameterType="Map" resultType="productReviewVO">
+		select * from (select rownum num, n.* from (select * from product_review WHERE p_num = #{pNum} order by regdate desc) n
+		)where num BETWEEN #{begin} and #{end}
+	</select>
 
 </mapper>
