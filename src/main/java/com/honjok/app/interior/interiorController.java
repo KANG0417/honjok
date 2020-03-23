@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -30,6 +31,7 @@ import com.honjok.app.vo.CommInfoVO;
 import com.honjok.app.vo.CommInteriorVO;
 import com.honjok.app.vo.CommunityVO;
 import com.honjok.app.vo.LikesVO;
+import com.honjok.app.vo.commReplyVO;
 
 @Controller
 @RequestMapping("/interior")
@@ -88,6 +90,13 @@ public class interiorController {
 		public String getinteriorSelect(Model model, CommInteriorVO cvo, LikesVO livo) {			
 			System.out.println("컨트롤러 cvo: " + cvo);
 			System.out.println("컨트롤러 livo: " + livo);
+			
+			//댓글 전체 조회
+			List<commReplyVO> replyList = interiorService.replyList(Integer.parseInt(cvo.getcomSeq()));
+			System.out.println(replyList);
+			model.addAttribute("commentSelect", replyList);
+			
+			//게시물 상세조회
 			CommInteriorVO commInterior = interiorService.getBoardList(cvo);
 			model.addAttribute("interiorSelect", commInterior);
 			
@@ -203,4 +212,16 @@ public class interiorController {
 		
 		return "getInterior.do";
 	}*/
+	
+	//댓글 입력
+	@RequestMapping("/addComment.do")
+	@ResponseBody
+	public String insertComment(commReplyVO rvo) {
+		System.out.println(rvo);
+		System.out.println("강지향");
+		interiorService.insertComment(rvo);
+		
+		return "success";
+				
+	}
 }

@@ -60,7 +60,6 @@
     </ul>
   	</div>	
 	</nav>
-	
 	<div class="container">
 		<div class="row justify-content-center mb-5 pb-3">
 		</div>
@@ -73,8 +72,8 @@
 			</c:when>
 			<c:when test="${interiorList != null }">
 					<div style="width:100%; height:100px;">
+					<p>집 소개 게시판</p>
 						이번주 베스트 ~ 
-						<img style="width:100%; height:100%;" src="/app/resources/img/no.jpg">
 					</div>
 				<div class="row">
 

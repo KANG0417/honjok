@@ -6,6 +6,7 @@ import java.util.Map;
 import com.honjok.app.vo.CommInteriorVO;
 import com.honjok.app.vo.CommunityVO;
 import com.honjok.app.vo.LikesVO;
+import com.honjok.app.vo.commReplyVO;
 
 public interface InteriorService {
 	//게시물
@@ -23,4 +24,8 @@ public interface InteriorService {
 	public LikesVO insertLikes(LikesVO livo);
 /*	public void updateLikes(LikesVO livo);
 	public int selectLikes(int comSeq);*/
+	
+	//게시물 댓글달기
+	public void insertComment(commReplyVO rvo);
+	List<commReplyVO> replyList(int parseInt);
 }

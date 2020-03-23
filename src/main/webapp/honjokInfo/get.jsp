@@ -489,8 +489,7 @@
 					"nickName" : '${sessionScope.userSession.nickName}'
 				};
 
-				$
-						.ajax({
+				$.ajax({
 							type : 'post',
 							url : "reviewInsert.do",
 							data : objParams,

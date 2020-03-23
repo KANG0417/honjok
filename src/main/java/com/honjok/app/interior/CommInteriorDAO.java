@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.honjok.app.vo.CommInteriorVO;
 import com.honjok.app.vo.LikesVO;
+import com.honjok.app.vo.commReplyVO;
 
 @Repository("commDAOMybatis")
 public class CommInteriorDAO {
@@ -78,5 +79,16 @@ public class CommInteriorDAO {
 		System.out.println("===> MyBatis로 selectLikes() 실행");
 		
 		return mybatis.selectOne("commInteriorDAO.likesCount",comSeq);
+	}
+
+	//게시물 댓글 달기
+	public void insertComment(commReplyVO rvo) {
+		System.out.println("===> MyBatis로 insertComment() 실행");
+		mybatis.insert("commInteriorDAO.insertComment", rvo);
+	}
+
+	//게시물 댓글 조회
+	public List<commReplyVO> replyList(int comSeq) {
+		return mybatis.selectList("commInteriorDAO.allComment", comSeq);
 	}
 }

@@ -269,11 +269,6 @@
 	<div class="checkFont" id="passwordCheck"></div>	
 </div>
 <script>
-	/* $('#del').on("click",function(){
-		$('#ss').html("");
-		$('#ss').append('<div>회원탈퇴</div>');	
-	}) */
-	
 	/* var empJ = /\s/g; //공백체크 정규표현식
 	var pwJ = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/; */
 	function userUpdateCh() { 
@@ -295,7 +290,7 @@
 	//회원정보 클릭시 페이지 전환
 	$('.orderInfo').on("click",function(){
 		$.ajax({
-			 url : ".do",
+			 url : "selectBoard.do",
 			 type: "post",
              dataType : "json",
              success : function(data){
@@ -334,26 +329,20 @@
 	
 	//커뮤니티정보 클릭시 페이지 전환	
 	$('.commBoard').on("click",function(){
-		$.ajax({
-			 url : "selectBoard.do",
-			 type: "post",
-            dataType : "json",
-            success : function(data){
-                
-                $("table").html("<tr><th>번호</th><th>이름</th><th>나이</th><th>사는곳</th></tr>");
-                
-                var show = "";
-                
-                $.each(data,function(index, item){
-                    
-                    show += "<tr><td>"+(index+1)+"</td>";
-                    show += "<td>"+item.name+"</td>";
-                    show += "<td>"+item.age+"</td>";
-                    show += "<td>"+item.loc+"</td></tr>";
-                })
-            	}
-            })
-		})
+ 	    $.ajax({
+	    	type: "POST",
+	        url : "selectBoard.do",
+	        data: data,
+	        success : function(e){
+	        	var id = $('{sessionScope.userSession.id}'');
+	        	
+	        },
+	        error:function(request,status,error){
+	            //alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+	          	alert("전송실패");
+	       }
+	        
+	    });
 	
 	$('.commReply').on("click",function(){
 		$('#intro').html("");
@@ -370,6 +359,33 @@
 		$('#intro').html("");
 		$('#intro').append('상품문의');	
 	})
+	
+	function fn_comment(){
+			 var form = $('#commentForm')[0];
+		     var data = new FormData(form);
+		   		console.log("클릭은되나요?");
+		   		document.data.action = "location.href='addComment.do'".submit();
+		   		
+		   		location.reload();
+	  	}
+	
+			/* location.reload(); */
+/* 	    $.ajax({
+	    	type: "POST",
+	        url : "addComment.do",
+	        data: data,
+	        contentType : false,
+	        processData : false ,
+	        success : function(e){
+	        	location.reload();
+	        	
+	        },
+	        error:function(request,status,error){
+	            //alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+	          	alert("전송실패");
+	       }
+	        
+	    }); */
 </script>
 </body>
 </html>

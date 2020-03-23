@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.honjok.app.vo.CommInteriorVO;
 import com.honjok.app.vo.LikesVO;
+import com.honjok.app.vo.commReplyVO;
 
 @Service("InteriorService")
 public class InteriorServiceImpl implements InteriorService {
@@ -70,4 +71,15 @@ public class InteriorServiceImpl implements InteriorService {
 	public int selectLikes(int comSeq) {
 		return commDAO.selectLikes(comSeq);
 	}*/
+
+	//게시물 댓글 달기
+	@Override
+	public void insertComment(commReplyVO rvo) {
+		commDAO.insertComment(rvo);
+	}
+
+	@Override
+	public List<commReplyVO> replyList(int comSeq) {
+		return commDAO.replyList(comSeq);
+	}
 }

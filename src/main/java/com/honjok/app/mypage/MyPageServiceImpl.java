@@ -1,8 +1,12 @@
 package com.honjok.app.mypage;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.honjok.app.vo.CommInteriorVO;
 import com.honjok.app.vo.UserVO;
 
 @Service("MyPageService")
@@ -16,15 +20,9 @@ public class MyPageServiceImpl implements MyPageService {
 		return myDAO.getUser(uvo);
 	}
 
+	//id로 본인 게시물 조회 
 	@Override
-	public void selectOne(UserVO uvo) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	//id로 회원 
-/*	@Override
-	public void selectOne(String gg) {
-		return gg;
-	}*/
+	public CommInteriorVO getSelectBoard(String id) {
+		return myDAO.getSelectBoard(id);
+		}
 }
