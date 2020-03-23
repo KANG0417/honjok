@@ -329,19 +329,20 @@
 	
 	//커뮤니티정보 클릭시 페이지 전환	
 	$('.commBoard').on("click",function(){
+		var id = $('#userId').val();
+		console.log(id);
  	    $.ajax({
-	    	type: "POST",
+	    	method: "GET",
 	        url : "selectBoard.do",
-	        data: data,
-	        success : function(e){
-	        	var id = $('{sessionScope.userSession.id}'');
+	        data: {id:id},
+	        success : function(data){
 	        	
 	        },
 	        error:function(request,status,error){
 	            //alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 	          	alert("전송실패");
-	       }
-	        
+	        }
+ 	    	})
 	    });
 	
 	$('.commReply').on("click",function(){

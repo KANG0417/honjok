@@ -104,9 +104,9 @@
 									<a href="getInterior.do?comSeq=${interiorvo.comSeq }">${interiorvo.title }</a>
 								</h3>
 							</div>
-							작성일: ${interiorvo.regdate }<br>
-							작성자닉네임: ${interiorvo.nickName }<br> 조회수: ${interiorvo.hit }
-							<br> 좋아요: ${likesCount }<br>
+							${interiorvo.regdate }<br>
+							${interiorvo.nickName }<br> ${interiorvo.hit } 명이 봤어요
+							<br> ${likesCount }<br>
 						</div>
 
 					</c:forEach>
