@@ -37,9 +37,14 @@
       	<li class="nav-item">
         <a class="nav-link" href="signUp.jsp">회원가입</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="login.jsp">${userSession.id}님 안녕하세요!</a>
-      </li>
+      <c:if test="${sessionScope.userSession.id == null }">
+      	<li class="nav-item">
+      	<a class="nav-link" href="${contextPage.request.contextPath }/app/login.jsp">로그인</a>
+      	</li>
+      </c:if>
+      <c:if test="${sessionScope.userSession.id != null }">
+      	<li class="nav-item">${userSession.id} 님 안녕하세요!</li><a href="${contextPage.request.contextPath }/app/logout.do">Log-out</a>
+      </c:if>
       <li class="nav-item">
         <a class="nav-link" href="${contextPage.request.contextPath }/app/interior/interiorAllList.do">인테리어</a>
       </li>
@@ -55,7 +60,6 @@
     </ul>
   	</div>	
 	</nav>
-	
 	<div class="container">
 		<div class="row justify-content-center mb-5 pb-3">
 		</div>
@@ -68,8 +72,8 @@
 			</c:when>
 			<c:when test="${interiorList != null }">
 					<div style="width:100%; height:100px;">
+					<p>집 소개 게시판</p>
 						이번주 베스트 ~ 
-						<img style="width:100%; height:100%;" src="/app/resources/img/no.jpg">
 					</div>
 				<div class="row">
 
@@ -100,9 +104,9 @@
 									<a href="getInterior.do?comSeq=${interiorvo.comSeq }">${interiorvo.title }</a>
 								</h3>
 							</div>
-							작성일: ${interiorvo.regdate }<br>
-							작성자닉네임: ${interiorvo.nickName }<br> 조회수: ${interiorvo.hit }
-							<br> 좋아요: ${likesCount }<br>
+							${interiorvo.regdate }<br>
+							${interiorvo.nickName }<br> ${interiorvo.hit } 명이 봤어요
+							<br> ${likesCount }<br>
 						</div>
 
 					</c:forEach>
@@ -189,8 +193,18 @@
 	<hr>
 
 	<c:remove var="endPage" />
-<form action="InBoardInsert.jsp">
-   <input type="submit" value="글쓰기">
-</form>
+   <input type="button" value="글쓰기" onclick="checkLogin()">
+<script>
+	function checkLogin() {
+	    var id = '${sessionScope.userSession.id}'; // 수정 ''처리
+	    // 수정 ''공백 비교
+	    if (id == '') {
+	        alert("로그인 후 글쓰기가 가능합니다.");
+	        return false;
+	    } else {
+	        location.href = 'InBoardInsert.jsp';
+	    }
+	}
+</script>
 </body>
 </html>

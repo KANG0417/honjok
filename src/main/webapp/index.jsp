@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -72,9 +73,14 @@ header h1 {
       <li class="nav-item">
         <a class="nav-link" href="signUp.jsp">회원가입</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="login.jsp">로그인</a>
-      </li>
+        <c:if test="${sessionScope.userSession.id == null }">
+      	<li class="nav-item">
+      	<a class="nav-link" href="${contextPage.request.contextPath }/app/login.jsp">로그인</a>
+      	</li>
+      </c:if>
+      <c:if test="${sessionScope.userSession.id != null }">
+      	<li class="nav-item">${userSession.id} 님 안녕하세요!</li><a href="${contextPage.request.contextPath }/app/logout.do">Log-out</a>
+      </c:if>
       <li class="nav-item">
         <a class="nav-link" href="${contextPage.request.contextPath }/app/interior/interiorAllList.do">인테리어</a>
       </li>
@@ -84,6 +90,7 @@ header h1 {
       <li class="nav-item">
         <a class="nav-link" href="${contextPage.request.contextPath }/app/honjokInfo/select.do">혼밥정보</a>
       </li>
+      
         <li class="nav-item">
         <a class="nav-link" href="/app/admin/productReg.jsp">상품등록</a>
       </li>     

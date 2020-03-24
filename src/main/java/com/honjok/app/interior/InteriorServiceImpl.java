@@ -8,22 +8,24 @@ import org.springframework.stereotype.Service;
 
 import com.honjok.app.vo.CommInteriorVO;
 import com.honjok.app.vo.LikesVO;
+import com.honjok.app.vo.commReplyVO;
 
 @Service("InteriorService")
 public class InteriorServiceImpl implements InteriorService {
 
 	@Autowired
-	private CommInteriorDAOMybatis commDAO;
+	private CommInteriorDAO commDAO;
 	
 	//게시물 전체조회
 	@Override
 	public List<CommInteriorVO> BoardAllList(Map<String, Integer> pagingMap) {
 		return commDAO.BoardAllList(pagingMap);
 	}
-	
+
 	//게시물 상세조회
 	@Override
 	public CommInteriorVO getBoardList(CommInteriorVO cvo) {
+		
 		return commDAO.getInteriorOne(cvo);
 	}
 	
@@ -55,11 +57,12 @@ public class InteriorServiceImpl implements InteriorService {
 	}
 	
 	//좋아요 증가
-	public void insertLikes(LikesVO livo) {
+	public LikesVO insertLikes(LikesVO livo) {
 		commDAO.insertLikes(livo);
+		return livo;
 	}
 	
-	//좋아요 취소
+/*	//좋아요 취소
 	public void updateLikes(LikesVO livo) {
 		commDAO.updateLikes(livo);
 	}
@@ -67,5 +70,16 @@ public class InteriorServiceImpl implements InteriorService {
 	//해당 게시물 좋아요 갯수
 	public int selectLikes(int comSeq) {
 		return commDAO.selectLikes(comSeq);
+	}*/
+
+	//게시물 댓글 달기
+	@Override
+	public void insertComment(commReplyVO rvo) {
+		commDAO.insertComment(rvo);
+	}
+
+	@Override
+	public List<commReplyVO> replyList(int comSeq) {
+		return commDAO.replyList(comSeq);
 	}
 }

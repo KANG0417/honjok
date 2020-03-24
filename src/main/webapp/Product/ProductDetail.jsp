@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html lang="UTF-8">
 
@@ -9,361 +11,133 @@
     <title>Document</title>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://kit.fontawesome.com/73d0df04d6.js" crossorigin="anonymous"></script>
-    <style>
-        html,
-        body,
-        div,
-        span,
-        applet,
-        object,
-        iframe,
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6,
-        p,
-        blockquote,
-        pre,
-        a,
-        abbr,
-        acronym,
-        address,
-        big,
-        cite,
-        code,
-        del,
-        dfn,
-        em,
-        img,
-        ins,
-        kbd,
-        q,
-        s,
-        samp,
-        small,
-        strike,
-        strong,
-        sub,
-        sup,
-        tt,
-        var,
-        b,
-        u,
-        i,
-        center,
-        dl,
-        dt,
-        dd,
-        ol,
-        ul,
-        li,
-        fieldset,
-        form,
-        label,
-        legend,
-        table,
-        caption,
-        tbody,
-        tfoot,
-        thead,
-        tr,
-        th,
-        td,
-        article,
-        aside,
-        canvas,
-        details,
-        embed,
-        figure,
-        figcaption,
-        footer,
-        header,
-        hgroup,
-        menu,
-        nav,
-        output,
-        ruby,
-        section,
-        summary,
-        time,
-        mark,
-        audio,
-        video {
-            margin: 0;
-            padding: 0;
-            border: 0;
-            font-size: 100%;
-            font: inherit;
-            vertical-align: baseline;
-        }
-
-        /* HTML5 display-role reset for older browsers */
-        article,
-        aside,
-        details,
-        figcaption,
-        figure,
-        footer,
-        header,
-        hgroup,
-        menu,
-        nav,
-        section {
-            display: block;
-        }
-
-        body {
-            line-height: 1;
-
-        }
-
-        ol,
-        ul {
-            list-style: none;
-        }
-
-        blockquote,
-        q {
-            quotes: none;
-        }
-
-        blockquote:before,
-        blockquote:after,
-        q:before,
-        q:after {
-            content: '';
-            content: none;
-        }
-
-        table {
-            border-collapse: collapse;
-            border-spacing: 0;
-        }
-        /* css 리셋 */
-</style>
-<style>
-        /* 카테고리 정렬*/
-        .production-selling-overview__category ol li,
-        .production-selling-navigation__content ol li,
-        .production-review__paginator li,
-        .production-question-feed__paginator li {
-            display: inline;
-        }
-
-        .production-selling-navigation__content {
-            width: auto;
-        }
-
-        .production-selling-overview__cover-image-wrap,
-        .carousel__list-wrap,
-        .production-selling__detail,
-        .production-selling__detail__content {
-            display: flex;
-        }
-        
-        
-     
-
-    
-
-        /* 컬럼 중앙정렬 */
-        .production-selling-overview__container
-        {
-            margin: 0 5%;
-            border: salmon 1px solid;
-             
-        }
-        .production-selling__detail-wrap{
-            margin: 0 5%;
-            border: salmon 1px solid;
-        }
-
-    
+   	
+   	
+  		<link href="/app/resources/css/ProductDetail/ProductDetail.css" rel="stylesheet">
 
 
-
-        /* 메인 이미지 크기 왼쪽 */
-        .production-selling-cover-image__entry__image {
-            width: 558.33px;
-            height: 558.33px;
-            border-radius: 5%;
-        }
-
-        .image {
-            width: 56px;
-            height: 56px;
-            border-radius: 5%;
-        }
-
-        /*버튼 이미지 초기화*/
-        .production-selling-cover-image__list button,
-        .production-selling-header__content button {
-            border: 0px;
-            outline: 0;
-            background-color: white;
-        }
-
-        /*공유 칸 부모*/
-        .production-selling-header__content {
-            position: relative;
-        }
-
-        /*스크랩 및 공유 */
-        .production-selling-header__action {
-            display: flex;
-            position: absolute;
-            right: 1%;
-        }
-
-        /*카테고리 마진 바텀*/
-        .production-selling-overview__category {
-            margin-bottom: 20px;
-        }
-
-        /* 메인 이미지 오른쪽*/
-        .production-selling-header__title__brand-wrap {
-            margin-bottom: 1rem;
-        }
-
-        .production-selling-header__title,
-        .production-selling-header__content {
-            margin-bottom: 20px;
-        }
-
-        .production-selling-header__content p {
-            padding: 1px;
-        }
-
-        .production-selling-header__price__discount span:first-child {
-            font-size: 45px;
-            color: #35c5f0;
-        }
-
-        .production-selling-header__delivery span {
-            display: block;
-            padding-bottom: 3px;
-        }
-
-        .production-selling-overview__content {
-            margin-left: 50px;
-        }
-
-        .production-selling-option-form {
-            margin-top: 30px;
-        }
-
-        .production-selling-header {
-            padding-top: 40px;
-        }
-        
-        .selling-option-select-input__option{
-        	margin-bottom: 5px;
-        }
-
-        /* 메인 이미지 오른쪽 끝*/
-
-        /*상품 css*/
-        .production-selling-description__content img{
-            width: 100%;
-        }
-        .production-selling__detail__content{
-            margin-right: 1rem;
-        }
-         .production-selling-table{
-            
-            margin:5px;
-        }
-        .production-selling-table th{
-            padding-top: 12px;
-            padding-bottom: 12px;
-            text-align: left;
-            background-color: rgb(209, 211, 209);
-            color: rgb(0, 0, 0);
-        }
-        .production-selling-table td{
-            border: 1px solid #ddd;
-             padding: 8px;
-        }
-        
-        
-
-        /*리뷰 css*/
-        .production-selling-section__header {
-            display: flex;
-
-        }
-
-        .production-selling-section__header {
-            margin-top: 100px;
-        }
-
-        .production-review-feed {
-            margin-top: 20px;
-        }
-
-        .production-selling-section__right {
-            margin-left: 10%;
-        }
-
-        /* 페이지 css*/
-        .production-selling-header__title__name {
-            font-size: 25px;
-        }
-
-        .production-review__paginator,
-        .production-question-feed__paginator {
-            text-align: center;
-        }
-
-        /*리뷰 css 끝*/
-        
-
-        /* 메인 이미지 크기 끝*/
-
-        /* 스티키 설정 */
-        .production-selling-navigation-wrap {
-            background-color: #fafafa;
-            z-index: 10;
-            position: sticky;
-            top: 0px;
-        }
-
-        .prodproductionuction-selling-navigation__list {
-            margin-left: 50px;
-            padding: 2%;
-        }
-        .prodproductionuction-selling-navigation__list li{
-            margin-right: 35px;
-            height: 100%;
-        }
-      
-        .prodproductionuction-selling-navigation__list li a {
-
-            text-align: center;
-            text-decoration: none;
-        }
-        .prodproductionuction-selling-navigation__list li a:hover{
-         
-            border-bottom: solid 3px ;
-       }
-
-        /*상품 마진*/
-        .production-selling-content {
-            margin-right: 50px;
-        }
-
-        .production-review-item__writer__info {
-            display: inline-block;
-            margin-bottom: 10px;
-            margin-top: 60px;
-        }
-    </style>
 </head>
 
 <body>
+      <!--리뷰모달 시작-->
+<div class="react-modal--center-div" >  
+<div class="react-modal react-modal--center review-modal__modal__wrap open open-active">
+        <div class="react-modal__content-wrap" style="margin: 10px;">
+            <div class="react-modal__content review-modal__modal">
+                <div class="review-modal">
+                    <div class="review-modal__title">리뷰 쓰기
+                        <button type="button" class="review-modal__close">취소
+                    </button></div>
+                    <div class="review-modal__point-explain">포토리뷰&nbsp;<span class="review-modal__point-explain__value">250P</span>,&nbsp;
+                        일반리뷰&nbsp;<span class="review-modal__point-explain__value review-modal__point-explain__value--none">0P</span>
+                    </div>
 
+                    <form class="review-modal__form">
+                    <input type="hidden" name="id" value="${sessionScope.userSession.id }"> <input
+							type="hidden" name="nickName" value="${sessionScope.userSession.nickName }"> <input
+							type="hidden" name="pNum" value="${productvo.pNum }">
+					<input type="hidden" name="imgArray" value="">
+                        <div class="review-modal__form__product">
+                            <img>메인사진
+                            <div class="review-modal__form__product__contents">
+                                <div class="review-modal__form__product__contents__brand">브랜드명</div>
+                                <div class="review-modal__form__product__contents__name">성
+                                </div>
+                                <div class="review-modal__form__product__contents__options"></div>
+                            </div>
+                        </div>
+                        <div class="review-modal__section">
+                            <div class="review-modal__section__title">별점 평가</div>
+                            <div class="review-modal__form__star__wrap">
+                                <div class="review-modal__form__star">
+                                    <div class="review-modal__form__star__label">만족도</div>
+                                    <div id="full-stars-example-two">
+                                        <div class="rating-group">
+                                            <input disabled checked class="rating__input--none" id="rating3-none" value="1" type="radio">
+                                            <label aria-label="1 star"   class="rating__label" for="rating3-1"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                            <input class="rating__input" id="rating3-1" value="1" type="radio">
+                                            <label aria-label="2 stars" class="rating__label" for="rating3-2"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                            <input class="rating__input" id="rating3-2" value="2" type="radio">
+                                            <label aria-label="3 stars" class="rating__label" for="rating3-3"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                            <input class="rating__input" id="rating3-3" value="3" type="radio">
+                                            <label aria-label="4 stars" class="rating__label" for="rating3-4"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                            <input class="rating__input" id="rating3-4" value="4" type="radio">
+                                            <label aria-label="5 stars" class="rating__label" for="rating3-5"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                            <input class="rating__input" id="rating3-5" value="5" type="radio">
+                               				<input class="review-rating" type="hidden" name="rating" value="5">
+                                        </div>
+                                           
+                            
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+  								                       
+                        <div class="review-modal__section" >
+                            <div class="review-modal__section__img">    
+                            </div>
+                            <div class="review-modal__section__explain">사진을 첨부해주세요. (최대 2장 / 'gif', 'png', 'jpg','jpeg' 형식만 가능)
+                            </div>
+                            <div class="select-my-card">
+                                <div class="select-my-card__content select-my-card__content--select">
+                                    <div class="round-checkbox-input round-checkbox-input--blue">
+                                        <label class="round-checkbox-input__label">
+                                                <span class="round-checkbox-input__icon">
+                                                    </span>
+                                                </label></div>
+                                </div>
+                                <div class="select-my-card__content">
+                                    <div class="round-checkbox-input round-checkbox-input--blue">
+                                        <label
+                                            class="round-checkbox-input__label">
+                                                <span class="round-checkbox-input__icon">
+                                            </span>
+                                        </label></div>
+                                </div>
+
+                            </div>
+                            <input multiple="multiple" type="file"
+							name="file" id="image"  style="display:block"/>
+                            <button class="button button--color-blue-inverted button--size-50 button--shape-4 upload-button"
+                                type="button" onclick="document.all.file.click()" >사진 첨부하기</button>
+                        </div>
+                        <div class="review-modal__section">
+                            <div class="review-modal__section__title">리뷰 작성</div>
+                            <input class="review-title" type="text" name="title" value="제목">
+                            <textarea class="review-content" name="content"
+                                placeholder="자세하고 솔직한 리뷰는 다른 고객에게 큰 도움이 됩니다. (최소 20자 이상)"
+                                class="form-control text-area-input review-modal__form__review-input"
+                                style="height: 60px; width: 98%;"></textarea>
+                        </div>
+
+                        <div class="review-modal__section">
+                            <div class="review-modal__section__title">상품을 직접 사용하고 작성한 리뷰인가요?</div>
+                            <div class="form-check checkbox-input"><label class="form-check-label">
+                                <input class="form-check" type="checkbox"><span class="check-img"></span>
+                                <span class="review-modal__form__agree">네. 상품을 직접 사용 후 작성한 리뷰이며,&nbsp;
+                                    <span class="review-modal__form__agree__policy-button">정책</span>에동의합니다.</span></label></div>
+                        </div>
+                        <button class="button button--color-blue button--size-50 button--shape-4 review-modal__form__submit"
+                            type="button" onclick="reviewForm(this.form)">완료</button>
+                    </form>
+                    <script>
+                  
+                    </script>
+                    <div class="review-modal__explain">
+                        <ul>
+                            <li>비구매 상품 리뷰 포인트는 심사 후 지급됩니다. (영업일 기준 2~3일 소요)</li>
+                            <li>포인트는 최초 작성한 리뷰를 기준으로 지급됩니다.</li>
+                            <li>사진 첨부시&nbsp;<span class="review-modal__explain__warning">캡쳐, 도용, 유사상품 촬영, 동일상품 여부 식별이
+                                    불가한 경우</span>에는 등록이 거절되며 사유는 별도 안내되지 않습니다.</li>
+                            <li>상품과 무관한 내용이나 사진, 동일 문자 반복 등의 부적합한 리뷰는 사전 경고 없이 삭제 및 포인트 회수될 수 있습니다.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+</div>
+<!--리뷰 모달-->
 
 
 
@@ -405,18 +179,7 @@
                         <div>
                             <ul class="production-selling-cover-image__list">
 
-                            <script>
-                              var contentimg = '${productvo.description}';
-                              var firstimg = $(contentimg).find('img');
-                              console.log(firstimg.length);
-                              console.log($(firstimg[0]).attr('src'));
-                              for(var i = 0; i < firstimg.length; i ++){
-                            	 var src = $(firstimg[i]).attr('src');
-                            	  console.log(src);
-                              	 $('.production-selling-cover-image__list').append(' <li class="production-selling-cover-image__list__item"><button class="production-selling-cover-image__list__btn production-selling-cover-image__list__btn--selected"type="button"><img class="image" src="'+src+'"></button></li>');
-                               } 
-
-                           </script>  
+                         
                              
                              <!-- 
                                 <li class="production-selling-cover-image__list__item"><button
@@ -670,7 +433,7 @@
                               <!--   <div class="production-selling-description__expand-wrap">
                                     <button
                                         class="button button--color-blue button--size-60 button--shape-4 production-selling-description__expand"
-                                        type="button">펼치기
+                                        type="button">펼치기f
                                     </button>
                                 </div> -->
                                 <a class="production-selling-description__production-event"
@@ -684,6 +447,15 @@
                                     <p>
                                        ${productvo.description}
                                         <br>
+                                        <script type="text/javascript">
+                                        var contentimg = '${productvo.description}';
+										var firstimg = $(contentimg).find('img');
+										for (var i = 0; i < firstimg.length; i++) {
+											var src = $(firstimg[i]).attr('src');
+											$('.production-selling-cover-image__list').append(' <li class="production-selling-cover-image__list__item"><button class="production-selling-cover-image__list__btn production-selling-cover-image__list__btn--selected"type="button"><img class="image" src="' + src + '"></button></li>');
+										}
+										</script>
+                                        
                      <!--    <img src="https://exit.ohou.se/e328923597eb2272d6a991377ec851d5d4a225bc/ai.esmplus.com/saeromi0871/R_9Zone_/02.gif">
                         <br> -->
                                     </p>
@@ -749,7 +521,7 @@
                                     <span class="count">[리뷰 갯수]</span>
                                 </h1>
                                 <div class="production-selling-section__right">
-                                    <button type="button">리뷰쓰기</button>
+                                    <button class="ReviewBtn" type="button">리뷰쓰기</button>
                                 </div>
                             </header>
 
@@ -777,82 +549,106 @@
 
                                 <div class="production-review-feed__list">
                                     <div class="production-review-item__container">
+                                              <c:forEach var="product" items="${productvo.productreviewvo }" >
                                         <article class="production-review-item">
                                             <div class="production-review-item__writer">
-                                            
-                                                <img src=""
-                                                    class="production-review-item__writer__img" alt="작성자 이미지">
-                                                     	
+                                                <!-- <img src=""
+                                                    class="production-review-item__writer__img" alt="작성자 이미지"> -->
                                                 <div class="production-review-item__writer__info">
                                                     <p class="production-review-item__writer__info__name">
-                                                        	작성자
+                                                        	작성자: ${product.id }
                                                     </p>
 
-                                                    <button
-                                                        class="production-review-item__writer__info__total-star-wrap"
-                                                        type="button">
                                                         <span class="production-review-item__writer__info__total-star">
-	                                                          	준 별점 표시
+	                                                     		      	 <i class="rating__icon rating__icon--star fa fa-star"></i>                    		   
+	                                                     		     <c:forEach var="i" begin="1" end="5" step="1" >
+	                                                     		     	<c:if test="${ i < product.rating }">
+	                                                     		    	 <i class="rating__icon rating__icon--star fa fa-star"></i>                    		    	 
+	                                                     		    	</c:if>
+	                                                     		     </c:forEach>
                                                         </span>
-                                                    </button>
-
-                                                    <span class="production-review-item__writer__info__date">댓글 작성일</span>
+                         
+                                                    <span class="production-review-item__writer__info__date">${product.regdate }</span>
                                                 </div>
                                             </div>
-                                            
-                                           <button type="button" class="production-review-item__img__btn">
+                                          		  <div>제목 : ${product.title }"</div>
+                                          
                                            		
-                                           		등록한 이미지
+                                           		<img src="/app/resources/img/review/${product.photoImage1 }"  style="width: 120px; height: 100px">
+                                           		<img src="/app/resources/img/review/${product.photoImage2 }"  style="width: 120px; height: 100px">
                                                 
-                                            </button>
+                                                
                                             <p class="production-review-item__description">
-													댓글 내용 
+													내용: <br> ${product.content }
                                             </p>
-                                        </article>
+                                            	</article>	
+                                            </c:forEach>>
+                                            
+                                            
+                                 <ul class="list-paginator production-review__paginator">
+                                                                            
+                                
+                                 	<c:choose>
+                                 		<c:when test="${p.beginPage == 1 }">
+	                                		<!-- <button class="list-paginator__prev" type="button">
+	                                           	이전
+	                                       	</button> -->
+                                       </c:when>
+                                       <c:otherwise>
+                                        	<li>
+		                                       <button class="list-paginator__prev" type="button">
+		                                           	이전
+	                                       		</button>
+                                       		</li>
+                                       </c:otherwise>
+                                    </c:choose>
+                                    
+                                    
+                                 	<c:forEach var="i" begin="${p.beginPage }" end="${p.endPage }">
+                                 	<c:choose>
+                                 		<c:when test="${i == p.nowPage }">
+		                                    <li>
+		                                        <button class="list-paginator__page sm selected" type="button">${i }</button>
+		                                    </li>
+	                                    </c:when>
+	                                    <c:otherwise>
+	                                    	 <li>
+		                                        <button class="list-paginator__page sm selected" type="button">${i }</button>
+		                                    </li>
+	                                    </c:otherwise>
+	                                </c:choose>
+	                                
+                                    </c:forEach>
+                                  
+                                  <c:choose>
+                                  	<c:when test="${p.endPage >= p.totalPage }">
+	                                <!--     <li>
+	                                        <button class="list-paginator__next" type="button">
+	                                           	다음
+	                                        </button>
+	                                    </li> -->
+	                                    </c:when>
+	                                    <c:otherwise>
+	                                    <li>
+	                                        <button class="list-paginator__next" type="button">
+	                                           	다음
+	                                        </button> 
+	                                    </li>
+	                                    </c:otherwise>
+                                    </c:choose>
+                                </ul>
+                                <!--production-review-feed 끝-->
+                                
+                                            
+                                            
+                                      
                                     </div>
+
+  								
+
                                 </div>
                                 
                                 
-                                <ul class="list-paginator production-review__paginator">
-                                 	<li>
-                                		<button class="list-paginator__prev" type="button">
-                                           	이전
-                                       </button>
-                                    </li>
-                                    <li>
-                                        <button class="list-paginator__page sm selected" type="button">1</button>
-                                    </li>
-                                    <li>
-                                        <button class="list-paginator__page sm" type="button">2</button>
-                                    </li>
-                                    <li>
-                                        <button class="list-paginator__page sm" type="button">3</button>
-                                    </li>
-                                    <li>
-                                        <button class="list-paginator__page sm" type="button">4</button>
-                                    </li>
-                                    <li>
-                                        <button class="list-paginator__page sm" type="button">5</button>
-                                    </li>
-                                    <li>
-                                        <button class="list-paginator__page" type="button">6</button>
-                                    </li>
-                                    <li>
-                                        <button class="list-paginator__page" type="button">7</button>
-                                    </li>
-                                    <li>
-                                        <button class="list-paginator__page" type="button">8</button>
-                                    </li>
-                                    <li>
-                                        <button class="list-paginator__page" type="button">9</button>
-                                    </li>
-                                    <li>
-                                        <button class="list-paginator__next" type="button">
-                                           	다음
-                                        </button>
-                                    </li>
-                                </ul>
-                                <!--production-review-feed 끝-->
                             </div>
                         </section>
 
@@ -896,33 +692,11 @@
                                            	이전
                                        </button>
                                     </li>
+                                    
                                     <li>
                                         <button class="list-paginator__page sm selected" type="button">1</button>
                                     </li>
-                                    <li>
-                                        <button class="list-paginator__page sm" type="button">2</button>
-                                    </li>
-                                    <li>
-                                        <button class="list-paginator__page sm" type="button">3</button>
-                                    </li>
-                                    <li>
-                                        <button class="list-paginator__page sm" type="button">4</button>
-                                    </li>
-                                    <li>
-                                        <button class="list-paginator__page sm" type="button">5</button>
-                                    </li>
-                                    <li>
-                                        <button class="list-paginator__page" type="button">6</button>
-                                    </li>
-                                    <li>
-                                        <button class="list-paginator__page" type="button">7</button>
-                                    </li>
-                                    <li>
-                                        <button class="list-paginator__page" type="button">8</button>
-                                    </li>
-                                    <li>
-                                        <button class="list-paginator__page" type="button">9</button>
-                                    </li>
+                                    
                                     <li>
                                         <button class="list-paginator__next" type="button">
                                          	다음
@@ -930,6 +704,8 @@
                                     </li>
                                 </ul>
                             </div>
+                            
+                            
                         </section>
 
                         <a id="production-selling-delivery"></a>
@@ -1089,5 +865,11 @@
     
     </div>
     <!--production-selling-overview container 끝-->
+
+
+<script type="text/javascript" src="/app/resources/js/ProductDetail/ProductDetail.js"></script>
+  
+
 </body>
-    
+</html>
+      

@@ -190,7 +190,7 @@
 	<div id="main">원마켓</div>
 	<br>
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
-	  <a class="navbar-brand" href="index.jsp">Home</a>
+	  <a class="navbar-brand" href="${contextPage.request.contextPath }/app/index.jsp">Home</a>
 	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
 	    <span class="navbar-toggler-icon"></span>
 	  </button>
@@ -199,9 +199,15 @@
       	<li class="nav-item">
         <a class="nav-link" href="signUp.jsp">회원가입</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="login.jsp">${userSession.id}님 안녕하세요!</a>
-      </li>
+      <c:if test="${sessionScope.userSession.id == null }">
+      	<li class="nav-item">
+      	<a class="nav-link" href="${contextPage.request.contextPath }/app/login.jsp">로그인</a>
+      	</li>
+      </c:if>
+      <c:if test="${sessionScope.userSession.id != null }">
+      	<li class="nav-item">${userSession.id} 님 안녕하세요!<a href="${contextPage.request.contextPath }/app/logout.do">Log-out</a>
+        </li>
+      </c:if>
       <li class="nav-item">
         <a class="nav-link" href="${contextPage.request.contextPath }/app/interior/interiorAllList.do">인테리어</a>
       </li>
@@ -263,11 +269,6 @@
 	<div class="checkFont" id="passwordCheck"></div>	
 </div>
 <script>
-	/* $('#del').on("click",function(){
-		$('#ss').html("");
-		$('#ss').append('<div>회원탈퇴</div>');	
-	}) */
-	
 	/* var empJ = /\s/g; //공백체크 정규표현식
 	var pwJ = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/; */
 	function userUpdateCh() { 
@@ -287,9 +288,9 @@
 	});
 	
 	//회원정보 클릭시 페이지 전환
-	/* $('.orderInfo').on("click",function(){
+	$('.orderInfo').on("click",function(){
 		$.ajax({
-			 url : ".do",
+			 url : "selectBoard.do",
 			 type: "post",
              dataType : "json",
              success : function(data){
@@ -309,7 +310,7 @@
                  })
              	}
              })
-		}) */
+		})
 	
 	$('.wishList').on("click",function(){
 		$('#intro').html("");
@@ -328,26 +329,21 @@
 	
 	//커뮤니티정보 클릭시 페이지 전환	
 	$('.commBoard').on("click",function(){
-		$.ajax({
-			 url : ".do",
-			 type: "post",
-            dataType : "json",
-            success : function(data){
-                
-                $("table").html("<tr><th>번호</th><th>이름</th><th>나이</th><th>사는곳</th></tr>");
-                
-                var show = "";
-                
-                $.each(data,function(index, item){
-                    
-                    show += "<tr><td>"+(index+1)+"</td>";
-                    show += "<td>"+item.name+"</td>";
-                    show += "<td>"+item.age+"</td>";
-                    show += "<td>"+item.loc+"</td></tr>";
-                })
-            	}
-            })
-		})
+		var id = $('#userId').val();
+		console.log(id);
+ 	    $.ajax({
+	    	method: "GET",
+	        url : "selectBoard.do",
+	        data: {id:id},
+	        success : function(data){
+	        	
+	        },
+	        error:function(request,status,error){
+	            //alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+	          	alert("전송실패");
+	        }
+ 	    	})
+	    });
 	
 	$('.commReply').on("click",function(){
 		$('#intro').html("");
@@ -364,6 +360,33 @@
 		$('#intro').html("");
 		$('#intro').append('상품문의');	
 	})
+	
+	function fn_comment(){
+			 var form = $('#commentForm')[0];
+		     var data = new FormData(form);
+		   		console.log("클릭은되나요?");
+		   		document.data.action = "location.href='addComment.do'".submit();
+		   		
+		   		location.reload();
+	  	}
+	
+			/* location.reload(); */
+/* 	    $.ajax({
+	    	type: "POST",
+	        url : "addComment.do",
+	        data: data,
+	        contentType : false,
+	        processData : false ,
+	        success : function(e){
+	        	location.reload();
+	        	
+	        },
+	        error:function(request,status,error){
+	            //alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+	          	alert("전송실패");
+	       }
+	        
+	    }); */
 </script>
 </body>
 </html>

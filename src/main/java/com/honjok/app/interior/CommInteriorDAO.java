@@ -9,9 +9,10 @@ import org.springframework.stereotype.Repository;
 
 import com.honjok.app.vo.CommInteriorVO;
 import com.honjok.app.vo.LikesVO;
+import com.honjok.app.vo.commReplyVO;
 
 @Repository("commDAOMybatis")
-public class CommInteriorDAOMybatis {
+public class CommInteriorDAO {
 
 	@Autowired
 	private SqlSessionTemplate mybatis;
@@ -20,13 +21,13 @@ public class CommInteriorDAOMybatis {
 	public List<CommInteriorVO> BoardAllList(Map<String, Integer> pagingMap) {
 		System.out.println("===> MyBatis로 BoardAllList() 실행");
 		List<CommInteriorVO> cvo = mybatis.selectList("commInteriorDAO.interiorAll", pagingMap);
-		System.out.println("전체 목록조회: " + cvo);
+		System.out.println("전체 목록조회: " + cvo.toString());
 		return cvo;
 	}
 	
 	//글 상세 조회
 	public CommInteriorVO getInteriorOne(CommInteriorVO cvo) {
-	System.out.println("===> MyBatis로 getInteriorOne() 실행");
+		System.out.println("===> MyBatis로 getInteriorOne() 실행");
 		return mybatis.selectOne("commInteriorDAO.getInteriorOne", cvo);
 	}
 	
@@ -78,5 +79,16 @@ public class CommInteriorDAOMybatis {
 		System.out.println("===> MyBatis로 selectLikes() 실행");
 		
 		return mybatis.selectOne("commInteriorDAO.likesCount",comSeq);
+	}
+
+	//게시물 댓글 달기
+	public void insertComment(commReplyVO rvo) {
+		System.out.println("===> MyBatis로 insertComment() 실행");
+		mybatis.insert("commInteriorDAO.insertComment", rvo);
+	}
+
+	//게시물 댓글 조회
+	public List<commReplyVO> replyList(int comSeq) {
+		return mybatis.selectList("commInteriorDAO.allComment", comSeq);
 	}
 }
