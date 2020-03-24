@@ -9,6 +9,7 @@
 	src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
+
 function sample6_execDaumPostcode() {
     new daum.Postcode({
         oncomplete: function(data) {
@@ -56,6 +57,7 @@ function sample6_execDaumPostcode() {
         }
     }).open();
 }
+
 
 </script>
 <title>회원가입</title>

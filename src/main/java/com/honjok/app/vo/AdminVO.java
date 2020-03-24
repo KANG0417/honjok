@@ -1,5 +1,6 @@
 package com.honjok.app.vo;
 
+import java.util.List;
 
 public class AdminVO {
 	
@@ -11,6 +12,7 @@ public class AdminVO {
 	private String brandName;
 	private String description;
 	private String thumnailImg;
+	private List<String>subImg;
 	private int stock;
 	private int price;
 	private String discountRate;
@@ -21,14 +23,16 @@ public class AdminVO {
 	
 
 	
+	
 	@Override
 	public String toString() {
 		return "AdminVO [upperCategory=" + upperCategory + ", subCategory=" + subCategory + ", subCategory2="
 				+ subCategory2 + ", pName=" + pName + ", promotion=" + promotion + ", brandName=" + brandName
-				+ ", description=" + description + ", thumnailImg=" + thumnailImg + ", stock=" + stock + ", price="
-				+ price + ", discountRate=" + discountRate + ", salePrice=" + salePrice + ", shippingfee=" + shippingfee
-				+ "]";
+				+ ", description=" + description + ", thumnailImg=" + thumnailImg + ", subImg=" + subImg + ", stock="
+				+ stock + ", price=" + price + ", discountRate=" + discountRate + ", salePrice=" + salePrice
+				+ ", shippingfee=" + shippingfee + ", pNum=" + pNum + "]";
 	}
+	
 	public String getThumnailImg() {
 		return thumnailImg;
 	}
@@ -116,6 +120,12 @@ public class AdminVO {
 	}
 	public void setpNum(int pNum) {
 		this.pNum = pNum;
+	}
+	public List<String> getSubImg() {
+		return subImg;
+	}
+	public void setSubImg(List<String> subImg) {
+		this.subImg = subImg;
 	}
 	
 	

@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.honjok.app.vo.AdminVO;
+import com.honjok.app.vo.replyUploadVO;
 
 @Repository("adminDAO")
 public class adminDAO {

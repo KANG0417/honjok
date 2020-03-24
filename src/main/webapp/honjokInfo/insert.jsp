@@ -277,9 +277,9 @@
 
 	<form id="insert" action="insert.do" method="POST"
 		enctype="multipart/form-data">
-		<input type="hidden" name="id" value="soh445"> <input
-			type="hidden" name="nickName" value="환탁"> <select
-			name="menu">
+		<input type="hidden" name="id" value="soh445">
+		 <input type="hidden" name="nickName" value="환탁"> 
+		 <select name="menu">
 			<option value='' selected>메뉴선택</option>
 			<option value='한식'>한식</option>
 			<option value='양식'>양식</option>
