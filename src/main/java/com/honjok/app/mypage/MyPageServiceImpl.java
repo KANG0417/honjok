@@ -1,6 +1,7 @@
 package com.honjok.app.mypage;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,7 @@ public class MyPageServiceImpl implements MyPageService {
 
 	//id로 본인 게시물 조회 
 	@Override
-	public CommInteriorVO getSelectBoard(String id) {
-		return myDAO.getSelectBoard(id);
+	public List<CommInteriorVO> getSelectBoard(CommInteriorVO cvo) {
+		return myDAO.getSelectBoard(cvo);
 		}
 }

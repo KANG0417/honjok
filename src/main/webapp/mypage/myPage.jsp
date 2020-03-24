@@ -255,6 +255,9 @@
 		</div>
 		<div id=memberBox>
 			<h3>회원정보</h3>
+	<c:forEach var="inter" items="${interiorMypage }">
+		<li id="inter">${inter.id }</li>
+	</c:forEach>
 		</div>
 		<div id=wishBox>
 			<h3>관심상품</h3>
@@ -264,7 +267,7 @@
 		</div>
 	</div>
 	
-	<input type="hidden" name="userId" id="userId">
+	<input type="hidden" name="userId" id="userId" value="${sessionScope.userSession.id}">
 	<input type="hidden" name="password" id="password">
 	<div class="checkFont" id="passwordCheck"></div>	
 </div>
@@ -334,9 +337,18 @@
  	    $.ajax({
 	    	method: "GET",
 	        url : "selectBoard.do",
-	        data: {id:id},
+	        datatype: "json",
+	        data: { id:id },
 	        success : function(data){
-	        	
+	        	 console.log(data);
+	        	 $("#intro").html("");
+	        	for(var i in data){
+	        	 $("#intro").append("<li id='inter'>"+ data[i].fileImage +"</li>");
+	        	 $("#intro").append("<li id='inter'>"+ data[i].title +"</li>");
+	        	 $("#intro").append("<li id='inter'>"+ data[i].content +"</li>");
+	        	 $("#intro").append("<li id='inter'>"+ data[i].nickName +"</li>");
+	        	}
+
 	        },
 	        error:function(request,status,error){
 	            //alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);

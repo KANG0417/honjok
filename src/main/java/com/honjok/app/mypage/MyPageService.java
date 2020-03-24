@@ -1,6 +1,7 @@
 package com.honjok.app.mypage;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Service;
@@ -14,5 +15,5 @@ public interface MyPageService {
 	public UserVO getUser(UserVO uvo);
 
 	//id로 인테리어 게시물 조회
-	CommInteriorVO getSelectBoard(String id);
+	List<CommInteriorVO> getSelectBoard(CommInteriorVO cvo);
 }

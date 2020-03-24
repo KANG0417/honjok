@@ -119,9 +119,10 @@ public class interiorController {
 		//게시물 입력 페이지
 		@RequestMapping("/insertInteriorB.do")
 		public String insertBoard(CommInteriorVO cvo) {
+			System.out.println("전체목록: " + cvo);
 			interiorService.insertBoard(cvo);
-			System.out.println(">>> 글 등록 처리 - insertBoard(): " + cvo);
 			
+			System.out.println(">>> 글 등록 처리 - insertBoard(): " + cvo);
 			return "interiorAllList.do";
 		}
 

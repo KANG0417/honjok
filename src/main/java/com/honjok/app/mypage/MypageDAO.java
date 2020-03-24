@@ -1,6 +1,7 @@
 package com.honjok.app.mypage;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,7 @@ public class MypageDAO {
 
 	//회원ID로 본인 게시물 조회
 	//---인테리어 게시판 조회
-	public CommInteriorVO getSelectBoard(String id) {
-		return mybatis.selectOne("MypageDAO.interiorBoard", id);
+	public List<CommInteriorVO> getSelectBoard(CommInteriorVO cvo) {
+		return mybatis.selectList("MypageDAO.interiorBoard", cvo);
 	}
 }
