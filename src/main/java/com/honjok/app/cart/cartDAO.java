@@ -28,15 +28,14 @@ public class cartDAO {
 	}
 	
 	public int getCartCount(String id) {
-		return mybatis.selectOne("cartdao.getCartCount", id);
+		return mybatis.selectOne("cartDAO.getCartCount", id);
+	}
+	
+	public List<Map<String,String>> getCartList(Map<String,String> map){
+		return mybatis.selectList("cartDAO.getCartList",map);
 	}
 	public void cartDelete(CartVO vo) {
 		mybatis.delete("cartDAO.cartDelete",vo);
-	}
-
-	public List<Map<String, String>> getCartList(Map<String, String> map) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }

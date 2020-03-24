@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<<<<<<< HEAD
 <!DOCTYPE html>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -8,64 +7,213 @@
 <head>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <meta charset="UTF-8">
-=======
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
->>>>>>> 65066c1779e958361a7c77be7c807e6757db706e
 <title>Insert title here</title>
 <style>
-    .cart th,
-    .cart td {
-        vertical-align: middle;
-    }
-    .btn_delete_point {
-        background: none;
-        border: none;
-    }
-    .btn_delete_point img {
-        width: 15px;
-    }
+/* 카트 */
+.my-cart__header {
+    height: 180px;
+    padding-top: 55px;
+    padding-bottom: 50px;
+}
+.my-cart__tit {
+    color: #333;
+    text-align: center;
+    font-size: 40px;
+    margin-bottom: 25px;
+}
+.my-cart__sub-tit {
+    color: #999;
+    text-align: center;
+    font-size: 16px;
+}
+
+.cart-goods {
+    width: 100%;
+    border-top: #45b8ac 2px solid;
+}
+.cart-tb {
+    margin-bottom: 30px;
+}
+.cart-tb tr,
+.order-tb tr {
+    border-bottom: 2px solid #ddd;
+}
+.cart-tb__header,
+.order-tb__header {
+    height: 65px;
+}
+.cart-tb__header,
+.order-tb__header {
+    font-weight: 700;
+    font-size: 14px;
+    color: #666;
+    vertical-align: middle;
+}
+.cart-tb__header th:nth-of-type(1),
+.cart-tb__check {
+    text-align: center;
+    width: 87.5px;
+}
+.cart-tb__header th:nth-of-type(2) {
+    width: 110px;
+}
+.cart-tb__header th:nth-of-type(3) {
+    width: 580px;
+    text-align: center;
+}
+.cart-tb__header th:nth-of-type(4) {
+    width: 135px;
+    text-align: center;
+}
+.cart-tb__header th:nth-of-type(5) {
+    width: 135px;
+    text-align: center;
+}
+
+
+.cart-tb__item {
+    height: 120px;
+    vertical-align: middle;
+}
+.cart-tb__thumb {
+    text-align: center;
+}
+.cart-tb__thumb img {
+    width: 60px;
+    height: 77px;
+}
+.cart-tb__desc {
+    padding-left: 30px;
+}
+.cart-tb__count {
+    text-align: center;
+}
+.cart-tb__total,
+.order-tb__total {
+    text-align: center;
+    font-weight: 700;
+    font-size: 14px;
+    color: #000;
+}
+
+.cart-tb__name,
+.order-tb__name {
+    font-weight: 700;
+    font-size: 14px;
+    color: #000;
+    margin-bottom: 14px;
+}
+.cart-tb__price,
+.order-tb__price {
+    font-size: 12px;
+}
+.cart-tb__num,
+.order-tb__num {
+    margin-right: 5px;
+}
+.cart-tb__cost {
+    text-decoration: line-through;
+    color: #777;
+}
+
+.cart-goods__btns {
+    display: flex;
+    margin-bottom: 80px;
+}
+.cart-goods__btn-del,
+.cart-goods__btn-sold {
+    all: unset;
+    color: #00666b;
+    border: #00666b 1px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 42px;
+    cursor: pointer;
+}
+.cart-goods__btn-del {
+    width: 88px;
+    margin-right: 10px;
+}
+.cart-goods__btn-sold {
+    width: 120px;
+}
+
+.cart-amount {
+    display: flex;
+    margin-bottom: 80px;
+}
+.cart-amount__item {
+    width: 196px;
+    height: 160px;
+    border: 2px solid #ddd;
+}
+.cart-amount__tit {
+    padding-top: 38px;
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+}
+.cart-amount__price {
+    padding-top: 38px;
+    text-align: center;
+    font-size: 20px;
+    color: #000;
+}
+.cart-amount__deco {
+    width: 72px;
+    height: 160px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #666;
+    font-size: 40px;
+}
+.deco-minus {
+    font-size: 60px;
+}
+.amount-total {
+    width: 226px;
+    background-color: #f7f7f7;
+}
+.amount-total .cart-amount__price {
+    color: #45b8ac;
+}
+.cart-goods__btn-write {
+    all: unset;
+    width: 200px;
+    height: 48px;
+    color: white;
+    background-color: #45b8ac;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    font-size: 14px;
+    cursor: pointer;
+}
 </style>
 </head>
 <body>
-
+<div id=container>
 <div class="wrap cart">
     <div class="my-cart__header">
         <div class="my-cart__tit">장바구니</div>
         <div class="my-cart__sub-tit">
-            주문하실 상품명 및 수량을 정확하게 확인해 주세요.
+         	   주문하실 상품명 및 수량을 정확하게 확인해 주세요.
         </div>
     </div>
     <div class="cart-goods">
         <table class="cart-tb">
             <tr class="cart-tb__header">
                 <th>
-<<<<<<< HEAD
                     <label for=""class="check-label checked"onclick="change_Allcheckbox($(this))">
                         <input type="checkbox"class="check-box allCheck" name="allCheck"checked/>
-=======
-                    <label
-                        for=""
-                        class="check-label checked"
-                        onclick="change_Allcheckbox($(this))"
-                    >
-                        <input
-                            type="checkbox"
-                            class="check-box allCheck"
-                            checked
-                        />
->>>>>>> 65066c1779e958361a7c77be7c807e6757db706e
                     </label>
                 </th>
                 <th id="thSelect">
-                    전체선택 (<span class="prd_count">0</span>/<span
-                        class="prd_total_count"
-                        >0</span
-                    >)
+                	전체선택 (<span class="prd_count">0</span>/<span class="prd_total_count">0</span >)
                 </th>
-<<<<<<< HEAD
 	                <td>
 	                	<div class="cart-goods__btns">
 	            			<button class="cart-goods__btn-del btn_delete selectBtn">선택 삭제</button>
@@ -74,19 +222,15 @@
             </tr>
             <tr>
                 <th id="thInfo">상품명</th>
-=======
-                <th id="thInfo">상품 정보</th>
->>>>>>> 65066c1779e958361a7c77be7c807e6757db706e
                 <th id="thCount">수량</th>
                 <th id="thCost">상품금액</th>
                 <th id="shippingFee">배송비</th>
             </tr>
-
             <!-- DB에서 cart 데이터 불러오는 곳 -->
-<<<<<<< HEAD
           <c:forEach var="list" items="${list}">
            		<tr class="viewDel">
 						<td class="cart-tb__check">
+						<input type = "hidden" class="stock" value="${list.STOCK}"/>
 						<label for="" class="check-label checked" onclick="change_checkbox($(this))">
 							<input type="checkbox" data-pNum="${list.P_NUM}" data-id="${list.ID}"class="prdCheck ico_check" name="prdCheck"
 									checked onchange="total_calcul()"/>
@@ -97,8 +241,13 @@
 							<div class="cart-tb__name">${list.P_NAME}</div>
 							
 							<div class="price_Box">
+								<c:if test= "${empty list.SALEPRICE}">
+								정가: <span class="product__dc cart-tb__num price1">${list.PRICE}</span>
+								</c:if>
+								<c:if test="${not empty list.SALEPRICE}">
 								정가: <span class="product__dc cart-tb__num price1">${list.PRICE}</span>
 								할인가격: <span class="product__price cart-tb__num price2">${list.SALEPRICE}</span>
+								</c:if>
 							</div>
 						</td>
 						<td class="cart-tb__shippingFee">
@@ -119,19 +268,6 @@
 				</c:forEach>	
 			
      	</table>
-=======
-            <tbody class="viewGoods"></tbody>
-        </table>
-        <div class="cart-goods__btns">
-            <button class="cart-goods__btn-del btn_delete selectBtn">
-                선택 삭제
-            </button>
-            <button class="cart-goods__btn-sold btn_delete soldOutBtn">
-                품절 상품 삭제
-            </button>
-        </div>
-
->>>>>>> 65066c1779e958361a7c77be7c807e6757db706e
         <div class="cart-amount">
             <div class="cart-amount__item">
                 <div class="cart-amount__tit">상품 금액</div>
@@ -145,7 +281,7 @@
             <div class="cart-amount__item">
                 <div class="cart-amount__tit">상품 할인금액</div>
                 <div class="cart-amount__price">
-                    -<span id="amountSale"></span> 원
+                    <span id="amountSale"></span> 원
                 </div>
             </div>
             <div class="cart-amount__deco">
@@ -165,25 +301,29 @@
                 <div class="cart-amount__price" style="padding-top: 28px;">
                     <span id="amountTotal"></span> 원
                 </div>
-
-                <div id="totalPoint" align="center">
-                    <div style="margin-top: 10px;">
-                        구매시 <span>0</span>원 적립예정
-                    </div>
-                </div>
             </div>
         </div>
         <input type="button" id="placeAnOrder" class="cart-goods__btn-write"value="주문하기"/>
     </div>
 </div>
+</div>
 </body>
-<<<<<<< HEAD
 <script>
+
+
+
+
+
+
+
+
+
+
 
 //페이지 들어오면 바로 실행
 total_calcul(); //장바구니 총합 계산
 chCount(); // 선택 개수 체크
-
+PriceCntSum(); // 세일 프라이스 값 사승 수량이 올라갈때 체크 1이상인 경우
 
 
 function total_calcul(){
@@ -220,9 +360,11 @@ $('#amountTotal').text(originalTotPrice - discountTotPrice + shippingFeeTotPrice
 
 //페이지 들어오면 바로 실행
 
+
 //전체 개수 구하기	
 chk_total_obj = document.getElementsByClassName('prdCheck');//상품채크박스
 chk_total_leng = chk_total_obj.length;//상품채크박스 개수
+$('.prd_count').text(chk_total_leng);
 $('.prd_total_count').text(chk_total_leng);//상품체크박스 개수 카운트
 
 
@@ -232,6 +374,19 @@ $('.prd_total_count').text(chk_total_leng);//상품체크박스 개수 카운트
 $('.prdCheck').on("click", function(){
 	chCount();
 });
+
+
+function PriceCntSum() {
+	let salePrice = new Array();
+	let cnt = $('.qty').length;
+	
+	for(i=0; i<cnt; i++) {
+		salePrice[i] = $('.price2').eq(i).text() * $('.qty').eq(i).val();
+		
+		$('.prd_price').eq(i).text(salePrice[i]);
+	}
+}
+
 	
 //상품개수카운트 함수
 function chCount() {
@@ -300,6 +455,8 @@ function BtnPlus(btn){
 	btn.prev().val(quan);
 	btn.parent().parent().next().text(discountTotPrice);
 	
+	total_calcul();
+	
 }
 
 //수량 - 버튼
@@ -327,12 +484,97 @@ function BtnMinus(btn){
 	
 	btn.next().val(quan);
 	btn.parent().parent().next().text(discountTotPrice);
+	total_calcul();
 	
 }
 
+$('.allCheck').on('change', function(){
+ 	if($(this).prop('checked')) {
+ 		$(".prdCheck").prop("checked", true); 
+ 		$(".prdCheck").parent().attr('class', 'check-label checked'); // 라벨의 아이콘을 체크 상태로 바꿈
+ 		chCount();
+ 	}else{
+ 		$(".prdCheck").prop("checked", false);
+ 		$(".prdCheck").parent().attr('class', 'check-label'); // 라벨의 아이콘을 체크 상태로 바꿈
+ 		chCount();
+ 	}
+ 	
+ 	total_calcul();
+});
+
+
+//주문으로 넘어가기전 실행
+
+ document.getElementById('placeAnOrder').onclick = function() {
+	
+        //전송전 데이터 가공
+        var form = document.createElement('form');
+        form.setAttribute('id', 'process');
+        form.setAttribute('charset', 'UTF-8');
+        form.setAttribute('action', 'order.do');
+
+        var prdCnt = $('.price1').length;
+        //상품코드
+        var input1 = document.createElement('input');
+        input1.name = 'pNum';
+        input1.type = 'hidden';
+        let pNum  = [];
+        
+        $("input[name='prdCheck']:checked").each(function(){
+        	pNum.push($(this).attr("data-pNum"));
+ 		});
+   
+        input1.value = pNum;
+        form.appendChild(input1);
+
+        //수량
+        var input2 = document.createElement('input');
+        input2.name = 'pCnt';
+        input2.type = 'hidden';
+        let pCnt = [];
+        for (var i = 0; i < prdCnt; i++) {
+            if (
+                $('.prdCheck')
+                    .eq(i)
+                    .prop('checked')
+            ) {
+                let value = $('.clk_count')
+                    .eq(i)
+                    .val();
+                pCnt.push(value);
+            }
+        }
+        input2.value = pCnt;
+        form.appendChild(input2);
+
+
+        //배송비
+        var input4 = document.createElement('input');
+        input4.name = 'shippingFee';
+        input4.type = 'hidden';
+        let shippingFee = $('#amountCourier').text();
+        input4.value = shippingFee;
+        form.appendChild(input4);
+
+        document.body.appendChild(form);
+
+        var price = parseInt($('#amountTotal').text());
+        let stockTest = new Array();
+        let cnt = $('.qty').length;
+        for (i = 0; i < cnt; i++) {
+            stockTest[i] = $('.stock')
+                .eq(i)
+                .val();
+            if (stockTest[i] == 0) {
+               	alert('상품 수량을 확인해주세요')
+                return;
+            }
+        }
+        
+        form.submit();
+        
+}
 
 
 </script>
-=======
->>>>>>> 65066c1779e958361a7c77be7c807e6757db706e
 </html>

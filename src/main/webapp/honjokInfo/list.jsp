@@ -63,11 +63,6 @@ body {
       <h2 class="text-center">혼밥의 모든것</h2>
 
       <div class="layout div1" style="height: 100%;">검색영역</div>
-
-
-
-
-
       <div class="container div2">
 
          <c:choose>

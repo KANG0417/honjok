@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.honjok.app.vo.AdminVO;
+import com.honjok.app.vo.replyUploadVO;
 
 @Service("adminService")
 public class adminServiceImpl implements adminService {
@@ -18,5 +19,7 @@ public class adminServiceImpl implements adminService {
 		System.out.println("vo :" + vo);
 		adminDAO.insertProduct(vo);
 	}
+
+	
 
 }
