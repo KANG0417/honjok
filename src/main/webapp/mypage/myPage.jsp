@@ -181,6 +181,18 @@
 	.qHistory:hover {
 		color: #DCEBFF;
 	}
+	
+	/* 게시물 조회 페이지 스타일 */
+	.interBorder {
+		width: 60%;
+    	border-top: 1px solid #444444;
+    	border-collapse: collapse;
+    	align: center;
+	}
+	
+	.thInter, .tbInter {
+    	background-color: #e3f2fd;
+  	}
 </style>
 <script>
 	
@@ -255,6 +267,13 @@
 		</div>
 		<div id=memberBox>
 			<h3>회원정보</h3>
+	<c:forEach var="inter" items="${interiorMypage }">
+		<table class="interBorder">
+		<tr>
+		<td class="inter">${inter.id }</td>
+		</tr>
+		</table>
+	</c:forEach>
 		</div>
 		<div id=wishBox>
 			<h3>관심상품</h3>
@@ -264,7 +283,7 @@
 		</div>
 	</div>
 	
-	<input type="hidden" name="userId" id="userId">
+	<input type="hidden" name="userId" id="userId" value="${sessionScope.userSession.id}">
 	<input type="hidden" name="password" id="password">
 	<div class="checkFont" id="passwordCheck"></div>	
 </div>
@@ -289,28 +308,33 @@
 	
 	//회원정보 클릭시 페이지 전환
 	$('.orderInfo').on("click",function(){
-		$.ajax({
-			 url : "selectBoard.do",
-			 type: "post",
-             dataType : "json",
-             success : function(data){
-                 
-                 $("table").html("<tr><th>번호</th><th>이름</th><th>나이</th><th>사는곳</th></tr>");
-                 
-                 var show = "";
-                 
-                 $.each(data,function(index, item){
-                     
-                     show += "<tr><td>"+(index+1)+"</td>";
-                     show += "<td>"+item.name+"</td>";
-                     show += "<td>"+item.age+"</td>";
-                     show += "<td>"+item.loc+"</td></tr>";
-                     
-                     
-                 })
-             	}
-             })
-		})
+		var id = $('#userId').val();
+		console.log(id);
+ 	    $.ajax({
+	    	method: "GET",
+	        url : "selectBoard.do",
+	        datatype: "json",
+	        data: { id:id },
+	        success : function(data){
+	        	 console.log(data);
+	        	 $("#intro").html("");
+	        	for(var i in data){
+	        	 $("#intro").append("<table class='interBorder'>\
+	        	 <thead class='thInter'><th>제목</th><th>날짜</th><th>조회수<th></thead>\
+	        	 <tbody class='tbInter'><tr><td>" +
+	        	 data[i].title + "</td><td>" +
+	        	 data[i].regdate + "</td><td>" +
+	        	 data[i].hit + "</td></tr></tbody>\
+	        	 </table>");
+	        	}
+
+	        },
+	        error:function(request,status,error){
+	            //alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+	          	alert("전송실패");
+	        }
+ 	    	})
+	    });
 	
 	$('.wishList').on("click",function(){
 		$('#intro').html("");
@@ -334,9 +358,21 @@
  	    $.ajax({
 	    	method: "GET",
 	        url : "selectBoard.do",
-	        data: {id:id},
+	        datatype: "json",
+	        data: { id:id },
 	        success : function(data){
-	        	
+	        	 console.log(data);
+	        	 $("#intro").html("");
+	        	for(var i in data){
+	        	 $("#intro").append("<table class='interBorder'>\
+	        	 <thead class='thInter'><th>제목</th><th>날짜</th><th>조회수<th></thead>\
+	        	 <tbody class='tbInter'><tr><td>" +
+	        	 data[i].title + "</td><td>" +
+	        	 data[i].regdate + "</td><td>" +
+	        	 data[i].hit + "</td></tr></tbody>\
+	        	 </table>");
+	        	}
+
 	        },
 	        error:function(request,status,error){
 	            //alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);

@@ -57,7 +57,7 @@
 <script>
 let memId ='${userSession.id}';
 </script>
-			<h3>${userSession.id}님 안녕하세요!<a href="logout.do">Log-out</a></h3>
+			<h3>${userSession.id}님 안녕하세요!<a href="${contextPage.request.contextPath }/app/logout.do">Log-out</a></h3>
 	<ul class="navbar-nav">
       <li class="nav-item">
         <a class="nav-link" href="${contextPage.request.contextPath }/app/interior/interiorAllList.do">인테리어</a>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,18 +31,12 @@
 <div id="container">
 	<h1>글등록</h1>
 
-	<form action="insertInteriorB.do" method="post">
+	<form action="insertInteriorB.do" method="get">
 	<table>
 		<tr>
 			<th width="70">제목</th>
 			<td>
 				<input type="text" name="title" size="30">
-			</td>
-		</tr>
-		<tr>
-			<th>작성자</th>
-			<td>
-				<input type="text" name="nickName">
 			</td>
 		</tr>
 		<tr>
@@ -63,7 +58,9 @@
 			</td>
 		</tr>
 	</table>
- 	<input type="hidden" name="comSeq">
+	<input type="hidden" name="nickName" value="${sessionScope.userSession.nickName}">
+ 	<input type="hidden" name="comSeq" value="${CommInteriorVO.comSeq }">
+ 	<input type="hidden" name="id" value="${sessionScope.userSession.id }">
 	</form>
 	<p><a href="interiorAllList.do">글 목록 가기</a></p>
 </div>

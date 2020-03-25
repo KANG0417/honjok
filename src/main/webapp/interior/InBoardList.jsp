@@ -137,8 +137,7 @@
 										<a href="interiorAllList.do?section=${section+1}&pageNum=${section }">다음</a>
 									</c:if>
 									<c:if test="${section != 1 }">
-										<a
-											href="interiorAllList.do?section=${section+1}&pageNum=${section - 1}">다음</a>
+										<a href="interiorAllList.do?section=${section+1}&pageNum=${section - 1}">다음</a>
 									</c:if>
 								</c:if>
 							</c:forEach>

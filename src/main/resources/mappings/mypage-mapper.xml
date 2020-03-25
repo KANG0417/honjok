@@ -3,10 +3,17 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="MypageDAO">
-	<select id="interiorBoard" parameterType="String" resultType="commInteriorVO">
+	
+	<!-- 게시물 조회 -->
+	<!-- 인테리어 게시물 조회 -->
+	<select id="interiorBoard" parameterType="commInteriorVO" resultType="commInteriorVO">
  		SELECT C.COM_SEQ, C.TITLE, C.NICK_NAME, C.CONTENT, C.REGDATE, C.HIT, C.LIKES, I.FILE_IMAGE
 			FROM COMMUNITY C, COMM_INTERIOR I
 			WHERE C.COM_SEQ = I.COM_SEQ
 			AND C.ID = #{id}
+	</select>
+	
+	<select id="orders" parameterType="ordersVO" resultType="ordersVO">
+	
 	</select>
 </mapper>
