@@ -319,10 +319,10 @@
                         <!--production-selling-header 끝-->
                     </div>
 
-				<form>
+				<form class="add-cart" action="/app/addCartList.do" method="POST">
 				    <input type="hidden" name="stock" value="${productvo.stock}"> 
-				    <input type="hidden" name="pCnt" value=""> 
 				    <input type="hidden" name="pNum" value="${productvo.pNum }">
+				    <input type="hidden" name="pCnt" value="1">
 					
                     <div class="production-selling-option-form production-selling-overview__option-form">
                         <section class="selling-option-form-content production-selling-option-form__form">
@@ -351,10 +351,10 @@
                             </p>
                         </section>
                         <div class="production-selling-option-form__footer">
-                            <button class="button button--color-blue-inverted button--size-55 button--shape-4"
-                                type="button">장바구니</button>
-                            <button class="button button--color-blue button--size-55 button--shape-4"
-                                type="button">바로구매</button>
+                            <button type="button"  class="button button--color-blue-inverted button--size-55 button--shape-4"
+                               >장바구니</button>
+                            <button type="button" class="button button--color-blue button--size-55 button--shape-4"
+                               >바로구매</button>
                         </div>
                     </div>
                 </form>
@@ -557,12 +557,10 @@
                                                 
                                                 
                                             <p class="production-review-item__description">
-													내용: <br> ${product.content }
+													내용: <br> ${product.content}
                                             </p>
                                             	</article>	
-                                            </c:forEach>>
-                                            
-                                            
+                                            </c:forEach>
                                  <ul class="list-paginator production-review__paginator">
                                                                             
                                 
@@ -806,7 +804,9 @@
                                                 <path
                                                     d="M11.53 18.54l-8.06 4.31A1 1 0 0 1 2 21.97V3.5A1.5 1.5 0 0 1 3.5 2h17A1.5 1.5 0 0 1 22 3.5v18.47a1 1 0 0 1-1.47.88l-8.06-4.31a1 1 0 0 0-.94 0z">
                                                 </path>
-                                            </svg></button><button
+                                            </svg></button>
+                                           
+                                            <button
                                             class="button button--color-blue-inverted button--size-55 button--shape-4"
                                             type="button">장바구니</button><button
                                             class="button button--color-blue button--size-55 button--shape-4"
@@ -825,6 +825,30 @@
 
 <script type="text/javascript" src="/app/resources/js/ProductDetail/ProductDetail.js"></script>
   
+<script type="text/javascript">
+
+//장바구니
+$('button:contains("장바구니")').on("click", function () {
+	
+	if ("${sessionScope.userSession.id}" != "") {
+		alert('${sessionScope.userSession.id}');
+		$(".add-cart").submit();
+	} else {
+		var result = confirm("로그인이 필요한 서비스입니다. 로그인 하시겠습니까?")
+		if (result) {
+			window
+				.open(
+					'/app/loginModal.jsp',
+					'pop01',
+					'top=10, left=10, width=500, height=600, status=no, menubar=no, toolbar=no, resizable=no');
+		}
+	}
+
+
+});
+
+
+</script>
 
 </body>
 </html>

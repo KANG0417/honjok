@@ -1,13 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
 <!DOCTYPE>
 <html>
 <head>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">    
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <style>
     
 .wrap {
@@ -677,6 +679,19 @@ em, address {
     width: 150px;
 }     
 
+#btnPaymentSubmit{
+ padding: 10px;
+ padding-right: 10px;
+ margin-top:30px;
+ text-align: center;
+}
+
+#payment{
+	font-size: 20px;
+	font-weight: bold;	
+	text-align: center;
+}
+
 </style>
 <title>Insert title here</title>
 </head>
@@ -686,7 +701,7 @@ em, address {
       	<div class="header wrap fusion-order"></div>
       	<!-- //Header 영역 -->
       	<div class="container order fusion-order">
-			<form action="">
+			<!--  <form action="">-->
 				<div class="container_inner">
 					<!-- 콘텐츠 영역 -->
 					<div class="content_wide">
@@ -711,7 +726,7 @@ em, address {
 											<td>
 												<div class="info_order_user">
 													<span>
-														<em>강지향</em>
+														<em>${vo.name}</em>
 														<span class="desc">
 															(보내시는 분
 															<em id="senderNmGubun"></em>
@@ -732,7 +747,7 @@ em, address {
 														</span>
 													</span>
 													<span id="memberEmail">
-													rkdwlgid33@gmail.com
+													${vo.email}
 													</span>
 												</div>
 											</td>
@@ -743,7 +758,7 @@ em, address {
 												<div class="info_deliver">
 													<span class="input_area">
 														<input id="receiveName" class="input_default"
-																type="text" value="강지향" maxlength="20"/>
+																type="text" value="${vo.name}" maxlength="20"/>
 													</span>
 												</div>
 											</td>
@@ -753,15 +768,15 @@ em, address {
 											<td>
 												<div class="info_deliver phone">
 													<span class="input_area">
-														<input type="text" id="mobile1" class="input_default" value="" size="3" maxlength="3" />
+														<input type="text" id="mobile1" class="input_default tel1" value="" size="3" maxlength="3" />
 													</span>
 													<span class="input_txt">-</span>
 													<span class="input_area gwnan">
-														<input type="text" id="mobile2" class="input_default" value="" size="4" maxlength="3" />
+														<input type="text" id="mobile2" class="input_default tel2" value="" size="4" maxlength="4" />
 													</span>
 													<span class="input_txt">-</span>
 													<span class="input_area phone2">
-														<input type="text" id="mobile3" class="input_default" value="" size="4" maxlength="3" />
+														<input type="text" id="mobile3" class="input_default tel3" value="" size="4" maxlength="4" />
 													</span>
 												</div>
 											</td>
@@ -772,16 +787,19 @@ em, address {
 												<div class="info_deliver">
 													<div class="addr_zip">
 														<span class="input_area">
-															<input type="text" id="sample6_postcode" name="adrCode" class="input_default" placeholder="우편번호"> 
+															<input type="text" id="sample6_postcode" name="adrCode" class="input_default" placeholder="우편번호"
+																	value="${vo.adrCode}"> 
 														</span>
 														<input type="button" class="btn btn-default" onclick="sample6_execDaumPostcode()" value="우편번호 찾기">
 													</div>
 													<div class="addr_detail">
 														<span class="input_area detail1">
-															<input type="text" id="sample6_address" class="input_default" name="adr1"placeholder="주소">
+															<input type="text" id="sample6_address" class="input_default" name="adr1"placeholder="주소"
+																	value="${vo.adr1}">
 														</span>
 														<span class="input_area detail2">
-															 <input type="text"id="sample6_detailAddress" name="adr2" class="input_default"placeholder="상세주소">
+															 <input type="text"id="sample6_detailAddress" name="adr2" class="input_default"placeholder="상세주소"
+															 		value="${vo.adr2}">
 														</span>
 													</div>
 												</div>
@@ -798,80 +816,85 @@ em, address {
 									</tbody>
 								</table>
 							</div>
-							<!-- 주문상품 정보 회원 -->
-							<div class="order_prd">
-								<h4 class="tit odr_pdct_info">주문상품 정보</h4>
-								<table class="table_info type2">
-									<caption>장바구니 상품목록</caption>
-									<thead>
-										<tr>
-											<th>상품정보/수량</th>
-											<th>상품금액</th>
-											<th>할인금액</th>
-											<th>할인적용금액</th>
-											<th>배송비</th>
-										</tr>
-									</thead>
-									<tbody>
-										<!-- 장바구니 상품 노출 시작 -->
-										<tr>
-											<td class="td_info">
-												<div class="basic_type none_count">
-													<span class="thum">
-														<img src="#">
-													</span>
-													<div class="prd_info">
-														<span class="mall">젤리스푼</span>
-														<div class="title">
-																[젤리스푼] 그레이트라운드 티셔츠
+							<c:if test="${list != null }">
+								<!-- 주문상품 정보 회원 -->
+									<div class="order_prd">
+										<h4 class="tit odr_pdct_info">주문상품 정보</h4>
+										<table class="table_info type2">
+											<caption>장바구니 상품목록</caption>
+											<thead>
+												<tr>
+													<th>상품정보/수량</th>
+													<th>상품금액</th>
+													<th>할인금액</th>
+													<th>할인적용금액</th>
+													<th>배송비</th>
+												</tr>
+											</thead>
+											<tbody>
+												<!-- 장바구니 상품 노출 시작 -->
+											<c:forEach var="PRODUCT" items="${list}">
+												<tr>
+													<td class="td_info">
+														<input type="hidden" id="pNum" class="pNum" value="${PRODUCT.P_NUM}"/>
+														<div class="basic_type none_count">
+															<span class="thum">
+																<img src = "/app/resources/img/${PRODUCT.THUMNAIL_IMG}">
+															</span>
+															<div class="prd_info">
+																<span class="mall">${PRODUCT.BRAND_NAME}</span>
+																<div id="title"class="title">
+																		${PRODUCT.P_NAME}
+																</div>
+																<div class="option_price">
+																	<span class="price">${PRODUCT.PRICE}</span>
+																	<span class="won">원</span>
+																</div>
+															</div>
 														</div>
-														<div class="option_price">
-															<span class="price">6,900</span>
-															<span class="won">원</span>
-														</div>
-													</div>
-												</div>
-												<ul class="option_wrap">
-													<li>
-													<!-- 텍스트 옵션이 존재할경우 -->
-														<div>
-															L옐로우
-															<em></em>
-															120
-														</div>
-														<div class="option_qty">1개</div>
-													</li>
-												</ul>
-											</td>
-											<td>
-												<span class="price">6,900</span>
-												<span class="won">원</span>
-											</td>
-											<td>
-												<span class="disc">(-)</span>
-												<span id="prodDiscountPrice" class="price">0</span>
-												<span class="won">원</span>
-											</td>
-											<td class="td_discount">
-												<span id="applyProdPrice" class="price">
-												 6,900</span>
-												 <span class="won">원</span>
-											</td>
-											<!-- 배송비 노출 시작 -->
-											<td id="ship" class="td_delivery" rowspan="1">
-												<span id="shippingFee" class="deli_after">무료</span>
-											</td>
-											<!-- 배송비 노출 종료 -->
-										</tr>
-										<!-- 장바구니 상품 노출 종료 -->
-									</tbody>
-								</table>
-								<div class="prd_modify">
-									상품/옵션 변경 및 수량 조절은 장바구니 또는 상품 상세페이지에서 가능합니다.
-									<a class="btn_sys sml_b" href="#">
-									</a>
-								</div>
-							</div>
+														<ul class="option_wrap">
+															<li>
+															<!-- 텍스트 옵션이 존재할경우 -->
+																<div>
+																	L옐로우
+																	<em></em>
+																	120
+																</div>
+																<div class="option_qty">${PRODUCT.P_CNT}</div>
+															</li>
+														</ul>
+													</td>
+													<td>
+														<span class="price price1">${PRODUCT.PRICE}</span>
+														<span class="won">원</span>
+													</td>
+													<td>
+														<span class="disc">(-)</span>
+														<span id="prodDiscountPrice" class="price discountPrice">0</span>
+														<span class="won">원</span>
+													</td>
+													<td class="td_discount">
+														<span id="applyProdPrice" class="price price2">
+														 ${PRODUCT.SALEPRICE}</span>
+														 <span class="won">원</span>
+													</td>
+													<!-- 배송비 노출 시작 -->
+													<td id="ship" class="td_delivery" rowspan="1">
+														<span id="shippingFee" class="deli_after">무료</span>
+													</td>
+													<!-- 배송비 노출 종료 -->
+												</tr>
+												<!-- 장바구니 상품 노출 종료 -->
+											</c:forEach>	
+											</tbody>
+										</table>
+										<div class="prd_modify">
+											상품/옵션 변경 및 수량 조절은 장바구니 또는 상품 상세페이지에서 가능합니다.
+											<a class="btn_sys sml_b" href="#">
+											</a>
+										</div>
+									</div>
+							</c:if>
 							<!-- 콘텐츠 영역 -->
 							<div class="order_pay_wrap">
 								<div id="orderPayInfo" class="order_pay_info">
@@ -937,7 +960,7 @@ em, address {
 														<li>
 															<span class="price_title">상품금액</span>
 															<span class="price_desc">
-																<strong class="price">100,000,00</strong>
+																<strong id="lastTotPirce" class="price"></strong>
 																원
 															</span>
 														</li>
@@ -953,7 +976,7 @@ em, address {
 															<span class="price_desc">
 																<em class="disc">(-)</em>
 																<strong id="subDiscountPrice" class="price">
-																53,700
+			
 																</strong>
 																원
 															</span>
@@ -965,14 +988,13 @@ em, address {
 														<dt>최종 결제금액</dt>
 														<dd>
 															<span id="lastPrice" class="price">
-															1,028,233</span>
+															</span>
 															원
 														</dd>
 													</dl>
-													<a id="btnPaymentSubmit" class="btns_sysred_big_xxl settlement" 
-														href="javascript:void(0)">
-														<span>결제하기</span>
-													</a>
+													<button id="btnPaymentSubmit" class="btns_sysred_big_xxl settlement btn btn-danger">
+														<span id="payment">결제하기</span>
+													</button>
 												</div>
 											</div>
 										</div>
@@ -982,58 +1004,171 @@ em, address {
 						</div>
 					</div>
 				</div>
-			</form>    	
+			<!--  </form>-->    	
       	</div>
       </div>
 </body>
 <script>
+$(function(){
+	var cnt = $('.price1').length; //상품 개수
+	let qty = new Array(cnt); //수량
+	
+	let stock = new Array(cnt); //재고
+	let pName = new Array(cnt); //이름
+	
+	var price = new Array(cnt); // 상품가격
+	var discountPriceMinus = new Array(cnt); // 할인된 금액
+	var salePrice = new Array(cnt); // 할인적용금액
+	var onePrdPrice = new Array(cnt); // 상품개당가격
+	let totDiscountPrice = new Array(cnt); //할인적용가 * 수량
+	let totPrice = new Array(cnt); // 상품정가 * 수량
+	let totSalePrice = new Array(cnt); // 할인금액 합계
+	
+	let lastPrice = 0; //결제금액 합계
+	let lastTotPrice = 0; // 정가금액 합계
+	let lastTotSalePrice = 0; // 할인금액 합계
+	
+	let shoppingFee = 0; // 배송비
+	
+	
+	dataSet();//상품정보 박스 데이터 가공(할인적용가, 최종결제금액)
+	paymentDataSet()//결제창 데이터 가공
+	
+	function dataSet(){
+		for(var i=0; i<cnt; i++){
+			
+		price[i] = parseInt($('.price1').eq(i).text()); //상품 금액 모음
+		salePrice[i] = parseInt($('.price2').eq(i).text()); // 세일 금액 모음
+		
+		
+		discountPriceMinus[i] = parseInt(price[i] - salePrice[i]); // 할인된 금액 모음
+		console.log(discountPriceMinus[i]);
+		
+		qty[i] = parseInt($('.option_qty').eq(i).text());
+		pName[i] = $('.title').eq(i).text();
+		
+		$(".discountPrice").eq(i).text(discountPriceMinus[i]);
+		
+		totSalePrice[i] = salePrice[i] * qty[i]; 
+		totPrice[i] = price[i] * qty[i];
+		
+		
+		lastTotPrice += totPrice[i]; //정가금액합계
+		console.log(lastTotPrice);
+		
+		lastTotSalePrice += discountPriceMinus[i]; //할인금액 합계
+		console.log(lastTotSalePrice);		
+		
+		lastPrice += totSalePrice[i]; //최종합계금액
+		console.log(lastPrice);
+		
+		$('#lastTotPirce').text(lastTotPrice);
+		$('#subDiscountPrice').text(lastTotSalePrice);
+		$('#lastPrice').text(lastPrice);
+		}
+	}
 
-function sample6_execDaumPostcode(){
-    new daum.Postcode({
-        oncomplete: function(data) {
-            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
 
-            // 각 주소의 노출 규칙에 따라 주소를 조합한다.
-            // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-            var addr = ''; // 주소 변수
-            var extraAddr = ''; // 참고항목 변수
 
-            //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-            if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
-                addr = data.roadAddress;
-            } else { // 사용자가 지번 주소를 선택했을 경우(J)
-                addr = data.jibunAddress;
+
+
+    function sample6_execDaumPostcode() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var addr = ''; // 주소 변수
+                var extraAddr = ''; // 참고항목 변수
+
+                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                    addr = data.roadAddress;
+                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                    addr = data.jibunAddress;
+                }
+
+                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+                if(data.userSelectedType === 'R'){
+                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                        extraAddr += data.bname;
+                    }
+                    // 건물명이 있고, 공동주택일 경우 추가한다.
+                    if(data.buildingName !== '' && data.apartment === 'Y'){
+                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                    }
+                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                    if(extraAddr !== ''){
+                        extraAddr = ' (' + extraAddr + ')';
+                    }
+          
+                
+                } 
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                document.getElementById('sample6_postcode').value = data.zonecode;
+                document.getElementById("sample6_address").value = addr;
+                // 커서를 상세주소 필드로 이동한다.
+                document.getElementById("sample6_detailAddress").focus();
             }
-
-            // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
-            if(data.userSelectedType === 'R'){
-                // 법정동명이 있을 경우 추가한다. (법정리는 제외)
-                // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-                if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
-                    extraAddr += data.bname;
-                }
-                // 건물명이 있고, 공동주택일 경우 추가한다.
-                if(data.buildingName !== '' && data.apartment === 'Y'){
-                    extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-                }
-                // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-                if(extraAddr !== ''){
-                    extraAddr = ' (' + extraAddr + ')';
-                }
-                // 조합된 참고항목을 해당 필드에 넣는다.
-                document.getElementById("sample6_extraAddress").value = extraAddr;
-            
-            } else {
-                document.getElementById("sample6_extraAddress").value = '';
-            }
-
-            // 우편번호와 주소 정보를 해당 필드에 넣는다.
-            document.getElementById('sample6_postcode').value = data.zonecode;
-            document.getElementById("sample6_address").value = addr;
-            // 커서를 상세주소 필드로 이동한다.
-            document.getElementById("sample6_detailAddress").focus();
-        }
-    }).open();
-}
+        }).open();
+    }
+    
+    function paymentDataSet() {
+    	let topProductName = $('.title').eq(0).text();
+    	console.log(topProductName);
+    	let otherCnt = cnt-1;
+    	console.log(otherCnt);
+    	
+    	let name = '';
+    	var tel1 = $('.tel1').val();
+    	var tel2 = $('.tel2').val();
+    	var tel3 = $('.tel3').val();
+    	let tel = tel1 + tel2 + tel3;
+    	let pNum = new Array(cnt);
+    	for(i=0; i<cnt; i++){
+    		pNum[i] = $('.pNum').eq(i).val();
+    	}
+    	
+    	document.getElementById('btnPaymentSubmit').onclick = function(){
+    		let requst = $('#request').val();
+    		name = $('#receiveName').val();
+    		addr1 = $('#sample6_postcode').val();
+    		addr2 = $('#sample6_address').val();
+	    		
+	    	IMP.init('iamport');
+	        IMP.request_pay({
+	            pg : 'html5_inicis',
+	            pay_method : 'card',
+	            merchant_uid : 'merchant_' + new Date().getTime(),
+	            name : topProductName +"외"+ otherCnt,
+	            //amount: lastPriceSet, //가격
+	            amount : 100, //가격
+	            buyer_name : name ,
+	            buyer_tel : tel,
+	            buyer_addr : addr2,
+	            buyer_postcode : addr1
+	        }, function(rsp) {
+	            if ( rsp.success ) {
+	                var msg = '결제가 완료되었습니다.';
+	                msg += '고유ID : ' + rsp.imp_uid;
+	                msg += '상점 거래ID : ' + rsp.merchant_uid;
+	                msg += '결제 금액 : ' + rsp.paid_amount;
+	                msg += '카드 승인번호 : ' + rsp.apply_num;
+	            } else {
+	                var msg = '결제에 실패하였습니다.';
+	                msg += '에러내용 : ' + rsp.error_msg;
+	            }
+	
+	            alert(msg);
+	        });
+    		
+  	  }
+    }
+    
+    
+});
 </script>
 </html>
