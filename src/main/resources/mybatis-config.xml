@@ -36,6 +36,7 @@
 	<mapper resource="mappings/cart-mapper.xml"/>
 	<mapper resource="mappings/product-mapper.xml"/>
 	<mapper resource="mappings/mypage-mapper.xml"/>
+	<mapper resource="mappings/order-mapper.xml"/>
  </mappers>
  
 </configuration>
