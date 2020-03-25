@@ -276,23 +276,14 @@
                                     </span>
                                     <span class="production-selling-header__price__price-wrap">
                                         <del class="production-selling-header__price__original">
-                                            <span class="number">${productvo.price}</span>
+                                            <span class="price">${productvo.price}</span>
                                             <span class="won">원</span>
                                         </del>
                                         <span class="production-selling-header__price__separator"></span>
                                         <span class="production-selling-header__price__price">
-                                            <span class="number">${productvo.saleprice }</span>
+                                            <span class="saleprice">${productvo.saleprice }</span>
                                             <span class="won">원</span>
                                             <span class="production-selling-header__price__badge">
-                                                <svg class="icon" aria-label="최저가" width="37" height="20"
-                                                    viewBox="0 0 37 20" preserveAspectRatio="xMidYMid meet">
-                                                    <g fill="none" fill-rule="evenodd">
-                                                        <rect width="37" height="20" fill="#F77" rx="4"></rect>
-                                                        <path fill="#FFF"
-                                                            d="M5.1 8.04V7.02h5.34v1.02H8.5c.21.83 1.27 1.54 2.23 1.66l-.6 1.02a3.98 3.98 0 0 1-2.29-1.6 3.89 3.89 0 0 1-2.43 1.86L4.77 10c1.18-.26 2.2-1.03 2.37-1.95H5.09zM12.65 5v9.8h-1.3V5h1.3zm-1.8 6.73l.1.98c-1.79.24-4.44.34-6.27.34l-.19-1.04c.9 0 1.8 0 2.66-.03v-1.6h1.3v1.55c.88-.03 1.7-.11 2.4-.2zM6.35 6.48v-1h2.92v1H6.35zm13.67 5.34l-.72.95a5.58 5.58 0 0 1-2.36-2.67 4.88 4.88 0 0 1-2.36 2.86l-.8-.94c1.63-.9 2.48-2.4 2.48-4.46v-.5h-1.97V6h5.21v1.06h-1.9v.5c0 2.06.95 3.46 2.42 4.26zm2.08 2.98h-1.29V9.47h-1.65v-1.1h1.65V5h1.29v9.8zm10.48-4.97h-1.42v4.97H29.9V5h1.27v3.76h1.42v1.07zM28.6 6a7.8 7.8 0 0 1-4.39 7.03l-.78-.97a6.46 6.46 0 0 0 3.77-5h-3.18V6h4.58z">
-                                                        </path>
-                                                    </g>
-                                                </svg>
                                             </span>
                                         </span>
                                     </span>
@@ -301,7 +292,7 @@
                             
                             <div class="production-selling-header__promotion">
                                 <p class="production-selling-header__promotion__entry">
-                                    <b>289P</b>적립해드립니다.
+                               
                                 </p>
                             </div>
                         </div>
@@ -323,54 +314,40 @@
                             </span>
                         </p>
 
-                        <!-- <a class="production-selling-header__seller production-selling-header__seller--simple" href="/brands/home?query=%EB%A1%9C%EB%AF%B8%ED%99%88&amp;affect_type=ProductSaleDetail&amp;affect_id=131836">
-        <span class="production-selling-header__seller__text">
-            <svg class="icon" width="20" height="20" fill="currentColor" viewBox="0 0 20 20" preserveAspectRatio="xMidYMid meet"><path d="M16.67 3.33H3.33V5h13.34V3.33zm.83 8.34V10l-.83-4.17H3.33L2.5 10v1.67h.83v5h8.34v-5H15v5h1.67v-5h.83zM10 15H5v-3.33h5V15z"></path>
-            </svg>로미홈 브랜드홈
-        </span>
-    </a> -->
+    
 
                         <!--production-selling-header 끝-->
                     </div>
 
-
+				<form>
+				    <input type="hidden" name="stock" value="${productvo.stock}"> 
+				    <input type="hidden" name="pCnt" value=""> 
+				    <input type="hidden" name="pNum" value="${productvo.pNum }">
+					
                     <div class="production-selling-option-form production-selling-overview__option-form">
                         <section class="selling-option-form-content production-selling-option-form__form">
-                            <div class="selling-option-form-content__form">
-                                <div class="selling-option-select-input">
-                                    <div
-                                        class="input-group select-input selling-option-select-input__option selling-option-select-input__option-1 focused">
-                                        <select class="form-control empty">
-                                            <option value="" disabled="">추가 선택</option>
-                                            <option value="0">추가선택1</option>
-                                            <option value="1">추가선택2</option>
-                                        </select>
-                                    </div>
+							<div class="selling-option-form-content__form">
+								<span>남은 수량 : <span class="stock">${productvo.stock}</span></span> <select id="product-select">
+									<option value="">선택</option>
+									<option value="">${productvo.pName}</option>
+								</select>
 
-                                    <div
-                                        class="input-group select-input selling-option-select-input__option selling-option-select-input__option-2">
-	                                        <select class="form-control empty">
-	                                            <option value="0" >색상 선택</option>
-	                                        </select>
-                                    </div>
-                                    <div
-                                        class="input-group select-input selling-option-select-input__option selling-option-select-input__option-extra">
-                                        <select class="form-control empty">
-                                            <option value="" disabled="">추가상품을 </option>
-                                            <option value="0">추가상품1</option>
-                                            <option value="1">추가상품2</option>
-                                        </select>
-                                        
-                                    </div>  
-                                </div>
-                                <!--selling-option-form-content__form" 끝-->
-                            </div>
-                            
-                            <ul class="selling-option-form-content__list"></ul>
+								<div class="optselect_area" style="">
+									<ul id="_optionSelectList" class="opt_selectlist">
+									
+												
+									
+										
+							
+									</ul>
+								</div>
+							</div>
+
+							<ul class="selling-option-form-content__list"></ul>
                             <p class="selling-option-form-content__price">
                                 <span class="selling-option-form-content__price__left">주문금액</span>
-                                <span class="selling-option-form-content__price__right"><span
-                                        class="selling-option-form-content__price__number">0</span>원</span>
+                                <span class="selling-option-form-content__price__right">
+                                <span class="selling-option-form-content__price__number">0</span>원</span>
                             </p>
                         </section>
                         <div class="production-selling-option-form__footer">
@@ -380,6 +357,7 @@
                                 type="button">바로구매</button>
                         </div>
                     </div>
+                </form>
                 </div>
 
             </div>
@@ -811,29 +789,7 @@
                                     <section
                                         class="selling-option-form-content production-selling-option-form__form">
                                         <div class="selling-option-form-content__form">
-                                            <div class="selling-option-select-input">
-                                                <div
-                                                    class="input-group select-input selling-option-select-input__option selling-option-select-input__option-1 focused">
-                                                    <select class="form-control empty">
-                                                        <option value="" disabled="">추가선택</option>
-                                                        <option value="0">추가선택1</option>
-                                                        <option value="1">추가선택2</option>
-                                                        
-                                                    </select></div>
-                                                <div
-                                                    class="input-group select-input selling-option-select-input__option selling-option-select-input__option-2">
-                                                    <select class="form-control empty">
-                                                        <option>색상 선택</option>
-                                                    </select></div>
-                                                <div
-                                                    class="input-group select-input selling-option-select-input__option selling-option-select-input__option-extra">
-                                                    <select class="form-control empty">
-                                                        <option value="" disabled="">추가상품을 선택해주세요.</option>
-                                                        <option value="0">추가상품1</option>
-                                                        <option value="1">추가상품2</option>
-                                                        
-                                                    </select></div>
-                                            </div>
+                                     
                                         </div>
                                         <ul class="selling-option-form-content__list"></ul>
                                         <p class="selling-option-form-content__price"><span
