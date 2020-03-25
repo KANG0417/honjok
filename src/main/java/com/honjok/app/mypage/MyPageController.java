@@ -32,13 +32,14 @@ public class MyPageController {
 	}
 	
 	//주문내역 id로 조회
-	/*@RequestMapping("/selectOrder.do")
+	@RequestMapping("/selectOrder.do")
+	@ResponseBody
 	public String getOrder(UserVO uvo, HttpSession httpSession, HttpServletRequest request,
 			HttpServletResponse response) {
 		
 		mypages.selectOne(uvo);
 		return "myPage.jsp";
-	}*/
+	}
 	
 	//게시물 id로 조회
 	//--인테리어 게시판 조회
