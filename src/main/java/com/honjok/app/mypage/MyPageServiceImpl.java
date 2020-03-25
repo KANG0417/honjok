@@ -21,6 +21,9 @@ public class MyPageServiceImpl implements MyPageService {
 		return myDAO.getUser(uvo);
 	}
 
+	//id로 주문내역 조회
+	/*public */
+	
 	//id로 본인 게시물 조회 
 	@Override
 	public List<CommInteriorVO> getSelectBoard(CommInteriorVO cvo) {

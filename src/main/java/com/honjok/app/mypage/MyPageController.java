@@ -31,8 +31,8 @@ public class MyPageController {
 		return "myPage.jsp";
 	}
 	
-	/*//주문내역 id로 조회
-	@RequestMapping("/selectOrder.do")
+	//주문내역 id로 조회
+	/*@RequestMapping("/selectOrder.do")
 	public String getOrder(UserVO uvo, HttpSession httpSession, HttpServletRequest request,
 			HttpServletResponse response) {
 		
