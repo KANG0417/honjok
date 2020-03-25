@@ -28,4 +28,22 @@
 		)where num BETWEEN #{begin} and #{end}
 	</select>
 
+	<!-- qna 리뷰 글 등록 -->
+	<select id="inserQnaReview" parameterType="productQnaVO">
+		insert into product_qna (SEQ,
+		COMMENT_PROC,
+		IDX,
+		TITLE,
+		CONTENT,
+		REGDATE,
+		LEV,
+		P_PROC,
+		P_NAME,
+		BUY_INFO,
+		ID) values
+		(#{seq},#{commentProc},PRODUCT_QNA_SEQ.nextval
+		,#{title},#{content},sysdate,0,'처리중',#{pName}
+		,'미구매',#{id})
+	</select>
+
 </mapper>

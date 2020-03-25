@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.honjok.app.vo.productQnaVO;
 import com.honjok.app.vo.productReviewPagingVO;
 import com.honjok.app.vo.productReviewVO;
 import com.honjok.app.vo.productVO;
@@ -262,6 +263,20 @@ public class ProductController {
 		return review;
 
 		
+	}
+	
+	
+	@RequestMapping("inserQnaReview.do")
+	public String inserQnaReview(productQnaVO productqnavo) {
+			
+		
+		
+		System.out.println(productqnavo);
+		
+		service.inserQnaReview(productqnavo);
+
+		
+		return null;
 	}
 	
 }

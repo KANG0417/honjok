@@ -13,16 +13,71 @@
     <script src="https://kit.fontawesome.com/73d0df04d6.js" crossorigin="anonymous"></script>
    	
    	
-  		<link href="/app/resources/css/ProductDetail/ProductDetail.css" rel="stylesheet">
+  		<link href="/app/resources/css/ProductDetail/ProductDetail.css?after" rel="stylesheet">
 
 
+<style>
+
+
+</style>
 </head>
 
 <body>
+<!-- 문의 모달 시작 -->
+
+  <div class="react-modal react-modal--center product-question__modal open open-active">
+        <div class="react-modal__content-wrap">
+            <div class="react-modal__content product-question">
+                <form class="product-question__wrap" action="inserQnaReview.do" method="POST">
+                <input type="hidden" name="commentProc" value="상품">
+                <input type="hidden" name="seq" value="${productvo.pNum }">
+                <input type="hidden" name="id" value="${sessionScope.userSession.id }">
+                    <div class="product-question__wrap__close"><button type="button">닫기</button></div>
+                    <div class="product-question__wrap__title">상품 문의하기</div>
+                    <div class="product-question__wrap__sub-title">문의유형</div>
+                    <div class="product-question__wrap__type-select">
+                        <div class="product-question__wrap__type-select__box product-question__wrap__type-select__box--select">상품</div>
+                        <div class="product-question__wrap__type-select__box">배송</div>
+                        <div class="product-question__wrap__type-select__box">반품</div>
+                        <div class="product-question__wrap__type-select__box">교환</div>
+                        <div class="product-question__wrap__type-select__box">환불</div>
+                        <div class="product-question__wrap__type-select__box">기타</div>
+                    </div>
+                    <div class="product-question__wrap__sub-title product-question__wrap__sub-title--error">상품 및 옵션
+                    </div>
+                    <div class="product-question__wrap__option-select">
+                        <div class="input-group select-input errored product-question__wrap__option-select__input">
+                            <select name="pName" class="form-control empty error">
+                                <option value="${productvo.pName}">${productvo.pName}</option>
+                            </select><span class="select-input__icon"></span></div>
+                        <div class="form-check checkbox-input product-question__checkbox"><label
+                                class="form-check-label"><input class="form-check" type="checkbox"><span
+                                    class="check-img"></span>선택 안함</label></div>
+                    </div>
+                    <div class="product-question__wrap__sub-title">문의</div>
+                    
+                    <input type="text" placeholder="제목을 입력하세요" name="title"><br>
+                    <textarea placeholder="문의 내용을 입력하세요"
+                        maxlength="1000" class="form-control text-area-input product-question__wrap__question"
+                        style="height: 40px;" name="content"></textarea>
+                    <div class="product-question__wrap__explain">문의내용에 대한 답변은 ‘마이페이지 &gt; 나의 쇼핑 &gt; 나의 문의내역’ 또는 ‘상품
+                        상세페이지’에서 확인 가능합니다.</div>
+                    <div class="product-question__wrap__buttons">
+                       <button
+                            class="button button--color-blue button--size-50 button--shape-4 product-question__wrap__buttons__submit"
+                            type="button">완료</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+<!-- 리뷰 모달 끝 -->
+
+
       <!--리뷰모달 시작-->
-<div class="react-modal--center-div" >  
 <div class="react-modal react-modal--center review-modal__modal__wrap open open-active">
-        <div class="react-modal__content-wrap" style="margin: 10px;">
+        <div class="react-modal__content-wrap">
             <div class="react-modal__content review-modal__modal">
                 <div class="review-modal">
                     <div class="review-modal__title">리뷰 쓰기
@@ -135,7 +190,6 @@
                 </div>
             </div>
         </div>
-</div>
 </div>
 <!--리뷰 모달-->
 
@@ -633,7 +687,7 @@
                             <header class="production-selling-section__header">
                                 <h1 class="production-selling-section__title">문의<span class="count">문의갯수</span></h1>
                                 <div class="production-selling-section__right">
-                                    <a href="#">문의하기</a>
+                                   	<button type="button">문의하기</button>
                                 </div>
                             </header>
                             <div class="production-question-feed">
@@ -821,34 +875,13 @@
     
     </div>
     <!--production-selling-overview container 끝-->
-
+<script type="text/javascript">
+	var id = "${sessionScope.userSession.id}";
+	
+</script>
 
 <script type="text/javascript" src="/app/resources/js/ProductDetail/ProductDetail.js"></script>
   
-<script type="text/javascript">
-
-//장바구니
-$('button:contains("장바구니")').on("click", function () {
-	
-	if ("${sessionScope.userSession.id}" != "") {
-		alert('${sessionScope.userSession.id}');
-		$(".add-cart").submit();
-	} else {
-		var result = confirm("로그인이 필요한 서비스입니다. 로그인 하시겠습니까?")
-		if (result) {
-			window
-				.open(
-					'/app/loginModal.jsp',
-					'pop01',
-					'top=10, left=10, width=500, height=600, status=no, menubar=no, toolbar=no, resizable=no');
-		}
-	}
-
-
-});
-
-
-</script>
 
 </body>
 </html>

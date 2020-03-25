@@ -9,17 +9,25 @@ var ratingInput = document.querySelector(".rating-group");
 var ReviewBtn = document.querySelector(".ReviewBtn");
 var Review = document.querySelector(".review-modal__modal__wrap");
 var reviewModalClose = document.querySelector(".review-modal__close");
-var reactModalCenterDiv = document.querySelector(".react-modal--center-div");
+var reactModalCenterDiv = document.querySelector(".review-modal__modal__wrap");
 var body = document.querySelector("body");
 
 
 //이미지 추가하고 더하기 
 ReviewBtn.onclick = function () {
-	var scrollPosition = window.scrollY;
-	reactModalCenterDiv.style.top = scrollPosition;
+	if(id != ""){
+		alert(id);
 	reactModalCenterDiv.style.display = "block";
-	reactModalCenterDiv.style.overflow = "scroll";
-	body.style.overflow = "hidden";
+	} else {
+		var result = confirm("로그인이 필요한 서비스입니다. 로그인 하시겠습니까?")
+		if (result) {
+			window
+				.open(
+					'/app/loginModal.jsp',
+					'pop01',
+					'top=10, left=10, width=500, height=600, status=no, menubar=no, toolbar=no, resizable=no');
+		}
+	}
 }
 
 reviewModalClose.onclick = function () {
@@ -336,6 +344,73 @@ $(document).on("click", ".btns input", function (e) {
 
 	}
 })
+
+
+
+
+$('button:contains("장바구니")').on("click", function () {
+	
+	if (id != "") {
+		alert(id);
+		$(".add-cart").submit();
+	} else {
+		var result = confirm("로그인이 필요한 서비스입니다. 로그인 하시겠습니까?")
+		if (result) {
+			window
+				.open(
+					'/app/loginModal.jsp',
+					'pop01',
+					'top=10, left=10, width=500, height=600, status=no, menubar=no, toolbar=no, resizable=no');
+		}
+	}
+
+
+});
+
+
+
+
+$(document).on("click","button:contains('문의하기')",function(){
+	if(id != ""){
+		alert(id);
+		$('.product-question__modal').show();
+	} else {
+		var result = confirm("로그인이 필요한 서비스입니다. 로그인 하시겠습니까?")
+		if (result) {
+			window
+				.open(
+					'/app/loginModal.jsp',
+					'pop01',
+					'top=10, left=10, width=500, height=600, status=no, menubar=no, toolbar=no, resizable=no');
+
+		}
+	}
+
+
+});
+
+$(document).on("click",".product-question__wrap__buttons__submit",function(){
+	var form = $('.product-question__wrap');
+
+	console.log(form);
+	form.submit();
+});
+
+
+$(document).on("click","button:contains('닫기')",function(){
+
+		$('.product-question__modal').hide();
+
+});
+
+
+$(document).on("click",".product-question__wrap__type-select",function(e){
+	if(e.target.className  != 'product-question__wrap__type-select__box') return;
+	$('input[name="commentProc"]').val(e.target.innerText);
+	$('.product-question__wrap__type-select__box').removeClass('product-question__wrap__type-select__box--select');
+	$(e.target).addClass('product-question__wrap__type-select__box--select');
+
+});
 
 
 

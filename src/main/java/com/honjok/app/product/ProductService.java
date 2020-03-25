@@ -4,6 +4,7 @@ package com.honjok.app.product;
 import java.util.List;
 import java.util.Map;
 
+import com.honjok.app.vo.productQnaVO;
 import com.honjok.app.vo.productReviewVO;
 import com.honjok.app.vo.productVO;
 
@@ -18,6 +19,8 @@ public interface ProductService {
 	int getTotalCount(String pNum);
 
 	List<productReviewVO> getreviewList(Map map);
+
+	void inserQnaReview(productQnaVO productqnavo);
 
 	
 }
