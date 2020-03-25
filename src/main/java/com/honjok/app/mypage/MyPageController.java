@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.honjok.app.vo.CommInteriorVO;
+import com.honjok.app.vo.OrdersVO;
 import com.honjok.app.vo.UserVO;
 
 @Controller
@@ -32,15 +33,15 @@ public class MyPageController {
 	}
 	
 	//주문내역 id로 조회
-	/*@RequestMapping("/selectOrder.do")
+	@RequestMapping("/selectOrder.do")
 	@ResponseBody
-	public String getOrder(UserVO uvo, HttpSession httpSession, HttpServletRequest request,
+	public String getOrder(OrdersVO ovo, HttpSession httpSession, HttpServletRequest request,
 			HttpServletResponse response) {
 		
-		mypages.selectOne(uvo);
+		mypages.getOrder(ovo);
 		return "myPage.jsp";
 	}
-	*/
+	
 	//게시물 id로 조회
 	//--인테리어 게시판 조회
 	@RequestMapping("/selectBoard.do")

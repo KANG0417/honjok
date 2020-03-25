@@ -25,7 +25,7 @@ public class MypageDAO {
 
 	//id로 회원 주문내역 조회
 	public List<OrdersVO> getOrder(OrdersVO ovo) {
-		return mybatis.selectList("MypageDAO.", ovo);
+		return mybatis.selectList("MypageDAO.ordersSelect", ovo);
 	}
 	
 	//회원ID로 본인 게시물 조회

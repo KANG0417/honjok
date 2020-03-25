@@ -13,7 +13,7 @@
 			AND C.ID = #{id}
 	</select>
 	
-	<select id="orders" parameterType="ordersVO" resultType="ordersVO">
+	<select id="ordersSelect" parameterType="ordersVO" resultType="ordersVO">
 	
 	</select>
 </mapper>
