@@ -267,19 +267,33 @@
 		</div>
 		<div id=memberBox>
 			<h3>회원정보</h3>
-	<c:forEach var="inter" items="${interiorMypage }">
-		<table class="interBorder">
-		<tr>
-		<td class="inter">${inter.id }</td>
-		</tr>
-		</table>
-	</c:forEach>
+			<c:forEach var="user" items="${userSelect}">
+				<div class="userBorder">
+				<ol>
+				<li class="userU">${user.id }</li>
+				</ol>
+				</div>
+			</c:forEach>
+			<c:forEach var="inter" items="${interiorMypage }">
+				<div class="interBorder">
+				<ol>
+				<li class="userB">${user.id }</li>
+				</ol>
+				</div>
+			</c:forEach>
 		</div>
 		<div id=wishBox>
 			<h3>관심상품</h3>
 		</div>
 		<div id=commBox>
 			<h3>커뮤니티</h3>
+			<c:forEach var="inter" items="${interiorMypage }">
+				<table class="interBorder">
+				<tr>
+				<td class="inter">${inter.id }</td>
+				</tr>
+				</table>
+			</c:forEach>
 		</div>
 	</div>
 	
@@ -307,27 +321,19 @@
 	});
 	
 	//회원정보 클릭시 페이지 전환
+	//---주문내역 조회 페이지
 	$('.orderInfo').on("click",function(){
 		var id = $('#userId').val();
 		console.log(id);
  	    $.ajax({
 	    	method: "GET",
-	        url : "selectBoard.do",
+	        url : "selectOrder.do",
 	        datatype: "json",
 	        data: { id:id },
 	        success : function(data){
 	        	 console.log(data);
 	        	 $("#intro").html("");
-	        	for(var i in data){
-	        	 $("#intro").append("<table class='interBorder'>\
-	        	 <thead class='thInter'><th>제목</th><th>날짜</th><th>조회수<th></thead>\
-	        	 <tbody class='tbInter'><tr><td>" +
-	        	 data[i].title + "</td><td>" +
-	        	 data[i].regdate + "</td><td>" +
-	        	 data[i].hit + "</td></tr></tbody>\
-	        	 </table>");
-	        	}
-
+	        	 $("#intro").append("<div id='interBorder'></div>");
 	        },
 	        error:function(request,status,error){
 	            //alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -341,9 +347,11 @@
 		$('#intro').append('<table><thead><tr><th>찜목록</th></tr></thead></table>');	
 	})
 	
+	//---회원정보 수정 페이지
 	$('.memUp').on("click",function(){
 		$('#intro').html("");
-		$('#intro').append('<table><thead><tr><th>회원정보수정</th></tr></thead></table>');	
+		$('#intro').append('<div class="userBorder"><ol><li class="userU">${user.id }\
+		</li></ol></div>');
 	})
 	
 	$('.memDel').on("click",function(){

@@ -13,7 +13,25 @@
 			AND C.ID = #{id}
 	</select>
 	
-	<select id="orders" parameterType="ordersVO" resultType="ordersVO">
-	
+	<!-- 주문내역 조회 -->
+	<select id="orderSelect" parameterType="orderVO" resultType="orderVO">
+		
 	</select>
+	
+	<!-- 회원정보-->
+	<!-- 회원정보 조회 -->
+	<select id="userSelect" parameterType="user" resultType="user">
+		SELECT *
+		FROM USERS
+		WHERE ID = #{id}
+	</select>
+	
+	<!-- 회원정보 수정 -->
+	<update id="updateUser" parameterType="user">
+		UPDATE USERS
+		SET PASSWORD = #{password}, EMAIL = #{email}, ADR_CODE = #{adrCode},
+		ADR1 = #{adr1}, ADR2 = #{adr2}, PHONE = #{phone}, REGDATE = sysdate,
+		NICK_NAME = #{nickName}, AGE = #{age}
+		WHERE ID = #{id}
+	</update>
 </mapper>

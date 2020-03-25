@@ -24,7 +24,7 @@
 		<typeAlias alias="productVO" type="com.honjok.app.vo.productVO"/>
 		<typeAlias alias="productReviewVO" type="com.honjok.app.vo.productReviewVO"/>
 		<typeAlias alias="productQnaVO" type="com.honjok.app.vo.productQnaVO"/>
-		<typeAlias alias="ordersVO" type="com.honjok.app.vo.OrdersVO"/>
+		<typeAlias alias="orderVO" type="com.honjok.app.vo.OrderVO"/>
 	</typeAliases>
   <!-- SQL 작성파일인 매퍼 파일 위치 지정 -->
  <mappers>
