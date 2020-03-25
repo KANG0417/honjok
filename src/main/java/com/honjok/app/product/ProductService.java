@@ -21,6 +21,9 @@ public interface ProductService {
 	List<productReviewVO> getreviewList(Map map);
 
 	void inserQnaReview(productQnaVO productqnavo);
+	
+	//ONA 리뷰
+	List<productQnaVO> productqnavoList(String pNum);
 
 	
 }

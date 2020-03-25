@@ -682,63 +682,72 @@
                             </div>
                         </section>
 
-                        <a id="production-selling-question"></a>
-                        <section class="production-selling-section">
-                            <header class="production-selling-section__header">
-                                <h1 class="production-selling-section__title">문의<span class="count">문의갯수</span></h1>
-                                <div class="production-selling-section__right">
-                                   	<button type="button">문의하기</button>
-                                </div>
-                            </header>
-                            <div class="production-question-feed">
-                                <div class="production-question-feed__list">
-                                    <article class="production-question-feed__item" data-qna-id="850329">
-                                        <header class="production-question-feed__item__header">문의내용
-                                            <span class="answered">답변상태</span>
-                                        </header>
-                                        <p class="production-question-feed__item__author">작성자 닉네임 | 작성일                                   </p>
-                                        <div class="production-question-feed__item__question">
-                                            <span class="production-question-feed__item__badge">Q&nbsp;</span>
-                                            <p class="production-question-feed__item__content">
-                                                <span class="production-question-feed__item__content__option-name">문의 제목
-                                                    <br>
-                                                </span>문의 내용 
-                                            </p>
-                                        </div>
-                                        <div class="production-question-feed__item__answer">
-                                            <span class="production-question-feed__item__badge">A&nbsp;</span>
-                                            <p class="production-question-feed__item__answer__author">
-                                                <span class="author">판매자 상호</span>&nbsp;
-                                                <span class="date">답변일자</span>
-                                            </p>
-                                            <p class="production-question-feed__item__content">답변내용
-                                            </p>
-                                        </div>
-                                    </article>
-                                </div>
-                                <ul class="list-paginator production-question-feed__paginator">
-                                	<li>
-                                		<button class="list-paginator__prev" type="button">
-                                           	이전
-                                       </button>
-                                    </li>
-                                    
-                                    <li>
-                                        <button class="list-paginator__page sm selected" type="button">1</button>
-                                    </li>
-                                    
-                                    <li>
-                                        <button class="list-paginator__next" type="button">
-                                         	다음
-                                        </button>
-                                    </li>
-                                </ul>
-                            </div>
-                            
-                            
-                        </section>
+						<a id="production-selling-question"></a>
+						<section class="production-selling-section">
+							<header class="production-selling-section__header">
+								<h1 class="production-selling-section__title">
+									문의<span class="count">문의갯수</span>
+								</h1>
+								<div class="production-selling-section__right">
+									<button type="button">문의하기</button>
+								</div>
+							</header>
+							<div class="production-question-feed">
+								<div class="production-question-feed__list">
+								<c:forEach var="productqna" items="${productvo.productqnavo}">
+										<article class="production-question-feed__item"
+											data-qna-id="931166">
+									<c:choose>
+										<c:when test="${productqna.lev == 0 }">
+											<header class="production-question-feed__item__header">
+												${productqna.buyInfo } | ${productqna.commentProc } | <span class="answered">${productqna.pProc }</span>
+											</header>
+											<p class="production-question-feed__item__author">${productqna.id }
+												| ${productqna.regdate }</p>
+											<div class="production-question-feed__item__question">
+												<span class="production-question-feed__item__badge">&nbsp;</span>
+												<p class="production-question-feed__item__title">${productqna.title }</p>
+												<p class="production-question-feed__item__content">${productqna.content }</p>
+											</div>
+											</c:when>
+											<c:otherwise>
+											<div class="production-question-feed__item__answer">
+												<span class="production-question-feed__item__badge">A&nbsp;</span>
+												<p class="production-question-feed__item__answer__author">
+													<span class="author">주식회사아소리빙</span>&nbsp;<span class="date">
+														2020년 03월 25일 08시 44분</span>
+												</p>
+												<p class="production-question-feed__item__content">안녕하세요
+													아소리빙입니다 고객님 이용에 불편드려 정말 죄송합니다 금일 누락된 20개 발송 도와드리도록하겠습니다
+													감사합니다</p>
+											</div>
+											</c:otherwise>
+									</c:choose>
+										</article>
+								</c:forEach>
 
-                        <a id="production-selling-delivery"></a>
+								</div>
+								<ul class="list-paginator production-question-feed__paginator">
+									<li>
+										<button class="list-paginator__prev" type="button">
+											이전</button>
+									</li>
+
+									<li>
+										<button class="list-paginator__page sm selected" type="button">1</button>
+									</li>
+
+									<li>
+										<button class="list-paginator__next" type="button">
+											다음</button>
+									</li>
+								</ul>
+							</div>
+
+
+						</section>
+
+						<a id="production-selling-delivery"></a>
                              <section class="production-selling-section">
                             <header class="production-selling-section__header">
                                 <h1 class="production-selling-section__title">배송</h1>

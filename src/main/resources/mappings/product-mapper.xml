@@ -45,5 +45,34 @@
 		,#{title},#{content},sysdate,0,'처리중',#{pName}
 		,'미구매',#{id})
 	</select>
+	
+	<select id="productqnavoList" parameterType="String" resultType="productQnaVO">
+		select * from (SELECT ROWNUM AS recNum,
+		lvl, SEQ,
+		COMMENT_PROC,
+		IDX,
+		TITLE,
+		CONTENT,
+		REGDATE,
+		LEV,
+		P_PROC,
+		P_NAME,
+		BUY_INFO,
+		ID from (select level as lvl, SEQ,
+		COMMENT_PROC,
+		IDX,
+		TITLE,
+		CONTENT,
+		REGDATE,
+		LEV,
+		P_PROC,
+		P_NAME,
+		BUY_INFO,
+		ID from product_qna WHERE seq = #{pNum} start with lev=0
+		CONNECT by prior idx = lev
+		order siblings by idx desc))where recNum between 1 and 5
+	</select>
+	
+	
 
 </mapper>

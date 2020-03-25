@@ -39,12 +39,13 @@ public class ProductController {
 		productVO productvo = service.ProductVO(pNum);
 		
 		
-		
-		
-		
-		
 		productvo.setProductreviewvo(service.ProductreviewVOList(pNum));
 
+				
+		productvo.setProductqnavo(service.productqnavoList(pNum));
+		
+		System.out.println("리뷰" + productvo.getProductqnavo());
+		
 		System.out.println(productvo);
 
 		System.out.println(productvo.getProductreviewvo());
@@ -188,8 +189,10 @@ public class ProductController {
 		System.out.println(cPage);
 		System.out.println(pNum);
 		
-		//페이징 객체 생성
+		//리뷰 페이징 
 		productReviewPagingVO p  = new productReviewPagingVO();
+		//Onq 페이징 
+		productReviewPagingVO p1  = new productReviewPagingVO();
 		
 		
 		//1. 전체 게시물의 수 구하기 totalRecord 작성한 총 게시물
@@ -249,7 +252,7 @@ public class ProductController {
 		map.put("pNum", Integer.parseInt(pNum));
 		
 		
-		
+		//리뷰
 		List<productReviewVO> productreviewvo = service.getreviewList(map);
 		
 		
@@ -276,7 +279,7 @@ public class ProductController {
 		service.inserQnaReview(productqnavo);
 
 		
-		return null;
+		return "Product.do?pNum="+productqnavo.getSeq();
 	}
 	
 }

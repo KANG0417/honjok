@@ -77,5 +77,14 @@ public void inserQnaReview(productQnaVO productqnavo) {
 }
 
 
+
+//Ona 리뷰 조회 
+@Override
+public List<productQnaVO> productqnavoList(String pNum) {
+	
+	return mapper.productqnavoList(pNum);
+}
+
+
 }
 

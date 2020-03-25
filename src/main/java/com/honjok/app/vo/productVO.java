@@ -24,6 +24,8 @@ public class productVO {
 	
 	private List<productReviewVO> productreviewvo ;
 
+	private List<productQnaVO> productqnavo;
+	
 	public String getpNum() {
 		return pNum;
 	}
@@ -168,6 +170,14 @@ public class productVO {
 		this.productreviewvo = productreviewvo;
 	}
 
+	public List<productQnaVO> getProductqnavo() {
+		return productqnavo;
+	}
+
+	public void setProductqnavo(List<productQnaVO> productqnavo) {
+		this.productqnavo = productqnavo;
+	}
+
 	@Override
 	public String toString() {
 		return "productVO [pNum=" + pNum + ", price=" + price + ", saleprice=" + saleprice + ", password=" + password
@@ -175,9 +185,10 @@ public class productVO {
 				+ id + ", pModel=" + pModel + ", brandName=" + brandName + ", pName=" + pName + ", shippingfee="
 				+ shippingfee + ", subCategory2=" + subCategory2 + ", promotion=" + promotion + ", discountrate="
 				+ discountrate + ", description=" + description + ", thumnailImg=" + thumnailImg + ", productreviewvo="
-				+ productreviewvo + "]";
+				+ productreviewvo + ", productqnavo=" + productqnavo + "]";
 	}
 
+	
 
 	
 	

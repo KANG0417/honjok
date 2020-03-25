@@ -46,5 +46,10 @@ public class ProductMapper {
 	public void inserQnaReview(productQnaVO productqnavo) {
 		mybatis.insert("ProductMapper.inserQnaReview",productqnavo);
 	}
+
+	//리뷰글 조회
+	public List<productQnaVO> productqnavoList(String pNum) {
+		return mybatis.selectList("ProductMapper.productqnavoList", pNum);
+	}
 	
 }
