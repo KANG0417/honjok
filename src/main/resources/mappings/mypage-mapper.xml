@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="MypageDAO">
+<mapper namespace="myPageDAO">
 	
 	<!-- 게시물 조회 -->
 	<!-- 인테리어 게시물 조회 -->
@@ -29,9 +29,9 @@
 	<!-- 회원정보 수정 -->
 	<update id="updateUser" parameterType="user">
 		UPDATE USERS
-		SET PASSWORD = #{password}, EMAIL = #{email}, ADR_CODE = #{adrCode},
-		ADR1 = #{adr1}, ADR2 = #{adr2}, PHONE = #{phone}, REGDATE = sysdate,
-		NICK_NAME = #{nickName}, AGE = #{age}
+		SET PASSWORD = #{password ,jdbcType=VARCHAR}, EMAIL = #{email ,jdbcType=VARCHAR}, ADR_CODE = #{adrCode ,jdbcType=VARCHAR},
+		ADR1 = #{adr1 ,jdbcType=VARCHAR}, ADR2 = #{adr2 ,jdbcType=VARCHAR}, PHONE = #{phone ,jdbcType=VARCHAR}, REGDATE = sysdate,
+		NICK_NAME = #{nickName ,jdbcType=VARCHAR}, AGE = #{age}
 		WHERE ID = #{id}
 	</update>
 </mapper>

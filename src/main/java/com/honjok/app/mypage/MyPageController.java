@@ -25,13 +25,13 @@ public class MyPageController {
 	
 	//회원정보 id로 조회
 	@RequestMapping("/selectMypage.do")
-	public String getUser(UserVO uvo, Model model) {
+	@ResponseBody
+	public UserVO getUser(UserVO uvo, Model model) {
 		System.out.println(">>> 회원정보 조회");
 		
 		UserVO uservo = mypages.getUser(uvo);
-		model.addAttribute("userSelect", uservo);
 		
-		return "myPage.jsp";
+		return uservo;
 	}
 	
 	//--회원정보 수정

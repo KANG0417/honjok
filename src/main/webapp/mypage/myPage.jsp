@@ -187,7 +187,7 @@
 		width: 60%;
     	border-top: 1px solid #444444;
     	border-collapse: collapse;
-    	align: center;
+    	valign: left;
 	}
 	
 	.thInter, .tbInter {
@@ -243,7 +243,7 @@
 	<li><h5 class="memInfo">회원 정보</h5></li>
 	<li class="orderInfo"><p>주문내역</p></li>
 	<li class="wishList"><p>찜목록</p></li>
-	<li class="memUp"><p>회원정보수정</p></li>
+	<li class="memUp" onclick="memUp"><p>회원정보수정</p></li>
 	<li class="memDel"><p>회원탈퇴</p></li>
 	</ol>
 	
@@ -267,13 +267,15 @@
 		</div>
 		<div id=memberBox>
 			<h3>회원정보</h3>
-			<c:forEach var="user" items="${userSelect}">
+			<form method="post" action="updateMypage.do">
+				<input type="hidden" name="id" value="${user.id}">
+			<c:forEach var="userSelect" items="${userSelect}">
 				<div class="userBorder">
-				<ol>
-				<li class="userU">${user.id }</li>
-				</ol>
+					<input type="text" name="id" value="${userSelect.id}" readonly>
 				</div>
 			</c:forEach>
+			</form>
+			
 			<c:forEach var="inter" items="${interiorMypage }">
 				<div class="interBorder">
 				<ol>
@@ -333,7 +335,8 @@
 	        success : function(data){
 	        	 console.log(data);
 	        	 $("#intro").html("");
-	        	 $("#intro").append("<div id='interBorder'></div>");
+	        	 $("#intro").append("");
+
 	        },
 	        error:function(request,status,error){
 	            //alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -350,9 +353,46 @@
 	//---회원정보 수정 페이지
 	$('.memUp').on("click",function(){
 		$('#intro').html("");
-		$('#intro').append('<div class="userBorder"><ol><li class="userU">${user.id }\
-		</li></ol></div>');
+		$('#intro').append('<c:if test="${sessionScope.userSession.password != null}">\
+				<p>정보를 수정하시려면 비밀번호를 입력해주세요</p>\
+				비밀번호 <input type="password" name="password">\
+				<input type="button" name="userUp" value="확인">\
+			</c:if>\
+				<c:if test="${sessionScope.userSession.password == null}">\
+				<p>정보를 수정하시려면 비밀번호를 입력해주세요</p>\
+				비밀번호 <input type="password" name="password">\
+				<input type="button" name="userUp" value="확인">\
+			</c:if>'
+			);	
 	})
+	
+	$('#userUp').on("click",function(){
+		var id = $('#userId').val();
+		console.log(id);
+ 	    $.ajax({
+	    	method: "GET",
+	        url : "selectMypage.do",
+	        datatype: "json",
+	        data: { id:id },
+	        success : function(data){
+	        	 console.log(data);
+	        	 $("#intro").html("");
+	        		$('#intro').append('<form action="updateMypage.do" method="post"><div class="userBorder">\
+       				<input type="hidden" name="id" value="${UserVO.id}">\
+       					<input type="text" name="id" value="'+ data.id + '"readonly>' +
+       					'새비밀번호 <input type="text" name="password">' +
+       					'새비밀번호 확인 <input type="text" name="password">' +
+	        		'<br><input type="submit" value="수정">\
+	        		</div></form>');
+	        },
+	        error:function(request,status,error){
+	            //alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+	          	alert("전송실패");
+	        }
+ 	    	})
+	    });
+       				/* <c:forEach var="userSelect" items="${userSelect}">\ */
+       				/* '</c:forEach>' + */
 	
 	$('.memDel').on("click",function(){
 		$('#intro').html("");
