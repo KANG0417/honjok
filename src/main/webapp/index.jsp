@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,27 +11,36 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>삶은 null이다  . . .</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+	/* Make the image fully responsive */
+	  .carousel-inner img {
+	    width: 100%;
+	  }
+      #columns{
+        column-width:350px;
+        column-gap: 15px;
+      }
+      #columns figure{
+        display: inline-block;
+        border:1px solid rgba(0,0,0,0.2);
+        margin:0;
+        margin-bottom: 15px;
+        padding:10px;
+        box-shadow: 2px 2px 5px rgba(0,0,0,0.5);;
+      }
+      #columns figure img{
+        width:100%;
+      }
+      #columns figure figcaption{
+        border-top:1px solid rgba(0,0,0,0.2);
+        padding:10px;
+        margin-top:11px;
+      }
+</style>
 <style>
 #video-background {
-  position: absolute;
-  right: 0; 
-  bottom: 0;
-  min-width: 100%; 
-  min-height: 100%;
-  width: auto; 
-  height: auto;
-  z-index: -100;
-}
 
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color:rgba(0,0,0,0.2);
-}
 
 header h1 {
   position: absolute;
@@ -53,87 +63,48 @@ header h1 {
     position:absolute;
     padding-left:25px;
 }
-
+			img { display: block; margin: 0px auto;
+			max-width: 60%; }
 </style>
 </head>
 <body>
-<div class="text-center">
-  <h2>삶은 null이다? </h2>
-</div>
 
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
-  <a class="navbar-brand" href="index.jsp">Home</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+
+
+<body>
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+
+  <!-- Indicators -->
+  <ul class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+  </ul>
   
-  <div class="collapse navbar-collapse" id="collapsibleNavbar">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="signUp.jsp">회원가입</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="login.jsp">로그인</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="${contextPage.request.contextPath }/app/interior/interiorAllList.do">인테리어</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="${contextPage.request.contextPath }/app/cook/CookAll.do">레시피</a>
-      </li>    
-      <li class="nav-item">
-        <a class="nav-link" href="${contextPage.request.contextPath }/app/honjokInfo/select.do">혼밥정보</a>
-      </li>
-        <li class="nav-item">
-        <a class="nav-link" href="/app/admin/productReg.jsp">상품등록</a>
-      </li>     
-    </ul>
-  </div>  
-</nav>
- <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container">
-      <a class="navbar-brand" href="index.jsp">혼자왔니?</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">MyPage
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">CS</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
-          </li>
-        </ul>
-      </div>
+  <!-- The slideshow -->
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="${contextPage.request.contextPath}/app/resources/img/1.jpg" alt="Los Angeles" width="100" height="auto">
+      <div class="carousel-caption">
+        <h3>바른먹거리</h3>
+        <p>청정먹거리 풀무원</p>
+      </div> 
     </div>
-  </nav>
-<header>
-    <div class="overlay">
-        <h1></h1>
-    </div>
-    <video autoplay="" loop="" id="video-background">
-        <source src="https://storage.coverr.co/videos/coverr-matukad-island-1558720187591?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6IjExNDMyN0NEOTRCMUFCMTFERTE3IiwiaWF0IjoxNTcyNDg0ODMyfQ.iePAwahyOV0FoHyMEei4ghH6VsYFhfgZmzVLBnO0SzE" type="video/mp4">Your browser does not support the video tag. I suggest you upgrade your browser.
-    </video>
-</header>
-<h1 class="main d-none">Travel The World</h1>
-  <!-- Footer -->
-  <footer class="py-5 bg-dark">
-    <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; 혼족 : Honjok 2020<br>
-      02-3486-9600서울 서초구 강남대로 459</p>
-    </div>
-    <!-- /.container -->
-  </footer>
+  </div>
+  
+  <!-- Left and right controls -->
+  <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </a>
+  <a class="carousel-control-next" href="#myCarousel" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </a>
+  
+</div>
+</body>
+
+ 
 
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
