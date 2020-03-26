@@ -108,5 +108,10 @@ public class UserController {
 		return result;
 	}
 	
-	
+	//로그아웃 과정
+	@RequestMapping(value = "/logout.do", method = RequestMethod.GET)
+	public String logout(HttpSession httpSession) throws Exception{
+		httpSession.invalidate();
+		return "redirect:/index.jsp";
+	}
 }

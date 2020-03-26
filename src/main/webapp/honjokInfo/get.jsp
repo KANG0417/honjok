@@ -370,10 +370,10 @@
 						<textarea class="content" name="content"
 							style="width: 90%; margin-top: 0px; margin-bottom: 0px; height: 56px;"></textarea>
 
-						<input type="hidden" name="id" value="${sessionScope.userSession.id }"> <input
-							type="hidden" name="nickName" value="${sessionScope.userSession.nickName }"> <input
-							type="hidden" name="comSeq" value="${CommInfoVO.comSeq }">
-						<input  type="button" onclick="insertReview(this.form)"
+						<input type="hidden" name="id" value="${sessionScope.userSession.id }"> 
+						<input type="hidden" name="nickName" value="${sessionScope.userSession.nickName }"> 
+						<input type="hidden" name="comSeq" value="${CommInfoVO.comSeq }">
+						<input type="button" onclick="insertReview(this.form)"
 							value="댓글 작성">
 					</form>
 
@@ -384,8 +384,8 @@
 							</div>
 						</div>
 
-						<label for="image"></label> <input multiple="multiple" type="file"
-							name="file" id="image" />
+						<label for="image"></label> 
+						<input multiple="multiple" type="file" name="file" id="image" />
 					</form>
 
 				</div>
@@ -490,12 +490,11 @@
 					"nickName" : '${sessionScope.userSession.nickName}'
 				};
 
-				$
-						.ajax({
-							type : 'post',
-							url : "reviewInsert.do",
-							data : objParams,
-							success : function(e) {
+				$.ajax({
+						type : 'post',
+						url : "reviewInsert.do",
+						data : objParams,
+						success : function(e){
 								console.log(e);
 								var fileString = "";
 								$('.content').val('');
@@ -503,7 +502,6 @@
 								if ($file_ != null && $file_ != "") {
 									for ( var i in $file_) {
 										fileString += "<img width='100' height='100' src='/app/resources/img/review/"+$file_[i]+"' />";
-
 									}
 
 								}
@@ -564,46 +562,39 @@
 			imgtag.remove();
 		}
 
-		$('#image')
-				.on(
-						'change',
-						function() {
-
+		$('#image').on('change',function() {
 							if ("${sessionScope.userSession.id}" != "") {
 								ext = $(this).val().split('.').pop()
 										.toLowerCase(); //확장자
-
 								//배열에 추출한 확장자가 존재하는지 체크
 								if ($.inArray(ext, [ 'gif', 'png', 'jpg',
 										'jpeg' ]) == -1) {
 									resetFormElement($(this)); //폼 초기화
-									window
-											.alert('이미지 파일이 아닙니다! (gif, png, jpg, jpeg 만 업로드 가능)');
+									window.alert('이미지 파일이 아닙니다! (gif, png, jpg, jpeg 만 업로드 가능)');
 								} else {
 									var form = $("#Review")[0];
 									var data = new FormData(form);
-									$
-											.ajax({
-												type : 'post',
-												enctype : 'multipart/form-data',
-												url : "reviewUpload.do",
-												data : data,
-												processData : false,
-												contentType : false,
-												success : function(json) {
-													for ( var i in json) {
-														$('.view_area')
-																.append(
-																		"<div><img style='width:50px; height:50px;' src=/app/resources/img/review/"+json[i]+"><button type='button' onclick='imgDel(this);'>삭제하기</button></div>")
-													}
-													//alert("업로드 성공");	
-												},
-												error : function(jqXHR,
-														textStatus, errorThrown) {
-													alert("오류가 발생하였습니다.");
-												}
+									$.ajax({
+											type : 'post',
+											enctype : 'multipart/form-data',
+											url : "reviewUpload.do",
+											data : data,
+											processData : false,
+											contentType : false,
+											success : function(json) {
+											for ( var i in json) {
+												$('.view_area')
+														.append(
+																"<div><img style='width:50px; height:50px;' src=/app/resources/img/review/"+json[i]+"><button type='button' onclick='imgDel(this);'>삭제하기</button></div>")
+											}
+											//alert("업로드 성공");	
+										},
+										error : function(jqXHR,
+												textStatus, errorThrown) {
+											alert("오류가 발생하였습니다.");
+										}
 
-											});
+									});
 								}
 
 							} else {

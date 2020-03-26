@@ -4,23 +4,6 @@ package com.honjok.app.vo;
 public class CommInteriorVO {
 	private String fileImage, id, title, content, comSeq, hit, likes, nickName, show, regdate;
 	private int type;
-	
-	public CommInteriorVO() {}
-
-	public CommInteriorVO(int type, String id, String fileImage, String title, String content, String comSeq,
-			String hit, String likes, String regdate, String nickName, String show) {
-		super();
-		this.id = id;
-		this.fileImage = fileImage;
-		this.title = title;
-		this.content = content;
-		this.comSeq = comSeq;
-		this.hit = hit;
-		this.likes = likes;
-		this.regdate = regdate;
-		this.nickName = nickName;
-		this.show = show;
-	}
 
 	public String getFileImage() {
 		return fileImage;
@@ -36,6 +19,14 @@ public class CommInteriorVO {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public String getContent() {
@@ -78,11 +69,21 @@ public class CommInteriorVO {
 		this.regdate = regdate;
 	}
 
-	public String getnickName() {
+//	public String getNickName() {
+//		return nickName;
+//	}
+//
+//	public void setNickName(String nickName) {
+//		System.out.println("닉네임: " + nickName);
+//		this.nickName = nickName;
+//	}
+	
+	public String getNickName() {
 		return nickName;
 	}
-
-	public void setnickName(String nickName) {
+	
+	public void setNickName(String nickName) {
+		System.out.println("제목: " + title);
 		this.nickName = nickName;
 	}
 	
@@ -105,6 +106,6 @@ public class CommInteriorVO {
 	public String toString() {
 		return "CommInteriorVO [fileImage=" + fileImage + ", title=" + title + ", id=" + id +
 				", content=" + content + ", comSeq=" + comSeq + ", hit=" + hit + ", likes=" + likes + ", regdate="
-				+ regdate + ", nickName=" + nickName + ", show" + show + "]";
+				+ regdate + ", nickName= " + nickName + ", show=" + show + "]";
 	}
 }

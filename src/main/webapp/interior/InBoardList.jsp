@@ -1,10 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>인테리어 게시판</title>
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
 	rel="stylesheet" type="text/css">
@@ -16,13 +15,55 @@
 	crossorigin="anonymous"></script>
 <!--CSS 연결 -->
 <link href="${pageContext.request.contextPath}/resources/css/hojokinfo/style.css" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<style>
+	#main {
+		border: 1px solid gray;
+		padding: 50px;
+		margin: 20px;
+		text-align: center;
+	}
+</style>
 </head>
 <body>
+	<div id="main">원마켓</div>
+		<nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+	  <a class="navbar-brand" href="index.jsp">Home</a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+	 <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    	<ul class="navbar-nav">
+      	<li class="nav-item">
+        <a class="nav-link" href="signUp.jsp">회원가입</a>
+      </li>
+      <c:if test="${sessionScope.userSession.id == null }">
+      	<li class="nav-item">
+      	<a class="nav-link" href="${contextPage.request.contextPath }/app/login.jsp">로그인</a>
+      	</li>
+      </c:if>
+      <c:if test="${sessionScope.userSession.id != null }">
+      	<li class="nav-item">${userSession.id} 님 안녕하세요!</li><a href="${contextPage.request.contextPath }/app/logout.do">Log-out</a>
+      </c:if>
+      <li class="nav-item">
+        <a class="nav-link" href="${contextPage.request.contextPath }/app/interior/interiorAllList.do">인테리어</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="${contextPage.request.contextPath }/app/cook/CookAll.do">레시피</a>
+      </li>    
+      <li class="nav-item">
+        <a class="nav-link" href="${contextPage.request.contextPath }/app/honjokInfo/select.do">혼밥정보</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="${contextPage.request.contextPath }/app/mypage/myPage.jsp">마이페이지</a>
+      </li>
+    </ul>
+  	</div>	
+	</nav>
 	<div class="container">
 		<div class="row justify-content-center mb-5 pb-3">
-			<h2>인테리어</h2>
 		</div>
-		<hr>
+		<br>
 		<c:choose>
 			<c:when test="${interiorList == null }">
 				<p align="center">
@@ -31,8 +72,8 @@
 			</c:when>
 			<c:when test="${interiorList != null }">
 					<div style="width:100%; height:100px;">
+					<p>집 소개 게시판</p>
 						이번주 베스트 ~ 
-						<img style="width:100%; height:100%;" src="/app/resources/img/no.jpg">
 					</div>
 				<div class="row">
 
@@ -63,9 +104,9 @@
 									<a href="getInterior.do?comSeq=${interiorvo.comSeq }">${interiorvo.title }</a>
 								</h3>
 							</div>
-							작성일: ${interiorvo.regdate }<br>
-							작성자닉네임: ${interiorvo.nickName }<br> 조회수: ${interiorvo.hit }
-							<br> 좋아요: ${likesCount }<br>
+							${interiorvo.regdate }<br>
+							${interiorvo.nickName }<br> ${interiorvo.hit } 명이 봤어요
+							<br> ${likesCount }<br>
 						</div>
 
 					</c:forEach>
@@ -96,8 +137,7 @@
 										<a href="interiorAllList.do?section=${section+1}&pageNum=${section }">다음</a>
 									</c:if>
 									<c:if test="${section != 1 }">
-										<a
-											href="interiorAllList.do?section=${section+1}&pageNum=${section - 1}">다음</a>
+										<a href="interiorAllList.do?section=${section+1}&pageNum=${section - 1}">다음</a>
 									</c:if>
 								</c:if>
 							</c:forEach>
@@ -152,8 +192,18 @@
 	<hr>
 
 	<c:remove var="endPage" />
-<form action="InBoardInsert.jsp">
-   <input type="submit" value="글쓰기">
-</form>
+   <input type="button" value="글쓰기" onclick="checkLogin()">
+<script>
+	function checkLogin() {
+	    var id = '${sessionScope.userSession.id}'; // 수정 ''처리
+	    // 수정 ''공백 비교
+	    if (id == '') {
+	        alert("로그인 후 글쓰기가 가능합니다.");
+	        return false;
+	    } else {
+	        location.href = 'InBoardInsert.jsp';
+	    }
+	}
+</script>
 </body>
 </html>

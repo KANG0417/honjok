@@ -1,10 +1,13 @@
 package com.honjok.app.cart;
 
+import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import com.honjok.app.vo.CartVO;
 
 @Repository("cartDAO")
 public class cartDAO {
@@ -25,7 +28,14 @@ public class cartDAO {
 	}
 	
 	public int getCartCount(String id) {
-		return mybatis.selectOne("cartdao.getCartCount", id);
+		return mybatis.selectOne("cartDAO.getCartCount", id);
+	}
+	
+	public List<Map<String,String>> getCartList(Map<String,String> map){
+		return mybatis.selectList("cartDAO.getCartList",map);
+	}
+	public void cartDelete(CartVO vo) {
+		mybatis.delete("cartDAO.cartDelete",vo);
 	}
 
 }

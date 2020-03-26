@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -30,6 +31,7 @@ import com.honjok.app.vo.CommInfoVO;
 import com.honjok.app.vo.CommInteriorVO;
 import com.honjok.app.vo.CommunityVO;
 import com.honjok.app.vo.LikesVO;
+import com.honjok.app.vo.commReplyVO;
 
 @Controller
 @RequestMapping("/interior")
@@ -85,24 +87,31 @@ public class interiorController {
 	
 		//게시물 상세 조회 페이지
 		@RequestMapping("/getInterior.do")
-		public String getinteriorSelect(Model model, CommInteriorVO cvo, int comSeq, LikesVO livo) {			
-			CommInteriorVO CommInterior = interiorService.getBoardList(cvo);
-			model.addAttribute("interiorSelect", CommInterior);
-			System.out.println("===> 게시물 상세 조회: " + CommInterior);
+		public String getinteriorSelect(Model model, CommInteriorVO cvo, LikesVO livo) {			
+			System.out.println("컨트롤러 cvo: " + cvo);
+			System.out.println("컨트롤러 livo: " + livo);
+			
+			//댓글 전체 조회
+			List<commReplyVO> replyList = interiorService.replyList(Integer.parseInt(cvo.getcomSeq()));
+			System.out.println(replyList);
+			model.addAttribute("commentSelect", replyList);
+			
+			//게시물 상세조회
+			CommInteriorVO commInterior = interiorService.getBoardList(cvo);
+			model.addAttribute("interiorSelect", commInterior);
+			
+			System.out.println("===> 게시물 상세 조회: " + commInterior);
+			System.out.println("회원아이디: " + commInterior.getId());
 			
 			//게시물 조회수 증가
 			int board_hit = 0;
-	        interiorService.boardHitsUpdate(comSeq);
+	        interiorService.boardHitsUpdate(Integer.parseInt(cvo.getcomSeq()));
 	/*        model.addAttribute("Board_Hit", board_hit);*/
-		    
-	        //게시물 좋아요 증가
-	        interiorService.insertLikes(livo);
-	        model.addAttribute("likes", livo);
 	        
 	        //게시물 좋아요 조회
-	        int likeCount = interiorService.selectLikes(comSeq);
+	    /*    int likeCount = interiorService.selectLikes(Integer.parseInt(cvo.getcomSeq()));
 	        model.addAttribute("likesCount" + likeCount);
-	        System.out.println("해당 게시물 좋아요 총 갯수: " + likeCount);
+	        System.out.println("해당 게시물 좋아요 총 갯수: " + likeCount);*/
 	        
 			return "InBoardDetail.jsp";
 		}
@@ -110,9 +119,10 @@ public class interiorController {
 		//게시물 입력 페이지
 		@RequestMapping("/insertInteriorB.do")
 		public String insertBoard(CommInteriorVO cvo) {
+			System.out.println("전체목록: " + cvo);
 			interiorService.insertBoard(cvo);
-			System.out.println(">>> 글 등록 처리 - insertBoard(): " + cvo);
 			
+			System.out.println(">>> 글 등록 처리 - insertBoard(): " + cvo);
 			return "interiorAllList.do";
 		}
 
@@ -196,11 +206,23 @@ public class interiorController {
 	}
 	
 	//게시물 좋아요 취소
-	@RequestMapping("/updateLike.do")
+	/*@RequestMapping("/updateLike.do")
 	public String updateLikes(LikesVO livo) {
 		interiorService.updateLikes(livo);
 		System.out.println(">>> 글 좋아요 취소 처리");
 		
 		return "getInterior.do";
+	}*/
+	
+	//댓글 입력
+	@RequestMapping("/addComment.do")
+	@ResponseBody
+	public String insertComment(commReplyVO rvo) {
+		System.out.println(rvo);
+		System.out.println("강지향");
+		interiorService.insertComment(rvo);
+		
+		return "success";
+				
 	}
 }

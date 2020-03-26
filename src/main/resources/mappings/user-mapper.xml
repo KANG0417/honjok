@@ -15,6 +15,13 @@
 		)
 	</insert>
 	
+	<!-- ｉｄ로　회원정보　조회 -->
+	<select id="oneUser" parameterType="String" resultType="user">
+		SELECT *
+		FROM USERS
+		WHERE ID = #{id}
+	</select>
+	
 	<select id="emailCheck" parameterType="String" resultType="int">
 		SELECT COUNT(*) FROM USERS WHERE EMAIL = #{email}
 	</select>
@@ -30,7 +37,6 @@
 	<select id="loginCheck" parameterType="user" resultType="user">
 		SELECT * FROM USERS WHERE ID = #{userId}
 	</select>
-	
 	
 	<update id="getKey" parameterType="Map">
 		UPDATE USERS SET USERKEY = #{userKey} WHERE ID = #{userId}
