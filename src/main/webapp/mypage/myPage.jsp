@@ -243,7 +243,7 @@
 	<li><h5 class="memInfo">회원 정보</h5></li>
 	<li class="orderInfo"><p>주문내역</p></li>
 	<li class="wishList"><p>찜목록</p></li>
-	<li class="memUp" onclick="memUp"><p>회원정보수정</p></li>
+	<li class="memUp"><p>회원정보수정</p></li>
 	<li class="memDel"><p>회원탈퇴</p></li>
 	</ol>
 	
@@ -300,8 +300,8 @@
 	</div>
 	
 	<input type="hidden" name="userId" id="userId" value="${sessionScope.userSession.id}">
-	<input type="hidden" name="password" id="password">
-	<div class="checkFont" id="passwordCheck"></div>	
+	<input type="hidden" name="passWord" id="passWord" value="">
+	<div class="checkFont" id="passwordCheck"></div>
 </div>
 <script>
 	/* var empJ = /\s/g; //공백체크 정규표현식
@@ -347,24 +347,34 @@
 	
 	$('.wishList').on("click",function(){
 		$('#intro').html("");
+		
 		$('#intro').append('<table><thead><tr><th>찜목록</th></tr></thead></table>');	
 	})
 	
 	//---회원정보 수정 페이지
 	$('.memUp').on("click",function(){
 		$('#intro').html("");
-		$('#intro').append('<c:if test="${sessionScope.userSession.password != null}">\
-				<p>정보를 수정하시려면 비밀번호를 입력해주세요</p>\
-				비밀번호 <input type="password" name="password">\
-				<input type="button" name="userUp" value="확인">\
-			</c:if>\
-				<c:if test="${sessionScope.userSession.password == null}">\
-				<p>정보를 수정하시려면 비밀번호를 입력해주세요</p>\
-				비밀번호 <input type="password" name="password">\
-				<input type="button" name="userUp" value="확인">\
-			</c:if>'
-			);	
+		$('#intro').append('<form><input type="password" name="password" placeholder="비밀번호를 입력해주세요" class="gogo">\
+				<input class="memupBtn" type="button" value="확인"></form>');
 	})
+	$(document).on("click",".memupBtn", function(){
+		var password  = $('.gogo').val();
+		var id  = '${sessionScope.userSession.id}';
+		  $.ajax({
+		    	method: "GET",
+		        url : "selectMypage.do",
+		        data: { password:password,
+		        		id:id }, 
+		        success : function(data){
+		        	console.log(data);
+		        	String userPassword = vo.getPassword();
+		    		vo.setPassword(UserSha256.encrypt(userPassword));
+		        	
+		        },error:function(request,status,error){
+		          	alert("전송실패");
+		        }
+	 	    	}) 
+	});
 	
 	$('#userUp').on("click",function(){
 		var id = $('#userId').val();

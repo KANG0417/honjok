@@ -1,4 +1,4 @@
-package com.honjok.app.review;
+/*package com.honjok.app.review;
 
 import java.lang.reflect.Member;
 import java.util.HashMap;
@@ -224,3 +224,4 @@ public class ReviewController {
 		}
 	
 }
+*/

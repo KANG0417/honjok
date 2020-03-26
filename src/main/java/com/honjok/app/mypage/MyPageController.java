@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.honjok.app.user.UserSha256;
 import com.honjok.app.vo.CommInteriorVO;
 import com.honjok.app.vo.OrderVO;
 import com.honjok.app.vo.UserVO;
@@ -39,7 +40,6 @@ public class MyPageController {
 	public String updateUser(UserVO uvo, Model model) {
 		System.out.println(">>> 회원정보 수정 처리");
 		mypages.updateUser(uvo);
-		
 		return "myPage.jsp";
 	}
 	
@@ -63,4 +63,6 @@ public class MyPageController {
 		System.out.println(interiorMypage);
 		return interiorMypage;
 	}
+	
+	//
 }

@@ -30,7 +30,7 @@
       <li class="nav-item">
         <a class="nav-link" href="${contextPage.request.contextPath }/app/signUp.jsp">회원가입</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" style="valign: right">
         <a class="nav-link" href="${contextPage.request.contextPath }/app/login.jsp">로그인</a>
       </li>
       <li class="nav-item">
