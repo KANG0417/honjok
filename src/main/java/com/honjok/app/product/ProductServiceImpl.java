@@ -86,5 +86,22 @@ public List<productQnaVO> productqnavoList(String pNum) {
 }
 
 
+
+//Qna 리뷰 카운트
+@Override
+public int getQnaTotalCount(String pNum) {
+	return mapper.getQnaTotalCount(pNum);
+}
+
+
+
+
+@Override
+public List<productQnaVO> ProductQna(Map<String, Integer> map) {
+	
+	return  mapper.ProductQna(map);
+}
+
+
 }
 

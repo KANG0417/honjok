@@ -25,5 +25,9 @@ public interface ProductService {
 	//ONA 리뷰
 	List<productQnaVO> productqnavoList(String pNum);
 
+	int getQnaTotalCount(String pNum);
+
+	List<productQnaVO> ProductQna(Map<String, Integer> map);
+
 	
 }
