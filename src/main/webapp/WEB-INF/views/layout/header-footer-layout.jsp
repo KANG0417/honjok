@@ -44,7 +44,13 @@
       </li>
         <li class="nav-item">
         <a class="nav-link" href="/app/admin/productReg.jsp">상품등록</a>
-      </li>     
+      </li> 
+      <li class="nav-item">
+        <a class="nav-link" href="${contextPage.request.contextPath }/app/mypage/myPage.jsp">마이페이지</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">고객센터</a>
+      </li>
     </ul>
   </div>  
 </nav>
