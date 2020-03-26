@@ -136,8 +136,14 @@
         .production-selling-overview__category ol li,
         .production-selling-navigation__content ol li,
         .production-review__paginator li,
+        .production-qna__paginator li,
         .production-question-feed__paginator li {
             display: inline;
+        }
+
+        .production-review__paginator li,
+        .production-qna__paginator li{
+            padding: 1px 6px;
         }
 
         .production-selling-navigation__content {

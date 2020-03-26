@@ -1,4 +1,4 @@
-package com.honjok.app.review;
+package com.honjok.app.vo;
 
 public class ReviewVO {
 

@@ -314,7 +314,7 @@
                                     </span>
                                     <!--리뷰 갯수-->
                                     <span class="production-selling-header__review__text"><span
-                                            class="number">[리뷰갯수]</span>
+                                            class="number">[${p.totalRecord }]</span>
                                         <span class="postfix">개 리뷰</span>
                                     </span>
                                 </a>
@@ -431,12 +431,12 @@
                         </li>
                         <li>
                             <a class="production-selling-navigation__item" href="#production-selling-review">리뷰
-                                <span class="production-selling-navigation__item__count">리뷰갯수</span>
+                                <span class="production-selling-navigation__item__count">${p.totalRecord }</span>
                             </a>
                         </li>
                         <li>
                             <a class="production-selling-navigation__item" href="#production-selling-question">문의
-                                <span class="production-selling-navigation__item__count">문의 갯수</span>
+                                <span class="production-selling-navigation__item__count">${p1.totalRecord }</span>
                             </a>
                         </li>
                         <li>
@@ -550,7 +550,7 @@
                         <section class="production-selling-section">
                             <header class="production-selling-section__header">
                                 <h1 class="production-selling-section__title">리뷰
-                                    <span class="count">[리뷰 갯수]</span>
+                                    <span class="count">[${p.totalRecord }]</span>
                                 </h1>
                                 <div class="production-selling-section__right">
                                     <button class="ReviewBtn" type="button">리뷰쓰기</button>
@@ -561,7 +561,6 @@
                             <div class="production-review-feed">
                                 <div class="production-review-feed__header">
                                     <div class="production-review-feed__header__stars">
-                                        <span class="badge">별점총점[]</span>
                                     </div>
                                 </div>
 
@@ -569,11 +568,11 @@
                                     <div class="production-review-feed__filter-wrap">
                                         <div class="production-review-feed__filter">
                                             <div class="production-review-feed__filter__order-list">
-                                                <button
+                                     <!--            <button
                                                     class="production-review-feed__filter__order production-review-feed__filter__order--active"
                                                     aria-pressed="true" type="button">베스트순</button>
                                                 <button class="production-review-feed__filter__order"
-                                                    aria-pressed="false" type="button">최신순</button>
+                                                    aria-pressed="false" type="button">최신순</button> -->
                                             </div>
                                         </div>
                                     </div>
@@ -619,6 +618,7 @@
                                                                             
                                 
                                  	<c:choose>
+                                 	
                                  		<c:when test="${p.beginPage == 1 }">
 	                                		<!-- <button class="list-paginator__prev" type="button">
 	                                           	이전
@@ -667,14 +667,10 @@
 	                                    </c:otherwise>
                                     </c:choose>
                                 </ul>
-                                <!--production-review-feed 끝-->
-                                
-                                            
-                                            
+                                <!--production-review-feed 끝-->           
                                       
                                     </div>
 
-  								
 
                                 </div>
                                 
@@ -686,7 +682,7 @@
 						<section class="production-selling-section">
 							<header class="production-selling-section__header">
 								<h1 class="production-selling-section__title">
-									문의<span class="count">문의갯수</span>
+									문의<span class="count">[${p1.totalRecord }]</span>
 								</h1>
 								<div class="production-selling-section__right">
 									<button type="button">문의하기</button>
@@ -695,8 +691,7 @@
 							<div class="production-question-feed">
 								<div class="production-question-feed__list">
 								<c:forEach var="productqna" items="${productvo.productqnavo}">
-										<article class="production-question-feed__item"
-											data-qna-id="931166">
+										<article class="production-question-feed__item">
 									<c:choose>
 										<c:when test="${productqna.lev == 0 }">
 											<header class="production-question-feed__item__header">
@@ -714,38 +709,71 @@
 											<div class="production-question-feed__item__answer">
 												<span class="production-question-feed__item__badge">A&nbsp;</span>
 												<p class="production-question-feed__item__answer__author">
-													<span class="author">주식회사아소리빙</span>&nbsp;<span class="date">
-														2020년 03월 25일 08시 44분</span>
+													<span class="author"></span>&nbsp;<span class="date"></span>
 												</p>
-												<p class="production-question-feed__item__content">안녕하세요
-													아소리빙입니다 고객님 이용에 불편드려 정말 죄송합니다 금일 누락된 20개 발송 도와드리도록하겠습니다
-													감사합니다</p>
+												<p class="production-question-feed__item__content"></p>
 											</div>
 											</c:otherwise>
 									</c:choose>
 										</article>
 								</c:forEach>
+								 
+						  <ul class="list-paginator production-qna__paginator">  
+                                 	<c:choose>
+                                 		<c:when test="${p1.beginPage == 1 }">
+	                                		<!-- <button class="list-paginator__prev" type="button">
+	                                           	이전
+	                                       	</button> -->
+                                       </c:when>
+                                       <c:otherwise>
+                                        	<li>
+		                                       <button class="list-paginator__prev" type="button">
+		                                           	이전
+	                                       		</button>
+                                       		</li>
+                                       </c:otherwise>
+                                    </c:choose>
+                                    
+                                    
+                                 	<c:forEach var="i" begin="${p1.beginPage }" end="${p1.endPage }">
+                                 	<c:choose>
+                                 		<c:when test="${i == p1.nowPage }">
+		                                    <li>
+		                                        <button class="list-paginator__page sm selected" type="button">${i }</button>
+		                                    </li>
+	                                    </c:when>
+	                                    <c:otherwise>
+	                                    	 <li>
+		                                        <button class="list-paginator__page sm selected" type="button">${i }</button>
+		                                    </li>
+	                                    </c:otherwise>
+	                                </c:choose>
+	                                
+                                    </c:forEach>
+                                  
+                                  <c:choose>
+                                  	<c:when test="${p1.endPage >= p1.totalPage }">
+	                                <!--     <li>
+	                                        <button class="list-paginator__next" type="button">
+	                                           	다음
+	                                        </button>
+	                                    </li> -->
+	                                    </c:when>
+	                                    <c:otherwise>
+	                                    <li>
+	                                        <button class="list-paginator__next" type="button">
+	                                           	다음
+	                                        </button> 
+	                                    </li>
+	                                    </c:otherwise>
+                                    </c:choose>
+                                </ul>
 
 								</div>
-								<ul class="list-paginator production-question-feed__paginator">
-									<li>
-										<button class="list-paginator__prev" type="button">
-											이전</button>
-									</li>
-
-									<li>
-										<button class="list-paginator__page sm selected" type="button">1</button>
-									</li>
-
-									<li>
-										<button class="list-paginator__next" type="button">
-											다음</button>
-									</li>
-								</ul>
+								
 							</div>
 
-
-						</section>
+						</section> 
 
 						<a id="production-selling-delivery"></a>
                              <section class="production-selling-section">

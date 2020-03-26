@@ -51,5 +51,14 @@ public class ProductMapper {
 	public List<productQnaVO> productqnavoList(String pNum) {
 		return mybatis.selectList("ProductMapper.productqnavoList", pNum);
 	}
+
+	public int getQnaTotalCount(String pNum) {
+		return mybatis.selectOne("ProductMapper.getQnaTotalCount",pNum);
+	}
+
+	public List<productQnaVO> ProductQna(Map<String, Integer> map) {
+		// TODO Auto-generated method stub
+		return mybatis.selectList("ProductMapper.ProductQna", map);
+	}
 	
 }

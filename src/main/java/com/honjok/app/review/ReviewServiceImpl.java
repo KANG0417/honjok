@@ -1,4 +1,4 @@
-package com.honjok.app.review;
+/*package com.honjok.app.review;
 
 import java.util.List;
 import java.util.Map;
@@ -38,14 +38,14 @@ public class ReviewServiceImpl implements ReviewService {
 		
 		ReviewVO review = reviewMapper.selectReview(rev_num);
 		
-		/*// 첨부파일 조회
+		// 첨부파일 조회
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		
 		paramMap.put("ref_seq_no", review.getRev_num());
 		
 		List<FileItem> fileItemList =  fileItemMapper.selectFileItemList(paramMap);
 		
-		review.setFileItemList(fileItemList);*/
+		review.setFileItemList(fileItemList);
 		
 		return review;
 	}
@@ -77,3 +77,4 @@ public class ReviewServiceImpl implements ReviewService {
 	}
 
 }
+*/
