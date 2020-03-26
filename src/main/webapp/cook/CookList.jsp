@@ -76,56 +76,18 @@
         <p>밥은 혼자 먹어야 맛있어!</p>
       </div> 
     </div>
-    <div class="carousel-item">
-      <img src="${contextPage.request.contextPath}/app/resources/img/cook.jpg" alt="Chicago" width="1100" height="500">
-    </div>
-    <div class="carousel-item">
-      <img src="${contextPage.request.contextPath}/app/resources/img/cook.jpg" alt="New York" width="1100" height="500">
-    </div>
   </div>
   
-  <!-- Left and right controls -->
-  <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
-    <span class="carousel-control-prev-icon"></span>
-  </a>
-  <a class="carousel-control-next" href="#myCarousel" data-slide="next">
-    <span class="carousel-control-next-icon"></span>
-  </a>
+<!--   <!-- Left and right controls --> 
+<!--   <a class="carousel-control-prev" href="#myCarousel" data-slide="prev"> -->
+<!--     <span class="carousel-control-prev-icon"></span> -->
+<!--   </a> -->
+<!--   <a class="carousel-control-next" href="#myCarousel" data-slide="next"> -->
+<!--     <span class="carousel-control-next-icon"></span> -->
+<!--   </a> -->
   
-</div>
 
-</div>
-
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
-  <a class="navbar-brand" href="index.jsp">Home</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  
-  <div class="collapse navbar-collapse" id="collapsibleNavbar">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="signUp.jsp">회원가입</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="login.jsp">로그인</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="${contextPage.request.contextPath }/app/interior/interiorAllList.do">인테리어</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="${contextPage.request.contextPath }/app/cook/CookAll.do">레시피</a>
-      </li>    
-      <li class="nav-item">
-        <a class="nav-link" href="${contextPage.request.contextPath }/app/honjokInfo/select.do">혼밥정보</a>
-      </li>
-        <li class="nav-item">
-        <a class="nav-link" href="/app/admin/productReg.jsp">상품등록</a>
-      </li>     
-    </ul>
-  </div>  
-</nav>
-    
+   
 		<hr>
 		<c:choose>
 			<c:when test="${cookList == null }">
@@ -175,7 +137,7 @@
 		<div class="center">
 			<c:if test="${allCount != null}">
 				<c:choose>
-					<c:when test="${allCount > 90 }">
+					<c:when test="${allCount > 60 }">
 						<c:set var="endPage" value="${allCount/90 + 1 }" scope="page"></c:set>
 
 						<c:if test="${endPage-(endPage%1) != section}">

@@ -34,7 +34,8 @@ public class MyPageServiceImpl implements MyPageService {
 		return myDAO.getOrder(ovo);
 	}
 	
-	//id로 본인 게시물 조회 
+	//id로 본인 게시물 조회
+	//---인테리어 게시물 조회
 	@Override
 	public List<CommInteriorVO> getSelectBoard(CommInteriorVO cvo) {
 		return myDAO.getSelectBoard(cvo);

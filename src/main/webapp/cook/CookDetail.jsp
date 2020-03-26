@@ -14,63 +14,6 @@
 <!-- Custom styles for this template -->
 <link href="css/blog-home.css" rel="stylesheet">
 
-<style>
-	#container {
-		width: 700px;
-		margin: 0 auto;
-	}
-	h1, h3, p { text-align: center; }
-	table { border-collapse: collapse; }
-	table, th, td {
-		border: 1px solid black;
-		margin: 0 auto;
-	}
-	th { background-color: skyblue; }
-	.center { text-align: center; }
-	.border-none, .border-none td { border: none; }
-	#video-background {
-  position: absolute;
-  right: 0; 
-  bottom: 0;
-  min-width: 100%; 
-  min-height: 100%;
-  width: auto; 
-  height: auto;
-  z-index: -100;
-}
-
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color:rgba(0,0,0,0.2);
-}
-
-header h1 {
-  position: absolute;
-  top: 50%;
-  width: 100%;
-  font-size: 36px;
-  letter-spacing: 3px;
-  color: #fff;
-  text-align: center;
-  color:skyblue;
-  margin-top:5px;
-  border-radius:40%;
-  color:green;
-  
-}
-.main{
-    text-align:center;
-    margin:150px;
-    color:#fff;
-    position:absolute;
-    padding-left:25px;
-}
-	
-</style>
 <script>
 function fn_delete() {
 	var frmDel = document.frm;
@@ -91,42 +34,31 @@ function fn_delete() {
 </script>
 </head>
 <body>
- <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+<!-- Page Content -->
     <div class="container">
-      <a class="navbar-brand" href="#">Start Bootstrap</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Services</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
-          </li>
-        </ul>
+
+      <!-- Page Heading -->
+      <h1 class="my-4">오늘의 요리
+        <small>Secondary Text</small>
+      </h1>
+
+      <!-- Project One -->
+      <div class="row">
+        <div class="col-md-7">
+          <a href="#">
+            <img class="img-fluid rounded mb-3 mb-md-0" src="http://placehold.it/700x300" alt="">
+          </a>
+        </div>
+        <div class="col-md-5">
+          <h3>Project One</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>
+          <a class="btn btn-primary" href="#">View Project</a>
+        </div>
       </div>
-    </div>
-  </nav>
-<header>
-    <div class="overlay">
-        <h1></h1>
-    </div>
-    <video autoplay="" loop="" id="video-background">
-        <source src="https://storage.coverr.co/videos/coverr-matukad-island-1558720187591?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6IjExNDMyN0NEOTRCMUFCMTFERTE3IiwiaWF0IjoxNTcyNDg0ODMyfQ.iePAwahyOV0FoHyMEei4ghH6VsYFhfgZmzVLBnO0SzE" type="video/mp4">Your browser does not support the video tag. I suggest you upgrade your browser.
-    </video>
-</header>
-<h1 class="main d-none">Travel The World</h1>
+      <!-- /.row -->
+
+      <hr>
+      
 <div id="container">
 			<input type="hidden" name="comSeq" value="${cookDetail.comSeq }">
 <!-- 		<tr> -->
