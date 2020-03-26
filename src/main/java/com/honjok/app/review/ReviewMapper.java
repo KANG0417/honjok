@@ -1,4 +1,4 @@
-package com.honjok.app.review;
+/*package com.honjok.app.review;
 
 import java.util.List;
 import java.util.Map;
@@ -24,3 +24,4 @@ public interface ReviewMapper {
 
 	
 }
+*/

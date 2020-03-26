@@ -1,4 +1,4 @@
-package com.honjok.app.review;
+/*package com.honjok.app.review;
 
 import java.util.List;
 import java.util.Map;
@@ -18,3 +18,4 @@ public interface ReviewService {
 	public int deleteReview(Map<String, Object> paramMap) throws Exception;
 	
 }
+*/
