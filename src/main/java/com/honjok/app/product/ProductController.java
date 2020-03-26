@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.honjok.app.vo.productQnaVO;
 import com.honjok.app.vo.productReviewPagingVO;
 import com.honjok.app.vo.productReviewVO;
 import com.honjok.app.vo.productVO;
@@ -38,12 +39,13 @@ public class ProductController {
 		productVO productvo = service.ProductVO(pNum);
 		
 		
-		
-		
-		
-		
 		productvo.setProductreviewvo(service.ProductreviewVOList(pNum));
 
+				
+		productvo.setProductqnavo(service.productqnavoList(pNum));
+		
+		System.out.println("리뷰" + productvo.getProductqnavo());
+		
 		System.out.println(productvo);
 
 		System.out.println(productvo.getProductreviewvo());
@@ -187,8 +189,10 @@ public class ProductController {
 		System.out.println(cPage);
 		System.out.println(pNum);
 		
-		//페이징 객체 생성
+		//리뷰 페이징 
 		productReviewPagingVO p  = new productReviewPagingVO();
+		//Onq 페이징 
+		productReviewPagingVO p1  = new productReviewPagingVO();
 		
 		
 		//1. 전체 게시물의 수 구하기 totalRecord 작성한 총 게시물
@@ -248,7 +252,7 @@ public class ProductController {
 		map.put("pNum", Integer.parseInt(pNum));
 		
 		
-		
+		//리뷰
 		List<productReviewVO> productreviewvo = service.getreviewList(map);
 		
 		
@@ -262,6 +266,20 @@ public class ProductController {
 		return review;
 
 		
+	}
+	
+	
+	@RequestMapping("inserQnaReview.do")
+	public String inserQnaReview(productQnaVO productqnavo) {
+			
+		
+		
+		System.out.println(productqnavo);
+		
+		service.inserQnaReview(productqnavo);
+
+		
+		return "Product.do?pNum="+productqnavo.getSeq();
 	}
 	
 }
