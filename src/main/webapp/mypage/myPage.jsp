@@ -367,8 +367,8 @@
 		        		id:id }, 
 		        success : function(data){
 		        	console.log(data);
-		        	String userPassword = vo.getPassword();
-		    		vo.setPassword(UserSha256.encrypt(userPassword));
+		        	/* String userPassword = vo.getPassword();
+		    		vo.setPassword(UserSha256.encrypt(userPassword)); */
 		        	
 		        },error:function(request,status,error){
 		          	alert("전송실패");
