@@ -154,7 +154,7 @@
 
                             </div>
                             <input multiple="multiple" type="file"
-							name="file" id="image"  style="display:block"/>
+							name="file" id="image"  style="display:none"/>
                             <button class="button button--color-blue-inverted button--size-50 button--shape-4 upload-button"
                                 type="button" onclick="document.all.file.click()" >사진 첨부하기</button>
                         </div>
@@ -458,7 +458,7 @@
 
             <div class="production-selling__detail row">
 
-                <div class="production-selling__detail__content col-12 col-lg-8" style="width: 70%; border: solid 5px royalblue;">
+                <div class="production-selling__detail__content col-12 col-lg-8">
                     <div class="production-selling-content">
                         <a id="production-selling-information"></a>
                         <section class="production-selling-section">
@@ -616,6 +616,7 @@
                                             </p>
                                             	</article>	
                                             </c:forEach>
+                                            
                                  <ul class="list-paginator production-review__paginator">
                                                                             
                                 
@@ -634,9 +635,9 @@
                                        		</li>
                                        </c:otherwise>
                                     </c:choose>
-                                    
-                                    
+                                   
                                  	<c:forEach var="i" begin="${p.beginPage }" end="${p.endPage }">
+                                 
                                  	<c:choose>
                                  		<c:when test="${i == p.nowPage }">
 		                                    <li>
@@ -645,7 +646,7 @@
 	                                    </c:when>
 	                                    <c:otherwise>
 	                                    	 <li>
-		                                        <button class="list-paginator__page sm selected" type="button">${i }</button>
+		                                        <button class="list-paginator__page sm" type="button">${i }</button>
 		                                    </li>
 	                                    </c:otherwise>
 	                                </c:choose>
@@ -746,7 +747,7 @@
 	                                    </c:when>
 	                                    <c:otherwise>
 	                                    	 <li>
-		                                        <button class="list-paginator__page sm selected" type="button">${i }</button>
+		                                        <button class="list-paginator__page sm" type="button">${i }</button>
 		                                    </li>
 	                                    </c:otherwise>
 	                                </c:choose>
@@ -867,45 +868,50 @@
                     </div>
                 </div>
 
-                <div class="production-selling__detail__sidebar col-4" style="width: 20%;  border: solid 5px royalblue;">
+                <div class="production-selling__detail__sidebar col-4">
                     <div data-sticky-enabled="true" data-sticky-always="false" data-direction="top"
                         data-offset="133" class="sticky-container production-selling-sidebar-wrap"
-                        style="height: 100%; position: relative; border: 1px solid red;">
+                        style="height: 100%; position: relative;">
                         <div class="sticky-child production-selling-sidebar"
-                            style="position: sticky; box-sizing: border-box; height: 477px; width: 50%; top: 100px; border: 1px solid rgb(196, 228, 15);">
-                            <section
-                                class="production-selling-sidebar-content production-selling-sidebar__content">
-                                <div
-                                    class="production-selling-option-form production-selling-sidebar-content__option-form">
-                                    <section
-                                        class="selling-option-form-content production-selling-option-form__form">
-                                        <div class="selling-option-form-content__form">
-                                     
-                                        </div>
-                                        <ul class="selling-option-form-content__list"></ul>
-                                        <p class="selling-option-form-content__price"><span
-                                                class="selling-option-form-content__price__left">주문금액</span><span
-                                                class="selling-option-form-content__price__right"><span
-                                                    class="selling-option-form-content__price__number">0</span>원</span>
+                            style="position: sticky; box-sizing: border-box; height: 477px; width: 100%; top: 100px;">
+                     <div class="sticky-child production-selling-sidebar"
+                            style="position: sticky; box-sizing: border-box; height: 477px; width: 50%; top: 100px;">
+                            <div class="production-selling-option-form production-selling-overview__option-form">
+                                <section class="selling-option-form-content production-selling-option-form__form">
+                                    <div class="selling-option-form-content__form">
+                                        <span>남은 수량 : <span class="stock">${productvo.stock}</span></span> 
+                                        <p>
+                                            <select id="product-select" style="margin-top:10px;">
+                                                <option value="">선택</option>
+                                                <option value="">${productvo.pName}</option>
+                                            </select>
                                         </p>
-                                    </section>
-                                    <div class="production-selling-option-form__footer"><button
-                                            class="button button--color-gray-14-inverted button--size-55 button--shape-4 production-selling-sidebar-content__scrap"
-                                            type="button"><svg class="icon--stroke" aria-label="스크랩" width="24"
-                                                height="24" fill="currentColor" viewBox="0 0 24 24"
-                                                preserveAspectRatio="xMidYMid meet">
-                                                <path
-                                                    d="M11.53 18.54l-8.06 4.31A1 1 0 0 1 2 21.97V3.5A1.5 1.5 0 0 1 3.5 2h17A1.5 1.5 0 0 1 22 3.5v18.47a1 1 0 0 1-1.47.88l-8.06-4.31a1 1 0 0 0-.94 0z">
-                                                </path>
-                                            </svg></button>
-                                           
-                                            <button
-                                            class="button button--color-blue-inverted button--size-55 button--shape-4"
-                                            type="button">장바구니</button><button
-                                            class="button button--color-blue button--size-55 button--shape-4"
-                                            type="button">바로구매</button></div>
+                                        
+                                        
+                                        <div class="optselect_area" style="">
+                                            <ul id="_optionSelectList" class="opt_selectlist">
+                                            
+                                                        
+                                            
+                                                
+                                    
+                                            </ul>
+                                        </div>
+                                    </div>
+        
+                                    <ul class="selling-option-form-content__list"></ul>
+                                    <p class="selling-option-form-content__price">
+                                        <span class="selling-option-form-content__price__left">주문금액</span>
+                                        <span class="selling-option-form-content__price__right">
+                                        <span class="selling-option-form-content__price__number">0</span>원</span>
+                                    </p>
+                                </section>
+                                <div class="production-selling-option-form__footer">
+                                    <button type="button" class="button button--color-blue-inverted button--size-55 button--shape-4">장바구니</button>
+                                    <button type="button" class="button button--color-blue button--size-55 button--shape-4">바로구매</button>
                                 </div>
-                            </section>
+                            </div>
+                        </div>
                         </div>
                     </div>
                 </div>

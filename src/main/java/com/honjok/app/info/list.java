@@ -286,6 +286,11 @@ public class list {
 						
 		}
 		
+		//상품 3개 가져오기 
+				
+		
+		
+		
 
 		model.addAttribute("reply", reply);
 		model.addAttribute("UploadList", UploadList);
