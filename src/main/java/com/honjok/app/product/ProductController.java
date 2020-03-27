@@ -219,11 +219,11 @@ public class ProductController {
 		
 		
 		//1. 전체 게시물의 수 구하기 totalRecord 작성한 총 게시물
-		p.setTotalRecord(service.getQnaTotalCount(pNum));
+		p.setTotalRecord(service.getTotalCount(pNum));
 		System.out.println("전체개시글수 : " + p.getTotalRecord());
 		//계산 전체 페이지 토탈 레코드에서 페이지장 표시할 개수 값 나누고 나머니 존재 할씨 1증가 
 		
-		//전체 게시물수 33 / numperpage 5;
+		//전체 게시물수 33 / numperpage 5;setTotalRecord
 		p.setTotalPage(); // 6.6
 		System.out.println("전체페이지수  : " + p.getTotalPage());
 		
@@ -306,7 +306,7 @@ public class ProductController {
 		return "su";
 	}
 	
-	//문의길 페이지
+	//문의글 페이징
 	@RequestMapping("ProductQna.do")
 	@ResponseBody
 	public Map<String,Object> ProductQna(String cPage, String pNum) {
@@ -319,7 +319,7 @@ public class ProductController {
 		
 		
 		//1. 전체 게시물의 수 구하기 totalRecord 작성한 총 게시물
-		p.setTotalRecord(service.getTotalCount(pNum));
+		p.setTotalRecord(service.getQnaTotalCount(pNum));
 		System.out.println("전체개시글수 : " + p.getTotalRecord());
 		//계산 전체 페이지 토탈 레코드에서 페이지장 표시할 개수 값 나누고 나머니 존재 할씨 1증가 
 		

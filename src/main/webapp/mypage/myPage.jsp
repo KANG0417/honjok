@@ -256,6 +256,7 @@
 	
 	<ol id="qna">
 	<li><h5 class="question">상품문의</h5></li>
+	<li class="qinquiry">문의하기</li>
 	<li class="qHistory">문의내역</li>
 	</ol>
 	

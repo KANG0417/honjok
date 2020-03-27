@@ -14,6 +14,7 @@
  <excludes>
      <pattern>*login*</pattern>
      <pattern>*review*</pattern>
+     <pattern>*product*</pattern>
  </excludes>
  
   

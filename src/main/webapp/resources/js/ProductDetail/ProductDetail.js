@@ -15,19 +15,11 @@ var body = document.querySelector("body");
 
 //이미지 추가하고 더하기 
 ReviewBtn.onclick = function () {
-	if(id != ""){
-		alert(id);
+	var scrollPosition = window.scrollY;
+	reactModalCenterDiv.style.top = scrollPosition;
 	reactModalCenterDiv.style.display = "block";
-	} else {
-		var result = confirm("로그인이 필요한 서비스입니다. 로그인 하시겠습니까?")
-		if (result) {
-			window
-				.open(
-					'/app/loginModal.jsp',
-					'pop01',
-					'top=10, left=10, width=500, height=600, status=no, menubar=no, toolbar=no, resizable=no');
-		}
-	}
+	reactModalCenterDiv.style.overflow = "scroll";
+	body.style.overflow = "hidden";
 }
 
 reviewModalClose.onclick = function () {
@@ -178,7 +170,7 @@ $(document).on("click", ".production-review__paginator", function (e) {
 
 			$('.production-review-item__container').html("");
 
-			for (var j in e.productreviewvo) {
+			for (var j = 0; j < e.productreviewvo.length; j++) {
 
 				//작성자 이름 생성  <p>
 				var writer = '<p class="production-review-item__writer__info__name">작성자: ' + e.productreviewvo[j].id + '</p>';
@@ -203,15 +195,15 @@ $(document).on("click", ".production-review__paginator", function (e) {
 				$(article).append('<img src="/app/resources/img/review/' + e.productreviewvo[j].photoImage1 + '"style="width: 120px; height: 100px">');
 				$(article).append('<img src="/app/resources/img/review/' + e.productreviewvo[j].photoImage2 + '"style="width: 120px; height: 100px">');
 				$(article).append('<p class="production-review-item__description">내용: <br>' + e.productreviewvo[j].content + '</p>');
-				
 				$('.production-review-item__container').append(article);
+
 
 				console.log(article);
 			}
 
 
 			var perBtn = "";
-			
+			console.log(e.p.beginPage);
 			if (e.p.beginPage != 1) {
 				perBtn = '<li><button class="list-paginator__prev" type="button">이전</button></li>';
 			}
@@ -220,10 +212,13 @@ $(document).on("click", ".production-review__paginator", function (e) {
 
 
 			var liTag = "";
-			console.log(e.p.beginPage);
-			console.log(e.p.endPage);
 			for (var i = e.p.beginPage; i <= e.p.endPage; i++) {
-				liTag += '<li><button class="list-paginator__page sm selected" type="button">' + i + '</button>';
+			
+				if(cPage == i){
+						liTag += '<li><button class="list-paginator__page sm selected" type="button">' + i + '</button>';
+				}else{
+						liTag += '<li><button class="list-paginator__page sm" type="button">' + i + '</button>';
+				}
 
 			}
 			console.log(liTag);
@@ -231,7 +226,7 @@ $(document).on("click", ".production-review__paginator", function (e) {
 
 			var nextBtn = "";
 			if (e.p.endPage < e.p.totalPage) {
-				var nextBtn = '<li ><button class="list-paginator__next" type="button">다음</button></li>';
+				var nextBtn = '<li"><button class="list-paginator__next" type="button">다음</button></li>';
 			}
 			console.log(nextBtn);
 
@@ -349,7 +344,6 @@ $(document).on("click", ".btns input", function (e) {
 
 
 
-
 $('button:contains("장바구니")').on("click", function () {
 	
 	if (id != "") {
@@ -451,14 +445,47 @@ $(document).on("click", ".production-qna__paginator", function(e){
 					'+'<p class="production-question-feed__item__title">'+e.productQnaList[i].title+'</p><p class="production-question-feed__item__content">\
 					'+e.productQnaList[i].content+'</p></div>';
 				}
+
 				
 			}
 			console.log("article"+article);
 				$('.production-question-feed__list').append('<article class="production-question-feed__item">'+article+'</article>');
+
+
+
+				var perBtn = "";
+			if (e.p.beginPage != 1) {
+				perBtn = '<li><button class="list-paginator__prev" type="button">이전</button></li>';
+			}
+			console.log(perBtn);
+
+
+
+			var liTag = "";
+			console.log(e.p.beginPage);
+			console.log(e.p.endPage);
+			for (var i = e.p.beginPage; i <= e.p.endPage; i++) {
+				if(cPage == i){
+					liTag += '<li><button class="production-qna__paginator selected" type="button">' + i + '</button></li>';
+				}else{
+					liTag += '<li><button class="production-qna__paginator" type="button">' + i + '</button></li>';
+
+				}
+			}
+			console.log(liTag);
+
+
+			var nextBtn = "";
+			if (e.p.endPage < e.p.totalPage) {
+				var nextBtn = '<li ><button class="list-paginator__next" type="button">다음</button></li>';
+			}
+			console.log(nextBtn);
+			$('.production-question-feed__list').append('<ul class="list-paginator production-qna__paginator">'+perBtn+liTag+nextBtn+'</ul>')
+
 			},
-		error: function (jqXHR, textStatus, errorThrown) {
-			alert("오류가 발생하였습니다.");
-		}
+			error: function (jqXHR, textStatus, errorThrown) {
+				alert("오류가 발생하였습니다.");
+			}
 
 	});
 
@@ -483,15 +510,4 @@ $(document).on("click",".product-question__wrap__type-select",function(e){
 	$(e.target).addClass('product-question__wrap__type-select__box--select');
 
 });
-
-
-
-
-
-
-
-
-
-
-
 

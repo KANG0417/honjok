@@ -62,9 +62,7 @@ body {
    <div style="max-width: 1500px; margin: 0 auto; height: 100%;">
       <h2 class="text-center">혼밥의 모든것</h2>
 
-      <div class="layout div1" style="height: 100%;">검색영역</div>
       <div class="container div2">
-
          <c:choose>
             <c:when test="${CommunityVOList == null }">
                <p align="center">
@@ -132,7 +130,7 @@ body {
                               </h3>
                               <div class="likes">
                                  <i class="fa fa-thumbs-o-up"></i>좋아요: ${CommunityVO.likes } <i
-                                    class="fa fa-comment-o"> 댓글수 : 3</i> 조회수:${CommInfoVO.hit }
+                                    class="fa fa-comment-o"> 댓글수 : </i> 조회수:${CommInfoVO.hit }
                               </div>
                               <br>
                               <p class="blog-meta">작성자: ${CommunityVO.nickName } /
@@ -258,7 +256,7 @@ body {
    <!-- 마지막 div -->
 
    <script type="text/javascript"
-      src="/app/resources/js/hojokinfo/swiper.js"></script>
+      src="/app/resources/js/honjokinfo/swiper.js"></script>
    <script>
       var swiper = new Swiper('.swiper-container', {
          effect : 'coverflow',

@@ -71,16 +71,16 @@ window.onload = function(){
     	return;
     }else{
     	// attr, prop 모두 리드온리 사용가능
-    	$("#id_book_title").val(v_title).attr("readonly", true);
-    	$("#id_book_au").val(v_authors).prop("readonly", true);
-    	$("#id_book_pub").val(v_publisher).attr("readonly", true);
-    	$("#id_book_url").val(v_url).prop("readonly", true);
-    	$("#id_book_img").val(v_thumbURL).prop("readonly", true);
+    	$("#id_prod_title").val(v_title).attr("readonly", true);
+    	$("#id_prod_au").val(v_authors).prop("readonly", true);
+    	$("#id_prod_pub").val(v_publisher).attr("readonly", true);
+    	$("#id_prod_url").val(v_url).prop("readonly", true);
+    	$("#id_prod_img").val(v_thumbURL).prop("readonly", true);
     	
     	if(v_thumbURL){
-    		$("#div_book_img").prepend("<img src=" + v_thumbURL + " width='90px' height='110'>")    		
+    		$("#div_prod_img").prepend("<img src=" + v_thumbURL + " width='90px' height='110'>")    		
     	}else{
-    		$("#div_book_img").prepend("<img src='https://t1.daumcdn.net/cfile/tistory/993B604F5D8D802419' width='90px' height='110'>")    		    		
+    		$("#div_prod_img").prepend("<img src='https://t1.daumcdn.net/cfile/tistory/993B604F5D8D802419' width='90px' height='110'>")    		    		
     	}
     }
 	}
@@ -96,27 +96,27 @@ window.onload = function(){
 </head>
 <body>
 
-<h3>글작성</h3>
+<h3>리뷰</h3>
 
 <form name="reviewForm" action="reviewInsert" method="post" enctype="multipart/form-data">
 
 	<table class="table table-bordered">
 		<tr>
-			<td width="10%">글 제목</td>
+			<td width="10%">리뷰 제목</td>
 			<td colspan="5"><input type="text" class="form-control" name="rev_title" value="${review.rev_title}"></td>
-			<td rowspan="2" width="100px" height="120px"><div id="div_book_img" width="90px" height="110"></div></td>
+			<td rowspan="2" width="100px" height="120px"><div id="div_prod_img" width="90px" height="110"></div></td>
 		</tr>	
 		
 		<tr>
-			<td width="10%">책 제목</td>
-			<td><input type="text" class="form-control" name="rev_book_title" id="id_book_title" value="${review.rev_book_title}" readonly="true"></td>
-			<td width="10%">책 저자</td>
-			<td><input type="text" class="form-control" name="rev_book_au" id="id_book_au" value="${review.rev_book_au}" readonly="ture"></td>
-			<td width="10%">출판사</td>
-			<td><input type="text" class="form-control" name="rev_book_pub" id="id_book_pub" value="${review.rev_book_pub}" readonly="true"></td>
-<%-- 			<td><input type="text" class="form-control" name="rev_book_url" id="id_book_url" value="${review.rev_book_url}" readonly="true"></td> --%>
-			<input type="hidden" name="rev_book_url" id="id_book_url" value="${review.rev_book_url}">
-			<input type="hidden" name="rev_book_img" id="id_book_img" value="${review.rev_book_img}">
+			<td width="10%">제품명</td>
+			<td><input type="text" class="form-control" name="rev_prod_title" id="id_prod_title" value="${review.rev_prod_title}" readonly="true"></td>
+			<td width="10%">제품가격</td>
+			<td><input type="text" class="form-control" name="rev_prod_price" id="rev_prod_price" value="${review.rev_prod_price}" readonly="ture"></td>
+			<td width="10%">제조사</td>
+			<td><input type="text" class="form-control" name="rev_mfg_co" id="id_mfg_co" value="${review.rev_mfg_co}" readonly="true"></td>
+<%-- 			<td><input type="text" class="form-control" name="rev_prod_url" id="id_prod_url" value="${review.rev_prod_url}" readonly="true"></td> --%>
+			<input type="hidden" name="rev_prod_url" id="id_prod_url" value="${review.rev_prod_url}">
+			<input type="hidden" name="rev_prod_img" id="id_prod_img" value="${review.rev_prod_img}">
 		</tr>
 		
 		<tr>
