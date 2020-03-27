@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.honjok.app.vo.productQnaVO;
 import com.honjok.app.vo.productReviewVO;
 import com.honjok.app.vo.productVO;
 
@@ -19,7 +20,8 @@ public class ProductMapper {
 	  public productVO ProductVO(String pNum) {
 	    productVO ProductVO = mybatis.selectOne("ProductMapper.productVO", pNum);
 	      return ProductVO;
-	   }
+
+	  }
 
 	public List<productReviewVO> productReviewVO(String pNum) {
 		List<productReviewVO> productReviewVO = mybatis.selectList("ProductMapper.productReviewVO", pNum);
@@ -39,6 +41,25 @@ public class ProductMapper {
 
 	public List<productReviewVO> getreviewList(Map map) {
 		return mybatis.selectList("ProductMapper.getreviewList", map);
+	}
+
+	//qna 리뷰 글 등록
+	public void inserQnaReview(productQnaVO productqnavo) {
+		mybatis.insert("ProductMapper.inserQnaReview",productqnavo);
+	}
+
+	//리뷰글 조회
+	public List<productQnaVO> productqnavoList(String pNum) {
+		return mybatis.selectList("ProductMapper.productqnavoList", pNum);
+	}
+
+	public int getQnaTotalCount(String pNum) {
+		return mybatis.selectOne("ProductMapper.getQnaTotalCount",pNum);
+	}
+
+	public List<productQnaVO> ProductQna(Map<String, Integer> map) {
+		// TODO Auto-generated method stub
+		return mybatis.selectList("ProductMapper.ProductQna", map);
 	}
 	
 }

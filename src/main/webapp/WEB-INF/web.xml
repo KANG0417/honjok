@@ -23,6 +23,18 @@
     <filter-name>characterEncoding</filter-name>
     <url-pattern>*.do</url-pattern>
   </filter-mapping>
+<!-- Sitemesh Page Filter -->
+<filter>
+    <filter-name>sitemeshPageFilter</filter-name>
+    <filter-class>com.opensymphony.module.sitemesh.filter.PageFilter</filter-class>
+</filter>
+<filter-mapping>
+    <filter-name>sitemeshPageFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+    <!-- <dispatcher>FORWARD</dispatcher> -->
+</filter-mapping>
+
+
   <servlet>
     <servlet-name>action</servlet-name>
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>

@@ -12,7 +12,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.honjok.app.user.UserSha256;
 import com.honjok.app.vo.CommInteriorVO;
+import com.honjok.app.vo.OrderVO;
 import com.honjok.app.vo.UserVO;
 
 @Controller
@@ -24,23 +26,33 @@ public class MyPageController {
 	
 	//회원정보 id로 조회
 	@RequestMapping("/selectMypage.do")
-	public String getUser(UserVO uvo, HttpSession httpSession, HttpServletRequest request,
-			HttpServletResponse response) {
-
-		mypages.getUser(uvo);
+	@ResponseBody
+	public UserVO getUser(UserVO uvo, Model model) {
+		System.out.println(">>> 회원정보 조회");
+		
+		UserVO uservo = mypages.getUser(uvo);
+		
+		return uservo;
+	}
+	
+	//--회원정보 수정
+	@RequestMapping("/updateMypage.do")
+	public String updateUser(UserVO uvo, Model model) {
+		System.out.println(">>> 회원정보 수정 처리");
+		mypages.updateUser(uvo);
 		return "myPage.jsp";
 	}
 	
 	//주문내역 id로 조회
-	/*@RequestMapping("/selectOrder.do")
+	@RequestMapping("/selectOrder.do")
 	@ResponseBody
-	public String getOrder(UserVO uvo, HttpSession httpSession, HttpServletRequest request,
+	public String getOrder(OrderVO ovo, HttpSession httpSession, HttpServletRequest request,
 			HttpServletResponse response) {
 		
-		mypages.selectOne(uvo);
+		mypages.getOrder(ovo);
 		return "myPage.jsp";
 	}
-	*/
+	
 	//게시물 id로 조회
 	//--인테리어 게시판 조회
 	@RequestMapping("/selectBoard.do")
@@ -51,4 +63,6 @@ public class MyPageController {
 		System.out.println(interiorMypage);
 		return interiorMypage;
 	}
+	
+	//
 }

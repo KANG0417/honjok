@@ -63,8 +63,7 @@
 						$('#spanLoginCheck').text('로그인 정보를 정확히 입력해주세요')
 						$('#spanLoginCheck').css('color', 'red');
 					}else if (data == -2){
-						$
-						('#spanLoginCheck').text('이메일을 인증 해주셔야합니다')
+						$('#spanLoginCheck').text('이메일을 인증 해주셔야합니다')
 						$('#spanLoginCheck').css('color', 'red');
 					}else{
 						location.href="getMainList.do"

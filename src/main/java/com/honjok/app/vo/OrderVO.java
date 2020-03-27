@@ -1,6 +1,6 @@
 package com.honjok.app.vo;
 
-public class OrdersVO {
+public class OrderVO {
 	private int oNum, pSeq, price;
 	private String oProc, id, payment, regdate;
 	

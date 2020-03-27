@@ -187,7 +187,7 @@
 		width: 60%;
     	border-top: 1px solid #444444;
     	border-collapse: collapse;
-    	align: center;
+    	valign: left;
 	}
 	
 	.thInter, .tbInter {
@@ -267,25 +267,41 @@
 		</div>
 		<div id=memberBox>
 			<h3>회원정보</h3>
-	<c:forEach var="inter" items="${interiorMypage }">
-		<table class="interBorder">
-		<tr>
-		<td class="inter">${inter.id }</td>
-		</tr>
-		</table>
-	</c:forEach>
+			<form method="post" action="updateMypage.do">
+				<input type="hidden" name="id" value="${user.id}">
+			<c:forEach var="userSelect" items="${userSelect}">
+				<div class="userBorder">
+					<input type="text" name="id" value="${userSelect.id}" readonly>
+				</div>
+			</c:forEach>
+			</form>
+			
+			<c:forEach var="inter" items="${interiorMypage }">
+				<div class="interBorder">
+				<ol>
+				<li class="userB">${user.id }</li>
+				</ol>
+				</div>
+			</c:forEach>
 		</div>
 		<div id=wishBox>
 			<h3>관심상품</h3>
 		</div>
 		<div id=commBox>
 			<h3>커뮤니티</h3>
+			<c:forEach var="inter" items="${interiorMypage }">
+				<table class="interBorder">
+				<tr>
+				<td class="inter">${inter.id }</td>
+				</tr>
+				</table>
+			</c:forEach>
 		</div>
 	</div>
 	
 	<input type="hidden" name="userId" id="userId" value="${sessionScope.userSession.id}">
-	<input type="hidden" name="password" id="password">
-	<div class="checkFont" id="passwordCheck"></div>	
+	<input type="hidden" name="passWord" id="passWord" value="">
+	<div class="checkFont" id="passwordCheck"></div>
 </div>
 <script>
 	/* var empJ = /\s/g; //공백체크 정규표현식
@@ -307,26 +323,19 @@
 	});
 	
 	//회원정보 클릭시 페이지 전환
+	//---주문내역 조회 페이지
 	$('.orderInfo').on("click",function(){
 		var id = $('#userId').val();
 		console.log(id);
  	    $.ajax({
 	    	method: "GET",
-	        url : "selectBoard.do",
+	        url : "selectOrder.do",
 	        datatype: "json",
 	        data: { id:id },
 	        success : function(data){
 	        	 console.log(data);
 	        	 $("#intro").html("");
-	        	for(var i in data){
-	        	 $("#intro").append("<table class='interBorder'>\
-	        	 <thead class='thInter'><th>제목</th><th>날짜</th><th>조회수<th></thead>\
-	        	 <tbody class='tbInter'><tr><td>" +
-	        	 data[i].title + "</td><td>" +
-	        	 data[i].regdate + "</td><td>" +
-	        	 data[i].hit + "</td></tr></tbody>\
-	        	 </table>");
-	        	}
+	        	 $("#intro").append("");
 
 	        },
 	        error:function(request,status,error){
@@ -338,13 +347,62 @@
 	
 	$('.wishList').on("click",function(){
 		$('#intro').html("");
+		
 		$('#intro').append('<table><thead><tr><th>찜목록</th></tr></thead></table>');	
 	})
 	
+	//---회원정보 수정 페이지
 	$('.memUp').on("click",function(){
 		$('#intro').html("");
-		$('#intro').append('<table><thead><tr><th>회원정보수정</th></tr></thead></table>');	
+		$('#intro').append('<form><input type="password" name="password" placeholder="비밀번호를 입력해주세요" class="gogo">\
+				<input class="memupBtn" type="button" value="확인"></form>');
 	})
+	$(document).on("click",".memupBtn", function(){
+		var password  = $('.gogo').val();
+		var id  = '${sessionScope.userSession.id}';
+		  $.ajax({
+		    	method: "GET",
+		        url : "selectMypage.do",
+		        data: { password:password,
+		        		id:id }, 
+		        success : function(data){
+		        	console.log(data);
+		        	/* String userPassword = vo.getPassword();
+		    		vo.setPassword(UserSha256.encrypt(userPassword)); */
+		        	
+		        },error:function(request,status,error){
+		          	alert("전송실패");
+		        }
+	 	    	}) 
+	});
+	
+	$('#userUp').on("click",function(){
+		var id = $('#userId').val();
+		console.log(id);
+ 	    $.ajax({
+	    	method: "GET",
+	        url : "selectMypage.do",
+	        datatype: "json",
+	        data: { id:id },
+	        success : function(data){
+	        	 console.log(data);
+	        	 $("#intro").html("");
+	        		$('#intro').append('<form action="updateMypage.do" method="post"><div class="userBorder">\
+       				<input type="hidden" name="id" value="${UserVO.id}">\
+       					<input type="text" name="id" value="'+ data.id + '"readonly>' +
+       					'새비밀번호 <input type="text" name="password">' +
+       					'새비밀번호 확인 <input type="text" name="password">' +
+	        		'<br><input type="submit" value="수정">\
+	        		</div></form>');
+	        },
+	        error:function(request,status,error){
+	            //alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+	          	alert("전송실패");
+	        }
+ 	    	})
+	    });
+       				/* <c:forEach var="userSelect" items="${userSelect}">\ */
+       				/* '</c:forEach>' + */
 	
 	$('.memDel').on("click",function(){
 		$('#intro').html("");

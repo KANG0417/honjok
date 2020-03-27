@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.honjok.app.vo.productQnaVO;
 import com.honjok.app.vo.productReviewVO;
 import com.honjok.app.vo.productVO;
 
@@ -16,6 +17,7 @@ public class ProductServiceImpl implements ProductService {
    @Autowired
    private ProductMapper mapper;
 
+   
   
 
 
@@ -63,6 +65,42 @@ public List<productReviewVO> getreviewList(Map map) {
 	
 	
 	return mapper.getreviewList(map);
+}
+
+
+
+//qna 리뷰 글 등록
+@Override
+public void inserQnaReview(productQnaVO productqnavo) {
+	System.out.println("");
+	mapper.inserQnaReview(productqnavo);
+	
+}
+
+
+
+//Ona 리뷰 조회 
+@Override
+public List<productQnaVO> productqnavoList(String pNum) {
+	
+	return mapper.productqnavoList(pNum);
+}
+
+
+
+//Qna 리뷰 카운트
+@Override
+public int getQnaTotalCount(String pNum) {
+	return mapper.getQnaTotalCount(pNum);
+}
+
+
+
+
+@Override
+public List<productQnaVO> ProductQna(Map<String, Integer> map) {
+	
+	return  mapper.ProductQna(map);
 }
 
 
