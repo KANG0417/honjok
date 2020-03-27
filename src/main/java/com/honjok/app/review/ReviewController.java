@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.honkok.app.util.PagingUtil;
 
 @Controller
-@RequestMapping("/board/review")
+@RequestMapping("/review")
 public class ReviewController {
 
 	@Autowired

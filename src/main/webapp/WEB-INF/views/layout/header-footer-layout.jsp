@@ -59,11 +59,6 @@
  </div>
   <decorator:body />
   
- <footer class="py-5 bg-dark">
-    <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; 혼족 : Honjok 2020<br>
-      02-3486-9600서울 서초구 강남대로 459</p>
-    </div>
-  </footer>
+
 
 
