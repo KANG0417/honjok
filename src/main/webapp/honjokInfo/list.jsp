@@ -62,7 +62,7 @@ body {
    <div style="max-width: 1500px; margin: 0 auto; height: 100%;">
       <h2 class="text-center">혼밥의 모든것</h2>
 
-      <div class="layout div1" style="height: 100%;">검색영역</div>
+ 
       <div class="container div2">
 
          <c:choose>
@@ -258,7 +258,7 @@ body {
    <!-- 마지막 div -->
 
    <script type="text/javascript"
-      src="/app/resources/js/hojokinfo/swiper.js"></script>
+      src="/app/resources/js/honjokinfo/swiper.js"></script>
    <script>
       var swiper = new Swiper('.swiper-container', {
          effect : 'coverflow',
