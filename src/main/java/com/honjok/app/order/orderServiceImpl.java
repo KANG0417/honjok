@@ -28,4 +28,24 @@ public class orderServiceImpl implements orderService {
 		return orderDAO.getUserData(map);
 	}
 
+	@Override
+	public void insertOrderInfo(Map<String, Object> order) {
+		orderDAO.insertOrderInfo(order);
+	}
+
+	@Override
+	public void insertOrderDetail(Map<String, Object> map) {
+		orderDAO.insertOrderDetail(map);
+	}
+
+	@Override
+	public void updateProductStock(Map<String, Object> map) {
+		orderDAO.updateProductStock(map);
+	}
+
+	@Override
+	public int deleteCartList(Map<String, Object> map) {
+		return orderDAO.deleteCartList(map);
+	}
+
 }

@@ -27,6 +27,19 @@ public class orderDAO {
 			return mybatis.selectOne("orderDAO.getUserData", map);
 		}
 
+		public void insertOrderInfo(Map<String, Object> order) {
+			mybatis.insert("orderDAO.insertOrderInfo", order);
+		}
+		
+		public void insertOrderDetail(Map<String, Object> map) {
+			mybatis.insert("orderDAO.insertOrderDetail", map);
+		}
+		public void updateProductStock(Map<String, Object> map) {
+			mybatis.update("orderDAO.updateProductStock",map);
+		}
+		public int deleteCartList(Map<String, Object> map) {
+			mybatis.delete("orderDAO.deleteCartList",map);
+			return mybatis.selectOne("cartDAO.getCartCount", map);
+		}
 
-
-}
+}	

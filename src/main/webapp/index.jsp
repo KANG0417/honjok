@@ -15,7 +15,7 @@
 <style>
 	/* Make the image fully responsive */
 	  .carousel-inner img {
-	    width: 70%;
+	    width: 100%;
 	  }
       #columns{
         column-width:350px;
