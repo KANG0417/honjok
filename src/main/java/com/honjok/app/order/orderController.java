@@ -65,22 +65,52 @@ public class orderController {
 		return "/order/order.jsp";
 	}
 	
-	/*
-	@RequestMapping(value="/orderServer.do", method=RequestMethod.POST)
+	
+	@RequestMapping(value="/orderService.do", method=RequestMethod.POST)
 	@ResponseBody
-	public String responseSuccess(@RequestBody Map<String, Object> order, Model model, HttpSession session) {
+	public void responseSuccess(@RequestBody Map<String, Object> order, Model model, HttpSession session) {
 		
 		UserVO vo = (UserVO)session.getAttribute("userSession");
 		String id = vo.getId(); 
-		//ArrayList<String>
+		System.out.println("서버 아이디" + id);
+		ArrayList<String> pNum = (ArrayList<String>)order.get("pNum");
+		System.out.println("pNum" + pNum);
+		
+		ArrayList<String> pCnt = (ArrayList<String>)order.get("pCnt");
+		System.out.println("pCnt" + pCnt);
+		
+		ArrayList<String> price = (ArrayList<String>)order.get("price");
+		System.out.println("price" + price);
+		
+		order.remove("pNum");
+		order.remove("qty");
+		order.remove("price");
+		order.put("id", id);
+		orderService.insertOrderInfo(order);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		for(int i=0; i< pNum.size(); i++) {
+			map.put("pNum", pNum.get(i));
+			map.put("pCnt", pCnt.get(i));
+			map.put("price", price.get(i));
+			map.put("id", id);
+			
+			System.out.println(map);
+			orderService.insertOrderDetail(map);
+			orderService.updateProductStock(map);
+			
+			int memCart = orderService.deleteCartList(map);
+			session.setAttribute("memCart", memCart);
+		}
 		
 		
 		
-		return null;
+		
+		
 	}
 	
 	
-	*/
+	
 	
 
 }

@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>   
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
 <!DOCTYPE>
 <html>
 <head>
@@ -10,6 +11,7 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
 <style>
     
 .wrap {
@@ -767,16 +769,17 @@ em, address {
 											<th class="info">연락처</th>
 											<td>
 												<div class="info_deliver phone">
+													<c:set var="phone" value="${vo.phone}"/>
 													<span class="input_area">
-														<input type="text" id="mobile1" class="input_default tel1" value="" size="3" maxlength="3" />
+														<input type="text" id="mobile1" class="input_default" value="${fn:substring(phone,0,3)}" size="3" maxlength="3" />
 													</span>
 													<span class="input_txt">-</span>
 													<span class="input_area gwnan">
-														<input type="text" id="mobile2" class="input_default tel2" value="" size="4" maxlength="4" />
+														<input type="text" id="mobile2" class="input_default" value="${fn:substring(phone,3,7)}" size="4" maxlength="4" />
 													</span>
 													<span class="input_txt">-</span>
 													<span class="input_area phone2">
-														<input type="text" id="mobile3" class="input_default tel3" value="" size="4" maxlength="4" />
+														<input type="text" id="mobile3" class="input_default" value="${fn:substring(phone,7,11)}" size="4" maxlength="4" />
 													</span>
 												</div>
 											</td>
@@ -843,9 +846,7 @@ em, address {
 															</span>
 															<div class="prd_info">
 																<span class="mall">${PRODUCT.BRAND_NAME}</span>
-																<div id="title"class="title">
-																		${PRODUCT.P_NAME}
-																</div>
+																<div id="title"class="title">${PRODUCT.P_NAME}</div>
 																<div class="option_price">
 																	<span class="price">${PRODUCT.PRICE}</span>
 																	<span class="won">원</span>
@@ -880,7 +881,7 @@ em, address {
 													</td>
 													<!-- 배송비 노출 시작 -->
 													<td id="ship" class="td_delivery" rowspan="1">
-														<span id="shippingFee" class="deli_after">무료</span>
+														<span id="shippingFee" class="deli_after price">${PRODUCT.SHIPPINGFEE}</span>
 													</td>
 													<!-- 배송비 노출 종료 -->
 												</tr>
@@ -1009,9 +1010,54 @@ em, address {
       </div>
 </body>
 <script>
+
+function sample6_execDaumPostcode(){
+    new daum.Postcode({
+        oncomplete: function(data) {
+            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+            // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+            // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+            var addr = ''; // 주소 변수
+            var extraAddr = ''; // 참고항목 변수
+
+            //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+            if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                addr = data.roadAddress;
+            } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                addr = data.jibunAddress;
+            }
+
+            // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+            if(data.userSelectedType === 'R'){
+                // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                    extraAddr += data.bname;
+                }
+                // 건물명이 있고, 공동주택일 경우 추가한다.
+                if(data.buildingName !== '' && data.apartment === 'Y'){
+                    extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                }
+                // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                if(extraAddr !== ''){
+                    extraAddr = ' (' + extraAddr + ')';
+                }
+      
+            
+            } 
+            // 우편번호와 주소 정보를 해당 필드에 넣는다.
+            document.getElementById('sample6_postcode').value = data.zonecode;
+            document.getElementById("sample6_address").value = addr;
+            // 커서를 상세주소 필드로 이동한다.
+            document.getElementById("sample6_detailAddress").focus();
+        }
+    }).open();
+}
+
 $(function(){
 	var cnt = $('.price1').length; //상품 개수
-	let qty = new Array(cnt); //수량
+	let pCnt = new Array(cnt); //수량
 	
 	let stock = new Array(cnt); //재고
 	let pName = new Array(cnt); //이름
@@ -1022,13 +1068,15 @@ $(function(){
 	var onePrdPrice = new Array(cnt); // 상품개당가격
 	let totDiscountPrice = new Array(cnt); //할인적용가 * 수량
 	let totPrice = new Array(cnt); // 상품정가 * 수량
-	let totSalePrice = new Array(cnt); // 할인금액 합계
+	let totSalePrice = new Array(cnt); // 할인금액 합계 
+	let shippingFee = new Array(cnt); // 배송비
+	
 	
 	let lastPrice = 0; //결제금액 합계
 	let lastTotPrice = 0; // 정가금액 합계
 	let lastTotSalePrice = 0; // 할인금액 합계
+	let lastShippingFee = 0;
 	
-	let shoppingFee = 0; // 배송비
 	
 	
 	dataSet();//상품정보 박스 데이터 가공(할인적용가, 최종결제금액)
@@ -1039,105 +1087,72 @@ $(function(){
 			
 		price[i] = parseInt($('.price1').eq(i).text()); //상품 금액 모음
 		salePrice[i] = parseInt($('.price2').eq(i).text()); // 세일 금액 모음
+		shippingFee[i] = parseInt($('.deli_after').eq(i).text());// 배송비 모음
+		
 		
 		
 		discountPriceMinus[i] = parseInt(price[i] - salePrice[i]); // 할인된 금액 모음
-		console.log(discountPriceMinus[i]);
 		
-		qty[i] = parseInt($('.option_qty').eq(i).text());
+		pCnt[i] = parseInt($('.option_qty').eq(i).text());
 		pName[i] = $('.title').eq(i).text();
 		
 		$(".discountPrice").eq(i).text(discountPriceMinus[i]);
 		
-		totSalePrice[i] = salePrice[i] * qty[i]; 
-		totPrice[i] = price[i] * qty[i];
+		totSalePrice[i] = salePrice[i] * pCnt[i]; 
+		totPrice[i] = price[i] * pCnt[i];
 		
 		
 		lastTotPrice += totPrice[i]; //정가금액합계
-		console.log(lastTotPrice);
 		
 		lastTotSalePrice += discountPriceMinus[i]; //할인금액 합계
-		console.log(lastTotSalePrice);		
 		
-		lastPrice += totSalePrice[i]; //최종합계금액
-		console.log(lastPrice);
+		lastShippingFee += shippingFee[i];
 		
-		$('#lastTotPirce').text(lastTotPrice);
-		$('#subDiscountPrice').text(lastTotSalePrice);
-		$('#lastPrice').text(lastPrice);
+		
+		lastPrice += totSalePrice[i] ; //최종합계금액
+		
+		
+		lastPrice2 = lastTotPrice - lastTotSalePrice + lastShippingFee;
+		
+		$('#sumShipPrice').text(lastShippingFee); //배송비
+		$('#lastTotPirce').text(lastTotPrice);//정가
+		$('#subDiscountPrice').text(lastTotSalePrice); //할인가
+		$('#lastPrice').text(lastPrice2);
 		}
 	}
 
 
-
-
-
-    function sample6_execDaumPostcode() {
-        new daum.Postcode({
-            oncomplete: function(data) {
-                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-
-                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
-                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-                var addr = ''; // 주소 변수
-                var extraAddr = ''; // 참고항목 변수
-
-                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
-                    addr = data.roadAddress;
-                } else { // 사용자가 지번 주소를 선택했을 경우(J)
-                    addr = data.jibunAddress;
-                }
-
-                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
-                if(data.userSelectedType === 'R'){
-                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
-                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
-                        extraAddr += data.bname;
-                    }
-                    // 건물명이 있고, 공동주택일 경우 추가한다.
-                    if(data.buildingName !== '' && data.apartment === 'Y'){
-                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-                    }
-                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-                    if(extraAddr !== ''){
-                        extraAddr = ' (' + extraAddr + ')';
-                    }
-          
-                
-                } 
-                // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                document.getElementById('sample6_postcode').value = data.zonecode;
-                document.getElementById("sample6_address").value = addr;
-                // 커서를 상세주소 필드로 이동한다.
-                document.getElementById("sample6_detailAddress").focus();
-            }
-        }).open();
-    }
     
     function paymentDataSet() {
     	let topProductName = $('.title').eq(0).text();
     	console.log(topProductName);
     	let otherCnt = cnt-1;
-    	console.log(otherCnt);
     	
     	let name = '';
-    	var tel1 = $('.tel1').val();
-    	var tel2 = $('.tel2').val();
-    	var tel3 = $('.tel3').val();
+    	var tel1 = $('#mobile1').val();
+    	var tel2 = $('#mobile2').val();
+    	var tel3 = $('#mobile3').val();
     	let tel = tel1 + tel2 + tel3;
+
     	let pNum = new Array(cnt);
+    	let delevery = $('#lastPrice').text();
+    	
     	for(i=0; i<cnt; i++){
     		pNum[i] = $('.pNum').eq(i).val();
     	}
+    	
+    	lastPriceSet = parseInt($('#sumShipPrice').text());
+    	
     	
     	document.getElementById('btnPaymentSubmit').onclick = function(){
     		let requst = $('#request').val();
     		name = $('#receiveName').val();
     		addr1 = $('#sample6_postcode').val();
     		addr2 = $('#sample6_address').val();
-	    		
+    		addr3 = $('#sample6_detailAddress').val();
+	    	let request = $('#request').val();	
+	        console.log(tel);
+    		
 	    	IMP.init('iamport');
 	        IMP.request_pay({
 	            pg : 'html5_inicis',
@@ -1153,10 +1168,27 @@ $(function(){
 	        }, function(rsp) {
 	            if ( rsp.success ) {
 	                var msg = '결제가 완료되었습니다.';
-	                msg += '고유ID : ' + rsp.imp_uid;
-	                msg += '상점 거래ID : ' + rsp.merchant_uid;
-	                msg += '결제 금액 : ' + rsp.paid_amount;
-	                msg += '카드 승인번호 : ' + rsp.apply_num;
+	                $.ajax({
+	                	type: "POST",
+	                	url: "orderService.do",
+	                	contentType: 'application/json; charset=utf-8',
+	                	data: JSON.stringify({
+	                		name : rsp.buyer_name,
+	                		phone : rsp.buyer_tel,
+	                		adr1 : rsp.buyer_addr,
+	                		adrCode : rsp.buyer_postcode,
+	                		adr2 : addr3,
+	                		request : request,
+	                		fprice : lastPriceSet,
+	                		dprice : delevery,
+	                		pNum : pNum,
+	                		pCnt : pCnt,
+	                		price : price
+	                	})
+	                })
+	                
+	                location.href="getMainList.do"
+	 
 	            } else {
 	                var msg = '결제에 실패하였습니다.';
 	                msg += '에러내용 : ' + rsp.error_msg;
