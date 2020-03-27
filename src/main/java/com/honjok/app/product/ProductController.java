@@ -386,6 +386,7 @@ public class ProductController {
 		productQna.put("productQnaList",productQnaList);
 		productQna.put("p",p);
 		
+		
 		return productQna;
 
 		

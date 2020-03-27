@@ -16,6 +16,7 @@ public interface ProductService {
 
 	void insertReview(productReviewVO productreviewvo);
 
+	
 	int getTotalCount(String pNum);
 
 	List<productReviewVO> getreviewList(Map map);

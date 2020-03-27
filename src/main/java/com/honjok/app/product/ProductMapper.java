@@ -20,7 +20,8 @@ public class ProductMapper {
 	  public productVO ProductVO(String pNum) {
 	    productVO ProductVO = mybatis.selectOne("ProductMapper.productVO", pNum);
 	      return ProductVO;
-	   }
+
+	  }
 
 	public List<productReviewVO> productReviewVO(String pNum) {
 		List<productReviewVO> productReviewVO = mybatis.selectList("ProductMapper.productReviewVO", pNum);
