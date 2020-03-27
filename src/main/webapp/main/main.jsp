@@ -50,7 +50,10 @@
 				</div>
 			</div>
 		</div>
-		<a
+		<a  class="layout-navigation-bar-icon" title="장바구니" aria-label="장바구니" href="#">
+			<img></img>
+		</a>
+		<div class="layout-navigation"></div>
 	</header>
 </div>
 
