@@ -428,6 +428,8 @@
           evt.initEvent(event, true, true);
           evt.detail = eventData;
         }
+        
+        
         // eslint-disable-next-line
         el.dom7EventData = args.filter(function (data, dataIndex) { return dataIndex > 0; });
         el.dispatchEvent(evt);
