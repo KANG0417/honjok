@@ -362,8 +362,9 @@
 			}
 		});
 	
+	
 		//댓글 수정
-		$('.reply-up').click(function(){
+		/* $('.reply-up').click(function(){
 			$.ajax({
 				type:'post',
 				url:"upComment.do",
@@ -403,7 +404,7 @@
 					alert("오류가 발생하였습니다.");
 				}
 			});
-		})
+		}) */
 </script>
 </body>
 </html>
