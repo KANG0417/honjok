@@ -404,7 +404,7 @@
                             </p>
                         </section>
                         <div class="production-selling-option-form__footer">
-                            <button type="button"  class="button button--color-blue-inverted button--size-55 button--shape-4"
+                            <button type="button" id="cart" class="button button--color-blue-inverted button--size-55 button--shape-4"
                                >장바구니</button>
                             <button id="orders" type="button" class="button button--color-blue button--size-55 button--shape-4"
                                >바로구매</button>
