@@ -21,11 +21,12 @@ public interface InteriorService {
 	public void boardHitsUpdate(int comSeq);
 	
 	//게시물 좋아요
-	public LikesVO insertLikes(LikesVO livo);
-/*	public void updateLikes(LikesVO livo);
-	public int selectLikes(int comSeq);*/
+	void upLike(String comSeq);
+	void downLike(String comSeq);
+	/*public int selectLikes(int comSeq);*/
 	
-	//게시물 댓글달기
+	//게시물 댓글
 	public void insertComment(commReplyVO rvo);
-	List<commReplyVO> replyList(int parseInt);
+	List<commReplyVO> commentList(int comSeq);
+	void updateComment(commReplyVO rvo);
 }

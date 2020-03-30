@@ -57,20 +57,21 @@ public class InteriorServiceImpl implements InteriorService {
 	}
 	
 	//좋아요 증가
-	public LikesVO insertLikes(LikesVO livo) {
-		commDAO.insertLikes(livo);
-		return livo;
+	@Override
+	public void upLike(String comSeq) {
+		commDAO.upLike(comSeq);
 	}
 	
-/*	//좋아요 취소
-	public void updateLikes(LikesVO livo) {
-		commDAO.updateLikes(livo);
+	
+	//좋아요 취소
+	public void downLike(String comSeq) {
+		commDAO.downLike(comSeq);
 	}
 	
 	//해당 게시물 좋아요 갯수
 	public int selectLikes(int comSeq) {
 		return commDAO.selectLikes(comSeq);
-	}*/
+	}
 
 	//게시물 댓글 달기
 	@Override
@@ -78,8 +79,16 @@ public class InteriorServiceImpl implements InteriorService {
 		commDAO.insertComment(rvo);
 	}
 
+	//게시물 댓글 목록
 	@Override
-	public List<commReplyVO> replyList(int comSeq) {
-		return commDAO.replyList(comSeq);
+	public List<commReplyVO> commentList(int comSeq) {
+		return commDAO.commentList(comSeq);
 	}
+
+	//게시물 댓글 수정
+	@Override
+	public void updateComment(commReplyVO rvo) {
+		commDAO.updateComment(rvo);
+	}
+
 }

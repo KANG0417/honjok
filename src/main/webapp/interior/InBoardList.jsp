@@ -27,7 +27,7 @@
 </head>
 <body>
 	<div id="main">원마켓</div>
-		<nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+		<%-- <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
 	  <a class="navbar-brand" href="index.jsp">Home</a>
 	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
 	    <span class="navbar-toggler-icon"></span>
@@ -59,7 +59,7 @@
       </li>
     </ul>
   	</div>	
-	</nav>
+	</nav> --%>
 	<div class="container">
 		<div class="row justify-content-center mb-5 pb-3">
 		</div>
@@ -72,8 +72,7 @@
 			</c:when>
 			<c:when test="${interiorList != null }">
 					<div style="width:100%; height:100px;">
-					<p>집 소개 게시판</p>
-						이번주 베스트 ~ 
+					<p>1인 인테리어 게시판</p>
 					</div>
 				<div class="row">
 
