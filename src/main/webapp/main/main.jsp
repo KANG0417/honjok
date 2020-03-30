@@ -1,9 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <!DOCTYPE>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">    
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>    
+<script src="https://unpkg.com/swiper/js/swiper.min.js"></script>    
 <title>ONE-MARKERT</title>
 </head>
 <style>
@@ -93,6 +94,8 @@ a {
 h1, h2, h3, h4, h5, h6, strong {
     font-weight: normal;
 }
+
+
 }
 #header h1 em, #header h1 span {
     display: block;
@@ -449,7 +452,7 @@ html, body {
     margin-top: -38px;
     width: 50px;
     height: 76px;
-    background: url('/images/common/ico_comm_sp.png') no-repeat 0 -129px;
+    background: url('/image/ico_comm_sp.png') no-repeat 0 -129px;
     background-size: 300px 300px;
     z-index: 2;
 }
@@ -460,7 +463,7 @@ html, body {
     margin-top: -38px;
     width: 50px;
     height: 76px;
-    background: url('/images/common/ico_comm_sp.png') no-repeat -55px -129px;
+    background: url('/image/ico_comm_sp.png') no-repeat -55px -129px;
         background-size: auto;
     background-size: 300px 300px;
     z-index: 2;
@@ -501,6 +504,234 @@ html, body {
     background-repeat: no-repeat;
 }
     
+#wrap.main #contents > div::after {
+    content: '';
+    display: block;
+    clear: both;
+}    
+#wrap.main #contents > div {
+    position: relative;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}    
+#wrap.main #mainslider {
+    width: auto !important;
+    height: 699px;
+    padding: 0 !important;
+    z-index: 100;
+}
+.swiper-wrapper {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    box-sizing: content-box;
+    transition-property: transform,-webkit-transform;
+}    
+#wrap.main #contents > div h2 {
+    display: block;
+    margin-bottom: 40px;
+    margin-top: 50px;
+    font-size: 40px;
+    color: #000;
+    font-family: 'locator-light';
+}
+#wrap.main #contents > div h2 em {
+    display: block;
+    margin-top: 10px;
+    font-size: 16px;
+    color: #959595;
+    font-family: 'notokr-demilight';
+    
+}
+#wrap.main #contents > div {
+    position: relative;
+    display: block;
+    padding: 80px 0 0;
+    width: 1140px;
+    margin: 0 auto;
+    text-align: center;
+}
+#wrap.main .bestseller_slider {
+    position: relative;
+}
+#wrap.main .bestseller_slider .bsprd-prev {
+    position: absolute;
+    top: 50%;
+    left: -30px;
+    margin-top: -44px;
+    width: 17px;
+    height: 32px;
+    background: url('/image/ico_comm_sp.png') no-repeat -169px 0;
+        background-size: auto;
+    background-size: 300px 300px;
+    z-index: 2;
+}    
+#wrap.main .bestseller_slider .bsprd-next {
+    position: absolute;
+    top: 50%;
+    right: -30px;
+    margin-top: -44px;
+    width: 17px;
+    height: 32px;
+    background: url('/image/ico_comm_sp.png') no-repeat -191px 0;
+        background-size: auto;
+    background-size: 300px 300px;
+    z-index: 2;
+}
+#wrap.main .bestseller_slider #bsprd {
+    width: auto !important;
+    height: 490px;
+    padding: 0 !important;
+}  
+#wrap.main .prdlist, #wrap.main .prdlist a, #wrap.main .prdlist span {
+    display: block;
+}
+#wrap.main .prdlist {
+    position: relative;
+}
+#wrap.main .prdlist span.ico {
+    position: absolute;
+    top: 25px;
+    left: 14px;
+    width: 40px;
+    z-index: 1;
+}
+#wrap.main .prdlist span.photo {
+    width: 100%;
+    height: 260px;
+}
+    
+#wrap.main .prdlist span.photo img {
+    width: 210px;
+    height: 210px;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+    
+input, textarea, select, img {
+    border: 0;
+    border-radius: 0;
+    vertical-align: middle;
+    -moz-appearance: none;
+}
+    
+#wrap.main .prdlist span.hash {
+    color: #959595;
+    font-size: 14px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+} 
+#wrap.main .prdlist span.tit {
+    font-size: 16px;
+    margin: 12px 0 10px;
+    overflow: hidden;
+    max-height: 67px;
+    line-height: 1.2;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    word-wrap: break-word;
+    padding: 0 20px;
+}    
+#wrap.main .prdlist span.tit strong {
+    display: block;
+    font-size: 18px;
+    margin-bottom: 8px;
+    font-family: 'notokr-medium';
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}   
+#wrap.main .prdlist span.star {
+    font-size: 0;
+}    
+#wrap.main .prdlist span.star .star-rating {
+    vertical-align: middle;
+}
+    
+.star-rating.small {
+    width: 84px;
+    height: 15px;
+    background: url('/image/star_rating.png') no-repeat 0 0px;
+        background-size: auto;
+    background-size: 84px;
+}
+.star-rating {
+    position: relative;
+    display: inline-block;
+}   
+#wrap.main .prdlist span.price {
+    margin: 10px 0 16px;
+    font-size: 22px;
+    color: #222;
+    font-family: 'locator-medium';
+}    
+#wrap.main .prdlist span.star em {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 4px;
+    color: #8f8f8f;
+    font-size: 14px;
+    font-family: 'locator-regular';
+}    
+#wrap.main .prdlist span.price i {
+    font-size: 16px;
+    font-style: normal;
+    font-family: 'notokr-demilight';
+}    
+#wrap.main .prdlist .over {
+    opacity: 0;
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    margin-left: -60px;
+    overflow: hidden;
+} 
+#wrap.main .prdlist .over button:first-child {
+    background: url('/image/bg_product_sp.png') -380px 0 no-repeat;
+    margin-left: 0;
+}    
+wrap.main .prdlist .over button {
+    display: block;
+    width: 56px;
+    height: 56px;
+    text-indent: -9999px;
+    float: left;  
+}
+ #wrap.main .prdlist .over button {
+    display: block;
+    width: 56px;
+    height: 56px;
+    background: url('/image/bg_product_sp.png') -444px 0 no-repeat;
+    text-indent: -9999px;
+    float: left;
+    margin-left: 8px;
+}
+
+#wrap.main .prdlist:hover > a::before {
+
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 440px;
+    border: 1px solid #009ee3;
+    box-sizing: border-box;
+}    
+#wrap.main .prdlist:hover > a + .over {
+    opacity: 1;
+    transition: all .5s ease;
+}    
+#wrap.main .prdlist .over button:hover {
+    border-radius: 28px;
+    -webkit-box-shadow: inset 0px 0px 35px rgba(0, 131, 188, 0.3);
+}    
+
 </style>
 <body>
     <div id="wrap" class="main">
@@ -521,7 +752,7 @@ html, body {
                 <nav>
                     <ul>
                         <li>
-                            <a href="/app/login.jsp">로그인</a>
+                            <a href="login.jsp">로그인</a>
                         </li>
                         <li>
                             <a href="signUp.jsp">회원가입</a>
@@ -643,56 +874,128 @@ html, body {
                     <button class="mainslider-next" type="button">
                         <span class="hide">다음</span>
                     </button>
-                    <div class="swiper-wrapper" style="width: 10080px; height: 699px; transform: translate(-1260px, 0px, 0px);
-                                                       transition-duration: 0.3s;">
-                        <div class="swiper-slide swiper-slide-duplicate" style="width: 1260px; height: 699px;">
+                    <div class="swiper-wrapper" style="width: 10080px; height: 699px; transform: translate(-1260px, 0px, 0px);                        transition-duration: 0.3s;">
+                        <div class="swiper-slide swiper-slide-duplicate" style="width: 1140px; height: 699px;">
                             <a class="mainView" href="javascript:void(0);" target="_self">
-                                <div class="img_banner" style="background-image:url(/upload/20200312094017915.jpg);">
+                                <div class="img_banner" style="background-image:url(/upload/20200306_1827006_23.png);">
                                     <span class="hide">스팟스캔-바로가기</span>
                                 </div>
                             </a>
                         </div>
-                        <div class="swiper-slide swiper-slide-visible swiper-slide-active" style="width: 1260px; height: 699px;">
+                        <div class="swiper-slide swiper-slide-visible swiper-slide-active" style="width: 1140px; height: 699px;">
                             <a class="mainView" href="javascript:void(0);" target="_self">
-                                <div class="img_banner" style="background-image:url(/upload/20200312094017915.jpg);">
+                                <div class="img_banner" style="background-image:url(/upload/20200320_0953017_80.png);">
                                     <span class="hide">스팟스캔-바로가기</span>
                                 </div>
                             </a>
                         </div>
-                        <div class="swiper-slide swiper-slide-visible swiper-slide-active" style="width: 1260px; height: 699px;">
+                        <div class="swiper-slide swiper-slide-visible swiper-slide-active" style="width: 1140px; height: 699px;">
                             <a class="mainView" href="javascript:void(0);" target="_self">
-                                <div class="img_banner" style="background-image:url(/upload/20200312094017915.jpg);">
+                                <div class="img_banner" style="background-image:url(/upload/20200225_1840027_154.png);">
                                     <span class="hide">스팟스캔-바로가기</span>
                                 </div>
                             </a>
+                        </div>
+                    </div>               
+                </div>
+                <div class="bestseller">
+                    <h2>
+                        BEST SELLER
+                        <em>오늘의 베스트! 실시간 가장 hot한 상품</em>
+                    </h2>
+                    <div class="bestseller_slider">
+                        <button class="bsprd-prev" type="button">
+                            <span class="hide">이전</span>
+                        </button>
+                        <button class="bsprd-next" type="button">
+                            <span class="hide">다음</span>
+                        </button>
+                        <div id="bsprd" class="swiper-container">
+                            <div id="bestList" class="swiper-wrapper" style="width: 5700px;                 height:490px; transform: translate3d(0px, 0px, 0px);
+                                    transition-duration: 0.3s;">
+                                <div class="swiper-slide prdlist swiper-slide-duplicate swiper-slide-visible swiper-slide-active" style="width:285px; height: 490px;">
+                                    <a href="#">
+                                        <span class="ico"></span>
+                                        <span class="photo">
+                                            <img src="/upload/20180820_1404029_100_210x210.png" alt="상품명입력">
+                                        </span>
+                                        <span class="hash">#진정미스트</span>
+                                        <span class="tit">
+                                            <strong>오 떼르밀(상품제목)</strong>
+                                            온천수 미스트 [300mL]
+                                        </span>
+                                        <span class="star">
+                                            <div class="star-rating small">
+                                                <span class="c50">
+                                                    <em class="hide">별점 5개</em>
+                                                </span>
+                                            </div>
+                                            <em>(264)</em>
+                                        </span>
+                                        <span class="price">
+                                          22,000
+                                            <i>원</i>    
+                                        </span>
+                                    </a>
+                                    <div class="over">
+                                        <button class="detailview" onclick="prdtViewLink();">자세히보기</button>
+                                        <button class="addCart basket">장바구니 담기</button>
+                                    </div>
+                                </div>
+                                 <div class="swiper-slide prdlist swiper-slide-duplicate swiper-slide-visible swiper-slide-active" style="width:285px; height: 490px;">
+                                    <a href="#">
+                                        <span class="ico"></span>
+                                        <span class="photo">
+                                            <img src="/upload/20180820_1404029_100_210x210.png" alt="상품명입력">
+                                        </span>
+                                        <span class="hash">#진정미스트</span>
+                                        <span class="tit">
+                                            <strong>오 떼르밀(상품제목)</strong>
+                                            온천수 미스트 [300mL]
+                                        </span>
+                                        <span class="star">
+                                            <div class="star-rating small">
+                                                <span class="c50">
+                                                    <em class="hide">별점 5개</em>
+                                                </span>
+                                            </div>
+                                            <em>(264)</em>
+                                        </span>
+                                        <span class="price">
+                                          22,000
+                                            <i>원</i>    
+                                        </span>
+                                    </a>
+                                    <div class="over">
+                                        <button class="detailview" onclick="prdtViewLink();">자세히보기</button>
+                                        <button class="addCart basket">장바구니 담기</button>
+                                    </div>
+                                </div>
+                            </div>                                         
                         </div>
                     </div>
-                    
                 </div>
-                
-                
             </section>
         </section>
     
     </div>
 </body>
 <script>
-	var mainSlider = new Swiper('#mainslider', {
-	    pagination: '.mainslider-pagination',
-	    loop:true,
-	    paginationClickable: true,
-	    autoplay: '5000'
-	});
-	
-	$('.mainslider-prev').on('click', function(e){
-        e.preventDefault();
-        mainSlider.swipePrev();
+$(function(){    
+    var mainSlider = new Swiper('#mainslider', {
+		    pagination: '.mainslider-pagination',
+		    loop:true,
+            speed: 600,
+		    paginationClickable: true,
+		    autoplay: {
+                delay : 5000,
+            },
+            navigation:{
+                nextEl: '.mainslider-next',
+                prevEl: '.mainslider-prev',
+            },
     });
     
-    $('.mainslider-next').on('click', function(e){
-        e.preventDefault();
-        mainSlider.swipeNext();
-    });    
-    
+});    
 </script>
 </html>
