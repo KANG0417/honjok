@@ -5,12 +5,16 @@
 <head>
 <meta charset="UTF-8">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-
-<script src="https://cdn.ckeditor.com/4.13.1/standard-all/ckeditor.js"></script>
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=69f7448811fd57d29b7398b4045f65df&libraries=services"></script>
-
+	
+<!-- include summernote css/js -->
+<!-- 이 css와 js는 로컬에 있는 것들을 링크시킨 것이다. -->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.js"></script>
 <title>혼족정보 게시판</title>
 <style>
 .map_wrap {
@@ -293,10 +297,8 @@
 
 
 		제목<input type="text" name="title"><br>
-		<textarea name="content" id="editor1" rows="10" cols="80">
-                     내용을 입력해주세요 
-           	첫번쨰로 업로드하신 사진이 대표 이미지가 됩니다.
-             </textarea>
+		<textarea rows="5" cols="60" name="content" id="description"></textarea>
+                     
 		위치정보(클릭해주세요) <br> <input class="adr" type="hidden" name="adr"
 			value="위치를 등록해주세요"> <input class="tel" type="hidden"
 			name="tel" value="전화번호 등록해주세요"> <input class="place_name"
@@ -338,7 +340,7 @@
 
 	<!-- 에디터  -->
 	<script type="text/javascript">
-	 	CKEDITOR.replace('editor1', {
+	/*  	CKEDITOR.replace('editor1', {
 			extraPlugins : 'image2',
 			filebrowserImageUploadUrl : 'fileupload.do',
 			// Upload dropped or pasted images to the CKFinder connector (note that the response type is set to JSON).
@@ -346,13 +348,51 @@
 			height : 450
 		}); 
 		
-	
-	</script>
-	
+	 */
+	 
+		
+	 $(function(){
+		    $("#description").summernote({
+		    	placeholder:"내용을 입력해주세요",
+		    	height: 300,
+		    	width : 800,
+		    	minHeight: null,
+		    	maxHeight: null,
+		    	lang : 'ko-KR',
+		    	callbacks: {
+			          onImageUpload: function(files, editor, welEditable) {
+			        	  sendFile(files[0], this); 
+			         }
+			   	}
+		    });
+		});
+		
 
+		/* summernote에서 이미지 업로드시 실행할 함수 */
+		function sendFile(file, editor){
+			/* 파일 전송을 위한 폼생성 */
+			data = new FormData();
+			data.append('uploadFile', file);
+			$.ajax({ // ajax를 통해 파일 업로드 처리
+				data : data,
+				type : 'POST',
+				url : '/app/admin/imageUpload.do',
+				cache : false,
+				contentType : false,
+				enctype : 'multipart/form-data',
+				processData : false,
+				dataType : 'text',
+				success : function(data){
+					console.log(data);
+					$(editor).summernote('editor.insertImage', '/app/resources/img/'+data);
+				},
+				error : function(err){
+					console.log(err);
+				}
+			});
+		}
 
-
-
+</script>
 
 
 	<!-- 다음지도  -->
