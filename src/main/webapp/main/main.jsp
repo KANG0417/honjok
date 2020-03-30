@@ -677,6 +677,13 @@ html, body {
     </div>
 </body>
 <script>
+	var mainSlider = new Swiper('#mainslider', {
+	    pagination: '.mainslider-pagination',
+	    loop:true,
+	    paginationClickable: true,
+	    autoplay: '5000'
+	});
+	
 	$('.mainslider-prev').on('click', function(e){
         e.preventDefault();
         mainSlider.swipePrev();
