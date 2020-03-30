@@ -347,8 +347,26 @@ $(document).on("click", ".btns input", function (e) {
 $('button:contains("장바구니")').on("click", function () {
 	
 	if (id != "") {
-		alert(id);
-		$(".add-cart").submit();
+	var form = $('.add-cart')[0];
+	var data = new FormData(form)
+	console.log(form);			
+		$.ajax({
+		type: 'post',
+		url: "addCartList.do",
+		data: data,
+		dataType : 'json',
+		success: function (e) {		
+			var result = confirm("장바구니로 이동 하시겠씁니까?")
+				if(result){
+					location.href = "";
+				}
+		},
+		error: function (jqXHR,
+			textStatus, errorThrown) {
+			alert("오류가 발생하였습니다.");
+		}
+
+	});
 	} else {
 		var result = confirm("로그인이 필요한 서비스입니다. 로그인 하시겠습니까?")
 		if (result) {
@@ -359,9 +377,8 @@ $('button:contains("장바구니")').on("click", function () {
 					'top=10, left=10, width=500, height=600, status=no, menubar=no, toolbar=no, resizable=no');
 		}
 	}
-
-
 });
+
 
 
 
@@ -494,8 +511,6 @@ $(document).on("click", ".production-qna__paginator", function(e){
 
 
 
-
-
 $(document).on("click","button:contains('닫기')",function(){
 
 		$('.product-question__modal').hide();
@@ -510,4 +525,7 @@ $(document).on("click",".product-question__wrap__type-select",function(e){
 	$(e.target).addClass('product-question__wrap__type-select__box--select');
 
 });
+
+
+
 

@@ -37,7 +37,7 @@ public class cartController {
 	
 	@RequestMapping(value="/addCartList.do", method=RequestMethod.POST)
 	@ResponseBody
-	public Map addCartList(@RequestParam Map<String,String>map,HttpSession session,Model model) {
+	public Map addCartList(@RequestParam Map<String,String>map, HttpSession session,Model model) {
 		System.out.println("addCartList map : " + map);
 		
 		
@@ -51,6 +51,7 @@ public class cartController {
 		
 		int cnt  = cartService.getSameCart(map);
 		System.out.println(cnt);
+		
 		
 		
 		Map<String,Integer>map2 = new HashMap<String,Integer>();

@@ -359,7 +359,7 @@
                             </span>
 
                             <span class="production-selling-header__delivery__fee">
-                                <span>무료배송</span>
+                                <span>택배비 :${productvo.shippingfee}</span>
                             </span>
 
                             <span class="production-selling-header__delivery__disclaimer-wrap">
@@ -379,6 +379,7 @@
 				    <input type="hidden" name="stock" value="${productvo.stock}"> 
 				    <input type="hidden" name="pNum" value="${productvo.pNum }">
 				    <input type="hidden" name="pCnt" value="1">
+				    <input type="hidden" name="shippingFee" value="${productvo.shippingfee}">
 					
                     <div class="production-selling-option-form production-selling-overview__option-form">
                         <section class="selling-option-form-content production-selling-option-form__form">
@@ -390,11 +391,7 @@
 
 								<div class="optselect_area" style="">
 									<ul id="_optionSelectList" class="opt_selectlist">
-									
-												
-									
 										
-							
 									</ul>
 								</div>
 							</div>
@@ -409,7 +406,7 @@
                         <div class="production-selling-option-form__footer">
                             <button type="button"  class="button button--color-blue-inverted button--size-55 button--shape-4"
                                >장바구니</button>
-                            <button type="button" class="button button--color-blue button--size-55 button--shape-4"
+                            <button id="orders" type="button" class="button button--color-blue button--size-55 button--shape-4"
                                >바로구매</button>
                         </div>
                     </div>
@@ -908,7 +905,7 @@
                                 </section>
                                 <div class="production-selling-option-form__footer">
                                     <button type="button" class="button button--color-blue-inverted button--size-55 button--shape-4">장바구니</button>
-                                    <button type="button" class="button button--color-blue button--size-55 button--shape-4">바로구매</button>
+                                    <button type="button" class="order button button--color-blue button--size-55 button--shape-4">바로구매</button>
                                 </div>
                             </div>
                         </div>
@@ -922,6 +919,29 @@
     <!--production-selling-overview container 끝-->
 <script type="text/javascript">
 	var id = "${sessionScope.userSession.id}";
+
+	$('#orders').on("click", function () {
+		
+		if (id != "") {
+			var form = $('.add-cart')[0];
+			
+			console.log(form);			
+			form.action="/app/order.do";
+			form.method = "get";
+			form.submit();
+		
+			} else {
+				var result = confirm("로그인이 필요한 서비스입니다. 로그인 하시겠습니까?")
+				if (result) {
+					window
+						.open(
+							'/app/loginModal.jsp',
+							'pop01',
+							'top=10, left=10, width=500, height=600, status=no, menubar=no, toolbar=no, resizable=no');
+				}
+			}
+
+	});
 	
 </script>
 
