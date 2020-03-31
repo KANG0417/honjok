@@ -67,8 +67,7 @@
 																	"fas fa-heart fa-5x");
 													var comSeq = '${CommInfoVO.comSeq}';
 													var id = '${sessionScope.userSession.id}';
-													$
-															.ajax({
+													$.ajax({
 																type : 'post',
 																url : "likesUp.do",
 																data : {
@@ -103,8 +102,7 @@
 																	"far fa-heart fa-5x");
 													var comSeq = '${CommInfoVO.comSeq}';
 													var id = '${sessionScope.userSession.id}';
-													$
-															.ajax({
+													$.ajax({
 																type : 'post',
 																url : "likesDown.do",
 																data : {
@@ -171,7 +169,7 @@
 											}
 										});
 
-						$('.comment_item_list button').click(function() {
+						$(document).on("click",".comment_item_list button",function() {
 							console.log(this)
 							console.log(this.innerText);
 							console.log(this.value);
@@ -187,6 +185,7 @@
 		                       	$(puls).after(reply);
 								console.log(reply);
 								this.innerText = "답글취소";
+								
 							}else{
 								this.innerText = "답글";
 								var form = document.querySelector('#reply');
@@ -292,6 +291,16 @@
 
 <link rel="stylesheet" type="text/css"
 	href="/app/resources/css/hojokinfo/get.css">
+	
+<style>
+	textarea::placeholder{
+	 font-weight: 300;
+	}
+	textarea {
+    padding-left: 0.8rem;
+     resize: vertical;
+}
+</style>
 </head>
 <body>
 
@@ -365,7 +374,7 @@
 				<%-- ${reply.comSeq } ${reply.idx } ${reply.id }  --%>
 
 
-				<div class="" style="border: 1px solid red">
+				<div class="">
 					<form id="reply" method="post">
 						<textarea class="content" name="content"
 							style="width: 90%; margin-top: 0px; margin-bottom: 0px; height: 56px;"></textarea>
@@ -494,8 +503,8 @@
 						type : 'post',
 						url : "reviewInsert.do",
 						data : objParams,
-						success : function(e){
-								console.log(e);
+						success : function(data){
+								console.log(data);
 								var fileString = "";
 								$('.content').val('');
 								$('.view_area').html('');
@@ -506,9 +515,8 @@
 
 								}
 								console.log(fileString);
-
-								$('.comment_item_list')
-										.append(
+								var eParent = $(e).parent();
+								$(eParent).append(
 												'<div class="id_admin" style="width: 100%; display: block;"> <span>'
 														+ objParams.nickName
 														+ '</span></div><div class="comment" style="display: block;"><div class="comment-img" style="display: flex;">'
@@ -516,7 +524,7 @@
 														+ '</div><div style="display: flex; flex-direction:row;"><div class="comment_contents"style="width:95%;height:50px; overflow:hidden;word-wrap:break-word;">'
 														+ objParams.content
 														+ '</div><div style="width:5%; height:50px;"><button type="button">답글</button></div></div></div>');
-
+								
 							},
 							error : function(jqXHR, textStatus, errorThrown) {
 								alert("오류가 발생하였습니다.");

@@ -180,6 +180,26 @@ public class honjokinfoServiceImpl implements honjokinfoService {
 			Mapper.delReviewUpload(fileName);
 		}
 
+		//조회수 업데이트
+		@Override
+		public void hitUpdate(String comSeq) {
+			Mapper.hitUpdate(comSeq);
+		}
+
+
+		@Override
+		public List<CommunityVO> selectSearch(Map<String, Object> pagingMap) {
+			 List<CommunityVO> list = Mapper.selectSearch(pagingMap);
+				return list;
+		}
+
+
+		@Override
+		public int selectAllCount(Map<String, Object> pagingMap) {
+			
+			return Mapper.selectAllCount(pagingMap);
+		}
+
 
 		
 

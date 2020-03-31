@@ -240,7 +240,7 @@ public class list {
 		// 페이징 처리위해 전체 조회
 		int countList = service.selectAllCount();
 		System.out.println("총게시글수" + countList);
-
+		
 		//베스트5  조회
 		List<CommunityVO> bset5_List = service.selectBest5();
 		
@@ -260,9 +260,14 @@ public class list {
 	public String select(String comSeq, Model model,HttpServletRequest request) {
 		System.out.println("comSeq값" + comSeq);
 
+		// 조회수 업데이트 처리 
+			service.hitUpdate(comSeq);
+		
 		// 업로드파일 가져오기
 		CommInfoVO CommInfoVO = service.select(comSeq);
-
+		
+		
+		
 		List<UploadVO[]> UploadList = new ArrayList<UploadVO[]>();
 		// 메뉴사진 가져오기
 		UploadList.addAll(service.getFileName(comSeq));
@@ -287,11 +292,6 @@ public class list {
 		}
 		
 		//상품 3개 가져오기 
-				
-		
-		
-		
-
 		model.addAttribute("reply", reply);
 		model.addAttribute("UploadList", UploadList);
 		model.addAttribute("CommInfoVO", CommInfoVO);
@@ -427,6 +427,64 @@ public class list {
 			}
 		}
 		return null;
+	}
+	
+	
+	@RequestMapping("/selectSearch.do")
+	public String selectSearch(Model model, @RequestParam(required = false) String section,
+			@RequestParam(required = false) String pageNum, String searchFiled,String searchValue) {
+
+		System.out.println(section);
+		String section_ = section;
+		String pageNum_ = pageNum;
+		System.out.println(searchFiled);
+		System.out.println(searchValue);
+
+		if (section == null) {
+			
+			section_ = ((section == null) ? "1" : section);
+			pageNum_ = ((pageNum == null) ? "1" : pageNum);
+			
+		}
+
+		System.out.println(section_);
+		System.out.println(pageNum_);
+
+		Map<String, Object> pagingMap = new HashMap<String, Object>();
+
+		pagingMap.put("section", Integer.parseInt(section_));
+		pagingMap.put("pageNum", Integer.parseInt(pageNum_));
+		
+		pagingMap.put("searchFiled", searchFiled);			
+		pagingMap.put("searchValue", searchValue);
+		
+		// community 조회
+		
+		
+		
+		List<CommunityVO> list = service.selectSearch(pagingMap);
+		
+
+		// 페이징 처리위해 전체 조회
+		int countList = service.selectAllCount(pagingMap);
+		System.out.println("총게시글수" + countList);
+		
+		
+		//베스트5  조회
+		List<CommunityVO> bset5_List = service.selectBest5();
+		System.out.println(bset5_List);
+		
+		
+		
+		model.addAttribute("pagingMap",pagingMap);
+		model.addAttribute("bset5_List",bset5_List);
+		model.addAttribute("pageNum", pageNum_);
+		model.addAttribute("section", section_);
+		model.addAttribute("CommunityVOList", list);
+		model.addAttribute("countList", countList);
+
+		return "/honjokInfo/list.jsp";
+
 	}
 
 }
