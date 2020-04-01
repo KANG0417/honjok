@@ -48,5 +48,11 @@ public interface honjokinfoService {
    public void updateReview(Map<String, String> map);
  
    public List<CommunityVO> selectBest5();
+
+   public void hitUpdate(String comSeq);
+
+	public List<CommunityVO> selectSearch(Map<String, Object> pagingMap);
+
+	public int selectAllCount(Map<String, Object> pagingMap);
    
 }

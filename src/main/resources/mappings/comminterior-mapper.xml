@@ -115,17 +115,17 @@
 		</select>
 	
 		<!-- 좋아요 누름 -->
-		<insert id="likesCheck" parameterType="likesVO">
-	 		INSERT INTO LIKES
-	 			(ID, COM_SEQ, LIKES)
-	 		VALUES (#{id}, #{comSeq}, 1)
-		</insert>
+		<update id="likesCheck" parameterType="String">
+	 		UPDATE COMMUNITY
+	 		SET  LIKES = (SELECT LIKES + 1 FROM COMMUNITY WHERE COM_SEQ = #{comSeq})
+	 		WHERE COM_SEQ = #{comSeq}
+		</update>
 	  
 	  	<!-- 좋아요 취소 -->
-	 	<update id="likesCancel" parameterType="likesVO">
-		 	UPDATE LIKES
-		 	SET LIKES = 0
-		 	WHERE COM_SEQ = #{comSeq} AND ID = #{id}
+	 	<update id="likesCancel" parameterType="String">
+		 	UPDATE COMMUNITY
+		 	SET  LIKES = (SELECT LIKES - 1 FROM COMMUNITY WHERE COM_SEQ = #{comSeq})
+		 	WHERE COM_SEQ = #{comSeq}
 	  	</update>
 	  	
 	  	<!-- 해당 게시물 좋아요 수 조회 -->
@@ -135,17 +135,31 @@
 	  		WHERE COM_SEQ = #{comSeq}
 	  	</select>
 	  	
+	  	<!-- 댓글 전체 조회 -->
+	  	<select id="allComment" parameterType="Integer" resultType="commReplyVO">
+	  		SELECT *
+	  		FROM COMM_REPLY
+	  		WHERE COM_SEQ = #{comSeq}
+	  		ORDER BY IDX DESC
+	  	</select>
+
 	  	<!-- 댓글 입력 -->
 	  	<insert id="insertComment" parameterType="commReplyVO">
 	  		INSERT INTO COMM_REPLY
 	  			(ID, LEV, IDX, CONTENT, REGDATE, NICK_NAME, COM_SEQ)
 	  		VALUES (#{id}, 0, COMM_REPLY_SEQ.NEXTVAL, #{content}, sysdate, #{nickName}, #{comSeq})
 	  	</insert>
-	  	
-	  	<!-- 댓글 전체 조회 -->
-	  	<select id="allComment" parameterType="Integer" resultType="commReplyVO">
-	  		SELECT *
-	  		FROM COMM_REPLY
-	  		WHERE COM_SEQ = #{comSeq}
-	  	</select>
+
+		<!-- 댓글 수정 -->
+		<update id="updateComment" parameterType="commReplyVO">
+			UPDATE COMM_REPLY
+			SET CONTENT = #{content}, REGDATE = sysdate
+			WHERE COM_SEQ = #{comSeq} AND IDX = #{idx}
+		</update>
+  
+  		<!-- 댓글 삭제 -->
+  		<!-- <delete id="deleteComment" parameterType="">
+  			
+  		</delete> -->
+  		
   </mapper>

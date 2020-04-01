@@ -92,9 +92,9 @@ public class interiorController {
 			System.out.println("컨트롤러 livo: " + livo);
 			
 			//댓글 전체 조회
-			List<commReplyVO> replyList = interiorService.replyList(Integer.parseInt(cvo.getcomSeq()));
-			System.out.println(replyList);
-			model.addAttribute("commentSelect", replyList);
+			List<commReplyVO> commentList = interiorService.commentList(Integer.parseInt(cvo.getcomSeq()));
+			System.out.println(commentList);
+			model.addAttribute("commentSelect", commentList);
 			
 			//게시물 상세조회
 			CommInteriorVO commInterior = interiorService.getBoardList(cvo);
@@ -197,18 +197,25 @@ public class interiorController {
 	}
 	
 	//게시물 좋아요 증가
-	@RequestMapping("/insertLike.do")
-	public String insertLikes(LikesVO livo) {		
-		interiorService.insertLikes(livo);
-		System.out.println(">>> 좋아요 게시물 조회: " + livo);
+	@RequestMapping("/updateLike.do")
+	@ResponseBody
+	public void upLike(String comSeq, String id) {		
+		System.out.println(">>> 좋아요 게시물 조회");
 		
-		return "getInterior.do";
+		Map<String,String> map = new HashMap<String, String>(); 
+		map.put("comSeq", comSeq);
+		map.put("id", id);
+		System.out.println(map);
+		
+		//커뮤니티 like+1
+		interiorService.upLike(comSeq);
+		
 	}
 	
 	//게시물 좋아요 취소
 	/*@RequestMapping("/updateLike.do")
-	public String updateLikes(LikesVO livo) {
-		interiorService.updateLikes(livo);
+	public String downLikes(String comSeq) {
+		interiorService.downLike(comSeq);
 		System.out.println(">>> 글 좋아요 취소 처리");
 		
 		return "getInterior.do";
@@ -216,13 +223,19 @@ public class interiorController {
 	
 	//댓글 입력
 	@RequestMapping("/addComment.do")
-	@ResponseBody
 	public String insertComment(commReplyVO rvo) {
-		System.out.println(rvo);
-		System.out.println("강지향");
+		System.out.println(">> 댓글 입력 실행");
 		interiorService.insertComment(rvo);
 		
-		return "success";
+		return "getInterior.do";
 				
+	}
+	
+	//댓글 수정
+	@RequestMapping("/upComment.do")
+	@ResponseBody
+	public void updateComment(commReplyVO rvo) {
+		System.out.println(">> 댓글 수정 처리");
+		interiorService.updateComment(rvo);
 	}
 }

@@ -344,22 +344,30 @@ $(document).on("click", ".btns input", function (e) {
 
 
 
-$('button:contains("장바구니")').on("click", function () {
-	
+$('#cart').on("click", function () {
 	if (id != "") {
 	var form = $('.add-cart')[0];
 	var data = new FormData(form)
-	console.log(form);			
+	console.log(form);	
+
 		$.ajax({
 		type: 'post',
-		url: "addCartList.do",
+		url: "/app/addCartList.do",
 		data: data,
 		dataType : 'json',
+		processData: false,
+		contentType: false,
 		success: function (e) {		
-			var result = confirm("장바구니로 이동 하시겠씁니까?")
-				if(result){
-					location.href = "";
-				}
+			console.log(e.gubun);
+		if(e.gubun == 2){
+			 var result = confirm("장바구니에 상품을 담았습니다 장바구니로  이동 하시겠습니까?");
+			 if(result){
+				 location.href = "/app/getCartList.do?memId="+id;
+			 }
+		}else{
+			alert("이미 존재하는 상품입니다.")
+		}
+
 		},
 		error: function (jqXHR,
 			textStatus, errorThrown) {
@@ -385,7 +393,7 @@ $('button:contains("장바구니")').on("click", function () {
 
 $(document).on("click","button:contains('문의하기')",function(){
 	if(id != ""){
-		alert(id);
+		alert("아");
 		$('.product-question__modal').show();
 	} else {
 		var result = confirm("로그인이 필요한 서비스입니다. 로그인 하시겠습니까?")

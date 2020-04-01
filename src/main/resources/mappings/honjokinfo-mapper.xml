@@ -64,6 +64,38 @@
 	<!-- insert end -->
 
 	<!-- 커뮤니티 페이징 처리후 -->
+	
+	
+	<select id="selectSearch" resultType="CommunityVO"
+		parameterType="Map">
+		SELECT * FROM ( SELECT ROWNUM
+		AS RECNUM,
+		COM_SEQ,
+		TITLE,
+		ID,
+		CONTENT,
+		REGDATE,
+		HIT,
+		LIKES,
+		NICK_NAME,
+		TYPE FROM(SELECT COM_SEQ,
+		TITLE,
+		ID,
+		CONTENT,
+		REGDATE,
+		HIT,
+		NICK_NAME,
+		LIKES,TYPE FROM COMMUNITY WHERE type =
+		'1' and ${searchFiled} like '%${searchValue}%' order by com_seq DESC))
+		where RECNUM BETWEEN (#{section}-1)* 90 +
+		(#{pageNum}-1)* 9 + 1
+		AND (#{section} - 1)*90 + #{pageNum}*9 order by
+		com_seq DESC
+	</select>
+	
+	
+	
+	
 	<select id="selectAll" resultType="CommunityVO"
 		parameterType="Map">
 		SELECT * FROM ( SELECT ROWNUM
@@ -114,6 +146,10 @@
 		select count(*)from
 		community where type = '1'
 	</select>
+	<select id="selectAllCountSerach" resultType="Integer">
+		select count(*)from
+		community WHERE type = '1' and ${searchFiled} like '%${searchValue}%'
+	</select>
 
 
 
@@ -154,6 +190,10 @@
 
 
 <!-- 업데이트 시작  -->
+
+	<update id="hitUpdate" parameterType="String">
+	UPDATE community SET HIT = HIT+ 1 where com_seq = #{comSeq}
+	</update>
 
 
 	<update id="uptate" parameterType="CommInfoVO">

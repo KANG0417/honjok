@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
@@ -33,6 +34,11 @@
 
 
 <style>
+
+.wrap {
+	padding: 20px 50px;
+}
+
 body {
    background: #ffffff;
    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
@@ -56,9 +62,32 @@ body {
 }
 </style>
 
+
+<style>
+ .advice-guide-chapter-content__content {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 0 0px;
+    -moz-box-flex: 1;
+    -moz-flex: 1 0 0px;
+    -ms-flex: 1 0 0px;
+    flex: 1 0 0px;
+    min-width: 0;
+    margin-left: 16px;
+        font-size: 18px;
+}
+.advice-guide-chapter-content__author, .advice-guide-chapter-content__footer {
+    margin-bottom: 2px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 14px;
+    color: #757575;
+}
+</style>
+
 <body>
 
 
+<div class="wrap">
    <div style="max-width: 1500px; margin: 0 auto; height: 100%;">
       <h2 class="text-center">혼밥의 모든것</h2>
 
@@ -70,7 +99,9 @@ body {
                </p>
             </c:when>
 
+
             <c:when test="${CommunityVOList != null }">
+            
                <div class="row ">
                 
                   <div class="swiper-container">
@@ -87,25 +118,18 @@ body {
                      </div>
                      <div class="swiper-pagination"></div>
                   </div>
-               
-
-
-                  <!-- <div class="row"
-                  style="width: 100%; height: 300px; margin-bottom: 100px;">
-                  이번주 베스트 가게는 ~ <img style="width: 100%; height: 100%;"
-                     src="/app/resources/img/no.jpg">
-               </div>  -->
+              
 
                   <c:forEach var="CommunityVO" items="${CommunityVOList }"
                      varStatus="articleNum">
-
                      <div class="col-md-4" id="select">
 
                         <div class="single-blog">
 
                            <a class="main-img${articleNum.index}"
                               href="get.do?comSeq=${CommunityVO.comSeq }"
-                              class="img w-100 mb-3"> <script>
+                              class="img w-100 mb-3">
+                               <script>
                                  var contentimg = '${CommunityVO.content}';
                                  var firstimg = $(contentimg).find(
                                        'img:first').attr('src');
@@ -124,23 +148,32 @@ body {
 
 
 
+
+						
+
+
                            <div class="text w-100 text-center">
-                              <h3>
-                                 <a href="get.do?comSeq=${CommunityVO.comSeq }">${CommunityVO.title }</a>
-                              </h3>
-                              <div class="likes">
-                                 <i class="fa fa-thumbs-o-up"></i>좋아요: ${CommunityVO.likes } <i
-                                    class="fa fa-comment-o"> 댓글수 : </i> 조회수:${CommInfoVO.hit }
-                              </div>
-                              <br>
-                              <p class="blog-meta">작성자: ${CommunityVO.nickName } /
-                                 작성일:${CommunityVO.regdate }</p>
 
-                              <span>#혼술가능</span> <span>#바테이블</span>
-                           </div>
-
-
-
+										<div class="advice-guide-chapter-content__content">
+											  <a class="advice-guide-chapter-content__title" href="get.do?comSeq=${CommunityVO.comSeq }">${CommunityVO.title }</a>
+										
+											
+											<div style="text-align:right;" class="advice-guide-chapter-content__footer">
+											<span class="advice-guide-chapter-content__author">작성자&nbsp;:&nbsp;${CommunityVO.nickName }</span>
+											<br><span class="advice-guide-chapter-content__footer__entry">조회수 : 
+												${CommunityVO.hit == 0? 0: CommunityVO.hit }&nbsp;&nbsp;&nbsp;&nbsp;
+											</span>
+	
+											<span class="advice-guide-chapter-content__footer__entry">  <i class="fa fa-thumbs-o-up"></i>
+												${CommunityVO.likes }
+											</span>
+											<span>
+												  <fmt:parseDate value="${CommunityVO.regdate }" var="dateFmt" pattern="yyyy-MM-dd HH:mm:ss"/>
+												  <br> 작성일: <fmt:formatDate value="${dateFmt}" pattern="yyyy-MM-dd"/>
+											</span>
+											</div>
+										</div>
+                           		</div>
                         </div>
                         <!-- single-blog끝  -->
 
@@ -222,15 +255,34 @@ body {
                            </c:forEach>
                         </c:when>
 
+
+    						
                         <c:when test="${countList < 90 }">
                            <c:forEach var="page" begin="1" end="${countList/9 + 0.9  }"
                               step="1">
                               <c:choose>
+                          
                                  <c:when test="${page == pageNum }">
-                                    <a href="select.do?section=${section}&pageNum=${page}">${page }</a>
+                                 <c:choose>
+                                 	 <c:when test="${pagingMap.searchFiled == '' }">
+                                    	<a href="select.do?section=${section}&pageNum=${page}">${page }</a>
+                                      </c:when>
+                                      <c:otherwise>
+                                          <a href="selectSearch.do?section=${section}&pageNum=${page}&searchFiled=${pagingMap.searchFiled}&searchValue=${pagingMap.searchValue}">${page }</a>            
+                                      </c:otherwise>
+                                 </c:choose>
                                  </c:when>
+                                 
                                  <c:otherwise>
-                                    <a href="select.do?section=${section}&pageNum=${page}">${page }</a>
+                                       <c:choose>
+                                   	 <c:when test="${pagingMap.searchFiled == null}">
+                                    	<a href="select.do?section=${section}&pageNum=${page}">${page }</a>
+                                      </c:when>
+                                      <c:otherwise>
+                                          <a href="selectSearch.do?section=${section}&pageNum=${page}&searchFiled=${pagingMap.searchFiled}&searchValue=${pagingMap.searchValue}">${page }</a>            
+                                      </c:otherwise>
+                                      </c:choose>
+                                      
                                  </c:otherwise>
                               </c:choose>
                            </c:forEach>
@@ -243,15 +295,27 @@ body {
 
          </c:choose>
          <c:remove var="endPage" />
-         <div>
-            <form action="insert.jsp">
+         <div style="display: flex; margin-right: 100px">
+            <form action="insert.jsp" style="margin-right: 100px;">
                <input type="submit" value="글쓰기">
             </form>
+             <form action="selectSearch.do">
+               <select name="searchFiled">
+               	<option value="title">제목</option>
+               	<option value="content">내용</option>
+               </select>
+               <input style="width: 300px" type="text" name="searchValue" value="${pagingMap.searchValue}">
+               <input type="submit" value="검색">
+            </form>
          </div>
+     
+         
+        
 
       </div>
       <!--컨테이너끝 -->
 
+   </div>
    </div>
    <!-- 마지막 div -->
 

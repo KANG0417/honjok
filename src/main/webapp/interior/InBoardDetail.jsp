@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-<title>글상세보기</title>
+<title>인테리어 글 상세</title>
 <style>
 	#main {
 		border: 1px solid gray;
@@ -16,22 +16,68 @@
 		text-align: center;
 	}
 	
-	#container {
-		width: 700px;
-		margin: 0 auto;
+	body {
+		background-color: #f1f2f6;
+	}
+	
+	/* 글 테두리 */
+	#inter-border {
+		background-color: white;
+		width: 1300px;
+		heigh: 800px;
+		margin: 20px;
 	}
 	
 	/* 글 상세 */
 	.inter-title {
-		border-top: 2px solid #4169E1;
-		border-bottom: 2px solid #4169E1;
 		padding: 20px;
-		text-align: center;
-		font-size: 20px;
+		margin: 30px;
+		text-align: left;
+		font-size: 30px;
+		font-weight: bold;
+		color: #226b80;
 	}
 	
 	.inter-writer {
+		text-align: left;
+		font-size: 15px;
+	}
+	
+	.inter-hit {
+		float: right;
+	}
+	
+	.inter-regdate {
+		float: right;
+	}
+	
+	.inter-content {
 		
+	}
+	
+	.r-sidebar {
+		float: right;
+		width: 300px;
+		height: 500px;
+		border: 2px solid red;
+		background-color: #ffe7d5;
+	}
+	
+	/* 댓글 */
+	.comment-list {
+		list-style: none;
+	}
+	
+	.comment-title {
+		border: 1px solid black;
+		padding: 20px;
+		margin: 10px;
+	}
+	
+	.content {
+		width: 1100px;
+		padding: 20px;
+		margin-bottom: 50px;
 	}
 	
 	.parent { 
@@ -39,9 +85,11 @@
 	  grid-template-areas:
 	    "i1 i2 i3"
 	    "i4 i4 i4";
-	  div {
+	    
+	  /* div {
 	    border: 1px solid #000;
-	  }
+	  } */
+	  
 	 .writer {
 	    grid-area: i1;
 	  }
@@ -122,7 +170,7 @@
 </head>
 <body>
 <div id="main">원마켓</div>
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+<%-- <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
   <a class="navbar-brand" href="index.jsp">Home</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
     <span class="navbar-toggler-icon"></span>
@@ -155,25 +203,38 @@
       </li>     
     </ul>
   </div>  
-</nav>
-<div id="container">
-	<h1>글 상세</h1>
+</nav> --%>
+
+		<!-- 사이드바 -->
+		<div class="r-sidebar">
+			<p>검색</p>
+		</div>
+		
+		<!-- 본문 내용 -->
+	<section id="sBox">
 		<input type="hidden" name="comSeq" id="comSeq" value="${interiorvo.comSeq }">
 		<input type="hidden" name="id" id="id" value="${interiorSelect.id }">
-			<p class="inter-title">제목</p>
-			<p>${interiorSelect.title }</p>
-			<p class="inter-writer">작성자</p>
-			<p>${interiorSelect.nickName }</p>
-			<p class="inter-content">내용</p>
-			<p>${interiorSelect.content }</p>
-			<p class="inter-regdate">등록일</p>
-			<p>${interiorSelect.regdate }</p>
-			<p class="inter-hit">조회수</p>
-			<p>${interiorSelect.hit }</p>
+		<div id="inter-border">
+			<div class="inter-title">
+				${interiorSelect.title }
+			</div>
+			<div>
+			<span class="inter-writer">
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${interiorSelect.nickName }
+			</span>
+			<span class="inter-hit">
+				${interiorSelect.hit }&nbsp;&nbsp;&nbsp;&nbsp;
+			</span>
+			<span class="inter-regdate">
+				&nbsp;&nbsp;&nbsp;${interiorSelect.regdate }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			</span>
+			</div>
+			<article class="inter-content">
+				${interiorSelect.content }
+			</article>
 	
 		<!-- 좋아요 -->
-		<i id="likes" class="far fa-heart fa-5x">좋아요</i>
-<%-- 		<input type="button">좋아요 ${likesCount } --%>
+		<i id="likes" class="far fa-heart fa-5x"></i><span>좋아요</span>${likesCount }
 
 		<!-- 공유하기 -->
 		<div id="ex1" class="modal">
@@ -189,98 +250,97 @@
 	    </div>
 		</div>
 		<span class="btn-type1"><button OnClick="javascript:CopyUrlToClipboard()">URL 복사</button></span>
-		<p></p>
 		</div>
 		<p><a href="#ex1" rel="modal:open">공유하기</a></p>
 		
+		<div>
 		<!-- 글수정 -->
 	  	<form class="update" action="InBoardUpdate.jsp">
+		<span>
 	    <c:set value="${interiorSelect }" var="inter" scope="session"></c:set>
-	    <input type="submit" value="글 수정">
+	    		<input type="submit" value="글 수정">
+		</span>
 		</form>
 		
 		<!-- 글삭제 -->
 		<form action="deleteArticle.do?comSeq=${interiorSelect.comSeq }" id="deleteform">
+		<span>
 			<input type="button" onclick="fn_delete()" value="글 삭제">
 			<input type="hidden" name="comSeq" id="comSeq" value="${interiorSelect.comSeq }">
+		</span>
 		</form>
+		</div>
 		
 		<a href="${contextPage.request.contextPath}/app/interior/interiorAllList.do">글목록</a>
+		</div>
 		
 		<!-- 댓글 목록 -->
 		<div class="comment-add">
-			<ol>
-			<li id="reply-class">
+			<ol class="comment-list">
+				<li>
+				<div class="comment-title">댓글</div>
 			<c:forEach var="comment" items="${commentSelect }">
 					<span class="writer">${comment.nickName }</span>
 					<span class="date">${comment.regdate}</span>
+					<button class="reply-re">답글</button>
+				<c:if test="${ sessionScope.userSession.nickName == comment.nickName }">
 					<button class="reply-up">수정</button>
 					<button class="reply-del">삭제</button>
-					<button class="reply-re">답글</button>
+				</c:if>
 					<p class="reply-content">${comment.content }</p>
 			</c:forEach>
-			<li>
+				</li>
 			</ol>
 		</div>
 		
 		<!-- 댓글 입력창 -->
-		<div class="container">
-    <form id="commentForm" name="commentForm" method="post">
-    <input type="hidden" name="id" value="${sessionScope.userSession.id }"> 
-    <input type="hidden" name="nickName" value="${sessionScope.userSession.nickName }"> 
-	<input type="hidden" name="comSeq" value="${interiorSelect.comSeq }">
-    <br><br>
-        <div>
-            <div>
+		<div class="comment-wri">
                 <span><strong>댓글입력</strong></span> <span id="cCnt"></span>
+                <hr>
+                    <c:if test="${sessionScope.userSession.id == null }">
+                    <textarea class="content" placeholder="로그인시 댓글입력이 가능합니다" readonly></textarea>
+                    <br>
+                    </c:if>
+                    <c:if test="${sessionScope.userSession.id != null }">
+           		<form method="post" action="addComment.do">
+	           		<input type="hidden" name="id" value="${sessionScope.userSession.id }"> 
+				    <input type="hidden" name="nickName" value="${sessionScope.userSession.nickName }"> 
+					<input type="hidden" name="comSeq" value="${interiorSelect.comSeq }">
+					
+					<c:if test="${empty c_list }"> <!-- 댓글이 없을시 step:0, lev:0 -->
+						<input type="hidden" name="step" value="0">
+						<input type="hidden" name="lev" value="0">
+					</c:if>
+					<c:if test="${stepResult >= 1 }">
+						<input type="hidden" name="step" value="${stepResult}">
+						<input type="hidden" name="lev" value="0">
+					</c:if>
+					
+                    <textarea style="width: 1100px" rows="3" cols="30" id="comment" name="content" placeholder="댓글을 입력하세요"></textarea>
+                    <br>
+                    <div>
+                    <input type="submit" class="comment-push" value="등록">
+                    </div>
+				</form>
+                   </c:if>
             </div>
-            <div>
-                <table class="table">                    
-                    <tr>
-                        <td>
-                            <c:if test="${sessionScope.userSession.id == null }">
-                            <textarea style="width: 1100px" rows="3" cols="30" id="comment"  placeholder="로그인시 댓글입력이 가능합니다"></textarea>
-                            <br>
-                            <!-- <div>
-                                <input type="button" class="btn pull-right btn-success" value="등록" disabled>
-                            </div> -->
-                            </c:if>
-                            <c:if test="${sessionScope.userSession.id != null }">
-                           
-                            <textarea style="width: 1100px" rows="3" cols="30" id="comment" name="content" placeholder="댓글을 입력하세요"></textarea>
-                            <br>
-                            <div>
-                                <button type="button" onClick="fn_comment()" class="btn pull-right btn-success">등록</button>
-                            </div>
-                            </c:if>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-    </form>
-</div>
-<div class="container">
-    <form id="commentListForm" name="commentListForm" method="post">
-        <div id="commentList">
-        </div>
-    </form>
-</div>
-</div>
+</section>
+
 <script>
 
 	//좋아요
 	$('#likes').click(function(){
 		if("${sessionScope.userSession.id}" != ""){
 			var className = $(this).attr('class');
-			if(className == "heart" ){
+			if(className == "far fa-heart fa-5x" ){
 				$(this).removeClass();
-				$(this).addClass("heart");
-				var comSeq = '${interiorvo.comSeq}';
+				$(this).addClass("far fa-heart fa-5x");
+				var comSeq = '${interiorSelect.comSeq}';
+				console.log('${interiorSelect.comSeq}');
 				var id = '${sessionScope.userSession.id}';
 				$.ajax({
 					type:'post',
-					url:"insertLike.do",
+					url:"updateLike.do",
 					data:{comSeq :comSeq,
 							id:id
 						},
@@ -292,7 +352,7 @@
 				});
 			} else{
 				$(this).removeClass();
-				$(this).addClass("heart");
+				$(this).addClass("far fa-heart fa-5x");
 			}
 			} else{
 			var result = confirm("로그인이 필요한 서비스입니다. 로그인 하시겠습니까?");
@@ -302,33 +362,49 @@
 			}
 		});
 	
-		//댓글 입력
-		function fn_comment(){
-			 var form = $('#commentForm')[0];
-		     var data = new FormData(form);
-		   		console.log("클릭은되나요?");
-		   		document.data.action = "location.href='addComment.do'".submit();
-		   		
-		   		location.reload();
-	  	}
 	
-			/* location.reload(); */
-/* 	    $.ajax({
-	    	type: "POST",
-	        url : "addComment.do",
-	        data: data,
-	        contentType : false,
-	        processData : false ,
-	        success : function(e){
-	        	location.reload();
-	        	
-	        },
-	        error:function(request,status,error){
-	            //alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-	          	alert("전송실패");
-	       }
-	        
-	    }); */
+		//댓글 수정
+		/* $('.reply-up').click(function(){
+			$.ajax({
+				type:'post',
+				url:"upComment.do",
+				data:{ comSeq:comSeq,
+						idx:idx },
+				success:function(json){
+					console.log("성공");
+					$('.comment-wri').('<span><strong>댓글입력</strong></span> <span id="cCnt"></span>\
+			                <hr>\
+		                    <c:if test="${sessionScope.userSession.id == null }">\
+		                    <textarea class="content" placeholder="로그인시 댓글입력이 가능합니다" readonly></textarea>\
+		                    <br>\
+		                    </c:if>\
+		                    <c:if test="${sessionScope.userSession.id != null }">\
+		           		<form method="post" action="addComment.do">\
+			           		<input type="hidden" name="id" value="${sessionScope.userSession.id }">\
+						    <input type="hidden" name="nickName" value="${sessionScope.userSession.nickName }"> \
+							<input type="hidden" name="comSeq" value="${interiorSelect.comSeq }">\
+							
+							<c:if test="${empty c_list }">\
+								<input type="hidden" name="step" value="0">\
+								<input type="hidden" name="lev" value="0">\
+							</c:if>\
+							<c:if test="${stepResult >= 1 }">\
+								<input type="hidden" name="step" value="${stepResult}">\
+								<input type="hidden" name="lev" value="0">\
+							</c:if>\
+		                    <textarea style="width: 1100px" rows="3" cols="30" id="comment" name="content" placeholder="댓글을 입력하세요"></textarea>\
+		                    <br>\
+		                    <div>\
+		                    <input type="submit" class="comment-push" value="등록">\
+		                    </div>\
+						</form>\
+		                   </c:if>');
+					
+				},error: function(jqXHR, textStatus, errorThrown) {
+					alert("오류가 발생하였습니다.");
+				}
+			});
+		}) */
 </script>
 </body>
 </html>

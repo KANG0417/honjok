@@ -165,6 +165,19 @@ public class honjokInfoMapper {
 				return selectBest5;
 			}
 
+			public void hitUpdate(String comSeq) {
+				mybatis.update("honjokInfoMapper.hitUpdate",comSeq);
+			}
+
+			public List<CommunityVO> selectSearch(Map<String, Object> pagingMap) {
+				System.out.println("ss"+pagingMap.get("searchFiled"));
+				return mybatis.selectList("honjokInfoMapper.selectSearch",pagingMap);
+			}
+
+			public int selectAllCount(Map<String, Object> pagingMap) {
+				return mybatis.selectOne("honjokInfoMapper.selectAllCountSerach",pagingMap);
+			}
+
 			
 	//delete 끝
 

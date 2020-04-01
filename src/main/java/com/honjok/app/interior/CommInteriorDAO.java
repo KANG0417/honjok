@@ -63,15 +63,15 @@ public class CommInteriorDAO {
 	}
 	
 	//좋아요 증가
-	public void insertLikes(LikesVO livo) {
-		System.out.println("===> MyBatis로 InsertLikes() 실행");
-		mybatis.insert("commInteriorDAO.likesCheck", livo);
+	public void upLike(String comSeq) {
+		System.out.println("===> MyBatis로 updateLikes() 실행");
+		mybatis.update("commInteriorDAO.likesCheck", comSeq);
 	}
 	
 	//좋아요 취소
-	public void updateLikes(LikesVO livo) {
+	public void downLike(String comSeq) {
 		System.out.println("===> MyBatis로 updateLikes() 실행");
-		mybatis.update("commInteriorDAO.likesCancel", livo);
+		mybatis.update("commInteriorDAO.likesCancel", comSeq);
 	}
 	
 	//해당 게시물 좋아요 갯수
@@ -88,7 +88,17 @@ public class CommInteriorDAO {
 	}
 
 	//게시물 댓글 조회
-	public List<commReplyVO> replyList(int comSeq) {
+	public List<commReplyVO> commentList(int comSeq) {
+		System.out.println("===> MyBatis로 commentList() 실행");
+		
 		return mybatis.selectList("commInteriorDAO.allComment", comSeq);
 	}
+
+	//게시물 댓글 수정
+	public void updateComment(commReplyVO rvo) {
+		System.out.println("===> MyBatis로 upadateComment() 실행");
+		mybatis.update("commInteriorDAO.updateComment", rvo);
+	}
+	
+	
 }

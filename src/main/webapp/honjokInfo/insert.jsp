@@ -5,13 +5,95 @@
 <head>
 <meta charset="UTF-8">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-
-<script src="https://cdn.ckeditor.com/4.13.1/standard-all/ckeditor.js"></script>
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=69f7448811fd57d29b7398b4045f65df&libraries=services"></script>
-
+	
+<!-- include summernote css/js -->
+<!-- 이 css와 js는 로컬에 있는 것들을 링크시킨 것이다. -->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.js"></script>
 <title>혼족정보 게시판</title>
+<style>
+.wrap {
+	padding: 20px 50px;
+}
+
+.select {
+	-webkit-appearance: none; /* 네이티브 외형 감추기 */
+	-moz-appearance: none;
+	appearance: none;
+	width: 200px; /* 원하는 너비설정 */
+	padding: .8em .5em; /* 여백으로 높이 설정 */
+	font-family: inherit; /* 폰트 상속 */
+	border: 1px solid #999;
+	border-radius: 0px; /* iOS 둥근모서리 제거 */
+	-webkit-appearance: none; /* 네이티브 외형 감추기 */
+	-moz-appearance: none;
+	appearance: none;
+	margin-bottom: 20px;
+}
+
+
+  input[type="button"],input[type="file"]{
+  background-color:#3bb3e0;
+	padding:10px;
+	position:relative;
+	font-family: 'Open Sans', sans-serif;
+	font-size:12px;
+	text-decoration:none;
+	color:#fff;
+	border: solid 1px #186f8f;
+	background-image: linear-gradient(bottom, rgb(44,160,202) 0%, rgb(62,184,229) 100%);
+	background-image: -o-linear-gradient(bottom, rgb(44,160,202) 0%, rgb(62,184,229) 100%);
+	background-image: -moz-linear-gradient(bottom, rgb(44,160,202) 0%, rgb(62,184,229) 100%);
+	background-image: -webkit-linear-gradient(bottom, rgb(44,160,202) 0%, rgb(62,184,229) 100%);
+	background-image: -ms-linear-gradient(bottom, rgb(44,160,202) 0%, rgb(62,184,229) 100%);
+	background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(0, rgb(44,160,202)),
+	color-stop(1, rgb(62,184,229))
+	);
+	-webkit-box-shadow: inset 0px 1px 0px #7fd2f1, 0px 1px 0px #fff;
+	-moz-box-shadow: inset 0px 1px 0px #7fd2f1, 0px 1px 0px #fff;
+	box-shadow: inset 0px 1px 0px #7fd2f1, 0px 1px 0px #fff;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-o-border-radius: 5px;
+	border-radius: 5px; 
+	margin:0 20px 20px 0;
+	}
+	
+	input[type=text] {
+    padding:5px; 
+    border:2px solid #ccc; 
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+input[type=text]:focus {
+    border-color:#333;
+}
+
+input[type=submit] {
+    padding:5px 15px; 
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+    margin-top: 30px;
+    background-color:#3bb3e0;
+}
+
+#editor1{
+	margin-bottom: 50px;
+}
+</style>
 <style>
 .map_wrap {
 	position: relative;
@@ -274,6 +356,7 @@
 <body>
 	<h1>혼족정보게시판</h1>
 
+	<div class="wrap">
 
 	<form id="insert" action="insert.do" method="POST"
 		enctype="multipart/form-data">
@@ -293,10 +376,8 @@
 
 
 		제목<input type="text" name="title"><br>
-		<textarea name="content" id="editor1" rows="10" cols="80">
-                     내용을 입력해주세요 
-           	첫번쨰로 업로드하신 사진이 대표 이미지가 됩니다.
-             </textarea>
+		<textarea rows="5" cols="60" name="content" id="description"></textarea>
+                     
 		위치정보(클릭해주세요) <br> <input class="adr" type="hidden" name="adr"
 			value="위치를 등록해주세요"> <input class="tel" type="hidden"
 			name="tel" value="전화번호 등록해주세요"> <input class="place_name"
@@ -330,7 +411,7 @@
 
 
 	<input type="submit" id="ss" form="insert">
-
+</div>
 
 
 
@@ -338,7 +419,7 @@
 
 	<!-- 에디터  -->
 	<script type="text/javascript">
-	 	CKEDITOR.replace('editor1', {
+	/*  	CKEDITOR.replace('editor1', {
 			extraPlugins : 'image2',
 			filebrowserImageUploadUrl : 'fileupload.do',
 			// Upload dropped or pasted images to the CKFinder connector (note that the response type is set to JSON).
@@ -346,13 +427,51 @@
 			height : 450
 		}); 
 		
-	
-	</script>
-	
+	 */
+	 
+		
+	 $(function(){
+		    $("#description").summernote({
+		    	placeholder:"내용을 입력해주세요",
+		    	height: 300,
+		    	width : 800,
+		    	minHeight: null,
+		    	maxHeight: null,
+		    	lang : 'ko-KR',
+		    	callbacks: {
+			          onImageUpload: function(files, editor, welEditable) {
+			        	  sendFile(files[0], this); 
+			         }
+			   	}
+		    });
+		});
+		
 
+		/* summernote에서 이미지 업로드시 실행할 함수 */
+		function sendFile(file, editor){
+			/* 파일 전송을 위한 폼생성 */
+			data = new FormData();
+			data.append('uploadFile', file);
+			$.ajax({ // ajax를 통해 파일 업로드 처리
+				data : data,
+				type : 'POST',
+				url : '/app/admin/imageUpload.do',
+				cache : false,
+				contentType : false,
+				enctype : 'multipart/form-data',
+				processData : false,
+				dataType : 'text',
+				success : function(data){
+					console.log(data);
+					$(editor).summernote('editor.insertImage', '/app/resources/img/'+data);
+				},
+				error : function(err){
+					console.log(err);
+				}
+			});
+		}
 
-
-
+</script>
 
 
 	<!-- 다음지도  -->
