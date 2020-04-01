@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<!--  <!DOCTYPE html>
 <html>
 
 <head>
@@ -11,8 +11,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
+<meta name="viewport" content="width=device-width, initial-scale=1">-->
+<!--  <style>
 	/* Make the image fully responsive */
 	  .carousel-inner img {
 	    width: 100%;
@@ -74,15 +74,15 @@ header h1 {
 <body>
 
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
-
+-->
   <!-- Indicators -->
-  <ul class="carousel-indicators">
+  <!--  <ul class="carousel-indicators">
     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
     <li data-target="#myCarousel" data-slide-to="1"></li>
     <li data-target="#myCarousel" data-slide-to="2"></li>
-  </ul>
+  </ul>-->
   
-  <!-- The slideshow -->
+  <!-- The slideshow 
   <div class="carousel-inner">
     <div class="carousel-item active">
       <img src="${contextPage.request.contextPath}/app/resources/img/1.jpg" alt="Los Angeles" width="100" height="auto">
@@ -91,9 +91,9 @@ header h1 {
         <p>베이컨을 곁들인 에그인더헬</p>
       </div> 
     </div>
-  </div>
+  </div>-->
   
-  <!-- Left and right controls -->
+  <!-- Left and right controls 
   <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
     <span class="carousel-control-prev-icon"></span>
   </a>
@@ -102,13 +102,13 @@ header h1 {
   </a>
   
 </div>
-</body>
+</body>-->
 
  
 
-  <!-- Bootstrap core JavaScript -->
+  <!-- Bootstrap core JavaScript 
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
-</html>
+</html>-->

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
  
 <!-- 데코레이터 기본 폴더 -->
- 
+  
 <decorators defaultdir="/WEB-INF/views/layout">
 <!-- // 데코레이터 기본 폴더로 sitemesh의 layout 관련 파일은 /WEB-INF/view/layout 폴더로 추가 할 것이다. -->
  
@@ -11,10 +11,13 @@
 <!-- //여기 패턴은 sitemesh를 사용하지 않을 URL 패턴을 입력하면 된다. -->
 <!-- //아직 만들어진 것이 없어 추가할 내용은 없지만, 추후 login 문자열이 들어간 URL은 sitemesh를 사용하지 않겠다는 것이다. -->
  
- <excludes>
+   <excludes>
      <pattern>*login*</pattern>
      <pattern>*review*</pattern>
      <pattern>*product*</pattern>
+     <pattern>*main*</pattern>
+     <pattern>*cart*</pattern>
+     <pattern>*order*</pattern>
  </excludes>
  
   
@@ -23,7 +26,7 @@
 <!-- // header -->
 <!-- // body -->
 <!-- // footer -->
- <decorator name="header-footer-layout" page="header-footer-layout.jsp">
+  <decorator name="header-footer-layout" page="header-footer-layout.jsp">
   <pattern>*</pattern>
  </decorator>
  
