@@ -102,9 +102,6 @@ public class CookController {
 		System.out.println("> board vo : " + cvo);
 
          cookservice.update(cvo);
-         
-         
-         
        return "/cook/CookDetail.do";
    }
    

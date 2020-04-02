@@ -1,6 +1,6 @@
 <%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
  
-<%@ taglib prefix="decorator" uri="http://www.opensymphony.com/sitemesh/decorator" %>
+<%-- <%@ taglib prefix="decorator" uri="http://www.opensymphony.com/sitemesh/decorator" %> --%>
  
 <!DOCTYPE html PUBLIC"-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
  
@@ -13,7 +13,7 @@
  
  <!-- 공통 JS -->
   
- <decorator:head />
+<%--  <decorator:head /> --%>
 </head>
  
   
@@ -57,7 +57,7 @@
   
  <div>
  </div>
-  <decorator:body />
+<%--   <decorator:body /> --%>
   
 
 

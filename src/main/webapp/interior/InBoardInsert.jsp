@@ -7,18 +7,27 @@
 <meta charset="UTF-8">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://cdn.ckeditor.com/4.13.1/standard-all/ckeditor.js"></script>
+
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- include summernote css/js -->
+<!-- 이 css와 js는 로컬에 있는 것들을 링크시킨 것이다. -->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.js"></script>
 <title>글등록</title>
 <style>
 	#container {
 		width: 700px;
 		margin: 0 auto;
 	}
+	
 	h1, h3, p { text-align: center; }
 	table { border-collapse: collapse; }
 	table, th, td {
 		border: 1px solid black;
 		margin: 0 auto;
 	}
+	
 	th { background-color: orange; }
 	.center { text-align: center; }
 	.border-none, .border-none td { border: none; }
@@ -42,7 +51,7 @@
 		<tr>
 			<th>내용</th>
 			<td>
-				<textarea id="editor1" name="content" rows="10" cols="40"></textarea>
+				<textarea rows="5" cols="60" name="content" id="description"></textarea>
 			</td>					
 		</tr>
 		<tr>
@@ -66,7 +75,7 @@
 </div>
 
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 CKEDITOR.replace('editor1', {
     extraPlugins: 'image2,uploadimage',
 
@@ -87,6 +96,61 @@ CKEDITOR.replace('editor1', {
 
     height: 450
   });
+</script> -->
+
+<script type="text/javascript">
+	/*  	CKEDITOR.replace('editor1', {
+			extraPlugins : 'image2',
+			filebrowserImageUploadUrl : 'fileupload.do',
+			// Upload dropped or pasted images to the CKFinder connector (note that the response type is set to JSON).
+			uploadUrl : 'fileupload.do',
+			height : 450
+		}); 
+		
+	 */
+	 
+		
+	 $(function(){
+		    $("#description").summernote({
+		    	placeholder:"내용을 입력해주세요",
+		    	height: 300,
+		    	width : 800,
+		    	minHeight: null,
+		    	maxHeight: null,
+		    	lang : 'ko-KR',
+		    	callbacks: {
+			          onImageUpload: function(files, editor, welEditable) {
+			        	  sendFile(files[0], this); 
+			         }
+			   	}
+		    });
+		});
+		
+
+		/* summernote에서 이미지 업로드시 실행할 함수 */
+		function sendFile(file, editor){
+			/* 파일 전송을 위한 폼생성 */
+			data = new FormData();
+			data.append('uploadFile', file);
+			$.ajax({ // ajax를 통해 파일 업로드 처리
+				data : data,
+				type : 'POST',
+				url : '/app/admin/imageUpload.do',
+				cache : false,
+				contentType : false,
+				enctype : 'multipart/form-data',
+				processData : false,
+				dataType : 'text',
+				success : function(data){
+					console.log(data);
+					$(editor).summernote('editor.insertImage', '/app/resources/img/'+data);
+				},
+				error : function(err){
+					console.log(err);
+				}
+			});
+		}
+
 </script>
 </body>
 </html>
