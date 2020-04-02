@@ -26,6 +26,11 @@
 	<select id="cookList" resultType="CommInfoVO">
 	   <![CDATA[  SELECT * FROM (SELECT * FROM COMM_COOK ORDER BY hit DESC) WHERE ROWNUM < 5  ]]>
 	</select>
+	
+	<!-- 리얼리뷰 가져오기  -->
+	<select id="productReviewList" resultType="productReviewVO">
+		select * from product_review order by rating DESC
+	</select>
 
   </mapper>
   	

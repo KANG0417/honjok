@@ -15,7 +15,7 @@
 	
 	<!-- 상품 등록  --> 
 	<insert id="insertReview" parameterType="productReviewVO">
-		insert into product_Review values(#{pNum},PRODUCT_REVIEW_SEQ.nextval,#{rating},#{pName,jdbcType=VARCHAR},#{id},sysdate,#{photoImage1,jdbcType=VARCHAR},#{title},#{content},#{photoImage2,jdbcType=VARCHAR})
+		insert into product_Review values(#{pNum},PRODUCT_REVIEW_SEQ.nextval,#{rating},#{pName,jdbcType=VARCHAR},#{id},sysdate,#{photoImage1,jdbcType=VARCHAR},#{title},#{content},#{photoImage2,jdbcType=VARCHAR},#{nickName})
 	</insert>
 	
 	<!-- 리뷰 게시물 총 겟수 --> 

@@ -467,32 +467,42 @@
                         <div class="realreview_slider">
                             <div id="realprd" class="swiper-container">
                                 <div class="swiper-wrapper" style="width: 4560px; height: 540px; transform: translate3d(-2280px, 0px, 0px); transition-duration: 0.3s;">
+                                    <c:forEach var="Review" items="${productReviewList }">
                                     <div class="swiper-slide swiper-slice-duplicate" style="285px; height:540px">
-                                        <a class="layer-pop" href="#">
-                                            <span class="img">
-                                                <img src="image/1.png" alt="">
+                                        <a class="layer-pop" href="/app/Product/Product.do?pNum=${Review.pNum}">                                            <span class="img">
+                                                <img src="/app/resources/img/review/${Review.photoImage1}" alt="">
                                             </span>
                                             <span class="hash">
-                                                #저자극각질케어토너
+                                                #태그 #태그
                                             </span>
                                             <span class="tit">
-                                                <strong>에빠끌라</strong>
-                                                [대놓고1위]리밸런싱 로션세트
+                                                <strong>${Review.pName}</strong>
+                    								${Review.title}
                                             </span>
                                             <span class="reply">
-                                              	 제 피부에 딱 맞아요
+                                              	${Review.title}
                                             </span>
                                             <span class="data">
-                                                <span class="userNick">강지향씨</span>
-                                                <div class="star-rating small">
-                                                    <span class="c50">
-                                                        <em class="hide">별점 5개</em>
-                                                    </span>
-                                                </div>
+                                                <span class="userNick">${Review.nickName}</span>
+                                                <c:forEach var="i" begin="0" end="5" step="1">
+	                                                <c:if test="${i < Review.rating+0}">
+		                                                 <span class="star-rating blue">
+		                                                </span>
+		                                             </c:if>
+		                                             
+		                                             <c:if test="${i > Review.rating+0}">
+		                                                 <span class="star-rating small">
+		                                                </span>
+		                                             </c:if>
+
+                                                </c:forEach>
                                             </span>
                                         </a>
                                     </div>
-                                </div>                                       
+                                    </c:forEach>
+                                    
+                                </div>      
+                                                                 
                             </div>
                             <button class="realprd-prev" type="button">
                                 <span class="hide">이전</span>

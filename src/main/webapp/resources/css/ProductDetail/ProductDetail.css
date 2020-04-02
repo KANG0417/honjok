@@ -199,24 +199,19 @@
         .production-selling__detail__content {
             display: flex;
         }
+        .production-selling-overview__cover-image-wrap{
+        	 margin: 0 auto;
+        }
         
-        
-     
-
-    
-
         /* 컬럼 중앙정렬 */
-        .production-selling-overview__container
+        .production-selling-overview__container,
+        .production-selling__detail-wrap
         {
             margin: 0 auto;
-      
+		    width:90%;	
         }
 
 
-        .production-selling__detail-wrap{
-            margin: 0 5%;
-           
-        }
 
         .button {
                 -moz-user-select: -moz-none;
@@ -361,7 +356,9 @@
                 padding-bottom: 20px;
                 margin-bottom: 20px;
             }
-
+            
+        
+     
             .production-review-item {
                 position: relative;
             }
