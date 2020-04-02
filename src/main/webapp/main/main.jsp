@@ -157,7 +157,7 @@
                                 </div>
                             </a>
                         </div>
-                        <div class="swiper-slide swiper-slide-visible swiper-slide-active" style="width: 1140px; height: 699px;">
+                        <div class="swiper-slide swiper-slide-visible swiper-slide-active" style="width: 1140px; height: 699px; margin: 10px;">
                             <a class="mainView" href="javascript:void(0);" target="_self">
                                 <div class="img_banner" style="background-image:url(/app/resources/img/main/gagu3.png);">
                                     <span class="hide">스팟스캔-바로가기</span>

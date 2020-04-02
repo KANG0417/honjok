@@ -15,11 +15,15 @@
 		)
 	</insert>
 	
-	<!-- ｉｄ로　회원정보　조회 -->
+	<!-- id로　회원정보　조회 -->
 	<select id="oneUser" parameterType="String" resultType="user">
 		SELECT *
 		FROM USERS
 		WHERE ID = #{id}
+	</select>
+	
+	<select id="userIdCheck" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM USERS WHERE ID = #{id}
 	</select>
 	
 	<select id="emailCheck" parameterType="String" resultType="int">

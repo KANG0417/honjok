@@ -225,7 +225,7 @@ em{
     right: 0;
     line-height: 52px;
     height: 52px;
-    background: #fff url('/image/bg_select.png') no-repeat right 23px;
+    background: #fff url('/app/resources/img/main/bg_select.png') no-repeat right 23px;
     font-size: 16px;
 }  
 select {
@@ -338,7 +338,7 @@ select option {
     height: 20px;
     color: #666;
     font-size: 14px;
-    background: url('/image/bg_inputform.png') no-repeat -40px -40px;
+    background: url('/app/resources/img/main/bg_inputform.png') no-repeat -40px -40px;
         background-size: auto;
     background-size: 200px 200px;
 }
@@ -402,4 +402,17 @@ button {
 #emailCheck{
     border: none;    
 }    
+.checkFont{
+    font-family: "Noto Sans KR";
+    font-size: 18px;
+    font-weight: 300;
+    margin: 6px 0;
+}    
+.join_content .customer_info li > .block {
+    border:none;
+    padding: 10px 0 0 0;
+}
+
     
+
+
