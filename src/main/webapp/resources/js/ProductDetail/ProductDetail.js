@@ -1,4 +1,4 @@
-
+ window.addEventListener("load", function(event) {
 var imgName = new Array;
 var purchasePrice = "";
 
@@ -535,5 +535,5 @@ $(document).on("click",".product-question__wrap__type-select",function(e){
 });
 
 
-
+});
 
