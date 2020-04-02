@@ -5,11 +5,11 @@
 <html>
 <head>
 <title>인테리어 게시판</title>
-<!-- <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
 	rel="stylesheet" type="text/css">
 <link
 	href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic"
-	rel="stylesheet" type="text/css"> -->
+	rel="stylesheet" type="text/css">
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
 	integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
 	crossorigin="anonymous"></script>
