@@ -1,23 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="/app/resources/css/main/main.css" rel="stylesheet">
 <title>main header</title>
+<style>
+
+</style>
 </head>
-<body>
+
         <!--상단 띠배너-->
         <!--//상단 띠배너-->
- <div id="wrap" class="main">
+ <div style="padding:200px 0px 0px 0px">
         <nav id="skip_navi">
             <a href="#">본문 바로가기</a>
             <a href="#">메뉴 바로가기</a>
             <a href="#">하단 정보 바로가기</a>
         </nav>
         <header id="header"> 
-            <h1 onclick="location.href='getMainList.do'">
+            <h1 onclick="location.href='/app/main/getMainList.do'">
                 ONE-MARKET
                 <em>ONE-MARKET</em>
                 <span>전 세계 피부 전문가가 선택한 민감 피부 솔루면</span>
@@ -26,10 +29,10 @@
                 <nav>
                     <ul>
                         <li>
-                            <a href="app/login.jsp">로그인</a>
+                            <a href="/app/login.jsp">로그인</a>
                         </li>
                         <li>
-                            <a href="app/signUp.jsp">회원가입</a>
+                            <a href="/app/signUp.jsp">회원가입</a>
                         </li>
                         <li>
                             <a href="#">주문/배송조회</a>
@@ -130,5 +133,6 @@
             </section>
         </header>
         </div>
-</body>
+   
+
 </html>

@@ -8,10 +8,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.honjok.app.vo.AdminVO;
+import com.honjok.app.vo.CommInfoVO;
 import com.honjok.app.vo.CommInteriorVO;
 
 
-@Controller
+@Controller()
+@RequestMapping(value = "/main")
 public class mainController {
 	
 	@Autowired
@@ -36,9 +38,39 @@ public class mainController {
 		//List<BoardVO> boardList = boardDAO.getBoardList();
 		//List<BoardVO> boardList = boardDAO.getBoardList(vo);
 		List<AdminVO> mainList = mainService.getMainList();
-		model.addAttribute("mainList", mainList);
+		
+		//인테리어 리스트 4개 가져옴
+		List<CommInteriorVO> CommInteriorVO = mainService.interiorList();
+		//공백 제거 
+		for(CommInteriorVO interior : CommInteriorVO) {
+			String temp =  interior.getContent().replaceAll("\r\n", "");
+			interior.setContent(temp);
+		}
+		
+		//혼족정보 4개 가져오기 
+		List<CommInfoVO> CommInfoVO = mainService.infoList();
+		//공백 제거 
+		for(CommInfoVO info : CommInfoVO) {
+			String temp =  info.getContent().replaceAll("\r\n", "");
+			info.setContent(temp);
+		}
+		
+		//레시피정보 4개 가져오기 
+		List<CommInfoVO> CookVO = mainService.cookList();
+		//공백 제거 
+		for(CommInfoVO info : CommInfoVO) {
+			String temp =  info.getContent().replaceAll("\r\n", "");
+			info.setContent(temp);
+		}
+		
 		System.out.println(mainList);
-		return "index2.jsp";
+		
+		model.addAttribute("mainList", mainList);
+		model.addAttribute("CommInteriorList", CommInteriorVO);
+		model.addAttribute("CommInfoList", CommInfoVO);
+		model.addAttribute("CommCookList", CookVO);
+		System.out.println(mainList);
+		return "main.jsp";
 	}
 	
 	@RequestMapping("/getMain.do")

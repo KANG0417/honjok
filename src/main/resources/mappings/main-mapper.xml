@@ -12,5 +12,20 @@
 		   SELECT * FROM PRODUCT WHERE P_NUM = #{pNum}
 	</select>	   
 	
+	<!-- 인테리어 4개 가져오기  -->
+	<select id="interiorList" resultType="commInteriorVO">
+	   <![CDATA[  SELECT *  FROM (SELECT * FROM COMMUNITY  WHERE TYPE = 2  ORDER BY hit DESC) WHERE ROWNUM < 5  ]]>
+	</select>
+
+	<!-- 혼족정보 4개 가져오기  -->
+	<select id="infoList" resultType="CommInfoVO">
+	   <![CDATA[  SELECT *  FROM (SELECT * FROM COMMUNITY  WHERE TYPE = 1  ORDER BY hit DESC) WHERE ROWNUM < 5  ]]>
+	</select>
+	
+	<!-- 혼족정보 4개 가져오기  -->
+	<select id="cookList" resultType="CommInfoVO">
+	   <![CDATA[  SELECT * FROM (SELECT * FROM COMM_COOK ORDER BY hit DESC) WHERE ROWNUM < 5  ]]>
+	</select>
+
   </mapper>
   	
