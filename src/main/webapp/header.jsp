@@ -7,13 +7,23 @@
 <link href="/app/resources/css/main/main.css" rel="stylesheet">
 <title>main header</title>
 <style>
+#wrap.main {
+    padding: 182px 0 0px;
+}
+#wrap {
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    min-width: 1140px;
+}
 
 </style>
 </head>
 
         <!--상단 띠배너-->
         <!--//상단 띠배너-->
- <div style="padding:200px 0px 0px 0px">
+ <div id="wrap" class="main">
         <nav id="skip_navi">
             <a href="#">본문 바로가기</a>
             <a href="#">메뉴 바로가기</a>
