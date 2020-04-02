@@ -7,8 +7,10 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.honjok.app.interior.CommInteriorDAO;
 import com.honjok.app.vo.CommunityVO;
 import com.honjok.app.vo.CookVO;
+import com.honjok.app.vo.commReplyVO;
 
 
 @Service
@@ -16,6 +18,8 @@ public class CookServiceImpl implements CookService{
 	
 	@Autowired
 	private CookMapper CookMapper;
+	@Autowired
+	private CommInteriorDAO commDAO;
 	
 	
 	
@@ -91,6 +95,29 @@ public class CookServiceImpl implements CookService{
 	@Override
 	public void boardHitsUpdate(int comSeq) {
 		CookMapper.boardHitsUpdate(comSeq);
+		
+	}
+
+
+
+	@Override
+	public void insertComment(commReplyVO rvo) {
+		commDAO.insertComment(rvo);
+		
+	}
+
+
+
+	@Override
+	public List<commReplyVO> commentList(int comSeq) {
+		return commDAO.commentList(comSeq);
+	}
+
+
+
+	@Override
+	public void updateComment(commReplyVO rvo) {
+		commDAO.updateComment(rvo);
 		
 	}
 	
