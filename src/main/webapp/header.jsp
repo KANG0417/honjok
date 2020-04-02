@@ -17,7 +17,7 @@
             <a href="#">하단 정보 바로가기</a>
         </nav>
         <header id="header"> 
-            <h1 onclick="location.href='getMainList.do'">
+            <h1 onclick="location.href='/app/main/getMainList.do'">
                 ONE-MARKET
                 <em>ONE-MARKET</em>
                 <span>전 세계 피부 전문가가 선택한 민감 피부 솔루면</span>
@@ -26,10 +26,10 @@
                 <nav>
                     <ul>
                         <li>
-                            <a href="app/login.jsp">로그인</a>
+                            <a href="/app/login.jsp">로그인</a>
                         </li>
                         <li>
-                            <a href="app/signUp.jsp">회원가입</a>
+                            <a href="/app/signUp.jsp">회원가입</a>
                         </li>
                         <li>
                             <a href="#">주문/배송조회</a>
@@ -130,5 +130,6 @@
             </section>
         </header>
         </div>
+        <br><br><br><br><br><br><br><br><br><br><br><br>
 </body>
 </html>

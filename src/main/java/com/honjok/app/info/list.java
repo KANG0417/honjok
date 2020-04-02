@@ -59,6 +59,13 @@ public class list {
 		service.insertCommInfoVO(comI);
 
 		// 파일업로드
+		
+		
+		
+		
+		
+		
+		
 		List<String> fileList = new ArrayList<String>();
 
 		Iterator<String> fileNames = multiFile.getFileNames();

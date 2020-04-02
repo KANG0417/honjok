@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
 <!DOCTYPE>
 <html>
 <head>
@@ -21,7 +21,7 @@
             <a href="#">하단 정보 바로가기</a>
         </nav>
         <header id="header">
-            <h1 onclick="location.href='getMainList.do'">
+            <h1 onclick="location.href='/app/main/getMainList.do'">
                 ONE-MARKET
                 <em>ONE-MARKET</em>
                 <span>전 세계 피부 전문가가 선택한 민감 피부 솔루면</span>
@@ -30,10 +30,10 @@
                 <nav>
                     <ul>
                         <li>
-                            <a href="app/honjok/login.jsp">로그인</a>
+                            <a href="/app/login.jsp">로그인</a>
                         </li>
                         <li>
-                            <a href="app/honjok/signUp.jsp">회원가입</a>
+                            <a href="/app/signUp.jsp">회원가입</a>
                         </li>
                         <li>
                             <a href="#">주문/배송조회</a>
@@ -48,7 +48,7 @@
             <section class="cf_side">
                 <div class="campain">
                     <a class="btn_campain" href="#">
-                        민감성 피부의 삶을 바꾸는 라로슈포제
+                   			 민감성 피부의 삶을 바꾸는 라로슈포제
                     </a>
                     <!-- 캠페인 배너 -->
                 </div>
@@ -183,7 +183,7 @@
                                     transition-duration: 0.3s;">
                                 <c:forEach var="main" items="${mainList}">  
                                 <div class="swiper-slide prdlist swiper-slide-duplicate swiper-slide-visible swiper-slide-active" style="width:285px; height: 490px;">
-                                    <a href="#">
+                                    <a href="/app/Product/Product.do?pNum=${main.pNum}">
                                         <span class="ico"></span>
                                         <span class="photo">
                                             <img src="/app/resources/img/${main.thumnailImg}" alt="상품명입력">
@@ -512,40 +512,75 @@
                   	      이번주 베스트 인테리어는?
                     </div>
                     <ul>
-                        <li>
-                            <a href="#">
-                                <div class=image-box>
-                                    <img src="image/%EA%B0%80%EA%B5%AC1.jpg" alt="">
-                                </div>
-                                <div class="subcontent"> 
-                                    <span class="hash">#우리집 자랑</span>
-                                    <span class="tit">우리집 자랑해볼게요</span>
-                                    <span class="userNick">강지향씨</span>
-                                    <span class="views">12440명이 봤어요</span>
-                                </div>
-                            </a>
-                        </li>
+                    	<c:forEach var="interList" items="${CommInteriorList}"  varStatus="articleNum">
+	                        <li>
+	                            <a href="/app/interior/getInterior.do?comSeq=${interList.comSeq }">
+	                                <div class="image-box image-box${articleNum.index}">
+	                                    <script>
+	                   
+                                 var contentimg = '${interList.content}';
+                                 var firstimg = $(contentimg).find(
+                                       'img:first').attr('src');
+                                 console.log(firstimg);
+                                 var image = document
+                                       .createElement("IMG");
+                                 image.src = firstimg;
+                                 image.height = 250;
+                                 image.width = 250;
+                                 image.alt = "이미지가없습니다.";
+                                 console.log(image);
+                                 $('.image-box${articleNum.index}')
+                                       .html(image);
+                              </script>
+	                                </div>
+	                                <div class="subcontent"> 
+	                                    <span class="hash">#우리집 자랑</span>
+	                                    <span class="tit">${interList.title }</span>
+	                                    <span class="userNick">${interList.nickName }</span>
+	                                    <span class="views">${interList.hit }명이 봤어요</span>
+	                                </div>
+	                            </a>
+	                        </li>
+                        </c:forEach>
                     </ul>
                 </div>
+                
                 <div class="underline"></div>
                 <div class="instagram">
                     <div class="best">
                       	  이번주 베스트 혼족정보는?
                     </div>
                     <ul>
-                        <li>
-                            <a href="#">
-                                <div class=image-box>
-                                    <img src="image/%EC%A7%81%EC%9E%A5%EC%9D%B8%EB%93%A4%EC%9D%98%EB%A7%9B%EC%A7%91.jpg" alt="">
-                                </div>
-                                <div class="subcontent"> 
-                                    <span class="hash">#일인맛집 #직장인</span>
-                                    <span class="tit">직장인들의 핫플레이스!</span>
-                                    <span class="userNick">신환탁</span>
-                                    <span class="views">5000명이 봤어요</span>
-                                </div>
-                            </a>
-                        </li>
+                    <c:forEach var="infoList" items="${CommInfoList}"  varStatus="articleNum">
+	                        <li>
+	                            <a href="/app/honjokInfo/get.do?comSeq=${infoList.comSeq }">
+	                                <div class="image-box image-info${articleNum.index}">
+	                                    <script>
+	                   
+                                 var contentimg = '${infoList.content}';
+                                 var firstimg = $(contentimg).find(
+                                       'img:first').attr('src');
+                                 console.log(firstimg);
+                                 var image = document
+                                       .createElement("IMG");
+                                 image.src = firstimg;
+                                 image.height = 250;
+                                 image.width = 250;
+                                 image.alt = "이미지가없습니다.";
+                                 console.log(image);
+                                 $('.image-info${articleNum.index}')
+                                       .html(image);
+                              </script>
+	                                </div>
+	                                <div class="subcontent"> 
+	                                    <span class="hash">#혼족 정보</span>
+	                                    <span class="tit">${infoList.title }</span>
+	                                    <span class="userNick">${infoList.nickName }</span>
+	                                    <span class="views">${infoList.hit }명이 봤어요</span>
+	                                </div>
+	                            </a>
+	                        </li>
+                        </c:forEach>
                     </ul>
                 </div>
                 <div class="underline"></div>
@@ -554,7 +589,37 @@
                	         이번주 베스트 레시피는?
                     </div>
                     <ul>
-                        <li>
+                    <c:forEach var="cookList" items="${CommCookList}"  varStatus="articleNum">
+	                        <li>
+	                            <a href="/app/cook/CookDetail.do?comSeq=${cookList.comSeq }">
+	                                <div class="image-box image-cook${articleNum.index}">
+	                                    <script>
+	                   
+                                 var contentimg = '${cookList.content}';
+                                 var firstimg = $(contentimg).find(
+                                       'img:first').attr('src');
+                                 console.log(firstimg);
+                                 var image = document
+                                       .createElement("IMG");
+                                 image.src = firstimg;
+                                 image.height = 250;
+                                 image.width = 250;
+                                 image.alt = "이미지가없습니다.";
+                                 console.log(image);
+                                 $('.image-cook${articleNum.index}')
+                                       .html(image);
+                              </script>
+	                                </div>
+	                                <div class="subcontent"> 
+	                                    <span class="hash">#레시피 정보</span>
+	                                    <span class="tit">${cookList.title }</span>
+	                                    <span class="userNick">${cookList.nickName }</span>
+	                                    <span class="views">${cookList.hit }명이 봤어요</span>
+	                                </div>
+	                            </a>
+	                        </li>
+                        </c:forEach>
+  <!--                       <li>
                             <a href="#">
                                 <div class=image-box>
                                     <img src="image/%EC%A7%81%EC%9E%A5%EC%9D%B8%EB%93%A4%EC%9D%98%EB%A7%9B%EC%A7%91.jpg" alt="">
@@ -566,7 +631,7 @@
                                     <span class="views">5000명이 봤어요</span>
                                 </div>
                             </a>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
             </section>
