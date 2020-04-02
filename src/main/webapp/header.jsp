@@ -4,18 +4,19 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="/app/resources/css/main/main.css" rel="stylesheet">
 <title>main header</title>
 </head>
 <body>
- <div id="wrap" class="main">
         <!--상단 띠배너-->
         <!--//상단 띠배너-->
+ <div id="wrap" class="main">
         <nav id="skip_navi">
             <a href="#">본문 바로가기</a>
             <a href="#">메뉴 바로가기</a>
             <a href="#">하단 정보 바로가기</a>
         </nav>
-        <header id="header">
+        <header id="header"> 
             <h1 onclick="location.href='getMainList.do'">
                 ONE-MARKET
                 <em>ONE-MARKET</em>
@@ -92,19 +93,19 @@
                             </div>
                         </li>
                         <li class="">
-                            <a href="#">
+                            <a href="${contextPage.request.contextPath}/app/interior/interiorAllList.do">
                                 <span>인테리어</span>
                                 <!--<em></em>-->
                             </a>
                         </li>
                         <li class="">
-                            <a href="#">
+                            <a href="/app/honjokInfo/select.do">
                                 <span>혼족 정보</span>
                                 <!--<em></em>-->
                             </a>
                         </li>
                         <li class="">
-                            <a href="#">
+                            <a href="/app/cook/CookAll.do">
                                 <span>혼족레시피</span>
                                 <!--<em></em>-->
                             </a>
