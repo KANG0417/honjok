@@ -182,8 +182,7 @@ public class CookVO {
 
 
 
-	public CookVO() {}
-	
+
 	
 	
 

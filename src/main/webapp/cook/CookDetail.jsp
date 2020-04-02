@@ -8,6 +8,14 @@
 <head>
 <meta charset="UTF-8">
 <title>글상세보기</title>
+<style>
+.profile {
+    width: auto; height: auto;
+    max-width: 50px;
+    max-height: 50px;
+}
+</style>
+
 <!-- Bootstrap core CSS -->
 <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -34,63 +42,54 @@ function fn_delete() {
 </script>
 </head>
 <body>
-<!-- Page Content -->
-    <div class="container">
-
-      <!-- Page Heading -->
-      <h1 class="my-4">오늘의 요리
-        <small>Secondary Text</small>
-      </h1>
-
-      <!-- Project One -->
-      <div class="row">
-        <div class="col-md-7">
-          <a href="#">
-            <img class="img-fluid rounded mb-3 mb-md-0" src="http://placehold.it/700x300" alt="">
-          </a>
-        </div>
-        <div class="col-md-5">
-          <h3>Project One</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>
-          <a class="btn btn-primary" href="#">View Project</a>
-        </div>
-      </div>
-      <!-- /.row -->
-
-      <hr>
       
-<div id="container">
+
+
+  <!-- Page Content -->
+  <div class="container">
+
+    <div class="row">
+
+      <!-- Blog Entries Column -->
+      <div class="col-md-8">
+
+        <h1 class="my-4">레시피 게시판입니다
+        <h5>간편한 재료로 한 끼 뚝딱!</h5>
+        </h1>
+
+        <!-- Blog Post -->
+        <div class="card mb-4">
+          <div class="card-body">
+            <p class="card-text">${cookDetail.content }</p>
+          </div>
+          <div class="card-footer">
+            Posted on ${cookDetail.regdate } by
+            <a href="#">${cookDetail.nickName }</a>
+          </div>
+        </div>
+
+
+<!-- Post Content -->
+        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, vero, obcaecati, aut, error quam sapiente nemo saepe quibusdam sit excepturi nam quia corporis eligendi eos magni recusandae laborum minus inventore?</p>
+
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus.</p>
+
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, doloribus, dolorem iusto blanditiis unde eius illum consequuntur neque dicta incidunt ullam ea hic porro optio ratione repellat perspiciatis. Enim, iure!</p>
+
+        <blockquote class="blockquote">
+          <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+          <footer class="blockquote-footer">Someone famous in
+            <cite title="Source Title">Source Title</cite>
+          </footer>
+        </blockquote>
+
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, nostrum, aliquid, animi, ut quas placeat totam sunt tempora commodi nihil ullam alias modi dicta saepe minima ab quo voluptatem obcaecati?</p>
+
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, dolor quis. Sunt, ut, explicabo, aliquam tenetur ratione tempore quidem voluptates cupiditate voluptas illo saepe quaerat numquam recusandae? Qui, necessitatibus, est!</p>
+
+        <hr>
+        <div id="container">
 			<input type="hidden" name="comSeq" value="${cookDetail.comSeq }">
-<!-- 		<tr> -->
-<!-- 			<th>제목</th> -->
-<!-- 			<td> -->
-<%-- 				${cookDetail.title } --%>
-<!-- 			</td> -->
-<!-- 		</tr> -->
-<!-- 		<tr> -->
-<!-- 			<th>작성자</th> -->
-<%-- 			<td>${cookDetail.nickName }</td> --%>
-<!-- 		</tr> -->
-<!-- 		<tr> -->
-<!-- 			<th>내용</th> -->
-<!-- 			<td> -->
-<%-- 				${cookDetail.content } --%>
-<!-- 			</td> -->
-<!-- 		</tr> -->
-<!-- 		<tr> -->
-<!-- 			<th>등록일</th> -->
-<%-- 			<td>${cookDetail.regdate }</td> --%>
-<!-- 		</tr> -->
-<!-- 		<tr> -->
-<!-- 			<th>조회수</th> -->
-<%-- 			<td>${cookDetail.hit }</td> --%>
-<!-- 		</tr> -->
-<!-- 		<tr> -->
-<!-- 			<th>좋아요</th> -->
-<%-- 			<td>${cookDetail.likes }</td> --%>
-<!-- 		</tr> -->
-		
-		
 		
 		 <a href="insert.jsp">글등록</a>
 		<a href="${contextPage.request.contextPath}/app/cook/CookAll.do">글목록</a>
@@ -104,43 +103,66 @@ function fn_delete() {
 		   <input type="hidden" name="comSeq" id="comSeq" value="${cookDetail.comSeq }">
 		</form>
 </div>
-
-  <!-- Page Content -->
-  <div class="container">
-
-    <div class="row">
-
-      <!-- Blog Entries Column -->
-      <div class="col-md-8">
-
-        <h1 class="my-4">레시피
-        </h1>
-
-        <!-- Blog Post -->
-        <div class="card mb-4">
+        <!-- Comments Form -->
+        <div class="card my-4">
+          <h5 class="card-header">Leave a Comment:</h5>
           <div class="card-body">
-            <h2 class="card-title">${cookDetail.title }</h2>
-            <p class="card-text">${cookDetail.content }</p>
-            <a href="#" class="btn btn-primary">Read More &rarr;</a>
-          </div>
-          <div class="card-footer text-muted">
-            Posted on ${cookDetail.regdate } by
-            <a href="#">${cookDetail.nickName }</a>
+            <form method="post" action="addComment.do">
+            <input type="hidden" name="id" value="${sessionScope.userSession.id }"> 
+		    <input type="hidden" name="nickName" value="${sessionScope.userSession.nickName }"> 
+			<input type="hidden" name="comSeq" value="${interiorSelect.comSeq }">
+					
+              <div class="form-group">
+              <c:if test="${sessionScope.userSession.id == null }">
+                <textarea class="form-control" 
+                placeholder="의견을 남겨주세요. " id="comment" name="content" rows="3"></textarea>
+              </div>
+              </c:if>
+              <button type="submit" class="btn btn-primary">Submit</button>
+              
+              
+              
+            </form>
           </div>
         </div>
 
+        <!-- Single Comment -->
+        <div class="media mb-4">
+          <img class="profile" src="https://lh3.googleusercontent.com/proxy/rkRvMyGYwN3r6uHi-HIrqYOHbgpXa0jfzkI7fBw6f_mXtr98liuxMD7ts3ouGumBZl8noFVxQhL2-_r8nfrZ1VFAcAr4YscOfaLPyUk_JoY" alt="">
+          <div class="media-body">
+            <h5 class="mt-0">  Jackson Michael</h5>
+           	꿀조합이네요. 식감도 좋고 맛도 좋을 것 같아요.
+          </div>
+        </div>
 
-        <!-- Pagination -->
-        <ul class="pagination justify-content-center mb-4">
-          <li class="page-item">
-            <a class="page-link" href="#">&larr; Older</a>
-          </li>
-          <li class="page-item disabled">
-            <a class="page-link" href="#">Newer &rarr;</a>
-          </li>
-        </ul>
+        <!-- Comment with nested comments -->
+        <div class="media mb-4">
+          <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+          <div class="media-body">
+            <h5 class="mt-0">지향 강</h5>
+             			개인 블로그에 올리고 싶습니다. 가져가도 될까요 ? 
+
+            <div class="media mt-4">
+              <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+              <div class="media-body">
+                <h5 class="mt-0">Admin</h5>
+                	상업 용도의 저작권 문의는 Admin@riotgames.com 으로 문의바랍니다. 
+              </div>
+            </div>
+
+            <div class="media mt-4">
+              <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+              <div class="media-body">
+                <h5 class="mt-0">지향 강</h5>
+                	네 메일 확인 부탁드려요!
+              </div>
+            </div>
+
+          </div>
+        </div>
 
       </div>
+      
 
       <!-- Sidebar Widgets Column -->
       <div class="col-md-4">
@@ -160,7 +182,7 @@ function fn_delete() {
 
         <!-- Categories Widget -->
         <div class="card my-4">
-          <h5 class="card-header">Categories 음식분류..</h5>
+          <h5 class="card-header">Categories</h5>
           <div class="card-body">
             <div class="row">
               <div class="col-lg-6">
@@ -196,10 +218,8 @@ function fn_delete() {
         <!-- Side Widget -->
         <div class="card my-4">
           <h5 class="card-header">Side Widget</h5>
-          <div class="card-body">
-            Locate any Ad here !<br>
-            Locate any Ad here !<br>
-            Locate any Ad here !<br>
+          <div class="card-body" align="center">
+          	<a href="http://yellow.contentsfeed.com/RealMedia/ads/click_lx.ads/jobkorea/sub/L12/1808089633/TopRight/jobkorea/200309_seoul_newdeal_ssky/200101_kotra_ssky.html/634b6e4566563530565141414356786a" target="_blank"><img src="//apple.contentsfeed.com/RealMedia/ads/Creatives/jobkorea/200309_seoul_newdeal_ssky/200306_seoul_naw_120x600.png" border="0" alt="민간기업 맞춤형 뉴딜사업 참여자 모집 교육수당 2만원/일 인턴십급여 222만원/일"></a>
              
           </div>
         </div>
@@ -211,14 +231,6 @@ function fn_delete() {
 
   </div>
   <!-- /.container -->
-
-  <!-- Footer -->
-  <footer class="py-5 bg-dark">
-    <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
-    </div>
-    <!-- /.container -->
-  </footer>
 
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>

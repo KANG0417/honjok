@@ -1,16 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="/app/resources/css/main/main.css" rel="stylesheet">
 <title>main header</title>
+<style>
+
+</style>
 </head>
-<body>
+
         <!--상단 띠배너-->
         <!--//상단 띠배너-->
- <div id="wrap" class="main">
+ <div style="padding:200px 0px 0px 0px">
         <nav id="skip_navi">
             <a href="#">본문 바로가기</a>
             <a href="#">메뉴 바로가기</a>
@@ -130,6 +133,6 @@
             </section>
         </header>
         </div>
-        <br><br><br><br><br><br><br><br><br><br><br><br>
-</body>
+   
+
 </html>

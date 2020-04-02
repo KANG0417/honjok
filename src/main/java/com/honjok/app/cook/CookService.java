@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.honjok.app.vo.CookVO;
+import com.honjok.app.vo.commReplyVO;
 
 public interface CookService {
 	
@@ -23,4 +24,9 @@ public interface CookService {
   public int selectAllCount();
   
   void boardHitsUpdate(int comSeq);
+  
+  //게시물 댓글
+  public void insertComment(commReplyVO rvo);
+  List<commReplyVO> commentList(int comSeq);
+  void updateComment(commReplyVO rvo);
 }

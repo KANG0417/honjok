@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@include file ="/header.jsp" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -14,32 +14,6 @@
 <title>1인 레시피 게시판입니다.</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-	/* Make the image fully responsive */
-	  .carousel-inner img {
-	    width: 100%;
-	    height: 100%;
-	  }
-      #columns{
-        column-width:350px;
-        column-gap: 15px;
-      }
-      #columns figure{
-        display: inline-block;
-        border:1px solid rgba(0,0,0,0.2);
-        margin:0;
-        margin-bottom: 15px;
-        padding:10px;
-        box-shadow: 2px 2px 5px rgba(0,0,0,0.5);;
-      }
-      #columns figure img{
-        width:100%;
-      }
-      #columns figure figcaption{
-        border-top:1px solid rgba(0,0,0,0.2);
-        padding:10px;
-        margin-top:11px;
-      }
-</style>
 <style>
 	#container {
 		width: 700px;
@@ -58,37 +32,7 @@
 
 </head>
 <body>
-
-<div id="myCarousel" class="carousel slide" data-ride="carousel">
-
-  <!-- Indicators -->
-  <ul class="carousel-indicators">
-    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-    <li data-target="#myCarousel" data-slide-to="1"></li>
-    <li data-target="#myCarousel" data-slide-to="2"></li>
-  </ul>
-  
-  <!-- The slideshow -->
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="${contextPage.request.contextPath}/app/resources/img/cook.jpg" alt="Los Angeles" width="1100" height="500">
-      <div class="carousel-caption">
-        <h3>혼밥하세요</h3>
-        <p>밥은 혼자 먹어야 맛있어!</p>
-      </div> 
-    </div>
-  </div>
-  
-<!--   <!-- Left and right controls --> 
-<!--   <a class="carousel-control-prev" href="#myCarousel" data-slide="prev"> -->
-<!--     <span class="carousel-control-prev-icon"></span> -->
-<!--   </a> -->
-<!--   <a class="carousel-control-next" href="#myCarousel" data-slide="next"> -->
-<!--     <span class="carousel-control-next-icon"></span> -->
-<!--   </a> -->
-  
-
-   
+		<jsp:include page="/header.jsp"></jsp:include>
 		<hr>
 		<c:choose>
 			<c:when test="${cookList == null }">
@@ -103,7 +47,7 @@
 					<c:forEach var="cookvo" items="${cookList }"
 						varStatus="articleNum">
 
-						<div class="col-md-2" id="select">
+						<div class="col-md-4" id="select">
 							<a class="main-img${articleNum.index}"
 								href="CookDetail.do?comSeq=${cookvo.comSeq }"
 								class="img w-100 mb-3"> 

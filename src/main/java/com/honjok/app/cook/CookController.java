@@ -30,6 +30,7 @@ import com.honjok.app.vo.CommInfoVO;
 import com.honjok.app.vo.CommInteriorVO;
 import com.honjok.app.vo.CommunityVO;
 import com.honjok.app.vo.CookVO;
+import com.honjok.app.vo.commReplyVO;
 
 @Controller
 @RequestMapping("/cook") 
@@ -39,12 +40,14 @@ public class CookController {
    CookService cookservice; 
 
    @RequestMapping("/CookAll.do")
-   public String CookAll(Model model, @RequestParam(required = false) String section,
+   public String CookAll(Model model,  @RequestParam(required = false) String section,
 			@RequestParam(required = false) String pageNum) {
 	   	System.out.println(section);
 		String section_ = section;
 		String pageNum_ = pageNum;
-
+		
+		
+		
 		if (section == null) {
 			section_ = ((section == null) ? "1" : section);
 			pageNum_ = ((pageNum == null) ? "1" : pageNum);
@@ -60,7 +63,7 @@ public class CookController {
 	   
 	   //cookvo 조회
 	   List<CookVO> CookList = cookservice.CookAll(pagingMap);
-	   
+
 	   //게시글 전체갯수
 	   int allcount = cookservice.selectAllCount();
 	   System.out.println("게시글수: "+allcount);
@@ -77,7 +80,10 @@ public class CookController {
 		System.out.println("Cook게시판 하나 조회입니다.");
 		CookVO Cook = cookservice.selectOne(cvo);
 		model.addAttribute("cookDetail", Cook);
-		
+		   //댓글 전체 조회
+		   List<commReplyVO> commentList = cookservice.commentList(Integer.parseInt(cvo.getComSeq()));
+			System.out.println(commentList);
+			model.addAttribute("commentSelect", commentList);
 		int board_hit = 0;
         cookservice.boardHitsUpdate(comSeq);
         model.addAttribute("Board_hit", board_hit);
@@ -113,6 +119,24 @@ public class CookController {
 		cookservice.delete(comSeq);
 		
 		return "/cook/CookAll.do";
+	}
+   
+	//댓글 입력
+	@RequestMapping("/addComment.do")
+	public String insertComment(commReplyVO rvo) {
+		System.out.println(">> 댓글 입력 실행");
+		cookservice.insertComment(rvo);
+		
+		return "getInterior.do";
+				
+	}
+	
+	//댓글 수정
+	@RequestMapping("/upComment.do")
+	@ResponseBody
+	public void updateComment(commReplyVO rvo) {
+		System.out.println(">> 댓글 수정 처리");
+		cookservice.updateComment(rvo);
 	}
 
 }
