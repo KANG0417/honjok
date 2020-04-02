@@ -35,7 +35,7 @@ function fn_search(page) {
 </head>
 <body>
 
-<h3 align="center">게시판 목록</h3>
+<h3 align="center">상품문의 내역</h3>
 
 <!-- <div align="right"><input type="button" class="btn btn-primary" value="글쓰기" onclick="location.href='reviewForm'"></div> -->
 
@@ -87,8 +87,8 @@ function fn_search(page) {
 	<thead>
 		<tr style="vertical-align: middle">
 			<th width="5%" style="text-align: center">번호</th>
-			<th width="20%" style="text-align: center">책제목</th>
-			<th style="text-align: center">책표지</th>
+			<th width="20%" style="text-align: center">품명</th>
+			<th style="text-align: center">썸네일</th>
 			<th style="text-align: center">제목</th>
 			<th width="10%" style="text-align: center">작성자</th>
 			<th width="5%" style="text-align: center">조회</th>
@@ -103,15 +103,15 @@ function fn_search(page) {
 			<c:forEach var="review" items="${reviewList}">
 				<tr>
 					<td style="vertical-align:middle" align="center">${review.rev_num}</td>
-					<td style="vertical-align:middle" align="center">${review.rev_book_title}</td>
-					<c:if test="${not empty review.rev_book_img}">
-						<td style="vertical-align:middle" width="62px" height="52px" align="center"><img src="${review.rev_book_img}" width="60px" height="50px"></td>
+					<td style="vertical-align:middle" align="center">${review.rev_title}</td>
+					<c:if test="${not empty review.rev_prod_img}">
+						<td style="vertical-align:middle" width="62px" height="52px" align="center"><img src="${review.rev_prod_img}" width="60px" height="50px"></td>
 					</c:if>
-					<c:if test="${empty review.rev_book_img}">
+					<c:if test="${empty review.rev_prod_img}">
 						<td style="vertical-align:middle" width="62px" height="52px" align="center"><img src="https://t1.daumcdn.net/cfile/tistory/993B604F5D8D802419" width="60px" height="50px"></td>
 					</c:if>
 					<td style="vertical-align:middle"><a href="reviewView/${review.rev_num}">${review.rev_title}</a></td>
-					<td style="vertical-align:middle" align="center">${review.rev_writer_name}</td>
+					<td style="vertical-align:middle" align="center">${review.rev_mfg_co}</td>
 					<td style="vertical-align:middle" align="center">${review.rev_hit}</td>
 					<td style="vertical-align:middle" align="center">${review.reg_date}</td>
 				</tr>

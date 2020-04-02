@@ -13,7 +13,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>title</title>
 
-<link rel="stylesheet" href=""https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
 <script type="text/javascript">
 
@@ -42,17 +42,17 @@ function fn_delete(rev_num) {
 	</tr>
 	
 	<tr>
-		<td align="center" style="font-weight:bold">책 제목</td>
-		<td>${review.rev_book_title}</td>
-		<td align="center" style="font-weight:bold">책 저자</td>
-		<td>${review.rev_book_au}</td>
-		<td align="center" style="font-weight:bold">출판사</td>
-		<td>${review.rev_book_pub}</td>
+		<td align="center" style="font-weight:bold">품명</td>
+		<td>${review.rev_prod_title}</td>
+		<td align="center" style="font-weight:bold">상품가격</td>
+		<td>${review.rev_prod_price}</td>
+		<td align="center" style="font-weight:bold">제조사</td>
+		<td>${review.rev_mfg_co}</td>
 	</tr>
 	
 	<tr>
 		<td align="center" style="font-weight:bold">상세보기</td>
-		<td><a href="${review.rev_book_url}">상세보기</a></td>
+		<td><a href="${review.rev_prod_url}">상세보기</a></td>
 		<td align="center" style="font-weight:bold">작성일자</td>
 		<td>${review.reg_date}</td>
 		<td align="center" style="font-weight:bold">조회수</td>
