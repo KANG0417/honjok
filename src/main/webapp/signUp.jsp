@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +7,7 @@
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<link href="/app/resources/css/signUp/signUp.css" rel="stylesheet">
 <script>
 
 function sample6_execDaumPostcode() {
@@ -56,121 +57,162 @@ function sample6_execDaumPostcode() {
         }
     }).open();
 }
-
-
 </script>
 <title>회원가입</title>
 </head>
-<body>
-	<div id="container">
-		<form action="signUp.do" method="post">
-			<table width=750 border="1px" align=center>
-				<tr>
-					<th><label>아이디</label></th>
-					<td>
-						<input type="text" name="id" id="id"
-						placeholder="아이디를 입력해주세요" required>
-						<div class="checkFont" id="idCheck"></div>
-					</td>
-				</tr>
-				<tr>
-					<th><label>비밀번호</label></th>
-					<td>
-						<input type="password" name="password" id="password"
-						placeholder="비밀번호를 입력해주세요" required>
-						<div class="checkFont" id="passwordCheck"></div>
-					</td>
-				</tr>
-				<tr>
-					<th><label>비밀번호 확인</label></th>
-					<td>
-						<input type="password" id="password2"
-						placeholder="비밀번호를 재입력 해주세요" required>
-						<div class="checkFont" id="passwordCheck2"></div>
-					</td>
-				</tr>
-				<tr>
-					<th><label>이름</label></th>
-					<td>
-						<input type="text" name="name" id="name" placeholder="이름 입력해주세요" required>
-						<div class="checkFont" id="nameCheck"></div>
-					</td>
-				</tr>
-				<tr>
-					<th><label>닉네임</label></th>
-					<td>
-						<input type="text" name="nickName" id="nick" required>
-						<div class="checkFont" id="nickCheck"></div>
-					</td>
-				</tr>
-				<tr>
-					<th><label>이메일</label></th>
-					<td>
-						<input type='text' name="email1" id="email1"> <span>@</span>
-						<input type='text' name="email2" id="email2"> 
-						
-						<select name="emailBox" id="email3" onChange="selectEmail(this)">
-							<option value="1">직접입력</option>
-							<option value="daum.net">daum.net</option>
-							<option value="gmail.com">gmail.com</option>
-							<option value="hanmail.net">hanmail.net</option>
-							<option value="naver.com">naver.com</option>
-							<option value="nate.com">nate.com</option>
-						</select>
-						<div class="check_font" id="emailCheck"></div>
-					</td>
-				</tr>
-				<tr>
-					<th><label>우편번호</label></th>
-					<td><input type="text" id="sample6_postcode" name="adrCode"
-						placeholder="우편번호"> <input type="button"
-						onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-						<input type="text" id="sample6_address" name="adr1"
-						placeholder="주소"><br> <input type="text"
-						id="sample6_detailAddress" name="adr2" placeholder="상세주소">
-						<input type="text" id="sample6_extraAddress" name="addressAdd"
-						placeholder="참고항목">
-					</td>
-				</tr>
-				<tr>
-					<th><label>핸드폰 번호</label></th>
-					<td><input type="text" name="phone" id="phone" required>
-						<div class="checkFont" id="phoneCheck"></div>
-					</td>
-				</tr>
-				<tr>
-					<th><label>생년월일</label></th>
-					<td><input type="text" name="birth" id="birth">
-						<div class="checkFont" id="birthCheck"></div>
-					</td>
-				</tr>
-				<tr>
-					<th><label>성별</label></th>
-					<td><label> 
-							<input type="radio" name="gender"value="남자" required>남자
-							 <input type="radio" name="gender"value="여자" required>여자
-						</label>
-						<div class="checkFont" id="genderCheck"></div>
-					</td>
-				</tr>
-				<tr>
-				<th>연령</th>
-					<td>
-						<input type="radio" name="age" value="10" required>10대
-						<input type="radio" name="age" value="20" required>20대 
-						<input type="radio" name="age" value="30" required>30대
-						<input type="radio" name="age" value="40" required>40대
-						<input type="radio" name="age" value="50" required>50대 이상
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2" class="center">
-					<input type="submit"id="submit" value="회원가입">
-					</td>
-				</tr>
-			</table>
-		</form>
-	</div>
+<body class="bg_gray">
+    <div id="wrap_all">
+        <nav id="skip_navi">
+            <a href="#">본문 바로가기</a>
+        </nav>
+        <header id="header">
+            <h1>
+                <a class="logo" href="#">
+                    <img src="/image/logo3.png" alt="ONE MARKET">
+                </a>
+            </h1>
+        </header>
+    <section id="container" class="LPH31000">
+        <section id="contents">
+            <section class="join_content">
+                <div class="join_form">
+                    <h2>정보입력</h2>
+                    <form action="signUp.do" method="post">
+                            <section>
+                                <h3 class="item_tit">필수 항목</h3>
+                                <ul class="customer_info">
+                                    <li>
+                                        <input type="text" name="id" id="id" placeholder="아이디를 입력해주세요" required>
+                                        <div class="checkFont" id="idCheck"></div>
+                                        <input type="password" name="password" id="password" placeholder="비밀번호(숫자와 영문조합으로 8자리 이상 입력해주세요)" required>
+                                        <div class="checkFont" id="passwordCheck"></div>
+                                        <input type="password" id="password2" placeholder="비밀번호를 재입력 해주세요" required>
+                                        <div class="checkFont" id="passwordCheck2"></div>
+                                        <input type="text" name="name" id="name" placeholder="이름" required>
+                                        <div class="checkFont" id="nameCheck"></div>
+                                        <input type="text" name="nickName" placeholder="닉네임"id="nick" required>
+                                        <div class="checkFont" id="nickCheck"></div>  
+                                    </li>
+                                    <li>
+                                        <div class="select_box">
+                                            <div>
+                                                <input type='text' name="email1" id="email1" placeholder="이메일" style="width: 200px;"> 
+                                                <span>@</span>
+                                                <input type='text' name="email2" id="email2" style="width: 115px;"> 
+                                            </div>
+                                            <select name="emailBox" id="email3" onChange="selectEmail(this)">
+                                                <option value="1">직접입력</option>
+                                                <option value="daum.net">daum.net</option>
+                                                <option value="gmail.com">gmail.com</option>
+                                                <option value="hanmail.net">hanmail.net</option>
+                                                <option value="naver.com">naver.com</option>
+                                                <option value="nate.com">nate.com</option>
+                                            </select>
+                                            <div class="check_font" id="emailCheck"></div>
+                                        </div>
+                                        <input type="text" name="phone" id="phone" placeholder="핸드폰 번호('-제외')"required>
+                                        <div class="checkFont" id="phoneCheck"></div>
+                                        <input type="text" name="birth"  placeholder="생년월일 8자리(예:19990121)" id="birth">
+                                        <div class="checkFont" id="birthCheck"></div>
+                                    </li>
+                                </ul>
+                            </section>    
+                            <section class="sec2">
+                                <h3 class="item_tit">선택 항목</h3>
+                                <ul class="customer_info">
+                                    <li>
+                                        <div class="input_box">
+                                            <input type="text" id="sample6_postcode" name="adrCode" placeholder="우편번호"> 
+                                            <input class="btn_base zipcode"type="button"onclick="sample6_execDaumPostcode()" value="우편번호 찾기">
+                                        </div>
+                                        <input type="text" id="sample6_address" name="adr1"placeholder="주소">
+                                        <input type="text" id="sample6_detailAddress" name="adr2" placeholder="상세주소">
+                                    </li>
+                                    <li>
+                                        <h4>이용약관
+                                            <em class="red">(필수)</em>
+                                        </h4>
+                                        <a class="underline" href="#" style="width:auto;" target="_blank">약관보기</a>
+                                        <div class="radio_wrap side">
+                                            <span class="radiocss">
+                                                <input id="radio1_1" type="radio" name="group1" value="Y">
+                                                <label for="radio1_1"><em>동의함</em></label>
+                                            </span>
+                                            <span class="radiocss">
+                                                <input id="radio1_2" type="radio" name="group1">
+                                                <label for="radio1_2"><em>동의안함</em></label>
+                                            </span>
+                                        </div>
+                                        <h4 id="radio_wrap1">개인정보 수집·이용
+                                            <em class="red">(필수)</em>
+                                        </h4>
+                                        <a class="underline" href="#" style="width:auto;" target="_blank">약관보기</a>
+                                        <div class="radio_wrap side">
+                                            <span class="radiocss">
+                                                <input id="radio1_1" type="radio" name="group2" value="Y">
+                                                <label for="radio1_1"><em>동의함</em></label>
+                                            </span>
+                                            <span class="radiocss">
+                                                <input id="radio1_2" type="radio" name="group2">
+                                                <label for="radio1_2"><em>동의안함</em></label>
+                                            </span>
+                                        </div>
+                                        <h4 id="radio_wrap2">개인정보 처리위탁
+                                            <em class="red">(필수)</em>
+                                        </h4>
+                                        <a class="underline" href="#" style="width:auto;" target="_blank">약관보기</a>
+                                        <div class="radio_wrap side">
+                                            <span class="radiocss">
+                                                <input id="radio2_1" type="radio" name="group3" value="Y">
+                                                <label for="radio2_2">
+                                                    <em>동의함</em>
+                                                </label>
+                                            </span>
+                                            <span class="radiocss">
+                                                <input id="radio3_1" type="radio" name="group3">
+                                                <label for="radio3_2">
+                                                    <em>동의안함</em>
+                                                </label>
+                                            </span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </section>
+                        <!--	<tr>
+                                <th><label>성별</label></th>
+                                <td><label> 
+                                        <input type="radio" name="gender"value="남자" required>남자
+                                         <input type="radio" name="gender"value="여자" required>여자
+                                    </label>
+                                    <div class="checkFont" id="genderCheck"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                            <th>연령</th>
+                                <td>
+                                    <input type="radio" name="age" value="10" required>10대
+                                    <input type="radio" name="age" value="20" required>20대 
+                                    <input type="radio" name="age" value="30" required>30대
+                                    <input type="radio" name="age" value="40" required>40대
+                                    <input type="radio" name="age" value="50" required>50대 이상
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="center">
+                                <input type="submit"id="submit" value="회원가입">
+                                </td>
+                            </tr>
+                        -->
+                    </form>
+                </div>
+                <div class="btn_wrap full">
+                    <button class="btn_base darkgray bigact" type="button" onclick="goBack('P');">이전단계</button>
+                    <button class="btn_base blue bigact signup" type="button">가입하기</button>
+                </div>
+            </section>    
+        </section>    
+    </section>
+    </div>    
 </body>
 <script>
 
