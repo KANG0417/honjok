@@ -81,10 +81,11 @@ function fn_search(page) {
 	<thead>
 		<tr>
 			<th style="text-align: center;">번호</th>
+			<th style="text-align: center; width: 10%">썸네일</th>
 			<th style="text-align: center; width: 50%">제목</th>
 			<th style="text-align: center;">작성자</th>
 			<th style="text-align: center;">조회수</th>
-			<th style="text-align: center; width: 20%">작성일자</th>
+			<th style="text-align: center; width: 20%">등록일</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -92,6 +93,7 @@ function fn_search(page) {
 			<c:forEach var="qna" items="${qnaList}">
 				<tr>
 					<td>${qna.comSeq}</td>
+					<td><img src="upload/${vo.upload }" width="50px" height="50px"></td>
 					<td><a href="QnaDetail.do?comSeq=${qna.comSeq}">${qna.title }</a></td>
 					<td>${qna.regdate }</td>
 					<td>${qna.hit }</td>
