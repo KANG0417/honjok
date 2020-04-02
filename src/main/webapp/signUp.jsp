@@ -10,7 +10,7 @@
 <link href="/app/resources/css/signUp/signUp.css" rel="stylesheet">
 <script>
 
-function sample6_execDaumPostcode() {
+function sample6_execDaumPostcode(){
     new daum.Postcode({
         oncomplete: function(data) {
             // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
@@ -42,13 +42,7 @@ function sample6_execDaumPostcode() {
                 if(extraAddr !== ''){
                     extraAddr = ' (' + extraAddr + ')';
                 }
-                // 조합된 참고항목을 해당 필드에 넣는다.
-                document.getElementById("sample6_extraAddress").value = extraAddr;
-            
-            } else {
-                document.getElementById("sample6_extraAddress").value = '';
-            }
-
+            } 
             // 우편번호와 주소 정보를 해당 필드에 넣는다.
             document.getElementById('sample6_postcode').value = data.zonecode;
             document.getElementById("sample6_address").value = addr;
@@ -68,7 +62,7 @@ function sample6_execDaumPostcode() {
         <header id="header">
             <h1>
                 <a class="logo" href="#">
-                    <img src="/image/logo3.png" alt="ONE MARKET">
+                    <img src="/app/resources/img/main/logo3.png" alt="ONE MARKET">
                 </a>
             </h1>
         </header>
@@ -77,7 +71,7 @@ function sample6_execDaumPostcode() {
             <section class="join_content">
                 <div class="join_form">
                     <h2>정보입력</h2>
-                    <form action="signUp.do" method="post">
+                    <form id="regForm" action="signUp.do" method="post">
                             <section>
                                 <h3 class="item_tit">필수 항목</h3>
                                 <ul class="customer_info">
@@ -90,7 +84,7 @@ function sample6_execDaumPostcode() {
                                         <div class="checkFont" id="passwordCheck2"></div>
                                         <input type="text" name="name" id="name" placeholder="이름" required>
                                         <div class="checkFont" id="nameCheck"></div>
-                                        <input type="text" name="nickName" placeholder="닉네임"id="nick" required>
+                                        <input type="text" name="nickName" placeholder="닉네임" id="nick" required>
                                         <div class="checkFont" id="nickCheck"></div>  
                                     </li>
                                     <li>
@@ -128,6 +122,40 @@ function sample6_execDaumPostcode() {
                                         <input type="text" id="sample6_address" name="adr1"placeholder="주소">
                                         <input type="text" id="sample6_detailAddress" name="adr2" placeholder="상세주소">
                                     </li>
+                                    <li>
+                                    	<h4>성별</h4>
+                                    	<div class="radio_wrap block side">
+                                            <span class="radiocss">
+                                                <input id="radio1_1" type="radio" name="gender" value="남자">
+                                                <label for="radio1_1"><em>남자</em></label>
+                                            </span>
+                                            <span class="radiocss">
+                                                <input id="radio1_2" type="radio" name="gender" value="여자">
+                                                <label for="radio1_2"><em>여자</em></label>
+                                            </span>
+                                        </div>
+                                    </li>
+                                     <li>
+                                    	<h4>연령</h4>
+                                    	<div class="radio_wrap block side">
+                                            <span class="radiocss">
+                                                <input id="radio1_1" type="radio" name="age" value="10">
+                                                <label for="radio1_1"><em>10대</em></label>
+                                            </span>
+                                            <span class="radiocss">
+                                                <input id="radio1_2" type="radio" name="age" value="20">
+                                                <label for="radio1_2"><em>20대</em></label>
+                                            </span>
+                                            <span class="radiocss" style="margin:0px 15px;">
+                                                <input id="radio1_3" type="radio" name="age" value="30" >
+                                                <label for="radio1_3"><em>30대</em></label>
+                                            </span>
+                                            <span class="radiocss">
+                                                <input id="radio1_4" type="radio" name="age" value="40">
+                                                <label for="radio1_4"><em>40대이상</em></label>
+                                            </span>
+                                        </div>
+                                    </li>	
                                     <li>
                                         <h4>이용약관
                                             <em class="red">(필수)</em>
@@ -178,32 +206,7 @@ function sample6_execDaumPostcode() {
                                     </li>
                                 </ul>
                             </section>
-                        <!--	<tr>
-                                <th><label>성별</label></th>
-                                <td><label> 
-                                        <input type="radio" name="gender"value="남자" required>남자
-                                         <input type="radio" name="gender"value="여자" required>여자
-                                    </label>
-                                    <div class="checkFont" id="genderCheck"></div>
-                                </td>
-                            </tr>
-                            <tr>
-                            <th>연령</th>
-                                <td>
-                                    <input type="radio" name="age" value="10" required>10대
-                                    <input type="radio" name="age" value="20" required>20대 
-                                    <input type="radio" name="age" value="30" required>30대
-                                    <input type="radio" name="age" value="40" required>40대
-                                    <input type="radio" name="age" value="50" required>50대 이상
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="2" class="center">
-                                <input type="submit"id="submit" value="회원가입">
-                                </td>
-                            </tr>
-                        -->
-                    </form>
+                      </form>
                 </div>
                 <div class="btn_wrap full">
                     <button class="btn_base darkgray bigact" type="button" onclick="goBack('P');">이전단계</button>
@@ -224,7 +227,8 @@ function sample6_execDaumPostcode() {
 	var mailJ2 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i; //이메일 뒷자리 정규식
 	var phoneJ = /^01([0|1|6|7|8|9]?)?([0-9]{3,4})?([0-9]{4})$/; //휴대폰 번호 정규식 검사
 	var nickJ = /^[ㄱ-ㅎ|가-힣|a-z|A-Z|0-9|\*]+$/;//닉네임 정규식
-
+	
+	
 	$("#id").keyup(function() {
 		var userId = $('#id').val();
 			$.ajax({
@@ -237,23 +241,23 @@ function sample6_execDaumPostcode() {
 						// 1 : 아이디가 중복되는 문구
 						$("#idCheck").text("사용중인 아이디입니다");
 						$("#idCheck").css("color", "red");
-						$("#submit").attr("disabled", true);
+						$(".signup").attr("disabled", true);
 						
 					} else if(idJ.test(userId)){
 							// 0 : 아이디 길이 / 문자열 검사
 							$("#idCheck").text("");
-							$("#submit").attr("disabled", false);
+							$(".signup").attr("disabled", false);
 				
 					} else if(userId == ""){
-							$('#idCheck').text('아이디를 입력해주세요 :)');
+							$('#idCheck').text('아이디를 입력해주세요');
 							$('#idCheck').css('color', 'red');
-							$("#submit").attr("disabled", true);				
+							$(".signup").attr("disabled", true);				
 							
 					}
 					else {
-						$('#idCheck').text("아이디는 소문자와 숫자 4~12자리만 가능합니다 :) :)");
+						$('#idCheck').text("아이디는 소문자와 숫자 4~12자리만 가능합니다");
 						$('#idCheck').css('color', 'red');
-						$("#submit").attr("disabled", true);
+						$(".signup").attr("disabled", true);
 					}
 				
 				}, 
@@ -274,17 +278,17 @@ function sample6_execDaumPostcode() {
 		if(mailJ.test(email1)){
 			// 0 : 아이디 길이 / 문자열 검사
 			$("#emailCheck").text("");
-			$("#submit").attr("disabled", false);
+			$(".signup").attr("disabled", false);
 		
 			} else if(email1 == ""){
 				$('#emailCheck').text('이메일을 입력해주세요');
 				$('#emailCheck').css('color', 'red');
-				$("#submit").attr("disabled", true);				
+				$(".signup").attr("disabled", true);				
 			}
 			else {
 				$('#emailCheck').text("이메일을 확인해주세요");
 				$('#emailCheck').css('color', 'red');
-				$("#submit").attr("disabled", true);
+				$(".signup").attr("disabled", true);
 			}
 	});
 
@@ -308,19 +312,19 @@ function sample6_execDaumPostcode() {
 					// 1 : 아이디가 중복되는 문구
 					$("#emailCheck").text("사용중인 이메일입니다");
 					$("#emailCheck").css("color", "red");
-					$("#submit").attr("disabled", true);
+					$(".signup").attr("disabled", true);
 				} else if(mailJ2.test(email2)){
 					// 0 : 아이디 길이 / 문자열 검사
 					$("#emailCheck").text("");
-					$("#submit").attr("disabled", false);
+					$(".signup").attr("disabled", false);
 				} else if(email2 == ""){
 					$('#emailCheck').text('이메일을 입력해주세요');
 					$('#emailCheck').css('color', 'red');
-					$("#submit").attr("disabled", true);				
+					$(".signup").attr("disabled", true);				
 				} else{
 					$('#emailCheck').text("이메일을 확인해주세요");
 					$('#emailCheck').css('color', 'red');
-					$("#submit").attr("disabled", true);
+					$(".signup").attr("disabled", true);
 				}
 				
 			}, 
@@ -345,23 +349,23 @@ function sample6_execDaumPostcode() {
 						// 1 : 닉네임이 중복되는 문구
 						$("#nickCheck").text("사용중인 닉네임입니다");
 						$("#nickCheck").css("color", "red");
-						$("#submit").attr("disabled", true);
+						$(".signup").attr("disabled", true);
 						
 					} else if(nickJ.test(nick)){
 							// 0 : 닉네임 길이 / 닉네임 검사
 							$("#nickCheck").text("");
-							$("#submit").attr("disabled", false);
+							$(".signup").attr("disabled", false);
 				
 					} else if(nick == ""){
 							$('#nickCheck').text('닉네임을 입력해주세요');
 							$('#nickCheck').css('color', 'red');
-							$("#submit").attr("disabled", true);				
+							$(".signup").attr("disabled", true);				
 							
 					}
 					else {
 						$('#nickCheck').text("닉네임은 한글/숫자/영문만 입력가능합니다");
 						$('#nickCheck').css('color', 'red');
-						$("#submit").attr("disabled", true);
+						$(".signup").attr("disabled", true);
 					}
 				
 				}, 
@@ -419,23 +423,23 @@ function sample6_execDaumPostcode() {
 					// 1 : 핸드폰번호 중복
 					$("#phoneCheck").text("사용중인 핸드폰 번호입니다");
 					$("#phoneCheck").css("color", "red");
-					$("#submit").attr("disabled", true);
+					$(".signup").attr("disabled", true);
 					
 				} else if(phoneJ.test(phone)){
 						// 0 : 핸드폰번호 길이 / 핸드폰번호 검사
 						$("#phoneCheck").text("");
-						$("#submit").attr("disabled", false);
+						$(".signup").attr("disabled", false);
 			
 				} else if(phoneJ == ""){
 						$('#phoneCheck').text('핸드폰 번호를 입력해주세요');
 						$('#phoneCheck').css('color', 'red');
-						$("#submit").attr("disabled", true);				
+						$(".signup").attr("disabled", true);				
 				
 				}
 				else {
 					$('#phoneCheck').text("핸드폰 번호를 확인해주세요");
 					$('#phoneCheck').css('color', 'red');
-					$("#submit").attr("disabled", true);
+					$(".signup").attr("disabled", true);
 				}
 			
 			}, 
@@ -606,6 +610,11 @@ function sample6_execDaumPostcode() {
 			}
 	}
 	//여기까지 이메일 셀렉트 박스 자동입력
+	$('.signup').click(function(){
+		$('#regForm').submit();
+		location.href='getMainList.do';
+	});
+	
 	
 </script>
 </html>
