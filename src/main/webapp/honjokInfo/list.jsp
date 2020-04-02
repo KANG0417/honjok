@@ -264,7 +264,7 @@ body {
                           
                                  <c:when test="${page == pageNum }">
                                  <c:choose>
-                                 	 <c:when test="${pagingMap.searchFiled == '' }">
+                                 	 <c:when test="${pagingMap.searchFiled == null }">
                                     	<a href="select.do?section=${section}&pageNum=${page}">${page }</a>
                                       </c:when>
                                       <c:otherwise>
