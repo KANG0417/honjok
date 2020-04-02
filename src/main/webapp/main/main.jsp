@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
 <!DOCTYPE>
 <html>
 <head>
@@ -29,10 +30,10 @@
                 <nav>
                     <ul>
                         <li>
-                            <a href="app/login.jsp">로그인</a>
+                            <a href="app/honjok/login.jsp">로그인</a>
                         </li>
                         <li>
-                            <a href="app/signUp.jsp">회원가입</a>
+                            <a href="app/honjok/signUp.jsp">회원가입</a>
                         </li>
                         <li>
                             <a href="#">주문/배송조회</a>
@@ -180,16 +181,17 @@
                         <div id="bsprd" class="swiper-container">
                             <div id="bestList" class="swiper-wrapper" style="width: 5700px;                 height:490px; transform: translate3d(0px, 0px, 0px);
                                     transition-duration: 0.3s;">
+                                <c:forEach var="main" items="${mainList}">  
                                 <div class="swiper-slide prdlist swiper-slide-duplicate swiper-slide-visible swiper-slide-active" style="width:285px; height: 490px;">
                                     <a href="#">
                                         <span class="ico"></span>
                                         <span class="photo">
-                                            <img src="/upload/20180820_1404029_100_210x210.png" alt="상품명입력">
+                                            <img src="/app/resources/img/${main.thumnailImg}" alt="상품명입력">
                                         </span>
-                                        <span class="hash">#진정미스트</span>
+                                        <span class="hash">#저렴하게!</span>
                                         <span class="tit">
-                                            <strong>오 떼르밀</strong>
-                                            온천수 미스트 [300mL]
+                                            <strong>${main.brandName}</strong>
+                                          	 ${main.pName}
                                         </span>
                                         <span class="star">
                                             <div class="star-rating small">
@@ -200,7 +202,7 @@
                                             <em>(264)</em>
                                         </span>
                                         <span class="price">
-                                          22,000
+                                          ${main.price}
                                             <i>원</i>    
                                         </span>
                                     </a>
@@ -209,6 +211,7 @@
                                         <button class="addCart basket">장바구니 담기</button>
                                     </div>
                                 </div>
+                            </c:forEach>    
                             </div>                                         
                         </div>
                     </div>
@@ -232,10 +235,10 @@
                                 <span class="photo">
                                     <img src="/image/20200319_1531022_064_210x210.png" alt="미세먼지out"/>
                                 </span>
-                                <span class="hash">#미세먼지 OUT</span>
+                                <span class="hash">#저렴하게!</span>
                                 <span class="tit">
                                     <strong>똘러리앙</strong>
-                                    미세먼지 OUT 3STEP 세트
+                                    	미세먼지 OUT 3STEP 세트
                                 </span>
                                 <span CLASS="star">
                                     <div class="star-rating small">
@@ -315,7 +318,7 @@
                                 <span class="hash">#미세먼지 OUT</span>
                                 <span class="tit">
                                     <strong>똘러리앙</strong>
-                                    미세먼지 OUT 3STEP 세트
+                                	    미세먼지 OUT 3STEP 세트
                                 </span>
                                 <span CLASS="star">
                                     <div class="star-rating small">
@@ -349,7 +352,7 @@
                 <div class="skinsolution_warp">
                     <div class="skinsolution">
                         <h2>
-                            자취 필수아이템
+                      	      자취 필수아이템
                             <em>자취 필수 추천아이템 모음! 이건 사야해!</em>
                         </h2>
                         <div class="skinsolution_slider">
@@ -403,8 +406,8 @@
                     <div class="left">
                         <h2>
                             <a href="#">
-                                LA ROCHE-POSAY 
-                                <em>라로슈포제 멤버십 혜택</em>
+                                ONE-MARKET 
+                                <em>원마켓 특별혜택!</em>
                             </a>
                         </h2>
                     </div>
@@ -440,8 +443,8 @@
                 <div class="movie_warp">
                     <div class="movie">
                         <h2>
-                            LA ROCHE-POSAY MOVIE
-                            <em>영상으로 만나는 라로슈포제</em>
+                                                         리얼꿀팁
+                            <em>영상으로 만나는 리얼꿀팁!</em>
                         </h2>
                         <div id="youtube">
                             <a href="javascript:PlayYoutube();">
@@ -458,8 +461,8 @@
                 <div class="realreview_warp">
                     <div class="realreview">
                         <h2>
-                        리얼리뷰 
-                            <em>라로슈포제 제품 사용 후 남겨준 리얼 생생 리뷰</em>
+                        	리얼리뷰 
+                            <em>원마켓 인테리어 제품 리얼 생생 리뷰</em>
                         </h2>
                         <div class="realreview_slider">
                             <div id="realprd" class="swiper-container">
@@ -477,7 +480,7 @@
                                                 [대놓고1위]리밸런싱 로션세트
                                             </span>
                                             <span class="reply">
-                                                제 피부에 딱 맞아요
+                                              	 제 피부에 딱 맞아요
                                             </span>
                                             <span class="data">
                                                 <span class="userNick">강지향씨</span>
@@ -502,15 +505,15 @@
                     </div>
                 <div class="instagram">
                     <h2>
-                        커뮤니티
-                        <em>이번주 인기 게시글은?</em>
+                      	  커뮤니티
+                        <em>이번주 인기 게시글을 한 눈에 알아보자!</em>
                     </h2>
                     <div class="best">
-                        이번주 베스트 인테리어는?
+                  	      이번주 베스트 인테리어는?
                     </div>
                     <ul>
                         <li>
-                            <a href="https://www.instagram.com/p/B9GPIucIa8A/">
+                            <a href="#">
                                 <div class=image-box>
                                     <img src="image/%EA%B0%80%EA%B5%AC1.jpg" alt="">
                                 </div>
@@ -527,11 +530,11 @@
                 <div class="underline"></div>
                 <div class="instagram">
                     <div class="best">
-                        이번주 베스트 혼족정보는?
+                      	  이번주 베스트 혼족정보는?
                     </div>
                     <ul>
                         <li>
-                            <a href="https://www.instagram.com/p/B9GPIucIa8A/">
+                            <a href="#">
                                 <div class=image-box>
                                     <img src="image/%EC%A7%81%EC%9E%A5%EC%9D%B8%EB%93%A4%EC%9D%98%EB%A7%9B%EC%A7%91.jpg" alt="">
                                 </div>
@@ -548,11 +551,11 @@
                 <div class="underline"></div>
                 <div class="instagram">
                     <div class="best">
-                        이번주 베스트 레시피는?
+               	         이번주 베스트 레시피는?
                     </div>
                     <ul>
                         <li>
-                            <a href="https://www.instagram.com/p/B9GPIucIa8A/">
+                            <a href="#">
                                 <div class=image-box>
                                     <img src="image/%EC%A7%81%EC%9E%A5%EC%9D%B8%EB%93%A4%EC%9D%98%EB%A7%9B%EC%A7%91.jpg" alt="">
                                 </div>
@@ -616,9 +619,9 @@
                     <ul class="foot_cs">
                         <li>구매/배송/사이트 이용문의 080-777-7777</li>
                         <li>
-                            제품
+                  	          제품
                             <i class="bar"></i>
-                            상담 시간 : 평일 09:30 ~ 17:30
+                     	       상담 시간 : 평일 09:30 ~ 17:30
                         </li>
                         <li class="bull">점심시간 12:30 ~ 13:30 / 주말, 법정공휴일 휴무</li>
                         <li class="bull">1:1 상담을 이용하시면 보다 신속하게 답변 받으실 수 있습니다.</li>
@@ -630,8 +633,8 @@
                         <span>개인정보보호책임자 강지향 (IMC-commerce Director)</span>
                         <span>호스팅서비스사업자 : (주)아이네트</span>
                         <span class="escrow">
-                            원마켓은 고객님의 안전한 전자상거래를 위해 퍼스트데이터코리아(유)에서
-                            제공하는 구매안전서비스(에스크로)를 이용하고 있습니다.
+                      	      원마켓은 고객님의 안전한 전자상거래를 위해 퍼스트데이터코리아(유)에서
+                        	    제공하는 구매안전서비스(에스크로)를 이용하고 있습니다.
                         </span>
                     </address>
                     <small>
