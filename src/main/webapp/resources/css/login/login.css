@@ -1,0 +1,88 @@
+@charset "UTF-8";
+.container {
+	background-color: white;
+    height: 500px;
+    width: 500px;
+    display: table;
+    border: 4px outset MediumTurquoise;
+}
+
+#inputId {
+	width: 50%;
+	height: 66px;
+	margin: 5px;
+	font-size: 20px;
+	font-family: Title_h2;
+	border: none;
+	border-bottom: 2px solid LightSeaGreen;
+}
+
+#inputId:mouseup {
+	border: 2px solid blue;
+}
+
+#inputPassword {
+	width: 50%;
+	height: 66px;
+	margin: 5px;
+	font-size: 20px;
+	font-family: Title_h2;
+	border: none;
+	border-bottom: 2px solid LightSeaGreen;
+}
+
+.user-icon {
+	width: 66px;
+	height: 66px;
+	float: left;
+}
+
+/* .formGroup2 {
+	clear: both;
+} */
+
+.pwd-icon {
+	width: 66px;
+	height: 66px;
+	float: left;
+}
+
+.form {
+	margin: 0 auto;
+}
+
+.rememberUs {
+	margin: 0 auto;
+	
+}
+
+#loginBtn {
+	  background-color: darkcyan;
+	  border: none;
+	  color: white;
+	  padding: 15px 32px;
+	  text-align: center;
+	  text-decoration: none;
+	  display: inline-block;
+	  font-size: 16px;
+	  margin: 4px 2px;
+	  cursor: pointer;
+}
+
+#sign-upBtn {
+	  background-color: darkcyan;
+	  border: none;
+	  color: white;
+	  padding: 15px 32px;
+	  text-align: center;
+	  text-decoration: none;
+	  display: inline-block;
+	  font-size: 16px;
+	  margin: 4px 2px;
+	  cursor: pointer;
+}
+
+#rememberUs {
+	background-color: none;
+	font-family: Title_h2;
+}

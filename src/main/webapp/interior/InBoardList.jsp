@@ -85,6 +85,9 @@
 								class="img w-100 mb-3"> 
 								 <script>
 									var contentimg = '${interiorvo.content}';
+									
+									
+									
 									var firstimg = $(contentimg).find(
 											'img:first').attr('src');
 									console.log(firstimg);

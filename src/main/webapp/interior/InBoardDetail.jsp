@@ -23,7 +23,7 @@
 	/* 글 테두리 */
 	#inter-border {
 		background-color: white;
-		width: 1300px;
+		width: 900px;
 		heigh: 800px;
 		margin: 20px;
 	}
@@ -52,13 +52,14 @@
 	}
 	
 	.inter-content {
-		
+		padding: 120px;
 	}
 	
 	.r-sidebar {
 		float: right;
 		width: 300px;
 		height: 500px;
+		margin-right: 20px;
 		border: 2px solid red;
 		background-color: #ffe7d5;
 	}
@@ -205,11 +206,6 @@
   </div>  
 </nav> --%>
 
-		<!-- 사이드바 -->
-		<div class="r-sidebar">
-			<p>검색</p>
-		</div>
-		
 		<!-- 본문 내용 -->
 	<section id="sBox">
 		<input type="hidden" name="comSeq" id="comSeq" value="${interiorvo.comSeq }">
@@ -233,6 +229,11 @@
 				${interiorSelect.content }
 			</article>
 	
+		<!-- 검색 사이드바 -->
+		<div class="r-sidebar">
+			<p>검색</p>
+		</div>
+		
 		<!-- 좋아요 -->
 		<i id="likes" class="far fa-heart fa-5x"></i><span>좋아요</span>${likesCount }
 
@@ -279,9 +280,17 @@
 			<ol class="comment-list">
 				<li>
 				<div class="comment-title">댓글</div>
-			<c:forEach var="comment" items="${commentSelect }">
+				<c:forEach var="comment" items="${commentSelect }">
 					<span class="writer">${comment.nickName }</span>
 					<span class="date">${comment.regdate}</span>
+					<c:if test="${empty c_list }"> <!-- 댓글이 없을시 step:0, lev:0 -->
+						<input type="hidden" name="step" value="0">
+						<input type="hidden" name="lev" value="0">
+					</c:if>
+					<c:if test="${stepResult >= 1 }">
+						<input type="hidden" name="step" value="${stepResult}">
+						<input type="hidden" name="lev" value="0">
+					</c:if>
 					<button class="reply-re">답글</button>
 				<c:if test="${ sessionScope.userSession.nickName == comment.nickName }">
 					<button class="reply-up">수정</button>
@@ -307,12 +316,13 @@
 				    <input type="hidden" name="nickName" value="${sessionScope.userSession.nickName }"> 
 					<input type="hidden" name="comSeq" value="${interiorSelect.comSeq }">
 					
-					<c:if test="${empty c_list }"> <!-- 댓글이 없을시 step:0, lev:0 -->
-						<input type="hidden" name="step" value="0">
+					
+					<c:if test="${empty c_list }"> <!-- 댓글이 없을시 idx:0, lev:0 -->
+						<input type="hidden" name="idx" value="0">
 						<input type="hidden" name="lev" value="0">
 					</c:if>
 					<c:if test="${stepResult >= 1 }">
-						<input type="hidden" name="step" value="${stepResult}">
+						<input type="hidden" name="idx" value="${stepResult}">
 						<input type="hidden" name="lev" value="0">
 					</c:if>
 					
@@ -364,13 +374,15 @@
 	
 	
 		//댓글 수정
-		/* $('.reply-up').click(function(){
+		$('.reply-up').click(function(){
+				var form = $('comment-wri');
+				var data = new FormData(form);
 			$.ajax({
 				type:'post',
 				url:"upComment.do",
 				data:{ comSeq:comSeq,
 						idx:idx },
-				success:function(json){
+				success:function(form){
 					console.log("성공");
 					$('.comment-wri').('<span><strong>댓글입력</strong></span> <span id="cCnt"></span>\
 			                <hr>\
@@ -383,14 +395,14 @@
 			           		<input type="hidden" name="id" value="${sessionScope.userSession.id }">\
 						    <input type="hidden" name="nickName" value="${sessionScope.userSession.nickName }"> \
 							<input type="hidden" name="comSeq" value="${interiorSelect.comSeq }">\
-							
 							<c:if test="${empty c_list }">\
 								<input type="hidden" name="step" value="0">\
 								<input type="hidden" name="lev" value="0">\
 							</c:if>\
 							<c:if test="${stepResult >= 1 }">\
 								<input type="hidden" name="step" value="${stepResult}">\
-								<input type="hidden" name="lev" value="0">\
+								<input type="hidden" name="lev" 
+								value="0">\
 							</c:if>\
 		                    <textarea style="width: 1100px" rows="3" cols="30" id="comment" name="content" placeholder="댓글을 입력하세요"></textarea>\
 		                    <br>\
@@ -404,7 +416,7 @@
 					alert("오류가 발생하였습니다.");
 				}
 			});
-		}) */
+		})
 </script>
 </body>
 </html>
