@@ -25,6 +25,7 @@
 </head>
 
 <body>
+<jsp:include page="/header.jsp"></jsp:include>
 <!-- 문의 모달 시작 -->
 
   <div class="react-modal react-modal--center product-question__modal open open-active">

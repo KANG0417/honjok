@@ -147,12 +147,6 @@ body {
                               </script>
                            </a>
 
-
-
-
-						
-
-
                            <div class="text w-100 text-center">
 
 										<div class="advice-guide-chapter-content__content">

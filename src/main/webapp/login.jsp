@@ -9,14 +9,11 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <title>회원가입</title>
 <!-- CSS 연결 -->
-<link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
-<link rel="stylesheet" type="text/css"
-  
-   href="/app/resources/css/main/main.css">
 <link rel="stylesheet" type="text/css"
    href="/app/resources/css/login/login.css">
 </head>
 <body>
+<br><br><br><br>
 <jsp:include page="/header.jsp"></jsp:include>
 
 <c:if test="${not empty cookie.userCheck}">
