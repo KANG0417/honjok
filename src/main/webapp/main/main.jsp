@@ -97,19 +97,19 @@
                             </div>
                         </li>
                         <li class="">
-                            <a href="#">
+                            <a href="${contextPage.request.contextPath}/app/interior/interiorAllList.do">
                                 <span>인테리어</span>
                                 <!--<em></em>-->
                             </a>
                         </li>
                         <li class="">
-                            <a href="#">
+                            <a href="/app/honjokInfo/select.do">
                                 <span>혼족 정보</span>
                                 <!--<em></em>-->
                             </a>
                         </li>
                         <li class="">
-                            <a href="#">
+                            <a href="/app/cook/CookAll.do">
                                 <span>혼족레시피</span>
                                 <!--<em></em>-->
                             </a>

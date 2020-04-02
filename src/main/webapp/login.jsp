@@ -11,6 +11,7 @@
 <!-- CSS 연결 -->
 <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
 <link rel="stylesheet" type="text/css"
+  
    href="/app/resources/css/main/main.css">
 <link rel="stylesheet" type="text/css"
    href="/app/resources/css/login/login.css">

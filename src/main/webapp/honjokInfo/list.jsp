@@ -86,6 +86,7 @@ body {
 
 <body>
 
+<jsp:include page="/header.jsp"></jsp:include>
 
 <div class="wrap">
    <div style="max-width: 1500px; margin: 0 auto; height: 100%;">

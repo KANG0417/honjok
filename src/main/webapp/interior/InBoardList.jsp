@@ -5,61 +5,26 @@
 <html>
 <head>
 <title>인테리어 게시판</title>
-<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
+<!-- <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
 	rel="stylesheet" type="text/css">
 <link
 	href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic"
-	rel="stylesheet" type="text/css">
+	rel="stylesheet" type="text/css"> -->
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
 	integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
 	crossorigin="anonymous"></script>
 <!--CSS 연결 -->
-<link href="${pageContext.request.contextPath}/resources/css/hojokinfo/style.css" rel="stylesheet">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-<style>
+<!-- <style>
 	#main {
 		border: 1px solid gray;
 		padding: 50px;
 		margin: 20px;
 		text-align: center;
 	}
-</style>
+</style> -->
 </head>
 <body>
-	<div id="main">원마켓</div>
-		<%-- <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
-	  <a class="navbar-brand" href="index.jsp">Home</a>
-	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-	    <span class="navbar-toggler-icon"></span>
-	  </button>
-	 <div class="collapse navbar-collapse" id="collapsibleNavbar">
-    	<ul class="navbar-nav">
-      	<li class="nav-item">
-        <a class="nav-link" href="signUp.jsp">회원가입</a>
-      </li>
-      <c:if test="${sessionScope.userSession.id == null }">
-      	<li class="nav-item">
-      	<a class="nav-link" href="${contextPage.request.contextPath }/app/login.jsp">로그인</a>
-      	</li>
-      </c:if>
-      <c:if test="${sessionScope.userSession.id != null }">
-      	<li class="nav-item">${userSession.id} 님 안녕하세요!</li><a href="${contextPage.request.contextPath }/app/logout.do">Log-out</a>
-      </c:if>
-      <li class="nav-item">
-        <a class="nav-link" href="${contextPage.request.contextPath }/app/interior/interiorAllList.do">인테리어</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="${contextPage.request.contextPath }/app/cook/CookAll.do">레시피</a>
-      </li>    
-      <li class="nav-item">
-        <a class="nav-link" href="${contextPage.request.contextPath }/app/honjokInfo/select.do">혼밥정보</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="${contextPage.request.contextPath }/app/mypage/myPage.jsp">마이페이지</a>
-      </li>
-    </ul>
-  	</div>	
-	</nav> --%>
+<jsp:include page="/header.jsp"></jsp:include>
 	<div class="container">
 		<div class="row justify-content-center mb-5 pb-3">
 		</div>
@@ -200,12 +165,20 @@
 	    var id = '${sessionScope.userSession.id}'; // 수정 ''처리
 	    // 수정 ''공백 비교
 	    if (id == '') {
-	        alert("로그인 후 글쓰기가 가능합니다.");
-	        return false;
-	    } else {
+
+	    	var result = confirm("로그인이 필요한 서비스입니다. 로그인 하시겠습니까?")
+			if (result) {
+				window.open(
+							'/app/loginModal.jsp',
+							'pop01',
+							'top=10, left=10, width=500, height=600, status=no, menubar=no, toolbar=no, resizable=no');
+			}
+		}else {
 	        location.href = 'InBoardInsert.jsp';
+	    
+	    } 
 	    }
-	}
+	
 </script>
 </body>
 </html>
