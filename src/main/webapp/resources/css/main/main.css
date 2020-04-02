@@ -7,7 +7,6 @@
 #wrap {
     position: absolute;
     top: 0;
-    bottom: 0;
     left: 0;
     right: 0;
     min-width: 1140px;
@@ -1545,7 +1544,7 @@ wrap.main .prdlist .over button {
     top: 2px;
     width: 14px;
     height: 11px;
-    background: url('/app/resources/img/main/ico_comm_sp.png') no-repeat 0 0;
+    background: url('/image/ico_comm_sp.png') no-repeat 0 0;
         background-size: auto;
     background-size: 300px 300px;
 }  
