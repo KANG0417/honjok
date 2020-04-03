@@ -1,4 +1,5 @@
-     html,
+
+html,
         body,
         div,
         span,
@@ -200,17 +201,17 @@
             display: flex;
         }
         .production-selling-overview__cover-image-wrap{
-        	 margin: 0 auto;
+            margin: 0 auto;
         }
         
         /* 컬럼 중앙정렬 */
         .production-selling-overview__container,
-        .production-selling__detail-wrap
-        {
-            margin: 0 auto;
-		    width:90%;	
-        }
+        .production-selling__detail-wrap{
 
+            margin: 0 200px;
+
+        }
+    
 
 
         .button {
@@ -456,6 +457,9 @@
             right: 1%;
         }
 
+        .production-selling-overview{
+            margin-top: 20px;
+        }
         /*카테고리 마진 바텀*/
         .production-selling-overview__category {
             margin-bottom: 20px;
@@ -566,7 +570,7 @@
 div {
     display: block;
 }
-        .react-modal.open {
+.react-modal.open {
     background-color: rgba(0,0,0,.5);
 }
     .react-modal {
@@ -844,7 +848,7 @@ element.style {
 
         /*상품 마진*/
         .production-selling-content {
-            margin-right: 50px;
+            margin-right: 200px;
         }
 
         .production-review-item__writer__info {
