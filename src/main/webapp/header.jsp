@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,12 +11,30 @@
 #wrap.main {
     padding: 182px 0 0px;
 }
+
 #wrap {
     position: relative;
     top: 0;
     left: 0;
     right: 0;
     min-width: 1140px;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: white;
+  border-bottom: 1px solid silver;
+}
+
+	/* 맨위로 */
+	a#MOVE_TOP_BTN {
+    position: fixed;
+    right: 2%;
+    bottom: 50px;
+    display: none;
+    z-index: 999;
 }
 
 </style>
@@ -29,6 +48,8 @@
             <a href="#">메뉴 바로가기</a>
             <a href="#">하단 정보 바로가기</a>
         </nav>
+        <!-- 맨위로 -->
+        	<a id="MOVE_TOP_BTN" href="#">TOP</a>
         <header id="header"> 
             <h1 onclick="location.href='/app/main/getMainList.do'">
                 ONE-MARKET
@@ -38,9 +59,12 @@
             <section class="top_nav">
                 <nav>
                     <ul>
-                        <li>
-                            <a href="/app/login.jsp">로그인</a>
-                        </li>
+                        <c:if test="${empty sessionScope.userSession.id}">
+                        <li><a href="${contextPage.request.contextPath}/app/login.jsp">로그인</a></li>
+                    	</c:if>
+                    	<c:if test="${!empty sessionScope.userSession.id}">
+                        <li>${userSession.id}님 안녕하세요!<a href="${contextPage.request.contextPath}/app/logout.do">로그 아웃</a></li>
+                    	</c:if>
                         <li>
                             <a href="/app/signUp.jsp">회원가입</a>
                         </li>
@@ -84,7 +108,7 @@
                     </div>  
                 </div>
             </section>
-            <section class="gnb_nav">
+            <section class="gnb_nav" id="navbar">
                 <nav>
                     <ul class="left">
                         <li>
@@ -143,6 +167,36 @@
             </section>
         </header>
         </div>
-   
 
+<script>
+	window.onscroll = function() {myFunction()};
+	
+	var navbar = document.getElementById("navbar");
+	var sticky = navbar.offsetTop;
+	
+	function myFunction() {
+	  if (window.pageYOffset >= sticky) {
+	    navbar.classList.add("sticky")
+	  } else {
+	    navbar.classList.remove("sticky");
+	  }
+	}
+	
+	$(function() {
+	    $(window).scroll(function() {
+	        if ($(this).scrollTop() > 500) {
+	            $('#MOVE_TOP_BTN').fadeIn();
+	        } else {
+	            $('#MOVE_TOP_BTN').fadeOut();
+	        }
+	    });
+	    
+	    $("#MOVE_TOP_BTN").click(function() {
+	        $('html, body').animate({
+	            scrollTop : 0
+	        }, 400);
+	        return false;
+	    });
+	});
+</script>
 </html>
