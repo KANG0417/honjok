@@ -11,6 +11,15 @@
 <link href="/app/resources/css/main/main.css" rel="stylesheet">
 <title>ONE-MARKERT</title>
 </head>
+<style>
+	.sticky {
+	  position: fixed;
+	  top: 0;
+	  width: 100%;
+	  background: white;
+	  border-bottom: 1px solid silver;
+	}
+</style>
 <body>
     <div id="wrap" class="main">
         <!--상단 띠배너-->
@@ -33,7 +42,7 @@
                         <li><a href="${contextPage.request.contextPath}/app/login.jsp">로그인</a></li>
                     </c:if>
                     <c:if test="${!empty sessionScope.userSession.id}">
-                        <li>${userSession.id}님 안녕하세요!<a href="/app/logout.do">Log-out</a></li>
+                        <li>${userSession.id}님 안녕하세요!<a href="/app/logout.do">로그 아웃</a></li>
                     </c:if>
                         <li>
                             <a href="/app/signUp.jsp">회원가입</a>
@@ -78,7 +87,7 @@
                     </div>  
                 </div>
             </section>
-            <section class="gnb_nav">
+            <section class="gnb_nav" id="navbar">
                 <nav>
                     <ul class="left">
                         <li>
@@ -765,6 +774,19 @@ $(function(){
                 prevEl: '.realprd-prev',
             },    
     });
-});    
+});
+
+window.onscroll = function() {myFunction()};
+
+var navbar = document.getElementById("navbar");
+var sticky = navbar.offsetTop;
+
+function myFunction() {
+  if (window.pageYOffset >= sticky) {
+    navbar.classList.add("sticky")
+  } else {
+    navbar.classList.remove("sticky");
+  }
+}
 </script>
 </html>

@@ -24,12 +24,10 @@
   position: fixed;
   top: 0;
   width: 100%;
+  background: white;
+  border-bottom: 1px solid silver;
 }
 
-.sticky + .gnb_nav {
-  padding-top: 60px;
-  border-bottom-style: 1px solid gray;
-}
 </style>
 </head>
 
@@ -54,7 +52,7 @@
                         <li><a href="${contextPage.request.contextPath}/app/login.jsp">로그인</a></li>
                     	</c:if>
                     	<c:if test="${!empty sessionScope.userSession.id}">
-                        <li>${userSession.id}님 안녕하세요!<a href="${contextPage.request.contextPath}/app/logout.do">Log-out</a></li>
+                        <li>${userSession.id}님 안녕하세요!<a href="${contextPage.request.contextPath}/app/logout.do">로그 아웃</a></li>
                     	</c:if>
                         <li>
                             <a href="/app/signUp.jsp">회원가입</a>
