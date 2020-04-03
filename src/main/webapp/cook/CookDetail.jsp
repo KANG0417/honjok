@@ -53,8 +53,7 @@ function fn_delete() {
       <!-- Blog Entries Column -->
       <div class="col-md-8">
 
-        <h1 class="my-4">레시피 게시판입니다
-        <h5>간편한 재료로 한 끼 뚝딱!</h5>
+        <h1 class="my-4">${cookDetail.title }
         </h1>
 
         <!-- Blog Post -->
@@ -70,38 +69,30 @@ function fn_delete() {
 
 
 <!-- Post Content -->
-        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, vero, obcaecati, aut, error quam sapiente nemo saepe quibusdam sit excepturi nam quia corporis eligendi eos magni recusandae laborum minus inventore?</p>
 
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus.</p>
+        <div>위 레시피에 나온 제품을 구매하시려면 정원e샵을 방문하세요~
+        	<a href="http://localhost:8080/app/interior/interiorAllList.do" target="_blank" title="새창 열림">
+        	<img src="${contextPage.request.contextPath}/app/resources/img/market.png" alt="One마켓 바로가기">
+        	</a>
+        </div>
 
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, doloribus, dolorem iusto blanditiis unde eius illum consequuntur neque dicta incidunt ullam ea hic porro optio ratione repellat perspiciatis. Enim, iure!</p>
-
-        <blockquote class="blockquote">
-          <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-          <footer class="blockquote-footer">Someone famous in
-            <cite title="Source Title">Source Title</cite>
-          </footer>
-        </blockquote>
-
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, nostrum, aliquid, animi, ut quas placeat totam sunt tempora commodi nihil ullam alias modi dicta saepe minima ab quo voluptatem obcaecati?</p>
-
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, dolor quis. Sunt, ut, explicabo, aliquam tenetur ratione tempore quidem voluptates cupiditate voluptas illo saepe quaerat numquam recusandae? Qui, necessitatibus, est!</p>
-
-        <hr>
         <div id="container">
 			<input type="hidden" name="comSeq" value="${cookDetail.comSeq }">
 		
-		 <a href="insert.jsp">글등록</a>
-		<a href="${contextPage.request.contextPath}/app/cook/CookAll.do">글목록</a>
-		<form class="update" action="update.jsp">
-		   <c:set value="${cookDetail}" var="ckvo" scope="session"></c:set>
-		   <input type="submit" value="수정">
-		</form>
+		 <a href="insert.jsp">글등록</a><a href="${contextPage.request.contextPath}/app/cook/CookAll.do">글목록</a>
+		 <a href="update.jsp">수정</a>
+		 <a href="delete.do?comSeq=${cookDetail.comSeq}" id="deleteform">삭제</a>
+		 
+		 
+<!-- 		<form class="update" action="update.jsp"> -->
+<%-- 		   <c:set value="${cookDetail}" var="ckvo" scope="session"></c:set> --%>
+<!-- 		   <input type="submit" value="수정"> -->
+<!-- 		</form> -->
 		
-		<form action="delete.do?comSeq=${cookDetail.comSeq}" id="deleteform">
-		   <input type="submit" onclick="fn_delete()" value="삭제">
-		   <input type="hidden" name="comSeq" id="comSeq" value="${cookDetail.comSeq }">
-		</form>
+<%-- 		<form action="delete.do?comSeq=${cookDetail.comSeq}" id="deleteform"> --%>
+<!-- 		   <input type="submit" onclick="fn_delete()" value="삭제"> -->
+<%-- 		   <input type="hidden" name="comSeq" id="comSeq" value="${cookDetail.comSeq }"> --%>
+<!-- 		</form> -->
 </div>
         <!-- Comments Form -->
         <div class="card my-4">
