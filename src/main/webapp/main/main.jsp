@@ -145,21 +145,21 @@
                     <div class="swiper-wrapper" style="width: 10080px; height: 699px; transform: translate(-1260px, 0px, 0px);                        transition-duration: 0.3s;">
                         <div class="swiper-slide swiper-slide-duplicate" style="width: 1140px; height: 699px;">
                             <a class="mainView" href="javascript:void(0);" target="_self">
-                                <div class="img_banner" style="background-image:url(/app/resources/img/main/gagu1.png);">
+                                <div class="img_banner" style="background-image:url(/app/resources/img/main/banner1.png);">
                                     <span class="hide">스팟스캔-바로가기</span>
                                 </div>
                             </a>
                         </div>
                         <div class="swiper-slide swiper-slide-visible swiper-slide-active" style="width: 1140px; height: 699px;">
                             <a class="mainView" href="javascript:void(0);" target="_self">
-                                <div class="img_banner" style="background-image:url(/app/resources/img/main/gagu2.png);">
+                                <div class="img_banner" style="background-image:url(/app/resources/img/main/banner2.png);">
                                     <span class="hide">스팟스캔-바로가기</span>
                                 </div>
                             </a>
                         </div>
                         <div class="swiper-slide swiper-slide-visible swiper-slide-active" style="width: 1140px; height: 699px; margin: 10px;">
                             <a class="mainView" href="javascript:void(0);" target="_self">
-                                <div class="img_banner" style="background-image:url(/app/resources/img/main/gagu3.png);">
+                                <div class="img_banner" style="background-image:url(/app/resources/img/main/banner3.png);">
                                     <span class="hide">스팟스캔-바로가기</span>
                                 </div>
                             </a>
