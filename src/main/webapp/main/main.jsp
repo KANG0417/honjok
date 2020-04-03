@@ -152,14 +152,14 @@
                         </div>
                         <div class="swiper-slide swiper-slide-visible swiper-slide-active" style="width: 1140px; height: 699px;">
                             <a class="mainView" href="javascript:void(0);" target="_self">
-                                <div class="img_banner" style="background-image:url(/app/resources/img/main/banner2.png);">
+                                <div class="img_banner" style="background-image:url(/app/resources/img/main/banner2.jpg);">
                                     <span class="hide">스팟스캔-바로가기</span>
                                 </div>
                             </a>
                         </div>
-                        <div class="swiper-slide swiper-slide-visible swiper-slide-active" style="width: 1140px; height: 699px; margin: 10px;">
+                        <div class="swiper-slide swiper-slide-visible swiper-slide-active" style="width: 1140px; height: 699px;">
                             <a class="mainView" href="javascript:void(0);" target="_self">
-                                <div class="img_banner" style="background-image:url(/app/resources/img/main/banner3.png);">
+                                <div class="img_banner" style="background-image:url(/app/resources/img/main/banner1.png);">
                                     <span class="hide">스팟스캔-바로가기</span>
                                 </div>
                             </a>
@@ -179,7 +179,7 @@
                             <span class="hide">다음</span>
                         </button>
                         <div id="bsprd" class="swiper-container">
-                            <div id="bestList" class="swiper-wrapper" style="width: 5700px;                 height:490px; transform: translate3d(0px, 0px, 0px);
+                            <div id="bestList" class="swiper-wrapper" style="width: 5700px;height:490px; transform: translate3d(0px, 0px, 0px);
                                     transition-duration: 0.3s;">
                                 <c:forEach var="main" items="${mainList}">  
                                 <div class="swiper-slide prdlist swiper-slide-duplicate swiper-slide-visible swiper-slide-active" style="width:285px; height: 490px;">
@@ -360,7 +360,7 @@
                                 <div class="swiper-wrapper" style="width: 4680px; height: 478px; transform: translate3d(-1170px;, 0px, 0px);
                                                                   transition-duration: 0s;">
                                     <div class="swiper-slide swiper-slide-duplicate" style="width: 390px; height: 478px;">
-                                        <a href="#"?>
+                                        <a href="#">
                                             <img src="/image/1.png" alt="" style= "width:366px; height: 400px;">
                                             <span style="background-image:url(/image/2.png)"></span>
                                             <i style="background-image: url(/image/2.png)"></i>
@@ -368,7 +368,7 @@
                                         </a>
                                     </div>
                                     <div class="swiper-slide swiper-slide-duplicate" style="width: 390px; height: 478px;">
-                                        <a href="#"?>
+                                        <a href="#">
                                             <img src="/image/1.png" alt="" style= "width:366px; height: 400px;">
                                             <span style="background-image:url(/image/2.png) "></span>
                                             <i style="background-image: url(/image/2.png)"></i>
@@ -376,7 +376,7 @@
                                         </a>
                                     </div>
                                     <div class="swiper-slide swiper-slide-duplicate" style="width: 390px; height: 478px;">
-                                        <a href="#"?>
+                                        <a href="#">
                                             <img src="/image/1.png" alt="" style= "width:366px; height: 400px;">
                                             <span style="background-image:url(/image/2.png) "></span>
                                             <i style="background-image: url(/image/2.png)"></i>
@@ -384,7 +384,7 @@
                                         </a>
                                     </div>
                                     <div class="swiper-slide swiper-slide-duplicate" style="width: 390px; height: 478px;">
-                                        <a href="#"?>
+                                        <a href="#">
                                             <img src="/image/1.png" alt="">
                                             <span style="background-image:url(/image/2.png) "></span>
                                             <i style="background-image: url(/image/2.png)"></i>
@@ -448,7 +448,7 @@
                         </h2>
                         <div id="youtube">
                             <a href="javascript:PlayYoutube();">
-                                <img src="/image/maxresdefault.png" alt="영상실행">
+                                <img src="/app/resources/img/main/maxresdefault.png" alt="영상실행">
                             </a> 
                             <script>
                                     function PlayYoutube(){
