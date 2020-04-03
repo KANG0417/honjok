@@ -29,9 +29,12 @@
             <section class="top_nav">
                 <nav>
                     <ul>
-                        <li>
-                            <a href="/app/login.jsp">로그인</a>
-                        </li>
+                    <c:if test="${empty sessionScope.userSession.id}">
+                        <li><a href="${contextPage.request.contextPath}/app/login.jsp">로그인</a></li>
+                    </c:if>
+                    <c:if test="${!empty sessionScope.userSession.id}">
+                        <li>${userSession.id}님 안녕하세요!<a href="/app/logout.do">Log-out</a></li>
+                    </c:if>
                         <li>
                             <a href="/app/signUp.jsp">회원가입</a>
                         </li>

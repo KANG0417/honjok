@@ -73,7 +73,7 @@
 						$('#spanLoginCheck').text('이메일을 인증 해주셔야합니다')
 						$('#spanLoginCheck').css('color', 'red');
 					}else{
-						location.href="getMainList.do"
+						location.href="/app/main/getMainList.do"
 					}
 					
 				}
