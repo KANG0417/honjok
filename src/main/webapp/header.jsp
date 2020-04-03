@@ -28,6 +28,15 @@
   border-bottom: 1px solid silver;
 }
 
+	/* 맨위로 */
+	a#MOVE_TOP_BTN {
+    position: fixed;
+    right: 2%;
+    bottom: 50px;
+    display: none;
+    z-index: 999;
+}
+
 </style>
 </head>
 
@@ -39,6 +48,8 @@
             <a href="#">메뉴 바로가기</a>
             <a href="#">하단 정보 바로가기</a>
         </nav>
+        <!-- 맨위로 -->
+        	<a id="MOVE_TOP_BTN" href="#">TOP</a>
         <header id="header"> 
             <h1 onclick="location.href='/app/main/getMainList.do'">
                 ONE-MARKET
@@ -170,5 +181,22 @@
 	    navbar.classList.remove("sticky");
 	  }
 	}
+	
+	$(function() {
+	    $(window).scroll(function() {
+	        if ($(this).scrollTop() > 500) {
+	            $('#MOVE_TOP_BTN').fadeIn();
+	        } else {
+	            $('#MOVE_TOP_BTN').fadeOut();
+	        }
+	    });
+	    
+	    $("#MOVE_TOP_BTN").click(function() {
+	        $('html, body').animate({
+	            scrollTop : 0
+	        }, 400);
+	        return false;
+	    });
+	});
 </script>
 </html>
