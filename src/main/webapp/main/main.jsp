@@ -48,7 +48,7 @@
             <section class="cf_side">
                 <div class="campain">
                     <a class="btn_campain" href="#">
-                   			 민감성 피부의 삶을 바꾸는 라로슈포제
+                   			 혼족을 위한 맞춤형 쇼핑몰 원마켓
                     </a>
                     <!-- 캠페인 배너 -->
                 </div>
