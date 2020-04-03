@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.honjok.app.vo.AdminVO;
 import com.honjok.app.vo.CommInfoVO;
 import com.honjok.app.vo.CommInteriorVO;
+import com.honjok.app.vo.productReviewVO;
 
 
 @Controller()
@@ -63,13 +64,20 @@ public class mainController {
 			info.setContent(temp);
 		}
 		
-		System.out.println(mainList);
+		
+		List<productReviewVO> productReviewList = mainService.productReviewList();
+		
+		
+		
+		
+		
+		System.out.println(productReviewList);
 		
 		model.addAttribute("mainList", mainList);
 		model.addAttribute("CommInteriorList", CommInteriorVO);
 		model.addAttribute("CommInfoList", CommInfoVO);
 		model.addAttribute("CommCookList", CookVO);
-		System.out.println(mainList);
+		model.addAttribute("productReviewList",productReviewList);
 		return "main.jsp";
 	}
 	

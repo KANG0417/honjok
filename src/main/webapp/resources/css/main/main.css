@@ -88,7 +88,7 @@ h1, h2, h3, h4, h5, h6, strong {
 }
 
 
-}
+
 #header h1 em, #header h1 span {
     display: block;
     font-size: 14.2px;
@@ -641,9 +641,16 @@ input, textarea, select, img {
 }
     
 .star-rating.small {
-    width: 84px;
+    width: 15px;
     height: 15px;
-    background: url('/app/resources/img/main/star_rating.png') no-repeat 0 0px;
+    background: url('/app/resources/img/main/star_rating.png') no-repeat -68px -15px;
+        background-size: auto;
+    background-size: 84px;
+}
+.star-rating.blue {
+    width: 15px;
+    height: 15px;
+    background: url('/app/resources/img/main/star_rating.png') no-repeat -68px 0px;
         background-size: auto;
     background-size: 84px;
 }

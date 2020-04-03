@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.honjok.app.vo.AdminVO;
 import com.honjok.app.vo.CommInfoVO;
 import com.honjok.app.vo.CommInteriorVO;
+import com.honjok.app.vo.productReviewVO;
 
 @Repository("mainDAO")
 public class mainDAO {
@@ -36,6 +37,10 @@ public class mainDAO {
 
 	public List<CommInfoVO> cookList() {
 		return mybatis.selectList("mainDAO.cookList");
+	}
+
+	public List<productReviewVO> productReviewList() {
+		return mybatis.selectList("mainDAO.productReviewList");
 	}
 	
 

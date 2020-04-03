@@ -7,6 +7,7 @@ public class productReviewVO {
 	rating,
 	pName,
 	id,
+	nickName,
 	regdate,
 	photoImage1,
 	title,
@@ -92,18 +93,25 @@ public class productReviewVO {
 	public void setPhotoImage2(String photoImage2) {
 		this.photoImage2 = photoImage2;
 	}
+	
+	
+
+	public String getNickName() {
+		return nickName;
+	}
+
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
+	}
 
 	@Override
 	public String toString() {
 		return "productReviewVO [pNum=" + pNum + ", idx=" + idx + ", rating=" + rating + ", pName=" + pName + ", id="
-				+ id + ", regdate=" + regdate + ", photoImage1=" + photoImage1 + ", title=" + title + ", content="
-				+ content + ", photoImage2=" + photoImage2 + "]";
+				+ id + ", nickName=" + nickName + ", regdate=" + regdate + ", photoImage1=" + photoImage1 + ", title="
+				+ title + ", content=" + content + ", photoImage2=" + photoImage2 + "]";
 	}
 
-	
-	
-	
-	
+
 	
 	
 	

@@ -5,6 +5,7 @@ import java.util.List;
 import com.honjok.app.vo.AdminVO;
 import com.honjok.app.vo.CommInfoVO;
 import com.honjok.app.vo.CommInteriorVO;
+import com.honjok.app.vo.productReviewVO;
 
 public interface mainService {
 	List<AdminVO>getMainList();
@@ -13,4 +14,5 @@ public interface mainService {
 	List<CommInteriorVO> interiorList();
 	List<CommInfoVO> infoList();
 	List<CommInfoVO> cookList();
+	List<productReviewVO> productReviewList();
 }

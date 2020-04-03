@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.honjok.app.vo.AdminVO;
 import com.honjok.app.vo.CommInfoVO;
 import com.honjok.app.vo.CommInteriorVO;
+import com.honjok.app.vo.productReviewVO;
 
 @Service("mainService")
 public class mainServiceImpl implements mainService{
@@ -42,6 +43,11 @@ public class mainServiceImpl implements mainService{
 	@Override
 	public List<CommInfoVO> cookList() {
 		return mainDAO.cookList();
+	}
+	
+	@Override
+	public List<productReviewVO> productReviewList() {
+		return mainDAO.productReviewList();
 	}
 }
 
