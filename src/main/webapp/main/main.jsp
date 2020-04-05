@@ -103,7 +103,7 @@
                 <nav>
                     <ul class="left">
                         <li>
-                            <a href="none">
+                            <a href="${contextPage.request.contextPath}/app/Product/ProductList.do">
                                 <span>스토어</span>
                                <!--<em></em>-->
                             </a>

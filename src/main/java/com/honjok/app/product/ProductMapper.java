@@ -61,5 +61,13 @@ public class ProductMapper {
 		// TODO Auto-generated method stub
 		return mybatis.selectList("ProductMapper.ProductQna", map);
 	}
+
+	public List<productVO> ProductList(Map<String, Integer> map) {
+		return mybatis.selectList("ProductMapper.ProductList",map);
+	}
+
+	public int ProductListCount() {
+		return mybatis.selectOne("ProductMapper.ProductListCount");
+	}
 	
 }
