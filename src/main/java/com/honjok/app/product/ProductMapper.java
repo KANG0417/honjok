@@ -62,12 +62,25 @@ public class ProductMapper {
 		return mybatis.selectList("ProductMapper.ProductQna", map);
 	}
 
-	public List<productVO> ProductList(Map<String, Integer> map) {
-		return mybatis.selectList("ProductMapper.ProductList",map);
+	public List<productVO> ProductList(Map<String, Object> map) {
+		System.out.println(map.containsValue("topSearchKeyword"));
+		if(!map.containsValue("topSearchKeyword")) {
+			System.out.println("키있음");
+			return mybatis.selectList("ProductMapper.ProductListSerch",map);
+		}
+		else {
+			System.out.println("키없음");
+			return mybatis.selectList("ProductMapper.ProductList",map);
+		}
 	}
 
 	public int ProductListCount() {
 		return mybatis.selectOne("ProductMapper.ProductListCount");
+	}
+
+	public int ProductListSerchCount(String topSearchKeyword) {
+		System.out.println(topSearchKeyword);
+		return mybatis.selectOne("ProductMapper.ProductListSerchCount",topSearchKeyword);
 	}
 	
 }

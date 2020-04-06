@@ -110,8 +110,19 @@
 	<select id="ProductList" resultType="productVO" parameterType="Map">
 		select * from (select rownum num, n.* from (select * from product) n )where num BETWEEN #{begin} and #{end}
 	</select>
+	<select id="ProductListSerch" resultType="productVO" parameterType="Map">
+		select * from (select rownum num, n.* from (select * from product WHERE p_name LIKE '%${topSearchKeyword}%' 
+ or brand_name like '%${topSearchKeyword}%' or promotion like '%${topSearchKeyword}%' or description like '%${topSearchKeyword}%'
+ ) n )where num BETWEEN #{begin} and #{end}
+	</select>
 	<select id="ProductListCount" resultType="Integer">
 		select COUNT(*) from product
+	</select>
+	
+		<select id="ProductListSerchCount" resultType="Integer" parameterType="String">
+ select COUNT(*) from product WHERE p_name LIKE '%' || #{topSearchKeyword} || '%'
+ or brand_name like '%' || #{topSearchKeyword} || '%' or promotion like '%' || #{topSearchKeyword} || '%' 
+ or description like '%' || #{topSearchKeyword} || '%'
 	</select>
 	
 

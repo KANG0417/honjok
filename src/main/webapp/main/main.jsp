@@ -82,7 +82,7 @@
                             <div class="search_faq">
                                 <input type="search" title="검색 입력창" name="topSearchKeyword" 
                                        placeholder="지금 꼭! 필요한 안티폴루션 필수템!" maxlength="20">
-                                <button type="button" onclick="topSearchKeyword">
+                                <button type="submit" onclick="topSearchKeyword">
                                     <span>검색</span>
                                 </button>
                             </div>
@@ -103,7 +103,7 @@
                 <nav>
                     <ul class="left">
                         <li>
-                            <a href="${contextPage.request.contextPath}/app/Product/ProductList.do">
+                            <a href="/app/Product/ProductList.do">
                                 <span>스토어</span>
                                <!--<em></em>-->
                             </a>

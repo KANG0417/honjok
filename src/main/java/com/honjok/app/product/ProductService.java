@@ -30,9 +30,11 @@ public interface ProductService {
 
 	List<productQnaVO> ProductQna(Map<String, Integer> map);
 
-	List<productVO> ProductList(Map<String, Integer> map);
+	List<productVO> ProductList(Map<String, Object> map);
 
 	int ProductListCount();
+
+	int ProductListSerchCount(String topSearchKeyword);
 
 	
 }

@@ -93,10 +93,10 @@
 							type="hidden" name="pNum" value="${productvo.pNum }">
 					<input type="hidden" name="imgArray" value="">
                         <div class="review-modal__form__product">
-                            <img>메인사진
+                            
                             <div class="review-modal__form__product__contents">
-                                <div class="review-modal__form__product__contents__brand">브랜드명</div>
-                                <div class="review-modal__form__product__contents__name">성
+                                <div class="review-modal__form__product__contents__brand"></div>
+                                <div class="review-modal__form__product__contents__name">
                                 </div>
                                 <div class="review-modal__form__product__contents__options"></div>
                             </div>
@@ -105,7 +105,7 @@
                             <div class="review-modal__section__title">별점 평가</div>
                             <div class="review-modal__form__star__wrap">
                                 <div class="review-modal__form__star">
-                                    <div class="review-modal__form__star__label">만족도</div>
+                                    <div class="review-modal__form__star__label">만족도</div><br>
                                     <div id="full-stars-example-two">
                                         <div class="rating-group">
                                             <input disabled checked class="rating__input--none" id="rating3-none" value="1" type="radio">
@@ -131,7 +131,7 @@
                         <div class="review-modal__section" >
                             <div class="review-modal__section__img">    
                             </div>
-                            <div class="review-modal__section__explain">사진을 첨부해주세요. (최대 2장 / 'gif', 'png', 'jpg','jpeg' 형식만 가능)
+                            <div class="review-modal__section__explain">사진을 첨부해주세요. (최대 2장 / 'gif', 'png', 'jpg','jpeg' 형식만 가능)<br>
                             </div>
                             <div class="select-my-card">
                                 <div class="select-my-card__content select-my-card__content--select">
@@ -154,31 +154,27 @@
                             <input multiple="multiple" type="file"
 							name="file" id="image"  style="display:none"/>
                             <button class="button button--color-blue-inverted button--size-50 button--shape-4 upload-button"
-                                type="button" onclick="document.all.file.click()" >사진 첨부하기</button>
+                                type="button" onclick="document.all.file.click()" >사진 첨부하기</button><br>
                         </div>
                         <div class="review-modal__section">
-                            <div class="review-modal__section__title">리뷰 작성</div>
+                            <div class="review-modal__section__title">리뷰 작성</div><br>
                             <input class="review-title" type="text" name="title" value="제목">
+                            <br>
+                            <br>
                             <textarea class="review-content" name="content"
                                 placeholder="자세하고 솔직한 리뷰는 다른 고객에게 큰 도움이 됩니다. (최소 20자 이상)"
                                 class="form-control text-area-input review-modal__form__review-input"
-                                style="height: 60px; width: 98%;"></textarea>
+                                style="height: 60px; width: 98%; border: 1px solid #888;"></textarea><br>
                         </div>
 
                         <div class="review-modal__section">
-                            <div class="review-modal__section__title">상품을 직접 사용하고 작성한 리뷰인가요?</div>
+                            <div class="review-modal__section__title">상품을 직접 사용하고 작성한 리뷰인가요?</div><br>
                             <div class="form-check checkbox-input"><label class="form-check-label">
                                 <input class="form-check" type="checkbox"><span class="check-img"></span>
                                 <span class="review-modal__form__agree">네. 상품을 직접 사용 후 작성한 리뷰이며,&nbsp;
-                                    <span class="review-modal__form__agree__policy-button">정책</span>에동의합니다.</span></label></div>
+                                    <span class="review-modal__form__agree__policy-button">정책</span>에동의합니다.</span></label></div><br>
                         </div>
-                        <button class="button button--color-blue button--size-50 button--shape-4 review-modal__form__submit"
-                            type="button" onclick="reviewForm(this.form)">완료</button>
-                    </form>
-                    <script>
-                  
-                    </script>
-                    <div class="review-modal__explain">
+                            <div class="review-modal__explain">
                         <ul>
                             <li>비구매 상품 리뷰 포인트는 심사 후 지급됩니다. (영업일 기준 2~3일 소요)</li>
                             <li>포인트는 최초 작성한 리뷰를 기준으로 지급됩니다.</li>
@@ -188,6 +184,11 @@
                         </ul>
                     </div>
                 </div>
+                        <button class="button button--color-blue button--size-50 button--shape-4 review-modal__form__submit"
+                            type="button" onclick="reviewForm(this.form)">완료</button>
+                    </form>
+                 
+                
             </div>
         </div>
 </div>

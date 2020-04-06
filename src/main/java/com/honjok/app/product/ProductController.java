@@ -34,10 +34,14 @@ public class ProductController {
 	private static String CURR_IMAGE_REPO_PATH = "";
 	
 	@RequestMapping("/ProductList.do")
-	public String ProductList(Model model,String cPage, String searchFiled,String searchValue){
+	public String ProductList(Model model,String cPage, String searchFiled,String topSearchKeyword){
 		System.out.println(cPage);
-		System.out.println(searchFiled);
-		System.out.println(searchValue);
+		System.out.println("searchFiled : "+searchFiled);
+		System.out.println("topSearchKeyword : "+topSearchKeyword);
+		
+		
+		if(topSearchKeyword == null) {
+		System.out.println("topSearchKeyword 없음");
 		//리뷰 페이징 객체 생성
 		Paging p  = new Paging();
 		p.setNumPerPage(4);
@@ -93,7 +97,7 @@ public class ProductController {
 			
 		}
 		
-		Map<String,Integer> map = new HashMap<>();
+		Map<String,Object> map = new HashMap<>();
 		
 		map.put("begin", p.getBegin());
 		map.put("end", p.getEnd());
@@ -105,6 +109,79 @@ public class ProductController {
 		
 		model.addAttribute("p",p);
 		model.addAttribute("productList",productList);
+		
+		}else {
+			
+			 System.out.println("topSearchKeyword 있음");
+			//리뷰 페이징 객체 생성
+			Paging p  = new Paging();
+			p.setNumPerPage(4);
+
+			
+			//1. 전체 게시물의 수 구하기 totalRecord 작성한 총 게시물
+			p.setTotalRecord(service.ProductListSerchCount(topSearchKeyword));
+			System.out.println("전체개시글수 : " + p.getTotalRecord());
+			//계산 전체 페이지 토탈 레코드에서 페이지장 표시할 개수 값 나누고 나머니 존재 할씨 1증가 
+			
+			//전체 게시물수 33 / numperpage 5;setTotalRecord
+			p.setTotalPage(); // 6.6
+			System.out.println("전체페이지수  : " + p.getTotalPage());
+			
+			//2.현재 페이지 구하거(default : 1) 현재페이지 9
+			if(cPage != null) {
+				p.setNowPage(Integer.parseInt(cPage));
+			}
+			
+			//3. 현재페이지의 시작번호(begin)와 끝번호(end) 구하기 
+			//현재 페이지  	   9                표시할 페이지 수 5
+			p.setEnd(p.getNowPage() * p.getNumPerPage()); // 45
+			p.setBegin(p.getEnd() - p.getNumPerPage()+1);  //45 - 5 + 1 = 41
+			
+
+			System.out.println("시작번호begin : " + p.getBegin());
+			System.out.println("끝번호 end : " + p.getEnd());
+			
+			
+			
+			//블록 계산하기(block) 계산하기 
+			//4. 블록의 시작 페이지, 끝페이지 구하기 (현재페이 사용) 9
+			System.out.println("현재페이지"+p.getNowPage());
+			
+			int nowPage = p.getNowPage();
+			//  블록당 표시 계수 	
+			
+			//현재 블록 시작 페이지 (9 - 1) /  10 * 10 +1  
+			int beginPage = (nowPage - 1) / p.getPagePerBlock() *  p.getPagePerBlock() +1; //9
+			
+			//현재블록의 시작 페이지 번호  //9 
+			p.setBeginPage(beginPage);
+			System.out.println("비긴페이지"+p.getBeginPage());
+			
+			// 현재블록 끝번호   현재 블록의 사작 페이지 9  +   10-1  블록당 표시하는 갯수  
+			p.setEndPage(p.getBeginPage() + p.getPagePerBlock() -1); //18
+			
+			//4-1 끝페이지(endPage)가 전체 페이지 수(totalPage) 보다 크면
+			//   18 보다         >        전체 페이지 갯수 6.6
+			if(p.getEndPage() > p.getTotalPage()) {
+				//6.6
+				p.setEndPage(p.getTotalPage());
+				
+			}
+			
+			Map<String,Object> map = new HashMap<>();
+			
+			map.put("begin", p.getBegin());
+			map.put("end", p.getEnd());
+			map.put("topSearchKeyword",topSearchKeyword);
+			System.out.println(p);
+			
+			List<productVO> productList = service.ProductList(map);
+			System.out.println(productList);
+			model.addAttribute("p",p);
+			model.addAttribute("productList",productList);
+		}
+		
+	
 
 		return "/Product/ProductList.jsp";
 	}

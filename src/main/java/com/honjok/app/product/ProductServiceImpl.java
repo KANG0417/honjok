@@ -107,7 +107,7 @@ public List<productQnaVO> ProductQna(Map<String, Integer> map) {
 
 //상품리스트 가져오기 
 @Override
-public List<productVO> ProductList(Map<String, Integer> map) {
+public List<productVO> ProductList(Map<String, Object> map) {
 	return mapper.ProductList(map);
 }
 
@@ -117,6 +117,14 @@ public List<productVO> ProductList(Map<String, Integer> map) {
 @Override
 public int ProductListCount() {
 	return mapper.ProductListCount();
+}
+
+
+
+
+@Override
+public int ProductListSerchCount(String topSearchKeyword) {
+	return mapper.ProductListSerchCount(topSearchKeyword);
 }
 
 
