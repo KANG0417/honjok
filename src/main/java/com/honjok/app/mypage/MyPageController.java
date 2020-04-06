@@ -9,11 +9,14 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.honjok.app.user.UserSha256;
+import com.honjok.app.vo.CommInfoVO;
 import com.honjok.app.vo.CommInteriorVO;
+import com.honjok.app.vo.CookVO;
 import com.honjok.app.vo.OrderVO;
 import com.honjok.app.vo.UserVO;
 
@@ -55,14 +58,19 @@ public class MyPageController {
 	
 	//게시물 id로 조회
 	//--인테리어 게시판 조회
-	@RequestMapping("/selectBoard.do")
+	@RequestMapping("/interBoard.do")
 	@ResponseBody
-	public List<CommInteriorVO> getSelectBoard(Model model, CommInteriorVO cvo) {
+	public List<CommInteriorVO> getSelectBoard(Model model, CommInteriorVO cvo, CommInfoVO ivo, CookVO ckvo) {
 		System.out.println(cvo);
-		List<CommInteriorVO> interiorMypage = mypages.getSelectBoard(cvo);
+		List<CommInteriorVO> interiorMypage = mypages.interSelectBoard(cvo);
 		System.out.println(interiorMypage);
+
+		List<CommInfoVO> infoMypage = mypages.infoSelectBoard(ivo);
+		System.out.println(infoMypage);
+
+		List<CookVO> cookMypage = mypages.cookSelectBoard(ckvo);
+		System.out.println(cookMypage);
+		
 		return interiorMypage;
 	}
-	
-	//
 }

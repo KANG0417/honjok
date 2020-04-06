@@ -30,5 +30,9 @@ public interface ProductService {
 
 	List<productQnaVO> ProductQna(Map<String, Integer> map);
 
+	List<productVO> ProductList(Map<String, Integer> map);
+
+	int ProductListCount();
+
 	
 }

@@ -4,6 +4,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+<!-- include summernote css/js -->
+<!-- 이 css와 js는 로컬에 있는 것들을 링크시킨 것이다. -->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.js"></script>
 <title>인테리어 게시글 수정</title>
 <style>
 	#container {

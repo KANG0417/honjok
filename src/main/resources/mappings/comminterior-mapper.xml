@@ -13,8 +13,8 @@
 	 		(COM_SEQ, TITLE, ID, NICK_NAME, CONTENT, REGDATE, HIT, TYPE)
 	 		VALUES ((COMMMUNITY_SEQ.NEXTVAL) + 1, #{title}, #{id}, #{nickName},
 	 			#{content}, SYSDATE, 0, 2);
-	 		INSERT INTO COMM_INTERIOR (COM_SEQ, FILE_IMAGE)
-	 		VALUES ((select NVL(MAX(com_seq) ,0) FROM COMMUNITY), #{fileImage});
+	 		INSERT INTO COMM_INTERIOR (COM_SEQ)
+	 		VALUES ((select NVL(MAX(com_seq) ,0) FROM COMMUNITY));
 	 		END
 	 		}
 	 	</insert>
@@ -26,9 +26,6 @@
 		 		begin
 		 		UPDATE COMMUNITY
 		 		SET TITLE = #{title}, CONTENT = #{content}, REGDATE = SYSDATE
-		 		WHERE COM_SEQ = #{comSeq};
-		 		UPDATE COMM_INTERIOR
-		 		SET FILE_IMAGE = #{fileImage}
 		 		WHERE COM_SEQ = #{comSeq};
 		 		END
 		 	}
@@ -86,8 +83,7 @@
 			CONTENT,
 			TO_CHAR(SYSDATE, 'yyyy-mm-dd') as regdate,
 			HIT,
-			LIKES,
-		    FILE_IMAGE
+			LIKES
 			FROM(SELECT C.COM_SEQ,
 			C.TITLE,
 			C.ID,
@@ -95,8 +91,7 @@
 			TO_CHAR(C.REGDATE, 'yyyy-mm-dd') as regdate,
 			C.HIT,
 			C.NICK_NAME,
-			C.LIKES,
-		    I.FILE_IMAGE
+			C.LIKES
 			FROM COMMUNITY C, COMM_INTERIOR I
 			WHERE C.COM_SEQ = I.COM_SEQ AND TYPE = '2' ORDER BY C.COM_SEQ DESC))
 			WHERE RECNUM BETWEEN (#{section}-1)* 90 +
@@ -107,7 +102,7 @@
   
   		<!-- 게시판 번호로 조회 -->
 		<select id="getInteriorOne" parameterType="commInteriorVO" resultType="commInteriorVO">
-			SELECT C.COM_SEQ, C.TITLE, C.NICK_NAME, C.CONTENT, C.REGDATE, C.HIT, C.LIKES, I.FILE_IMAGE, C.ID
+			SELECT C.COM_SEQ, C.TITLE, C.NICK_NAME, C.CONTENT, C.REGDATE, C.HIT, C.LIKES, C.ID
 			FROM COMMUNITY C, COMM_INTERIOR I
 			WHERE C.COM_SEQ = I.COM_SEQ
 			AND C.COM_SEQ = #{comSeq}

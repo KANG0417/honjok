@@ -104,5 +104,21 @@ public List<productQnaVO> ProductQna(Map<String, Integer> map) {
 }
 
 
+
+//상품리스트 가져오기 
+@Override
+public List<productVO> ProductList(Map<String, Integer> map) {
+	return mapper.ProductList(map);
+}
+
+
+
+
+@Override
+public int ProductListCount() {
+	return mapper.ProductListCount();
+}
+
+
 }
 
