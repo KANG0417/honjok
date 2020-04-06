@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>로그인</title>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>     
 <link href="/app/resources/css/login/login.css" rel="stylesheet">
 </head>
@@ -19,7 +19,7 @@
         </nav>
         <header id="header">
             <h1>
-                <a class="logo" href="#">
+                <a class="logo" href="/app/main/getMainList.do">
                     <img src="/app/resources/img/main/logo3.png" alt="OEN-MARKET">
                 </a>
             </h1>

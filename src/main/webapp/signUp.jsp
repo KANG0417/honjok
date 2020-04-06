@@ -61,7 +61,7 @@ function sample6_execDaumPostcode(){
         </nav>
         <header id="header">
             <h1>
-                <a class="logo" href="#">
+                <a class="logo" href="/app/main/getMainList.do">
                     <img src="/app/resources/img/main/logo3.png" alt="ONE MARKET">
                 </a>
             </h1>
@@ -209,7 +209,7 @@ function sample6_execDaumPostcode(){
                       </form>
                 </div>
                 <div class="btn_wrap full">
-                    <button class="btn_base darkgray bigact" type="button" onclick="goBack('P');">이전단계</button>
+                    <button class="btn_base darkgray bigact" type="button" onclick="location.href='/app/main/getMainList.do';">이전단계</button>
                     <button class="btn_base blue bigact signup" type="button">가입하기</button>
                 </div>
             </section>    
