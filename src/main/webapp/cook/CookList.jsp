@@ -24,7 +24,7 @@
  	table, th, td { 
  		margin: 0 auto; 
  	} 
-	th { background-color: yellow; }
+	th { background-color: white; }
 	.center { text-align: center; }
 	.border-none, .border-none td { border: none; }
 	
@@ -174,13 +174,19 @@
             </div>
           </div>
         </div>
-<div class="container mt-3">
-<!--   <p>혼밥 레시피는 늘어나는 1~2인 가구 및 간편식 라이프스타일에 맞춘 브랜드로<br> 조리 편의성과 소용량 제품을 원하는 고객 니즈를 반영했다.</p> -->
-  <hr>
+<div>
+		<a href="http://localhost:8080/app/cook/insert.jsp">
+        	<img src="${contextPage.request.contextPath}/app/resources/img/write_btn.png" alt="쓰기">
+      	</a>
+      	
+<!--       	<form action="insert.jsp"> -->
+<!--   		 <input type="submit" value="글쓰기"> -->
+<!-- 		</form> -->
 </div>
 
  <table class="table">
-      <tr>
+      <tr class="table-primary">
+ 		
         <th>글번호</th>
         <th>제목</th>
         <th>글쓴이</th>
@@ -191,7 +197,7 @@
      
     <c:forEach var="cookvo" items="${cookList }">
     <tbody>
-     <tr class="table-warning">
+     <tr class="table-info">
          <td>${cookvo.comSeq }</td>
          <td><a href="CookDetail.do?comSeq=${cookvo.comSeq }">${cookvo.title }</a></td>
          <td>${cookvo.nickName }</td>
@@ -201,9 +207,7 @@
      </tr>
    	 </c:forEach>  
       </tbody>
-     	<form action="insert.jsp">
-  		 <input type="submit" value="글쓰기">
-		</form>
+     	
 
 </table>
 

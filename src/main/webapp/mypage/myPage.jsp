@@ -8,7 +8,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>회원상세페이지</title>
-<style>
+<!-- <style>
 	#main {
 		border: 1px solid gray;
 		padding: 50px;
@@ -193,50 +193,14 @@
 	.thInter, .tbInter {
     	background-color: #e3f2fd;
   	}
-</style>
+</style> -->
 <script>
 	
 </script>
 </head>
 <body>
-	<div id="main">원마켓</div>
-	<br>
-	<nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
-	  <a class="navbar-brand" href="${contextPage.request.contextPath }/app/index.jsp">Home</a>
-	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-	    <span class="navbar-toggler-icon"></span>
-	  </button>
-	 <div class="collapse navbar-collapse" id="collapsibleNavbar">
-    	<ul class="navbar-nav">
-      	<li class="nav-item">
-        <a class="nav-link" href="signUp.jsp">회원가입</a>
-      </li>
-      <c:if test="${sessionScope.userSession.id == null }">
-      	<li class="nav-item">
-      	<a class="nav-link" href="${contextPage.request.contextPath }/app/login.jsp">로그인</a>
-      	</li>
-      </c:if>
-      <c:if test="${sessionScope.userSession.id != null }">
-      	<li class="nav-item">${userSession.id} 님 안녕하세요!<a href="${contextPage.request.contextPath }/app/logout.do">Log-out</a>
-        </li>
-      </c:if>
-      <li class="nav-item">
-        <a class="nav-link" href="${contextPage.request.contextPath }/app/interior/interiorAllList.do">인테리어</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="${contextPage.request.contextPath }/app/cook/CookAll.do">레시피</a>
-      </li>    
-      <li class="nav-item">
-        <a class="nav-link" href="${contextPage.request.contextPath }/app/honjokInfo/select.do">혼밥정보</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="${contextPage.request.contextPath }/app/mypage/myPage.jsp">마이페이지</a>
-      </li>
-    </ul>
-  	</div>
-  	
-	</nav>
-	
+<jsp:include page="/header.jsp"/>	
+	스타일이 겹치는거 아님 ? 헤더에있는거랑 
 <div style="display:flex; flex-direction: row;">
 	<div style="width : 20%;">
 	<ol id="memberInfo">
@@ -449,11 +413,12 @@
 		$('#intro').html("");
 		$('#intro').append('<table><thead><tr><th>스크랩한 게시물</th></tr></thead></table>');	
 	});
-	
+	마이페이지근데저겆네비;바아직도따라다녀
 	//상품문의 클릭시 페이지 전환
 	$('.qHistory').on("click",function(){
 		$('#intro').html("");
-		$('#intro').append('상품문의');	
+		$('#intro').append('상품문의');
+		<jsp:include page="sss" flush="false"/>
 	})
 	
 	function fn_comment(){
