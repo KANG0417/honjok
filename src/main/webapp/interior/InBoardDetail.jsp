@@ -7,112 +7,13 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-<title>인테리어 글 상세</title>
-<style>
-	#main {
-		border: 1px solid gray;
-		padding: 50px;
-		margin: 20px;
-		text-align: center;
-	}
-	
-	body {
-		background-color: #f1f2f6;
-	}
-	
-	/* 글 테두리 */
-	#inter-border {
-		background-color: white;
-		width: 900px;
-		heigh: 800px;
-		margin: 20px;
-	}
-	
-	/* 글 상세 */
-	.inter-title {
-		padding: 20px;
-		margin: 30px;
-		text-align: left;
-		font-size: 30px;
-		font-weight: bold;
-		color: #226b80;
-	}
-	
-	.inter-writer {
-		text-align: left;
-		font-size: 15px;
-	}
-	
-	.inter-hit {
-		float: right;
-	}
-	
-	.inter-regdate {
-		float: right;
-	}
-	
-	.inter-content {
-		padding: 120px;
-	}
-	
-	.r-sidebar {
-		float: right;
-		width: 300px;
-		height: 500px;
-		margin-right: 20px;
-		border: 2px solid red;
-		background-color: #ffe7d5;
-	}
-	
-	/* 댓글 */
-	.comment-list {
-		list-style: none;
-	}
-	
-	.comment-title {
-		border: 1px solid black;
-		padding: 20px;
-		margin: 10px;
-	}
-	
-	.content {
-		width: 1100px;
-		padding: 20px;
-		margin-bottom: 50px;
-	}
-	
-	.parent { 
-	  display: grid; 
-	  grid-template-areas:
-	    "i1 i2 i3"
-	    "i4 i4 i4";
-	    
-	  /* div {
-	    border: 1px solid #000;
-	  } */
-	  
-	 .writer {
-	    grid-area: i1;
-	  }
-	 .date {
-	    grid-area: i2;
-	  }
-	 .reply-re {
-	    grid-area: i3;
-	  }
-	 .reply-content {
-	    grid-area: i4;
-	  }
-	}
-</style>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js">
-</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
-<script src="https://kit.fontawesome.com/73d0df04d6.js"
-	crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/73d0df04d6.js"crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+<title>인테리어 글 상세</title>
 <script>
 	//게시물 삭제
 	function fn_delete() {
@@ -167,123 +68,513 @@
 	    };
 
 </script>
+<style>
+.app_wrap.v40 {
+    margin: 0;
+    height: 100%;
+}    
+.app_wrap {
+    background: #fff;
+}    
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption,header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: top;
+    box-sizing: border-box;
+}   
+body {
+    margin: 0;
+    height: 100%;
+    line-height: 1;
+    font-family: 'NotoSansKR', sans-serif;
+}   
+.app_wrap.v40 #app {
+    height: 100%;
+}    
+#app {
+    z-index: 400;
+    min-height: 627px;
+    height: auto;
+    padding-top: 103px;
+}    
+.app_wrap.v40 #app #content {
+    min-height: calc(100% - 273px);
+    padding-bottom: 70px;
+    box-sizing: border-box;
+}    
+._container {
+    width: 972px;
+    margin: 0 auto;
+}    
+.pt-5 {
+    padding-top: 50px;
+}    
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    display: block;
+}   
+.product_detail_info .product_detail_main_thumbnail {
+    width: 100%;
+    height: 500px;
+    position: relative;
+    overflow: hidden;
+}    
+.product_detail_info .product_detail_main_thumbnail img {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+}   
+.width_100 {
+    width: 100%;
+}    
+.pt-3 {
+    padding-top: 30px;
+}   
+.text_center {
+    text-align: center;
+}    
+.pb-3 {
+    padding-bottom: 30px;
+}    
+.bold_text {
+    font-weight: bold;
+}    
+.dark_text {
+    color: #1d1d1d;
+}  
+.f-26 {
+    font-size: 26px;
+}    
+.pb-2 {
+    padding-bottom: 20px;
+}    
+.f-16 {
+    font-size: 16px;
+}    
+.product_detail_info .product_detail_spec {
+    width: 100%;
+    padding: 20px 0;
+    position: relative;
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 2px;
+}  
+    
+ol, ul {
+    list-style: none;
+}    
 
+
+.product_detail_info .product_detail_spec .product_detail_spec_list .product_detail_spect_item{
+    width: 20%;
+    float: left;
+
+}    
+    
+.product_detail_info .product_detail_spec .product_detail_spec_list .product_detail_spect_item img {
+    width: 35px;
+    height: 35px;
+}    
+ 
+.mb-1 {
+    margin-bottom: 10px;
+}  
+.gray_text {
+    color: #999999;
+}
+.f-14 {
+    font-size: 14px;
+}    
+.pb-1 {
+    padding-bottom: 10px;
+}   
+.product_detail_story {
+    padding-top: 50px;
+}  
+ 
+.clfix::before, .clfix::after {
+    content: " ";
+    display: table;
+}
+.clfix::after, .clb {
+    clear: both;
+}    
+.product_detail_story .product_detail_content {
+    text-align: center;
+}    
+.product_detail_story .product_detail_content .product_detail_content_item {
+    display: inline-block;
+    margin-bottom: 70px;
+}    
+.relative {
+    position: relative;
+}    
+.image_100 {
+    max-width: 100%;
+}    
+.product_detail_story .product_detail_content .product_detail_content_item .product_detail_thumbnail img.image_100 {
+    max-height: 972px;
+}    
+
+#content #comment_panel {
+    padding-bottom: 50px;
+}
+#content #description_wrap, #content #metadata_wrap, #content #contents_panel, #content #comment_panel {
+    width: 100%;
+    padding: 0 15px;
+        padding-bottom: 0px;
+} 
+#content #description_wrap, #content #metadata_wrap, #content #contents_panel, #content #comment_panel {
+    float: left;
+    width: 800px;
+    padding: 0 50px;
+    box-sizing: border-box;
+    background-color: #ffffff;
+}    
+#content #comment_panel .comment-feed__header {
+    margin-top: 15px;
+}    
+.comment-feed__header {
+    font-weight: 700;
+    color: #000;
+    margin: 10px 0 20px;
+        margin-top: 10px;
+    font-size: 16px;
+}    
+.comment-feed__form {
+    margin-bottom: 30px;
+}    
+.comment-feed__form {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    position: relative;
+}    
+.comment-feed__form__user {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 auto;
+    -moz-box-flex: 0;
+    -moz-flex: 0 0 auto;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+}    
+.comment-feed__form__user > img {
+    width: 30px;
+    height: 30px;
+    margin: 5px 10px 0 0;
+    border-radius: 100%;
+}    
+.comment-feed__form__content, .comment-feed__form__input {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 1 0px;
+    -moz-box-flex: 1;
+    -moz-flex: 1 1 0px;
+    -ms-flex: 1 1 0px;
+    flex: 1 1 0px;
+    min-width: 0;
+}    
+.comment-feed__form__input {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    position: relative;
+    max-width: 100%;
+    border: 1px solid #dbdbdb;
+    border-radius: 4px;
+}    
+.comment-content-input {
+    position: relative;
+}    
+.comment-feed__form__content__text {
+    display: block;
+    width: 100%;
+    min-height: 38px;
+    border: none;
+    background: none;
+    color: #424242;
+    margin: 0;
+    padding: 8px 15px 9px;
+    font-family: inherit;
+    font-size: 15px;
+    line-height: 1.4;
+    resize: none;
+    overflow: hidden;
+    word-wrap: break-word;
+    box-sizing: border-box;
+}    
+.comment-feed__form__actions {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 auto;
+    -moz-box-flex: 0;
+    -moz-flex: 0 0 auto;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    padding: 7px 15px 7px 0;
+    margin: 0 -7.5px;
+    font-size: 0;
+}    
+.comment-feed__form__submit {
+    color: #35c5f0;
+    font-size: 15px;
+    font-weight: 700;
+}    
+
+.comment-feed__form__submit {
+
+    color: #35c5f0;
+    font-size: 15px;
+    font-weight: 700;
+
+}
+.comment-feed__form__photo, .comment-feed__form__submit {
+
+    margin: 0 7.5px;
+    padding: 0;
+    border: none;
+    background: none;
+    transition: opacity .2s;
+
+}
+ input[type="submit"] {
+    cursor: pointer;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    -moz-appearance: textfield; 
+    border-radius: 0; 
+}    
+ol, ul {
+    list-style: none;
+}    
+.comment-feed__item {
+    margin-bottom: 20px;
+    padding-left: 40px;
+}    
+.comment-feed__item__content {
+    position: relative;
+    margin: -4px 0 4px;
+    min-width: 0;
+    max-width: 100%;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    font-size: 15px;
+    line-height: 1.67;
+}    
+.comment-feed__item__content__author {
+    display: block;
+    margin: 0 0 -5px;
+    font-size: 0;
+    line-height: 20px;
+}    
+a {
+    color: inherit;
+    text-decoration: none;
+}    
+a,  input[type="submit"]{
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+}    
+.comment-feed__item__content__author__image {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 2px;
+    left: -40px;
+    margin-right: 10px;
+    border-radius: 100%;
+    background-color: #dbdbdb;
+}    
+.comment-feed__item__content__author__name {
+    color: #424242;
+    font-weight: 700;
+    font-size: 15px;
+}    
+.comment-feed__item__content__content {
+    white-space: pre-line;
+}    
+.comment-feed__item__footer {
+    color: #757575;
+    font-size: 13px;
+    font-weight: 700;
+}    
+ footer {
+    box-sizing: border-box;
+    position: relative;
+    display: block;
+}
+.comment-feed__item__footer__time {
+    font-weight: 400;
+}    
+
+.width{
+	width:778px;
+	margin-left:92px;
+}
+.comment-feed__header__count {
+    color: #35c5f0;
+}
+.comment-feed__item__footer > .comment-feed__item__footer__delete-btn, .comment-feed__item__footer > .comment-feed__item__footer__report-btn {
+    font-weight: 400;
+    color: #bdbdbd;
+}
+.comment-feed__item__footer > a, .comment-feed__item__footer > button {
+    background: none;
+    border: none;
+    color: inherit;
+    padding: 0;
+    font-size: 13px;
+    font-weight: inherit;
+    font-family: inherit;
+}
+</style>
 </head>
 <body>
-<div id="main">원마켓</div>
-<%-- <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
-  <a class="navbar-brand" href="index.jsp">Home</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  
-  <div class="collapse navbar-collapse" id="collapsibleNavbar">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="signUp.jsp">회원가입</a>
-      </li>
-      <c:if test="${sessionScope.userSession.id == null }">
-      	<li class="nav-item">
-      	<a class="nav-link" href="${contextPage.request.contextPath }/app/login.jsp">로그인</a>
-      	</li>
-      </c:if>
-      <c:if test="${sessionScope.userSession.id != null }">
-      	<li class="nav-item">${userSession.id} 님 안녕하세요!</li><a href="${contextPage.request.contextPath }/app/logout.do">Log-out</a>
-      </c:if>
-      <li class="nav-item">
-        <a class="nav-link" href="${contextPage.request.contextPath }/app/interior/interiorAllList.do">인테리어</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="${contextPage.request.contextPath }/app/cook/CookAll.do">레시피</a>
-      </li>    
-      <li class="nav-item">
-        <a class="nav-link" href="${contextPage.request.contextPath }/app/honjokInfo/select.do">혼밥정보</a>
-      </li>
-        <li class="nav-item">
-        <a class="nav-link" href="/app/admin/productReg.jsp">상품등록</a>
-      </li>     
-    </ul>
-  </div>  
-</nav> --%>
-
-		<!-- 본문 내용 -->
-	<section id="sBox">
-		<input type="hidden" name="comSeq" id="comSeq" value="${interiorvo.comSeq }">
-		<input type="hidden" name="id" id="id" value="${interiorSelect.id }">
-		<div id="inter-border">
-			<div class="inter-title">
-				${interiorSelect.title }
-			</div>
-			<div>
-			<span class="inter-writer">
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${interiorSelect.nickName }
-			</span>
-			<span class="inter-hit">
-				${interiorSelect.hit }&nbsp;&nbsp;&nbsp;&nbsp;
-			</span>
-			<span class="inter-regdate">
-				&nbsp;&nbsp;&nbsp;${interiorSelect.regdate }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			</span>
-			</div>
-			<article class="inter-content">
-				${interiorSelect.content }
-			</article>
-	
-		<!-- 검색 사이드바 -->
-		<div class="r-sidebar">
-			<p>검색</p>
-		</div>
-		
-		<!-- 좋아요 -->
-		<i id="likes" class="far fa-heart fa-5x"></i><span>좋아요</span>${likesCount }
-
-		<!-- 공유하기 -->
-		<div id="ex1" class="modal">
-		<p><input type="text" id = "ShareUrl">
-		<div class="rgyShare">
-	    <h3>이 글을 공유합시다</h3>
-	    <div class="rgyShare-inner">
-	        <a href="#" target="_blank" onclick="javascript:window.open( 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent( document.URL )+'&t=' + encodeURIComponent( document.title ), 'jb-share-window-facebook', 'menubar=no, toolbar=no, resizable=yes, scrollbars=yes, width=600, height=600' ); return false;" title="페이스북"><img src="../img/logo_facebook.png" alt="facebook"></a>
-	        <a href="#" target="_blank" onclick="javascript:window.open( 'https://twitter.com/intent/tweet?text=' + encodeURIComponent( document.title ) + '%20(' + encodeURIComponent( document.URL ) + ')', 'jb-share-window-google-plus', 'menubar=no, toolbar=no, resizable=yes, scrollbars=yes, width=600, height=600' ); return false;" title="트위터"><img src="../img/logo_twitter.png" alt="twitter"></a>
-	        <a href="javascript:shareKakaotalk()" title="카카오톡"><img src="../img/logo_kakao.png" alt="kakaoTalk"></a>
-	        <a href="#" target="_blank" onclick="javascript:window.open( 'https://story.kakao.com/share?url=' + encodeURIComponent( document.URL ), 'jb-share-window-kakostory', 'menubar=no, toolbar=no, resizable=yes, scrollbars=yes, width=600, height=600' ); return false;" title="카카오스토리"><img src="../img/logo_kakaostory.png" alt="kakaostory"></a>
-	        <a href="#" target="_blank" onclick="javascript:window.open( 'https://share.naver.com/web/shareView.nhn?url=' + encodeURIComponent( document.URL ) + '&title=' + encodeURIComponent( document.title ), 'jb-share-window-naver', 'menubar=no, toolbar=no, resizable=yes, scrollbars=yes, width=600, height=600' ); return false;" title="네이버"><img src="../img/logo_naver.png" alt="naver"></a>
-	    </div>
-		</div>
-		<span class="btn-type1"><button OnClick="javascript:CopyUrlToClipboard()">URL 복사</button></span>
-		</div>
-		<p><a href="#ex1" rel="modal:open">공유하기</a></p>
-		
-		<div>
-		<!-- 글수정 -->
-	  	<form class="update" action="InBoardUpdate.jsp">
-		<span>
-	    <c:set value="${interiorSelect }" var="inter" scope="session"></c:set>
-	    		<input type="submit" value="글 수정">
-		</span>
-		</form>
-		
-		<!-- 글삭제 -->
-		<form action="deleteArticle.do?comSeq=${interiorSelect.comSeq }" id="deleteform">
-		<span>
-			<input type="button" onclick="fn_delete()" value="글 삭제">
-			<input type="hidden" name="comSeq" id="comSeq" value="${interiorSelect.comSeq }">
-		</span>
-		</form>
-		</div>
-		
-		<a href="${contextPage.request.contextPath}/app/interior/interiorAllList.do">글목록</a>
-		</div>
-		
-		<!-- 댓글 목록 -->
+<jsp:include page="/header.jsp"></jsp:include>
+    <div class="app_wrap height100 v40 gnb_not_border">
+        <div id="app" style="">
+            <div id="content">
+                <div>
+                    <div class="pt-5 _container">
+                        <section class="product_detail_info">
+                            <div class="product_detail_main_thumnail">
+                                <img class="width_100" src="/app/resources/img/interior/20200323180000816_obP1iGbndP.jpg">
+                            </div>
+                            <div class="text_center pt-3 pb-3">
+                                <h3 class="f-26 dark_text bold_text pb-2">${interiorSelect.title}</h3>
+                                <p class="f-16 drak_text">${interiorSelect.nickName}</p>
+                            </div>
+                            <div class="product_detail_spec">
+                                <ul class="product_detail_spec_list clfix">
+                                    <li class="product_detail_spect_item text_center">
+                                        <img class="mb-1" src="/app/resources/img/interior/internet.png">
+                                        <p class="f14 gray_text pb-1">건물</p>
+                                        <p class="f-16 dark_text">빌라</p>
+                                    </li>
+                                    <li class="product_detail_spect_item text_center">
+                                        <img class="mb-1" src="/app/resources/img/interior/iconmonstr-construction-35-240.png">
+                                        <p class="f14 gray_text pb-1">평수</p>
+                                        <p class="f-16 dark_text">11평</p>
+                                    </li>
+                                        <li class="product_detail_spect_item text_center">
+                                        <img class="mb-1" src="/app/resources/img/interior/hammer.png">
+                                        <p class="f14 gray_text pb-1">스타일</p>
+                                        <p class="f-16 dark_text">내츄럴</p>
+                                    </li> 
+                                        <li class="product_detail_spect_item text_center">
+                                        <img class="mb-1" src="/app/resources/img/interior/calendar.png">
+                                        <p class="f14 gray_text pb-1">기간</p>
+                                        <p class="f-16 dark_text">3개월</p>
+                                    </li>  
+                                        <li class="product_detail_spect_item text_center">
+                                        <img class="mb-1" src="/app/resources/img/interior/iconmonstr-coin-2-240.png">
+                                        <p class="f14 gray_text pb-1">예산</p>
+                                        <p class="f-16 dark_text">150만원</p>
+                                    </li>  
+                                </ul>    
+                            </div>
+                        </section>
+                        <section class="product_detail_story">
+                            <div>
+                                <div class="product_detail_content">
+                                    <div class="product_detail_content_item relative">
+                  						<p>${interiorSelect.content}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                         <div class="comment_panel" class="ui-comment">
+                            <div class="wrap">
+                                <div class="commentFeed">
+                                    <section class="comment-feed width">
+                                        <h1 class="comment-feed__header">댓글
+                                            <span class="comment-feed__header__count">1개</span>
+                                        </h1>
+                                        <form class="comment-feed__form"method="post" action="addComment.do">
+                                            <input type="hidden" name="id" value="${sessionScope.userSession.id }"> 
+                                            <input type="hidden" name="nickName" value="${sessionScope.userSession.nickName }"> 
+                                            <input type="hidden" name="comSeq" value="${interiorSelect.comSeq }">
+                                            <div class="comment-feed__form__user">
+                                                <img src="/app/resources/img/interior/smile.png">
+                                            </div>
+                                            <div class="comment-feed__form__input">
+                                                <div class="comment-feed__form__content">
+                                                	<c:if test="${sessionScope.userSession.id == null }">
+                                                    <div class="comment-content-input__text comment-feed__form__content__text"
+                                                         contenteditable="true">
+                                                    </div>
+                                                    </c:if>
+                                                    <c:if test="${sessionScope.userSession.id != null }">
+                                                     <div class="comment-content-input__text comment-feed__form__content__text"
+                                                         contenteditable="true">
+                                                    </div>
+                                                    </c:if>
+                                                    <c:if test="${empty c_list }">
+														<input type="hidden" name="idx" value="0">
+													    <input type="hidden" name="lev" value="0">
+													</c:if>
+													<c:if test="${stepResult >= 1 }">
+														<input type="hidden" name="idx" value="${stepResult}">
+														<input type="hidden" name="lev" value="0">
+													</c:if>
+                                                 </div>
+                                                 <div class="comment-feed__form__actions">
+                                                    <button type="submit" class="comment-feed__form__submit" aria-label="등록">등록</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <ul class="comment-feed__list">
+                                        	<c:forEach var="comment" items="${commentSelect}">
+                                            <li class="comment-feed__list__item">
+                                                <article class="comment-feed__item">
+                                                    <p class="comment-feed__item__content">
+                                                        <a class="comment-feed__item__content__author">
+                                                            <img class="/app/resources/img/interior/user.png">
+                                                            <span class="comment-feed__item__content__author__name">${comment.nickName}</span>
+                                                        </a>
+                                                        <span class="comment-feed__item__content__content">${comment.content}</span>
+                                                    </p>
+                                                    <footer class="comment-feed__item__footer">
+                                                        <time class="comment-feed__item__footer__time">
+                                                            ${comment.regdate}
+                                                        </time>
+                                                        <c:if test="${ sessionScope.userSession.nickName == comment.nickName }">
+															<button class="reply-up">수정</button>
+															<button class="comment-feed__item__footer__delete-btn">삭제</button>
+														</c:if>
+                                                    </footer>
+                                                </article>
+                                            </li>
+                                            </c:forEach>
+                                        </ul>
+                                    </section>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>	
+		<!-- 댓글 목록 
 		<div class="comment-add">
 			<ol class="comment-list">
 				<li>
 				<div class="comment-title">댓글</div>
 				<c:forEach var="comment" items="${commentSelect }">
 					<span class="writer">${comment.nickName }</span>
-					<span class="date">${comment.regdate}</span>
-					<c:if test="${empty c_list }"> <!-- 댓글이 없을시 step:0, lev:0 -->
+					<span class="date">${comment.regdate}</span>-->
+					<!--<c:if test="${empty c_list }"> 
 						<input type="hidden" name="step" value="0">
 						<input type="hidden" name="lev" value="0">
 					</c:if>
@@ -300,9 +591,9 @@
 			</c:forEach>
 				</li>
 			</ol>
-		</div>
+		</div>-->
 		
-		<!-- 댓글 입력창 -->
+		<!-- 댓글 입력창 
 		<div class="comment-wri">
                 <span><strong>댓글입력</strong></span> <span id="cCnt"></span>
                 <hr>
@@ -314,10 +605,10 @@
            		<form method="post" action="addComment.do">
 	           		<input type="hidden" name="id" value="${sessionScope.userSession.id }"> 
 				    <input type="hidden" name="nickName" value="${sessionScope.userSession.nickName }"> 
-					<input type="hidden" name="comSeq" value="${interiorSelect.comSeq }">
+					<input type="hidden" name="comSeq" value="${interiorSelect.comSeq }">-->
 					
 					
-					<c:if test="${empty c_list }"> <!-- 댓글이 없을시 idx:0, lev:0 -->
+					<!--<c:if test="${empty c_list }">
 						<input type="hidden" name="idx" value="0">
 						<input type="hidden" name="lev" value="0">
 					</c:if>
@@ -333,8 +624,7 @@
                     </div>
 				</form>
                    </c:if>
-            </div>
-</section>
+            </div>-->
 
 <script>
 

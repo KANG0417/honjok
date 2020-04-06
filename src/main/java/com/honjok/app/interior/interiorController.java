@@ -117,7 +117,7 @@ public class interiorController {
 		}
 	
 		//게시물 입력 페이지
-		@RequestMapping("/insertInteriorB.do")
+		@RequestMapping(value="/insertInteriorB.do", method=RequestMethod.POST)
 		public String insertBoard(CommInteriorVO cvo) {
 			System.out.println("전체목록: " + cvo);
 			interiorService.insertBoard(cvo);
