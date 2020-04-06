@@ -385,7 +385,7 @@
                                                                   transition-duration: 0s;">
                                     <div class="swiper-slide swiper-slide-duplicate" style="width: 390px; height: 478px;">
                                         <a href="#">
-                                            <img src="/image/1.png" alt="" style= "width:366px; height: 400px;">
+                                            <img src="/app/resources/img/main/bannergagu1.png" alt="" style= "width:366px; height: 400px;">
                                             <span style="background-image:url(/image/2.png)"></span>
                                             <i style="background-image: url(/image/2.png)"></i>
                                             <em style="background-image: url(image/2.png)"></em>
@@ -393,7 +393,7 @@
                                     </div>
                                     <div class="swiper-slide swiper-slide-duplicate" style="width: 390px; height: 478px;">
                                         <a href="#">
-                                            <img src="/image/1.png" alt="" style= "width:366px; height: 400px;">
+                                            <img src="/app/resources/img/main/bannergagu2.png" alt="" style= "width:366px; height: 400px;">
                                             <span style="background-image:url(/image/2.png) "></span>
                                             <i style="background-image: url(/image/2.png)"></i>
                                             <em style="background-image: url(image/2.png)"></em>
@@ -401,7 +401,7 @@
                                     </div>
                                     <div class="swiper-slide swiper-slide-duplicate" style="width: 390px; height: 478px;">
                                         <a href="#">
-                                            <img src="/image/1.png" alt="" style= "width:366px; height: 400px;">
+                                            <img src="/app/resources/img/main/bannergagu3.png" alt="" style= "width:366px; height: 400px;">
                                             <span style="background-image:url(/image/2.png) "></span>
                                             <i style="background-image: url(/image/2.png)"></i>
                                             <em style="background-image: url(image/2.png)"></em>
