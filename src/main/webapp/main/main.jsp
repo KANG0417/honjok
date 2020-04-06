@@ -242,10 +242,10 @@
                 </div>
                 <div class="linkbanner">
                     <a class="left" href="#" >
-                        <img src="/image/aaf3ce95f776276b0e5d43ebe795978d.png" style="width: 560px; height: 180px;"alt=""/>
+                        <img src="/app/resources/img/main/advertise1.jpg" style="width: 560px; height: 180px;"alt=""/>
                     </a>
                     <a class="right" href="#">
-                        <img src="/image/unnamed.jpg" style="width: 560px; height: 180px;"alt=""/>
+                        <img src="/app/resources/img/main/advertise2.jpg" style="width: 560px; height: 180px;"alt=""/>
                     </a>
                 </div>
                 <div class="onlyone_hotdeal">
@@ -257,7 +257,7 @@
                         <div id="only_on1" class="prdlist">
                             <a href="#">
                                 <span class="photo">
-                                    <img src="/image/20200319_1531022_064_210x210.png" alt="미세먼지out"/>
+                                    <img src="/app/resources/img/main/b0d4deb5b124f0d950ad3acabac883b3.jpg" alt="미세먼지out"/>
                                 </span>
                                 <span class="hash">#저렴하게!</span>
                                 <span class="tit">
@@ -294,7 +294,7 @@
                         <div id="only_on2" class="prdlist">
                             <a href="#">
                                <span class="photo">
-                                    <img src="/image/20200319_1531022_064_210x210.png" alt="미세먼지out"/>
+                                    <img src="/app/resources/img/main/22750_shop1_883579.jpg" alt="미세먼지out"/>
                                 </span>
                                 <span class="hash">#미세먼지 OUT</span>
                                 <span class="tit">
@@ -337,7 +337,7 @@
                         <div id="only_on3" class="prdlist">
                             <a href="#">
                                 <span class="photo">
-                                    <img src="/image/20200319_1531022_064_210x210.png" alt="미세먼지out"/>
+                                    <img src="/app/resources/img/main/22236_shop1_493001.jpg" alt="미세먼지out"/>
                                 </span>
                                 <span class="hash">#미세먼지 OUT</span>
                                 <span class="tit">

@@ -980,7 +980,7 @@ wrap.main .prdlist .over button {
 #wrap.main .movie_warp {
     width: auto !important;
     height: 800px;
-    background: url('/app/resources/img/main/bg_movielink_200207.png') no-repeat 50% 100%;
+    background: url('/app/resources/img/main/youtube.png') no-repeat 50% 100%;
 }    
 #wrap.main .movie_warp .movie {
     position: relative;
