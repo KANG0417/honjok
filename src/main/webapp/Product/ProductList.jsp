@@ -41,7 +41,7 @@
         .btn {
             display: block;
             padding: 8px 10px;
-            background: #3498db;
+            background: #35c5f0;
             color: white;
             position: relative;
         }
@@ -51,7 +51,7 @@
             position: absolute;
             width: 14px;
             height: 14px;
-            background: #3498db;
+            background: #35c5f0;
             left: 20px;
             bottom: -7px;
             transform: rotate(45deg);
@@ -82,7 +82,7 @@
             position: absolute;
             width: 4px;
             height: 100%;
-            background: #3498db;
+            background: #35c5f0;
             left: 0;
             top: 0;
             transition: 0.3s;
@@ -238,11 +238,10 @@ opacity: 1;
     clear: both;
 }
 .prd-list ul {
-    display: flex;
-    flex-wrap: wrap;
     margin: 0 auto;
     width: 100%;
 }
+
 ul, ol, menu {
     list-style: none;
 }
@@ -251,9 +250,8 @@ ul, ol, menu {
     float: left;
     width: 200px;
     min-height: 300px;
-    margin: 0 30px 30px 0;
     flex-basis: initial;
-    margin: 0 auto;
+    margin: 0 60px ;
     
 }
 
@@ -341,15 +339,18 @@ img, fieldset, iframe, frame {
 }
 
 #pageNavigation {
-    margin: 5px 0 50px;
+    margin: 100px 0 50px;
 }
 .paging {
     box-sizing: content-box;
-    position: relative;
+    display:inline;
     line-height: normal;
     text-align: center;
     font-size: 14px;
 }
+
+
+
 .blind {
     position: absolute;
     overflow: hidden;
@@ -439,6 +440,12 @@ img, fieldset, iframe, frame {
          color: #fff;
          text-decoration: none;
      }
+     .paging-ul{
+     	text-align: center;
+     }
+     .paging-ul li{
+     display: inline;}
+
 
     </style>
 
@@ -941,6 +948,7 @@ img, fieldset, iframe, frame {
 				<!-- 상품 하단 페이징 시작 -->
 				<div class="mgt20" id="pageNavigation">
 					<nav class="paging">
+					<ul class="paging-ul">
 					<c:choose>
 						<c:when test="${p.beginPage == '1' }">
 					<a data-index="1" class="go-first"><span>처음</span></a>
@@ -950,7 +958,7 @@ img, fieldset, iframe, frame {
 					</c:otherwise>
                    </c:choose>
 						<c:forEach var="i" begin="${p.beginPage }" end="${p.endPage }">
-                                 
+                             
                                  	<c:choose>
                                  		<c:when test="${i == p.nowPage }">
 		                                    <li>
@@ -965,9 +973,11 @@ img, fieldset, iframe, frame {
 	                                </c:choose>
 	                                
                                     </c:forEach>
-			
+							
 					<a data-index="18" class="go-next"><span>다음</span></a>
-					<a data-index="425" class="go-last"><span>마지막</span></a></nav>
+					<a data-index="425" class="go-last"><span>마지막</span></a>
+						</ul>
+					</nav>
 				</div>
 
 				<!--card2끝-->
