@@ -6,10 +6,89 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>게시판 css</title>
 <style media="screen">
-
+	/* 이미지 3개 */
+	element.style {
+	    padding-top: 0px;
+	    padding-bottom: 0px;
+	    transform: translateY(0px);
+	}
+	
+	/* 게시판 이미지 전체 */
+	.row {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -moz-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    margin-right: -5px;
+    margin-left: -5px;
+	}
+	
+	.project-feed__item {
+    position: relative;
+    display: block;
+    text-align: center;
+    padding-bottom: 30px;
+	}
+	
+	/* 게시판 이미지 하나 */
+	.col-12 {
+    position: relative;
+    width: 100%;
+    min-height: 1px;
+    box-sizing: border-box;
+    -webkit-box-flex: 0;
+    -moz-box-flex: 0;
+    -moz-flex: 0 0 100%;
+    -ms-flex: 0 0 100%;
+    max-width: 100%;
+    padding-right: 5px;
+    padding-left: 5px;
+	}
+	
+	.project-feed__item__link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+	}
+	
+	a:-webkit-any-link {
+    color: -webkit-link;
+    cursor: pointer;
+    text-decoration: underline;
+	}
+	
+	/* 썸네일 이미지 */
+	.project-feed__item__image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    background-color: #ededed;
+	}
+	
+	/* 게시판 제목 */
+	.project-feed__item__title {
+    margin: 18px 0 8px;
+    line-height: 24px;
+    font-size: 17px;
+    font-weight: 700;
+    color: #424242;
+    word-wrap: break-word;
+	}
+	
 </style>
 </head>
 <body>
+<h2>인테리어 게시판</h2>
+<h2>전체: </h2>
 <div class="layout">
   <div class="container">
     <div class="project-feed">

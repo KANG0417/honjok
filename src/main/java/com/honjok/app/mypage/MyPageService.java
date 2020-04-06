@@ -6,7 +6,9 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
+import com.honjok.app.vo.CommInfoVO;
 import com.honjok.app.vo.CommInteriorVO;
+import com.honjok.app.vo.CookVO;
 import com.honjok.app.vo.OrderVO;
 import com.honjok.app.vo.UserVO;
 
@@ -23,6 +25,8 @@ public interface MyPageService {
 	public List<OrderVO> getOrder(OrderVO ovo);
 	
 	//id로 인테리어 게시물 조회
-	List<CommInteriorVO> getSelectBoard(CommInteriorVO cvo);
+	public List<CommInteriorVO> interSelectBoard(CommInteriorVO cvo);
+	public List<CommInfoVO> infoSelectBoard(CommInfoVO ivo);
+	public List<CookVO> cookSelectBoard(CookVO ckvo);
 
 }

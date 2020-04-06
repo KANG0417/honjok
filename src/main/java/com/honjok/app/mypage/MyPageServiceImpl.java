@@ -7,7 +7,9 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.honjok.app.vo.CommInfoVO;
 import com.honjok.app.vo.CommInteriorVO;
+import com.honjok.app.vo.CookVO;
 import com.honjok.app.vo.OrderVO;
 import com.honjok.app.vo.UserVO;
 
@@ -37,8 +39,19 @@ public class MyPageServiceImpl implements MyPageService {
 	//id로 본인 게시물 조회
 	//---인테리어 게시물 조회
 	@Override
-	public List<CommInteriorVO> getSelectBoard(CommInteriorVO cvo) {
-		return myDAO.getSelectBoard(cvo);
+	public List<CommInteriorVO> interSelectBoard(CommInteriorVO cvo) {
+		return myDAO.interSelectBoard(cvo);
+	}
+
+	//---혼놀정보 게시물 조회
+	@Override
+	public List<CommInfoVO> infoSelectBoard(CommInfoVO ivo) {
+		return myDAO.infoSelectBoard(ivo);
+	}
+
+	//--자취레시피 게시물 조회
+	@Override
+	public List<CookVO> cookSelectBoard(CookVO ckvo) {
+		return myDAO.cookSelectBoard(ckvo);
 	}
 }
-

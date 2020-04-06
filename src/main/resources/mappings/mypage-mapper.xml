@@ -7,10 +7,25 @@
 	<!-- 게시물 조회 -->
 	<!-- 인테리어 게시물 조회 -->
 	<select id="interiorBoard" parameterType="commInteriorVO" resultType="commInteriorVO">
- 		SELECT C.COM_SEQ, C.TITLE, C.NICK_NAME, C.CONTENT, C.REGDATE, C.HIT, C.LIKES, I.FILE_IMAGE
+ 		SELECT C.COM_SEQ, C.TITLE, C.NICK_NAME, C.CONTENT, C.REGDATE, C.HIT, C.LIKES
 			FROM COMMUNITY C, COMM_INTERIOR I
 			WHERE C.COM_SEQ = I.COM_SEQ
 			AND C.ID = #{id}
+	</select>
+	
+	<!-- 혼족정보 게시물 조회 -->
+	<select id="infoBoard" parameterType="commInteriorVO" resultType="commInteriorVO">
+ 		SELECT *
+			FROM COMMUNITY C, COMM_INFO I
+			WHERE C.COM_SEQ = I.COM_SEQ
+			AND C.ID = #{id}
+	</select>
+	
+	<!-- 레시피 게시물 조회 -->
+	<select id="cookBoard" parameterType="commInteriorVO" resultType="commInteriorVO">
+ 		SELECT *
+			FROM COMM_COOK
+			WHERE ID = #{id}
 	</select>
 	
 	<!-- 주문내역 조회 -->
