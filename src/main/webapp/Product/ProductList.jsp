@@ -35,6 +35,7 @@
         .item {
             border-top: 1px solid #2980b9;
             overflow: hidden;
+			
         }
 
         .btn {
@@ -116,6 +117,11 @@
         .card1 {
             margin-right: 50px;
             width: 20%;
+            height: 800px;
+	        position: sticky;
+	        top: 60px;"
+	        
+	   
         }
 
         .card2 {
