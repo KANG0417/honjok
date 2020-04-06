@@ -107,5 +107,12 @@
 		order siblings by idx desc))where recNum between #{begin} and #{end}
 	</select>
 	
+	<select id="ProductList" resultType="productVO" parameterType="Map">
+		select * from (select rownum num, n.* from (select * from product) n )where num BETWEEN #{begin} and #{end}
+	</select>
+	<select id="ProductListCount" resultType="Integer">
+		select COUNT(*) from product
+	</select>
+	
 
 </mapper>
