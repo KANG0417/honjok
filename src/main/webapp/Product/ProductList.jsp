@@ -479,7 +479,7 @@ img, fieldset, iframe, frame {
                 <div class="smenu">
                     <a class="amenu" href="#">침대</a>
                     <div class="ssmenu">
-                        <a href="#">일반침대</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=침대">일반침대</a>
                         <a href="#">수납형침대</a>
                         <a href="#">저상형침대</a>
                         <a href="#">이층침대</a>
@@ -921,7 +921,7 @@ img, fieldset, iframe, frame {
 											<!-- //price -->
 										</dd>
 										<dd class="user-side">
-											<span class="selling-count">000 개 구매중</span>
+											<span class="selling-count"></span>
 										</dd>
 										<dd class="advantage">
 											<div>
