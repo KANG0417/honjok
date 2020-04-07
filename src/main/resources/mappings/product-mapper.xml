@@ -122,7 +122,7 @@
 		<select id="ProductListSerchCount" resultType="Integer" parameterType="String">
  select COUNT(*) from product WHERE p_name LIKE '%' || #{topSearchKeyword} || '%'
  or brand_name like '%' || #{topSearchKeyword} || '%' or promotion like '%' || #{topSearchKeyword} || '%' 
- or description like '%' || #{topSearchKeyword} || '%'
+ or description like '%' || #{topSearchKeyword} || '%' 
 	</select>
 	
 

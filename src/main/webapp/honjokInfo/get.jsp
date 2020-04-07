@@ -31,6 +31,8 @@
 	src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
+<link rel="stylesheet" type="text/css"
+	href="/app/resources/css/hojokinfo/get.css">
 
 <!-- 섬네일이미지 출력  -->
 
@@ -289,8 +291,6 @@
 </script>
 
 
-<link rel="stylesheet" type="text/css"
-	href="/app/resources/css/hojokinfo/get.css">
 	
 <style>
 	textarea::placeholder{
@@ -316,7 +316,7 @@
 			<div class="card card-1">
 				<p>${CommInfoVO.nickName }님의혼밥리뷰</p>
 				<h2>${CommInfoVO.title }</h2>
-				<h5>#해시테그 #해시태그 #해시태그</h5>
+				<h5></h5>
 				<p>메장 대표메뉴</p>
 				<c:forEach var="Upload" items="${UploadList }">
 					<img width="100px" height="100px"
@@ -396,11 +396,8 @@
 						<label for="image"></label> 
 						<input multiple="multiple" type="file" name="file" id="image" />
 					</form>
-
 				</div>
-
-
-				<div>
+				<div style="display: flex; margin-top: 30px;">
 					<form class="update" action="update.jsp">
 						<c:set value="${CommInfoVO }" var="com" scope="session"></c:set>
 						<input type="submit" value="수정">
@@ -414,14 +411,16 @@
 					</form>
 				</div>
 
+
+				
 			</div>
 		</div>
 
 		<div class="right-column">
 
-			<div>어쩌고 저쩌고~~</div>
-			<div>어쩌고 저쩌고~~</div>
-			<div>어쩌고 저쩌고~~</div>
+			<div></div>
+			<div></div>
+			<div></div>
 
 			<div class="product">
 
@@ -467,7 +466,6 @@
 	<p>작성일:${CommInfoVO.regdate }</p>
 	
 --%>
-
 
 	<script>
 		function insertReview(e) {
@@ -516,7 +514,8 @@
 								}
 								console.log(fileString);
 								var eParent = $(e).parent();
-								$(eParent).append(
+								console.log("eParent"+eParent);
+								$('.comment_item_list').append(
 												'<div class="id_admin" style="width: 100%; display: block;"> <span>'
 														+ objParams.nickName
 														+ '</span></div><div class="comment" style="display: block;"><div class="comment-img" style="display: flex;">'

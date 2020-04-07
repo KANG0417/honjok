@@ -1,12 +1,13 @@
+
 body{
    font-family: Arial, Helvetica, sans-serif;
    margin:0;
-  padding: 20px;
-   background-color: #a09d9d; 
-  border-radius: 2px;
+    padding: 20px;
+    border-radius: 2px;
     position: absolute;
     height: 100%;
     width: 100%;
+    background-color: #FAFAFA;
 }
 
 
@@ -70,9 +71,7 @@ h2{
     
 }
 
-.card-1{
-	
-}
+
 .card-2{
 	text-align: center;
 }
@@ -84,5 +83,23 @@ h2{
 /* 미리보기 삭제 */
  #image_preview {
     display:none;
+}
+
+label,
+textarea {
+    font-size: .8rem;
+    letter-spacing: 1px;
+}
+textarea {
+    padding: 10px;
+    line-height: 1.5;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px #999;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
 }
 
