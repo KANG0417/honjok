@@ -1,12 +1,13 @@
+
 body{
    font-family: Arial, Helvetica, sans-serif;
    margin:0;
-  padding: 20px;
-   background-color: #a09d9d; 
-  border-radius: 2px;
+    padding: 20px;
+    border-radius: 2px;
     position: absolute;
     height: 100%;
     width: 100%;
+    background-color: #F2F2F2;
 }
 
 
@@ -70,9 +71,7 @@ h2{
     
 }
 
-.card-1{
-	
-}
+
 .card-2{
 	text-align: center;
 }
@@ -86,3 +85,37 @@ h2{
     display:none;
 }
 
+
+textarea {
+    font-size: .8rem;
+    letter-spacing: 1px;
+}
+textarea {
+    padding: 10px;
+    line-height: 1.5;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px #999;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+hr {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    border-top: 1px solid #eee;
+}
+input[type="button"],input[type="submit"]{
+    background-color: #46ffff; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 2px;
+    cursor: pointer;
+}

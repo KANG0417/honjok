@@ -93,7 +93,10 @@ public class UserServiceImpl implements UserService {
 				
 				System.out.println("3단계 : 로그인 단계");
 				vo.setPassword("");
+
 				
+				
+				httpSession.setAttribute("basketCount",UserDAO.basketCount(vo.getId()));
 				
 				httpSession.setAttribute("userSession", vo);
 				System.out.println("회원아이디 세션 확인 userSession" + httpSession.getAttribute("userSession"));

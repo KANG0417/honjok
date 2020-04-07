@@ -31,6 +31,8 @@
 	src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
+<link rel="stylesheet" type="text/css"
+	href="/app/resources/css/hojokinfo/get.css">
 
 <!-- 섬네일이미지 출력  -->
 
@@ -289,8 +291,6 @@
 </script>
 
 
-<link rel="stylesheet" type="text/css"
-	href="/app/resources/css/hojokinfo/get.css">
 	
 <style>
 	textarea::placeholder{
@@ -303,7 +303,7 @@
 </style>
 </head>
 <body>
-
+<jsp:include page="/header.jsp"></jsp:include>
 	<div>
 		<header>
 			<h1>혼밥</h1>
@@ -316,7 +316,7 @@
 			<div class="card card-1">
 				<p>${CommInfoVO.nickName }님의혼밥리뷰</p>
 				<h2>${CommInfoVO.title }</h2>
-				<h5>#해시테그 #해시태그 #해시태그</h5>
+				<h5></h5>
 				<p>메장 대표메뉴</p>
 				<c:forEach var="Upload" items="${UploadList }">
 					<img width="100px" height="100px"
@@ -368,6 +368,7 @@
 							</div>
 
 						</div>
+						<hr>
 					</c:forEach>
 				</div>
 
@@ -396,11 +397,8 @@
 						<label for="image"></label> 
 						<input multiple="multiple" type="file" name="file" id="image" />
 					</form>
-
 				</div>
-
-
-				<div>
+				<div style="display: flex; margin-top: 30px;">
 					<form class="update" action="update.jsp">
 						<c:set value="${CommInfoVO }" var="com" scope="session"></c:set>
 						<input type="submit" value="수정">
@@ -414,40 +412,70 @@
 					</form>
 				</div>
 
+
+				
 			</div>
 		</div>
 
 		<div class="right-column">
 
-			<div>어쩌고 저쩌고~~</div>
-			<div>어쩌고 저쩌고~~</div>
-			<div>어쩌고 저쩌고~~</div>
+			<div></div>
+			<div></div>
+			<div></div>
 
-			<div class="product">
-
+			<div class="product" style="text-align: center;">
+		
+				<h3>추천상품</h3>
+				
 				<div class="card">
-					<h2>상품소개</h2>
-					<img> 이미지
-					<p>상품제목</p>
+				<a href="/app/Product/Product.do?pNum=11">
+                                        <span class="photo">
+                                            <img width="200" height="200" src="/app/resources/img/3종셋트.jpg" alt="상품명입력">
+                                        </span>
+                                        <br>
+                                        <span class="hash">#저렴하게!</span>    <br>
+                                        <span class="tit">
+                                            <strong>마이세펴</strong>
+                                          	 밀키트 3종 골라담기
+                                        </span>
+                                        <span class="price">
+                                          18000
+                                            <i>원</i>    
+                                        </span>
+                                    </a>
 				</div>
 				<div class="card">
-					<h2>상품소개</h2>
-					<img> 이미지
-					<p>상품제목</p>
+					<a href="/app/Product/Product.do?pNum=13">
+                                        <span class="photo">
+                                            <img width="200" height="200"  src="/app/resources/img/크림파스타1.jpg" alt="상품명입력">
+                                        </span>    <br>
+                                        <span class="hash">#저렴하게!</span>    <br>
+                                        <span class="tit">
+                                            <strong>프레시지</strong>
+                                          	 [프레시지] 트러플 크림 파스타 (2인분) 밀키트 쿠킹박스
+                                        </span>
+                                        <span class="price">
+                                          9900
+                                            <i>원</i>    
+                                        </span>
+                                    </a>
 				</div>
 				<div class="card">
-					<h2>상품소개</h2>
-					<img> 이미지
-					<p>상품제목</p>
+			<a href="/app/Product/Product.do?pNum=14">
+                                        <span class="photo">
+                                            <img width="200" height="200"  src="/app/resources/img/스테이크.jpg" alt="상품명입력">
+                                        </span>    <br>
+                                        <span class="hash">#저렴하게!</span>    <br>
+                                        <span class="tit">
+                                            <strong>프레시지</strong>
+                                          	 [프레시지] 블랙라벨 스테이크 (2인분) 밀키트 쿠킹박스
+                                        </span>
+                                        <span class="price">
+                                          17900
+                                            <i>원</i>    
+                                        </span>
+                                    </a>
 				</div>
-
-				<div>
-					<button>구매하기</button>
-				</div>
-				<div>
-					<button>장바구니</button>
-				</div>
-
 			</div>
 
 		</div>
@@ -467,7 +495,6 @@
 	<p>작성일:${CommInfoVO.regdate }</p>
 	
 --%>
-
 
 	<script>
 		function insertReview(e) {
@@ -516,14 +543,15 @@
 								}
 								console.log(fileString);
 								var eParent = $(e).parent();
-								$(eParent).append(
+								console.log("eParent"+eParent);
+								$('.comment_item_list').append(
 												'<div class="id_admin" style="width: 100%; display: block;"> <span>'
 														+ objParams.nickName
 														+ '</span></div><div class="comment" style="display: block;"><div class="comment-img" style="display: flex;">'
 														+ fileString
 														+ '</div><div style="display: flex; flex-direction:row;"><div class="comment_contents"style="width:95%;height:50px; overflow:hidden;word-wrap:break-word;">'
 														+ objParams.content
-														+ '</div><div style="width:5%; height:50px;"><button type="button">답글</button></div></div></div>');
+														+ '</div><div style="width:5%; height:50px;"><button type="button">답글</button></div></div></div><hr>');
 								
 							},
 							error : function(jqXHR, textStatus, errorThrown) {

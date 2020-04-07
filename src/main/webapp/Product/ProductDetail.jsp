@@ -6,19 +6,17 @@
 <html lang="UTF-8">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://kit.fontawesome.com/73d0df04d6.js" crossorigin="anonymous"></script>
-
-  		<link href="/app/resources/css/ProductDetail/ProductDetail.css?after" rel="stylesheet">
+  	<link href="/app/resources/css/ProductDetail/ProductDetail.css?after" rel="stylesheet">
 
 <style>
-
-
-
 </style>
+
 </head>
 
 <body>

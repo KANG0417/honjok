@@ -61,7 +61,7 @@ public class adminController {
 		vo.setThumnailImg(thumnail.getOriginalFilename());
 		adminService.insertProduct(vo);
 		System.out.println("vo :" + vo);
-		return "index.jsp";
+		return "/main/main.jsp";
     }
 	
 	
