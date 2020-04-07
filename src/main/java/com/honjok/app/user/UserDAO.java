@@ -62,8 +62,8 @@ public class UserDAO {
 	}
 
 
-	public int basketCount() {
-		int basketCount = mybatis.selectOne("UserDAO.basketCount");
+	public int basketCount(String id) {
+		int basketCount = mybatis.selectOne("UserDAO.basketCount",id);
 		return basketCount;
 	}
 	

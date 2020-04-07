@@ -98,9 +98,9 @@
                                     <span>검색</span>
                                 </button>
                             </div>
-                            <a class="btn-cart" href="cart/cart.do">
+                           <a class="btn-cart" href="/app/getCartList.do?memId=${userSession.id }">
                                 <span class="hide">장바구니</span>
-                                <span class="count">0</span>
+                                <span class="count">${basketCount != null? basketCount : 0}</span>
                             </a>
                         </div>
                     </form>

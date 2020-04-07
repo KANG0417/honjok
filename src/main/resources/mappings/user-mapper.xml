@@ -51,8 +51,8 @@
 	</update>
 	
 	<!-- 장바구니 숫자  -->
-	<select id="basketCount" resultType="Integer">
-		select count(*) from basket
+	<select id="basketCount" parameterType="String" resultType="Integer">
+		select count(*) from basket where id = #{id}
 	</select>
 	
 	

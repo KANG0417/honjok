@@ -96,7 +96,7 @@ public class UserServiceImpl implements UserService {
 
 				
 				
-				httpSession.setAttribute("basketCount",UserDAO.basketCount());
+				httpSession.setAttribute("basketCount",UserDAO.basketCount(vo.getId()));
 				
 				httpSession.setAttribute("userSession", vo);
 				System.out.println("회원아이디 세션 확인 userSession" + httpSession.getAttribute("userSession"));
