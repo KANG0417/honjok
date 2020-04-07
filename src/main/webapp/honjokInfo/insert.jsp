@@ -355,6 +355,7 @@ input[type=submit] {
 </head>
 
 <body>
+<jsp:include page="/header.jsp"></jsp:include>
 	<h1>혼족정보게시판</h1>
 
 	<div class="wrap">

@@ -7,7 +7,7 @@ body{
     position: absolute;
     height: 100%;
     width: 100%;
-    background-color: #FAFAFA;
+    background-color: #F2F2F2;
 }
 
 
@@ -85,7 +85,7 @@ h2{
     display:none;
 }
 
-label,
+
 textarea {
     font-size: .8rem;
     letter-spacing: 1px;
@@ -101,5 +101,10 @@ textarea {
 label {
     display: block;
     margin-bottom: 10px;
+}
+hr {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    border-top: 1px solid #eee;
 }
 

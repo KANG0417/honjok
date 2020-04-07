@@ -452,6 +452,8 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+<jsp:include page="/header.jsp"></jsp:include>
 <div class="container">
 	<div class="title-wrap">
 		<h2>상품등록</h2>

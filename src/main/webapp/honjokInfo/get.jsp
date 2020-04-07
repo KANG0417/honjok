@@ -303,7 +303,7 @@
 </style>
 </head>
 <body>
-
+<jsp:include page="/header.jsp"></jsp:include>
 	<div>
 		<header>
 			<h1>혼밥</h1>
@@ -368,6 +368,7 @@
 							</div>
 
 						</div>
+						<hr>
 					</c:forEach>
 				</div>
 
@@ -422,31 +423,59 @@
 			<div></div>
 			<div></div>
 
-			<div class="product">
-
+			<div class="product" style="text-align: center;">
+		
+				<h3>추천상품</h3>
+				
 				<div class="card">
-					<h2>상품소개</h2>
-					<img> 이미지
-					<p>상품제목</p>
+				<a href="/app/Product/Product.do?pNum=11">
+                                        <span class="photo">
+                                            <img width="200" height="200" src="/app/resources/img/3종셋트.jpg" alt="상품명입력">
+                                        </span>
+                                        <br>
+                                        <span class="hash">#저렴하게!</span>    <br>
+                                        <span class="tit">
+                                            <strong>마이세펴</strong>
+                                          	 밀키트 3종 골라담기
+                                        </span>
+                                        <span class="price">
+                                          18000
+                                            <i>원</i>    
+                                        </span>
+                                    </a>
 				</div>
 				<div class="card">
-					<h2>상품소개</h2>
-					<img> 이미지
-					<p>상품제목</p>
+					<a href="/app/Product/Product.do?pNum=13">
+                                        <span class="photo">
+                                            <img width="200" height="200"  src="/app/resources/img/크림파스타1.jpg" alt="상품명입력">
+                                        </span>    <br>
+                                        <span class="hash">#저렴하게!</span>    <br>
+                                        <span class="tit">
+                                            <strong>프레시지</strong>
+                                          	 [프레시지] 트러플 크림 파스타 (2인분) 밀키트 쿠킹박스
+                                        </span>
+                                        <span class="price">
+                                          9900
+                                            <i>원</i>    
+                                        </span>
+                                    </a>
 				</div>
 				<div class="card">
-					<h2>상품소개</h2>
-					<img> 이미지
-					<p>상품제목</p>
+			<a href="/app/Product/Product.do?pNum=14">
+                                        <span class="photo">
+                                            <img width="200" height="200"  src="/app/resources/img/스테이크.jpg" alt="상품명입력">
+                                        </span>    <br>
+                                        <span class="hash">#저렴하게!</span>    <br>
+                                        <span class="tit">
+                                            <strong>프레시지</strong>
+                                          	 [프레시지] 블랙라벨 스테이크 (2인분) 밀키트 쿠킹박스
+                                        </span>
+                                        <span class="price">
+                                          17900
+                                            <i>원</i>    
+                                        </span>
+                                    </a>
 				</div>
-
-				<div>
-					<button>구매하기</button>
-				</div>
-				<div>
-					<button>장바구니</button>
-				</div>
-
 			</div>
 
 		</div>
@@ -522,7 +551,7 @@
 														+ fileString
 														+ '</div><div style="display: flex; flex-direction:row;"><div class="comment_contents"style="width:95%;height:50px; overflow:hidden;word-wrap:break-word;">'
 														+ objParams.content
-														+ '</div><div style="width:5%; height:50px;"><button type="button">답글</button></div></div></div>');
+														+ '</div><div style="width:5%; height:50px;"><button type="button">답글</button></div></div></div><hr>');
 								
 							},
 							error : function(jqXHR, textStatus, errorThrown) {
