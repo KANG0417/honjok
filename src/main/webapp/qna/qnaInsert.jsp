@@ -1,67 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@page trimDirectiveWhitespaces="true" %>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-    <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-    <%
-    	request.setCharacterEncoding("UTF-8");
-    %>
-    
+<%@ page trimDirectiveWhitespaces="true" %>
 <!DOCTYPE html>
-<html lang="ko">
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Q&A 글쓰기</title>
+<meta charset=UTF-8">
+<!-- include libraries(jQuery, bootstrap)-->
+<!-- summernote홈페이지에서 받은 summernote를 사용하기 위한 코드를 추가 -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<!-- include summernote css/js -->
+<!-- 이 css와 js는 로컬에 있는 것들을 링크시킨 것이다. -->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.js"></script>
+<title>글쓰는 페이지</title>
 </head>
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.4.1.js"></script>
 <script type="text/javascript">
-		
-		$(function(){
-			$("#btnFileAdd").click(function () {
-				$("#fileList").append(
-						'<div class="col-xs-12">'+
-						'<input  type="file" name="uploadFiles" value="" multiple="multiple"style="display: inline">'+
-						'<button type="button" class="btn btn-danger btn-delete-file">X</button>'+
-						'</div>');
-			});
-			
-			$("#fileList").on("click",".btn-delete-file",function(){
-				$(this).parent().remove();	
-				});
-	
-		
-		});	
-		
-		function fn_save() {
-			
-			var frm = document.qnaForm;
-			
-			if(!validate()){
-				return;
-			}
-			
-			frm.submit();
-			
-		}
-		function validate() {
-			
-			var frm = document.qnaForm;
-			
-			if(frm.qna_title.value == ""){
-				alert("제목은 필수입력입니다.");
-				return false;
-			}
-			if(frm.qna_content.value == ""){
-				alert("내용은 필수입력입니다.");
-				return false;
-			}
-			
-			return true;
-		}
-		
-	
+
 </script>
 
 <body>

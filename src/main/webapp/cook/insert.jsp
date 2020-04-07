@@ -31,11 +31,11 @@
 
 	<form action="InsertCook.do" method="post">
 
-	<select name="category">
-	<option value="3분요리">3분 요리</option>
-	<option value="5분요리">5분 요리</option>
-	<option value="10분 이상">10분 이상</option>
-	</select>
+<!-- 	<select name="category"> -->
+<!-- 	<option value="3분요리">3분 요리</option> -->
+<!-- 	<option value="5분요리">5분 요리</option> -->
+<!-- 	<option value="10분 이상">10분 이상</option> -->
+<!-- 	</select> -->
 	
 	<table>
 <!-- 		<tr> -->

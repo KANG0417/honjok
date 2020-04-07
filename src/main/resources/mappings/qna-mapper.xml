@@ -7,7 +7,7 @@
 <mapper namespace="qnaMapper">
 	<insert id="insertQna" parameterType="Qna">
 	insert into qna
-		VALUES((qna_num.NEXTVAL)+1,#{title},#{content}
+		VALUES((cook_sequence.NEXTVAL)+1,#{title},#{content}
 		,sysdate, 0,#{nickName})
 	</insert>
 	

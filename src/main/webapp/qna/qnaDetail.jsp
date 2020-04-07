@@ -2,88 +2,57 @@
     pageEncoding="UTF-8"%>
     <%@page trimDirectiveWhitespaces="true" %>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-    <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-    <%
-    	request.setCharacterEncoding("UTF-8");
-    %>
-    
+ 
 <!DOCTYPE html>
-<html lang="ko">
+<html>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 <head>
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/bootstrap/css/bootstrap.css">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<meta charset="UTF-8">
+<title>글상세보기</title>
 </head>
 
-<script type="text/javascript">
-	function fn_delete() {
-		location.href = "${pageContext.request.contextPath}/board/qna/qnaDelete?qna_num="
-				+ $
-		{
-			qna.qna_num
-		}
-		;//EL 표기로 사용가능함
-	}
-	function fn_update(qna_num) {
-		location.href = "${pageContext.request.contextPath}/board/qna/qnaEdit/${qna.qna_num}";//EL 표기로 사용가능함
-	}
-</script>
+<!-- Bootstrap core CSS -->
+<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
+<!-- Custom styles for this template -->
+<link href="css/blog-home.css" rel="stylesheet">
 <body>
 	<h3>게시판 상세보기</h3>
+	  <!-- Page Content -->
+  <div class="container">
+
+    <div class="row">
+
+      
+      <div class="col-md-8">
+
+        <h1 class="my-4">${qna.title }
+        </h1>
+
+        <div class="card mb-4">
+          <div class="card-body">
+            <p class="card-text">${qna.content }</p>
+          </div>
+          <div class="card-footer">
+            Posted on ${qna.regdate } by
+            <a href="#">${qna.nickName }</a>
+          </div>
+        </div>
 	
 	<table class="table table-bordered">
 		<tr>
 			<td width="20%">제목</td>
-			<td>${qna.qna_title}</td>
+			<td>${qna.title}</td>
 		</tr>
 		<tr>
 			<td>글쓴이</td>
-			<td>${qna.mem_id}</td>
+			<td>${qna.nickName}</td>
 		</tr>
 		<tr>
 			<td>작성일자</td>
-			<td>${qna.reg_date}</td>
+			<td>${qna.regdate}</td>
 		</tr>
-		<tr>
-			<td>조회수</td>
-			<td>${qna.qna_hit}</td>
-		</tr>
-		
-		<tr>
-			<td>첨부파일</td>
-			<td>
-				<p>
-				<c:forEach var="fileItem" items="${board.fileItemList}">
-				<div>
-					<a href="${pageContext.request.contextPath}/common/download/${fileItem.file_seq_no}">${fileItem.file_name}</a> ${fileItem.file_fancy_size}
-				</div>
-				</c:forEach>
-				
-				</p>
-				
-			</td>
-		</tr>
-
-		<tr>
-			<td colspan="2" style="white-space: pre-wrap;">${qna.qna_content}</td>
-		</tr>
-
-		<tr>
-			<td colspan="2" align="center">
-				<%-- <c:if test="${board.bo_writer} == ${member.mem_id}"> --%> 
-				<c:if test="${not empty LOGIN_USER and (LOGIN_USER.mem_id eq qna.mem_id)}">
-					<input type="button" class="btn btn-default" value="수정"
-						onclick="fn_update('${qna.qna_num}')">
-					<input type="button" class="btn btn-default" value="삭제"
-						onclick="fn_delete('${qna.qna_num}')">
-				</c:if> <input type="button" class="btn btn-default" value="목록"
-				onclick="location.href='${pageContext.request.contextPath}/board/qna/qnaList'">
-			</td>
-		</tr>
-	</table>
 
 </body>
 </html>

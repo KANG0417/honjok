@@ -62,8 +62,8 @@ public class QnaController {
 	}
 
 	   @RequestMapping("/QnaDetail.do")
-		public String cookDetail(Model model, Qna qna, int comSeq) {
-			System.out.println("Cook게시판 하나 조회입니다.");
+		public String qnaDetail(Model model, Qna qna, int comSeq) {
+			System.out.println("Qna게시판 상세조회입니다.");
 			Qna qnavo = qnaservice.selectOne(qna);
 			model.addAttribute("qnaDetail", qnavo);
 			
