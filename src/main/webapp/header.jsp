@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="https://kit.fontawesome.com/73d0df04d6.js" crossorigin="anonymous"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="/app/resources/css/main/main.css" rel="stylesheet">
 <title>main header</title>
@@ -49,7 +50,9 @@
             <a href="#">하단 정보 바로가기</a>
         </nav>
         <!-- 맨위로 -->
-        	<a id="MOVE_TOP_BTN" href="#">TOP</a>
+        	<a  id="MOVE_TOP_BTN" onclick="">
+        	 <i class="fas fa-arrow-alt-circle-up fa-4x" style="color:#4682B4;"></i>
+       		</a>
         <header id="header"> 
             <h1 onclick="location.href='/app/main/getMainList.do'">
                 ONE-MARKET

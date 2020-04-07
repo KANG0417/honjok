@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="https://kit.fontawesome.com/73d0df04d6.js" crossorigin="anonymous"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>    
@@ -22,15 +23,17 @@
 	
 	/* 맨위로 css */
 	a#MOVE_TOP_BTN {
-    position: fixed;
-    right: 2%;
-    bottom: 50px;
-    display: none;
-    z-index: 999;
-}
+	    position: fixed;
+	    right: 2%;
+	    bottom: 50px;
+	    display: none;
+	    z-index: 999;
+	    cursor: pointer;
+	}
 
 </style>
 <body>
+
     <div id="wrap" class="main">
         <!--상단 띠배너-->
         <!--//상단 띠배너-->
@@ -40,7 +43,9 @@
             <a href="#">하단 정보 바로가기</a>
         </nav>
         <!-- 맨위로 -->
-        	<a id="MOVE_TOP_BTN" href="#">TOP</a>
+        	<a  id="MOVE_TOP_BTN" onclick="">
+        	 <i class="fas fa-arrow-alt-circle-up fa-4x" style="color:#4682B4;"></i>
+       		</a>
         <header id="header">
             <h1 onclick="location.href='/app/main/getMainList.do'">
                 ONE-MARKET
