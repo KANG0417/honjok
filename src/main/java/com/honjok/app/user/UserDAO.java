@@ -60,6 +60,12 @@ public class UserDAO {
 		System.out.println(" Vo : = " + vo);
 		return vo;	
 	}
+
+
+	public int basketCount() {
+		int basketCount = mybatis.selectOne("UserDAO.basketCount");
+		return basketCount;
+	}
 	
 	
 	

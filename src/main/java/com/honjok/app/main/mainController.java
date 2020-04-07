@@ -67,6 +67,9 @@ public class mainController {
 		
 		List<productReviewVO> productReviewList = mainService.productReviewList();
 		
+		//장바구니 크기 
+		
+		
 		
 		
 		
