@@ -15,6 +15,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <style type="text/css">
+    body{margin-top:50px;}
+.glyphicon { margin-right:10px; }
+.panel-body { padding:0px; }
+.panel-body table tr td { padding-left: px }
+.panel-body .table {margin-bottom: 0px; }
         </style>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
@@ -33,7 +38,153 @@
 </head>
 <body>
 <jsp:include page="/header.jsp"></jsp:include>
-    <div class="container ">
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-1 col-md-3">
+            <div class="panel-group" id="accordion">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><span class="glyphicon glyphicon-folder-close">
+                            </span>Content</a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <table class="table">
+                                <tr>
+                                    <td>
+                                        <span class="glyphicon glyphicon-pencil text-primary"></span><a href="http://www.jquery2dotnet.com">FAQ</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="glyphicon glyphicon-flash text-success"></span><a href="http://www.jquery2dotnet.com">공지사항</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="glyphicon glyphicon-file text-info"></span><a href="http://www.jquery2dotnet.com">상품 후기</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="glyphicon glyphicon-comment text-success"></span><a href="/app/qna/QnaAll.do">상품 문의</a>
+                                        <span class="badge">42</span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title" >
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"><span class="glyphicon glyphicon-th">
+                            </span>Modules</a>
+                        </h4>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <table class="table">
+                                <tr>
+                                    <td>
+                                        <a href="http://www.jquery2dotnet.com">Orders</a> <span class="label label-success">$ 320</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="http://www.jquery2dotnet.com">Invoices</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="http://www.jquery2dotnet.com">Shipments</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="http://www.jquery2dotnet.com">Tex</a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree"><span class="glyphicon glyphicon-user">
+                            </span>Account</a>
+                        </h4>
+                    </div>
+                    <div id="collapseThree" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <table class="table">
+                                <tr>
+                                    <td>
+                                        <a href="http://www.jquery2dotnet.com">Change Password</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="http://www.jquery2dotnet.com">Notifications</a> <span class="label label-info">5</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="http://www.jquery2dotnet.com">Import/Export</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="glyphicon glyphicon-trash text-danger"></span><a href="http://www.jquery2dotnet.com" class="text-danger">
+                                            Delete Account</a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour"><span class="glyphicon glyphicon-file">
+                            </span>Reports</a>
+                        </h4>
+                    </div>
+                    <div id="collapseFour" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <table class="table">
+                                <tr>
+                                    <td>
+                                        <span class="glyphicon glyphicon-usd"></span><a href="http://www.jquery2dotnet.com">Sales</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="glyphicon glyphicon-user"></span><a href="http://www.jquery2dotnet.com">Customers</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="glyphicon glyphicon-tasks"></span><a href="http://www.jquery2dotnet.com">Products</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="glyphicon glyphicon-shopping-cart"></span><a href="http://www.jquery2dotnet.com">Shopping Cart</a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-9 col-md-9">
+<div class="container ">
     <div class="panel-group" id="faqAccordion">
         <div class="panel panel-default ">
             <div class="panel-heading accordion-toggle question-toggle collapsed" data-toggle="collapse" data-parent="#faqAccordion" data-target="#question0">
@@ -55,7 +206,7 @@
         <div class="panel panel-default ">
             <div class="panel-heading accordion-toggle collapsed question-toggle" data-toggle="collapse" data-parent="#faqAccordion" data-target="#question1">
                  <h4 class="panel-title">
-                    <a href="#" class="ing">[교환/반품]상품은 어디로 보내야 하나요?</a>
+                    <a href="#" class="ing">[해외배송] 해외에도 배송이 되나요?</a>
               </h4>
 
             </div>
@@ -63,19 +214,15 @@
                 <div class="panel-body">
                      <h5><span class="label label-primary">Answer</span></h5>
 
-                    <h6><br>철회요청서에 고객님 정보와 처리 사항을 적으신 후<br>
-받는사람 [강지향]<br>
-서울특별시 성북구 석관동 58-283 성북 A터미널 '혼족'으로 보내주시면 됩니다.<br>
-<br>
-※ CJ대한통운 택배가 아닌 타택배로 보내주실 경우에는<br>
-선불로 직접 결제후 보내주셔야합니다. </h6>
+                     <dd><img src="http://superstari.cdn.smart-img.com/00/0_canter/FAQ/170314_faq.jpg">
+</dd>
                 </div>
             </div>
         </div>
         <div class="panel panel-default ">
             <div class="panel-heading accordion-toggle collapsed question-toggle" data-toggle="collapse" data-parent="#faqAccordion" data-target="#question2">
                  <h4 class="panel-title">
-                    <a href="#" class="ing">[교환/반품] 택배비는 얼마인가요?</a>
+                    <a href="#" class="ing">[배송문의] 당일출고 및 당일발송이 가능한가요?</a>
               </h4>
 
             </div>
@@ -83,31 +230,39 @@
                 <div class="panel-body">
                      <h5><span class="label label-primary">Answer</span></h5>
 						 <dl class="adv">
-                                                    <dd><img src="http://superstari.cdn.smart-img.com/00/0_canter/FAQ/170307_faq.jpg">
-</dd>
-                                                </dl>
+                                         <dd><img src="http://superstari.cdn.smart-img.com/00/0_canter/FAQ/170313_faq_01.jpg">
+                                         </dd></dl>
                 </div>
             </div>
         </div>
         <div class="panel panel-default ">
             <div class="panel-heading accordion-toggle collapsed question-toggle" data-toggle="collapse" data-parent="#faqAccordion" data-target="#question3">
                  <h4 class="panel-title">
-                    <a href="#" class="ing">Q: Where can I get some?</a>
+                    <a href="#" class="ing">[기타문의] 적립금 관련문의</a>
               </h4>
 
             </div>
             <div id="question3" class="panel-collapse collapse" style="height: 0px;">
                 <div class="panel-body">
                      <h5><span class="label label-primary">Answer</span></h5>
-
-                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. </p>
+						 <dl class="adv">
+                                         <dd><img src="http://superstari.cdn.smart-img.com/00/0_canter/FAQ/170327_faq.jpg">
+                                         </dd></dl>
                 </div>
             </div>
         </div>
         
     </div>
     <!--/panel-group-->
-</div>	<script type="text/javascript">
+</div>
+        </div>
+    </div>
+</div>
+
+
+
+
+    	<script type="text/javascript">
 		</script>
 </body>
 </html>
