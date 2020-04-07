@@ -107,4 +107,15 @@ hr {
     margin-bottom: 0px;
     border-top: 1px solid #eee;
 }
-
+input[type="button"],input[type="submit"]{
+    background-color: #46ffff; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
