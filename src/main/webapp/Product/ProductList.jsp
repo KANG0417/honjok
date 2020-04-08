@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 
@@ -477,53 +478,53 @@ img, fieldset, iframe, frame {
             <li class="item" id="furniture">
                 <a href="#furniture" class="btn"><i class="fas fa-chair">가구</i></a>
                 <div class="smenu">
-                    <a class="amenu" href="#">침대</a>
+                    <a class="amenu" href="/app/Product/ProductList.do?topSearchKeyword=침대">침대</a>
                     <div class="ssmenu">
-                        <a href="/app/Product/ProductList.do?topSearchKeyword=침대">일반침대</a>
-                        <a href="#">수납형침대</a>
-                        <a href="#">저상형침대</a>
-                        <a href="#">이층침대</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=일반침대">일반침대</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=수납형침대">수납형침대</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=저상형침대">저상형침대</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=이층침대">이층침대</a>
                     </div>
                     <a class="amenu" href="#">매트리스</a>
                     <div class="ssmenu">
-                        <a href="#">스프링매트리스</a>
-                        <a href="#">라텍스매트리스</a>
-                        <a href="#">폼매트리스</a>
-                        <a href="#">혼합형매트리스</a>
-                        <a href="#">토퍼</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=스프링매트리스">스프링매트리스</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=라텍스매트리스">라텍스매트리스</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=폼매트리스">폼매트리스</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=혼합형매트리스">혼합형매트리스</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=토퍼">토퍼</a>
                     </div>
                     <a class="amenu" href="#">화장대</a>
                     <div class="ssmenu">
-                        <a href="#">일반화장대</a>
-                        <a href="#">수납형화장대</a>
-                        <a href="#">좌식화장대</a>
-                        <a href="#">접이식화장대</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=일반화장대">일반화장대</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=수납형화장대">수납형화장대</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=좌식화장대">좌식화장대</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=접이식화장대">접이식화장대</a>
                     </div>
                     <a class="amenu" href="#">거울</a>
                     <div class="ssmenu">
-                        <a href="#">벽거울</a>
-                        <a href="#">전신거울</a>
-                        <a href="#">탁상거울</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=벽거울">벽거울</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=전신거울">전신거울</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=탁상거울">탁상거울</a>
                     </div>
                     <a class="amenu" href="#">책상/테이블</a>
                     <div class="ssmenu">
-                        <a href="#">좌식테이블</a>
-                        <a href="#">사이드테이블</a>
-                        <a href="#">접이식테이블</a>
-                        <a href="#">아웃도어테이블</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=좌식테이블">좌식테이블</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=사이드테이블">사이드테이블</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=접이식테이블">접이식테이블</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=아웃도어테이블">아웃도어테이블</a>
                     </div>
                     <a class="amenu" href="#">의자</a>
                     <div class="ssmenu">
-                        <a href="#">일반의자</a>
-                        <a href="#">책상의자</a>
-                        <a href="#">좌식의자</a>
-                        <a href="#">안락의자/흔들의자</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=일반의자">일반의자</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=책상의자">책상의자</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=좌식의자">좌식의자</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=안락의자/흔들의자">안락의자/흔들의자</a>
                     </div>
                     <a class="amenu" href="#">거실장</a>
                     <div class="ssmenu">
-                        <a href="#">거실장/TV장</a>
-                        <a href="#">사이드보드</a>
-                        <a href="#">진열장/장식장</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=거실장/TV장">거실장/TV장</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=사이드보드">사이드보드</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=진열장/장식장">진열장/장식장</a>
                     </div>
                 </div>
             </li>
@@ -531,23 +532,23 @@ img, fieldset, iframe, frame {
             <li class="item" id="acceptance">
                 <a href="#acceptance" class="btn"><i class="fas fa-chair">수납정리</i></a>
                 <div class="smenu">
-                    <a class="amenu" href="#">드레스룸</a>
+                    <a class="amenu" href="/app/Product/ProductList.do?topSearchKeyword=드레스룸">드레스룸</a>
 
-                    <a class="amenu" href="#">옷장</a>
+                    <a class="amenu" href="/app/Product/ProductList.do?topSearchKeyword=옷장">옷장</a>
 
-                    <a class="amenu" href="#">행거</a>
+                    <a class="amenu" href="/app/Product/ProductList.do?topSearchKeyword=행거">행거</a>
                     <div class="ssmenu">
-                        <a href="#">스탠드행거</a>
-                        <a href="#">고정식행거</a>
-                        <a href="#">이동식행거</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=스탠드행거">스탠드행거</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=고정식행거">고정식행거</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=이동식행거">이동식행거</a>
                     </div>
-                    <a class="amenu" href="#">붙박이장</a>
+                    <a class="amenu" href="/app/Product/ProductList.do?topSearchKeyword=붙박이장">붙박이장</a>
 
-                    <a class="amenu" href="#">서랍장</a>
+                    <a class="amenu" href="/app/Product/ProductList.do?topSearchKeyword=서랍장">서랍장</a>
 
-                    <a class="amenu" href="#">선반</a>
+                    <a class="amenu" href="/app/Product/ProductList.do?topSearchKeyword=선반">선반</a>
 
-                    <a class="amenu" href="#">신발장</a>
+                    <a class="amenu" href="/app/Product/ProductList.do?topSearchKeyword=신발장">신발장</a>
 
                 </div>
             </li>
@@ -556,70 +557,70 @@ img, fieldset, iframe, frame {
                 <div class="smenu">
                     <a class="amenu" href="#">조명</a>
                     <div class="ssmenu">
-                        <a href="#">공간별조명</a>
-                        <a href="#">LED평판등</a>
-                        <a href="#">레일조명</a>
-                        <a href="#">장스탠드</a>
-                        <a href="#">단스탠드</a>
-                        <a href="#">데스크스탠드</a>
-                        <a href="#">벽조명</a>
-                        <a href="#">무드등/장식조명</a>
-                        <a href="#">매입등/센서등</a>
-                        <a href="#">형광등/조명 부속품</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=공간별조명">공간별조명</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=LED평판등">LED평판등</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=레일조명">레일조명</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=장스탠드">장스탠드</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=단스탠드">단스탠드</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=데스크스탠드">데스크스탠드</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=벽조명">벽조명</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=무드등/장식조명">무드등/장식조명</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=매입등/센서등">매입등/센서등</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=형광등/조명 부속품">형광등/조명 부속품</a>
                     </div>
                     <a class="amenu" href="#">시계</a>
                     <div class="ssmenu">
-                        <a href="#">벽거울</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=벽거울">벽거울</a>
                     </div>
                     <a class="amenu" href="#">플라워/식물</a>
                     <div class="ssmenu">
-                        <a href="#">벽시계</a>
-                        <a href="#">알람/탁상시계</a>
-                        <a href="#">욕실방수시계</a>
-                        <a href="#">타이머/스탑워치</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=벽시계">벽시계</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=알람/탁상시계">알람/탁상시계</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=욕실방수시계">욕실방수시계</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=타이머/스탑워치">타이머/스탑워치</a>
                     </div>
                     <a class="amenu" href="#">갤러리</a>
                     <div class="ssmenu">
-                        <a href="#">액자</a>
-                        <a href="#">패브릭 포스터</a>
-                        <a href="#">그림/사진</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=액자">액자</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=패브릭 포스터">패브릭 포스터</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=그림/사진">그림/사진</a>
                     </div>
                     <a class="amenu" href="#">벽장식</a>
                     <div class="ssmenu">
-                        <a href="#">데코스티커</a>
-                        <a href="#">마크라메</a>
-                        <a href="#">드림캐쳐/썬캐쳐</a>
-                        <a href="#">기타</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=데코스티커">데코스티커</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=마크라메">마크라메</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=드림캐쳐/썬캐쳐">드림캐쳐/썬캐쳐</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=기타">기타</a>
                     </div>
                     <a class="amenu" href="#">캔들/디퓨저</a>
                     <div class="ssmenu">
-                        <a href="#">디퓨저</a>
-                        <a href="#">홈퍼퓸/사쉐</a>
-                        <a href="#">향/인센스</a>
-                        <a href="#">석고방향제</a>
-                        <a href="#">캔들 홀더/워머</a>
-                        <a href="#">기타 악세사리</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=디퓨저">디퓨저</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=홈퍼퓸/사쉐">홈퍼퓸/사쉐</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=향/인센스">향/인센스</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=석고방향제">석고방향제</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=캔들 홀더/워머">캔들 홀더/워머</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=기타 악세사리">기타 악세사리</a>
                     </div>
                     <a class="amenu" href="#">장식소품</a>
                     <div class="ssmenu">
-                        <a href="#">트레이/보석함</a>
-                        <a href="#">미너어쳐/DIY</a>
-                        <a href="#">모빌/가랜드</a>
-                        <a href="#">장식인형</a>
-                        <a href="#">앤틱소품</a>
-                        <a href="#">마그넷/도어벨</a>
-                        <a href="#">워터볼/스노우볼</a>
-                        <a href="#">오르골</a>
-                        <a href="#">도어사인</a>
-                        <a href="#">파티/이벤트 용품</a>
-                        <a href="#">기타 장식용품</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=트레이/보석함">트레이/보석함</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=미너어쳐/DIY">미너어쳐/DIY</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=모빌/가랜드">모빌/가랜드</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=장식인형">장식인형</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=앤틱소품">앤틱소품</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=마그넷/도어벨">마그넷/도어벨</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=워터볼/스노우볼">워터볼/스노우볼</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=오르골">오르골</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=도어사인">도어사인</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=파티/이벤트 용품">파티/이벤트 용품</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=기타 장식용품">기타 장식용품</a>
                     </div>
-                    <a class="amenu" href="#">책상/기타꾸미기</a>
+                    <a class="amenu" href="/app/Product/ProductList.do?topSearchKeyword=책상/기타꾸미기">책상/기타꾸미기</a>
                     <div class="ssmenu">
-                        <a href="#">디자인문구</a>
-                        <a href="#">데스크테리어</a>
-                        <a href="#">디지털/핸드폰</a>
-                        <a href="#">기타 디자인용품</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=디자인문구">디자인문구</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=데스크테리어">데스크테리어</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=디지털/핸드폰">디지털/핸드폰</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=기타 디자인용품">기타 디자인용품</a>
                     </div>
                 </div>
             </li>
@@ -629,57 +630,57 @@ img, fieldset, iframe, frame {
                 <div class="smenu">
                     <a class="amenu" href="#">주방가전</a>
                     <div class="ssmenu">
-                        <a href="#">냉장고</a>
-                        <a href="#">전기주전자</a>
-                        <a href="#">에어프라이어</a>
-                        <a href="#">토스터/홈베이킹</a>
-                        <a href="#">전기그릴</a>
-                        <a href="#">블렌더/믹서</a>
-                        <a href="#">오븐/전자레인지</a>
-                        <a href="#">가스레인지/인덕션</a>
-                        <a href="#">전기밥솥/찜기</a>
-                        <a href="#">커피메이커/머신</a>
-                        <a href="#">기타</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=냉장고">냉장고</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=전기주전자">전기주전자</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=에어프라이어">에어프라이어</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=토스터/홈베이킹">토스터/홈베이킹</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=전기그릴">전기그릴</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=블렌더/믹서">블렌더/믹서</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=오븐/전자레인지">오븐/전자레인지</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=가스레인지/인덕션">가스레인지/인덕션</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=전기밥솥/찜기">전기밥솥/찜기</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=커피메이커/머신">커피메이커/머신</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=기타">기타</a>
                     </div>
                     <a class="amenu" href="#">생활가전</a>
                     <div class="ssmenu">
-                        <a href="#">세탁기/건조기/의류관리기</a>
-                        <a href="#">미싱/다리미</a>
-                        <a href="#">멀티탭</a>
-                        <a href="#">건강가전/비데</a>
-                        <a href="#">기타</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=세탁기/건조기/의류관리기">세탁기/건조기/의류관리기</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=미싱/다리미">미싱/다리미</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=멀티탭">멀티탭</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=건강가전/비데">건강가전/비데</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=기타">기타</a>
                     </div>
                     <a class="amenu" href="#">청소가전</a>
                     <div class="ssmenu">
-                        <a href="#">일반청소기</a>
-                        <a href="#">로봇청소기</a>
-                        <a href="#">침구청소기</a>
-                        <a href="#">스팀청소기</a>
-                        <a href="#">물걸레청소기</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=일반청소기">일반청소기</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=로봇청소기">로봇청소기</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=침구청소기">침구청소기</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=스팀청소기">스팀청소기</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=물걸레청소기">물걸레청소기</a>
                     </div>
                     <a class="amenu" href="#">이미용가전</a>
                     <div class="ssmenu">
-                        <a href="#">드라이기</a>
-                        <a href="#">고데기/매직기</a>
-                        <a href="#">면도기/제모기</a>
-                        <a href="#">전동칫솔/칫솔살균기</a>
-                        <a href="#">이미용기타</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=드라이기">드라이기</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=고데기/매직기">고데기/매직기</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=면도기/제모기">면도기/제모기</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=전동칫솔/칫솔살균기">전동칫솔/칫솔살균기</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=이미용기타">이미용기타</a>
                     </div>
                     <a class="amenu" href="#">책상/테이블</a>
                     <div class="ssmenu">
-                        <a href="#">좌식테이블</a>
-                        <a href="#">사이드테이블</a>
-                        <a href="#">접이식테이블</a>
-                        <a href="#">아웃도어테이블</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=좌식테이블">좌식테이블</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=사이드테이블">사이드테이블</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=접이식테이블">접이식테이블</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=아웃도어테이블">아웃도어테이블</a>
                     </div>
                     <a class="amenu" href="#">음향/영상가전</a>
                     <div class="ssmenu">
-                        <a href="#">프로젝터</a>
-                        <a href="#">TV/모니터</a>
-                        <a href="#">스피커/라디오</a>
-                        <a href="#">턴테이블/CDP</a>
-                        <a href="#">이어폰/헤드셋</a>
-                        <a href="#">PC악세사리</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=프로젝터">프로젝터</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=TV/모니터">TV/모니터</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=스피커/라디오">스피커/라디오</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=턴테이블/CDP">턴테이블/CDP</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=이어폰/헤드셋">이어폰/헤드셋</a>
+                        <a href="/app/Product/ProductList.do?topSearchKeyword=PC악세사리">PC악세사리</a>
                     </div>
                     <a class="amenu" href="#">계절가전</a>
                     <div class="ssmenu">
@@ -914,8 +915,9 @@ img, fieldset, iframe, frame {
 										<dd class="price-info" data-exposprctypcd="4"
 											data-exposprdtypcd="P" data-consultproduct="false"
 											data-rentprc="0">
-											<span class="price"> <span class="set-price"> <strong>${product.saleprice}</strong>원
-											</span> <span class="set-price"> <strong>${product.price}</strong>원~
+											 <span class="set-price"> <strike style="text-decoration: line-through;"><fmt:formatNumber value="${product.price}" type="currency" /> </strike>원<br>
+											<span class="price"> <span class="set-price"> <strong><fmt:formatNumber value="${product.saleprice}" type="currency" /></strong>원
+											</span>
 											</span>
 											</span>
 											<!-- //price -->
@@ -925,7 +927,7 @@ img, fieldset, iframe, frame {
 										</dd>
 										<dd class="advantage">
 											<div>
-												<span>${product.shippingfee}(배송료)</span>
+												<span><fmt:formatNumber value="${product.shippingfee}" type="currency" /></strong>(배송료)</span>
 											</div>
 										</dd>
 									</dl>

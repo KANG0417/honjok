@@ -254,8 +254,8 @@ $("#product-select").on("change", function () {
 
 	$('#_optionSelectList').append('<li style="padding: 20px;">\
 									<div class="prdprice_left"><span class="prd_txtbox">'+ pNum.innerHTML + '</span>\
-									</div><div><div class="btns"><input class="fas fa-minus" type="button" value="감소"><input class="ctn" type="number"  value="1" dir="rtl"><input type="button" value="증가"> \
-									<strong><em class="total-price">'+ price.innerHTML + '</em>원</strong><input type="button" value="취소"></div></div></li>');
+									</div><div><div class="btns"><input class="fas fa-minus" type="button" value="감소"><input class="ctn" type="number"  value="1" dir="rtl"><input type="button" value="증가">&nbsp;&nbsp; \
+									<strong><em class="total-price">'+ price.innerHTML + '</em>원</strong>&nbsp;<input type="button" value="삭제하기"></div></div></li>');
 
 
 	purchasePrice = $('.total-price').parent().find('em').html();
