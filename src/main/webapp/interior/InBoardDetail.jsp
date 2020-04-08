@@ -66,6 +66,20 @@
 	 	        requestUrl: 'https://developers.kakao.com'
 	 	      });
 	    };
+	    
+	    $( document ).ready(function() {
+	 		
+	    	$('.comment-feed__form__submit').on('click',function(){
+	    		
+	    		var content = $('.comment-content-input__text').html();
+	    		console.log(content)
+	    		
+	    		$('.content').val(content);
+	    		$('.comment-feed__form').submit();
+	    		
+	    	});
+	    	
+	    });
 
 </script>
 <style>
@@ -493,17 +507,24 @@ a,  input[type="submit"]{
                                 </div>
                             </div>
                         </section>
+                        <c:if test="${ sessionScope.userSession.nickName == comment.nickName }">
+            				<input type="button" value="수정" onclick="checkLogin()">
+				       	</c:if>
+						<c:if test="${ sessionScope.userSession.nickName == comment.nickName }">
+				            <input type="button" value="삭제" onclick="checkLogin()">
+				        </c:if>
                          <div class="comment_panel" class="ui-comment">
                             <div class="wrap">
                                 <div class="commentFeed">
                                     <section class="comment-feed width">
-                                        <h1 class="comment-feed__header">댓글
-                                            <span class="comment-feed__header__count">1개</span>
+                                        <h1 class="comment-feed__header">댓글 (${countReList })
+                                            <span class="comment-feed__header__count"></span>
                                         </h1>
-                                        <form class="comment-feed__form"method="post" action="addComment.do">
+                                        <form class="comment-feed__form" method="post" action="addComment.do">
                                             <input type="hidden" name="id" value="${sessionScope.userSession.id }"> 
                                             <input type="hidden" name="nickName" value="${sessionScope.userSession.nickName }"> 
                                             <input type="hidden" name="comSeq" value="${interiorSelect.comSeq }">
+                                            <input class="content" type="hidden" name="content" value="">
                                             <div class="comment-feed__form__user">
                                                 <img src="/app/resources/img/interior/smile.png">
                                             </div>
@@ -515,7 +536,7 @@ a,  input[type="submit"]{
                                                     </div>
                                                     </c:if>
                                                     <c:if test="${sessionScope.userSession.id != null }">
-                                                     <div class="comment-content-input__text comment-feed__form__content__text"
+                                                     <div id="comment-content-input__text" class="comment-content-input__text comment-feed__form__content__text"
                                                          contenteditable="true">
                                                     </div>
                                                     </c:if>
@@ -529,7 +550,7 @@ a,  input[type="submit"]{
 													</c:if>
                                                  </div>
                                                  <div class="comment-feed__form__actions">
-                                                    <button type="submit" class="comment-feed__form__submit" aria-label="등록">등록</button>
+                                                    <button type="button" class="comment-feed__form__submit" aria-label="등록">등록</button>
                                                 </div>
                                             </div>
                                         </form>

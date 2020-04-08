@@ -96,6 +96,10 @@ public class interiorController {
 			System.out.println(commentList);
 			model.addAttribute("commentSelect", commentList);
 			
+			//댓글 전체 갯수
+			int countList = interiorService.reAllCount();
+			model.addAttribute("countReList", countList);
+			
 			//게시물 상세조회
 			CommInteriorVO commInterior = interiorService.getBoardList(cvo);
 			model.addAttribute("interiorSelect", commInterior);

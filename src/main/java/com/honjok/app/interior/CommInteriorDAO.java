@@ -100,5 +100,9 @@ public class CommInteriorDAO {
 		mybatis.update("commInteriorDAO.updateComment", rvo);
 	}
 	
-	
+	//댓글 전체 갯수
+	public int reCount() {
+		System.out.println("===> MyBatis로 selectCount() 실행");
+		return mybatis.selectOne("commInteriorDAO.reAllCount");
+	}
 }

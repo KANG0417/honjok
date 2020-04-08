@@ -25,7 +25,6 @@ public class InteriorServiceImpl implements InteriorService {
 	//게시물 상세조회
 	@Override
 	public CommInteriorVO getBoardList(CommInteriorVO cvo) {
-		
 		return commDAO.getInteriorOne(cvo);
 	}
 	
@@ -91,4 +90,9 @@ public class InteriorServiceImpl implements InteriorService {
 		commDAO.updateComment(rvo);
 	}
 
+	//게시물 댓글 삭제
+	@Override
+	public int reAllCount() {
+		return commDAO.selectCount();
+	}
 }

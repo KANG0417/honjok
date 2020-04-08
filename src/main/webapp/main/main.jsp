@@ -48,9 +48,6 @@
        		</a>
         <header id="header">
             <h1 onclick="location.href='/app/main/getMainList.do'">
-                ONE-MARKET
-                <em>ONE-MARKET</em>
-                <span>전 세계 피부 전문가가 선택한 민감 피부 솔루면</span>
             </h1>
             <section class="top_nav">
                 <nav>

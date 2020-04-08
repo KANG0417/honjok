@@ -373,7 +373,11 @@
 			</article>
 		</div>	
 	</div> -->
-	
+	<section>
+		<div>
+		<input type="button" value="글쓰기" onclick="checkLogin()">
+		</div>
+	</section>
 	
 		<div class="center">
 			<c:if test="${countList != null}">
@@ -452,4 +456,23 @@
 	
 	<c:remove var="endPage" />
   </body>
+<script>
+	function checkLogin() {
+	    var id = '${sessionScope.userSession.id}'; // 수정 ''처리
+	    // 수정 ''공백 비교
+	    if (id == '') {
+	
+	    	var result = confirm("로그인이 필요한 서비스입니다. 로그인 하시겠습니까?")
+			if (result) {
+				window.open(
+							'/app/loginModal.jsp',
+							'pop01',
+							'top=10, left=10, width=500, height=600, status=no, menubar=no, toolbar=no, resizable=no');
+			}
+		}else {
+	        location.href = 'InBoardInsert.jsp';
+	    
+	    } 
+	    }
+</script>
 </html>

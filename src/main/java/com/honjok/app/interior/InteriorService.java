@@ -29,4 +29,5 @@ public interface InteriorService {
 	public void insertComment(commReplyVO rvo);
 	List<commReplyVO> commentList(int comSeq);
 	void updateComment(commReplyVO rvo);
+	public int reAllCount();
 }
