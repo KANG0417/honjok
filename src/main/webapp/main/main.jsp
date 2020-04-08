@@ -223,7 +223,7 @@
                                           	 ${main.pName}
                                         </span>
                                         <span class="star">
-                                            <div class="star-rating small">
+                                            <div class="star-rating main">
                                                 <span class="c50">
                                                     <em class="hide">별점 5개</em>
                                                 </span>

@@ -639,6 +639,14 @@ input, textarea, select, img {
 #wrap.main .prdlist span.star .star-rating {
     vertical-align: middle;
 }
+
+.star-rating.mian {
+    width: 80px;
+    height: 80px;
+    background: url('/app/resources/img/main/star_rating.png') no-repeat 0 0;
+        background-size: auto;
+    background-size: 84px;
+}
     
 .star-rating.small {
     width: 15px;

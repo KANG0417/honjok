@@ -30,11 +30,12 @@
             width: 300px;
             border-radius: 8px;
             overFlow: hidden;
+            font-size: 20px;
 
         }
 
         .item {
-            border-top: 1px solid #2980b9;
+        
             overflow: hidden;
 			
         }
@@ -65,8 +66,9 @@
 
         .smenu {
             overflow: hidden;
-            transition: max-height 0.3s;
+            transition: max-height 0.4s;
             max-height: 0;
+            
         }
 
         .smenu a {
@@ -311,11 +313,23 @@ img, fieldset, iframe, frame {
     overflow: hidden;
     height: 2.71429em;
     line-height: 1.36;
-    margin-bottom: 6px;
+   
+    font-size: 20px;
+    font-weight: 800;
+}
+strike{
+	font-weight: 400;
+	color: red;
+	font-size: 14px;
+}
+.set-price{
+	 margin-bottom: 6px;
+	  display: inline-block;
+	    margin-top: 6px;
 }
 .prd-info .price-info {
     position: relative;
-    white-space: nowrap;
+    white-space: nowrap;  
 }
 .prd-item .user-side {
     position: relative;
