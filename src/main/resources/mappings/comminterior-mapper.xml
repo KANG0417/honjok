@@ -157,4 +157,10 @@
   			
   		</delete> -->
   		
+  		<!-- 댓글 전체 갯수 -->
+  		<select id="reAllCount" resultType="Integer">
+			SELECT COUNT(*)
+			FROM COMM_REPLY
+			WHERE IDX
+		</select>
   </mapper>
