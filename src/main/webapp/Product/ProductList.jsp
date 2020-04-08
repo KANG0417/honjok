@@ -33,9 +33,12 @@
             font-size: 20px;
 
         }
+        .amenu{
+        	height: 15px;
+        	
+        }
 
         .item {
-        
             overflow: hidden;
 			
         }
@@ -52,7 +55,7 @@
             content: "";
             position: absolute;
             width: 14px;
-            height: 14px;
+            height: 20px;
             background: #35c5f0;
             left: 20px;
             bottom: -7px;
@@ -60,13 +63,15 @@
         }
 
         .btn i {
-            margin-right: 10px;
+            margin-right: 15px;
 
         }
 
-        .smenu {
+
+     .smenu {
+     		height: 200px;
             overflow: hidden;
-            transition: max-height 0.4s;
+            transition: max-height 0.3s;
             max-height: 0;
             
         }
@@ -74,7 +79,7 @@
         .smenu a {
             display: block;
             padding: 1px 16px;
-            font-size: 14px;
+            font-size: 16px;
             margin: 3px 0;
             position: relative;
             margin: 10px;
