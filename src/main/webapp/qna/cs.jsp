@@ -18,8 +18,10 @@
     body{margin-top:50px;}
 .glyphicon { margin-right:10px; }
 .panel-body { padding:0px; }
-.panel-body table tr td { padding-left: px }
+.panel-body table tr td { padding-left: 0px }
 .panel-body .table {margin-bottom: 0px; }
+.container {margin-left: 150px; margin-top: 20px;}
+.col-sm-9 col-md-9 {margin: 5px; }
         </style>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>

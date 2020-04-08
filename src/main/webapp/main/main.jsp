@@ -68,7 +68,7 @@
                             <a href="#">주문/배송조회</a>
                         </li>
                         <li>
-                            <a href="#">고객센터</a>
+                            <a href="/app/qna/cs.jsp">고객센터</a>
                         </li>
                     </ul>
                     <!-- 로그인후 -->
@@ -153,7 +153,7 @@
                             </a>
                         </li>
                             <li class="">
-                            <a href="#">
+                            <a href="/app/qna/cs.jsp">
                                 <span>고객센터</span>
                                 <!--<em></em>-->
                             </a>

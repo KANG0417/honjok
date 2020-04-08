@@ -21,8 +21,8 @@
 	}
 	
 	#image{
-		width: 1600px;
-		margin:0 auto;
+		width: 1500px;
+		margin: 0 auto;
 	}
 	 
 	#image {
@@ -30,7 +30,6 @@
         flex-flow: row wrap;
         text-align: center;
         overflow: hidden;
-        
         border-radius: 8px;
  	    transform: scale(1);
 	    -webkit-transform: scale(1);
@@ -42,20 +41,20 @@
 	
 	.image-box {
 		width: 31.9%;
-		margin: 0 auto 100px;
-		/* border: 1px red solid; */
+		margin: -10 auto;
+		margin-bottom: 300px;
 	}
 	
 	.overflowbox{
 		width: 476px;
 	    height: 294px;
 	    overflow: hidden;
+	    border-radius: 15px;
 	}
 	
 	img {
 		width: 476px;
 	    height: 294px;
-	    border-radius: 8px;
  	    transform: scale(1);
 	    -webkit-transform: scale(1);
 	    -moz-transform: scale(1);
@@ -65,10 +64,9 @@
 	    overflow: hidden;
 	}
 	
-	img:hover{ 
+	img:hover { 
 	    width: 476px;
 	    height: 294px;
-	    border-radius: 8px;
 	    transform: scale(1.2);
  	     -webkit-transform: scale(1.2);
 	    -moz-transform: scale(1.2);
@@ -77,12 +75,12 @@
 	    overflow: hidden;
 	    cursor: pointer;
 	}  
-	.center{
+	.center {
 	    text-align:center;
 		width: 500px;
 		margin: 0 auto 50px;
 	}
-	.center a{
+	.center a {
 		display:inline-block;
 		margin-left: 30px;
 		font-size: 25px;
@@ -92,7 +90,12 @@
 	    background-color: #35c5f0;
 	    color: #fff;
 	    text-decoration: none;
-	    border-radious: 8px;
+	}
+	.inter-board{
+		margin-left: 60px;
+		/* width: 1400px; */
+		border-top: 1px solid #2980b9;
+    	overflow: hidden;
 	}
 </style>
 </head>
@@ -108,8 +111,10 @@
 				</p>
 			</c:when>
 			<c:when test="${interiorList != null }">
-					<div style="width:100%; height:100px;">
-					<p class="inter-board">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;인테리어 게시판(게시물 수)</p>
+					<div style="width: 80%; height: 100px; margin-left: 140px;">
+					<div style="">
+						<h2 class="inter-board">인테리어 게시판(${countList})</h2>
+					</div>
 					</div>
 				<div id="image">
 
@@ -137,9 +142,10 @@
 								</script>
 							</a>
 							</div>	
-							<p><a href="getInterior.do?comSeq=${interiorvo.comSeq }">${interiorvo.title }</a></p>
+							<h1><a href="getInterior.do?comSeq=${interiorvo.comSeq }" style="color: midnightblue;">${interiorvo.title }</a></h1>
 							${interiorvo.regdate }<br>
-							${interiorvo.nickName }<br> ${interiorvo.hit } 명이 봤어요
+							${interiorvo.nickName }<br>
+							<i class="fas fa-eye"></i> ${interiorvo.hit } 명이 봤어요
 							<br> ${likesCount }<br>
 						</div>
 					</c:forEach>
