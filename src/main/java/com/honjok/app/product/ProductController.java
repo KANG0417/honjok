@@ -177,6 +177,8 @@ public class ProductController {
 			
 			List<productVO> productList = service.ProductList(map);
 			System.out.println(productList);
+			
+			model.addAttribute("topSearchKeyword",topSearchKeyword);
 			model.addAttribute("p",p);
 			model.addAttribute("productList",productList);
 		}

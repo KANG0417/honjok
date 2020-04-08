@@ -988,7 +988,7 @@ strike{
 	                                    </c:when>
 	                                    <c:otherwise>
 	                                    	 <li>
-		                                        <a class="list-paginator__page sm" href="/app/Product/ProductList.do?cPage=${i }">${i }</a>
+		                                        <a class="list-paginator__page sm" href="/app/Product/ProductList.do?cPage=${i }&topSearchKeyword=${topSearchKeyword}">${i }</a>
 		                                    </li>
 	                                    </c:otherwise>
 	                                </c:choose>
