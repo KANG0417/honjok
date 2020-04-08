@@ -223,11 +223,12 @@
                                           	 ${main.pName}
                                         </span>
                                         <span class="star">
-                                            <div class="star-rating main">
+                                            <div class="star-rating star5">
                                                 <span class="c50">
                                                     <em class="hide">별점 5개</em>
                                                 </span>
                                             </div>
+                                       
                                             <em>(264)</em>
                                         </span>
                                         <span class="price">
@@ -270,7 +271,7 @@
                                     	미세먼지 OUT 3STEP 세트
                                 </span>
                                 <span CLASS="star">
-                                    <div class="star-rating small">
+                                    <div class="star-rating star5">
                                         <span class="c50">
                                             <em class="hide">별점 5개</em>
                                         </span>
@@ -307,7 +308,7 @@
                                     미세먼지 OUT 3STEP 세트
                                 </span>
                                 <span CLASS="star">
-                                    <div class="star-rating small">
+                                    <div class="star-rating star5">
                                         <span class="c50">
                                             <em class="hide">별점 5개</em>
                                         </span>
@@ -350,7 +351,7 @@
                                 	    미세먼지 OUT 3STEP 세트
                                 </span>
                                 <span CLASS="star">
-                                    <div class="star-rating small">
+                                    <div class="star-rating star5">
                                         <span class="c50">
                                             <em class="hide">별점 5개</em>
                                         </span>

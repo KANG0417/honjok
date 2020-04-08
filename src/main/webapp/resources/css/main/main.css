@@ -640,11 +640,11 @@ input, textarea, select, img {
     vertical-align: middle;
 }
 
-.star-rating.mian {
-    width: 80px;
-    height: 80px;
-    background: url('/app/resources/img/main/star_rating.png') no-repeat 0 0;
-        background-size: auto;
+.star-rating.star5 {
+   width: 90px;
+    height: 15px;
+    background: url('/app/resources/img/main/star_rating.png') no-repeat 0px 0px;
+    background-size: auto;
     background-size: 84px;
 }
     
@@ -652,14 +652,14 @@ input, textarea, select, img {
     width: 15px;
     height: 15px;
     background: url('/app/resources/img/main/star_rating.png') no-repeat -68px -15px;
-        background-size: auto;
+    background-size: auto;
     background-size: 84px;
 }
 .star-rating.blue {
     width: 15px;
     height: 15px;
     background: url('/app/resources/img/main/star_rating.png') no-repeat -68px 0px;
-        background-size: auto;
+    background-size: auto;
     background-size: 84px;
 }
 .star-rating {

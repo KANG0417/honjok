@@ -851,15 +851,16 @@ em, address {
 																	<span class="price">${PRODUCT.PRICE}</span>
 																	<span class="won">원</span>
 																</div>
+																
 															</div>
 														</div>
 														<ul class="option_wrap">
 															<li>
 															<!-- 텍스트 옵션이 존재할경우 -->
 																<div>
-																	L옐로우
-																	<em></em>
-																	120
+																	
+																	<em>${PRODUCT.P_NAME}</em>
+																
 																</div>
 																<div class="option_qty">${PRODUCT.P_CNT}</div>
 															</li>
