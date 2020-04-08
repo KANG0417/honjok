@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.honjok.app.user.UserDAO;
 import com.honjok.app.vo.UserVO;
 
 @Controller
@@ -51,6 +52,7 @@ public class orderController {
 			orderService.updateCartCount(map);
 			
 			resultMap = orderService.getProductCartData(map);
+			
 			list.add(resultMap);
 			System.out.println(resultMap + "여기까지 2차");
 		}
@@ -58,6 +60,9 @@ public class orderController {
 		vo = orderService.getUserData(map);
 		
 		System.out.println(vo + "여기까지 3차 ");
+		
+	
+		
 		model.addAttribute("shippingFee", shippingFee);
 		model.addAttribute("list", list);
 		model.addAttribute("vo", vo);
