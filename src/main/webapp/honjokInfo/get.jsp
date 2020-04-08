@@ -314,7 +314,7 @@
 		<div class="left-column">
 			<div class="card"></div>
 			<div class="card card-1">
-				<p>${CommInfoVO.nickName }님의혼밥리뷰</p>
+				<p>작성자&nbsp;:&nbsp;${CommInfoVO.nickName }</p>
 				<h2>${CommInfoVO.title }</h2>
 				<h5></h5>
 				<p>메장 대표메뉴</p>
@@ -322,10 +322,11 @@
 					<img width="100px" height="100px"
 						src="/app/resources/img/menu/${Upload.upImgName }">
 				</c:forEach>
-				<p>매장이름:${CommInfoVO.placeName }</p>
-				<p>매장위치:${CommInfoVO.adr }</p>
-				<p>매장 업종:${CommInfoVO.categoryName }</p>
-				<p>매장번호:${CommInfoVO.tel }</p>
+				
+				<p>매장이름&nbsp;:&nbsp;${CommInfoVO.placeName}</p>
+				<p>매장위치&nbsp;:&nbsp;${CommInfoVO.adr}</p>
+				<p>매장 업종&nbsp;:&nbsp;${CommInfoVO.categoryName}</p>
+				<p>매장번호&nbsp;:&nbsp;${CommInfoVO.tel }</p>
 				<div id="map" style="width: 100%; height: 350px;"></div>
 
 			</div>
