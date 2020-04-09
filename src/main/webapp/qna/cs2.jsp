@@ -51,59 +51,7 @@
 <script type="text/javascript" src="/js/lazyload.min.js"></script>
 
 <jsp:include page="/header.jsp"></jsp:include>
-    
-<script type="text/javascript" src="http://cdn3-aka.makeshop.co.kr/shopimages/superstari/template/work/2430/header.4.js?t=202004061012"></script>
-    <div id="contentWrapper">
-        <div id="contentWrap">
-            <div id="content">
-            
-                <div class="bbs-tit">
-                    <strong>CS CENTER</strong>
-                </div>
-                
-<link type="text/css" rel="stylesheet" href="/shopimages/superstari/template/work/2430/menu.9.css?t=202003041816" />
-<div class="login_my">
-
-    
-    <h4>커뮤니티</h4>
-    <ul>
-        <li><a href="/board/board.html?code=superstari_image19&board_cate=9">이벤트</a></li>
-        <li><a href="/board/board.html?code=superstari_image12">포토후기</a></li>
-        <li><a href="/board/board.html?code=superstari_image20">직원후기</a></li>
-    </ul>
-    <h4>고객센터</h4>
-    <ul>
-        <li><a href="/board/board.html?code=superstari_board10">공지사항</a></li>
-        <li><a href="/shop/faq.html">FAQ</a></li>
-        <li><a href="/board/board.html?code=superstari&page=1&board_cate=&type=i">상품 / 단체복문의</a></li>
-        <li><a href="/board/board.html?code=superstari_board17&page=1&type=i">입금문의</a></li>
-        <li><a href="/board/board.html?code=superstari_board20">배송전취소</a></li>
-        <li><a href="/board/board.html?code=superstari_board18">배송문의</a></li>
-        <li><a href="/board/board.html?code=superstari_board25">VIP회원전용문의</a></li>
-        <li><a href="/board/board.html?code=superstari_board23">품절/불량보상제</a></li>
-        <li><a href="/board/board.html?code=superstari_board11">해외배송문의</a></li>
-        <li><a href="/board/board.html?code=superstari_board27">입사지원</a></li>
-        <li><a href="/board/board.html?code=superstari_board28">모델지원</a></li>
-        <li><a href="/board/board.html?code=superstari_board16&page=1&board_cate=&type=i">제휴문의</a></li>
-    </ul>
-    <h4>쇼핑팁</h4>
-    <ul>
-        <li><a href="/shop/page.html?id=39">교환/반품 방법</a></li>
-        <li><a onclick="window.open('https://superstari.cdn.smart-img.com/newrenwal/size/size_check.html','newin','resizable=no, scrollbars=yes, width=1030, height=4800,0,0,0,0');return false;">사이즈 측정법</a></li>
-        <li><a onclick="window.open('https://superstari.cdn.smart-img.com/newrenwal/size/wash_tip.html','newin','resizable=no, scrollbars=yes, width=1030, height=2200,0,0,0,0');return false;">소재/세탁 정보안내</a></li>
-    </ul>
-    
-    <h2>1661-6874</h2>
-    <ul>
-        <p>
-            AM 10:00~ PM 17:00<br>
-            (점심시간 12:00~13:00)<br>
-            DAY OFF (토/일/공휴일)
-        <p>
-    </ul>
-</div>
-            
-                <div id="faqWrap">
+    <div id="faqWrap">
                     <div class="join_sub_title" style="margin-top: -62px;"><h1>FAQ</h1></div>
                     <div class="page-body">
                         <div class="faq-search">
@@ -450,19 +398,9 @@ ex) 블랙색상 주문 후 장바구니 담기 -> 계속쇼핑하기 -> 화이�
                                                                     </tbody>
                             </table>
                         </div>
-                    </div><!-- .page-body -->
-                    <div class="pager">
-                        <ol>
-                                                                                                                                                                                            <li><strong>1</strong></li>
-                                                                                                                                            <li><a href="/shop/faq.html?page=2">2</a></li>
-                                                                                                                                            <li><a href="/shop/faq.html?page=3">3</a></li>
-                                                                                                                                                                                    <li class="last"><a href="/shop/faq.html?page=3"><img src="/images/d3/modern_simple/btn/btn_bmatch_paging_last.gif" alt="끝" title="" /></a></li>
-                                                    </ol>
                     </div>
-                </div><!-- #faqWrap -->
-            </div><!-- #content -->
-        </div><!-- #contentWrap -->
-    </div><!-- #contentWrapper-->
-    <hr />
+    <!--/panel-group-->
+</div>	<script type="text/javascript">
+		</script>
 </body>
 </html>

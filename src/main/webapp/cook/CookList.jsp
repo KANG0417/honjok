@@ -13,21 +13,95 @@
 
 <title>1인 레시피 게시판입니다.</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-<style>
-	#container {
-		width: 700px;
+<style media="screen">
+	.wrap {
+		/* border: 1px red solid; */
+		width: 1600px;
+		height: 2000px;
+		margin : 0 auto;
+	}
+	
+	body {
+	    font-family: 'NotoSansKR', sans-serif;
+	}
+	
+	#image{
+		width: 1500px;
 		margin: 0 auto;
 	}
-	h1, h3, p { text-align: center; }
- 	table { border-collapse: collapse; } 
- 	table, th, td { 
- 		margin: 0 auto; 
- 	} 
-	th { background-color: white; }
-	.center { text-align: center; }
-	.border-none, .border-none td { border: none; }
+	 
+	#image {
+        display: flex;
+        flex-flow: row wrap;
+        text-align: center;
+        overflow: hidden;
+        border-radius: 8px;
+ 	    transform: scale(1);
+	    -webkit-transform: scale(1);
+	    -moz-transform: scale(1);
+	    -ms-transform: scale(1);
+	    -o-transform: scale(1);
+	    transition: all 0.3s ease-in-out;
+	}
 	
+	.image-box {
+		width: 31.9%;
+		margin: -10 auto;
+		margin-bottom: 300px;
+	}
+	
+	.overflowbox{
+		width: 476px;
+	    height: 294px;
+	    overflow: hidden;
+	    border-radius: 15px;
+	}
+	
+	img {
+		width: 476px;
+	    height: 294px;
+ 	    transform: scale(1);
+	    -webkit-transform: scale(1);
+	    -moz-transform: scale(1);
+	    -ms-transform: scale(1);
+	    -o-transform: scale(1);
+	    transition: all 0.3s ease-in-out;
+	    overflow: hidden;
+	}
+	
+	img:hover { 						
+	    width: 476px;
+	    height: 294px;
+	    transform: scale(1.2);
+ 	     -webkit-transform: scale(1.2);
+	    -moz-transform: scale(1.2);
+	    -ms-transform: scale(1.2);
+	    -o-transform: scale(1.2);
+	    overflow: hidden;
+	    cursor: pointer;
+	}  
+	.center {
+	    text-align:center;
+		width: 500px;
+		margin: 0 auto 50px;
+	}
+	.center a {
+		display:inline-block;
+		margin-left: 30px;
+		font-size: 25px;
+	}
+	.selected {
+		width: 30px;
+	    background-color: #35c5f0;
+	    color: #fff;
+	    text-decoration: none;
+	}
+	.cook-board{
+		margin-left: 60px;
+		/* width: 1400px; */
+		border-top: 1px solid #2980b9;
+    	overflow: hidden;
+	}
 </style>
 
 </head>
@@ -41,7 +115,7 @@
 				</p>
 			</c:when>
 			<c:when test="${cookList != null }">
-					
+				<div id="image">	
 				<div class="row">
 
 					<c:forEach var="cookvo" items="${cookList }"
@@ -68,9 +142,9 @@
 							</a>
 							<div class="text w-100 text-center">
 								<h3>
-									<a href="CookDetail.do?comSeq=${cookvo.comSeq }">${cookvo.title }</a>
+									<a href="CookDetail.do?comSeq=${cookvo.comSeq }" style="color: midnightblue;">${cookvo.title }</a>
 								</h3>
-								 <h6>좋아요: ${cookvo.likes }</h6>
+									<i class="fas fa-eye"></i> ${cookvo.hit } 명이 봤어요
 							</div>
 						</div>
 					</c:forEach>
@@ -175,9 +249,13 @@
           </div>
         </div>
 <div>
-		<a href="http://localhost:8080/app/cook/insert.jsp">
-        	<img src="${contextPage.request.contextPath}/app/resources/img/write_btn.png" alt="쓰기">
-      	</a>
+        		<form action="insert.jsp">
+					<td align="right"></td>
+					<td colspan="2"><input type="submit" value="글쓰기" 
+					style="background: #428bca; border: medium none; border-radius: 0; color: #FFFFFF; font-family: 'Roboto', sans-serif; padding: 6px 25px;"/> 
+					</td>
+				</form>	
+<!--       	</a> -->
       	
 <!--       	<form action="insert.jsp"> -->
 <!--   		 <input type="submit" value="글쓰기"> -->
