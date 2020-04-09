@@ -161,6 +161,6 @@
   		<select id="reAllCount" resultType="Integer">
 			SELECT COUNT(*)
 			FROM COMM_REPLY
-			WHERE IDX
+			WHERE COM_SEQ AND IDX
 		</select>
   </mapper>

@@ -517,7 +517,7 @@ a,  input[type="submit"]{
                             <div class="wrap">
                                 <div class="commentFeed">
                                     <section class="comment-feed width">
-                                        <h1 class="comment-feed__header">댓글 (${countReList })
+                                        <h1 class="comment-feed__header">댓글
                                             <span class="comment-feed__header__count"></span>
                                         </h1>
                                         <form class="comment-feed__form" method="post" action="addComment.do">

@@ -67,8 +67,8 @@
                                 <div class="tab_cont">
                                     <section class="login_form">
                                         <div id="form1" name="form1">
-                                            <input type="text" name="ordernum" id="ordernum" title="주문번호 입력란" maxlength="25" placeholder="주문번호">
-                                            <input type="text" name="ordername" id="ordername" title="주문자명 입력란" maxlength="10" placeholder="주문자명" class="mt6">
+                                            <input type="text" name="ordernum" id="ordernum" title="주문번호 입력란" maxlength="25" placeholder="아이디">
+                                            <input type="text" name="ordername" id="ordername" title="주문자명 입력란" maxlength="10" placeholder="비밀번호" class="mt6">
                                         </div>
                                         <div class="btn_wrap">
                                             <button class="btn_base blue dev-adminlogin">로그인</button>

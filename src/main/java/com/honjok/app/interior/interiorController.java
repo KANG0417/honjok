@@ -44,7 +44,7 @@ public class interiorController {
 		@RequestMapping("/interiorAllList.do")
 		/*public String interiorAllList(Model model) {
 			System.out.println("===>인테리어게시판 전체 조회");
-			List<CommInteriorVO> CommInteriorList = interiorService.BoardAllList();
+			List<CommInteriorVO> CommInteri orList = interiorService.BoardAllList();
 			model.addAttribute("interiorList", CommInteriorList);
 			System.out.println(CommInteriorList.toString());
 			return "InBoardList.jsp";*/
