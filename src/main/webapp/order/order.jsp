@@ -1188,14 +1188,17 @@ $(function(){
 	                	})
 	                })
 	                
-	                location.href="getMainList.do"
+	                
 	 
 	            } else {
 	                var msg = '결제에 실패하였습니다.';
 	                msg += '에러내용 : ' + rsp.error_msg;
 	            }
-	
+	            
+	            sessionStorage.removeItem("basketCount");
+	           
 	            alert(msg);
+	            location.href="/app/main/getMainList.do"
 	        });
     		
   	  }

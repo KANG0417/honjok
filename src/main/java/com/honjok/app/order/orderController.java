@@ -1,10 +1,13 @@
 package com.honjok.app.order;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +33,7 @@ public class orderController {
 	@RequestMapping(value="/order.do", method=RequestMethod.GET)
 	public String orderList(@RequestParam String pCnt, @RequestParam String pNum,
 							@RequestParam String shippingFee, Map<String, Object> resultMap,
-							Model model, HttpSession session) {
+							Model model, HttpSession session,HttpServletResponse response) throws IOException {
 		
 		System.out.println(pCnt);
 		System.out.println(pNum);
@@ -67,6 +70,9 @@ public class orderController {
 		model.addAttribute("list", list);
 		model.addAttribute("vo", vo);
 		//model.addAttribute("display", "/shop/goods/order.jsp");
+		
+		
+
 		return "/order/order.jsp";
 	}
 	
