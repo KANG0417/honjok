@@ -157,7 +157,7 @@
                             </a>
                         </li>
                             <li class="">
-                            <a href="#">
+                            <a href="/app/qna/cs.jsp">
                                 <span>고객센터</span>
                                 <!--<em></em>-->
                             </a>

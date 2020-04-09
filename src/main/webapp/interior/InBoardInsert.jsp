@@ -15,48 +15,34 @@
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.js"></script>
 <title>글등록</title>
 <style>
+	
 	#container {
-		width: 700px;
+		width: 1000px;
 		margin: 0 auto;
 	}
 	
-	h1, h3, p { text-align: center; }
-	table { border-collapse: collapse; }
-	table, th, td {
-		border: 1px solid black;
-		margin: 0 auto;
+	th {
+		padding: 5px;
 	}
-	
-	th { background-color: orange; }
-	.center { text-align: center; }
-	.border-none, .border-none td { border: none; }
 </style>
-
-
 </head>
 <body>
 
 <div id="container">
-	<h1>글등록</h1>
-
+	<h1 style="border-bottom: 2px solid midnightblue;">글등록</h1>
+	
 	<form action="insertInteriorB.do" method="post">
 	<table>
 		<tr>
-			<th width="70">제목</th>
+			<th>제목</th>
 			<td>
 				<input type="text" name="title" size="30">
 			</td>
 		</tr>
 		<tr>
-			<th>내용</th>
+			<th >내용</th>
 			<td>
 				<textarea rows="5" cols="60" name="content" id="description"></textarea>
-			</td>					
-		</tr>
-		<tr>
-			<th>파일이미지</th>
-			<td>
-				<input type="text" name="fileImage">
 			</td>					
 		</tr>
 		
