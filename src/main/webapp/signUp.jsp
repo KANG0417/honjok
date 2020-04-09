@@ -612,7 +612,6 @@ function sample6_execDaumPostcode(){
 	//여기까지 이메일 셀렉트 박스 자동입력
 	$('.signup').click(function(){
 		$('#regForm').submit();
-		location.href='getMainList.do';
 	});
 	
 	

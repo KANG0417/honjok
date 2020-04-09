@@ -1,5 +1,8 @@
 package com.honjok.app.user;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -29,7 +32,7 @@ public class UserController {
 	//회원가입 컨트롤러
 	@RequestMapping(value="/signUp.do", method=RequestMethod.POST)
 	public String signUp(UserVO vo, @RequestParam("email1") String email1, @RequestParam("email2") String email2 
-			, HttpServletRequest request) {
+			, HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String email = email1 +"@"+ email2;
 		System.out.println("비밀번호 암호화 전 확인 : " + vo.getPassword());
 		//비밀번호 암호화
@@ -41,7 +44,16 @@ public class UserController {
 		userService.insertUser(vo);
 		//이메일 보내기
 		mailsender.mailSendWithUserKey(vo.getEmail(), vo.getId(), request);
+		response.setContentType("text/html; charset=UTF-8");
+		 
+		PrintWriter out = response.getWriter();
+		 
+		out.println("<script>alert('계정이 등록 되었습니다, 이메일을 확인해주세요'); location.href='/app/main/getMainList.do';</script>");
+		 
+		out.flush();
+
 		return "index.jsp";
+		
 	}
 	
 	//아이디 중복체크

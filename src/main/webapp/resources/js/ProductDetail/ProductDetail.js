@@ -393,7 +393,6 @@ $('#cart').on("click", function () {
 
 $(document).on("click","button:contains('문의하기')",function(){
 	if(id != ""){
-		alert("아");
 		$('.product-question__modal').show();
 	} else {
 		var result = confirm("로그인이 필요한 서비스입니다. 로그인 하시겠습니까?")
